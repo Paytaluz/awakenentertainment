@@ -1,0 +1,453 @@
+/* ─────────────────────────────────────────────────
+   RESET & BASE
+───────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --header-h:  60px;
+  --tab-w:     52px;
+  --black:     #1b1b1b;
+  --white:     #ffffff;
+  --bg:        #f0eeea;
+  --mute:      #888888;
+  --border:    rgba(0,0,0,0.09);
+  /* Smooth, deliberate easing — matches spill's feel */
+  --ease:      cubic-bezier(0.76, 0, 0.24, 1);
+  --dur:       680ms;
+}
+
+html, body {
+  width: 100%; height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--black);
+  font-family: 'PT Mono', monospace;
+  -webkit-font-smoothing: antialiased;
+}
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
+a      { text-decoration: none; color: inherit; }
+
+/* ─────────────────────────────────────────────────
+   HEADER
+───────────────────────────────────────────────── */
+.site-header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: var(--header-h);
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 36px 0 24px;
+  z-index: 200;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.logo-mark {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+}
+
+.logo-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px;
+  letter-spacing: 0.1em;
+  color: var(--black);
+  line-height: 1;
+}
+
+.site-nav {
+  display: flex;
+  gap: 40px;
+}
+
+.site-nav a {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--mute);
+  transition: color 0.2s;
+}
+.site-nav a:hover,
+.site-nav a.is-active { color: var(--black); }
+
+/* ─────────────────────────────────────────────────
+   ACCORDION — width-based for GPU-smooth animation
+───────────────────────────────────────────────── */
+.accordion {
+  position: fixed;
+  top: var(--header-h);
+  left: 0; right: 0; bottom: 0;
+  display: flex;
+  overflow: hidden;
+  /* JS sets explicit widths on each .slide */
+}
+
+/* ─────────────────────────────────────────────────
+   SLIDE
+───────────────────────────────────────────────── */
+.slide {
+  position: relative;
+  height: 100%;
+  flex-shrink: 0;
+  overflow: hidden;
+  /* Width driven by JS — transition does the heavy lifting */
+  width: var(--tab-w);
+  transition:
+    width       var(--dur) var(--ease),
+    background  400ms ease;
+  will-change: width;
+  cursor: pointer;
+}
+
+.slide.is-active {
+  cursor: default;
+}
+
+/* Inactive slide bg — set per slide with data-color in CSS */
+.slide:not(.is-active) { background: var(--slide-bg, #e5e1db); }
+.slide.is-active        { background: var(--bg); cursor: default; }
+.slide[data-index="0"].is-active { background: #1e1e1e; }  /* Home stays dark when active */
+
+/* Per-slide tab colors */
+.slide[data-index="0"]:not(.is-active) { background: #2a2a2a; }          /* Awaken home — dark */
+.slide[data-index="1"]:not(.is-active) { background: #41b3e7; }          /* Digital — blue */
+.slide[data-index="2"]:not(.is-active) { background: #e70d0c; }          /* Design — red */
+.slide[data-index="3"]:not(.is-active) { background: #fbda33; }          /* Tech — yellow */
+.slide[data-index="4"]:not(.is-active) { background: #000000; }          /* Production — black */
+.slide[data-index="5"]:not(.is-active) { background: #ffffff; }          /* PR — white */
+
+/* ─────────────────────────────────────────────────
+   TAB STRIP
+───────────────────────────────────────────────── */
+.slide-tab {
+  position: absolute;
+  top: 0; left: 0;
+  width: var(--tab-w);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  border-right: 1px solid rgba(0,0,0,0.07);
+  cursor: pointer;
+  background: transparent;
+}
+
+.slide.is-active .slide-tab {
+  pointer-events: none;
+  border-right-color: transparent;
+}
+
+/* Tab text colors — tuned per background for legibility */
+.slide[data-index="0"]:not(.is-active) .tab-text { color: rgba(255,255,255,0.65); }  /* dark bg → white */
+.slide[data-index="1"]:not(.is-active) .tab-text { color: rgba(255,255,255,0.75); }  /* blue  → white */
+.slide[data-index="2"]:not(.is-active) .tab-text { color: rgba(255,255,255,0.75); }  /* red   → white */
+.slide[data-index="3"]:not(.is-active) .tab-text { color: rgba(0,0,0,0.55);       }  /* yellow→ dark */
+.slide[data-index="4"]:not(.is-active) .tab-text { color: rgba(255,255,255,0.65); }  /* black → white */
+.slide[data-index="5"]:not(.is-active) .tab-text { color: rgba(0,0,0,0.45);       }  /* white → dark */
+
+/* PR (white) slide needs a visible border to separate from page bg */
+.slide[data-index="5"]:not(.is-active) { border-right: 1px solid rgba(0,0,0,0.12); }
+
+.tab-text {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);   /* bottom → top reading direction */
+  font-family: 'PT Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(0,0,0,0.45);
+  user-select: none;
+  white-space: nowrap;
+  transition: opacity var(--dur) var(--ease), color 0.2s;
+}
+
+/* Hover — brighten within the same light/dark family */
+.slide[data-index="0"]:not(.is-active):hover .tab-text,
+.slide[data-index="1"]:not(.is-active):hover .tab-text,
+.slide[data-index="2"]:not(.is-active):hover .tab-text,
+.slide[data-index="4"]:not(.is-active):hover .tab-text { color: rgba(255,255,255,1); }
+
+.slide[data-index="3"]:not(.is-active):hover .tab-text,
+.slide[data-index="5"]:not(.is-active):hover .tab-text { color: rgba(0,0,0,0.9); }
+
+/* Fade tab text while slide is expanding / when fully active */
+.slide.is-active .tab-text {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ─────────────────────────────────────────────────
+   SLIDE CONTENT
+───────────────────────────────────────────────── */
+.slide-content {
+  position: absolute;
+  top: 0;
+  left: var(--tab-w);    /* always offset past the tab */
+  right: 0; bottom: 0;
+  display: flex;
+  align-items: center;
+  padding: 64px 80px 80px 100px;
+  /* Fade in after slide has expanded — delay matches ~40% of transition */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 300ms ease;
+  transition-delay: 0ms;
+}
+
+.slide.is-active .slide-content {
+  opacity: 1;
+  pointer-events: all;
+  transition-delay: 280ms;   /* wait for panel to open before revealing content */
+}
+
+/* ─────────────────────────────────────────────────
+   CONTENT LAYOUT
+───────────────────────────────────────────────── */
+.content-left {
+  flex: 0 0 44%;
+  max-width: 480px;
+  padding-right: 40px;
+}
+
+.content-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+/* ─────────────────────────────────────────────────
+   TYPOGRAPHY
+───────────────────────────────────────────────── */
+.content-eyebrow {
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mute);
+  margin-bottom: 20px;
+}
+
+.content-headline {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(56px, 6.5vw, 108px);
+  line-height: 0.9;
+  letter-spacing: 0.02em;
+  color: var(--black);
+  margin-bottom: 28px;
+}
+
+.content-body {
+  font-size: 13px;
+  line-height: 1.9;
+  color: #555;
+  max-width: 340px;
+  margin-bottom: 36px;
+}
+
+/* ─────────────────────────────────────────────────
+   BUTTONS
+───────────────────────────────────────────────── */
+.btn-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.spill-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 13px 26px;
+  border: 1.5px solid var(--black);
+  background: var(--black);
+  color: var(--white);
+  font-family: 'PT Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  position: relative;
+  transition: transform 200ms var(--ease), background 200ms, color 200ms;
+  cursor: pointer;
+}
+
+.spill-btn::after {
+  content: '';
+  position: absolute;
+  inset: -1.5px;
+  border: 1.5px solid var(--black);
+  transform: translate(4px, 4px);
+  transition: transform 200ms var(--ease);
+  pointer-events: none;
+}
+
+.spill-btn:hover {
+  background: transparent;
+  color: var(--black);
+  transform: translate(-1px, -1px);
+}
+.spill-btn:hover::after { transform: translate(5px, 5px); }
+
+.spill-btn--ghost {
+  background: transparent;
+  color: var(--black);
+}
+.spill-btn--ghost:hover {
+  background: var(--black);
+  color: var(--white);
+}
+
+/* Home slide — white text override */
+.slide[data-index="0"].is-active .content-eyebrow { color: rgba(255,255,255,0.4); }
+.slide[data-index="0"].is-active .content-headline { color: #ffffff; }
+.slide[data-index="0"].is-active .content-body    { color: rgba(255,255,255,0.55); }
+.slide[data-index="0"].is-active .spill-btn {
+  border-color: #ffffff;
+  background: #ffffff;
+  color: #1e1e1e;
+}
+.slide[data-index="0"].is-active .spill-btn::after { border-color: #ffffff; }
+.slide[data-index="0"].is-active .spill-btn:hover  { background: transparent; color: #ffffff; }
+.slide[data-index="0"].is-active .spill-btn--ghost { background: transparent; color: #ffffff; }
+.slide[data-index="0"].is-active .spill-btn--ghost:hover { background: #ffffff; color: #1e1e1e; }
+
+/* ─────────────────────────────────────────────────
+   BUTTON — allow <a> tags to use spill-btn style
+───────────────────────────────────────────────── */
+a.spill-btn {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+/* ─────────────────────────────────────────────────
+   HOME SLIDE — Decorative triskelion
+───────────────────────────────────────────────── */
+.home-visual {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.deco-mark {
+  width: min(480px, 90%);
+  height: min(480px, 90%);
+  animation: slowSpin 80s linear infinite;
+}
+
+@keyframes slowSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ─────────────────────────────────────────────────
+   VISUAL PLACEHOLDER (until SVGs are added)
+───────────────────────────────────────────────── */
+.visual-placeholder {
+  width: min(360px, 85%);
+  height: min(300px, 60%);
+  border: 1.5px dashed rgba(0,0,0,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.visual-placeholder span {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(0,0,0,0.2);
+}
+
+/* ─────────────────────────────────────────────────
+   BOTTOM NAV
+───────────────────────────────────────────────── */
+.bottom-nav {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  z-index: 300;
+  background: rgba(240, 238, 234, 0.88);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
+  padding: 10px 16px;
+}
+
+.nav-arrow {
+  font-family: 'PT Mono', monospace;
+  font-size: 15px;
+  width: 32px; height: 32px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--black);
+  transition: background 0.18s, color 0.18s;
+}
+.nav-arrow:hover:not(:disabled) { background: var(--black); color: var(--white); }
+.nav-arrow:disabled { opacity: 0.18; cursor: not-allowed; }
+
+.nav-dots { display: flex; gap: 7px; align-items: center; }
+
+.nav-dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: #c0bdb8;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s, transform 0.25s var(--ease), width 0.25s var(--ease);
+  flex-shrink: 0;
+}
+.nav-dot.is-active {
+  background: var(--black);
+  transform: scale(1.4);
+}
+
+/* ─────────────────────────────────────────────────
+   SLIDE COUNTER
+───────────────────────────────────────────────── */
+.slide-counter {
+  position: fixed;
+  bottom: 32px;
+  right: 40px;
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  color: var(--mute);
+  z-index: 300;
+  font-family: 'PT Mono', monospace;
+  pointer-events: none;
+}
+
+/* ─────────────────────────────────────────────────
+   RESPONSIVE
+───────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .slide-content { padding: 40px 40px 60px 60px; }
+  .content-right { display: none; }
+  .content-left  { flex: none; max-width: 100%; padding-right: 0; }
+}
+
+@media (max-width: 640px) {
+  :root { --tab-w: 40px; }
+  .site-header  { padding: 0 20px; }
+  .site-nav     { display: none; }
+  .slide-content{ padding: 28px 20px 60px 48px; }
+  .slide-counter{ display: none; }
+  .content-headline { font-size: clamp(44px, 12vw, 72px); }
+}

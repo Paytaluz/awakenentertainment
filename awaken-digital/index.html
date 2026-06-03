@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Awaken Digital — You Say Brand, We Tell The Story</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400;1,9..40,500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════
+       NAV
+  ═══════════════════════════════════════════ -->
+  <header class="nav" id="nav">
+    <a href="#" class="nav-logo">
+      <img src="../logo.png" alt="Awaken" class="nav-logo-img"/>
+      <span class="nav-logo-text">AWAKEN <em>Digital</em></span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#about">About Us</a>
+      <a href="#how">Services</a>
+      <a href="#work">Work</a>
+      <a href="#map">Global</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="#contact" class="nav-pill">Contact Us</a>
+    <button class="nav-burger" id="burger">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <!-- ═══════════════════════════════════════════
+       1. HERO — full-screen dark, cycling text bottom-left
+  ═══════════════════════════════════════════ -->
+  <section class="s-hero">
+    <!-- Background: 3-panel dark images (replace with real campaign images) -->
+    <div class="hero-panels">
+      <div class="hero-panel" style="background:linear-gradient(160deg,#181818,#0a0a0a)"></div>
+      <div class="hero-panel" style="background:linear-gradient(160deg,#141414,#080808)"></div>
+      <div class="hero-panel" style="background:linear-gradient(160deg,#111,#060606)"></div>
+    </div>
+    <div class="hero-overlay"></div>
+    <!-- Text — bottom-left exactly like WAM -->
+    <div class="hero-text">
+      <h1>We build brands through<br/><span class="hero-italic" id="cycleWord">stories.</span></h1>
+    </div>
+    <!-- Scroll indicator -->
+    <div class="hero-scroll">
+      <div class="scroll-track"><div class="scroll-dot"></div></div>
+    </div>
+    <!-- Bottom meta -->
+    <div class="hero-meta">
+      <span>Est. 2016 · Yangon, Myanmar</span>
+      <a href="../index.html">Awaken Group ↗</a>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       2. STATEMENT — black, huge centered text
+  ═══════════════════════════════════════════ -->
+  <section class="s-statement" id="about">
+    <p class="statement-p js-reveal">
+      We are a full-service marketing agency.<br/>
+      We partner with purpose-driven brands<br/>
+      to bring bold ideas to life through<br/>
+      <em>creativity and storytelling.</em>
+    </p>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       3. LOGOS MARQUEE — scrolling client names
+  ═══════════════════════════════════════════ -->
+  <div class="s-logos">
+    <div class="logos-runner">
+      <div class="logos-track">
+        <span>Tiger Beer</span><b>·</b>
+        <span>ABC</span><b>·</b>
+        <span>Kirin Ichiban</span><b>·</b>
+        <span>MacArthur's Whisky</span><b>·</b>
+        <span>MPT</span><b>·</b>
+        <span>Honor Myanmar</span><b>·</b>
+        <span>WonderXland</span><b>·</b>
+        <span>Ximi Jelly</span><b>·</b>
+        <span>Tone Tone Noodle</span><b>·</b>
+        <span>Kido Candies</span><b>·</b>
+        <span>Aye Mya Thu Jewel</span><b>·</b>
+        <!-- duplicate -->
+        <span>Tiger Beer</span><b>·</b>
+        <span>ABC</span><b>·</b>
+        <span>Kirin Ichiban</span><b>·</b>
+        <span>MacArthur's Whisky</span><b>·</b>
+        <span>MPT</span><b>·</b>
+        <span>Honor Myanmar</span><b>·</b>
+        <span>WonderXland</span><b>·</b>
+        <span>Ximi Jelly</span><b>·</b>
+        <span>Tone Tone Noodle</span><b>·</b>
+        <span>Kido Candies</span><b>·</b>
+        <span>Aye Mya Thu Jewel</span><b>·</b>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       4. HOW WE DO IT — white bg, 6 tall dark cards, stagger in
+  ═══════════════════════════════════════════ -->
+  <section class="s-how" id="how">
+    <div class="how-head">
+      <div class="how-head-l">
+        <h2>How we do it.</h2>
+        <p>Here's how we transform brand ideas<br/>into stories that move culture.</p>
+      </div>
+      <div class="how-head-r">
+        <p>Our process integrates seamlessly with each client's workflow, ensuring collaboration, consistency, and results across every project — from first brief to final delivery.</p>
+      </div>
+    </div>
+    <!-- Horizontal drag-scroll row of tall cards -->
+    <div class="how-scroll" id="howScroll">
+      <div class="how-row">
+        <div class="how-card js-card-reveal">
+          <div class="hc-icon">
+            <svg width="28" height="28" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" stroke="#fff" stroke-width="1.2"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke="#fff" stroke-width="1.2" stroke-linecap="round"/></svg>
+          </div>
+          <div class="hc-body">
+            <h3>We know our clients.</h3>
+            <p>Our process integrates seamlessly with each client's workflow, ensuring collaboration and consistency across every project.</p>
+          </div>
+          <div class="hc-arc"></div>
+        </div>
+        <div class="how-card how-card-mid js-card-reveal">
+          <div class="hc-icon">
+            <svg width="28" height="28" fill="none" viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" stroke="#fff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="hc-body">
+            <h3>We set clear requirements.</h3>
+            <p>From the start, we define clear goals and deliverables, so every project stays on track, on budget, and on time.</p>
+          </div>
+          <div class="hc-arc"></div>
+        </div>
+        <div class="how-card js-card-reveal">
+          <div class="hc-icon">
+            <svg width="28" height="28" fill="none" viewBox="0 0 24 24"><path d="M15 10l4.553-2.069A1 1 0 0121 8.87v6.26a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z" stroke="#fff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="hc-body">
+            <h3>Video-first strategy.</h3>
+            <p>Every campaign begins with video. We craft stories that capture attention, evoke emotion, and drive measurable results.</p>
+          </div>
+          <div class="hc-arc"></div>
+        </div>
+        <div class="how-card how-card-mid js-card-reveal">
+          <div class="hc-icon">
+            <svg width="28" height="28" fill="none" viewBox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" stroke="#fff" stroke-width="1.2" stroke-linecap="round"/></svg>
+          </div>
+          <div class="hc-body">
+            <h3>Data-driven execution.</h3>
+            <p>We measure everything. Campaigns are built on insights, optimised in real time, and reported with full transparency.</p>
+          </div>
+          <div class="hc-arc"></div>
+        </div>
+        <div class="how-card js-card-reveal">
+          <div class="hc-icon">
+            <svg width="28" height="28" fill="none" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke="#fff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="hc-body">
+            <h3>One roof. A to Z.</h3>
+            <p>Strategy, production, digital, media buying, and design — all under one roof. One team, one voice, zero gap.</p>
+          </div>
+          <div class="hc-arc"></div>
+        </div>
+        <div class="how-card how-card-mid js-card-reveal">
+          <div class="hc-icon">
+            <svg width="28" height="28" fill="none" viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke="#fff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="hc-body">
+            <h3>Long-term, that's our goal.</h3>
+            <p>We value long-term partnerships. Annual staff turnover under 8% — your team stays consistent throughout.</p>
+          </div>
+          <div class="hc-arc"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       5. WORK — full-screen stacked items (white bg)
+  ═══════════════════════════════════════════ -->
+  <section class="s-work" id="work">
+    <div class="work-bar">
+      <h2>Work.</h2>
+      <a href="#contact" class="pill-btn">See all work</a>
+    </div>
+    <!-- Full-width stacked work items -->
+    <div class="work-item js-reveal">
+      <div class="wi-bg wi-1"></div>
+      <div class="wi-overlay"></div>
+      <div class="wi-info">
+        <div class="wi-left">
+          <span class="wi-platform">TikTok</span>
+          <h3>Tone Tone Noodle Myanmar.</h3>
+        </div>
+        <a href="#contact" class="pill-btn pill-btn-light">See Details</a>
+      </div>
+    </div>
+    <div class="work-item js-reveal">
+      <div class="wi-bg wi-2"></div>
+      <div class="wi-overlay"></div>
+      <div class="wi-info">
+        <div class="wi-left">
+          <span class="wi-platform">TikTok + Facebook</span>
+          <h3>Honor Myanmar.</h3>
+        </div>
+        <a href="#contact" class="pill-btn pill-btn-light">See Details</a>
+      </div>
+    </div>
+    <div class="work-item js-reveal">
+      <div class="wi-bg wi-3"></div>
+      <div class="wi-overlay"></div>
+      <div class="wi-info">
+        <div class="wi-left">
+          <span class="wi-platform">TikTok</span>
+          <h3>Ximi Jelly Myanmar.</h3>
+        </div>
+        <a href="#contact" class="pill-btn pill-btn-light">See Details</a>
+      </div>
+    </div>
+    <div class="work-item js-reveal">
+      <div class="wi-bg wi-4"></div>
+      <div class="wi-overlay"></div>
+      <div class="wi-info">
+        <div class="wi-left">
+          <span class="wi-platform">Photo · Video Production</span>
+          <h3>Tiger Beer &amp; ABC.</h3>
+        </div>
+        <a href="#contact" class="pill-btn pill-btn-light">See Details</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       6. CERTIFICATIONS / AWARDS — black, badge row
+  ═══════════════════════════════════════════ -->
+  <section class="s-certs">
+    <div class="certs-head">
+      <h2 class="js-reveal">We are recognised.</h2>
+      <p class="js-reveal">As a results-driven agency, we combine proven skills and offer services that lead to measurable outcomes for our clients.</p>
+    </div>
+    <div class="certs-row">
+      <div class="cert-badge js-card-reveal"><span>15</span><small>Awards</small></div>
+      <div class="cert-badge js-card-reveal"><span>9+</span><small>Years</small></div>
+      <div class="cert-badge js-card-reveal"><span>180+</span><small>Projects</small></div>
+      <div class="cert-badge js-card-reveal"><span>28+</span><small>Team</small></div>
+      <div class="cert-badge js-card-reveal"><span>1M+</span><small>Organic views/campaign</small></div>
+      <div class="cert-badge js-card-reveal"><span>&lt;8%</span><small>Staff turnover</small></div>
+      <div class="cert-badge js-card-reveal"><span>2</span><small>Offices</small></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       7. MAP / GLOBAL PRESENCE — black, SVG map + country ticker + stats
+  ═══════════════════════════════════════════ -->
+  <section class="s-map" id="map">
+    <div class="map-head">
+      <h2 class="js-reveal">From Myanmar<br/>to <em>the world.</em></h2>
+    </div>
+    <!-- SVG dot-map of Asia -->
+    <div class="map-canvas js-reveal">
+      <svg class="map-svg" viewBox="0 0 900 440" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Subtle grid -->
+        <line x1="0" y1="110" x2="900" y2="110" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+        <line x1="0" y1="220" x2="900" y2="220" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+        <line x1="0" y1="330" x2="900" y2="330" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+        <line x1="200" y1="0" x2="200" y2="440" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+        <line x1="450" y1="0" x2="450" y2="440" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+        <line x1="700" y1="0" x2="700" y2="440" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+
+        <!-- Connection lines from Myanmar (central dot ~430,230) -->
+        <line x1="430" y1="230" x2="460" y2="300" stroke="rgba(255,255,255,0.08)" stroke-width="1" stroke-dasharray="4 5"/>
+        <line x1="430" y1="230" x2="500" y2="350" stroke="rgba(255,255,255,0.08)" stroke-width="1" stroke-dasharray="4 5"/>
+        <line x1="430" y1="230" x2="650" y2="160" stroke="rgba(255,255,255,0.08)" stroke-width="1" stroke-dasharray="4 5"/>
+        <line x1="430" y1="230" x2="700" y2="130" stroke="rgba(255,255,255,0.08)" stroke-width="1" stroke-dasharray="4 5"/>
+        <line x1="430" y1="230" x2="360" y2="210" stroke="rgba(255,255,255,0.08)" stroke-width="1" stroke-dasharray="4 5"/>
+        <line x1="430" y1="230" x2="310" y2="260" stroke="rgba(255,255,255,0.08)" stroke-width="1" stroke-dasharray="4 5"/>
+
+        <!-- Myanmar — main dot (glowing) -->
+        <circle cx="430" cy="230" r="14" fill="rgba(255,255,255,0.05)" class="map-pulse"/>
+        <circle cx="430" cy="230" r="7" fill="rgba(255,255,255,0.15)"/>
+        <circle cx="430" cy="230" r="4" fill="#fff"/>
+        <text x="430" y="212" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="11" font-family="DM Sans,sans-serif" font-weight="500">Yangon</text>
+
+        <!-- Thailand -->
+        <circle cx="460" cy="300" r="4" fill="rgba(255,255,255,0.4)"/>
+        <text x="478" y="304" fill="rgba(255,255,255,0.35)" font-size="10" font-family="DM Sans,sans-serif">Thailand</text>
+
+        <!-- Singapore -->
+        <circle cx="500" cy="350" r="4" fill="rgba(255,255,255,0.4)"/>
+        <text x="518" y="354" fill="rgba(255,255,255,0.35)" font-size="10" font-family="DM Sans,sans-serif">Singapore</text>
+
+        <!-- Japan -->
+        <circle cx="700" cy="130" r="4" fill="rgba(255,255,255,0.4)"/>
+        <text x="718" y="134" fill="rgba(255,255,255,0.35)" font-size="10" font-family="DM Sans,sans-serif">Japan</text>
+
+        <!-- South Korea -->
+        <circle cx="650" cy="160" r="4" fill="rgba(255,255,255,0.4)"/>
+        <text x="668" y="164" fill="rgba(255,255,255,0.35)" font-size="10" font-family="DM Sans,sans-serif">South Korea</text>
+
+        <!-- India -->
+        <circle cx="310" cy="260" r="4" fill="rgba(255,255,255,0.4)"/>
+        <text x="250" y="264" text-anchor="end" fill="rgba(255,255,255,0.35)" font-size="10" font-family="DM Sans,sans-serif">India</text>
+
+        <!-- China -->
+        <circle cx="360" cy="210" r="4" fill="rgba(255,255,255,0.4)"/>
+        <text x="345" y="200" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-size="10" font-family="DM Sans,sans-serif">China</text>
+      </svg>
+    </div>
+
+    <!-- Two-column values text -->
+    <div class="map-values">
+      <div class="mv-col js-reveal">
+        <p>Our values and vision are deeply inspired by <em>local culture</em> and a commitment to creative excellence, reflecting our roots in Myanmar and our ambition to compete globally.</p>
+      </div>
+      <div class="mv-col js-reveal">
+        <p>As a bridge for regional talent and production, <strong>we connect Myanmar brands with world-class storytelling</strong> and help global brands speak authentically to local audiences.</p>
+      </div>
+    </div>
+
+    <!-- Country ticker -->
+    <div class="country-ticker">
+      <div class="country-track">
+        <span>Myanmar</span><b>·</b>
+        <span>Thailand</span><b>·</b>
+        <span>Singapore</span><b>·</b>
+        <span>Japan</span><b>·</b>
+        <span>South Korea</span><b>·</b>
+        <span>India</span><b>·</b>
+        <span>China</span><b>·</b>
+        <!-- duplicate -->
+        <span>Myanmar</span><b>·</b>
+        <span>Thailand</span><b>·</b>
+        <span>Singapore</span><b>·</b>
+        <span>Japan</span><b>·</b>
+        <span>South Korea</span><b>·</b>
+        <span>India</span><b>·</b>
+        <span>China</span><b>·</b>
+      </div>
+    </div>
+
+    <!-- Stats under the map -->
+    <div class="map-stats">
+      <div class="ms-item js-reveal">
+        <span class="ms-n">1M+</span>
+        <span class="ms-l"><strong>organic views</strong> per campaign</span>
+      </div>
+      <div class="ms-item js-reveal">
+        <span class="ms-n">180+</span>
+        <span class="ms-l"><strong>projects</strong> delivered so far</span>
+      </div>
+      <div class="ms-item js-reveal">
+        <span class="ms-n">&lt;8%</span>
+        <span class="ms-l"><strong>of our team</strong> leaves each year</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       8. INNOVATION PILLARS — black, 4 dark cards
+  ═══════════════════════════════════════════ -->
+  <section class="s-pillars">
+    <h2 class="pillars-heading js-reveal">Our <em>innovation</em> mark.</h2>
+    <div class="pillars-row">
+      <div class="pillar-card js-card-reveal">
+        <div class="pc-icon">
+          <svg width="32" height="32" fill="none" viewBox="0 0 24 24"><path d="M15 10l4.553-2.069A1 1 0 0121 8.87v6.26a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z" stroke="#fff" stroke-width="1.2" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Video-First Agency</h3>
+        <p>We lead every campaign with video — the most powerful medium in today's attention economy.</p>
+      </div>
+      <div class="pillar-card js-card-reveal">
+        <div class="pc-icon">
+          <svg width="32" height="32" fill="none" viewBox="0 0 24 24"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" stroke="#fff" stroke-width="1.2" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Story-Driven Strategy</h3>
+        <p>People don't remember ads — they remember stories. We build brand narratives that stick.</p>
+      </div>
+      <div class="pillar-card js-card-reveal">
+        <div class="pc-icon">
+          <svg width="32" height="32" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="#fff" stroke-width="1.2"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20" stroke="#fff" stroke-width="1.2"/></svg>
+        </div>
+        <h3>Flexibility &amp; Scale</h3>
+        <p>From a single TikTok reel to a full integrated campaign — we adapt quickly to your needs.</p>
+      </div>
+      <div class="pillar-card js-card-reveal">
+        <div class="pc-icon">
+          <svg width="32" height="32" fill="none" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke="#fff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Future-Oriented Vision</h3>
+        <p>We evolve with platforms and technology — always ahead of where audiences are going next.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       9. BLOG / CASES carousel (white bg)
+  ═══════════════════════════════════════════ -->
+  <section class="s-cases">
+    <div class="cases-bar">
+      <h2>Our <em>stories.</em></h2>
+      <div class="cases-nav">
+        <button class="cases-arrow" id="casesPrev" aria-label="prev">←</button>
+        <button class="cases-arrow" id="casesNext" aria-label="next">→</button>
+      </div>
+    </div>
+    <div class="cases-track-wrap">
+      <div class="cases-track" id="casesTrack">
+        <div class="case-card">
+          <div class="cc-img cc-img-1"></div>
+          <div class="cc-meta">
+            <span>TikTok · 3 months</span>
+            <p>Tone Tone Noodle Myanmar — ~1M organic views &amp; engagements. Zero budget.</p>
+          </div>
+        </div>
+        <div class="case-card">
+          <div class="cc-img cc-img-2"></div>
+          <div class="cc-meta">
+            <span>TikTok + Facebook · Product Launch</span>
+            <p>Honor Myanmar — viral X9c &amp; X6c launch through platform-native storytelling.</p>
+          </div>
+        </div>
+        <div class="case-card">
+          <div class="cc-img cc-img-3"></div>
+          <div class="cc-meta">
+            <span>TikTok · 3 months</span>
+            <p>Ximi Jelly Myanmar — 1M+ organic views before any paid promotions.</p>
+          </div>
+        </div>
+        <div class="case-card">
+          <div class="cc-img cc-img-4"></div>
+          <div class="cc-meta">
+            <span>TikTok · 3 months</span>
+            <p>Kido Candies — 1M+ views, outperforming all similar campaigns in category.</p>
+          </div>
+        </div>
+        <div class="case-card">
+          <div class="cc-img cc-img-5"></div>
+          <div class="cc-meta">
+            <span>Instagram · Brand Launch</span>
+            <p>Aye Mya Thu Luxury Jewelry — top debut in Myanmar's luxury accessories category.</p>
+          </div>
+        </div>
+        <div class="case-card">
+          <div class="cc-img cc-img-6"></div>
+          <div class="cc-meta">
+            <span>Photo &amp; Video · Commercial</span>
+            <p>Tiger Beer &amp; ABC — indoor product shoots and outdoor lifestyle campaigns.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cases-bottom">
+      <a href="#contact" class="pill-btn pill-btn-dark">See All Work</a>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       10. CTA — black, "Let's tell your story." + arrow
+  ═══════════════════════════════════════════ -->
+  <section class="s-cta" id="contact">
+    <!-- Abstract decorative shape — top right -->
+    <div class="cta-shape" aria-hidden="true">
+      <svg viewBox="0 0 300 300" fill="none"><defs><radialGradient id="cg" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#6366f1" stop-opacity="0.6"/><stop offset="50%" stop-color="#8b5cf6" stop-opacity="0.3"/><stop offset="100%" stop-color="#ec4899" stop-opacity="0"/></radialGradient></defs><circle cx="150" cy="150" r="150" fill="url(#cg)"/></svg>
+    </div>
+    <div class="cta-left">
+      <h2 class="cta-headline js-reveal">
+        Let's<br/><em>tell</em><br/>your story.
+        <a href="#contact" class="cta-arrow-btn" aria-label="Contact us">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </h2>
+      <div class="cta-info js-reveal">
+        <div class="cta-info-block">
+          <span class="cta-info-label">Contact</span>
+          <a href="mailto:nyinyisoewin@awakenentertainment.org">nyinyisoewin@awakenentertainment.org</a>
+          <a href="https://www.awakenentertainment.org" target="_blank">awakenentertainment.org ↗</a>
+        </div>
+        <div class="cta-info-block">
+          <span class="cta-info-label">Office</span>
+          <span>No.57 YaeKuYwarMa Street</span>
+          <span>Mayangone, Yangon</span>
+        </div>
+      </div>
+    </div>
+    <div class="cta-right js-reveal">
+      <form class="cta-form" onsubmit="handleForm(event)">
+        <div class="cf2-row">
+          <div class="cf2-g"><label>Name</label><input type="text" placeholder="Ko Min Thu" required/></div>
+          <div class="cf2-g"><label>Email</label><input type="email" placeholder="you@brand.com" required/></div>
+        </div>
+        <div class="cf2-g"><label>Brand</label><input type="text" placeholder="Your brand or company"/></div>
+        <div class="cf2-g">
+          <label>Service</label>
+          <select>
+            <option value="">Choose…</option>
+            <option>Digital Marketing</option>
+            <option>Video Production</option>
+            <option>Web Development</option>
+            <option>Media Buying</option>
+            <option>Design House</option>
+            <option>Full Campaign</option>
+          </select>
+        </div>
+        <div class="cf2-g"><label>Project</label><textarea rows="3" placeholder="Tell us the story you want to tell…" required></textarea></div>
+        <button type="submit" class="cta-send">Send message →</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       FOOTER — black, nav + contact + locations + social
+  ═══════════════════════════════════════════ -->
+  <footer class="s-footer">
+    <div class="ft-top">
+      <div class="ft-nav">
+        <a href="#about">About Us</a>
+        <a href="#how">Services</a>
+        <a href="#work">Work</a>
+        <a href="#map">Global</a>
+        <a href="#contact">Contact</a>
+        <a href="https://www.awakenentertainment.org" target="_blank">Group ↗</a>
+      </div>
+      <div class="ft-contact">
+        <span class="ft-label">Contact Info</span>
+        <a href="mailto:nyinyisoewin@awakenentertainment.org">nyinyisoewin@awakenentertainment.org</a>
+        <a href="tel:+959255762417">+95 9255762417</a>
+      </div>
+      <div class="ft-offices">
+        <div class="ft-office"><span>MM</span><small>Myanmar</small></div>
+        <div class="ft-office"><span>YGN</span><small>Yangon</small></div>
+      </div>
+    </div>
+    <div class="ft-bottom">
+      <div class="ft-brand">
+        <img src="../logo.png" alt="Awaken" class="ft-logo"/>
+        <span>AWAKEN DIGITAL</span>
+      </div>
+      <span class="ft-copy">©2025 Awaken Digital. All rights reserved.</span>
+      <div class="ft-social">
+        <a href="https://www.facebook.com/awakenentertainment" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3V2z" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#" aria-label="Instagram">
+          <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" stroke="#fff" stroke-width="1.5"/><circle cx="12" cy="12" r="4" stroke="#fff" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1" fill="#fff"/></svg>
+        </a>
+        <a href="#" aria-label="LinkedIn">
+          <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="2" y="9" width="4" height="12" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="4" cy="4" r="2" stroke="#fff" stroke-width="1.5"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
