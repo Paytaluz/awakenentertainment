@@ -3,194 +3,344 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AWAKEN DIGITAL — Creative Agency</title>
+  <title>Awaken Digital — We build digital products for ambitious brands.</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,700;1,800;1,900&family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&display=swap" rel="stylesheet">
   <style>
-    .accent{color:var(--digital)}
-    .accent-bg{background:var(--digital)}
-    .accent-light{background:rgba(14,165,233,0.08)}
-    .accent-border{border-color:rgba(14,165,233,0.2)}
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0a;
+      --surface: #111111;
+      --surface2: #181818;
+      --border: rgba(255,255,255,0.08);
+      --text: #ffffff;
+      --muted: #888888;
+      --accent: #c8ff00;
+      --radius: 12px;
+    }
+
+    html { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); scroll-behavior: smooth; }
+    body { overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.25rem 2.5rem;
+      background: rgba(10,10,10,0.8); backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 0.5rem; font-size: 13px; font-weight: 700; letter-spacing: 0.2em; }
+    .nav-logo-mark { width: 28px; height: 28px; border: 1.5px solid var(--accent); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 900; color: var(--accent); }
+    .nav-links { display: flex; gap: 2rem; }
+    .nav-links a { font-size: 12px; font-weight: 500; color: var(--muted); letter-spacing: 0.05em; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--text); }
+    .nav-cta { background: var(--accent); color: #000; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 10px 22px; border-radius: 100px; transition: opacity 0.2s; }
+    .nav-cta:hover { opacity: 0.85; }
+
+    .hero {
+      min-height: 100vh; display: flex; align-items: center;
+      padding: 8rem 2.5rem 6rem;
+      position: relative; overflow: hidden;
+    }
+    .hero-content { max-width: 780px; position: relative; z-index: 2; }
+    .hero-label { font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 2rem; display: flex; align-items: center; gap: 0.75rem; }
+    .hero-label::before { content: ''; display: inline-block; width: 24px; height: 1px; background: var(--accent); }
+    .hero-title { font-family: 'Inter', sans-serif; font-size: clamp(3rem, 6vw, 6rem); font-weight: 900; line-height: 1.0; letter-spacing: -0.03em; }
+    .hero-title em { font-style: italic; color: var(--accent); font-family: 'Playfair Display', serif; }
+    .hero-sub { font-size: clamp(1rem, 1.5vw, 1.2rem); color: var(--muted); line-height: 1.7; max-width: 500px; margin-top: 2rem; }
+    .hero-actions { display: flex; gap: 1rem; margin-top: 3rem; flex-wrap: wrap; }
+    .btn-primary { background: var(--accent); color: #000; font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 16px 36px; border-radius: 100px; transition: all 0.3s; display: inline-flex; align-items: center; gap: 0.5rem; }
+    .btn-primary:hover { opacity: 0.85; transform: translateY(-2px); }
+    .btn-ghost { border: 1px solid var(--border); color: var(--text); font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 16px 36px; border-radius: 100px; transition: all 0.3s; display: inline-flex; align-items: center; gap: 0.5rem; }
+    .btn-ghost:hover { border-color: rgba(255,255,255,0.3); transform: translateY(-2px); }
+    .hero-scroll { margin-top: 4rem; display: flex; align-items: center; gap: 1rem; font-size: 11px; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
+    .hero-scroll-line { width: 40px; height: 1px; background: var(--muted); }
+
+    .hero-orb { position: absolute; right: 5%; top: 50%; transform: translateY(-50%); width: 420px; height: 420px; z-index: 1; animation: float 6s ease-in-out infinite; }
+    .orb-ring { position: absolute; inset: 0; border: 1px solid rgba(200,255,0,0.15); border-radius: 50%; animation: spin 20s linear infinite; }
+    .orb-ring:nth-child(2) { inset: 20px; border-color: rgba(200,255,0,0.08); animation-duration: 30s; animation-direction: reverse; }
+    .orb-core { position: absolute; inset: 60px; background: radial-gradient(ellipse at 30% 30%, rgba(200,255,0,0.12), rgba(10,10,10,0.9)); border-radius: 50%; border: 1px solid rgba(200,255,0,0.1); }
+    .orb-glow { position: absolute; inset: -40px; background: radial-gradient(ellipse at center, rgba(200,255,0,0.06) 0%, transparent 70%); border-radius: 50%; }
+    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    @keyframes float { 0%, 100% { transform: translateY(-50%) translateX(0); } 50% { transform: translateY(-52%) translateX(-8px); } }
+
+    .stats-bar { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); display: grid; grid-template-columns: repeat(4, 1fr); padding: 0 2.5rem; }
+    .stat-item { padding: 2rem 2.5rem; border-right: 1px solid var(--border); }
+    .stat-item:last-child { border-right: none; }
+    .stat-num { font-size: 2.5rem; font-weight: 900; letter-spacing: -0.03em; color: var(--accent); }
+    .stat-label { font-size: 12px; color: var(--muted); margin-top: 0.25rem; letter-spacing: 0.05em; }
+
+    .section { padding: 7rem 2.5rem; max-width: 1400px; margin: 0 auto; }
+    .section-full { padding: 7rem 2.5rem; }
+    .section-label { font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
+    .section-label::before { content: ''; display: inline-block; width: 24px; height: 1px; background: var(--accent); }
+    .section-title { font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 900; letter-spacing: -0.03em; line-height: 1.05; }
+    .section-title em { font-style: italic; color: var(--accent); font-family: 'Playfair Display', serif; }
+
+    .work-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 3rem; flex-wrap: wrap; gap: 1rem; }
+    .work-list { display: flex; flex-direction: column; }
+    .work-item { display: flex; align-items: center; justify-content: space-between; padding: 1.75rem 0; border-bottom: 1px solid var(--border); cursor: pointer; transition: all 0.3s; position: relative; overflow: hidden; }
+    .work-item::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 0; background: var(--surface); transition: width 0.4s; z-index: 0; }
+    .work-item:hover::before { width: 100%; }
+    .work-item > * { position: relative; z-index: 1; }
+    .work-item-left { display: flex; align-items: center; gap: 2rem; }
+    .work-num { font-size: 11px; color: var(--muted); font-weight: 600; min-width: 30px; }
+    .work-name { font-size: 1.4rem; font-weight: 700; }
+    .work-item:hover .work-name { color: var(--accent); }
+    .work-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .tag { font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 5px 12px; border-radius: 100px; border: 1px solid var(--border); color: var(--muted); }
+    .work-arrow { font-size: 18px; color: var(--muted); transition: all 0.3s; }
+    .work-item:hover .work-arrow { color: var(--accent); transform: translate(4px, -4px); }
+
+    .disciplines-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 3rem; }
+    .discipline-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 2.5rem; transition: all 0.4s; position: relative; overflow: hidden; }
+    .discipline-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(200,255,0,0.04) 0%, transparent 60%); opacity: 0; transition: opacity 0.4s; }
+    .discipline-card:hover { border-color: rgba(200,255,0,0.2); transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+    .discipline-card:hover::after { opacity: 1; }
+    .discipline-icon { font-size: 2rem; margin-bottom: 1.5rem; }
+    .discipline-title { font-size: 1.3rem; font-weight: 800; margin-bottom: 0.75rem; }
+    .discipline-text { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 1.5rem; }
+    .discipline-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+    .process-bg { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .process-list { display: flex; flex-direction: column; }
+    .process-item { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; padding: 5rem 0; border-bottom: 1px solid var(--border); opacity: 0.5; transition: opacity 0.5s; }
+    .process-item:last-child { border-bottom: none; }
+    .process-item.visible { opacity: 1; }
+    .process-item:nth-child(even) .process-img { order: 2; }
+    .process-item:nth-child(even) .process-content { order: 1; }
+    .process-step { font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
+    .process-title { font-size: clamp(1.75rem, 3vw, 2.75rem); font-weight: 900; letter-spacing: -0.02em; margin-bottom: 1rem; }
+    .process-desc { font-size: 15px; color: var(--muted); line-height: 1.8; margin-bottom: 2rem; }
+    .process-bullets { display: flex; flex-direction: column; gap: 0.5rem; }
+    .process-bullet { font-size: 13px; color: var(--muted); display: flex; align-items: center; gap: 0.75rem; }
+    .process-bullet::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+    .process-img-wrap { background: var(--surface2); border: 1px solid var(--border); border-radius: 16px; aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; }
+    .process-visual { width: 120px; height: 120px; border: 1px solid rgba(200,255,0,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 3rem; position: relative; }
+    .process-visual::before { content: ''; position: absolute; inset: -20px; border: 1px solid rgba(200,255,0,0.08); border-radius: 50%; animation: spin 10s linear infinite; }
+    .process-num-bg { position: absolute; bottom: 1.5rem; right: 1.5rem; font-size: 5rem; font-weight: 900; color: rgba(255,255,255,0.03); line-height: 1; letter-spacing: -0.05em; }
+
+    .marquee-wrap { overflow: hidden; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 1.25rem 0; background: var(--accent); }
+    .marquee-track { display: flex; gap: 3rem; animation: marquee 20s linear infinite; white-space: nowrap; }
+    .marquee-item { font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #000; display: flex; align-items: center; gap: 1rem; }
+    .marquee-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(0,0,0,0.4); }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    .cta-wrap { text-align: center; padding: 7rem 2.5rem; position: relative; overflow: hidden; }
+    .cta-glow { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 600px; height: 600px; background: radial-gradient(ellipse, rgba(200,255,0,0.08) 0%, transparent 70%); pointer-events: none; }
+    .cta-title { font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 900; letter-spacing: -0.03em; line-height: 1.0; position: relative; }
+    .cta-title em { font-style: italic; color: var(--accent); font-family: 'Playfair Display', serif; }
+    .cta-sub { font-size: 1rem; color: var(--muted); margin-top: 1.5rem; max-width: 460px; margin-left: auto; margin-right: auto; line-height: 1.7; position: relative; }
+    .cta-actions { margin-top: 2.5rem; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; position: relative; }
+
+    .faq-list { display: flex; flex-direction: column; margin-top: 3rem; }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-q { display: flex; align-items: center; justify-content: space-between; padding: 1.5rem 0; cursor: pointer; font-size: 1rem; font-weight: 600; transition: color 0.2s; }
+    .faq-q:hover { color: var(--accent); }
+    .faq-icon { font-size: 1.25rem; color: var(--muted); transition: transform 0.3s; flex-shrink: 0; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); color: var(--accent); }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s; font-size: 14px; color: var(--muted); line-height: 1.8; }
+    .faq-item.open .faq-a { max-height: 300px; padding-bottom: 1.5rem; }
+
+    footer { border-top: 1px solid var(--border); padding: 4rem 2.5rem 2rem; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; max-width: 1400px; margin: 0 auto; }
+    .footer-logo { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
+    .footer-logo-mark { width: 32px; height: 32px; border: 1.5px solid var(--accent); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 900; color: var(--accent); }
+    .footer-logo-text { font-size: 13px; font-weight: 700; letter-spacing: 0.2em; }
+    .footer-desc { font-size: 13px; color: var(--muted); line-height: 1.8; max-width: 280px; }
+    .footer-heading { font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.25rem; }
+    .footer-links { display: flex; flex-direction: column; gap: 0.75rem; }
+    .footer-links a { font-size: 13px; color: var(--muted); transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text); }
+    .footer-bottom { max-width: 1400px; margin: 3rem auto 0; padding-top: 2rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; font-size: 12px; color: var(--muted); }
+    .footer-accent { color: var(--accent); }
+
+    .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.25rem; }
+      .nav-links { display: none; }
+      .hero { padding: 7rem 1.25rem 4rem; }
+      .hero-orb { display: none; }
+      .stats-bar { grid-template-columns: repeat(2, 1fr); }
+      .section { padding: 4rem 1.25rem; }
+      .disciplines-grid { grid-template-columns: 1fr; }
+      .process-item { grid-template-columns: 1fr; gap: 2rem; }
+      .process-item:nth-child(even) .process-img, .process-item:nth-child(even) .process-content { order: unset; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .cta-wrap { padding: 4rem 1.25rem; }
+    }
   </style>
 </head>
 <body>
-  <header class="header">
-    <a href="index.html" class="logo">
-      <div class="logo-mark">A</div>
-      <span class="logo-text">AWAKEN</span>
+
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-mark">A</div>
+      AWAKEN
     </a>
-    <nav class="nav">
+    <div class="nav-links">
       <a href="digital.html" class="active">Digital</a>
       <a href="design.html">Design</a>
       <a href="tech.html">Tech</a>
       <a href="production.html">Production</a>
       <a href="pr.html">PR</a>
-    </nav>
-    <button class="menu-btn">☰</button>
-  </header>
+    </div>
+    <a href="https://www.awakenentertainment.org/contact" target="_blank" class="nav-cta">Get In Touch</a>
+  </nav>
 
   <section class="hero">
-    <div class="hero-bg" style="background-image:url('https://d8j0ntlcm91z4.cloudfront.net/user_3FE3Vvu9lYALhCwQvePKUS2plzn/hf_20260625_100620_bd79b2ba-903d-47f7-a60c-f17bd901f0d7.png')"></div>
-    <div class="hero-overlay"></div>
     <div class="hero-content">
-      <p class="hero-eyebrow accent">Digital Division</p>
-      <h1 class="hero-title">AWAKEN<br>DIGITAL</h1>
-      <p class="hero-subtitle">Web experiences, apps, and platforms built to perform. From strategy to deployment — we make the digital world feel alive.</p>
+      <div class="hero-label">Awaken Digital</div>
+      <h1 class="hero-title">
+        We build <em>digital</em><br>
+        products for<br>
+        <em>ambitious</em> brands.
+      </h1>
+      <p class="hero-sub">From strategy to deployment — we create web experiences, apps and platforms that make the digital world feel alive.</p>
+      <div class="hero-actions">
+        <a href="https://www.awakenentertainment.org/contact" target="_blank" class="btn-primary">Start a Project →</a>
+        <a href="#work" class="btn-ghost">See Our Work</a>
+      </div>
+      <div class="hero-scroll">
+        <span class="hero-scroll-line"></span>
+        Scroll to explore
+      </div>
+    </div>
+    <div class="hero-orb">
+      <div class="orb-glow"></div>
+      <div class="orb-ring"></div>
+      <div class="orb-ring"></div>
+      <div class="orb-core"></div>
     </div>
   </section>
 
-  <div class="stats">
-    <div><div class="stat-value">2016</div><div class="stat-label">Founded</div></div>
-    <div><div class="stat-value">50+</div><div class="stat-label">Campaigns Launched</div></div>
-    <div><div class="stat-value">Myanmar</div><div class="stat-label">Regional Focus</div></div>
+  <div class="stats-bar">
+    <div class="stat-item reveal"><div class="stat-num">2016</div><div class="stat-label">Founded in Yangon</div></div>
+    <div class="stat-item reveal reveal-delay-1"><div class="stat-num">50+</div><div class="stat-label">Campaigns Launched</div></div>
+    <div class="stat-item reveal reveal-delay-2"><div class="stat-num">15+</div><div class="stat-label">Industries Served</div></div>
+    <div class="stat-item reveal reveal-delay-3"><div class="stat-num">98%</div><div class="stat-label">Client Satisfaction</div></div>
   </div>
 
-  <section class="section">
-    <div class="section-header">
-      <p class="section-label accent">Our Business Streams</p>
-      <h2 class="section-title">Digital Marketing</h2>
-      <p class="section-desc">Awaken helps you create, grow, and maintain your brand's online presence. We blend creativity with strategy to ensure your business connects meaningfully with its audience, using data-driven insights and local expertise.</p>
+  <div class="section" id="work">
+    <div class="work-header">
+      <div>
+        <div class="section-label reveal">What we've built.</div>
+        <h2 class="section-title reveal reveal-delay-1">Selected <em>projects</em></h2>
+      </div>
+      <a href="https://www.awakenentertainment.org/contact" target="_blank" class="btn-ghost reveal" style="font-size:11px;padding:12px 24px;">All projects →</a>
     </div>
-    <div class="features">
-      <div class="feature">
-        <div class="feature-icon accent-light accent-border" style="border:1px solid">📊</div>
-        <div>
-          <h4 class="feature-title">Create, Grow, and Maintain</h4>
-          <p class="feature-text">Full-spectrum digital presence management from launch to scale.</p>
-        </div>
-      </div>
-      <div class="feature">
-        <div class="feature-icon accent-light accent-border" style="border:1px solid">🤝</div>
-        <div>
-          <h4 class="feature-title">Connects Meaningfully</h4>
-          <p class="feature-text">Audience-first strategies that build genuine brand relationships.</p>
-        </div>
-      </div>
-      <div class="feature">
-        <div class="feature-icon accent-light accent-border" style="border:1px solid">📈</div>
-        <div>
-          <h4 class="feature-title">Measurable Results</h4>
-          <p class="feature-text">Data-driven campaigns designed to elevate visibility and drive ROI.</p>
-        </div>
-      </div>
+    <div class="work-list reveal">
+      <div class="work-item"><div class="work-item-left"><span class="work-num">01</span><span class="work-name">Lashio Workshop</span></div><div class="work-tags"><span class="tag">Web</span><span class="tag">Branding</span><span class="tag">SEO</span></div><span class="work-arrow">↗</span></div>
+      <div class="work-item"><div class="work-item-left"><span class="work-num">02</span><span class="work-name">Umzugsservice</span></div><div class="work-tags"><span class="tag">Social Media</span><span class="tag">Ads</span></div><span class="work-arrow">↗</span></div>
+      <div class="work-item"><div class="work-item-left"><span class="work-num">03</span><span class="work-name">Brand Campaign 2024</span></div><div class="work-tags"><span class="tag">Digital</span><span class="tag">Strategy</span><span class="tag">Media Buying</span></div><span class="work-arrow">↗</span></div>
+      <div class="work-item"><div class="work-item-left"><span class="work-num">04</span><span class="work-name">E-commerce Platform</span></div><div class="work-tags"><span class="tag">Web App</span><span class="tag">UX</span></div><span class="work-arrow">↗</span></div>
     </div>
-  </section>
-
-  <section class="section section-alt">
-    <div class="section-header">
-      <p class="section-label accent">What We Do</p>
-      <h2 class="section-title">Digital Services</h2>
-      <p class="section-desc">Every touchpoint is an opportunity. We design digital ecosystems that convert attention into action.</p>
-    </div>
-    <div class="cards">
-      <div class="card">
-        <div class="card-icon accent-light">📡</div>
-        <h3 class="card-title">Digital Marketing</h3>
-        <p class="card-text">Awaken helps you create, grow, and maintain your brand's online presence. We blend creativity with strategy to ensure your business connects meaningfully with its audience.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon accent-light">📱</div>
-        <h3 class="card-title">Social Media Strategy</h3>
-        <p class="card-text">Data-driven content calendars, community management, and paid social campaigns that turn followers into customers across every platform.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon accent-light">💻</div>
-        <h3 class="card-title">Web & App Development</h3>
-        <p class="card-text">Custom web solutions, mobile applications, and responsive platforms engineered for performance, security, and strategic business goals.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon accent-light">📺</div>
-        <h3 class="card-title">Media Buying</h3>
-        <p class="card-text">Strategic ad placement across digital channels. We optimize every dollar for maximum reach, engagement, and conversion.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="section-header">
-      <p class="section-label accent">Why Choose Us</p>
-      <h2 class="section-title">We Invest In Knowing</h2>
-      <p class="section-desc">At the core of our philosophy is a deep-seated commitment to knowledge. We believe in the power of informed action.</p>
-    </div>
-    <div class="why-grid">
-      <div class="why-item">
-        <div class="why-num">01</div>
-        <h3 class="why-title">We Are Deep-Rooted</h3>
-        <p class="why-text">Our ethos is anchored in a foundation of unparalleled service, guided by unwavering principles. Our team is a dynamic fusion of international and local experts.</p>
-        <div class="why-tags">
-          <span class="why-tag">Unparalleled service</span>
-          <span class="why-tag">Unique blend</span>
-          <span class="why-tag">Unparalleled quality</span>
-        </div>
-      </div>
-      <div class="why-item">
-        <div class="why-num">02</div>
-        <h3 class="why-title">We Are A to Z</h3>
-        <p class="why-text">Our agency is a beacon of comprehensive solutions. We offer Market Research, Event Management, Media Buying, and Media Production.</p>
-        <div class="why-tags">
-          <span class="why-tag">Market Research</span>
-          <span class="why-tag">Event Management</span>
-          <span class="why-tag">Out-of-Frame Advertising</span>
-        </div>
-      </div>
-      <div class="why-item">
-        <div class="why-num">03</div>
-        <h3 class="why-title">We Invest In Knowing</h3>
-        <p class="why-text">Our approach involves meticulous assessment and thorough research, underpinned by robust insights. We guarantee maximum value for your investment.</p>
-        <div class="why-tags">
-          <span class="why-tag">Informed action</span>
-          <span class="why-tag">Robust insights</span>
-          <span class="why-tag">Guarantee maximum value</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="cta">
-    <p class="section-label accent">Let's Talk</p>
-    <h2 class="cta-title">Ready to grow your digital presence?</h2>
-    <p class="cta-text">We will collaborate to find the right answer and bring progress to your business and to the world.</p>
-    <a href="https://www.awakenentertainment.org/contact" target="_blank" class="btn btn-primary">Get In Touch</a>
   </div>
 
-  <footer class="footer">
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span class="marquee-item">Digital Marketing <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Social Media <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Web Development <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Media Buying <span class="marquee-dot"></span></span>
+      <span class="marquee-item">SEO &amp; Analytics <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Brand Strategy <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Digital Marketing <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Social Media <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Web Development <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Media Buying <span class="marquee-dot"></span></span>
+      <span class="marquee-item">SEO &amp; Analytics <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Brand Strategy <span class="marquee-dot"></span></span>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label reveal">Our Services</div>
+    <h2 class="section-title reveal reveal-delay-1">Four disciplines.<br><em>One team.</em></h2>
+    <div class="disciplines-grid">
+      <div class="discipline-card reveal"><div class="discipline-icon">📡</div><div class="discipline-title">Digital Marketing</div><div class="discipline-text">We create, grow, and maintain your brand's online presence. Blending creativity with data-driven strategy to connect meaningfully with your audience.</div><div class="discipline-tags"><span class="tag">Social Media</span><span class="tag">Paid Ads</span><span class="tag">Content</span><span class="tag">Analytics</span></div></div>
+      <div class="discipline-card reveal reveal-delay-1"><div class="discipline-icon">🌐</div><div class="discipline-title">Web &amp; App Development</div><div class="discipline-text">Custom web solutions and mobile applications engineered for performance, security, and strategic business goals. From wireframe to deployment.</div><div class="discipline-tags"><span class="tag">React</span><span class="tag">Next.js</span><span class="tag">Mobile</span><span class="tag">CMS</span></div></div>
+      <div class="discipline-card reveal reveal-delay-2"><div class="discipline-icon">📱</div><div class="discipline-title">Social Media Strategy</div><div class="discipline-text">Data-driven content calendars, community management, and paid social campaigns that turn followers into loyal customers across every platform.</div><div class="discipline-tags"><span class="tag">Instagram</span><span class="tag">Facebook</span><span class="tag">TikTok</span><span class="tag">LinkedIn</span></div></div>
+      <div class="discipline-card reveal reveal-delay-3"><div class="discipline-icon">📺</div><div class="discipline-title">Media Buying</div><div class="discipline-text">Strategic ad placement across digital channels. We optimize every dollar for maximum reach, engagement, and conversion — ROI you can measure.</div><div class="discipline-tags"><span class="tag">Google Ads</span><span class="tag">Meta Ads</span><span class="tag">Programmatic</span></div></div>
+    </div>
+  </div>
+
+  <div class="process-bg section-full">
+    <div class="section">
+      <div class="section-label reveal">How We Work</div>
+      <h2 class="section-title reveal reveal-delay-1">From idea to<br><em>impact.</em></h2>
+      <div class="process-list" style="margin-top:4rem;">
+        <div class="process-item"><div class="process-content"><div class="process-step">Step 01</div><h3 class="process-title">Strategy</h3><p class="process-desc">We start by understanding your business deeply — your goals, your audience, and your competitive landscape. Every campaign begins with an unshakeable strategic foundation.</p><div class="process-bullets"><div class="process-bullet">Market research &amp; audience mapping</div><div class="process-bullet">Competitive analysis</div><div class="process-bullet">KPI definition &amp; campaign planning</div><div class="process-bullet">Channel selection &amp; budget allocation</div></div></div><div class="process-img"><div class="process-img-wrap"><div class="process-visual">🧭</div><div class="process-num-bg">01</div></div></div></div>
+        <div class="process-item"><div class="process-img"><div class="process-img-wrap"><div class="process-visual">🎨</div><div class="process-num-bg">02</div></div></div><div class="process-content"><div class="process-step">Step 02</div><h3 class="process-title">Create</h3><p class="process-desc">Our creative team produces content that stops the scroll. From ad creatives to landing pages, every asset is crafted with purpose — visually arresting and conversion-optimised.</p><div class="process-bullets"><div class="process-bullet">Ad creative &amp; copywriting</div><div class="process-bullet">Landing page design</div><div class="process-bullet">Content calendar creation</div><div class="process-bullet">Brand-aligned visual storytelling</div></div></div></div>
+        <div class="process-item"><div class="process-content"><div class="process-step">Step 03</div><h3 class="process-title">Launch</h3><p class="process-desc">With strategy locked and assets ready, we go live. Campaigns are activated across chosen channels with precision targeting, A/B testing built in from day one.</p><div class="process-bullets"><div class="process-bullet">Multi-channel campaign activation</div><div class="process-bullet">Audience targeting &amp; segmentation</div><div class="process-bullet">A/B testing frameworks</div><div class="process-bullet">Real-time performance monitoring</div></div></div><div class="process-img"><div class="process-img-wrap"><div class="process-visual">🚀</div><div class="process-num-bg">03</div></div></div></div>
+        <div class="process-item"><div class="process-img"><div class="process-img-wrap"><div class="process-visual">📈</div><div class="process-num-bg">04</div></div></div><div class="process-content"><div class="process-step">Step 04</div><h3 class="process-title">Grow &amp; Optimise</h3><p class="process-desc">We don't set and forget. Continuous optimisation based on real data ensures your campaigns improve over time — driving more results for less spend.</p><div class="process-bullets"><div class="process-bullet">Weekly performance reporting</div><div class="process-bullet">Budget reallocation &amp; scaling</div><div class="process-bullet">Creative refresh cycles</div><div class="process-bullet">Monthly strategy reviews</div></div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-wrap reveal">
+    <div class="cta-glow"></div>
+    <div class="section-label" style="justify-content:center;">Let's Talk</div>
+    <h2 class="cta-title">Ready to grow your<br><em>digital presence?</em></h2>
+    <p class="cta-sub">We will collaborate to find the right answer and bring real progress to your business and to the world.</p>
+    <div class="cta-actions">
+      <a href="https://www.awakenentertainment.org/contact" target="_blank" class="btn-primary">Start a Project →</a>
+      <a href="tel:+959255762417" class="btn-ghost">Call Us</a>
+    </div>
+  </div>
+
+  <div class="section" style="padding-top:0;">
+    <div class="section-label reveal">FAQ</div>
+    <h2 class="section-title reveal reveal-delay-1"><em>Answers</em> up front.</h2>
+    <div class="faq-list reveal">
+      <div class="faq-item"><div class="faq-q">How long does a typical digital campaign take to set up?<span class="faq-icon">+</span></div><div class="faq-a">Most campaigns are fully set up and live within 2–3 weeks. This includes strategy, creative production, audience setup, and technical tracking. Larger projects with web builds may take 4–8 weeks.</div></div>
+      <div class="faq-item"><div class="faq-q">Do you work with businesses outside Myanmar?<span class="faq-icon">+</span></div><div class="faq-a">Yes — while our roots and expertise are in the Myanmar market, we work with regional and international clients across Southeast Asia and beyond.</div></div>
+      <div class="faq-item"><div class="faq-q">What platforms do you run ads on?<span class="faq-icon">+</span></div><div class="faq-a">We primarily work with Meta (Facebook &amp; Instagram), Google Ads, TikTok Ads, and LinkedIn. We recommend the right mix based on your audience and business goals.</div></div>
+      <div class="faq-item"><div class="faq-q">How do you measure success?<span class="faq-icon">+</span></div><div class="faq-a">We align on KPIs at the start of every engagement — whether that's reach, leads, conversions, or ROAS. You get clear weekly and monthly reporting with no vanity metrics.</div></div>
+      <div class="faq-item"><div class="faq-q">Can you handle both digital marketing and web development together?<span class="faq-icon">+</span></div><div class="faq-a">Absolutely. As part of the Awaken family we bring together Digital, Design, Tech, Production, and PR under one roof — no agency handoff, no miscommunication.</div></div>
+    </div>
+  </div>
+
+  <footer>
     <div class="footer-grid">
-      <div>
-        <div class="footer-brand">
-          <div class="footer-brand-mark">A</div>
-          <span class="footer-brand-text">AWAKEN</span>
-        </div>
-        <p class="footer-desc">We turn brands into culture through bold storytelling and measurable digital growth.</p>
-      </div>
-      <div>
-        <h4 class="footer-heading">Services</h4>
-        <div class="footer-links">
-          <a href="digital.html">Awaken Digital</a>
-          <a href="design.html">Awaken Design</a>
-          <a href="tech.html">Awaken Tech</a>
-          <a href="production.html">Awaken Production</a>
-          <a href="pr.html">Awaken PR</a>
-        </div>
-      </div>
-      <div>
-        <h4 class="footer-heading">Contact</h4>
-        <div class="footer-contact">
-          <p>P: +95 9255762417</p>
-          <p>P: +95 9799489370</p>
-          <p>E: nyinyisoewin@awakenentertainment.org</p>
-          <p style="margin-top:0.5rem">No.57, YaeKuYwarMa Street,<br>Ward 9, Mayangone, Yangon</p>
-        </div>
-      </div>
-      <div>
-        <h4 class="footer-heading">Follow</h4>
-        <div class="footer-links">
-          <a href="https://www.awakenentertainment.org/" target="_blank">Website</a>
-        </div>
-      </div>
+      <div><div class="footer-logo"><div class="footer-logo-mark">A</div><span class="footer-logo-text">AWAKEN</span></div><p class="footer-desc">We turn brands into culture through bold storytelling and measurable digital growth. Based in Yangon, building for the world.</p></div>
+      <div><div class="footer-heading">Divisions</div><div class="footer-links"><a href="digital.html">Awaken Digital</a><a href="design.html">Awaken Design</a><a href="tech.html">Awaken Tech</a><a href="production.html">Awaken Production</a><a href="pr.html">Awaken PR</a></div></div>
+      <div><div class="footer-heading">Contact</div><div class="footer-links"><a href="tel:+959255762417">+95 9255762417</a><a href="tel:+959799489370">+95 9799489370</a><a href="mailto:nyinyisoewin@awakenentertainment.org">Email Us</a><a href="https://www.awakenentertainment.org" target="_blank">Website</a></div></div>
+      <div><div class="footer-heading">Location</div><div class="footer-links"><span style="color:var(--muted);font-size:13px;">No.57, YaeKuYwarMa Street,<br>Ward 9, Mayangone,<br>Yangon, Myanmar</span></div></div>
     </div>
-    <div class="footer-bottom">© 2026 Awaken Entertainment. All rights reserved.</div>
+    <div class="footer-bottom"><span>© 2026 <span class="footer-accent">Awaken Entertainment</span>. All rights reserved.</span><span>Built with purpose in Yangon.</span></div>
   </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+
+    const processItems = document.querySelectorAll('.process-item');
+    const processObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.2 });
+    processItems.forEach(el => processObserver.observe(el));
+
+    document.querySelectorAll('.faq-q').forEach(q => {
+      q.addEventListener('click', () => {
+        const item = q.parentElement;
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+  </script>
 </body>
 </html>
