@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AWAKEN — Creative Agency</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --bg:#ffffff;--text:#0a0a0a;--text-secondary:#6b7280;--border:#e5e7eb;
+      --awaken:#1a1a1a;--digital:#0ea5e9;--design:#ec4899;--tech:#10b981;--production:#8b5cf6;--pr:#f59e0b;
+    }
+    html{font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+    body{background:var(--bg);color:var(--text);overflow:hidden;height:100dvh}
+
+    /* Header */
+    .header{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 2.5rem;background:rgba(255,255,255,0.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+    .logo{display:flex;align-items:center;gap:0.75rem;text-decoration:none}
+    .logo-mark{width:32px;height:32px;border:1.5px solid var(--text);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;letter-spacing:0.1em;color:var(--text)}
+    .logo-text{font-size:14px;font-weight:700;letter-spacing:0.2em;color:var(--text)}
+    .nav{display:flex;gap:2rem}
+    .nav a{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.15em;color:var(--text-secondary);text-decoration:none;transition:color 0.2s}
+    .nav a:hover{color:var(--text)}
+    .menu-btn{display:none;background:none;border:none;font-size:20px;cursor:pointer}
+
+    /* Accordion */
+    .accordion{display:flex;height:100dvh;padding-top:65px}
+    .slide{position:relative;flex:1;min-width:60px;cursor:pointer;overflow:hidden;transition:flex 0.7s cubic-bezier(0.25,0.46,0.45,0.94);border-right:1px solid var(--border)}
+    .slide:last-child{border-right:none}
+    .slide.active{flex:6}
+    .slide:not(.active){flex:0.6}
+
+    .slide-bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:opacity 0.7s,transform 0.7s}
+    .slide.active .slide-bg{opacity:0.15;transform:scale(1.05)}
+    .slide:not(.active) .slide-bg{opacity:0.06;transform:scale(1)}
+
+    .slide-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(255,255,255,0.9) 100%)}
+    .slide.active .slide-overlay{background:linear-gradient(180deg,rgba(255,255,255,0.3) 0%,rgba(255,255,255,0.95) 60%,rgba(255,255,255,1) 100%)}
+
+    .tab-label{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-90deg);white-space:nowrap;font-size:11px;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;color:var(--text-secondary);transition:all 0.5s;pointer-events:none}
+    .slide.active .tab-label{opacity:0;transform:translate(-50%,-50%) rotate(-90deg) translateX(-20px)}
+
+    .slide-content{position:relative;z-index:10;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:3rem;opacity:0;transform:translateY(20px);transition:all 0.6s 0.15s;pointer-events:none}
+    .slide.active .slide-content{opacity:1;transform:translateY(0);pointer-events:auto}
+
+    .eyebrow{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.2em;margin-bottom:1rem}
+    .eyebrow.awaken{color:var(--awaken)}.eyebrow.digital{color:var(--digital)}.eyebrow.design{color:var(--design)}.eyebrow.tech{color:var(--tech)}.eyebrow.production{color:var(--production)}.eyebrow.pr{color:var(--pr)}
+
+    .headline{font-size:clamp(2rem,4vw,4.5rem);font-weight:800;line-height:0.95;letter-spacing:-0.03em;text-transform:uppercase;margin-bottom:1.25rem;max-width:600px}
+    .body-text{font-size:15px;line-height:1.7;color:var(--text-secondary);max-width:480px;margin-bottom:2rem}
+
+    .btn-group{display:flex;gap:1rem;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:0.5rem;padding:14px 32px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;text-decoration:none;border-radius:32px;transition:all 0.3s;cursor:pointer;border:none}
+    .btn-primary{background:var(--text);color:#fff}
+    .btn-primary:hover{background:#333;transform:translateY(-2px)}
+    .btn-ghost{background:transparent;color:var(--text);border:1px solid var(--border)}
+    .btn-ghost:hover{border-color:var(--text);background:rgba(0,0,0,0.03)}
+
+    /* Bottom bar */
+    .bottom-bar{position:fixed;bottom:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 2.5rem;background:rgba(255,255,255,0.9);backdrop-filter:blur(12px);border-top:1px solid var(--border)}
+    .nav-arrow{width:36px;height:36px;display:flex;align-items:center;justify-content:center;background:none;border:1px solid var(--border);border-radius:50%;cursor:pointer;font-size:16px;color:var(--text-secondary);transition:all 0.2s}
+    .nav-arrow:hover{border-color:var(--text);color:var(--text)}
+    .dots{display:flex;gap:8px}
+    .dot{width:8px;height:8px;border-radius:4px;background:var(--border);border:none;cursor:pointer;transition:all 0.3s}
+    .dot.active{width:28px;background:var(--text)}
+    .counter{font-size:11px;font-weight:600;letter-spacing:0.1em;color:var(--text-secondary)}
+
+    /* Mobile */
+    @media(max-width:768px){
+      .header{padding:1rem 1.25rem}
+      .nav{display:none}
+      .menu-btn{display:block}
+      .accordion{flex-direction:column}
+      .slide{min-height:60px;flex:0 0 auto !important;border-right:none;border-bottom:1px solid var(--border);transition:all 0.5s}
+      .slide.active{flex:1 !important;min-height:50vh}
+      .slide:not(.active){flex:0 0 60px !important}
+      .tab-label{transform:translate(-50%,-50%) rotate(0deg);font-size:10px}
+      .slide.active .tab-label{opacity:0}
+      .slide-content{padding:1.5rem}
+      .headline{font-size:2rem}
+      .bottom-bar{padding:0.75rem 1.25rem}
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <a href="index.html" class="logo">
+      <div class="logo-mark">A</div>
+      <span class="logo-text">AWAKEN</span>
+    </a>
+    <nav class="nav">
+      <a href="digital.html">Digital</a>
+      <a href="design.html">Design</a>
+      <a href="tech.html">Tech</a>
+      <a href="production.html">Production</a>
+      <a href="pr.html">PR</a>
+    </nav>
+    <button class="menu-btn" onclick="toggleMobile()">☰</button>
+  </header>
+
+  <main class="accordion" id="accordion">
+    <section class="slide active" data-index="0" style="--accent:var(--awaken)" onclick="setSlide(0)">
+      <div class="slide-bg" style="background-image:url('https://d8j0ntlcm91z4.cloudfront.net/user_3FE3Vvu9lYALhCwQvePKUS2plzn/hf_20260625_100616_e966de8d-6b47-4533-9f8d-1bc1b76630d4.png')"></div>
+      <div class="slide-overlay"></div>
+      <span class="tab-label">AWAKEN</span>
+      <div class="slide-content">
+        <p class="eyebrow awaken">Main Holding Company</p>
+        <h2 class="headline">AWAKEN<br>ENTERTAINMENT</h2>
+        <p class="body-text">The parent company behind a growing family of brands — each building something new across entertainment, technology, design, and culture.</p>
+        <div class="btn-group">
+          <a href="https://www.awakenentertainment.org/" target="_blank" class="btn btn-primary">Explore Us</a>
+          <a href="https://www.awakenentertainment.org/contact" target="_blank" class="btn btn-ghost">Get In Touch</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-index="1" style="--accent:var(--digital)" onclick="setSlide(1)">
+      <div class="slide-bg" style="background-image:url('https://d8j0ntlcm91z4.cloudfront.net/user_3FE3Vvu9lYALhCwQvePKUS2plzn/hf_20260625_100620_bd79b2ba-903d-47f7-a60c-f17bd901f0d7.png')"></div>
+      <div class="slide-overlay"></div>
+      <span class="tab-label">DIGITAL</span>
+      <div class="slide-content">
+        <p class="eyebrow digital">01 — Digital</p>
+        <h2 class="headline">AWAKEN<br>DIGITAL</h2>
+        <p class="body-text">Web experiences, apps, and platforms built to perform. From strategy to deployment — we make the digital world feel alive.</p>
+        <div class="btn-group">
+          <a href="digital.html" class="btn btn-primary">Learn More</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-index="2" style="--accent:var(--design)" onclick="setSlide(2)">
+      <div class="slide-bg" style="background-image:url('https://d8j0ntlcm91z4.cloudfront.net/user_3FE3Vvu9lYALhCwQvePKUS2plzn/hf_20260625_100622_18cb8e55-dad6-4a61-bb2f-476a20bed4e8.png')"></div>
+      <div class="slide-overlay"></div>
+      <span class="tab-label">DESIGN</span>
+      <div class="slide-content">
+        <p class="eyebrow design">02 — Design</p>
+        <h2 class="headline">AWAKEN<br>DESIGN</h2>
+        <p class="body-text">Visual identity, brand systems, and creative direction. We shape how your brand looks, feels, and is remembered.</p>
+        <div class="btn-group">
+          <a href="design.html" class="btn btn-primary">Learn More</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-index="3" style="--accent:var(--tech)" onclick="setSlide(3)">
+      <div class="slide-bg" style="background-image:url('https://d8j0ntlcm91z4.cloudfront.net/user_3FE3Vvu9lYALhCwQvePKUS2plzn/hf_20260625_100622_c2a52321-157a-4f06-9af4-a1c2642110c1.png')"></div>
+      <div class="slide-overlay"></div>
+      <span class="tab-label">TECH</span>
+      <div class="slide-content">
+        <p class="eyebrow tech">03 — Technology</p>
+        <h2 class="headline">AWAKEN<br>TECH</h2>
+        <p class="body-text">Software, infrastructure, and innovation. We engineer the systems that power ambitious brands and products at any scale.</p>
+        <div class="btn-group">
+          <a href="tech.html" class="btn btn-primary">Learn More</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-index="4" style="--accent:var(--production)" onclick="setSlide(4)">
+      <div class="slide-bg" style="background-image:url('https://d8j0ntlcm91z4.cloudfront.net/user_3FE3Vvu9lYALhCwQvePKUS2plzn/hf_20260625_100623_3a812de3-71f9-48bf-9966-44dbba776b4e.png')"></div>
+      <div class="slide-overlay"></div>
+      <span class="tab-label">PRODUCTION</span>
+      <div class="slide-content">
+        <p class="eyebrow production">04 — Production</p>
+        <h2 class="headline">AWAKEN<br>PRODUCTION</h2>
+        <p class="body-text">Film, photography, motion, and content creation. We produce the visuals that make people stop, look, and feel something.</p>
+        <div class="btn-group">
+          <a href="production.html" class="btn btn-primary">Learn More</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-index="5" style="--accent:var(--pr)" onclick="setSlide(5)">
+      <div class="slide-bg" style="background-image:url('https://d8j0ntlcm91z4.cloudfront.net/user_3FE3Vvu9lYALhCwQvePKUS2plzn/hf_20260625_100625_48adce73-fcfa-45d1-8fb5-7b7f1d247d9d.png')"></div>
+      <div class="slide-overlay"></div>
+      <span class="tab-label">PR</span>
+      <div class="slide-content">
+        <p class="eyebrow pr">05 — Public Relations</p>
+        <h2 class="headline">AWAKEN<br>PR</h2>
+        <p class="body-text">Press, partnerships, and public narrative. We shape the stories told about your brand and get them in front of the people who matter.</p>
+        <div class="btn-group">
+          <a href="pr.html" class="btn btn-primary">Learn More</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="bottom-bar">
+    <button class="nav-arrow" onclick="prevSlide()">←</button>
+    <div class="dots" id="dots"></div>
+    <span class="counter" id="counter">01 / 06</span>
+    <button class="nav-arrow" onclick="nextSlide()">→</button>
+  </div>
+
+  <script>
+    let active=0;const total=6;
+    function renderDots(){const d=document.getElementById('dots');d.innerHTML='';for(let i=0;i<total;i++){const b=document.createElement('button');b.className='dot'+(i===active?' active':'');b.onclick=(e)=>{e.stopPropagation();setSlide(i)};d.appendChild(b)}document.getElementById('counter').textContent=String(active+1).padStart(2,'0')+' / '+String(total).padStart(2,'0')}
+    function setSlide(i){active=i;document.querySelectorAll('.slide').forEach((s,idx)=>{s.classList.toggle('active',idx===i)});renderDots()}
+    function nextSlide(){setSlide((active+1)%total)}
+    function prevSlide(){setSlide((active-1+total)%total)}
+    document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')nextSlide();if(e.key==='ArrowLeft')prevSlide()})
+    renderDots()
+  </script>
+</body>
+</html>
+
