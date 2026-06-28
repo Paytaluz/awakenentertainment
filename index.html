@@ -15,8 +15,6 @@
     }
     html{font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
     body{background:var(--bg);color:var(--text);overflow:hidden;height:100dvh}
-    .header{display:none}
-    .bottom-bar{display:none}
 
     /* Header */
     .header{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 2.5rem;background:rgba(255,255,255,0.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
@@ -88,21 +86,6 @@
   </style>
 </head>
 <body>
-  <header class="header">
-    <a href="index.html" class="logo">
-      <div class="logo-mark">A</div>
-      <span class="logo-text">AWAKEN</span>
-    </a>
-    <nav class="nav">
-      <a href="digital.html">Digital</a>
-      <a href="design.html">Design</a>
-      <a href="tech.html">Tech</a>
-      <a href="production.html">Production</a>
-      <a href="pr.html">PR</a>
-    </nav>
-    <button class="menu-btn" onclick="toggleMobile()">☰</button>
-  </header>
-
   <main class="accordion" id="accordion">
     <section class="slide active" data-index="0" style="--accent:var(--awaken)" onclick="setSlide(0)">
       <div class="slide-bg" style="background-image:url('https://d8j0ntlcm91z4.cloudfront.net/user_3FE3Vvu9lYALhCwQvePKUS2plzn/hf_20260625_100616_e966de8d-6b47-4533-9f8d-1bc1b76630d4.png')"></div>
@@ -189,13 +172,6 @@
       </div>
     </section>
   </main>
-
-  <div class="bottom-bar">
-    <button class="nav-arrow" onclick="prevSlide()">←</button>
-    <div class="dots" id="dots"></div>
-    <span class="counter" id="counter">01 / 06</span>
-    <button class="nav-arrow" onclick="nextSlide()">→</button>
-  </div>
 
   <script>
     let active=0;const total=6;
