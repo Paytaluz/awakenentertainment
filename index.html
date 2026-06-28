@@ -15,6 +15,8 @@
     }
     html{font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
     body{background:var(--bg);color:var(--text);overflow:hidden;height:100dvh}
+    .header{display:none}
+    .bottom-bar{display:none}
 
     /* Header */
     .header{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 2.5rem;background:rgba(255,255,255,0.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
@@ -27,7 +29,7 @@
     .menu-btn{display:none;background:none;border:none;font-size:20px;cursor:pointer}
 
     /* Accordion */
-    .accordion{display:flex;height:100dvh;padding-top:65px}
+    .accordion{display:flex;height:100dvh;padding-top:0}
     .slide{position:relative;flex:1;min-width:60px;cursor:pointer;overflow:hidden;transition:flex 0.7s cubic-bezier(0.25,0.46,0.45,0.94);border-right:1px solid var(--border)}
     .slide:last-child{border-right:none}
     .slide.active{flex:6}
