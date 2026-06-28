@@ -3,155 +3,656 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AWAKEN — Creative Agency</title>
+  <title>AWAKEN ENTERTAINMENT — We Turn Brands Into Culture</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,700;1,900&family=Playfair+Display:ital,wght@1,700;1,900&display=swap" rel="stylesheet">
   <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{
-      --bg:#ffffff;--text:#0a0a0a;--text-secondary:#6b7280;--border:#e5e7eb;
-      --awaken:#1a1a1a;--digital:#0ea5e9;--design:#ec4899;--tech:#10b981;--production:#8b5cf6;--pr:#f59e0b;
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0c0c0c; --surface: #131313; --surface2: #1a1a1a;
+      --border: rgba(255,255,255,0.06); --text: #f0f0f0; --muted: #666;
+      --accent: #c8ff00;
     }
-    html{font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
-    body{background:var(--bg);color:var(--text);overflow:hidden;height:100dvh}
+    html { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); scroll-behavior: smooth; }
+    body { overflow-x: hidden; cursor: none; }
+    a { text-decoration: none; color: inherit; }
 
-    .accordion{display:flex;height:100dvh}
-    .slide{position:relative;flex:1;min-width:60px;cursor:pointer;overflow:hidden;transition:flex 0.7s cubic-bezier(0.25,0.46,0.45,0.94);border-right:1px solid var(--border)}
-    .slide:last-child{border-right:none}
-    .slide.active{flex:6}
-    .slide:not(.active){flex:0.6}
+    /* ── CURSOR ── */
+    #cur { position: fixed; z-index: 9999; pointer-events: none; top: 0; left: 0; mix-blend-mode: difference; }
+    .cur-d { position: absolute; width: 10px; height: 10px; background: #fff; border-radius: 50%; transform: translate(-50%,-50%); transition: width .2s, height .2s; }
+    .cur-r { position: absolute; width: 40px; height: 40px; border: 1px solid rgba(255,255,255,.4); border-radius: 50%; transform: translate(-50%,-50%); }
+    body.hov .cur-d { width: 16px; height: 16px; }
+    body.hov .cur-r { width: 56px; height: 56px; border-color: rgba(255,255,255,.7); }
 
-    .slide-bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:opacity 0.7s,transform 0.7s}
-    .slide.active .slide-bg{opacity:0.15;transform:scale(1.05)}
-    .slide:not(.active) .slide-bg{opacity:0.06;transform:scale(1)}
+    /* ── LOADER ── */
+    #ld { position: fixed; inset: 0; z-index: 8000; background: var(--bg); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2rem; transition: opacity .7s ease, visibility .7s; }
+    #ld.out { opacity: 0; visibility: hidden; }
+    .ld-num { font-size: clamp(5rem,15vw,12rem); font-weight: 900; letter-spacing: -0.05em; line-height: 1; color: var(--text); font-variant-numeric: tabular-nums; }
+    .ld-bar { width: 200px; height: 1px; background: var(--border); overflow: hidden; }
+    .ld-fill { height: 100%; background: var(--accent); width: 0; }
 
-    .slide-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(255,255,255,0.9) 100%)}
-    .slide.active .slide-overlay{background:linear-gradient(180deg,rgba(255,255,255,0.3) 0%,rgba(255,255,255,0.95) 60%,rgba(255,255,255,1) 100%)}
+    /* ── NAV ── */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.5rem 2.5rem; transition: background .4s, border-color .4s, backdrop-filter .4s; }
+    nav.scrolled { background: rgba(12,12,12,.88); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+    .nav-logo { display: flex; align-items: center; gap: .6rem; font-size: 12px; font-weight: 700; letter-spacing: .18em; opacity: 0; }
+    .nav-logo-box { width: 26px; height: 26px; border: 1.5px solid var(--accent); display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 900; color: var(--accent); }
+    .nav-links { display: flex; gap: 2.5rem; opacity: 0; }
+    .nav-links a { font-size: 11px; font-weight: 500; color: var(--muted); letter-spacing: .06em; transition: color .2s; position: relative; }
+    .nav-links a::after { content: ''; position: absolute; left: 0; bottom: -2px; width: 0; height: 1px; background: var(--accent); transition: width .3s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-cta { opacity: 0; }
+    .nav-cta a { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; padding: 10px 22px; border-radius: 100px; background: var(--accent); color: #000; transition: box-shadow .3s; }
+    .nav-cta a:hover { box-shadow: 0 0 24px rgba(200,255,0,.4); }
 
-    .tab-label{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-90deg);white-space:nowrap;font-size:11px;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;color:var(--text-secondary);transition:all 0.5s;pointer-events:none}
-    .slide.active .tab-label{opacity:0;transform:translate(-50%,-50%) rotate(-90deg) translateX(-20px)}
+    /* ── HERO ── */
+    .hero { min-height: 100svh; display: flex; flex-direction: column; justify-content: flex-end; padding: 0 2.5rem 3.5rem; position: relative; overflow: hidden; }
+    .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+    .hero-video-placeholder {
+      position: absolute; inset: 0; z-index: 0;
+      background: radial-gradient(ellipse at 60% 50%, rgba(30,30,30,1) 0%, rgba(10,10,10,1) 100%);
+      overflow: hidden;
+    }
+    .hero-video-placeholder::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.02) 1px, transparent 1px);
+      background-size: 80px 80px;
+      animation: gridfade 4s ease-in-out infinite alternate;
+    }
+    @keyframes gridfade { from { opacity: .4; } to { opacity: 1; } }
+    .hero-video-placeholder::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 55% 45%, rgba(200,255,0,.04) 0%, transparent 60%);
+      animation: glowshift 6s ease-in-out infinite alternate;
+    }
+    @keyframes glowshift { from { transform: scale(1); } to { transform: scale(1.15); } }
+    .hero-overlay { position: absolute; inset: 0; z-index: 1; background: linear-gradient(to top, rgba(12,12,12,1) 0%, rgba(12,12,12,.5) 50%, rgba(12,12,12,.2) 100%); }
 
-    .slide-content{position:relative;z-index:10;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:3rem;opacity:0;transform:translateY(20px);transition:all 0.6s 0.15s;pointer-events:none}
-    .slide.active .slide-content{opacity:1;transform:translateY(0);pointer-events:auto}
+    .hero-badge { position: absolute; top: 6.5rem; right: 2.5rem; width: 110px; height: 110px; z-index: 3; opacity: 0; }
+    .hero-badge svg { width: 100%; height: 100%; animation: rotatebadge 12s linear infinite; }
+    @keyframes rotatebadge { to { transform: rotate(360deg); } }
+    .hero-badge-dot { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 10px; height: 10px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 14px rgba(200,255,0,.9); }
 
-    .eyebrow{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.2em;margin-bottom:1rem}
-    .eyebrow.awaken{color:var(--awaken)}.eyebrow.digital{color:var(--digital)}.eyebrow.design{color:var(--design)}.eyebrow.tech{color:var(--tech)}.eyebrow.production{color:var(--production)}.eyebrow.pr{color:var(--pr)}
+    .hero-content { position: relative; z-index: 2; }
+    .hero-tag { font-size: 11px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--accent); display: flex; align-items: center; gap: .6rem; margin-bottom: 2rem; opacity: 0; }
+    .hero-tag::before { content: ''; width: 20px; height: 1px; background: var(--accent); }
 
-    .headline{font-size:clamp(2rem,4vw,4.5rem);font-weight:800;line-height:0.95;letter-spacing:-0.03em;text-transform:uppercase;margin-bottom:1.25rem;max-width:600px}
-    .body-text{font-size:15px;line-height:1.7;color:var(--text-secondary);max-width:480px;margin-bottom:2rem}
+    .hero-title { font-size: clamp(3.5rem, 9vw, 10rem); font-weight: 900; line-height: .9; letter-spacing: -0.04em; }
+    .hero-title-line { display: block; overflow: hidden; }
+    .hero-word { display: inline-block; transform: translateY(110%); }
+    .hero-title em { font-style: italic; color: var(--accent); font-family: 'Playfair Display', serif; }
 
-    .btn-group{display:flex;gap:1rem;flex-wrap:wrap}
-    .btn{display:inline-flex;align-items:center;gap:0.5rem;padding:14px 32px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;text-decoration:none;border-radius:32px;transition:all 0.3s;cursor:pointer;border:none}
-    .btn-primary{background:var(--text);color:#fff}
-    .btn-primary:hover{background:#333;transform:translateY(-2px)}
-    .btn-ghost{background:transparent;color:var(--text);border:1px solid var(--border)}
-    .btn-ghost:hover{border-color:var(--text);background:rgba(0,0,0,0.03)}
+    .hero-bottom { display: flex; align-items: flex-end; justify-content: space-between; margin-top: 3.5rem; gap: 2rem; flex-wrap: wrap; opacity: 0; }
+    .hero-sub { font-size: 15px; color: var(--muted); line-height: 1.8; max-width: 360px; }
 
-    @media(max-width:768px){
-      .accordion{flex-direction:column}
-      .slide{min-height:60px;flex:0 0 auto !important;border-right:none;border-bottom:1px solid var(--border);transition:all 0.5s}
-      .slide.active{flex:1 !important;min-height:50vh}
-      .slide:not(.active){flex:0 0 60px !important}
-      .tab-label{transform:translate(-50%,-50%) rotate(0deg);font-size:10px}
-      .slide.active .tab-label{opacity:0}
-      .slide-content{padding:1.5rem}
-      .headline{font-size:2rem}
+    .hero-btns { display: flex; align-items: center; gap: 1.5rem; margin-top: 2rem; }
+    .btn-project {
+      position: relative; display: inline-flex; align-items: center; justify-content: center;
+      width: 160px; height: 160px; border-radius: 50%; background: var(--accent); color: #000;
+      font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase;
+      text-align: center; line-height: 1.3; overflow: hidden;
+      transition: transform .4s cubic-bezier(.16,1,.3,1), box-shadow .4s;
+    }
+    .btn-project::before {
+      content: '→';
+      position: absolute; font-size: 2rem; font-weight: 400; letter-spacing: 0;
+      top: 100%; left: 50%; transform: translateX(-50%);
+      transition: top .4s cubic-bezier(.16,1,.3,1);
+    }
+    .btn-project-text { transition: transform .4s cubic-bezier(.16,1,.3,1); }
+    .btn-project:hover { transform: scale(1.05); box-shadow: 0 20px 60px rgba(200,255,0,.4); }
+    .btn-project:hover .btn-project-text { transform: translateY(-130%); }
+    .btn-project:hover::before { top: 50%; transform: translate(-50%,-50%); }
+    .btn-link {
+      font-size: 12px; font-weight: 600; letter-spacing: .08em; color: var(--muted);
+      display: flex; align-items: center; gap: .5rem; transition: color .2s;
+    }
+    .btn-link:hover { color: var(--text); }
+    .btn-link-arrow { font-size: 1.1rem; transition: transform .3s; }
+    .btn-link:hover .btn-link-arrow { transform: translateX(4px); }
+
+    .hero-scroll-ind { writing-mode: vertical-rl; font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); display: flex; align-items: center; gap: .75rem; opacity: 0; }
+    .hero-scroll-ind::before { content: ''; width: 1px; height: 40px; background: var(--muted); }
+
+    /* ── MARQUEE ── */
+    .mq { overflow: hidden; background: var(--accent); padding: 1.1rem 0; }
+    .mq-t { display: flex; white-space: nowrap; animation: mq 22s linear infinite; will-change: transform; }
+    .mq:hover .mq-t { animation-play-state: paused; }
+    .mq-i { display: inline-flex; align-items: center; gap: 1.5rem; font-size: 11px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: #000; padding: 0 1.5rem; flex-shrink: 0; }
+    .mq-sep { width: 5px; height: 5px; border-radius: 50%; background: rgba(0,0,0,.3); }
+    @keyframes mq { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ── STATS ── */
+    .stats { display: grid; grid-template-columns: repeat(4,1fr); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .stat { padding: 2.5rem; border-right: 1px solid var(--border); opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
+    .stat.vis { opacity: 1; transform: translateY(0); }
+    .stat:last-child { border-right: none; }
+    .stat-n { font-size: 3rem; font-weight: 900; letter-spacing: -0.04em; color: var(--accent); line-height: 1; }
+    .stat-l { font-size: 11px; color: var(--muted); margin-top: .4rem; letter-spacing: .04em; }
+
+    /* ── STACKING SCROLL ── */
+    .briefing-intro { padding: 7rem 2.5rem 4rem; max-width: 1400px; margin: 0 auto; }
+    .sec-label { font-size: 10px; font-weight: 700; letter-spacing: .25em; text-transform: uppercase; color: var(--accent); display: flex; align-items: center; gap: .75rem; margin-bottom: 1.25rem; }
+    .sec-label::before { content: ''; width: 20px; height: 1px; background: var(--accent); }
+    .sec-h { font-size: clamp(2.5rem,5vw,4.5rem); font-weight: 900; letter-spacing: -0.03em; line-height: 1.0; }
+    .sec-h em { font-style: italic; color: var(--accent); font-family: 'Playfair Display', serif; }
+
+    .stack-outer { position: relative; }
+    .stack-spacer { height: 400vh; }
+    .stack-sticky { position: sticky; top: 0; height: 100svh; overflow: hidden; }
+    .stack-card {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      padding: 2.5rem;
+      background: var(--bg);
+      transform: translateY(100%);
+      transition: none;
+      will-change: transform;
+    }
+    .stack-card-inner {
+      max-width: 900px; width: 100%;
+      display: grid; grid-template-columns: 220px 1fr; gap: 5rem; align-items: center;
+    }
+    .stack-step-num {
+      font-size: clamp(6rem,15vw,14rem); font-weight: 900;
+      letter-spacing: -0.06em; line-height: 1; color: var(--accent);
+    }
+    .stack-step-tag { font-size: 10px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.25rem; }
+    .stack-step-title { font-size: clamp(2.5rem,5vw,4.5rem); font-weight: 900; letter-spacing: -0.03em; line-height: 1.0; margin-bottom: 1.25rem; }
+    .stack-step-desc { font-size: 15px; color: var(--muted); line-height: 1.85; max-width: 420px; }
+    .stack-step-tags { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.5rem; }
+    .stag { font-size: 10px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; padding: 5px 14px; border-radius: 100px; border: 1px solid var(--border); color: var(--muted); }
+    .stack-progress { position: absolute; left: 2.5rem; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: .75rem; z-index: 10; }
+    .stack-pip { width: 6px; height: 6px; border-radius: 50%; background: var(--border); transition: background .3s, transform .3s; }
+    .stack-pip.active { background: var(--accent); transform: scale(1.4); }
+
+    /* ── DIVISIONS ── */
+    .div-sec { padding: 7rem 2.5rem; }
+    .div-inner { max-width: 1400px; margin: 0 auto; }
+    .div-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 1px; margin-top: 4rem; background: var(--border); }
+    .div-card {
+      background: var(--bg); padding: 2.5rem 2rem;
+      display: flex; flex-direction: column; gap: 1rem;
+      position: relative; overflow: hidden;
+      transition: background .3s; cursor: pointer;
+      text-decoration: none; color: inherit;
+      opacity: 0; transform: translateY(24px);
+      transition: opacity .6s ease, transform .6s ease, background .3s;
+    }
+    .div-card.vis { opacity: 1; transform: translateY(0); }
+    .div-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; transform: scaleX(0); transform-origin: left; transition: transform .4s cubic-bezier(.16,1,.3,1); }
+    .div-card:hover::before { transform: scaleX(1); }
+    .div-card:hover { background: var(--surface); }
+    .div-card-img { width: 100%; aspect-ratio: 3/2; object-fit: cover; border-radius: 8px; margin-bottom: .5rem; opacity: .6; transition: opacity .3s; }
+    .div-card:hover .div-card-img { opacity: 1; }
+    .div-card-num { font-size: 10px; font-weight: 700; letter-spacing: .15em; }
+    .div-card-name { font-size: 1.1rem; font-weight: 800; letter-spacing: -0.01em; }
+    .div-card-desc { font-size: 12px; color: var(--muted); line-height: 1.6; flex: 1; }
+    .div-card-link { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; display: flex; align-items: center; gap: .4rem; transition: color .2s; margin-top: auto; }
+    .div-card:hover .div-card-link { color: var(--accent); }
+
+    .div-digital::before { background: #0ea5e9; } .div-digital .div-card-num { color: #0ea5e9; }
+    .div-design::before { background: #ec4899; } .div-design .div-card-num { color: #ec4899; }
+    .div-tech::before { background: #10b981; } .div-tech .div-card-num { color: #10b981; }
+    .div-prod::before { background: #8b5cf6; } .div-prod .div-card-num { color: #8b5cf6; }
+    .div-pr::before { background: #f59e0b; } .div-pr .div-card-num { color: #f59e0b; }
+
+    /* ── CTA ── */
+    .cta-sec { text-align: center; padding: 9rem 2.5rem; position: relative; overflow: hidden; }
+    .cta-glow { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 800px; height: 800px; background: radial-gradient(ellipse, rgba(200,255,0,.07) 0%, transparent 65%); pointer-events: none; animation: glowpulse 5s ease-in-out infinite; }
+    @keyframes glowpulse { 0%,100%{transform:translate(-50%,-50%) scale(1);opacity:1} 50%{transform:translate(-50%,-50%) scale(1.1);opacity:.6} }
+    .cta-h { font-size: clamp(3rem,7vw,6.5rem); font-weight: 900; letter-spacing: -0.04em; line-height: .95; position: relative; }
+    .cta-h em { font-style: italic; color: var(--accent); font-family: 'Playfair Display', serif; }
+    .cta-sub { font-size: 15px; color: var(--muted); max-width: 440px; margin: 1.5rem auto 0; line-height: 1.8; position: relative; }
+    .cta-btn-wrap { margin-top: 3rem; display: flex; justify-content: center; position: relative; }
+
+    /* ── FOOTER ── */
+    footer { border-top: 1px solid var(--border); padding: 5rem 2.5rem 2.5rem; }
+    .ft-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; max-width: 1400px; margin: 0 auto; }
+    .ft-logo { display: flex; align-items: center; gap: .75rem; margin-bottom: 1.25rem; }
+    .ft-logo-box { width: 30px; height: 30px; border: 1.5px solid var(--accent); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 900; color: var(--accent); }
+    .ft-logo-t { font-size: 12px; font-weight: 700; letter-spacing: .2em; }
+    .ft-desc { font-size: 13px; color: var(--muted); line-height: 1.85; max-width: 260px; }
+    .ft-h { font-size: 10px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.25rem; }
+    .ft-links { display: flex; flex-direction: column; gap: .7rem; }
+    .ft-links a, .ft-links span { font-size: 13px; color: var(--muted); transition: color .2s; line-height: 1.7; }
+    .ft-links a:hover { color: var(--text); }
+    .ft-bot { max-width: 1400px; margin: 3rem auto 0; padding-top: 2rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; font-size: 12px; color: var(--muted); }
+    .ft-acc { color: var(--accent); }
+
+    /* ── REVEAL ── */
+    .rv { opacity: 0; transform: translateY(30px); transition: opacity .7s ease, transform .7s ease; }
+    .rv.vis { opacity: 1; transform: translateY(0); }
+    .rv1 { transition-delay: .1s; } .rv2 { transition-delay: .2s; }
+
+    /* ── MOBILE ── */
+    @media(max-width: 900px) {
+      body { cursor: auto; }
+      #cur { display: none; }
+      nav { padding: 1rem 1.25rem; }
+      .nav-links { display: none; }
+      .hero { padding: 0 1.25rem 2.5rem; }
+      .hero-badge { display: none; }
+      .btn-project { width: 120px; height: 120px; font-size: 10px; }
+      .stats { grid-template-columns: repeat(2,1fr); }
+      .stat:nth-child(2) { border-right: none; }
+      .briefing-intro { padding: 4rem 1.25rem 2rem; }
+      .stack-card-inner { grid-template-columns: 1fr; gap: 1.5rem; }
+      .stack-step-num { font-size: 5rem; }
+      .stack-progress { display: none; }
+      .div-grid { grid-template-columns: 1fr 1fr; gap: 1px; }
+      .div-sec { padding: 4rem 1.25rem; }
+      .cta-sec { padding: 5rem 1.25rem; }
+      .ft-grid { grid-template-columns: 1fr 1fr; }
     }
   </style>
 </head>
 <body>
-  <main class="accordion" id="accordion">
-    <section class="slide active" data-index="0" onclick="setSlide(0)">
-      <div class="slide-bg" style="background-image:url('https://d8j0ntlcm91z4.cloudfront.net/user_3FE3Vvu9lYALhCwQvePKUS2plzn/hf_20260625_100616_e966de8d-6b47-4533-9f8d-1bc1b76630d4.png')"></div>
-      <div class="slide-overlay"></div>
-      <span class="tab-label">AWAKEN</span>
-      <div class="slide-content">
-        <p class="eyebrow awaken">Main Holding Company</p>
-        <h2 class="headline">AWAKEN<br>ENTERTAINMENT</h2>
-        <p class="body-text">The parent company behind a growing family of brands — each building something new across entertainment, technology, design, and culture.</p>
-        <div class="btn-group">
-          <a href="https://www.awakenentertainment.org/" target="_blank" class="btn btn-primary">Explore Us</a>
-          <a href="https://www.awakenentertainment.org/contact" target="_blank" class="btn btn-ghost">Get In Touch</a>
+
+<!-- CURSOR -->
+<div id="cur"><div class="cur-r" id="cr"></div><div class="cur-d" id="cd"></div></div>
+
+<!-- LOADER -->
+<div id="ld">
+  <div class="ld-num" id="ldNum">0</div>
+  <div class="ld-bar"><div class="ld-fill" id="ldFill"></div></div>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-logo" id="nLogo">
+    <div class="nav-logo-box">A</div>AWAKEN
+  </div>
+  <div class="nav-links" id="nLinks">
+    <a href="digital.html">Digital</a>
+    <a href="design.html">Design</a>
+    <a href="tech.html">Tech</a>
+    <a href="production.html">Production</a>
+    <a href="pr.html">PR</a>
+  </div>
+  <div class="nav-cta" id="nCta">
+    <a href="https://www.awakenentertainment.org/contact" target="_blank">Get In Touch ↗</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <video class="hero-video" autoplay muted loop playsinline poster="">
+    <!-- <source src="hero-reel.mp4" type="video/mp4"> -->
+  </video>
+  <div class="hero-video-placeholder" id="heroPlaceholder"></div>
+  <div class="hero-overlay"></div>
+
+  <div class="hero-badge" id="hBadge">
+    <svg viewBox="0 0 110 110">
+      <defs><path id="bp" d="M55,55 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"/></defs>
+      <text fill="#c8ff00" font-size="11" font-weight="700" letter-spacing="3.5" font-family="Inter,sans-serif">
+        <textPath href="#bp">AWAKEN · YANGON · 2016 · EST. ·</textPath>
+      </text>
+    </svg>
+    <div class="hero-badge-dot"></div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-tag" id="hTag">Creative Agency · Myanmar</div>
+    <h1 class="hero-title" id="hTitle">
+      <span class="hero-title-line">
+        <span class="hero-word">We</span>
+        <span class="hero-word"> turn</span>
+      </span>
+      <span class="hero-title-line">
+        <span class="hero-word">brands</span>
+        <span class="hero-word"> into</span>
+      </span>
+      <span class="hero-title-line">
+        <span class="hero-word"><em>culture.</em></span>
+      </span>
+    </h1>
+    <div class="hero-bottom" id="hBot">
+      <div>
+        <p class="hero-sub">The parent company behind Digital, Design, Tech, Production and PR — each building something new across entertainment, technology and culture.</p>
+        <div class="hero-btns">
+          <a href="https://www.awakenentertainment.org/contact" target="_blank" class="btn-project">
+            <span class="btn-project-text">Start a<br>Project</span>
+          </a>
+          <a href="#divisions" class="btn-link">Explore Divisions <span class="btn-link-arrow">→</span></a>
         </div>
       </div>
-    </section>
+      <div class="hero-scroll-ind" id="hScroll">Scroll to explore</div>
+    </div>
+  </div>
+</section>
 
-    <section class="slide" data-index="1" onclick="setSlide(1)">
-      <div class="slide-bg" style="background-image:url('https://d8j0ntlcm91z4.cloudfront.net/user_3FE3Vvu9lYALhCwQvePKUS2plzn/hf_20260625_100620_bd79b2ba-903d-47f7-a60c-f17bd901f0d7.png')"></div>
-      <div class="slide-overlay"></div>
-      <span class="tab-label">DIGITAL</span>
-      <div class="slide-content">
-        <p class="eyebrow digital">01 — Digital</p>
-        <h2 class="headline">AWAKEN<br>DIGITAL</h2>
-        <p class="body-text">Web experiences, apps, and platforms built to perform. From strategy to deployment — we make the digital world feel alive.</p>
-        <div class="btn-group">
-          <a href="digital.html" class="btn btn-primary">Learn More</a>
+<!-- MARQUEE -->
+<div class="mq">
+  <div class="mq-t">
+    <span class="mq-i">Digital<span class="mq-sep"></span></span>
+    <span class="mq-i">Design<span class="mq-sep"></span></span>
+    <span class="mq-i">Technology<span class="mq-sep"></span></span>
+    <span class="mq-i">Production<span class="mq-sep"></span></span>
+    <span class="mq-i">Public Relations<span class="mq-sep"></span></span>
+    <span class="mq-i">Brand Strategy<span class="mq-sep"></span></span>
+    <span class="mq-i">Awaken Entertainment<span class="mq-sep"></span></span>
+    <span class="mq-i">Digital<span class="mq-sep"></span></span>
+    <span class="mq-i">Design<span class="mq-sep"></span></span>
+    <span class="mq-i">Technology<span class="mq-sep"></span></span>
+    <span class="mq-i">Production<span class="mq-sep"></span></span>
+    <span class="mq-i">Public Relations<span class="mq-sep"></span></span>
+    <span class="mq-i">Brand Strategy<span class="mq-sep"></span></span>
+    <span class="mq-i">Awaken Entertainment<span class="mq-sep"></span></span>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats" id="statsBar">
+  <div class="stat"><div class="stat-n" data-to="2016" data-from="2000" data-sfx="">2016</div><div class="stat-l">Founded in Yangon</div></div>
+  <div class="stat"><div class="stat-n" data-to="5" data-from="0" data-sfx="">0</div><div class="stat-l">Divisions Under One Roof</div></div>
+  <div class="stat"><div class="stat-n" data-to="120" data-from="0" data-sfx="+">0+</div><div class="stat-l">Projects Delivered</div></div>
+  <div class="stat"><div class="stat-n" data-to="98" data-from="0" data-sfx="%">0%</div><div class="stat-l">Client Satisfaction</div></div>
+</div>
+
+<!-- FROM BRIEFING TO LAUNCH -->
+<div class="briefing-intro">
+  <div class="sec-label rv">Our Process</div>
+  <h2 class="sec-h rv rv1">From <em>briefing</em><br>to launch.</h2>
+</div>
+
+<div class="stack-outer" id="stackOuter">
+  <div class="stack-spacer"></div>
+  <div class="stack-sticky" id="stackSticky">
+
+    <div class="stack-progress" id="stackProgress">
+      <div class="stack-pip active" data-pip="0"></div>
+      <div class="stack-pip" data-pip="1"></div>
+      <div class="stack-pip" data-pip="2"></div>
+      <div class="stack-pip" data-pip="3"></div>
+      <div class="stack-pip" data-pip="4"></div>
+    </div>
+
+    <div class="stack-card" id="sc0" style="background:#0c0c0c">
+      <div class="stack-card-inner">
+        <div class="stack-step-num">01</div>
+        <div class="stack-step-content">
+          <div class="stack-step-tag">Step One</div>
+          <h3 class="stack-step-title">Brief</h3>
+          <p class="stack-step-desc">We start by listening. A deep discovery session to understand your vision, goals, audience, and the problem we're solving together. No templates — every brief is unique.</p>
+          <div class="stack-step-tags"><span class="stag">Discovery</span><span class="stag">Goals</span><span class="stag">Audience</span><span class="stag">KPIs</span></div>
         </div>
       </div>
-    </section>
+    </div>
 
-    <section class="slide" data-index="2" onclick="setSlide(2)">
-      <div class="slide-bg" style="background-image:url('https://d8j0ntlcm91z4.cloudfront.net/user_3FE3Vvu9lYALhCwQvePKUS2plzn/hf_20260625_100622_18cb8e55-dad6-4a61-bb2f-476a20bed4e8.png')"></div>
-      <div class="slide-overlay"></div>
-      <span class="tab-label">DESIGN</span>
-      <div class="slide-content">
-        <p class="eyebrow design">02 — Design</p>
-        <h2 class="headline">AWAKEN<br>DESIGN</h2>
-        <p class="body-text">Visual identity, brand systems, and creative direction. We shape how your brand looks, feels, and is remembered.</p>
-        <div class="btn-group">
-          <a href="design.html" class="btn btn-primary">Learn More</a>
+    <div class="stack-card" id="sc1" style="background:#0e0e0e">
+      <div class="stack-card-inner">
+        <div class="stack-step-num" style="color:#0ea5e9">02</div>
+        <div class="stack-step-content">
+          <div class="stack-step-tag">Step Two</div>
+          <h3 class="stack-step-title">Strategy</h3>
+          <p class="stack-step-desc">Research, competitive analysis, and channel selection. We build a strategic roadmap that connects your brand with the right people at the right moment — and backs every decision with data.</p>
+          <div class="stack-step-tags"><span class="stag">Research</span><span class="stag">Positioning</span><span class="stag">Channels</span><span class="stag">Roadmap</span></div>
         </div>
       </div>
-    </section>
+    </div>
 
-    <section class="slide" data-index="3" onclick="setSlide(3)">
-      <div class="slide-bg" style="background-image:url('https://d8j0ntlcm91z4.cloudfront.net/user_3FE3Vvu9lYALhCwQvePKUS2plzn/hf_20260625_100622_c2a52321-157a-4f06-9af4-a1c2642110c1.png')"></div>
-      <div class="slide-overlay"></div>
-      <span class="tab-label">TECH</span>
-      <div class="slide-content">
-        <p class="eyebrow tech">03 — Technology</p>
-        <h2 class="headline">AWAKEN<br>TECH</h2>
-        <p class="body-text">Software, infrastructure, and innovation. We engineer the systems that power ambitious brands and products at any scale.</p>
-        <div class="btn-group">
-          <a href="tech.html" class="btn btn-primary">Learn More</a>
+    <div class="stack-card" id="sc2" style="background:#0e0c10">
+      <div class="stack-card-inner">
+        <div class="stack-step-num" style="color:#ec4899">03</div>
+        <div class="stack-step-content">
+          <div class="stack-step-tag">Step Three</div>
+          <h3 class="stack-step-title">Create</h3>
+          <p class="stack-step-desc">Design, content, and production — all under one roof. Our creative team crafts the visuals, copy, and experiences that make your brand impossible to ignore.</p>
+          <div class="stack-step-tags"><span class="stag">Design</span><span class="stag">Copywriting</span><span class="stag">Video</span><span class="stag">Assets</span></div>
         </div>
       </div>
-    </section>
+    </div>
 
-    <section class="slide" data-index="4" onclick="setSlide(4)">
-      <div class="slide-bg" style="background-image:url('https://d8j0ntlcm91z4.cloudfront.net/user_3FE3Vvu9lYALhCwQvePKUS2plzn/hf_20260625_100623_3a812de3-71f9-48bf-9966-44dbba776b4e.png')"></div>
-      <div class="slide-overlay"></div>
-      <span class="tab-label">PRODUCTION</span>
-      <div class="slide-content">
-        <p class="eyebrow production">04 — Production</p>
-        <h2 class="headline">AWAKEN<br>PRODUCTION</h2>
-        <p class="body-text">Film, photography, motion, and content creation. We produce the visuals that make people stop, look, and feel something.</p>
-        <div class="btn-group">
-          <a href="production.html" class="btn btn-primary">Learn More</a>
+    <div class="stack-card" id="sc3" style="background:#0c0e0c">
+      <div class="stack-card-inner">
+        <div class="stack-step-num" style="color:#10b981">04</div>
+        <div class="stack-step-content">
+          <div class="stack-step-tag">Step Four</div>
+          <h3 class="stack-step-title">Build</h3>
+          <p class="stack-step-desc">Our tech team takes the creative output and engineers it into reality. Websites, apps, platforms, and campaigns — built to perform at any scale, with precision and speed.</p>
+          <div class="stack-step-tags"><span class="stag">Development</span><span class="stag">QA</span><span class="stag">Infrastructure</span><span class="stag">Integrations</span></div>
         </div>
       </div>
-    </section>
+    </div>
 
-    <section class="slide" data-index="5" onclick="setSlide(5)">
-      <div class="slide-bg" style="background-image:url('https://d8j0ntlcm91z4.cloudfront.net/user_3FE3Vvu9lYALhCwQvePKUS2plzn/hf_20260625_100625_48adce73-fcfa-45d1-8fb5-7b7f1d247d9d.png')"></div>
-      <div class="slide-overlay"></div>
-      <span class="tab-label">PR</span>
-      <div class="slide-content">
-        <p class="eyebrow pr">05 — Public Relations</p>
-        <h2 class="headline">AWAKEN<br>PR</h2>
-        <p class="body-text">Press, partnerships, and public narrative. We shape the stories told about your brand and get them in front of the people who matter.</p>
-        <div class="btn-group">
-          <a href="pr.html" class="btn btn-primary">Learn More</a>
+    <div class="stack-card" id="sc4" style="background:#0e0d0a">
+      <div class="stack-card-inner">
+        <div class="stack-step-num" style="color:#f59e0b">05</div>
+        <div class="stack-step-content">
+          <div class="stack-step-tag">Step Five</div>
+          <h3 class="stack-step-title">Launch</h3>
+          <p class="stack-step-desc">Go live with precision. We deploy campaigns, activate press, publish content, and monitor performance in real-time — then we keep optimising until we exceed the brief.</p>
+          <div class="stack-step-tags"><span class="stag">Activation</span><span class="stag">PR</span><span class="stag">Monitoring</span><span class="stag">Optimise</span></div>
         </div>
       </div>
-    </section>
-  </main>
+    </div>
 
-  <script>
-    let active=0;const total=6;
-    function setSlide(i){active=i;document.querySelectorAll('.slide').forEach((s,idx)=>{s.classList.toggle('active',idx===i)})}
-    document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')setSlide((active+1)%total);if(e.key==='ArrowLeft')setSlide((active-1+total)%total)})
-  </script>
+  </div>
+</div>
+
+<!-- DIVISIONS -->
+<section class="div-sec" id="divisions">
+  <div class="div-inner">
+    <div class="sec-label rv">What We Do</div>
+    <h2 class="sec-h rv rv1">Five divisions.<br><em>One vision.</em></h2>
+    <div class="div-grid">
+
+      <a href="digital.html" class="div-card div-digital" data-dd="0">
+        <img class="div-card-img" src="https://d8j0ntlcm91z4.cloudfront.net/user_3FE3Vvu9lYALhCwQvePKUS2plzn/hf_20260625_100620_bd79b2ba-903d-47f7-a60c-f17bd901f0d7.png" alt="Digital" loading="lazy">
+        <div class="div-card-num">01</div>
+        <div class="div-card-name">Awaken Digital</div>
+        <div class="div-card-desc">Web, apps, social media and paid campaigns that grow your brand online.</div>
+        <div class="div-card-link">Explore ↗</div>
+      </a>
+
+      <a href="design.html" class="div-card div-design" data-dd="80">
+        <img class="div-card-img" src="https://d8j0ntlcm91z4.cloudfront.net/user_3FE3Vvu9lYALhCwQvePKUS2plzn/hf_20260625_100622_18cb8e55-dad6-4a61-bb2f-476a20bed4e8.png" alt="Design" loading="lazy">
+        <div class="div-card-num">02</div>
+        <div class="div-card-name">Awaken Design</div>
+        <div class="div-card-desc">Visual identity, brand systems and creative direction that make you remembered.</div>
+        <div class="div-card-link">Explore ↗</div>
+      </a>
+
+      <a href="tech.html" class="div-card div-tech" data-dd="160">
+        <img class="div-card-img" src="https://d8j0ntlcm91z4.cloudfront.net/user_3FE3Vvu9lYALhCwQvePKUS2plzn/hf_20260625_100622_c2a52321-157a-4f06-9af4-a1c2642110c1.png" alt="Tech" loading="lazy">
+        <div class="div-card-num">03</div>
+        <div class="div-card-name">Awaken Tech</div>
+        <div class="div-card-desc">Software, infrastructure and innovation that powers ambitious products at scale.</div>
+        <div class="div-card-link">Explore ↗</div>
+      </a>
+
+      <a href="production.html" class="div-card div-prod" data-dd="240">
+        <img class="div-card-img" src="https://d8j0ntlcm91z4.cloudfront.net/user_3FE3Vvu9lYALhCwQvePKUS2plzn/hf_20260625_100623_3a812de3-71f9-48bf-9966-44dbba776b4e.png" alt="Production" loading="lazy">
+        <div class="div-card-num">04</div>
+        <div class="div-card-name">Awaken Production</div>
+        <div class="div-card-desc">Film, photography, motion and content that makes people stop, look and feel.</div>
+        <div class="div-card-link">Explore ↗</div>
+      </a>
+
+      <a href="pr.html" class="div-card div-pr" data-dd="320">
+        <img class="div-card-img" src="https://d8j0ntlcm91z4.cloudfront.net/user_3FE3Vvu9lYALhCwQvePKUS2plzn/hf_20260625_100625_48adce73-fcfa-45d1-8fb5-7b7f1d247d9d.png" alt="PR" loading="lazy">
+        <div class="div-card-num">05</div>
+        <div class="div-card-name">Awaken PR</div>
+        <div class="div-card-desc">Press, partnerships and public narrative that puts you in front of the people who matter.</div>
+        <div class="div-card-link">Explore ↗</div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-sec rv">
+  <div class="cta-glow"></div>
+  <div class="sec-label" style="justify-content:center;">Let's Build Together</div>
+  <h2 class="cta-h">Ready to become<br>something <em>great?</em></h2>
+  <p class="cta-sub">We collaborate to find the right answer and bring real progress to your business and to the world.</p>
+  <div class="cta-btn-wrap">
+    <a href="https://www.awakenentertainment.org/contact" target="_blank" class="btn-project" style="width:180px;height:180px;">
+      <span class="btn-project-text">Start a<br>Project</span>
+    </a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-grid">
+    <div>
+      <div class="ft-logo"><div class="ft-logo-box">A</div><span class="ft-logo-t">AWAKEN</span></div>
+      <p class="ft-desc">We turn brands into culture through bold storytelling and measurable growth. Based in Yangon, building for the world.</p>
+    </div>
+    <div>
+      <div class="ft-h">Divisions</div>
+      <div class="ft-links">
+        <a href="digital.html">Awaken Digital</a>
+        <a href="design.html">Awaken Design</a>
+        <a href="tech.html">Awaken Tech</a>
+        <a href="production.html">Awaken Production</a>
+        <a href="pr.html">Awaken PR</a>
+      </div>
+    </div>
+    <div>
+      <div class="ft-h">Contact</div>
+      <div class="ft-links">
+        <a href="tel:+959255762417">+95 9255762417</a>
+        <a href="tel:+959799489370">+95 9799489370</a>
+        <a href="mailto:nyinyisoewin@awakenentertainment.org">Email Us</a>
+        <a href="https://www.awakenentertainment.org" target="_blank">Website</a>
+      </div>
+    </div>
+    <div>
+      <div class="ft-h">Location</div>
+      <div class="ft-links">
+        <span>No.57, YaeKuYwarMa Street,<br>Ward 9, Mayangone,<br>Yangon, Myanmar</span>
+      </div>
+    </div>
+  </div>
+  <div class="ft-bot">
+    <span>© 2026 <span class="ft-acc">Awaken Entertainment</span>. All rights reserved.</span>
+    <span>Built with purpose in Yangon.</span>
+  </div>
+</footer>
+
+<script>
+/* ── LOADER ── */
+const ld=document.getElementById('ld'),ldNum=document.getElementById('ldNum'),ldFill=document.getElementById('ldFill');
+let pct=0;
+const ldInt=setInterval(()=>{
+  pct=Math.min(pct+Math.random()*18+4,100);
+  ldNum.textContent=Math.floor(pct);
+  ldFill.style.width=pct+'%';
+  if(pct>=100){clearInterval(ldInt);setTimeout(()=>{ld.classList.add('out');revealHero();},250);}
+},80);
+
+/* ── HERO REVEAL ── */
+function revealHero(){
+  const e='cubic-bezier(0.16,1,0.3,1)';
+  const s=(el,d,css)=>setTimeout(()=>Object.assign(el.style,css),d);
+  s(document.getElementById('nLogo'),80,{opacity:'1',transition:`opacity .6s ${e}`});
+  s(document.getElementById('nLinks'),160,{opacity:'1',transition:`opacity .6s ${e}`});
+  s(document.getElementById('nCta'),240,{opacity:'1',transition:`opacity .6s ${e}`});
+  s(document.getElementById('hTag'),350,{opacity:'1',transition:`opacity .7s ease`});
+  s(document.getElementById('hBadge'),400,{opacity:'1',transition:'opacity 1s ease'});
+  document.querySelectorAll('.hero-word').forEach((w,i)=>
+    setTimeout(()=>{w.style.transform='translateY(0)';w.style.transition=`transform 1s ${e}`;},480+i*80)
+  );
+  s(document.getElementById('hBot'),1000,{opacity:'1',transition:'opacity .8s ease'});
+  s(document.getElementById('hScroll'),1300,{opacity:'1',transition:'opacity .7s ease'});
+  const vid=document.querySelector('.hero-video');
+  if(vid&&vid.readyState>=2)document.getElementById('heroPlaceholder').style.opacity='0';
+}
+
+/* ── CURSOR ── */
+const cd=document.getElementById('cd'),cr=document.getElementById('cr');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cd.style.left=mx+'px';cd.style.top=my+'px';});
+(function animC(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;cr.style.left=rx+'px';cr.style.top=ry+'px';requestAnimationFrame(animC);})();
+document.querySelectorAll('a,button,.div-card,.btn-project').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add('hov'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('hov'));
+});
+
+/* ── NAV SCROLL ── */
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>80);
+},{passive:true});
+
+/* ── STATS COUNTER ── */
+let statsDone=false;
+new IntersectionObserver(([e])=>{
+  if(!e.isIntersecting||statsDone)return; statsDone=true;
+  document.querySelectorAll('.stat').forEach((s,i)=>setTimeout(()=>s.classList.add('vis'),i*100));
+  document.querySelectorAll('.stat-n[data-to]').forEach(el=>{
+    const to=+el.dataset.to,from=+el.dataset.from,sfx=el.dataset.sfx||'';
+    const dur=1600,t0=performance.now();
+    const tick=now=>{const p=Math.min((now-t0)/dur,1),ease=1-Math.pow(1-p,3);el.textContent=Math.round(from+(to-from)*ease)+sfx;if(p<1)requestAnimationFrame(tick);};
+    requestAnimationFrame(tick);
+  });
+},{threshold:0.4}).observe(document.getElementById('statsBar'));
+
+/* ── STACKING SCROLL ── */
+const stackOuter=document.getElementById('stackOuter');
+const cards=[0,1,2,3,4].map(i=>document.getElementById('sc'+i));
+const pips=document.querySelectorAll('.stack-pip');
+let currentCard=-1;
+
+cards.forEach((c,i)=>{
+  if(i===0){c.style.transform='translateY(0)';}
+  else{c.style.transform='translateY(100%)';}
+});
+
+function updateStack(){
+  const rect=stackOuter.getBoundingClientRect();
+  const totalScroll=stackOuter.offsetHeight-window.innerHeight;
+  const scrolled=Math.max(0,-rect.top);
+  const progress=Math.min(scrolled/totalScroll,1);
+  const rawStep=progress*5;
+  const step=Math.min(Math.floor(rawStep),4);
+  if(step===currentCard)return;
+  currentCard=step;
+  cards.forEach((c,i)=>{
+    if(i<step){
+      const scaleBack=Math.max(0.92,1-(step-i)*0.03);
+      c.style.transform=`translateY(${-(step-i)*2}%) scale(${scaleBack})`;
+      c.style.transition='transform 0.7s cubic-bezier(0.16,1,0.3,1)';
+      c.style.zIndex=i;
+    } else if(i===step){
+      c.style.transform='translateY(0) scale(1)';
+      c.style.transition='transform 0.7s cubic-bezier(0.16,1,0.3,1)';
+      c.style.zIndex=10;
+    } else {
+      c.style.transform='translateY(100%)';
+      c.style.transition='transform 0.7s cubic-bezier(0.16,1,0.3,1)';
+      c.style.zIndex=i;
+    }
+  });
+  pips.forEach((p,i)=>p.classList.toggle('active',i===step));
+}
+
+window.addEventListener('scroll',updateStack,{passive:true});
+updateStack();
+
+/* ── DIVISION CARDS REVEAL ── */
+const dcObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting)return;
+    const d=parseInt(e.target.dataset.dd)||0;
+    setTimeout(()=>e.target.classList.add('vis'),d);
+    dcObs.unobserve(e.target);
+  });
+},{threshold:0.1});
+document.querySelectorAll('.div-card').forEach(el=>dcObs.observe(el));
+
+/* ── GENERIC REVEAL ── */
+const rvObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');rvObs.unobserve(e.target);}});
+},{threshold:0.1});
+document.querySelectorAll('.rv').forEach(el=>rvObs.observe(el));
+</script>
 </body>
 </html>
