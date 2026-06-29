@@ -87,7 +87,6 @@
       justify-content: flex-end; padding: 0 2.5rem 3rem;
       position: relative; overflow: hidden;
     }
-    /* Big background number */
     .hero-bg-num {
       position: absolute; right: -0.05em; bottom: -.1em;
       font-size: clamp(18rem, 35vw, 38rem); font-weight: 900;
@@ -95,7 +94,6 @@
       color: rgba(255,255,255,.025); pointer-events: none; user-select: none;
       z-index: 0;
     }
-    /* Rotating badge */
     .hero-badge {
       position: absolute; top: 7rem; right: 2.5rem;
       width: 110px; height: 110px; z-index: 2; opacity: 0;
@@ -202,7 +200,6 @@
       margin-bottom: 0; padding-bottom: 1.5rem;
       border-bottom: 1px solid var(--border);
     }
-    /* Hover image reveal */
     #proj-img {
       position: fixed; z-index: 200; pointer-events: none;
       width: 280px; height: 190px; border-radius: 12px;
@@ -315,13 +312,160 @@
     .proc-pts { display: flex; flex-direction: column; gap: .5rem; }
     .proc-pt { font-size: 13px; color: var(--muted); display: flex; align-items: center; gap: .75rem; }
     .proc-pt::before { content:''; width:5px; height:5px; border-radius:50%; background:var(--accent); flex-shrink:0; }
-    /* Accent bar that animates on card enter */
     .proc-card-bar {
       position: absolute; top: 0; left: 0; right: 0; height: 2px;
       background: var(--accent); transform: scaleX(0); transform-origin: left;
       transition: transform .8s cubic-bezier(.16,1,.3,1);
     }
     .proc-card.in-view .proc-card-bar { transform: scaleX(1); }
+
+    /* ─── DOTTED BUTTON ─── */
+    .btn-dot {
+      position: relative; overflow: hidden;
+      background: #0f0f0f !important;
+      background-image: radial-gradient(rgba(200,255,0,.18) 1px, transparent 1px) !important;
+      background-size: 6px 6px !important;
+      border: 1px solid rgba(200,255,0,.45) !important;
+      color: var(--text) !important;
+    }
+    .btn-dot::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(200,255,0,.04) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .btn-dot:hover {
+      border-color: var(--accent) !important;
+      box-shadow: 0 0 28px rgba(200,255,0,.22), inset 0 0 20px rgba(200,255,0,.04) !important;
+      transform: none !important;
+    }
+
+    /* ─── FLOATING CONTACT MENU ─── */
+    .float-menu {
+      position: fixed; right: 0; top: 50%; transform: translateY(-50%);
+      z-index: 500; display: flex; flex-direction: column; gap: 3px;
+    }
+    .float-btn {
+      width: 60px; height: 60px;
+      background: rgba(10,10,10,.95);
+      background-image: radial-gradient(rgba(200,255,0,.1) 1px, transparent 1px);
+      background-size: 5px 5px;
+      border: 1px solid rgba(255,255,255,.06);
+      border-right: none;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; position: relative;
+      transition: border-color .25s, background-color .25s;
+      text-decoration: none; color: var(--text);
+      backdrop-filter: blur(8px);
+    }
+    .float-btn .fb-corner {
+      position: absolute; top: 0; right: 0;
+      width: 8px; height: 8px;
+      border-top: 1px solid var(--accent);
+      border-right: 1px solid var(--accent);
+      transition: width .3s, height .3s;
+    }
+    .float-btn:hover { border-color: rgba(200,255,0,.25); background-color: rgba(200,255,0,.04); }
+    .float-btn:hover .fb-corner { width: 100%; height: 100%; }
+    .float-btn svg { width: 22px; height: 22px; stroke: #ccc; stroke-width: 1.5; fill: none; transition: stroke .25s; }
+    .float-btn:hover svg { stroke: var(--text); }
+
+    /* ─── RESULTS SECTION ─── */
+    .results-bg { background: var(--bg); }
+    .results-h {
+      font-size: clamp(4rem,9vw,9rem); font-weight: 900;
+      letter-spacing: -0.04em; line-height: .9; margin-bottom: .5rem;
+    }
+    .results-sub { font-size: 14px; color: var(--muted); margin-bottom: 3.5rem; }
+    .results-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 2px; background: var(--border);
+      border: 1px solid var(--border); border-radius: 16px; overflow: hidden;
+    }
+    .r-card {
+      background: var(--surface); padding: 3rem;
+      opacity: 0; transform: translateY(20px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+    .r-card.vis { opacity: 1; transform: translateY(0); }
+    .r-card-lbl {
+      font-size: 9px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase;
+      color: var(--muted); display: flex; align-items: center; gap: .5rem; margin-bottom: 2rem;
+    }
+    .r-card-lbl::before { content: ''; width: 7px; height: 7px; background: var(--accent); flex-shrink: 0; }
+    .r-stats-row { display: flex; gap: 2.5rem; flex-wrap: wrap; margin-bottom: 2rem; }
+    .r-stat .rn { font-size: clamp(1.8rem,3.5vw,3rem); font-weight: 900; letter-spacing: -0.04em; line-height: 1; }
+    .r-stat .rl { font-size: 9px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); margin-top: .3rem; display: flex; align-items: center; gap: .4rem; }
+    .r-stat .rl::before { content: ''; width: 6px; height: 6px; background: var(--accent); }
+    .r-chart-wrap { position: relative; height: 110px; margin-top: 1rem; }
+    .r-chart-badge {
+      position: absolute; top: 0; right: 0;
+      background: var(--surface2); border: 1px solid var(--accent);
+      padding: 4px 10px; font-size: 11px; font-weight: 700; color: var(--accent);
+      display: flex; align-items: center; gap: .3rem;
+    }
+    .r-feat-h { font-size: clamp(1.3rem,2.2vw,1.9rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 2rem; line-height: 1.15; }
+    .r-feat-h em { font-style: italic; color: var(--accent); font-family: 'Playfair Display', serif; }
+    .r-feat-item { display: grid; grid-template-columns: 1fr 1fr; padding: .9rem 0; border-top: 1px solid var(--border); font-size: 13px; }
+    .r-feat-item:last-child { border-bottom: 1px solid var(--border); }
+    .r-feat-name { font-weight: 700; }
+    .r-feat-desc { color: var(--muted); }
+    .r-team-h { font-size: clamp(1.4rem,2.5vw,2.2rem); font-weight: 900; letter-spacing: -0.03em; margin-bottom: .75rem; line-height: 1.1; }
+    .r-team-h em { font-style: italic; color: var(--accent); font-family: 'Playfair Display', serif; }
+    .r-team-desc { font-size: 13px; color: var(--muted); line-height: 1.8; max-width: 340px; margin-bottom: 1.75rem; }
+    .r-steps { display: flex; gap: 0; margin-top: 1rem; }
+    .r-step {
+      flex: 1; padding: .75rem 1rem;
+      background: var(--surface2); border: 1px solid var(--border);
+      font-size: 9px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--muted); text-align: center; transition: all .3s;
+    }
+    .r-step:hover { color: var(--accent); border-color: rgba(200,255,0,.2); }
+    .r-step-num { display: block; font-size: 1.1rem; font-weight: 900; color: var(--text); letter-spacing: -0.03em; margin-bottom: .25rem; }
+    .r-step-badge {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: var(--surface2); border: 1px solid rgba(200,255,0,.25);
+      padding: 5px 12px; font-size: 10px; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--accent); margin-top: 1.5rem;
+    }
+    .r-step-badge::before { content: ''; width: 5px; height: 5px; background: var(--accent); }
+    .r-lh-h { font-size: clamp(1.4rem,2.5vw,2.2rem); font-weight: 900; letter-spacing: -0.03em; margin-bottom: .75rem; }
+    .r-lh-h em { font-style: italic; color: var(--accent); font-family: 'Playfair Display', serif; }
+    .r-lh-desc { font-size: 13px; color: var(--muted); line-height: 1.8; margin-bottom: 2rem; max-width: 340px; }
+    .r-lh-scores { display: flex; gap: 1.25rem; flex-wrap: wrap; margin-top: 1rem; }
+    .r-lh-item { text-align: center; }
+    .r-lh-ring {
+      width: 70px; height: 70px; border-radius: 50%;
+      border: 2px solid var(--accent);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.25rem; font-weight: 900; color: var(--accent);
+      margin-bottom: .5rem; position: relative;
+      box-shadow: 0 0 16px rgba(200,255,0,.12);
+    }
+    .r-lh-ring-lbl { font-size: 9px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+    .r-live { display: flex; align-items: center; gap: .5rem; margin-bottom: 1.5rem; }
+    .r-live-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: glowpulse 2s ease-in-out infinite; }
+    .r-live-txt { font-size: 9px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); }
+
+    /* ─── HERO TRUST BAR ─── */
+    .hero-trust {
+      display: flex; align-items: center; gap: 0; flex-wrap: wrap;
+      margin-top: 3rem; opacity: 0;
+      border: 1px solid var(--border);
+      align-self: flex-start;
+    }
+    .trust-item {
+      display: flex; align-items: center; gap: .75rem;
+      padding: .9rem 1.5rem; border-right: 1px solid var(--border);
+    }
+    .trust-item:last-child { border-right: none; }
+    .trust-icon {
+      width: 32px; height: 32px; background: var(--surface2);
+      border: 1px solid rgba(200,255,0,.25);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; flex-shrink: 0;
+    }
+    .trust-num { font-size: 1.1rem; font-weight: 900; letter-spacing: -0.02em; line-height: 1; }
+    .trust-lbl { font-size: 8px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-top: 1px; }
 
     /* ─── CTA ─── */
     .cta-sec {
@@ -420,10 +564,31 @@
       .cta-sec { padding: 5rem 1.25rem; }
       .work-row { grid-template-columns: 40px 1fr auto; }
       .wr-tags { display: none; }
+      .results-grid { grid-template-columns: 1fr; }
+      .float-menu { display: none; }
+      .hero-trust { display: none; }
+      .r-steps { flex-wrap: wrap; }
+      .r-step { min-width: calc(50% - 1px); }
     }
   </style>
 </head>
 <body>
+
+<!-- FLOATING CONTACT MENU -->
+<div class="float-menu">
+  <a href="https://wa.me/959255762417" target="_blank" class="float-btn" title="WhatsApp">
+    <div class="fb-corner"></div>
+    <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+  </a>
+  <a href="tel:+959255762417" class="float-btn" title="Call">
+    <div class="fb-corner"></div>
+    <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.57 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.48 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.09 6.09l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  </a>
+  <a href="mailto:nyinyisoewin@awakenentertainment.org" class="float-btn" title="Email">
+    <div class="fb-corner"></div>
+    <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+  </a>
+</div>
 
 <!-- SCROLL PROGRESS -->
 <div id="scroll-prog"></div>
@@ -461,7 +626,6 @@
 <section class="hero">
   <div class="hero-bg-num">AW</div>
 
-  <!-- Rotating badge -->
   <div class="hero-badge" id="hBadge">
     <svg viewBox="0 0 110 110">
       <defs>
@@ -485,8 +649,22 @@
       <div>
         <p class="hero-sub">From strategy to deployment — we create web experiences, apps and platforms that make the digital world feel alive.</p>
         <div class="hero-actions" style="margin-top:1.75rem;">
-          <a href="https://www.awakenentertainment.org/contact" target="_blank" class="btn-acc">Start a Project →</a>
+          <a href="https://www.awakenentertainment.org/contact" target="_blank" class="btn-acc btn-dot">Start a Project →</a>
           <a href="#work" class="btn-out">See Our Work ↓</a>
+        </div>
+        <div class="hero-trust" id="hTrust">
+          <div class="trust-item">
+            <div class="trust-icon">★</div>
+            <div><div class="trust-num">5.0</div><div class="trust-lbl">Google · Reviews</div></div>
+          </div>
+          <div class="trust-item">
+            <div class="trust-icon">⚡</div>
+            <div><div class="trust-num">100</div><div class="trust-lbl">Pagespeed Score</div></div>
+          </div>
+          <div class="trust-item">
+            <div class="trust-icon">✦</div>
+            <div><div class="trust-num">50+</div><div class="trust-lbl">Campaigns Launched</div></div>
+          </div>
         </div>
       </div>
       <div class="hero-scroll" id="hScroll">Scroll to explore</div>
@@ -703,6 +881,96 @@
   </section>
 </div>
 
+<!-- RESULTS -->
+<div class="results-bg">
+  <section class="sec" id="results">
+    <div class="sec-inner">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:3.5rem;">
+        <div>
+          <h2 class="results-h rv">Results.</h2>
+          <p class="results-sub rv rv1">Last 12 months — driven by real client projects</p>
+        </div>
+        <a href="https://www.awakenentertainment.org/contact" target="_blank" class="btn-acc btn-dot rv rv2" style="align-self:center;">Start a Project →</a>
+      </div>
+      <div class="results-grid">
+
+        <!-- Stats + chart -->
+        <div class="r-card" data-rd="0">
+          <div class="r-card-lbl">Last 12 months — driven by real client projects</div>
+          <div class="r-stats-row">
+            <div class="r-stat">
+              <div class="rn">50+</div>
+              <div class="rl">Campaigns</div>
+            </div>
+            <div class="r-stat">
+              <div class="rn">15+</div>
+              <div class="rl">Industries</div>
+            </div>
+            <div class="r-stat">
+              <div class="rn">98%</div>
+              <div class="rl">Retention</div>
+            </div>
+          </div>
+          <div class="r-chart-wrap">
+            <div class="r-chart-badge">↑ +47%</div>
+            <svg viewBox="0 0 400 110" class="r-chart" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="cg" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#c8ff00" stop-opacity=".35"/>
+                  <stop offset="100%" stop-color="#c8ff00" stop-opacity="0"/>
+                </linearGradient>
+                <clipPath id="cp"><rect id="cpRect" x="0" y="0" width="0" height="110"/></clipPath>
+              </defs>
+              <path id="chartPath" d="M0,100 C40,95 70,90 100,82 C140,70 160,68 200,60 C240,52 260,45 300,35 C330,26 360,18 400,5" fill="none" stroke="#c8ff00" stroke-width="2"/>
+              <path d="M0,100 C40,95 70,90 100,82 C140,70 160,68 200,60 C240,52 260,45 300,35 C330,26 360,18 400,5 L400,110 L0,110Z" fill="url(#cg)" clip-path="url(#cp)"/>
+              <circle id="chartDot" cx="400" cy="5" r="4" fill="#c8ff00"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Feature list -->
+        <div class="r-card" data-rd="80">
+          <div class="r-feat-h">Websites, optimized for<br><em>real outcomes.</em></div>
+          <div>
+            <div class="r-feat-item"><div class="r-feat-name">On-page SEO</div><div class="r-feat-desc">Ready to be found on Google.</div></div>
+            <div class="r-feat-item"><div class="r-feat-name">Tracking & Analytics</div><div class="r-feat-desc">User stats & marketing data.</div></div>
+            <div class="r-feat-item"><div class="r-feat-name">100% Responsive</div><div class="r-feat-desc">Desktop, tablet, mobile — and everything in between.</div></div>
+            <div class="r-feat-item"><div class="r-feat-name">ROI-first</div><div class="r-feat-desc">Most out of every ad dollar.</div></div>
+          </div>
+        </div>
+
+        <!-- Team workflow -->
+        <div class="r-card" data-rd="40">
+          <div class="r-card-lbl">Workflow · One Team</div>
+          <div class="r-team-h">From A to <em>Z, one team.</em></div>
+          <p class="r-team-desc">Briefing, concept, design, build, operations — no handoffs between specialists. You talk to the team that actually builds everything.</p>
+          <div class="r-steps">
+            <div class="r-step"><span class="r-step-num">A</span>Brief</div>
+            <div class="r-step"><span class="r-step-num">B</span>Design</div>
+            <div class="r-step"><span class="r-step-num">C</span>Build</div>
+            <div class="r-step"><span class="r-step-num">D</span>Launch</div>
+          </div>
+          <div class="r-step-badge">0 Handoffs</div>
+        </div>
+
+        <!-- Lighthouse -->
+        <div class="r-card" data-rd="120">
+          <div class="r-live"><div class="r-live-dot"></div><div class="r-live-txt">Google Lighthouse · Live</div></div>
+          <div class="r-lh-h">Four scores.<br><em>All 100.</em></div>
+          <p class="r-lh-desc">Full Lighthouse scores in Performance, SEO, Accessibility and Best Practices — standard on every project, not a lucky break.</p>
+          <div class="r-lh-scores">
+            <div class="r-lh-item"><div class="r-lh-ring" data-lh="100">0</div><div class="r-lh-ring-lbl">Performance</div></div>
+            <div class="r-lh-item"><div class="r-lh-ring" data-lh="100">0</div><div class="r-lh-ring-lbl">SEO</div></div>
+            <div class="r-lh-item"><div class="r-lh-ring" data-lh="100">0</div><div class="r-lh-ring-lbl">Accessibility</div></div>
+            <div class="r-lh-item"><div class="r-lh-ring" data-lh="100">0</div><div class="r-lh-ring-lbl">Best Practices</div></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</div>
+
 <!-- CTA -->
 <div class="cta-sec rv">
   <div class="cta-glow"></div>
@@ -710,7 +978,7 @@
   <h2 class="cta-h">Ready to grow your<br><em>digital presence?</em></h2>
   <p class="cta-sub">We collaborate to find the right answer and bring real progress to your business and to the world.</p>
   <div class="cta-btns">
-    <a href="https://www.awakenentertainment.org/contact" target="_blank" class="btn-acc">Start a Project →</a>
+    <a href="https://www.awakenentertainment.org/contact" target="_blank" class="btn-acc btn-dot">Start a Project →</a>
     <a href="tel:+959255762417" class="btn-out">Call Us</a>
   </div>
 </div>
@@ -832,6 +1100,8 @@ function revealHero() {
 
   set(hBot, 950, { opacity: '1', transition: `opacity .8s ease` });
   set(hScroll, 1200, { opacity: '1', transition: `opacity .7s ease` });
+  const hTrust = document.getElementById('hTrust');
+  if (hTrust) set(hTrust, 1300, { opacity: '1', transition: `opacity .8s ease` });
 }
 
 /* ─── CURSOR ─── */
@@ -972,6 +1242,51 @@ function updateProcCards() {
   });
 }
 window.addEventListener('scroll', updateProcCards, { passive: true });
+
+/* ─── RESULTS SECTION ─── */
+const rdObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const d = parseInt(e.target.dataset.rd) || 0;
+    setTimeout(() => e.target.classList.add('vis'), d);
+    rdObs.unobserve(e.target);
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.r-card').forEach(el => rdObs.observe(el));
+
+// Animate SVG chart line on entry
+const chartCard = document.querySelector('.r-card[data-rd="0"]');
+if (chartCard) {
+  new IntersectionObserver(([e]) => {
+    if (!e.isIntersecting) return;
+    const cp = document.getElementById('cpRect');
+    if (cp) {
+      cp.style.transition = 'width 1.8s cubic-bezier(.16,1,.3,1)';
+      cp.style.width = '400';
+    }
+  }, { threshold: 0.3 }).observe(chartCard);
+}
+
+// Animate Lighthouse score rings
+const lhObs = new IntersectionObserver(([e]) => {
+  if (!e.isIntersecting) return;
+  document.querySelectorAll('.r-lh-ring[data-lh]').forEach((ring, i) => {
+    const to = parseInt(ring.dataset.lh);
+    const dur = 1200, t0 = performance.now();
+    setTimeout(() => {
+      const tick = now => {
+        const p = Math.min((now - t0) / dur, 1);
+        const ease = 1 - Math.pow(1 - p, 3);
+        ring.textContent = Math.round(ease * to);
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    }, i * 120);
+  });
+  lhObs.disconnect();
+}, { threshold: 0.4 });
+const lhSection = document.querySelector('.r-card[data-rd="120"]');
+if (lhSection) lhObs.observe(lhSection);
 
 /* ─── FAQ ─── */
 document.querySelectorAll('.faq-q').forEach(q => {
