@@ -87,6 +87,7 @@
       justify-content: flex-end; padding: 0 2.5rem 3rem;
       position: relative; overflow: hidden;
     }
+    /* Big background number */
     .hero-bg-num {
       position: absolute; right: -0.05em; bottom: -.1em;
       font-size: clamp(18rem, 35vw, 38rem); font-weight: 900;
@@ -94,6 +95,7 @@
       color: rgba(255,255,255,.025); pointer-events: none; user-select: none;
       z-index: 0;
     }
+    /* Rotating badge */
     .hero-badge {
       position: absolute; top: 7rem; right: 2.5rem;
       width: 110px; height: 110px; z-index: 2; opacity: 0;
@@ -127,7 +129,7 @@
       margin-top: 3.5rem; flex-wrap: wrap; gap: 2rem; opacity: 0;
     }
     .hero-sub { font-size: 15px; color: var(--muted); line-height: 1.8; max-width: 380px; }
-    .hero-actions { display: flex; gap: 1rem; margin-top: 1.75rem; }
+    .hero-actions { display: flex; gap: 1rem; }
     .btn-acc {
       padding: 14px 32px; border-radius: 100px;
       background: var(--accent); color: #000;
@@ -200,6 +202,7 @@
       margin-bottom: 0; padding-bottom: 1.5rem;
       border-bottom: 1px solid var(--border);
     }
+    /* Hover image reveal */
     #proj-img {
       position: fixed; z-index: 200; pointer-events: none;
       width: 280px; height: 190px; border-radius: 12px;
@@ -208,17 +211,21 @@
       transition: opacity .3s, transform .3s;
     }
     #proj-img.show { opacity: 1; transform: scale(1) rotate(0deg); }
-    .proj-ph {
-      width: 100%; height: 100%;
-      display: flex; align-items: center; justify-content: center; font-size: 4rem;
+    #proj-img img, #proj-img .proj-ph {
+      width: 100%; height: 100%; object-fit: cover;
     }
+    .proj-ph {
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem;
+    }
+
     .work-row {
       display: grid; grid-template-columns: 60px 1fr auto auto;
       align-items: center; gap: 2rem;
       padding: 1.5rem 0; border-bottom: 1px solid var(--border);
-      cursor: pointer;
+      cursor: pointer; transition: padding .3s;
       opacity: 0; transform: translateY(20px);
-      transition: opacity .5s ease, transform .5s ease, padding .3s, background .3s;
+      transition: opacity .5s ease, transform .5s ease, padding .3s;
     }
     .work-row.vis { opacity: 1; transform: translateY(0); }
     .work-row:hover { padding: 1.5rem 1rem; background: var(--surface); border-radius: 8px; }
@@ -235,13 +242,13 @@
     }
     .wr-arrow { font-size: 1.4rem; color: var(--muted); transition: all .3s; }
 
-    /* ─── SERVICES ─── */
+    /* ─── SERVICES GRID ─── */
     .srv-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1px; margin-top: 4rem; border: 1px solid var(--border); }
     .srv-item {
       padding: 3rem; background: var(--bg); border-right: 1px solid var(--border);
       position: relative; overflow: hidden;
       opacity: 0; transform: translateY(24px);
-      transition: opacity .6s ease, transform .6s ease, background .3s;
+      transition: opacity .6s ease, transform .6s ease;
     }
     .srv-item.vis { opacity: 1; transform: translateY(0); }
     .srv-item:nth-child(2n) { border-right: none; }
@@ -257,50 +264,64 @@
     .srv-text { font-size: 13px; color: var(--muted); line-height: 1.8; margin-bottom: 1.5rem; }
     .srv-tags { display: flex; flex-wrap: wrap; gap: .4rem; }
 
-    /* ─── PROCESS ─── */
+    /* ─── PROCESS STICKY CARDS ─── */
     .proc-bg { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .proc-row {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 6rem;
-      align-items: center; padding: 5rem 0; border-bottom: 1px solid var(--border);
+    .proc-stack { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 4rem; padding-bottom: 8rem; }
+    .proc-card {
+      position: sticky;
+      top: 80px;
+      height: 60vh;
+      min-height: 460px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--surface2);
+      transform-origin: top center;
+      will-change: transform, filter;
+      transition: border-color .3s;
     }
-    .proc-row:last-child { border-bottom: none; }
-    .proc-row:nth-child(even) .proc-vis { order: -1; }
-    .proc-left { opacity: 0; transform: translateX(-30px); transition: opacity .7s ease, transform .7s ease; }
-    .proc-right { opacity: 0; transform: translateX(30px); transition: opacity .7s ease .15s, transform .7s ease .15s; }
-    .proc-row:nth-child(even) .proc-left { transform: translateX(30px); }
-    .proc-row:nth-child(even) .proc-right { transform: translateX(-30px); }
-    .proc-row.vis .proc-left, .proc-row.vis .proc-right { opacity: 1; transform: translateX(0); }
+    .proc-card:nth-child(1) { z-index: 1; }
+    .proc-card:nth-child(2) { z-index: 2; }
+    .proc-card:nth-child(3) { z-index: 3; }
+    .proc-card:nth-child(4) { z-index: 4; }
+    .proc-card-img {
+      position: relative; overflow: hidden; background: var(--bg);
+    }
+    .proc-card-img img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform .8s cubic-bezier(.16,1,.3,1);
+    }
+    .proc-card:hover .proc-card-img img { transform: scale(1.05); }
+    .proc-card-img-ov {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(200,255,0,.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .proc-card-text {
+      padding: 3rem 3.5rem;
+      display: flex; flex-direction: column; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .proc-card-num {
+      position: absolute; bottom: -1rem; right: 1.5rem;
+      font-size: 9rem; font-weight: 900; letter-spacing: -0.05em; line-height: 1;
+      color: rgba(255,255,255,.03); pointer-events: none; user-select: none;
+    }
     .proc-step { font-size: 10px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
-    .proc-title { font-size: clamp(2rem,4vw,3.25rem); font-weight: 900; letter-spacing: -0.03em; margin-bottom: 1rem; }
-    .proc-desc { font-size: 14px; color: var(--muted); line-height: 1.85; margin-bottom: 1.75rem; }
+    .proc-title { font-size: clamp(1.75rem,3vw,2.75rem); font-weight: 900; letter-spacing: -0.03em; margin-bottom: 1rem; line-height: 1.0; }
+    .proc-desc { font-size: 14px; color: var(--muted); line-height: 1.85; margin-bottom: 1.75rem; max-width: 380px; }
     .proc-pts { display: flex; flex-direction: column; gap: .5rem; }
     .proc-pt { font-size: 13px; color: var(--muted); display: flex; align-items: center; gap: .75rem; }
     .proc-pt::before { content:''; width:5px; height:5px; border-radius:50%; background:var(--accent); flex-shrink:0; }
-    .proc-vis-box {
-      background: var(--surface2); border: 1px solid var(--border); border-radius: 20px;
-      aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center;
-      position: relative; overflow: hidden; transition: border-color .3s;
+    /* Accent bar that animates on card enter */
+    .proc-card-bar {
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: var(--accent); transform: scaleX(0); transform-origin: left;
+      transition: transform .8s cubic-bezier(.16,1,.3,1);
     }
-    .proc-row:hover .proc-vis-box { border-color: rgba(200,255,0,.12); }
-    .proc-icon {
-      width: 90px; height: 90px; border-radius: 50%;
-      border: 1px solid rgba(200,255,0,.2);
-      display: flex; align-items: center; justify-content: center; font-size: 2.5rem;
-      position: relative;
-    }
-    .proc-icon::before {
-      content:''; position:absolute; inset:-22px; border-radius:50%;
-      border: 1px solid rgba(200,255,0,.06); animation: rotate 14s linear infinite;
-    }
-    .proc-icon::after {
-      content:''; position:absolute; inset:-48px; border-radius:50%;
-      border: 1px dashed rgba(200,255,0,.03); animation: rotate 28s linear infinite reverse;
-    }
-    .proc-bg-num {
-      position: absolute; bottom: .75rem; right: 1.25rem;
-      font-size: 7rem; font-weight: 900; color: rgba(255,255,255,.02);
-      line-height: 1; letter-spacing: -0.05em;
-    }
+    .proc-card.in-view .proc-card-bar { transform: scaleX(1); }
 
     /* ─── CTA ─── */
     .cta-sec {
@@ -354,12 +375,29 @@
     .ft-bot { max-width: 1400px; margin: 3rem auto 0; padding-top: 2rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; font-size: 12px; color: var(--muted); }
     .ft-acc { color: var(--accent); }
 
+    /* ─── SCROLL PROGRESS ─── */
+    #scroll-prog {
+      position: fixed; top: 0; left: 0; z-index: 9000;
+      height: 2px; background: var(--accent); width: 0%;
+      transition: width .1s linear;
+      box-shadow: 0 0 8px rgba(200,255,0,.6);
+    }
+
     /* ─── REVEAL ─── */
     .rv { opacity: 0; transform: translateY(32px); transition: opacity .7s ease, transform .7s ease; }
     .rv.vis { opacity: 1; transform: translateY(0); }
     .rv1 { transition-delay: .1s; }
     .rv2 { transition-delay: .2s; }
     .rv3 { transition-delay: .3s; }
+
+    /* ─── SPLIT HEADING REVEAL ─── */
+    .split-h { overflow: hidden; }
+    .split-h .split-line { display: block; overflow: hidden; }
+    .split-h .split-word { display: inline-block; transform: translateY(110%); transition: transform .9s cubic-bezier(.16,1,.3,1); }
+    .split-h.vis .split-word { transform: translateY(0); }
+    .split-h.vis .split-word:nth-child(2) { transition-delay: .06s; }
+    .split-h.vis .split-word:nth-child(3) { transition-delay: .12s; }
+    .split-h.vis .split-word:nth-child(4) { transition-delay: .18s; }
 
     /* ─── MOBILE ─── */
     @media(max-width:900px) {
@@ -375,8 +413,9 @@
       .sec { padding: 4rem 1.25rem; }
       .srv-grid { grid-template-columns: 1fr; }
       .srv-item { border-right: none !important; }
-      .proc-row { grid-template-columns: 1fr; gap: 2rem; padding: 3rem 0; }
-      .proc-row:nth-child(even) .proc-vis { order: unset; }
+      .proc-card { grid-template-columns: 1fr; height: auto; min-height: unset; position: relative; top: 0; }
+      .proc-card-img { height: 220px; }
+      .proc-card-text { padding: 2rem; }
       .ft-grid { grid-template-columns: 1fr 1fr; }
       .cta-sec { padding: 5rem 1.25rem; }
       .work-row { grid-template-columns: 40px 1fr auto; }
@@ -386,17 +425,26 @@
 </head>
 <body>
 
+<!-- SCROLL PROGRESS -->
+<div id="scroll-prog"></div>
+
+<!-- CURSOR -->
 <div id="cur"><div class="cur-r" id="cr"></div><div class="cur-d" id="cd"></div></div>
 
+<!-- LOADER -->
 <div id="ld">
   <div class="ld-num" id="ldNum">0</div>
   <div class="ld-bar"><div class="ld-fill" id="ldFill"></div></div>
 </div>
 
-<div id="proj-img"><div class="proj-ph" id="projPh"></div></div>
+<!-- FLOATING PROJECT IMAGE -->
+<div id="proj-img"><div class="proj-ph" id="projPh" style="background:#111"></div></div>
 
+<!-- NAV -->
 <nav id="nav">
-  <a href="index.html" class="nav-l" id="nL"><div class="nav-logo-box">A</div>AWAKEN</a>
+  <a href="index.html" class="nav-l" id="nL">
+    <div class="nav-logo-box">A</div>AWAKEN
+  </a>
   <div class="nav-c" id="nC">
     <a href="digital.html" class="active">Digital</a>
     <a href="design.html">Design</a>
@@ -409,17 +457,23 @@
   </div>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
   <div class="hero-bg-num">AW</div>
+
+  <!-- Rotating badge -->
   <div class="hero-badge" id="hBadge">
     <svg viewBox="0 0 110 110">
-      <defs><path id="circle" d="M55,55 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"/></defs>
+      <defs>
+        <path id="circle" d="M55,55 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"/>
+      </defs>
       <text fill="#c8ff00" font-size="11.5" font-weight="700" letter-spacing="4" font-family="Inter,sans-serif">
         <textPath href="#circle">AWAKEN DIGITAL · YANGON · 2016 · </textPath>
       </text>
     </svg>
     <div class="hero-badge-dot"></div>
   </div>
+
   <div class="hero-content">
     <div class="hero-tag" id="hTag">Awaken Digital</div>
     <h1 class="hero-title" id="hTitle">
@@ -430,7 +484,7 @@
     <div class="hero-bottom" id="hBot">
       <div>
         <p class="hero-sub">From strategy to deployment — we create web experiences, apps and platforms that make the digital world feel alive.</p>
-        <div class="hero-actions">
+        <div class="hero-actions" style="margin-top:1.75rem;">
           <a href="https://www.awakenentertainment.org/contact" target="_blank" class="btn-acc">Start a Project →</a>
           <a href="#work" class="btn-out">See Our Work ↓</a>
         </div>
@@ -440,6 +494,7 @@
   </div>
 </section>
 
+<!-- STATS -->
 <div class="stats" id="stats">
   <div class="stat"><div class="stat-n" data-to="2016" data-from="2000" data-sfx="">2016</div><div class="stat-l">Founded in Yangon</div></div>
   <div class="stat"><div class="stat-n" data-to="50" data-from="0" data-sfx="+">0+</div><div class="stat-l">Campaigns Launched</div></div>
@@ -447,87 +502,208 @@
   <div class="stat"><div class="stat-n" data-to="98" data-from="0" data-sfx="%">0%</div><div class="stat-l">Client Retention</div></div>
 </div>
 
+<!-- MARQUEE -->
 <div class="mq">
   <div class="mq-t">
     <span class="mq-i">Digital Marketing<span class="mq-sep"></span></span>
     <span class="mq-i">Social Media<span class="mq-sep"></span></span>
     <span class="mq-i">Web Development<span class="mq-sep"></span></span>
     <span class="mq-i">Media Buying<span class="mq-sep"></span></span>
-    <span class="mq-i">SEO &amp; Analytics<span class="mq-sep"></span></span>
+    <span class="mq-i">SEO & Analytics<span class="mq-sep"></span></span>
     <span class="mq-i">Brand Strategy<span class="mq-sep"></span></span>
     <span class="mq-i">App Development<span class="mq-sep"></span></span>
     <span class="mq-i">Digital Marketing<span class="mq-sep"></span></span>
     <span class="mq-i">Social Media<span class="mq-sep"></span></span>
     <span class="mq-i">Web Development<span class="mq-sep"></span></span>
     <span class="mq-i">Media Buying<span class="mq-sep"></span></span>
-    <span class="mq-i">SEO &amp; Analytics<span class="mq-sep"></span></span>
+    <span class="mq-i">SEO & Analytics<span class="mq-sep"></span></span>
     <span class="mq-i">Brand Strategy<span class="mq-sep"></span></span>
     <span class="mq-i">App Development<span class="mq-sep"></span></span>
   </div>
 </div>
 
+<!-- WORK -->
 <section class="sec" id="work">
   <div class="sec-inner">
     <div class="work-hdr">
-      <div><div class="sec-label rv">Selected Work</div><h2 class="sec-h rv rv1">What we've <em>built.</em></h2></div>
+      <div>
+        <div class="sec-label rv">Selected Work</div>
+        <h2 class="sec-h rv rv1">What we've <em>built.</em></h2>
+      </div>
       <a href="https://www.awakenentertainment.org/contact" target="_blank" class="btn-out rv rv2" style="font-size:11px;padding:10px 22px;">All Projects →</a>
     </div>
-    <div class="work-row" data-delay="0" data-color="linear-gradient(135deg,#0ea5e9,#0369a1)" data-emoji="🌐">
-      <span class="wr-num">01</span><span class="wr-name">Lashio Workshop</span>
+
+    <div class="work-row" data-delay="0"
+         data-color="linear-gradient(135deg,#0ea5e9,#0369a1)"
+         data-emoji="🌐">
+      <span class="wr-num">01</span>
+      <span class="wr-name">Lashio Workshop</span>
       <div class="wr-tags"><span class="tag">Web</span><span class="tag">Branding</span><span class="tag">SEO</span></div>
       <span class="wr-arrow">↗</span>
     </div>
-    <div class="work-row" data-delay="80" data-color="linear-gradient(135deg,#f59e0b,#b45309)" data-emoji="📱">
-      <span class="wr-num">02</span><span class="wr-name">Umzugsservice Berlin</span>
+    <div class="work-row" data-delay="80"
+         data-color="linear-gradient(135deg,#f59e0b,#b45309)"
+         data-emoji="📱">
+      <span class="wr-num">02</span>
+      <span class="wr-name">Umzugsservice Berlin</span>
       <div class="wr-tags"><span class="tag">Social Media</span><span class="tag">Paid Ads</span></div>
       <span class="wr-arrow">↗</span>
     </div>
-    <div class="work-row" data-delay="160" data-color="linear-gradient(135deg,#8b5cf6,#6d28d9)" data-emoji="🎯">
-      <span class="wr-num">03</span><span class="wr-name">Brand Campaign 2024</span>
+    <div class="work-row" data-delay="160"
+         data-color="linear-gradient(135deg,#8b5cf6,#6d28d9)"
+         data-emoji="🎯">
+      <span class="wr-num">03</span>
+      <span class="wr-name">Brand Campaign 2024</span>
       <div class="wr-tags"><span class="tag">Digital</span><span class="tag">Strategy</span><span class="tag">Media Buying</span></div>
       <span class="wr-arrow">↗</span>
     </div>
-    <div class="work-row" data-delay="240" data-color="linear-gradient(135deg,#10b981,#047857)" data-emoji="🛒">
-      <span class="wr-num">04</span><span class="wr-name">E-commerce Platform</span>
+    <div class="work-row" data-delay="240"
+         data-color="linear-gradient(135deg,#10b981,#047857)"
+         data-emoji="🛒">
+      <span class="wr-num">04</span>
+      <span class="wr-name">E-commerce Platform</span>
       <div class="wr-tags"><span class="tag">Web App</span><span class="tag">UX/UI</span></div>
       <span class="wr-arrow">↗</span>
     </div>
-    <div class="work-row" data-delay="320" data-color="linear-gradient(135deg,#ec4899,#be185d)" data-emoji="📣">
-      <span class="wr-num">05</span><span class="wr-name">Influencer Campaign</span>
+    <div class="work-row" data-delay="320"
+         data-color="linear-gradient(135deg,#ec4899,#be185d)"
+         data-emoji="📣">
+      <span class="wr-num">05</span>
+      <span class="wr-name">Influencer Campaign</span>
       <div class="wr-tags"><span class="tag">Social</span><span class="tag">Content</span></div>
       <span class="wr-arrow">↗</span>
     </div>
   </div>
 </section>
 
+<!-- SERVICES -->
 <section class="sec" style="padding-top:0;">
   <div class="sec-inner">
     <div class="sec-label rv">Our Disciplines</div>
     <h2 class="sec-h rv rv1">Four disciplines.<br><em>One team.</em></h2>
     <div class="srv-grid">
-      <div class="srv-item" data-sd="0"><div class="srv-n">01</div><div class="srv-title">Digital Marketing</div><div class="srv-text">We create, grow, and maintain your brand's online presence — blending creativity with data-driven strategy to connect meaningfully with your audience.</div><div class="srv-tags"><span class="tag">Social Media</span><span class="tag">Paid Ads</span><span class="tag">Content</span><span class="tag">Analytics</span></div></div>
-      <div class="srv-item" data-sd="120"><div class="srv-n">02</div><div class="srv-title">Web &amp; App Development</div><div class="srv-text">Custom web solutions and mobile applications engineered for performance, security, and strategic business goals. From wireframe to deployment.</div><div class="srv-tags"><span class="tag">React</span><span class="tag">Next.js</span><span class="tag">Mobile</span><span class="tag">CMS</span></div></div>
-      <div class="srv-item" data-sd="0"><div class="srv-n">03</div><div class="srv-title">Social Media Strategy</div><div class="srv-text">Data-driven content calendars, community management, and paid social campaigns that turn followers into loyal customers across every platform.</div><div class="srv-tags"><span class="tag">Instagram</span><span class="tag">Facebook</span><span class="tag">TikTok</span><span class="tag">LinkedIn</span></div></div>
-      <div class="srv-item" data-sd="120"><div class="srv-n">04</div><div class="srv-title">Media Buying</div><div class="srv-text">Strategic ad placement across digital channels. We optimize every dollar for maximum reach, engagement, and conversion — ROI you can measure.</div><div class="srv-tags"><span class="tag">Google Ads</span><span class="tag">Meta Ads</span><span class="tag">Programmatic</span></div></div>
+      <div class="srv-item" data-sd="0" data-sdrow="0">
+        <div class="srv-n">01</div>
+        <div class="srv-title">Digital Marketing</div>
+        <div class="srv-text">We create, grow, and maintain your brand's online presence — blending creativity with data-driven strategy to connect meaningfully with your audience.</div>
+        <div class="srv-tags"><span class="tag">Social Media</span><span class="tag">Paid Ads</span><span class="tag">Content</span><span class="tag">Analytics</span></div>
+      </div>
+      <div class="srv-item" data-sd="100">
+        <div class="srv-n">02</div>
+        <div class="srv-title">Web & App Development</div>
+        <div class="srv-text">Custom web solutions and mobile applications engineered for performance, security, and strategic business goals. From wireframe to deployment.</div>
+        <div class="srv-tags"><span class="tag">React</span><span class="tag">Next.js</span><span class="tag">Mobile</span><span class="tag">CMS</span></div>
+      </div>
+      <div class="srv-item" data-sd="200">
+        <div class="srv-n">03</div>
+        <div class="srv-title">Social Media Strategy</div>
+        <div class="srv-text">Data-driven content calendars, community management, and paid social campaigns that turn followers into loyal customers across every platform.</div>
+        <div class="srv-tags"><span class="tag">Instagram</span><span class="tag">Facebook</span><span class="tag">TikTok</span><span class="tag">LinkedIn</span></div>
+      </div>
+      <div class="srv-item" data-sd="300">
+        <div class="srv-n">04</div>
+        <div class="srv-title">Media Buying</div>
+        <div class="srv-text">Strategic ad placement across digital channels. We optimize every dollar for maximum reach, engagement, and conversion — ROI you can measure.</div>
+        <div class="srv-tags"><span class="tag">Google Ads</span><span class="tag">Meta Ads</span><span class="tag">Programmatic</span></div>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- PROCESS -->
 <div class="proc-bg">
   <section class="sec">
     <div class="sec-inner">
       <div class="sec-label rv">How We Work</div>
       <h2 class="sec-h rv rv1">From idea to <em>impact.</em></h2>
-      <div style="margin-top:4rem;">
-        <div class="proc-row"><div class="proc-left"><div class="proc-step">Step 01</div><h3 class="proc-title">Strategy</h3><p class="proc-desc">We start by understanding your business deeply — your goals, your audience, and your competitive landscape.</p><div class="proc-pts"><div class="proc-pt">Market research &amp; audience mapping</div><div class="proc-pt">Competitive analysis</div><div class="proc-pt">KPI definition &amp; campaign planning</div><div class="proc-pt">Channel selection &amp; budget allocation</div></div></div><div class="proc-right proc-vis"><div class="proc-vis-box"><div class="proc-icon">🧭</div><div class="proc-bg-num">01</div></div></div></div>
-        <div class="proc-row"><div class="proc-right proc-vis"><div class="proc-vis-box"><div class="proc-icon">🎨</div><div class="proc-bg-num">02</div></div></div><div class="proc-left"><div class="proc-step">Step 02</div><h3 class="proc-title">Create</h3><p class="proc-desc">Our creative team produces content that stops the scroll. Every asset is crafted with purpose.</p><div class="proc-pts"><div class="proc-pt">Ad creative &amp; copywriting</div><div class="proc-pt">Landing page design</div><div class="proc-pt">Content calendar creation</div><div class="proc-pt">Brand-aligned visual storytelling</div></div></div></div>
-        <div class="proc-row"><div class="proc-left"><div class="proc-step">Step 03</div><h3 class="proc-title">Launch</h3><p class="proc-desc">With strategy locked and assets ready, we go live with precision targeting and A/B testing built in from day one.</p><div class="proc-pts"><div class="proc-pt">Multi-channel activation</div><div class="proc-pt">Audience targeting &amp; segmentation</div><div class="proc-pt">A/B testing frameworks</div><div class="proc-pt">Real-time performance monitoring</div></div></div><div class="proc-right proc-vis"><div class="proc-vis-box"><div class="proc-icon">🚀</div><div class="proc-bg-num">03</div></div></div></div>
-        <div class="proc-row"><div class="proc-right proc-vis"><div class="proc-vis-box"><div class="proc-icon">📈</div><div class="proc-bg-num">04</div></div></div><div class="proc-left"><div class="proc-step">Step 04</div><h3 class="proc-title">Grow &amp; Optimise</h3><p class="proc-desc">Continuous optimisation based on real data ensures your campaigns improve over time.</p><div class="proc-pts"><div class="proc-pt">Weekly performance reporting</div><div class="proc-pt">Budget reallocation &amp; scaling</div><div class="proc-pt">Creative refresh cycles</div><div class="proc-pt">Monthly strategy reviews</div></div></div></div>
+      <div class="proc-stack">
+
+        <div class="proc-card">
+          <div class="proc-card-bar"></div>
+          <div class="proc-card-img">
+            <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3FE3Vvu9lYALhCwQvePKUS2plzn/hf_20260625_100620_bd79b2ba-903d-47f7-a60c-f17bd901f0d7.png" alt="Strategy">
+            <div class="proc-card-img-ov"></div>
+          </div>
+          <div class="proc-card-text">
+            <div class="proc-card-num">01</div>
+            <div class="proc-step">Step 01 / 04</div>
+            <h3 class="proc-title">Strategy</h3>
+            <p class="proc-desc">We start by understanding your business deeply — goals, audience, and competitive landscape. Every campaign begins with an unshakeable foundation.</p>
+            <div class="proc-pts">
+              <div class="proc-pt">Market research & audience mapping</div>
+              <div class="proc-pt">Competitive analysis</div>
+              <div class="proc-pt">KPI definition & campaign planning</div>
+              <div class="proc-pt">Channel selection & budget allocation</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="proc-card">
+          <div class="proc-card-bar"></div>
+          <div class="proc-card-img">
+            <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3FE3Vvu9lYALhCwQvePKUS2plzn/hf_20260625_100622_18cb8e55-dad6-4a61-bb2f-476a20bed4e8.png" alt="Create">
+            <div class="proc-card-img-ov"></div>
+          </div>
+          <div class="proc-card-text">
+            <div class="proc-card-num">02</div>
+            <div class="proc-step">Step 02 / 04</div>
+            <h3 class="proc-title">Create</h3>
+            <p class="proc-desc">Our creative team produces content that stops the scroll. Every asset is crafted with purpose — visually arresting and conversion-optimised.</p>
+            <div class="proc-pts">
+              <div class="proc-pt">Ad creative & copywriting</div>
+              <div class="proc-pt">Landing page design</div>
+              <div class="proc-pt">Content calendar creation</div>
+              <div class="proc-pt">Brand-aligned visual storytelling</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="proc-card">
+          <div class="proc-card-bar"></div>
+          <div class="proc-card-img">
+            <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3FE3Vvu9lYALhCwQvePKUS2plzn/hf_20260625_100622_c2a52321-157a-4f06-9af4-a1c2642110c1.png" alt="Launch">
+            <div class="proc-card-img-ov"></div>
+          </div>
+          <div class="proc-card-text">
+            <div class="proc-card-num">03</div>
+            <div class="proc-step">Step 03 / 04</div>
+            <h3 class="proc-title">Launch</h3>
+            <p class="proc-desc">With strategy locked and assets ready, we go live. Campaigns are activated with precision targeting and A/B testing built in from day one.</p>
+            <div class="proc-pts">
+              <div class="proc-pt">Multi-channel activation</div>
+              <div class="proc-pt">Audience targeting & segmentation</div>
+              <div class="proc-pt">A/B testing frameworks</div>
+              <div class="proc-pt">Real-time performance monitoring</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="proc-card">
+          <div class="proc-card-bar"></div>
+          <div class="proc-card-img">
+            <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3FE3Vvu9lYALhCwQvePKUS2plzn/hf_20260625_100623_3a812de3-71f9-48bf-9966-44dbba776b4e.png" alt="Grow">
+            <div class="proc-card-img-ov"></div>
+          </div>
+          <div class="proc-card-text">
+            <div class="proc-card-num">04</div>
+            <div class="proc-step">Step 04 / 04</div>
+            <h3 class="proc-title">Grow & Optimise</h3>
+            <p class="proc-desc">We don't set and forget. Continuous optimisation based on real data ensures campaigns improve over time — driving more results for less spend.</p>
+            <div class="proc-pts">
+              <div class="proc-pt">Weekly performance reporting</div>
+              <div class="proc-pt">Budget reallocation & scaling</div>
+              <div class="proc-pt">Creative refresh cycles</div>
+              <div class="proc-pt">Monthly strategy reviews</div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
 </div>
 
+<!-- CTA -->
 <div class="cta-sec rv">
   <div class="cta-glow"></div>
   <div class="sec-label" style="justify-content:center;">Let's Talk</div>
@@ -539,126 +715,281 @@
   </div>
 </div>
 
+<!-- FAQ -->
 <section class="sec" style="padding-top:0;">
   <div class="sec-inner">
     <div class="sec-label rv">FAQ</div>
     <h2 class="sec-h rv rv1"><em>Answers</em> up front.</h2>
     <div class="faq rv rv2" style="margin-top:3rem;">
-      <div class="faq-row"><div class="faq-q">How long does a typical digital campaign take to set up?<span class="faq-ic">+</span></div><div class="faq-a">Most campaigns are fully set up and live within 2–3 weeks. Larger projects may take 4–8 weeks.</div></div>
-      <div class="faq-row"><div class="faq-q">Do you work with businesses outside Myanmar?<span class="faq-ic">+</span></div><div class="faq-a">Yes — we work with regional and international clients across Southeast Asia and beyond.</div></div>
-      <div class="faq-row"><div class="faq-q">What platforms do you run ads on?<span class="faq-ic">+</span></div><div class="faq-a">Meta (Facebook &amp; Instagram), Google Ads, TikTok Ads, and LinkedIn. We recommend the right mix for your goals.</div></div>
-      <div class="faq-row"><div class="faq-q">How do you measure success?<span class="faq-ic">+</span></div><div class="faq-a">We align on KPIs at the start — reach, leads, conversions, or ROAS. Weekly and monthly reporting, no vanity metrics.</div></div>
-      <div class="faq-row"><div class="faq-q">Can you handle both digital marketing and web development?<span class="faq-ic">+</span></div><div class="faq-a">Absolutely. Awaken brings together Digital, Design, Tech, Production, and PR under one roof.</div></div>
+      <div class="faq-row">
+        <div class="faq-q">How long does a typical digital campaign take to set up?<span class="faq-ic">+</span></div>
+        <div class="faq-a">Most campaigns are fully set up and live within 2–3 weeks. This includes strategy, creative production, audience setup, and technical tracking. Larger projects with web builds may take 4–8 weeks.</div>
+      </div>
+      <div class="faq-row">
+        <div class="faq-q">Do you work with businesses outside Myanmar?<span class="faq-ic">+</span></div>
+        <div class="faq-a">Yes — while our roots are in the Myanmar market, we work with regional and international clients across Southeast Asia and beyond.</div>
+      </div>
+      <div class="faq-row">
+        <div class="faq-q">What platforms do you run ads on?<span class="faq-ic">+</span></div>
+        <div class="faq-a">We primarily work with Meta (Facebook & Instagram), Google Ads, TikTok Ads, and LinkedIn. We recommend the right mix based on your audience and goals.</div>
+      </div>
+      <div class="faq-row">
+        <div class="faq-q">How do you measure success?<span class="faq-ic">+</span></div>
+        <div class="faq-a">We align on KPIs at the start of every engagement — reach, leads, conversions, or ROAS. You get clear weekly and monthly reporting with no vanity metrics.</div>
+      </div>
+      <div class="faq-row">
+        <div class="faq-q">Can you handle both digital marketing and web development?<span class="faq-ic">+</span></div>
+        <div class="faq-a">Absolutely. As part of the Awaken family we bring together Digital, Design, Tech, Production, and PR under one roof — no agency handoff, no miscommunication.</div>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
   <div class="ft-grid">
-    <div><div class="ft-logo"><div class="ft-logo-box">A</div><span class="ft-logo-t">AWAKEN</span></div><p class="ft-desc">We turn brands into culture through bold storytelling and measurable digital growth. Based in Yangon, building for the world.</p></div>
-    <div><div class="ft-h">Divisions</div><div class="ft-links"><a href="digital.html">Awaken Digital</a><a href="design.html">Awaken Design</a><a href="tech.html">Awaken Tech</a><a href="production.html">Awaken Production</a><a href="pr.html">Awaken PR</a></div></div>
-    <div><div class="ft-h">Contact</div><div class="ft-links"><a href="tel:+959255762417">+95 9255762417</a><a href="tel:+959799489370">+95 9799489370</a><a href="mailto:nyinyisoewin@awakenentertainment.org">Email Us</a><a href="https://www.awakenentertainment.org" target="_blank">Website</a></div></div>
-    <div><div class="ft-h">Location</div><div class="ft-links"><span>No.57, YaeKuYwarMa Street,<br>Ward 9, Mayangone,<br>Yangon, Myanmar</span></div></div>
+    <div>
+      <div class="ft-logo"><div class="ft-logo-box">A</div><span class="ft-logo-t">AWAKEN</span></div>
+      <p class="ft-desc">We turn brands into culture through bold storytelling and measurable digital growth. Based in Yangon, building for the world.</p>
+    </div>
+    <div>
+      <div class="ft-h">Divisions</div>
+      <div class="ft-links">
+        <a href="digital.html">Awaken Digital</a>
+        <a href="design.html">Awaken Design</a>
+        <a href="tech.html">Awaken Tech</a>
+        <a href="production.html">Awaken Production</a>
+        <a href="pr.html">Awaken PR</a>
+      </div>
+    </div>
+    <div>
+      <div class="ft-h">Contact</div>
+      <div class="ft-links">
+        <a href="tel:+959255762417">+95 9255762417</a>
+        <a href="tel:+959799489370">+95 9799489370</a>
+        <a href="mailto:nyinyisoewin@awakenentertainment.org">Email Us</a>
+        <a href="https://www.awakenentertainment.org" target="_blank">Website</a>
+      </div>
+    </div>
+    <div>
+      <div class="ft-h">Location</div>
+      <div class="ft-links">
+        <span>No.57, YaeKuYwarMa Street,<br>Ward 9, Mayangone,<br>Yangon, Myanmar</span>
+      </div>
+    </div>
   </div>
-  <div class="ft-bot"><span>© 2026 <span class="ft-acc">Awaken Entertainment</span>. All rights reserved.</span><span>Built with purpose in Yangon.</span></div>
+  <div class="ft-bot">
+    <span>© 2026 <span class="ft-acc">Awaken Entertainment</span>. All rights reserved.</span>
+    <span>Built with purpose in Yangon.</span>
+  </div>
 </footer>
 
 <script>
-const ld=document.getElementById('ld'),ldNum=document.getElementById('ldNum'),ldFill=document.getElementById('ldFill');
-let pct=0;
-const ldInt=setInterval(()=>{
-  pct=Math.min(pct+Math.random()*18+4,100);
-  ldNum.textContent=Math.floor(pct);
-  ldFill.style.width=pct+'%';
-  if(pct>=100){clearInterval(ldInt);setTimeout(()=>{ld.classList.add('out');revealHero();},250);}
-},80);
+/* ─── LOADER ─── */
+const ld = document.getElementById('ld');
+const ldNum = document.getElementById('ldNum');
+const ldFill = document.getElementById('ldFill');
+let pct = 0;
+const ldInt = setInterval(() => {
+  pct = Math.min(pct + Math.random() * 18 + 4, 100);
+  ldNum.textContent = Math.floor(pct);
+  ldFill.style.width = pct + '%';
+  if (pct >= 100) {
+    clearInterval(ldInt);
+    setTimeout(() => {
+      ld.classList.add('out');
+      revealHero();
+    }, 250);
+  }
+}, 80);
 
-function revealHero(){
-  const words=document.querySelectorAll('.hero-word');
-  const e='cubic-bezier(0.16,1,0.3,1)';
-  const s=(el,d,p)=>setTimeout(()=>Object.assign(el.style,p),d);
-  s(document.getElementById('nL'),80,{opacity:'1',transform:'none',transition:`opacity .6s ${e}, transform .6s ${e}`});
-  s(document.getElementById('nC'),160,{opacity:'1',transform:'none',transition:`opacity .6s ${e}, transform .6s ${e}`});
-  s(document.getElementById('nR'),240,{opacity:'1',transform:'none',transition:`opacity .6s ${e}, transform .6s ${e}`});
-  s(document.getElementById('hTag'),350,{opacity:'1',transform:'none',transition:`opacity .7s ${e}, transform .7s ${e}`});
-  s(document.getElementById('hBadge'),400,{opacity:'1',transition:'opacity 1s ease'});
-  words.forEach((w,i)=>setTimeout(()=>{w.style.transform='translateY(0)';w.style.transition=`transform 1s ${e}`;},480+i*70));
-  s(document.getElementById('hBot'),950,{opacity:'1',transition:'opacity .8s ease'});
-  s(document.getElementById('hScroll'),1200,{opacity:'1',transition:'opacity .7s ease'});
+/* ─── HERO REVEAL ─── */
+function revealHero() {
+  const words = document.querySelectorAll('.hero-word');
+  const nL = document.getElementById('nL');
+  const nC = document.getElementById('nC');
+  const nR = document.getElementById('nR');
+  const hTag = document.getElementById('hTag');
+  const hBot = document.getElementById('hBot');
+  const hBadge = document.getElementById('hBadge');
+  const hScroll = document.getElementById('hScroll');
+
+  const ease = 'cubic-bezier(0.16,1,0.3,1)';
+  const set = (el, delay, props) => setTimeout(() => Object.assign(el.style, props), delay);
+
+  set(nL, 80, { opacity: '1', transform: 'none', transition: `opacity .6s ${ease}, transform .6s ${ease}` });
+  set(nC, 160, { opacity: '1', transform: 'none', transition: `opacity .6s ${ease}, transform .6s ${ease}` });
+  set(nR, 240, { opacity: '1', transform: 'none', transition: `opacity .6s ${ease}, transform .6s ${ease}` });
+  set(hTag, 350, { opacity: '1', transform: 'none', transition: `opacity .7s ${ease}, transform .7s ${ease}` });
+  set(hBadge, 400, { opacity: '1', transition: 'opacity 1s ease' });
+
+  words.forEach((w, i) => {
+    setTimeout(() => {
+      w.style.transform = 'translateY(0)';
+      w.style.transition = `transform 1s ${ease}`;
+    }, 480 + i * 70);
+  });
+
+  set(hBot, 950, { opacity: '1', transition: `opacity .8s ease` });
+  set(hScroll, 1200, { opacity: '1', transition: `opacity .7s ease` });
 }
 
-const cd=document.getElementById('cd'),cr=document.getElementById('cr');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cd.style.left=mx+'px';cd.style.top=my+'px';});
-(function animC(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;cr.style.left=rx+'px';cr.style.top=ry+'px';requestAnimationFrame(animC);})();
-document.querySelectorAll('a,button,.work-row,.srv-item,.faq-q').forEach(el=>{
-  el.addEventListener('mouseenter',()=>document.body.classList.add('hov'));
-  el.addEventListener('mouseleave',()=>document.body.classList.remove('hov'));
+/* ─── CURSOR ─── */
+const cd = document.getElementById('cd'), cr = document.getElementById('cr');
+let mx = 0, my = 0, rx = 0, ry = 0;
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  cd.style.left = mx + 'px'; cd.style.top = my + 'px';
+});
+(function animCur() {
+  rx += (mx - rx) * .1; ry += (my - ry) * .1;
+  cr.style.left = rx + 'px'; cr.style.top = ry + 'px';
+  requestAnimationFrame(animCur);
+})();
+document.querySelectorAll('a,button,.work-row,.srv-item,.faq-q').forEach(el => {
+  el.addEventListener('mouseenter', () => document.body.classList.add('hov'));
+  el.addEventListener('mouseleave', () => document.body.classList.remove('hov'));
 });
 
-window.addEventListener('scroll',()=>{
-  const nav=document.getElementById('nav');
-  nav.style.cssText=window.scrollY>80?'background:rgba(12,12,12,.88);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.06);transition:all .4s':'';
-},{passive:true});
+/* ─── NAV SCROLL + PROGRESS ─── */
+const scrollProg = document.getElementById('scroll-prog');
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('nav');
+  if (window.scrollY > 80) {
+    nav.style.cssText = 'background:rgba(12,12,12,.88);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.06);transition:all .4s';
+  } else {
+    nav.style.cssText = '';
+  }
+  const docH = document.documentElement.scrollHeight - window.innerHeight;
+  scrollProg.style.width = (window.scrollY / docH * 100).toFixed(1) + '%';
+}, { passive: true });
 
-let statsDone=false;
-new IntersectionObserver(([e])=>{
-  if(!e.isIntersecting||statsDone)return;
-  statsDone=true;
-  document.querySelectorAll('.stat').forEach((s,i)=>setTimeout(()=>s.classList.add('vis'),i*100));
-  document.querySelectorAll('.stat-n[data-to]').forEach(el=>{
-    const to=+el.dataset.to,from=+el.dataset.from,sfx=el.dataset.sfx||'';
-    const dur=1600,t0=performance.now();
-    const tick=now=>{const p=Math.min((now-t0)/dur,1),ease=1-Math.pow(1-p,3);el.textContent=Math.round(from+(to-from)*ease)+sfx;if(p<1)requestAnimationFrame(tick);};
+/* ─── STATS COUNTER ─── */
+let statsDone = false;
+const statsEl = document.getElementById('stats');
+new IntersectionObserver(([e]) => {
+  if (!e.isIntersecting || statsDone) return;
+  statsDone = true;
+  document.querySelectorAll('.stat').forEach((s, i) => {
+    setTimeout(() => s.classList.add('vis'), i * 100);
+  });
+  document.querySelectorAll('.stat-n[data-to]').forEach(el => {
+    const to = +el.dataset.to, from = +el.dataset.from, sfx = el.dataset.sfx || '';
+    const dur = 1600, t0 = performance.now();
+    const tick = now => {
+      const p = Math.min((now - t0) / dur, 1);
+      const ease = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(from + (to - from) * ease) + sfx;
+      if (p < 1) requestAnimationFrame(tick);
+    };
     requestAnimationFrame(tick);
   });
-},{threshold:0.4}).observe(document.getElementById('stats'));
+}, { threshold: 0.4 }).observe(statsEl);
 
-const projImg=document.getElementById('proj-img'),projPh=document.getElementById('projPh');
-let ix=0,iy=0,tx=0,ty=0;
-(function animI(){ix+=(tx-ix)*.12;iy+=(ty-iy)*.12;projImg.style.left=ix+'px';projImg.style.top=iy+'px';requestAnimationFrame(animI);})();
-document.querySelectorAll('.work-row').forEach(row=>{
-  row.addEventListener('mouseenter',()=>{
-    projPh.style.cssText='width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:4rem;background:'+row.dataset.color;
-    projPh.textContent=row.dataset.emoji;
+/* ─── HOVER IMAGE REVEAL ON PROJECTS ─── */
+const projImg = document.getElementById('proj-img');
+const projPh = document.getElementById('projPh');
+let imgX = 0, imgY = 0, tgtX = 0, tgtY = 0;
+(function animImg() {
+  imgX += (tgtX - imgX) * .12;
+  imgY += (tgtY - imgY) * .12;
+  projImg.style.left = imgX + 'px';
+  projImg.style.top = imgY + 'px';
+  requestAnimationFrame(animImg);
+})();
+document.querySelectorAll('.work-row').forEach(row => {
+  const color = row.dataset.color;
+  const emoji = row.dataset.emoji;
+  row.addEventListener('mouseenter', () => {
+    projPh.style.background = color;
+    projPh.textContent = emoji;
+    projPh.style.fontSize = '4rem';
+    projPh.style.display = 'flex';
+    projPh.style.alignItems = 'center';
+    projPh.style.justifyContent = 'center';
     projImg.classList.add('show');
   });
-  row.addEventListener('mouseleave',()=>projImg.classList.remove('show'));
+  row.addEventListener('mouseleave', () => {
+    projImg.classList.remove('show');
+  });
 });
-document.addEventListener('mousemove',e=>{tx=e.clientX-140;ty=e.clientY-95;});
+document.addEventListener('mousemove', e => {
+  tgtX = e.clientX - 140;
+  tgtY = e.clientY - 95;
+});
 
-const rvO=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');rvO.unobserve(e.target);}});
-},{threshold:0.1});
-document.querySelectorAll('.rv').forEach(el=>rvO.observe(el));
+/* ─── GENERIC SCROLL REVEAL ─── */
+const rvObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); rvObs.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.rv').forEach(el => rvObs.observe(el));
 
-const wrO=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(!e.isIntersecting)return;const d=parseInt(e.target.dataset.delay)||0;setTimeout(()=>e.target.classList.add('vis'),d);wrO.unobserve(e.target);});
-},{threshold:0.1});
-document.querySelectorAll('.work-row').forEach(el=>wrO.observe(el));
+/* ─── WORK ROWS ─── */
+const wrObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const d = parseInt(e.target.dataset.delay) || 0;
+    setTimeout(() => e.target.classList.add('vis'), d);
+    wrObs.unobserve(e.target);
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.work-row').forEach(el => wrObs.observe(el));
 
-const srO=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(!e.isIntersecting)return;const d=parseInt(e.target.dataset.sd)||0;setTimeout(()=>e.target.classList.add('vis'),d);srO.unobserve(e.target);});
-},{threshold:0.1});
-document.querySelectorAll('.srv-item').forEach(el=>srO.observe(el));
+/* ─── SERVICE CARDS ─── */
+const srvObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const d = parseInt(e.target.dataset.sd) || 0;
+    setTimeout(() => e.target.classList.add('vis'), d);
+    srvObs.unobserve(e.target);
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.srv-item').forEach(el => srvObs.observe(el));
 
-const prO=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');prO.unobserve(e.target);}});
-},{threshold:0.15});
-document.querySelectorAll('.proc-row').forEach(el=>prO.observe(el));
+/* ─── PROCESS STICKY SCALE ─── */
+const procCards = document.querySelectorAll('.proc-card');
+const procCardObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) e.target.classList.add('in-view');
+  });
+}, { threshold: 0.1 });
+procCards.forEach(c => procCardObs.observe(c));
 
-document.querySelectorAll('.faq-q').forEach(q=>{
-  q.addEventListener('click',()=>{
-    const row=q.parentElement,open=row.classList.contains('open');
-    document.querySelectorAll('.faq-row').forEach(r=>r.classList.remove('open'));
-    if(!open)row.classList.add('open');
+function updateProcCards() {
+  procCards.forEach((card, i) => {
+    const rect = card.getBoundingClientRect();
+    const offset = rect.top - 80;
+    if (offset < 0 && i < procCards.length - 1) {
+      const progress = Math.min(1, Math.abs(offset) / (rect.height * 0.6));
+      const scale = 1 - progress * 0.045;
+      const bright = 1 - progress * 0.18;
+      card.style.transform = `scale(${scale.toFixed(4)})`;
+      card.style.filter = `brightness(${bright.toFixed(4)})`;
+    } else {
+      card.style.transform = 'scale(1)';
+      card.style.filter = 'brightness(1)';
+    }
+  });
+}
+window.addEventListener('scroll', updateProcCards, { passive: true });
+
+/* ─── FAQ ─── */
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const row = q.parentElement;
+    const open = row.classList.contains('open');
+    document.querySelectorAll('.faq-row').forEach(r => r.classList.remove('open'));
+    if (!open) row.classList.add('open');
   });
 });
 
-document.addEventListener('mousemove',e=>{
-  const bg=document.querySelector('.hero-bg-num');
-  if(bg)bg.style.transform=`translate(${(e.clientX/window.innerWidth-.5)*-15}px,${(e.clientY/window.innerHeight-.5)*-8}px)`;
-},{passive:true});
+/* ─── HERO PARALLAX ─── */
+document.addEventListener('mousemove', e => {
+  const bgNum = document.querySelector('.hero-bg-num');
+  if (bgNum) {
+    bgNum.style.transform = `translate(${(e.clientX / window.innerWidth - 0.5) * -15}px, ${(e.clientY / window.innerHeight - 0.5) * -8}px)`;
+  }
+}, { passive: true });
 </script>
 </body>
 </html>
