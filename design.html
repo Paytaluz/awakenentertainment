@@ -6,421 +6,369 @@
   <title>Awaken Design — We design brands that command attention.</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,700;1,900&family=Playfair+Display:ital,wght@1,700;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;0,14..32,900;1,14..32,700;1,14..32,900&family=Playfair+Display:ital,wght@1,700;1,900&display=swap" rel="stylesheet">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --bg: #ffffff;
-      --surface: #f5f5f5;
-      --surface2: #ebebeb;
-      --border: rgba(0,0,0,0.1);
-      --text: #0c0c0c;
-      --muted: rgba(12,12,12,0.5);
-      --accent: #c8ff00;
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --bg:#ffffff;
+      --dark:#0a0a0a;
+      --dark2:#111111;
+      --dark3:#1a1a1a;
+      --border-light:rgba(0,0,0,.1);
+      --border-dark:rgba(255,255,255,.08);
+      --text:#0c0c0c;
+      --text-inv:#f0f0f0;
+      --muted:rgba(12,12,12,.5);
+      --muted-inv:rgba(240,240,240,.5);
+      --accent:#c8ff00;
     }
+    html{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);scroll-behavior:smooth}
+    body{overflow-x:hidden;cursor:none}
+    a{text-decoration:none;color:inherit}
+    img{display:block;max-width:100%}
+    em{font-style:italic;font-family:'Playfair Display',serif}
 
-    html {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg); color: var(--text);
-      scroll-snap-type: y proximity;
-      scroll-behavior: smooth;
+    /* CURSOR */
+    #cur{position:fixed;z-index:9999;pointer-events:none;top:0;left:0;mix-blend-mode:difference}
+    .cur-d{position:absolute;width:10px;height:10px;background:#fff;border-radius:50%;transform:translate(-50%,-50%);transition:width .2s,height .2s}
+    .cur-r{position:absolute;width:36px;height:36px;border:1px solid rgba(255,255,255,.4);border-radius:50%;transform:translate(-50%,-50%);transition:width .3s,height .3s,border-color .3s}
+    body.hov .cur-d{width:14px;height:14px}
+    body.hov .cur-r{width:52px;height:52px;border-color:rgba(200,255,0,.6)}
+
+    /* LOADER */
+    #ld{position:fixed;inset:0;z-index:8000;background:#0a0a0a;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;transition:opacity .7s ease,visibility .7s}
+    #ld.out{opacity:0;visibility:hidden}
+    .ld-num{font-size:clamp(5rem,15vw,12rem);font-weight:900;letter-spacing:-0.05em;line-height:1;color:#fff;font-variant-numeric:tabular-nums}
+    .ld-bar{width:200px;height:1px;background:rgba(255,255,255,.15);overflow:hidden}
+    .ld-fill{height:100%;background:var(--accent);width:0}
+
+    /* SCROLL PROGRESS */
+    #scroll-prog{position:fixed;top:0;left:0;z-index:9000;height:2px;background:var(--accent);width:0%;transition:width .1s linear;box-shadow:0 0 8px rgba(200,255,0,.5)}
+
+    /* NAV */
+    nav{
+      position:fixed;top:0;left:0;right:0;z-index:600;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:0 2.5rem;height:68px;
+      background:transparent;
+      transition:background .4s,border-color .4s,backdrop-filter .4s;
+      border-bottom:1px solid transparent;
     }
-    body { overflow-x: hidden; cursor: none; }
-    a { text-decoration: none; color: inherit; }
-    img { display: block; max-width: 100%; }
+    nav.scrolled{background:rgba(255,255,255,.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom-color:rgba(0,0,0,.08)}
+    nav.on-dark:not(.scrolled) .nav-logo,.nav.on-dark:not(.scrolled) .nav-links a,.nav.on-dark:not(.scrolled) .nav-cta-ghost{color:#fff}
+    .nav-logo{font-size:12px;font-weight:800;letter-spacing:.22em;display:flex;align-items:center;gap:.6rem;color:#fff;transition:color .4s}
+    nav.scrolled .nav-logo{color:var(--text)}
+    .nav-logo-sq{width:24px;height:24px;border:1.5px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;color:var(--accent);flex-shrink:0}
+    .nav-links{display:flex;gap:2.5rem}
+    .nav-links a{font-size:11px;font-weight:500;letter-spacing:.06em;color:rgba(255,255,255,.7);transition:color .3s;position:relative}
+    .nav-links a::after{content:'';position:absolute;left:0;bottom:-3px;width:0;height:1px;background:var(--accent);transition:width .3s}
+    .nav-links a:hover,.nav-links a.active{color:#fff}
+    .nav-links a:hover::after,.nav-links a.active::after{width:100%}
+    nav.scrolled .nav-links a{color:var(--muted)}
+    nav.scrolled .nav-links a:hover,nav.scrolled .nav-links a.active{color:var(--text)}
+    .nav-cta{padding:9px 22px;border-radius:100px;background:var(--accent);color:#000;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;transition:box-shadow .3s}
+    .nav-cta:hover{box-shadow:0 0 20px rgba(200,255,0,.4)}
 
-    /* ─── CURSOR ─── */
-    #cur { position: fixed; z-index: 9999; pointer-events: none; top: 0; left: 0; mix-blend-mode: difference; }
-    .cur-d { position: absolute; width: 10px; height: 10px; background: #000; border-radius: 50%; transform: translate(-50%,-50%); transition: width .2s, height .2s; }
-    .cur-r { position: absolute; width: 40px; height: 40px; border: 1px solid rgba(0,0,0,.3); border-radius: 50%; transform: translate(-50%,-50%); }
-    body.hov .cur-d { width: 16px; height: 16px; }
-    body.hov .cur-r { width: 56px; height: 56px; border-color: rgba(0,0,0,.6); }
+    /* FLOATING CONTACT */
+    .float-menu{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:500;display:flex;flex-direction:column;gap:3px}
+    .float-btn{width:56px;height:56px;background:rgba(10,10,10,.9);background-image:radial-gradient(rgba(255,255,255,.04) 1px,transparent 1px);background-size:5px 5px;border:1px solid rgba(255,255,255,.1);border-right:none;display:flex;align-items:center;justify-content:center;cursor:pointer;position:relative;transition:border-color .25s,background-color .25s;text-decoration:none;color:#fff;backdrop-filter:blur(8px)}
+    .float-btn .fb-corner{position:absolute;top:0;right:0;width:7px;height:7px;border-top:1px solid var(--accent);border-right:1px solid var(--accent);transition:width .3s,height .3s}
+    .float-btn:hover{border-color:rgba(200,255,0,.3);background-color:rgba(200,255,0,.06)}
+    .float-btn:hover .fb-corner{width:100%;height:100%}
+    .float-btn svg{width:20px;height:20px;stroke:rgba(255,255,255,.5);stroke-width:1.5;fill:none;transition:stroke .25s}
+    .float-btn:hover svg{stroke:var(--accent)}
 
-    /* ─── LOADER ─── */
-    #ld { position: fixed; inset: 0; z-index: 8000; background: #ffffff; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2rem; transition: opacity .7s ease, visibility .7s; }
-    #ld.out { opacity: 0; visibility: hidden; }
-    .ld-num { font-size: clamp(5rem,15vw,12rem); font-weight: 900; letter-spacing: -0.05em; line-height: 1; color: #0c0c0c; font-variant-numeric: tabular-nums; }
-    .ld-bar { width: 200px; height: 1px; background: var(--border); overflow: hidden; }
-    .ld-fill { height: 100%; background: var(--accent); width: 0; }
-
-    /* ─── NAV — FLOATING PILL ─── */
-    nav {
-      position: fixed; top: 1.25rem; left: 50%;
-      transform: translateX(-50%) translateY(-56px);
-      opacity: 0;
-      z-index: 600;
-      background: rgba(255,255,255,.92);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      border: 1px solid rgba(0,0,0,.1);
-      border-radius: 100px;
-      padding: .45rem .45rem .45rem 1.5rem;
-      display: flex; align-items: center; gap: 2rem;
-      white-space: nowrap;
-      transition: transform .55s cubic-bezier(.16,1,.3,1), opacity .55s ease;
+    /* ===== HERO ===== */
+    .hero{
+      height:100svh;position:relative;overflow:hidden;
+      background:var(--dark);
+      display:flex;flex-direction:column;justify-content:flex-end;
+      padding:0 2.5rem 4.5rem;
     }
-    nav.vis {
-      transform: translateX(-50%) translateY(0);
-      opacity: 1;
+    /* geometric design composition — right side */
+    .hero-visual{
+      position:absolute;right:0;top:0;bottom:0;width:55%;
+      overflow:hidden;
     }
-    .nav-l { display: flex; align-items: center; gap: .55rem; font-size: 11px; font-weight: 700; letter-spacing: .18em; }
-    .nav-logo-box { width: 22px; height: 22px; border: 1.5px solid var(--accent); display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 900; color: var(--accent); flex-shrink: 0; }
-    .nav-c { display: flex; gap: 1.75rem; }
-    .nav-c a { font-size: 10.5px; font-weight: 500; color: rgba(12,12,12,.55); letter-spacing: .06em; transition: color .2s; position: relative; }
-    .nav-c a::after { content:''; position:absolute; left:0; bottom:-2px; width:0; height:1px; background:var(--accent); transition:width .3s; }
-    .nav-c a:hover, .nav-c a.active { color: var(--text); }
-    .nav-c a:hover::after, .nav-c a.active::after { width: 100%; }
-    .nav-btn {
-      display: flex; align-items: center; gap: .45rem;
-      font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
-      padding: 9px 18px; border-radius: 100px;
-      background: var(--accent); color: #000; transition: all .3s;
-      flex-shrink: 0;
+    .hv-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:60px 60px}
+    .hv-rect{position:absolute;border:1px solid rgba(200,255,0,.15)}
+    .hv-rect1{top:15%;left:10%;width:260px;height:340px;transform:rotate(-4deg);border-color:rgba(200,255,0,.12)}
+    .hv-rect2{top:25%;left:35%;width:200px;height:260px;transform:rotate(3deg);background:rgba(200,255,0,.04)}
+    .hv-rect3{top:40%;left:20%;width:160px;height:160px;border-color:rgba(200,255,0,.25);background:rgba(200,255,0,.03)}
+    .hv-dot{position:absolute;border-radius:50%;background:var(--accent)}
+    .hv-dot1{width:8px;height:8px;top:30%;left:55%;box-shadow:0 0 20px rgba(200,255,0,.8);animation:hdot 3s ease-in-out infinite}
+    .hv-dot2{width:4px;height:4px;top:55%;left:25%;opacity:.6;animation:hdot 3s ease-in-out infinite .8s}
+    .hv-dot3{width:6px;height:6px;top:20%;left:70%;opacity:.4;animation:hdot 3s ease-in-out infinite 1.6s}
+    @keyframes hdot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+    .hv-line{position:absolute;background:rgba(200,255,0,.2)}
+    .hv-line1{top:18%;left:0;right:0;height:1px;transform:rotate(-8deg)}
+    .hv-line2{top:0;bottom:0;left:50%;width:1px;transform:rotate(4deg);opacity:.4}
+    .hv-label{position:absolute;top:1.5rem;right:1.5rem;font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);border:1px solid rgba(200,255,0,.2);padding:5px 12px;background:rgba(200,255,0,.04)}
+    .hv-type{position:absolute;bottom:4rem;left:2rem;font-size:clamp(5rem,12vw,11rem);font-weight:900;letter-spacing:-0.06em;line-height:.85;color:rgba(255,255,255,.03);user-select:none;pointer-events:none}
+    /* hero vignette */
+    .hero::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,var(--dark) 35%,rgba(10,10,10,.3) 70%,transparent);pointer-events:none}
+    /* hero content */
+    .hero-content{position:relative;z-index:2;max-width:720px}
+    .hero-kicker{font-size:10px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:.75rem;margin-bottom:2rem;opacity:0}
+    .hero-kicker::before{content:'';width:24px;height:1px;background:var(--accent)}
+    .hero-h{font-size:clamp(3rem,7vw,7.5rem);font-weight:900;line-height:.92;letter-spacing:-0.04em;color:#fff}
+    .hero-h em{color:var(--accent)}
+    .hero-h .hw{display:inline-block;transform:translateY(110%);overflow:visible}
+    .hero-h-line{overflow:hidden;display:block}
+    .hero-sub{font-size:15px;color:rgba(255,255,255,.5);line-height:1.8;max-width:420px;margin-top:2rem;opacity:0}
+    .hero-actions{display:flex;align-items:center;gap:1.5rem;margin-top:2.5rem;opacity:0}
+    .btn-primary{padding:14px 32px;border-radius:100px;background:var(--accent);color:#000;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;transition:all .3s;display:inline-flex;align-items:center;gap:.5rem;position:relative;overflow:hidden}
+    .btn-primary::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(0,0,0,.18) 1px,transparent 1px);background-size:6px 6px}
+    .btn-primary:hover{box-shadow:0 8px 28px rgba(200,255,0,.35);transform:translateY(-2px)}
+    .btn-ghost{padding:14px 32px;border-radius:100px;border:1px solid rgba(255,255,255,.2);color:#fff;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;transition:all .3s;display:inline-flex;align-items:center;gap:.5rem}
+    .btn-ghost:hover{border-color:rgba(200,255,0,.4);color:var(--accent)}
+    .hero-scroll-cta{position:absolute;bottom:4.5rem;right:2.5rem;z-index:2;display:flex;align-items:center;gap:1rem;opacity:0}
+    .hero-scroll-circle{width:52px;height:52px;border-radius:50%;border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;transition:border-color .3s,background .3s;animation:scrollbob 2.5s ease-in-out infinite}
+    .hero-scroll-circle svg{width:18px;height:18px;stroke:#fff;stroke-width:1.5;fill:none;transition:stroke .3s}
+    .hero-scroll-circle:hover{border-color:var(--accent);background:rgba(200,255,0,.08)}
+    .hero-scroll-circle:hover svg{stroke:var(--accent)}
+    @keyframes scrollbob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+
+    /* ===== STATEMENT ===== */
+    .stmt{background:var(--dark);padding:8rem 2.5rem;text-align:center}
+    .stmt-inner{max-width:780px;margin:0 auto}
+    .stmt-tag{font-size:10px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--accent);margin-bottom:2.5rem;opacity:0;transform:translateY(20px);transition:opacity .7s,transform .7s}
+    .stmt-tag.vis{opacity:1;transform:none}
+    .stmt-p{font-size:clamp(1.25rem,2.5vw,2rem);color:rgba(255,255,255,.75);line-height:1.7;font-weight:400;opacity:0;transform:translateY(20px);transition:opacity .9s .15s,transform .9s .15s}
+    .stmt-p.vis{opacity:1;transform:none}
+    .stmt-p em{color:#fff;font-style:italic;font-family:'Playfair Display',serif}
+    .stmt-p strong{color:var(--accent);font-style:normal;font-family:inherit}
+
+    /* ===== HOW WE DESIGN ===== */
+    .how{background:var(--bg);padding:8rem 2.5rem}
+    .how-inner{max-width:1300px;margin:0 auto}
+    .how-hdr{text-align:center;margin-bottom:5rem}
+    .how-tag{font-size:10px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem}
+    .how-h{font-size:clamp(2.5rem,5vw,4.5rem);font-weight:900;letter-spacing:-0.03em;line-height:1}
+    .how-h em{color:var(--accent)}
+    .how-sub{font-size:15px;color:var(--muted);max-width:500px;margin:.75rem auto 0;line-height:1.8}
+    /* staggered cards */
+    .how-cards{display:flex;flex-direction:column;gap:0}
+    .how-row{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem}
+    .how-row:nth-child(odd) .how-card:first-child{margin-top:3rem}
+    .how-row:nth-child(even) .how-card:last-child{margin-top:3rem}
+    .how-card{background:var(--dark);border-radius:16px;padding:2.5rem;border:1px solid rgba(255,255,255,.06);position:relative;overflow:hidden;opacity:0;transform:translateY(32px);transition:opacity .7s,transform .7s,border-color .3s}
+    .how-card.vis{opacity:1;transform:none}
+    .how-card:hover{border-color:rgba(200,255,0,.15)}
+    .how-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.16,1,.3,1)}
+    .how-card:hover::before{transform:scaleX(1)}
+    .how-card-icon{width:44px;height:44px;border:1px solid rgba(200,255,0,.25);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1.75rem;font-size:18px;transition:border-color .3s,background .3s}
+    .how-card:hover .how-card-icon{border-color:var(--accent);background:rgba(200,255,0,.08)}
+    .how-card-n{font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:.75rem}
+    .how-card-title{font-size:1.2rem;font-weight:800;color:#fff;margin-bottom:.75rem;line-height:1.15}
+    .how-card-title em{color:var(--accent)}
+    .how-card-text{font-size:13px;color:rgba(255,255,255,.45);line-height:1.85}
+    .how-card-bg-num{position:absolute;bottom:-1rem;right:1rem;font-size:7rem;font-weight:900;color:rgba(255,255,255,.03);letter-spacing:-0.05em;user-select:none;pointer-events:none}
+
+    /* ===== WORK ===== */
+    .work{background:var(--bg);padding:0 2.5rem 6rem}
+    .work-inner{max-width:1300px;margin:0 auto}
+    .work-hdr{display:flex;align-items:baseline;justify-content:space-between;padding:5rem 0 3.5rem;border-bottom:1px solid var(--border-light)}
+    .work-title{font-size:clamp(3rem,7vw,6rem);font-weight:900;letter-spacing:-0.04em}
+    .work-title em{color:var(--accent)}
+    .work-see-all{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:10px 22px;border:1px solid var(--border-light);border-radius:100px;color:var(--muted);transition:all .3s}
+    .work-see-all:hover{border-color:var(--text);color:var(--text)}
+    /* project cards */
+    .work-cards{display:flex;flex-direction:column;gap:2px;margin-top:2px}
+    .work-card{
+      position:relative;overflow:hidden;height:500px;
+      display:flex;flex-direction:column;justify-content:flex-end;
+      cursor:pointer;background:#111;
+      opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s;
     }
-    .nav-btn:hover { box-shadow: 0 0 20px rgba(200,255,0,.35); }
-
-    /* ─── HERO ─── */
-    .hero {
-      min-height: 100svh; display: flex; flex-direction: column;
-      justify-content: flex-end; padding: 0 2.5rem 3rem;
-      position: relative; overflow: hidden;
-      scroll-snap-align: start;
+    .work-card.vis{opacity:1;transform:none}
+    .work-card-bg{
+      position:absolute;inset:0;transition:transform .8s cubic-bezier(.16,1,.3,1);
+      background-size:cover;background-position:center;
     }
-    .hero-bg-num {
-      position: absolute; right: -0.05em; bottom: -.1em;
-      font-size: clamp(18rem,35vw,38rem); font-weight: 900;
-      letter-spacing: -0.05em; line-height: .85;
-      color: rgba(0,0,0,.04); pointer-events: none; user-select: none; z-index: 0;
+    .work-card:hover .work-card-bg{transform:scale(1.04)}
+    .work-card-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.75) 0%,rgba(0,0,0,.1) 50%,transparent);transition:opacity .4s}
+    .work-card:hover .work-card-ov{opacity:.85}
+    .work-card-info{position:relative;z-index:2;padding:2.5rem;display:flex;align-items:flex-end;justify-content:space-between}
+    .work-card-meta{display:flex;align-items:center;gap:.75rem;margin-bottom:.6rem}
+    .work-card-cat{font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);background:rgba(200,255,0,.1);border:1px solid rgba(200,255,0,.2);padding:4px 10px}
+    .work-card-name{font-size:clamp(1.5rem,3vw,2.5rem);font-weight:900;color:#fff;letter-spacing:-0.02em;line-height:1.1}
+    .work-card-action{display:flex;align-items:center;gap:.6rem;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6);transition:color .3s;flex-shrink:0}
+    .work-card:hover .work-card-action{color:var(--accent)}
+    .work-card-action svg{width:16px;height:16px;stroke:currentColor;stroke-width:1.5;fill:none;transition:transform .3s}
+    .work-card:hover .work-card-action svg{transform:translate(2px,-2px)}
+
+    /* ===== TOOLS / CERTIFIED ===== */
+    .tools{background:var(--dark);padding:7rem 2.5rem;text-align:center}
+    .tools-inner{max-width:900px;margin:0 auto}
+    .tools-h{font-size:clamp(2rem,4vw,3.5rem);font-weight:900;letter-spacing:-0.03em;color:#fff;margin-bottom:.6rem}
+    .tools-h em{color:var(--accent)}
+    .tools-sub{font-size:14px;color:rgba(255,255,255,.4);line-height:1.8;max-width:520px;margin:.75rem auto 4rem}
+    .tools-grid{display:flex;align-items:center;justify-content:center;gap:1.25rem;flex-wrap:wrap}
+    .tool-chip{
+      width:72px;height:72px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+      border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.3rem;
+      font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);
+      transition:border-color .3s,background .3s,color .3s;cursor:default;
+      opacity:0;transform:translateY(16px);transition:opacity .6s,transform .6s,border-color .3s,color .3s;
     }
-    .hero-badge { position: absolute; top: 7rem; right: 2.5rem; width: 110px; height: 110px; z-index: 2; opacity: 0; }
-    .hero-badge svg { width: 100%; height: 100%; animation: rotate 10s linear infinite; }
-    .hero-badge-dot { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 12px; height: 12px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 16px rgba(200,255,0,.8); }
-    @keyframes rotate { to { transform: rotate(360deg); } }
-    .hero-content { position: relative; z-index: 1; }
-    .hero-tag { font-size: 11px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--muted); display: flex; align-items: center; gap: .6rem; margin-bottom: 1.75rem; opacity: 0; }
-    .hero-tag::before { content:''; width: 20px; height: 1px; background: var(--accent); }
-    .hero-title { font-size: clamp(3.5rem,8.5vw,9rem); font-weight: 900; line-height: .92; letter-spacing: -0.04em; }
-    .hero-title-line { display: block; overflow: hidden; }
-    .hero-word { display: inline-block; transform: translateY(115%); }
-    .hero-title em { font-style: italic; color: var(--accent); font-family: 'Playfair Display', serif; }
-    .hero-bottom { display: flex; align-items: flex-end; justify-content: space-between; margin-top: 3.5rem; flex-wrap: wrap; gap: 2rem; opacity: 0; }
-    .hero-sub { font-size: 15px; color: var(--muted); line-height: 1.8; max-width: 380px; }
-    .hero-actions { display: flex; gap: 1rem; }
-    .btn-acc { padding: 14px 32px; border-radius: 100px; background: var(--accent); color: #000; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; transition: all .3s; display: inline-flex; align-items: center; gap: .5rem; }
-    .btn-acc:hover { box-shadow: 0 12px 32px rgba(200,255,0,.3); transform: translateY(-2px); }
-    .btn-out { padding: 14px 32px; border-radius: 100px; border: 1px solid var(--border); color: var(--text); font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; transition: all .3s; display: inline-flex; align-items: center; gap: .5rem; }
-    .btn-out:hover { border-color: rgba(0,0,0,.3); transform: translateY(-2px); }
-    .hero-scroll { font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); writing-mode: vertical-rl; display: flex; align-items: center; gap: .75rem; opacity: 0; }
-    .hero-scroll::before { content:''; width: 1px; height: 40px; background: var(--muted); }
+    .tool-chip.vis{opacity:1;transform:none}
+    .tool-chip:hover{border-color:rgba(200,255,0,.3);color:var(--accent);background:rgba(200,255,0,.05)}
+    .tool-chip-icon{font-size:20px;line-height:1}
 
-    /* ─── HERO TRUST BAR ─── */
-    .hero-trust { display: flex; align-items: center; gap: 0; flex-wrap: wrap; margin-top: 3rem; opacity: 0; border: 1px solid var(--border); align-self: flex-start; }
-    .trust-item { display: flex; align-items: center; gap: .75rem; padding: .9rem 1.5rem; border-right: 1px solid var(--border); }
-    .trust-item:last-child { border-right: none; }
-    .trust-icon { width: 32px; height: 32px; background: var(--surface2); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0; }
-    .trust-num { font-size: 1.1rem; font-weight: 900; letter-spacing: -0.02em; line-height: 1; }
-    .trust-lbl { font-size: 8px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-top: 1px; }
-
-    /* ─── STATS ─── */
-    .stats { display: grid; grid-template-columns: repeat(4,1fr); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .stat { padding: 2.5rem; border-right: 1px solid var(--border); opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
-    .stat.vis { opacity: 1; transform: translateY(0); }
-    .stat:last-child { border-right: none; }
-    .stat-n { font-size: 3rem; font-weight: 900; letter-spacing: -0.04em; color: var(--accent); line-height: 1; }
-    .stat-l { font-size: 11px; color: var(--muted); margin-top: .4rem; letter-spacing: .04em; }
-
-    /* ─── MARQUEE ─── */
-    .mq { overflow: hidden; background: var(--accent); padding: 1.1rem 0; }
-    .mq-t { display: flex; white-space: nowrap; animation: mq 20s linear infinite; will-change: transform; }
-    .mq:hover .mq-t { animation-play-state: paused; }
-    .mq-i { display: inline-flex; align-items: center; gap: 1.5rem; font-size: 11px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: #000; padding: 0 1.5rem; flex-shrink: 0; }
-    .mq-sep { width: 5px; height: 5px; border-radius: 50%; background: rgba(0,0,0,.3); }
-    @keyframes mq { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-
-    /* ─── SECTION BASE ─── */
-    .sec { padding: 7rem 2.5rem; }
-    .sec-inner { max-width: 1400px; margin: 0 auto; }
-    .sec-label { font-size: 10px; font-weight: 700; letter-spacing: .25em; text-transform: uppercase; color: var(--muted); display: flex; align-items: center; gap: .75rem; margin-bottom: 1.25rem; }
-    .sec-label::before { content: ''; width: 20px; height: 1px; background: var(--accent); }
-    .sec-h { font-size: clamp(2.5rem,5vw,4.5rem); font-weight: 900; letter-spacing: -0.03em; line-height: 1.0; }
-    .sec-h em { font-style: italic; color: var(--accent); font-family: 'Playfair Display', serif; }
-
-    /* ─── WORK — FULL PAGE ─── */
-    .work-sec {
-      height: 100svh; padding: 6rem 2.5rem 3rem;
-      display: flex; flex-direction: column;
-      scroll-snap-align: start;
-      overflow: hidden;
+    /* ===== STATS ===== */
+    .stats-sec{background:var(--dark2);padding:8rem 2.5rem;border-top:1px solid rgba(255,255,255,.05)}
+    .stats-inner{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
+    .stats-left{}
+    .stats-tag{font-size:10px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--accent);margin-bottom:2.5rem;display:flex;align-items:center;gap:.75rem}
+    .stats-tag::before{content:'';width:20px;height:1px;background:var(--accent)}
+    .stat-row{padding:2rem 0;border-bottom:1px solid rgba(255,255,255,.07)}
+    .stat-row:first-of-type{border-top:1px solid rgba(255,255,255,.07)}
+    .stat-row-inner{display:flex;align-items:baseline;gap:1.25rem}
+    .stat-num{font-size:clamp(3rem,6vw,5.5rem);font-weight:900;letter-spacing:-0.04em;color:var(--accent);line-height:1}
+    .stat-label{font-size:14px;color:rgba(255,255,255,.45);line-height:1.6;max-width:260px}
+    .stat-label strong{display:block;color:rgba(255,255,255,.8);font-size:1rem;font-weight:700;margin-bottom:.25rem}
+    /* right — abstract design grid visual */
+    .stats-right{position:relative}
+    .stats-visual{
+      aspect-ratio:1;max-width:480px;margin:0 auto;
+      background:var(--dark3);border:1px solid rgba(255,255,255,.07);
+      border-radius:24px;overflow:hidden;position:relative;
+      display:flex;align-items:center;justify-content:center;
     }
-    .work-sec .sec-inner { display: flex; flex-direction: column; height: 100%; }
-    .work-hdr { display: flex; align-items: flex-end; justify-content: space-between; padding-bottom: 1.25rem; border-bottom: 1px solid var(--border); margin-bottom: 0; }
-    #proj-img { position: fixed; z-index: 200; pointer-events: none; width: 280px; height: 190px; border-radius: 12px; overflow: hidden; opacity: 0; transform: scale(.9) rotate(-2deg); transition: opacity .3s, transform .3s; }
-    #proj-img.show { opacity: 1; transform: scale(1) rotate(0deg); }
-    #proj-img img, #proj-img .proj-ph { width: 100%; height: 100%; object-fit: cover; }
-    .proj-ph { display: flex; align-items: center; justify-content: center; font-size: 2rem; }
-    .work-rows { flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
-    .work-row { display: grid; grid-template-columns: 60px 1fr auto auto; align-items: center; gap: 2rem; padding: 1rem 0; border-bottom: 1px solid var(--border); cursor: pointer; opacity: 0; transform: translateY(20px); transition: opacity .5s ease, transform .5s ease, padding .3s, background .3s; }
-    .work-row.vis { opacity: 1; transform: translateY(0); }
-    .work-row:hover { padding: 1rem 1rem; background: var(--surface); border-radius: 8px; }
-    .work-row:hover .wr-num { color: var(--accent); }
-    .work-row:hover .wr-name { color: var(--accent); }
-    .work-row:hover .wr-arrow { transform: translate(4px,-4px); color: var(--accent); }
-    .wr-num { font-size: 11px; font-weight: 600; color: var(--muted); transition: color .3s; }
-    .wr-name { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.02em; transition: color .3s; }
-    .wr-tags { display: flex; gap: .5rem; flex-wrap: wrap; justify-content: flex-end; }
-    .tag { font-size: 10px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; padding: 5px 12px; border-radius: 100px; border: 1px solid var(--border); color: var(--muted); }
-    .wr-arrow { font-size: 1.4rem; color: var(--muted); transition: all .3s; }
-
-    /* ─── SERVICES — FULL PAGE ─── */
-    .srv-sec {
-      min-height: 100svh; padding: 6rem 2.5rem;
-      scroll-snap-align: start;
-      background: var(--surface);
-      display: flex; flex-direction: column; justify-content: center;
+    .sv-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:40px 40px}
+    .sv-center{position:relative;z-index:2;text-align:center}
+    .sv-ring{
+      width:180px;height:180px;border-radius:50%;
+      border:1px solid rgba(200,255,0,.2);
+      display:flex;align-items:center;justify-content:center;
+      position:relative;margin:0 auto;
+      animation:svring 6s linear infinite;
     }
-    .srv-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1px; margin-top: 3rem; border: 1px solid var(--border); }
-    .srv-item { padding: 2.5rem 3rem; background: var(--surface); border-right: 1px solid var(--border); position: relative; overflow: hidden; opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
-    .srv-item.vis { opacity: 1; transform: translateY(0); }
-    .srv-item:nth-child(2n) { border-right: none; }
-    .srv-item::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform .5s cubic-bezier(.16,1,.3,1); }
-    .srv-item:hover::before { transform: scaleX(1); }
-    .srv-item:hover { background: var(--surface2); }
-    .srv-n { font-size: 11px; font-weight: 700; color: var(--accent); letter-spacing: .1em; margin-bottom: 1.5rem; }
-    .srv-title { font-size: 1.3rem; font-weight: 800; margin-bottom: .6rem; }
-    .srv-text { font-size: 13px; color: var(--muted); line-height: 1.8; margin-bottom: 1.25rem; }
-    .srv-tags { display: flex; flex-wrap: wrap; gap: .4rem; }
+    @keyframes svring{to{transform:rotate(360deg)}}
+    .sv-ring::before{content:'';position:absolute;inset:-20px;border-radius:50%;border:1px solid rgba(200,255,0,.08);animation:svring 10s linear infinite reverse}
+    .sv-ring-dot{position:absolute;width:10px;height:10px;border-radius:50%;background:var(--accent);top:-5px;left:50%;transform:translateX(-50%);box-shadow:0 0 16px rgba(200,255,0,.8)}
+    .sv-core{width:80px;height:80px;border-radius:50%;background:rgba(200,255,0,.08);border:1px solid rgba(200,255,0,.3);display:flex;align-items:center;justify-content:center;font-size:24px}
+    .sv-bars{display:flex;gap:6px;margin-top:2rem;justify-content:center}
+    .sv-bar{width:6px;border-radius:3px;background:var(--accent);opacity:.6;animation:svbar 1.6s ease-in-out infinite}
+    .sv-bar:nth-child(1){height:32px;animation-delay:0s}
+    .sv-bar:nth-child(2){height:48px;animation-delay:.15s}
+    .sv-bar:nth-child(3){height:24px;animation-delay:.3s}
+    .sv-bar:nth-child(4){height:40px;animation-delay:.45s}
+    .sv-bar:nth-child(5){height:32px;animation-delay:.6s}
+    @keyframes svbar{0%,100%{opacity:.3;transform:scaleY(.6)}50%{opacity:.8;transform:scaleY(1)}}
+    .sv-tags{position:absolute;display:flex;flex-direction:column;gap:.5rem}
+    .sv-tags.top-left{top:1.5rem;left:1.5rem}
+    .sv-tags.bottom-right{bottom:1.5rem;right:1.5rem;text-align:right}
+    .sv-tag{font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);background:rgba(200,255,0,.07);border:1px solid rgba(200,255,0,.15);padding:4px 8px;display:inline-block}
 
-    /* ─── PROCESS STICKY CARDS ─── */
-    .proc-bg {
-      background: var(--surface);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      scroll-snap-align: start;
+    /* ===== PILLARS ===== */
+    .pillars{background:var(--dark);padding:8rem 2.5rem;border-top:1px solid rgba(255,255,255,.05)}
+    .pillars-inner{max-width:1300px;margin:0 auto}
+    .pillars-hdr{text-align:center;margin-bottom:4rem}
+    .pillars-tag{font-size:10px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--accent);margin-bottom:.75rem}
+    .pillars-h{font-size:clamp(2.5rem,5vw,4rem);font-weight:900;letter-spacing:-0.03em;color:#fff}
+    .pillars-h em{color:var(--accent)}
+    /* 4 cards in row — hover expands */
+    .pillars-row{display:flex;gap:1.5px;height:380px}
+    .pcard{
+      flex:1;background:var(--dark2);border:1px solid rgba(255,255,255,.06);border-radius:16px;
+      padding:2.5rem;position:relative;overflow:hidden;cursor:pointer;
+      transition:flex .5s cubic-bezier(.16,1,.3,1),border-color .3s;
+      display:flex;flex-direction:column;justify-content:flex-end;
     }
-    .proc-stack { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 4rem; padding-bottom: 8rem; }
-    .proc-card {
-      position: sticky; top: 80px; height: 60vh; min-height: 460px;
-      display: grid; grid-template-columns: 1fr 1fr;
-      border-radius: 20px; overflow: hidden;
-      border: 1px solid var(--border); background: var(--surface2);
-      transform-origin: top center; will-change: transform, filter;
-      transition: border-color .3s;
+    .pcard.active,.pcard:hover{flex:2.8;border-color:rgba(200,255,0,.2)}
+    .pcard::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.16,1,.3,1)}
+    .pcard.active::before,.pcard:hover::before{transform:scaleX(1)}
+    .pcard-icon{width:40px;height:40px;border:1px solid rgba(200,255,0,.2);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;margin-bottom:auto;transition:border-color .3s,background .3s}
+    .pcard.active .pcard-icon,.pcard:hover .pcard-icon{border-color:var(--accent);background:rgba(200,255,0,.08)}
+    .pcard-num{font-size:9px;font-weight:700;letter-spacing:.2em;color:var(--accent);margin-bottom:.75rem}
+    .pcard-title{font-size:1.05rem;font-weight:800;color:#fff;line-height:1.2;margin-bottom:.5rem}
+    .pcard-desc{font-size:12.5px;color:rgba(255,255,255,.4);line-height:1.8;max-height:0;overflow:hidden;opacity:0;transition:max-height .5s cubic-bezier(.16,1,.3,1),opacity .4s .1s}
+    .pcard.active .pcard-desc,.pcard:hover .pcard-desc{max-height:200px;opacity:1}
+    .pcard-bg-num{position:absolute;bottom:-1.5rem;right:1rem;font-size:8rem;font-weight:900;color:rgba(255,255,255,.025);letter-spacing:-0.05em;user-select:none}
+
+    /* ===== MARQUEE ===== */
+    .mq-strip{overflow:hidden;background:var(--accent);padding:1rem 0}
+    .mq-track{display:flex;white-space:nowrap;animation:mq 22s linear infinite;will-change:transform}
+    .mq-strip:hover .mq-track{animation-play-state:paused}
+    .mq-item{display:inline-flex;align-items:center;gap:1.5rem;font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#000;padding:0 1.5rem;flex-shrink:0}
+    .mq-dot{width:5px;height:5px;border-radius:50%;background:rgba(0,0,0,.3)}
+    @keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+    /* ===== CTA ===== */
+    .cta{background:var(--dark);padding:0 2.5rem}
+    .cta-inner{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;min-height:60vh;align-items:center;border-left:1px solid rgba(255,255,255,.06);border-right:1px solid rgba(255,255,255,.06)}
+    .cta-left{padding:6rem 4rem 6rem 0;border-right:1px solid rgba(255,255,255,.06)}
+    .cta-tag{font-size:10px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--accent);margin-bottom:2rem;display:flex;align-items:center;gap:.75rem}
+    .cta-tag::before{content:'';width:20px;height:1px;background:var(--accent)}
+    .cta-h{font-size:clamp(2.5rem,5vw,4.5rem);font-weight:900;letter-spacing:-0.04em;color:#fff;line-height:1}
+    .cta-h em{color:var(--accent)}
+    .cta-actions{display:flex;align-items:center;gap:1.5rem;margin-top:3rem;flex-wrap:wrap}
+    .cta-arrow{width:56px;height:56px;border-radius:50%;border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;transition:all .3s;cursor:pointer}
+    .cta-arrow:hover{border-color:var(--accent);background:rgba(200,255,0,.1)}
+    .cta-arrow svg{width:20px;height:20px;stroke:#fff;stroke-width:1.5;fill:none;transition:stroke .3s}
+    .cta-arrow:hover svg{stroke:var(--accent)}
+    .cta-right{padding:6rem 0 6rem 4rem;display:flex;align-items:center;justify-content:center}
+    .cta-visual{
+      width:280px;height:280px;position:relative;border-radius:50%;
+      background:conic-gradient(from 180deg,var(--accent) 0deg,rgba(200,255,0,.3) 90deg,transparent 180deg,rgba(200,255,0,.1) 270deg,var(--accent) 360deg);
+      animation:ctaspin 12s linear infinite;
     }
-    .proc-card:nth-child(1) { z-index: 1; }
-    .proc-card:nth-child(2) { z-index: 2; }
-    .proc-card:nth-child(3) { z-index: 3; }
-    .proc-card:nth-child(4) { z-index: 4; }
-    .proc-card:hover { border-color: rgba(200,255,0,.12); }
-    .proc-card-img { position: relative; overflow: hidden; background: #e8e8e8; }
-    .proc-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s cubic-bezier(.16,1,.3,1); }
-    .proc-card:hover .proc-card-img img { transform: scale(1.05); }
-    .proc-card-img-ov { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(200,255,0,.06) 0%, transparent 60%); pointer-events: none; }
-    .proc-card-text { padding: 3rem 3.5rem; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; }
-    .proc-card-num { position: absolute; bottom: -1rem; right: 1.5rem; font-size: 9rem; font-weight: 900; letter-spacing: -0.05em; line-height: 1; color: rgba(0,0,0,.05); pointer-events: none; user-select: none; }
-    .proc-step { font-size: 10px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
-    .proc-title { font-size: clamp(1.75rem,3vw,2.75rem); font-weight: 900; letter-spacing: -0.03em; margin-bottom: 1rem; line-height: 1.0; }
-    .proc-desc { font-size: 14px; color: var(--muted); line-height: 1.85; margin-bottom: 1.75rem; max-width: 380px; }
-    .proc-pts { display: flex; flex-direction: column; gap: .5rem; }
-    .proc-pt { font-size: 13px; color: var(--muted); display: flex; align-items: center; gap: .75rem; }
-    .proc-pt::before { content:''; width:5px; height:5px; border-radius:50%; background:var(--accent); flex-shrink:0; }
-    .proc-card-bar { position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform .8s cubic-bezier(.16,1,.3,1); }
-    .proc-card.in-view .proc-card-bar { transform: scaleX(1); }
+    .cta-visual::before{content:'';position:absolute;inset:20px;border-radius:50%;background:var(--dark);animation:ctaspin 12s linear infinite reverse}
+    .cta-visual::after{content:'';position:absolute;inset:40px;border-radius:50%;border:1px solid rgba(200,255,0,.2)}
+    .cta-visual-core{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:2;font-size:1.2rem;font-weight:900;color:var(--accent);letter-spacing:.1em}
+    @keyframes ctaspin{to{transform:rotate(360deg)}}
 
-    /* ─── STUDIO HQ ─── */
-    .hq-sec {
-      min-height: 100svh; padding: 6rem 2.5rem;
-      scroll-snap-align: start;
-      display: flex; flex-direction: column;
-      background: var(--bg);
-    }
-    .hq-sec .sec-inner { display: flex; flex-direction: column; flex: 1; }
-    .hq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3.5rem; flex: 1; }
-    .hq-left { display: flex; flex-direction: column; gap: 1.5rem; }
-    .hq-addr { padding: 2.5rem; border: 1px solid var(--border); background: var(--surface); }
-    .hq-addr-label { font-size: 9px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.25rem; display: flex; align-items: center; gap: .5rem; }
-    .hq-addr-label::before { content:''; width:6px; height:6px; background:var(--accent); flex-shrink:0; }
-    .hq-addr-name { font-size: 1.05rem; font-weight: 800; margin-bottom: .6rem; }
-    .hq-addr-line { font-size: 13px; color: var(--muted); line-height: 1.9; }
-    .hq-meta { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1px; border: 1px solid var(--border); background: var(--border); }
-    .hq-meta-item { background: var(--surface); padding: 1.5rem 1.75rem; }
-    .hq-meta-k { font-size: 9px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); margin-bottom: .4rem; }
-    .hq-meta-v { font-size: 1.05rem; font-weight: 900; letter-spacing: -0.02em; color: var(--text); }
-    .hq-hours { padding: 2rem 2.5rem; border: 1px solid var(--border); background: var(--surface); display: flex; gap: 3rem; align-items: center; }
-    .hq-hours-label { font-size: 9px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); margin-bottom: .35rem; }
-    .hq-hours-val { font-size: 1rem; font-weight: 800; }
-    .hq-live-badge { display: flex; align-items: center; gap: .6rem; margin-left: auto; }
-    .hq-live-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px rgba(200,255,0,.6); animation: hqpulse 2s ease-in-out infinite; }
-    @keyframes hqpulse { 0%,100% { opacity:1; } 50% { opacity:.4; } }
-    .hq-live-txt { font-size: 9px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--accent); }
-    /* Map panel */
-    .hq-right { position: relative; }
-    .hq-map { width: 100%; height: 100%; min-height: 420px; background: var(--surface); border: 1px solid var(--border); position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-    .hq-map-grid { position: absolute; inset: 0; background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px); background-size: 48px 48px; }
-    .hq-map-dot { position: absolute; width: 3px; height: 3px; border-radius: 50%; background: rgba(0,0,0,.15); }
-    .hq-map-pin { position: relative; z-index: 2; text-align: center; }
-    .hq-pin-ripple { width: 14px; height: 14px; border-radius: 50%; background: var(--accent); margin: 0 auto 1rem; box-shadow: 0 0 0 10px rgba(200,255,0,.12), 0 0 0 24px rgba(200,255,0,.05); animation: pinpulse 2.5s ease-in-out infinite; }
-    @keyframes pinpulse { 0%,100% { box-shadow: 0 0 0 10px rgba(200,255,0,.12), 0 0 0 24px rgba(200,255,0,.05); } 50% { box-shadow: 0 0 0 16px rgba(200,255,0,.16), 0 0 0 36px rgba(200,255,0,.07); } }
-    .hq-pin-city { font-size: 1.6rem; font-weight: 900; letter-spacing: -0.03em; color: var(--text); }
-    .hq-pin-country { font-size: 9px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--accent); margin-top: .25rem; }
-    .hq-coords-bar { position: absolute; bottom: 0; left: 0; right: 0; display: flex; gap: 0; border-top: 1px solid var(--border); }
-    .hq-coord { flex: 1; padding: 1rem 1.5rem; background: rgba(245,245,245,.92); border-right: 1px solid var(--border); text-align: center; }
-    .hq-coord:last-child { border-right: none; }
-    .hq-coord-k { font-size: 8px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--muted); }
-    .hq-coord-v { font-size: .85rem; font-weight: 900; color: var(--accent); letter-spacing: .04em; margin-top: .2rem; }
-    .hq-map-accent { position: absolute; top: 1.5rem; right: 1.5rem; padding: 6px 14px; background: rgba(200,255,0,.08); border: 1px solid rgba(200,255,0,.2); font-size: 9px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); }
+    /* ===== FOOTER ===== */
+    footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.07);padding:4rem 2.5rem 2rem}
+    .ft-inner{max-width:1300px;margin:0 auto}
+    .ft-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,.07)}
+    .ft-logo{display:flex;align-items:center;gap:.75rem;margin-bottom:1.25rem}
+    .ft-logo-sq{width:28px;height:28px;border:1.5px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;color:var(--accent)}
+    .ft-logo-t{font-size:11px;font-weight:800;letter-spacing:.22em;color:#fff}
+    .ft-desc{font-size:13px;color:rgba(255,255,255,.35);line-height:1.9;max-width:240px}
+    .ft-col-h{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:1.25rem}
+    .ft-col-links{display:flex;flex-direction:column;gap:.7rem}
+    .ft-col-links a,.ft-col-links span{font-size:13px;color:rgba(255,255,255,.45);transition:color .2s;line-height:1.7}
+    .ft-col-links a:hover{color:var(--accent)}
+    .ft-bot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;padding-top:2rem;font-size:12px;color:rgba(255,255,255,.25)}
+    .ft-acc{color:var(--accent)}
 
-    /* ─── RESULTS ─── */
-    .results-bg { background: var(--bg); scroll-snap-align: start; }
-    .results-h { font-size: clamp(4rem,9vw,9rem); font-weight: 900; letter-spacing: -0.04em; line-height: .9; margin-bottom: .5rem; }
-    .results-sub { font-size: 14px; color: var(--muted); margin-bottom: 3.5rem; }
-    .results-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--border); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
-    .r-card { background: var(--surface); padding: 3rem; opacity: 0; transform: translateY(20px); transition: opacity .65s ease, transform .65s ease; }
-    .r-card.vis { opacity: 1; transform: translateY(0); }
-    .r-card-lbl { font-size: 9px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: var(--muted); display: flex; align-items: center; gap: .5rem; margin-bottom: 2rem; }
-    .r-card-lbl::before { content: ''; width: 7px; height: 7px; background: var(--accent); flex-shrink: 0; }
-    .r-stats-row { display: flex; gap: 2.5rem; flex-wrap: wrap; margin-bottom: 2rem; }
-    .r-stat .rn { font-size: clamp(1.8rem,3.5vw,3rem); font-weight: 900; letter-spacing: -0.04em; line-height: 1; }
-    .r-stat .rl { font-size: 9px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); margin-top: .3rem; display: flex; align-items: center; gap: .4rem; }
-    .r-stat .rl::before { content: ''; width: 6px; height: 6px; background: var(--accent); }
-    .r-chart-wrap { position: relative; height: 110px; margin-top: auto; }
-    .r-chart-badge { position: absolute; top: 0; right: 0; background: var(--surface2); border: 1px solid var(--accent); padding: 4px 10px; font-size: 11px; font-weight: 700; color: var(--accent); display: flex; align-items: center; gap: .3rem; }
-    .r-feat-h { font-size: clamp(1.3rem,2.2vw,1.9rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 2rem; line-height: 1.15; }
-    .r-feat-h em { font-style: italic; color: var(--accent); font-family: 'Playfair Display', serif; }
-    .r-feat-item { display: grid; grid-template-columns: 1fr 1fr; padding: .9rem 0; border-top: 1px solid var(--border); font-size: 13px; }
-    .r-feat-item:last-child { border-bottom: 1px solid var(--border); }
-    .r-feat-name { font-weight: 700; }
-    .r-feat-desc { color: var(--muted); }
-    .r-team-h { font-size: clamp(1.4rem,2.5vw,2.2rem); font-weight: 900; letter-spacing: -0.03em; margin-bottom: .75rem; line-height: 1.1; }
-    .r-team-h em { font-style: italic; color: var(--accent); font-family: 'Playfair Display', serif; }
-    .r-team-desc { font-size: 13px; color: var(--muted); line-height: 1.8; max-width: 340px; margin-bottom: 1.75rem; }
-    .r-steps { display: flex; gap: 0; margin-top: 1rem; }
-    .r-step { flex: 1; padding: .75rem 1rem; background: var(--surface2); border: 1px solid var(--border); font-size: 9px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); text-align: center; transition: all .3s; }
-    .r-step:hover { color: var(--accent); border-color: rgba(200,255,0,.2); }
-    .r-step-num { display: block; font-size: 1.1rem; font-weight: 900; color: var(--accent); letter-spacing: -0.03em; margin-bottom: .25rem; }
-    .r-step-badge { display: inline-flex; align-items: center; gap: .5rem; background: var(--surface2); border: 1px solid rgba(200,255,0,.2); padding: 5px 12px; font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin-top: 1.5rem; }
-    .r-step-badge::before { content: ''; width: 5px; height: 5px; background: var(--accent); }
-    .r-lh-h { font-size: clamp(1.4rem,2.5vw,2.2rem); font-weight: 900; letter-spacing: -0.03em; margin-bottom: .75rem; }
-    .r-lh-h em { font-style: italic; color: var(--accent); font-family: 'Playfair Display', serif; }
-    .r-lh-desc { font-size: 13px; color: var(--muted); line-height: 1.8; margin-bottom: 2rem; max-width: 340px; }
-    .r-lh-scores { display: flex; gap: 1.25rem; flex-wrap: wrap; margin-top: 1rem; }
-    .r-lh-item { text-align: center; }
-    .r-lh-ring { width: 70px; height: 70px; border-radius: 50%; border: 2px solid var(--accent); display: flex; align-items: center; justify-content: center; font-size: 1.25rem; font-weight: 900; color: var(--accent); margin-bottom: .5rem; box-shadow: 0 0 16px rgba(200,255,0,.1); }
-    .r-lh-ring-lbl { font-size: 9px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
-    .r-live { display: flex; align-items: center; gap: .5rem; margin-bottom: 1.5rem; }
-    .r-live-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: hqpulse 2s ease-in-out infinite; }
-    .r-live-txt { font-size: 9px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); }
+    /* REVEAL */
+    .rv{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+    .rv.vis{opacity:1;transform:none}
+    .rv1{transition-delay:.1s}
+    .rv2{transition-delay:.2s}
+    .rv3{transition-delay:.3s}
 
-    /* ─── CTA ─── */
-    .cta-sec {
-      min-height: 100svh; text-align: center; padding: 9rem 2.5rem;
-      position: relative; overflow: hidden;
-      scroll-snap-align: start;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-    }
-    .cta-glow { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 800px; height: 800px; background: radial-gradient(ellipse, rgba(200,255,0,.06) 0%, transparent 65%); pointer-events: none; animation: glowpulse 5s ease-in-out infinite; }
-    @keyframes glowpulse { 0%,100% { transform: translate(-50%,-50%) scale(1); opacity: 1; } 50% { transform: translate(-50%,-50%) scale(1.1); opacity: .6; } }
-    .cta-h { font-size: clamp(3rem,7vw,6.5rem); font-weight: 900; letter-spacing: -0.04em; line-height: .95; position: relative; }
-    .cta-h em { font-style: italic; color: var(--accent); font-family: 'Playfair Display', serif; }
-    .cta-sub { font-size: 15px; color: var(--muted); max-width: 440px; margin: 1.5rem auto 0; line-height: 1.8; position: relative; }
-    .cta-btns { margin-top: 2.5rem; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; position: relative; }
-
-    /* ─── DOTTED BUTTON ─── */
-    .btn-dot {
-      position: relative; overflow: hidden;
-      background: var(--accent) !important;
-      background-image: radial-gradient(rgba(0,0,0,.2) 1px, transparent 1px) !important;
-      background-size: 6px 6px !important;
-      border: 1px solid rgba(200,255,0,.6) !important;
-      color: #000 !important;
-    }
-    .btn-dot::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(255,255,255,.12) 0%, transparent 60%); pointer-events: none; }
-    .btn-dot:hover { box-shadow: 0 0 28px rgba(200,255,0,.35), inset 0 0 20px rgba(255,255,255,.06) !important; transform: none !important; }
-
-    /* ─── FAQ ─── */
-    .faq { border-top: 1px solid var(--border); }
-    .faq-row { border-bottom: 1px solid var(--border); }
-    .faq-q { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 0; cursor: pointer; font-size: 1rem; font-weight: 600; gap: 1rem; transition: color .2s; }
-    .faq-q:hover { color: var(--accent); }
-    .faq-ic { font-size: 1.5rem; color: var(--muted); transition: transform .4s cubic-bezier(.16,1,.3,1), color .2s; flex-shrink: 0; }
-    .faq-row.open .faq-ic { transform: rotate(45deg); color: var(--accent); }
-    .faq-a { max-height: 0; overflow: hidden; transition: max-height .45s cubic-bezier(.16,1,.3,1), padding .3s; font-size: 14px; color: var(--muted); line-height: 1.85; }
-    .faq-row.open .faq-a { max-height: 300px; padding-bottom: 1.5rem; }
-
-    /* ─── FOOTER ─── */
-    footer { border-top: 1px solid var(--border); padding: 5rem 2.5rem 2.5rem; }
-    .ft-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; max-width: 1400px; margin: 0 auto; }
-    .ft-logo { display: flex; align-items: center; gap: .75rem; margin-bottom: 1.25rem; }
-    .ft-logo-box { width: 30px; height: 30px; border: 1.5px solid var(--accent); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 900; color: var(--accent); }
-    .ft-logo-t { font-size: 12px; font-weight: 700; letter-spacing: .2em; }
-    .ft-desc { font-size: 13px; color: var(--muted); line-height: 1.85; max-width: 260px; }
-    .ft-h { font-size: 10px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.25rem; }
-    .ft-links { display: flex; flex-direction: column; gap: .7rem; }
-    .ft-links a { font-size: 13px; color: var(--muted); transition: color .2s; }
-    .ft-links a:hover { color: var(--accent); }
-    .ft-links span { font-size: 13px; color: var(--muted); line-height: 1.7; }
-    .ft-bot { max-width: 1400px; margin: 3rem auto 0; padding-top: 2rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; font-size: 12px; color: var(--muted); }
-    .ft-acc { color: var(--accent); font-weight: 700; }
-
-    /* ─── FLOATING CONTACT MENU ─── */
-    .float-menu { position: fixed; right: 0; top: 50%; transform: translateY(-50%); z-index: 500; display: flex; flex-direction: column; gap: 3px; }
-    .float-btn { width: 60px; height: 60px; background: rgba(255,255,255,.95); background-image: radial-gradient(rgba(0,0,0,.08) 1px, transparent 1px); background-size: 5px 5px; border: 1px solid rgba(0,0,0,.1); border-right: none; display: flex; align-items: center; justify-content: center; cursor: pointer; position: relative; transition: border-color .25s, background-color .25s; text-decoration: none; color: var(--text); backdrop-filter: blur(8px); }
-    .float-btn .fb-corner { position: absolute; top: 0; right: 0; width: 8px; height: 8px; border-top: 1px solid var(--accent); border-right: 1px solid var(--accent); transition: width .3s, height .3s; }
-    .float-btn:hover { border-color: rgba(200,255,0,.3); background-color: rgba(200,255,0,.05); }
-    .float-btn:hover .fb-corner { width: 100%; height: 100%; }
-    .float-btn svg { width: 22px; height: 22px; stroke: rgba(0,0,0,.5); stroke-width: 1.5; fill: none; transition: stroke .25s; }
-    .float-btn:hover svg { stroke: var(--accent); }
-
-    /* ─── SCROLL PROGRESS ─── */
-    #scroll-prog { position: fixed; top: 0; left: 0; z-index: 9000; height: 2px; background: var(--accent); width: 0%; transition: width .1s linear; box-shadow: 0 0 8px rgba(200,255,0,.4); }
-
-    /* ─── REVEAL ─── */
-    .rv { opacity: 0; transform: translateY(32px); transition: opacity .7s ease, transform .7s ease; }
-    .rv.vis { opacity: 1; transform: translateY(0); }
-    .rv1 { transition-delay: .1s; }
-    .rv2 { transition-delay: .2s; }
-    .rv3 { transition-delay: .3s; }
-
-    /* ─── MOBILE ─── */
-    @media(max-width:900px) {
-      body { cursor: auto; }
-      #cur { display: none; }
-      nav { top: .75rem; padding: .4rem .4rem .4rem 1rem; gap: 1rem; max-width: calc(100% - 2rem); }
-      .nav-c { display: none; }
-      .hero { padding: 0 1.25rem 2.5rem; }
-      .hero-bg-num { display: none; }
-      .hero-badge { display: none; }
-      .stats { grid-template-columns: repeat(2,1fr); }
-      .stat:nth-child(2) { border-right: none; }
-      .work-sec { height: auto; min-height: 100svh; padding: 4rem 1.25rem; }
-      .srv-sec { padding: 4rem 1.25rem; }
-      .srv-grid { grid-template-columns: 1fr; }
-      .srv-item { border-right: none !important; }
-      .proc-card { grid-template-columns: 1fr; height: auto; min-height: unset; position: relative; top: 0; }
-      .proc-card-img { height: 220px; }
-      .proc-card-text { padding: 2rem; }
-      .hq-sec { padding: 4rem 1.25rem; }
-      .hq-grid { grid-template-columns: 1fr; }
-      .hq-map { min-height: 280px; }
-      .hq-meta { grid-template-columns: 1fr 1fr; }
-      .ft-grid { grid-template-columns: 1fr 1fr; }
-      .cta-sec { padding: 5rem 1.25rem; min-height: unset; }
-      .work-row { grid-template-columns: 40px 1fr auto; }
-      .wr-tags { display: none; }
-      .results-grid { grid-template-columns: 1fr; }
-      .float-menu { display: none; }
-      .hero-trust { display: none; }
-      .r-steps { flex-wrap: wrap; }
-      .r-step { min-width: calc(50% - 1px); }
+    /* MOBILE */
+    @media(max-width:900px){
+      body{cursor:auto}
+      #cur{display:none}
+      nav .nav-links{display:none}
+      .hero-visual{display:none}
+      .hero::after{background:linear-gradient(180deg,transparent,rgba(10,10,10,.85))}
+      .how-row{grid-template-columns:1fr}
+      .how-row:nth-child(odd) .how-card:first-child,.how-row:nth-child(even) .how-card:last-child{margin-top:0}
+      .stats-inner{grid-template-columns:1fr}
+      .stats-right{display:none}
+      .pillars-row{flex-direction:column;height:auto;gap:1rem}
+      .pcard{flex:none !important}
+      .pcard-desc{max-height:200px !important;opacity:1 !important}
+      .cta-inner{grid-template-columns:1fr}
+      .cta-right{display:none}
+      .cta-left{border-right:none;padding:4rem 0}
+      .ft-top{grid-template-columns:1fr 1fr}
+      .float-menu{display:none}
     }
   </style>
 </head>
 <body>
 
-<!-- SCROLL PROGRESS -->
 <div id="scroll-prog"></div>
 
-<!-- FLOATING CONTACT MENU -->
+<!-- FLOATING CONTACT -->
 <div class="float-menu">
   <a href="https://wa.me/959255762417" target="_blank" class="float-btn" title="WhatsApp">
     <div class="fb-corner"></div>
@@ -445,477 +393,332 @@
   <div class="ld-bar"><div class="ld-fill" id="ldFill"></div></div>
 </div>
 
-<!-- FLOATING PROJECT IMAGE -->
-<div id="proj-img"><div class="proj-ph" id="projPh" style="background:#ebebeb"></div></div>
-
-<!-- NAV — FLOATING PILL -->
-<nav id="nav">
-  <a href="index.html" class="nav-l">
-    <div class="nav-logo-box">A</div>AWAKEN
+<!-- NAV -->
+<nav id="nav" class="on-dark">
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logo-sq">A</div>AWAKEN
   </a>
-  <div class="nav-c">
+  <div class="nav-links">
     <a href="digital.html">Digital</a>
     <a href="design.html" class="active">Design</a>
     <a href="tech.html">Tech</a>
     <a href="production.html">Production</a>
     <a href="pr.html">PR</a>
   </div>
-  <a href="https://www.awakenentertainment.org/contact" target="_blank" class="nav-btn">Start a Project ↗</a>
+  <a href="https://www.awakenentertainment.org/contact" target="_blank" class="nav-cta">Contact Us</a>
 </nav>
 
 <!-- HERO -->
-<section class="hero">
-  <div class="hero-bg-num">DS</div>
-
-  <div class="hero-badge" id="hBadge">
-    <svg viewBox="0 0 110 110">
-      <defs><path id="circle" d="M55,55 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"/></defs>
-      <text fill="#c8ff00" font-size="11.5" font-weight="700" letter-spacing="4" font-family="Inter,sans-serif">
-        <textPath href="#circle">AWAKEN DESIGN · YANGON · 2016 · </textPath>
-      </text>
-    </svg>
-    <div class="hero-badge-dot"></div>
+<section class="hero" id="top">
+  <div class="hero-visual">
+    <div class="hv-grid"></div>
+    <div class="hv-rect hv-rect1"></div>
+    <div class="hv-rect hv-rect2"></div>
+    <div class="hv-rect hv-rect3"></div>
+    <div class="hv-dot hv-dot1"></div>
+    <div class="hv-dot hv-dot2"></div>
+    <div class="hv-dot hv-dot3"></div>
+    <div class="hv-line hv-line1"></div>
+    <div class="hv-line hv-line2"></div>
+    <div class="hv-label">Awaken Design Studio</div>
+    <div class="hv-type">DS</div>
   </div>
 
   <div class="hero-content">
-    <div class="hero-tag" id="hTag">Awaken Design</div>
-    <h1 class="hero-title" id="hTitle">
-      <span class="hero-title-line"><span class="hero-word">We design</span> <span class="hero-word"><em>brands</em></span></span>
-      <span class="hero-title-line"><span class="hero-word">that</span> <span class="hero-word">command</span></span>
-      <span class="hero-title-line"><span class="hero-word"><em>attention.</em></span></span>
+    <div class="hero-kicker" id="hKicker">Design Studio · Yangon</div>
+    <h1 class="hero-h" id="hTitle">
+      <span class="hero-h-line"><span class="hw">We design</span> <span class="hw"><em>brands</em></span></span>
+      <span class="hero-h-line"><span class="hw">that</span> <span class="hw">make</span> <span class="hw">people</span></span>
+      <span class="hero-h-line"><span class="hw">stop</span> <span class="hw">&amp;</span> <span class="hw"><em>feel.</em></span></span>
     </h1>
-    <div class="hero-bottom" id="hBot">
-      <div>
-        <p class="hero-sub">From brand identity to motion — we craft visual systems that make people stop, feel, and remember. Design with intention, built to last.</p>
-        <div class="hero-actions" style="margin-top:1.75rem;">
-          <a href="https://www.awakenentertainment.org/contact" target="_blank" class="btn-acc btn-dot">Start a Project →</a>
-          <a href="#work" class="btn-out">See Our Work ↓</a>
+    <p class="hero-sub" id="hSub">From brand identity to motion — we craft visual systems with intention, built to last across every medium and market.</p>
+    <div class="hero-actions" id="hActions">
+      <a href="https://www.awakenentertainment.org/contact" target="_blank" class="btn-primary">Start a Project →</a>
+      <a href="#work" class="btn-ghost">See Our Work</a>
+    </div>
+  </div>
+
+  <a href="#statement" class="hero-scroll-cta" id="hScroll">
+    <div class="hero-scroll-circle">
+      <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+  </a>
+</section>
+
+<!-- STATEMENT -->
+<section class="stmt" id="statement">
+  <div class="stmt-inner">
+    <div class="stmt-tag rv">Design Studio · Est. 2016</div>
+    <p class="stmt-p rv rv1">We are <em>Awaken Design</em> — a studio that partners with ambitious brands to create <strong>visual identities</strong> that command attention, communicate purpose, and <em>endure.</em></p>
+  </div>
+</section>
+
+<!-- HOW WE DESIGN IT -->
+<section class="how" id="process">
+  <div class="how-inner">
+    <div class="how-hdr">
+      <div class="how-tag rv">Our Process</div>
+      <h2 class="how-h rv rv1">How we <em>design</em> it.</h2>
+      <p class="how-sub rv rv2">Four disciplines. One studio. Zero handoffs.</p>
+    </div>
+    <div class="how-cards">
+      <div class="how-row">
+        <div class="how-card" data-hd="0">
+          <div class="how-card-icon">✦</div>
+          <div class="how-card-n">01 — Discover</div>
+          <div class="how-card-title">We <em>know</em> our clients.</div>
+          <div class="how-card-text">Before a single pixel, we immerse ourselves in your brand story, audience, and competitive landscape. Every creative decision starts with deep understanding.</div>
+          <div class="how-card-bg-num">01</div>
         </div>
-        <div class="hero-trust" id="hTrust">
-          <div class="trust-item">
-            <div class="trust-icon">✦</div>
-            <div><div class="trust-num">200+</div><div class="trust-lbl">Brands Created</div></div>
-          </div>
-          <div class="trust-item">
-            <div class="trust-icon">◈</div>
-            <div><div class="trust-num">100%</div><div class="trust-lbl">Brand Consistency</div></div>
-          </div>
-          <div class="trust-item">
-            <div class="trust-icon">★</div>
-            <div><div class="trust-num">5.0</div><div class="trust-lbl">Client Rating</div></div>
-          </div>
+        <div class="how-card" data-hd="120">
+          <div class="how-card-icon">◈</div>
+          <div class="how-card-n">02 — Concept</div>
+          <div class="how-card-title">We set clear <em>direction.</em></div>
+          <div class="how-card-text">We present multiple visual directions — mood boards, type pairings, colour stories — then refine the one that resonates. Nothing moves to production without alignment.</div>
+          <div class="how-card-bg-num">02</div>
         </div>
       </div>
-      <div class="hero-scroll" id="hScroll">Scroll to explore</div>
+      <div class="how-row">
+        <div class="how-card" data-hd="80">
+          <div class="how-card-icon">▲</div>
+          <div class="how-card-n">03 — Design</div>
+          <div class="how-card-title">We <em>QA</em> everything.</div>
+          <div class="how-card-text">Every asset, every format, every screen size. Our design system approach means nothing ships until it passes our internal review — pixel-perfect and production-ready.</div>
+          <div class="how-card-bg-num">03</div>
+        </div>
+        <div class="how-card" data-hd="200">
+          <div class="how-card-icon">⬡</div>
+          <div class="how-card-n">04 — Deliver</div>
+          <div class="how-card-title">We're never <em>done.</em></div>
+          <div class="how-card-text">Our team stays available after delivery — fast turnaround on revisions, brand guidance, and asset extensions so your identity grows as your business does.</div>
+          <div class="how-card-bg-num">04</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- STATS -->
-<div class="stats" id="stats">
-  <div class="stat"><div class="stat-n" data-to="2016" data-from="2000" data-sfx="">2016</div><div class="stat-l">Founded in Yangon</div></div>
-  <div class="stat"><div class="stat-n" data-to="200" data-from="0" data-sfx="+">0+</div><div class="stat-l">Brands Designed</div></div>
-  <div class="stat"><div class="stat-n" data-to="15" data-from="0" data-sfx="+">0+</div><div class="stat-l">Industries Served</div></div>
-  <div class="stat"><div class="stat-n" data-to="98" data-from="0" data-sfx="%">0%</div><div class="stat-l">Client Satisfaction</div></div>
-</div>
+<!-- WORK -->
+<section class="work" id="work">
+  <div class="work-inner">
+    <div class="work-hdr">
+      <h2 class="work-title rv">Work.<em>.</em></h2>
+      <a href="https://www.awakenentertainment.org/contact" target="_blank" class="work-see-all rv rv1">See All</a>
+    </div>
+    <div class="work-cards">
+
+      <div class="work-card" data-wd="0">
+        <div class="work-card-bg" style="background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%)"></div>
+        <div class="work-card-ov"></div>
+        <div class="work-card-info">
+          <div>
+            <div class="work-card-meta"><span class="work-card-cat">Brand Identity</span></div>
+            <div class="work-card-name">Yoma Strategic Holdings</div>
+          </div>
+          <div class="work-card-action">See Details <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+        </div>
+      </div>
+
+      <div class="work-card" data-wd="60">
+        <div class="work-card-bg" style="background:linear-gradient(135deg,#1e0a0a 0%,#3d1515 50%,#7b2d2d 100%)"></div>
+        <div class="work-card-ov"></div>
+        <div class="work-card-info">
+          <div>
+            <div class="work-card-meta"><span class="work-card-cat">Visual Design</span></div>
+            <div class="work-card-name">Shwe Taung Group</div>
+          </div>
+          <div class="work-card-action">See Details <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+        </div>
+      </div>
+
+      <div class="work-card" data-wd="120">
+        <div class="work-card-bg" style="background:linear-gradient(135deg,#0a1a0a 0%,#0d2b0d 50%,#1a5c1a 100%)"></div>
+        <div class="work-card-ov"></div>
+        <div class="work-card-info">
+          <div>
+            <div class="work-card-meta"><span class="work-card-cat">UI / UX Design</span></div>
+            <div class="work-card-name">KBZ Bank Digital Platform</div>
+          </div>
+          <div class="work-card-action">See Details <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+        </div>
+      </div>
+
+      <div class="work-card" data-wd="180">
+        <div class="work-card-bg" style="background:linear-gradient(135deg,#1a0f2e 0%,#2d1b5e 50%,#4a2d8f 100%)"></div>
+        <div class="work-card-ov"></div>
+        <div class="work-card-info">
+          <div>
+            <div class="work-card-meta"><span class="work-card-cat">Motion & Animation</span></div>
+            <div class="work-card-name">City Mart Supercentre</div>
+          </div>
+          <div class="work-card-action">See Details <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+        </div>
+      </div>
+
+      <div class="work-card" data-wd="240">
+        <div class="work-card-bg" style="background:linear-gradient(135deg,#0f1a1a 0%,#1a3d3d 50%,#2d7070 100%)"></div>
+        <div class="work-card-ov"></div>
+        <div class="work-card-info">
+          <div>
+            <div class="work-card-meta"><span class="work-card-cat">Packaging Design</span></div>
+            <div class="work-card-name">Lotte Hotel &amp; Residences</div>
+          </div>
+          <div class="work-card-action">See Details <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS / SOFTWARE -->
+<section class="tools" id="tools">
+  <div class="tools-inner">
+    <h2 class="tools-h rv">We are <em>certified.</em></h2>
+    <p class="tools-sub rv rv1">Our designers are certified professionals across industry-standard tools — ensuring quality, precision, and consistency on every project.</p>
+    <div class="tools-grid">
+      <div class="tool-chip" data-td="0"><div class="tool-chip-icon">🎨</div>Figma</div>
+      <div class="tool-chip" data-td="60"><div class="tool-chip-icon">⬡</div>Illustrator</div>
+      <div class="tool-chip" data-td="120"><div class="tool-chip-icon">◻</div>Photoshop</div>
+      <div class="tool-chip" data-td="180"><div class="tool-chip-icon">▶</div>After Effects</div>
+      <div class="tool-chip" data-td="240"><div class="tool-chip-icon">◈</div>InDesign</div>
+      <div class="tool-chip" data-td="300"><div class="tool-chip-icon">✦</div>Adobe XD</div>
+      <div class="tool-chip" data-td="360"><div class="tool-chip-icon">▲</div>Cinema 4D</div>
+    </div>
+  </div>
+</section>
 
 <!-- MARQUEE -->
-<div class="mq">
-  <div class="mq-t">
-    <span class="mq-i">Brand Identity<span class="mq-sep"></span></span>
-    <span class="mq-i">Visual Design<span class="mq-sep"></span></span>
-    <span class="mq-i">Motion Graphics<span class="mq-sep"></span></span>
-    <span class="mq-i">UI / UX Design<span class="mq-sep"></span></span>
-    <span class="mq-i">Typography<span class="mq-sep"></span></span>
-    <span class="mq-i">Packaging Design<span class="mq-sep"></span></span>
-    <span class="mq-i">Design Systems<span class="mq-sep"></span></span>
-    <span class="mq-i">Brand Identity<span class="mq-sep"></span></span>
-    <span class="mq-i">Visual Design<span class="mq-sep"></span></span>
-    <span class="mq-i">Motion Graphics<span class="mq-sep"></span></span>
-    <span class="mq-i">UI / UX Design<span class="mq-sep"></span></span>
-    <span class="mq-i">Typography<span class="mq-sep"></span></span>
-    <span class="mq-i">Packaging Design<span class="mq-sep"></span></span>
-    <span class="mq-i">Design Systems<span class="mq-sep"></span></span>
+<div class="mq-strip">
+  <div class="mq-track">
+    <span class="mq-item">Brand Identity<span class="mq-dot"></span></span>
+    <span class="mq-item">Visual Design<span class="mq-dot"></span></span>
+    <span class="mq-item">Motion Graphics<span class="mq-dot"></span></span>
+    <span class="mq-item">UI / UX<span class="mq-dot"></span></span>
+    <span class="mq-item">Typography<span class="mq-dot"></span></span>
+    <span class="mq-item">Packaging<span class="mq-dot"></span></span>
+    <span class="mq-item">Design Systems<span class="mq-dot"></span></span>
+    <span class="mq-item">Art Direction<span class="mq-dot"></span></span>
+    <span class="mq-item">Brand Identity<span class="mq-dot"></span></span>
+    <span class="mq-item">Visual Design<span class="mq-dot"></span></span>
+    <span class="mq-item">Motion Graphics<span class="mq-dot"></span></span>
+    <span class="mq-item">UI / UX<span class="mq-dot"></span></span>
+    <span class="mq-item">Typography<span class="mq-dot"></span></span>
+    <span class="mq-item">Packaging<span class="mq-dot"></span></span>
+    <span class="mq-item">Design Systems<span class="mq-dot"></span></span>
+    <span class="mq-item">Art Direction<span class="mq-dot"></span></span>
   </div>
 </div>
 
-<!-- WORK — FULL PAGE -->
-<section class="work-sec" id="work">
-  <div class="sec-inner">
-    <div class="work-hdr">
-      <div>
-        <div class="sec-label rv">Selected Work</div>
-        <h2 class="sec-h rv rv1">What we've <em>designed.</em></h2>
+<!-- STATS -->
+<section class="stats-sec" id="results">
+  <div class="stats-inner">
+    <div class="stats-left">
+      <div class="stats-tag rv">By the numbers</div>
+      <div class="stat-row rv rv1">
+        <div class="stat-row-inner">
+          <div class="stat-num" data-to="200" data-from="0" data-sfx="+">0+</div>
+          <div class="stat-label"><strong>Brands designed</strong>across 15+ industries in Southeast Asia and beyond.</div>
+        </div>
       </div>
-      <a href="https://www.awakenentertainment.org/contact" target="_blank" class="btn-out rv rv2" style="font-size:11px;padding:10px 22px;">All Projects →</a>
+      <div class="stat-row rv rv2">
+        <div class="stat-row-inner">
+          <div class="stat-num" data-to="98" data-from="0" data-sfx="%">0%</div>
+          <div class="stat-label"><strong>Client satisfaction</strong>measured every project. Most clients return for a second, third, fourth engagement.</div>
+        </div>
+      </div>
+      <div class="stat-row rv rv3">
+        <div class="stat-row-inner">
+          <div class="stat-num" data-to="10" data-from="0" data-sfx="+">0+</div>
+          <div class="stat-label"><strong>Years in Yangon</strong>designing for Myanmar's leading brands and international partners since 2016.</div>
+        </div>
+      </div>
     </div>
-    <div class="work-rows">
-      <div class="work-row" data-delay="0" data-color="linear-gradient(135deg,#c8ff00,#8fba00)" data-emoji="✦">
-        <span class="wr-num">01</span>
-        <span class="wr-name">Yoma Strategic Brand Refresh</span>
-        <div class="wr-tags"><span class="tag">Brand Identity</span><span class="tag">Visual System</span><span class="tag">Guidelines</span></div>
-        <span class="wr-arrow">↗</span>
-      </div>
-      <div class="work-row" data-delay="80" data-color="linear-gradient(135deg,#f97316,#c2410c)" data-emoji="◈">
-        <span class="wr-num">02</span>
-        <span class="wr-name">Shwe Taung Group Identity</span>
-        <div class="wr-tags"><span class="tag">Logo Design</span><span class="tag">Typography</span><span class="tag">Collateral</span></div>
-        <span class="wr-arrow">↗</span>
-      </div>
-      <div class="work-row" data-delay="160" data-color="linear-gradient(135deg,#a855f7,#7e22ce)" data-emoji="▲">
-        <span class="wr-num">03</span>
-        <span class="wr-name">KBZ Bank UI Redesign</span>
-        <div class="wr-tags"><span class="tag">UI/UX</span><span class="tag">Design System</span><span class="tag">Prototype</span></div>
-        <span class="wr-arrow">↗</span>
-      </div>
-      <div class="work-row" data-delay="240" data-color="linear-gradient(135deg,#06b6d4,#0e7490)" data-emoji="⬡">
-        <span class="wr-num">04</span>
-        <span class="wr-name">Lotte Hotel Packaging Suite</span>
-        <div class="wr-tags"><span class="tag">Packaging</span><span class="tag">Print</span><span class="tag">Branding</span></div>
-        <span class="wr-arrow">↗</span>
-      </div>
-      <div class="work-row" data-delay="320" data-color="linear-gradient(135deg,#f43f5e,#be123c)" data-emoji="◉">
-        <span class="wr-num">05</span>
-        <span class="wr-name">City Mart Motion Campaign</span>
-        <div class="wr-tags"><span class="tag">Motion</span><span class="tag">Animation</span><span class="tag">Social Assets</span></div>
-        <span class="wr-arrow">↗</span>
+    <div class="stats-right rv">
+      <div class="stats-visual">
+        <div class="sv-grid"></div>
+        <div class="sv-tags top-left">
+          <span class="sv-tag">Brand Identity</span>
+          <span class="sv-tag">Visual Systems</span>
+        </div>
+        <div class="sv-center">
+          <div class="sv-ring">
+            <div class="sv-ring-dot"></div>
+            <div class="sv-core">✦</div>
+          </div>
+          <div class="sv-bars">
+            <div class="sv-bar"></div>
+            <div class="sv-bar"></div>
+            <div class="sv-bar"></div>
+            <div class="sv-bar"></div>
+            <div class="sv-bar"></div>
+          </div>
+        </div>
+        <div class="sv-tags bottom-right">
+          <span class="sv-tag">Motion &amp; UI</span>
+          <span class="sv-tag">Packaging</span>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SERVICES — FULL PAGE -->
-<section class="srv-sec">
-  <div class="sec-inner">
-    <div class="sec-label rv">Our Disciplines</div>
-    <h2 class="sec-h rv rv1">Four disciplines.<br><em>One vision.</em></h2>
-    <div class="srv-grid">
-      <div class="srv-item" data-sd="0">
-        <div class="srv-n">01</div>
-        <div class="srv-title">Brand Identity</div>
-        <div class="srv-text">We build complete brand systems from the ground up — logo, colour, typography, tone of voice, and the invisible rules that make a brand feel unmistakably itself.</div>
-        <div class="srv-tags"><span class="tag">Logo</span><span class="tag">Colour System</span><span class="tag">Typography</span><span class="tag">Brand Book</span></div>
+<!-- DESIGN PILLARS -->
+<section class="pillars" id="pillars">
+  <div class="pillars-inner">
+    <div class="pillars-hdr">
+      <div class="pillars-tag rv">Our design mark</div>
+      <h2 class="pillars-h rv rv1">Our <em>design</em> pillars.</h2>
+    </div>
+    <div class="pillars-row">
+      <div class="pcard active">
+        <div class="pcard-icon">✦</div>
+        <div class="pcard-num">01</div>
+        <div class="pcard-title">Clarity &amp; Purpose</div>
+        <div class="pcard-desc">Every visual decision has a reason. We design systems where beauty and function are inseparable — where the form always serves the message.</div>
+        <div class="pcard-bg-num">01</div>
       </div>
-      <div class="srv-item" data-sd="100">
-        <div class="srv-n">02</div>
-        <div class="srv-title">Visual & Print Design</div>
-        <div class="srv-text">From billboards to business cards — every touchpoint handled with craft. Packaging, stationery, annual reports, outdoor, and editorial design that holds attention.</div>
-        <div class="srv-tags"><span class="tag">Packaging</span><span class="tag">Print</span><span class="tag">Editorial</span><span class="tag">OOH</span></div>
+      <div class="pcard">
+        <div class="pcard-icon">◈</div>
+        <div class="pcard-num">02</div>
+        <div class="pcard-title">Consistency &amp; Scale</div>
+        <div class="pcard-desc">A great brand works everywhere — from a 3×3mm favicon to a 30-metre billboard. We build design systems that hold their integrity at every size and medium.</div>
+        <div class="pcard-bg-num">02</div>
       </div>
-      <div class="srv-item" data-sd="200">
-        <div class="srv-n">03</div>
-        <div class="srv-title">UI / UX Design</div>
-        <div class="srv-text">Interfaces that are beautiful and effortless to use. We design web and app experiences rooted in user behaviour, brand consistency, and conversion-driven thinking.</div>
-        <div class="srv-tags"><span class="tag">Figma</span><span class="tag">Prototyping</span><span class="tag">Design System</span><span class="tag">Usability</span></div>
+      <div class="pcard">
+        <div class="pcard-icon">▲</div>
+        <div class="pcard-num">03</div>
+        <div class="pcard-title">Craft &amp; Precision</div>
+        <div class="pcard-desc">We are obsessive about the details others skip — kerning, spacing, corner radii, colour accuracy across print and screen. Craft is not optional.</div>
+        <div class="pcard-bg-num">03</div>
       </div>
-      <div class="srv-item" data-sd="300">
-        <div class="srv-n">04</div>
-        <div class="srv-title">Motion & Animation</div>
-        <div class="srv-text">Stills don't cut through anymore. We bring brands to life through motion — title sequences, social reels, animated logos, and explainer videos that move people.</div>
-        <div class="srv-tags"><span class="tag">After Effects</span><span class="tag">Reels</span><span class="tag">Logo Animation</span><span class="tag">Explainers</span></div>
+      <div class="pcard">
+        <div class="pcard-icon">⬡</div>
+        <div class="pcard-num">04</div>
+        <div class="pcard-title">Future-Oriented Vision</div>
+        <div class="pcard-desc">We design for where your brand is going, not where it's been. Every project is built to evolve — adaptable to new markets, products, and platforms without losing identity.</div>
+        <div class="pcard-bg-num">04</div>
       </div>
     </div>
   </div>
 </section>
-
-<!-- PROCESS -->
-<div class="proc-bg">
-  <section class="sec">
-    <div class="sec-inner">
-      <div class="sec-label rv">How We Work</div>
-      <h2 class="sec-h rv rv1">From brief to <em>beautiful.</em></h2>
-      <div class="proc-stack">
-
-        <div class="proc-card">
-          <div class="proc-card-bar"></div>
-          <div class="proc-card-img">
-            <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3FE3Vvu9lYALhCwQvePKUS2plzn/hf_20260625_100620_bd79b2ba-903d-47f7-a60c-f17bd901f0d7.png" alt="Strategy">
-            <div class="proc-card-img-ov"></div>
-          </div>
-          <div class="proc-card-text">
-            <div class="proc-card-num">01</div>
-            <div class="proc-step">Step 01 / 04</div>
-            <h3 class="proc-title">Discover</h3>
-            <p class="proc-desc">Before a single pixel, we listen. We immerse ourselves in your brand story, audience, competitors, and aspirations — so every creative decision is rooted in truth.</p>
-            <div class="proc-pts">
-              <div class="proc-pt">Brand audit & competitor review</div>
-              <div class="proc-pt">Stakeholder interviews</div>
-              <div class="proc-pt">Audience & market research</div>
-              <div class="proc-pt">Creative brief alignment</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="proc-card">
-          <div class="proc-card-bar"></div>
-          <div class="proc-card-img">
-            <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3FE3Vvu9lYALhCwQvePKUS2plzn/hf_20260625_100622_18cb8e55-dad6-4a61-bb2f-476a20bed4e8.png" alt="Create">
-            <div class="proc-card-img-ov"></div>
-          </div>
-          <div class="proc-card-text">
-            <div class="proc-card-num">02</div>
-            <div class="proc-step">Step 02 / 04</div>
-            <h3 class="proc-title">Concept</h3>
-            <p class="proc-desc">We explore multiple creative directions — mood boards, visual references, and rough concepts — before narrowing down to the ideas worth developing into full systems.</p>
-            <div class="proc-pts">
-              <div class="proc-pt">Mood boarding & visual direction</div>
-              <div class="proc-pt">Concept sketching & ideation</div>
-              <div class="proc-pt">3 directions presented for feedback</div>
-              <div class="proc-pt">Refinement based on client input</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="proc-card">
-          <div class="proc-card-bar"></div>
-          <div class="proc-card-img">
-            <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3FE3Vvu9lYALhCwQvePKUS2plzn/hf_20260625_100622_c2a52321-157a-4f06-9af4-a1c2642110c1.png" alt="Launch">
-            <div class="proc-card-img-ov"></div>
-          </div>
-          <div class="proc-card-text">
-            <div class="proc-card-num">03</div>
-            <div class="proc-step">Step 03 / 04</div>
-            <h3 class="proc-title">Design</h3>
-            <p class="proc-desc">The approved concept becomes a complete visual system. Every element — from logo construction to colour codes to grid rules — is designed with obsessive precision.</p>
-            <div class="proc-pts">
-              <div class="proc-pt">Full brand identity production</div>
-              <div class="proc-pt">Typeface selection & pairing</div>
-              <div class="proc-pt">Colour palette & usage rules</div>
-              <div class="proc-pt">Responsive logo variations</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="proc-card">
-          <div class="proc-card-bar"></div>
-          <div class="proc-card-img">
-            <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3FE3Vvu9lYALhCwQvePKUS2plzn/hf_20260625_100623_3a812de3-71f9-48bf-9966-44dbba776b4e.png" alt="Grow">
-            <div class="proc-card-img-ov"></div>
-          </div>
-          <div class="proc-card-text">
-            <div class="proc-card-num">04</div>
-            <div class="proc-step">Step 04 / 04</div>
-            <h3 class="proc-title">Deliver</h3>
-            <p class="proc-desc">You receive everything you need to roll out the brand confidently — print-ready files, digital assets, brand guidelines, and ongoing support from our team.</p>
-            <div class="proc-pts">
-              <div class="proc-pt">Brand guidelines document</div>
-              <div class="proc-pt">Master files in all formats (AI, PDF, PNG, SVG)</div>
-              <div class="proc-pt">Digital asset library handover</div>
-              <div class="proc-pt">90-day post-delivery support</div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-</div>
-
-<!-- STUDIO · HEADQUARTERS -->
-<section class="hq-sec" id="headquarters">
-  <div class="sec-inner">
-    <div class="sec-label rv">Studio</div>
-    <h2 class="sec-h rv rv1">Studio · <em>Headquarters</em></h2>
-    <div class="hq-grid">
-
-      <div class="hq-left rv rv2">
-        <div class="hq-addr">
-          <div class="hq-addr-label">Design Studio</div>
-          <div class="hq-addr-name">Awaken Entertainment Co., Ltd.</div>
-          <div class="hq-addr-line">
-            No.57, YaeKuYwarMa Street<br>
-            Ward 9, Mayangone Township<br>
-            Yangon, Myanmar
-          </div>
-        </div>
-
-        <div class="hq-meta">
-          <div class="hq-meta-item">
-            <div class="hq-meta-k">Founded</div>
-            <div class="hq-meta-v">2016</div>
-          </div>
-          <div class="hq-meta-item">
-            <div class="hq-meta-k">Designers</div>
-            <div class="hq-meta-v">12+</div>
-          </div>
-          <div class="hq-meta-item">
-            <div class="hq-meta-k">Brands</div>
-            <div class="hq-meta-v">200+</div>
-          </div>
-          <div class="hq-meta-item">
-            <div class="hq-meta-k">Phone</div>
-            <div class="hq-meta-v" style="font-size:.85rem;">+95 9255762417</div>
-          </div>
-          <div class="hq-meta-item">
-            <div class="hq-meta-k">Phone 2</div>
-            <div class="hq-meta-v" style="font-size:.85rem;">+95 9799489370</div>
-          </div>
-          <div class="hq-meta-item">
-            <div class="hq-meta-k">Industries</div>
-            <div class="hq-meta-v">15+</div>
-          </div>
-        </div>
-
-        <div class="hq-hours">
-          <div>
-            <div class="hq-hours-label">Studio Hours</div>
-            <div class="hq-hours-val">Mon – Sat</div>
-          </div>
-          <div>
-            <div class="hq-hours-label">Open</div>
-            <div class="hq-hours-val">9:00 AM – 6:00 PM</div>
-          </div>
-          <div class="hq-live-badge">
-            <div class="hq-live-dot"></div>
-            <span class="hq-live-txt">Active</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="hq-right rv rv3">
-        <div class="hq-map">
-          <div class="hq-map-grid"></div>
-          <div class="hq-map-accent">Yangon, Myanmar</div>
-          <div class="hq-map-pin">
-            <div class="hq-pin-ripple"></div>
-            <div class="hq-pin-city">Yangon</div>
-            <div class="hq-pin-country">Myanmar · Southeast Asia</div>
-          </div>
-          <div class="hq-coords-bar">
-            <div class="hq-coord">
-              <div class="hq-coord-k">Latitude</div>
-              <div class="hq-coord-v">16° 51' N</div>
-            </div>
-            <div class="hq-coord">
-              <div class="hq-coord-k">Longitude</div>
-              <div class="hq-coord-v">96° 10' E</div>
-            </div>
-            <div class="hq-coord">
-              <div class="hq-coord-k">Timezone</div>
-              <div class="hq-coord-v">UTC +6:30</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- RESULTS -->
-<div class="results-bg">
-  <section class="sec" id="results">
-    <div class="sec-inner">
-      <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:3.5rem;">
-        <div>
-          <h2 class="results-h rv">Results.</h2>
-          <p class="results-sub rv rv1">Last 12 months — real brands, real impact</p>
-        </div>
-        <a href="https://www.awakenentertainment.org/contact" target="_blank" class="btn-acc btn-dot rv rv2" style="align-self:center;">Start a Project →</a>
-      </div>
-      <div class="results-grid">
-
-        <div class="r-card" data-rd="0">
-          <div class="r-card-lbl">Performance — Last 12 months</div>
-          <div class="r-stats-row">
-            <div class="r-stat"><div class="rn">200+</div><div class="rl">Brands</div></div>
-            <div class="r-stat"><div class="rn">15+</div><div class="rl">Industries</div></div>
-            <div class="r-stat"><div class="rn">98%</div><div class="rl">Satisfaction</div></div>
-          </div>
-          <div class="r-chart-wrap">
-            <div class="r-chart-badge">↑ +62%</div>
-            <svg viewBox="0 0 400 110" class="r-chart" preserveAspectRatio="none">
-              <defs>
-                <linearGradient id="cg" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#c8ff00" stop-opacity=".2"/>
-                  <stop offset="100%" stop-color="#c8ff00" stop-opacity="0"/>
-                </linearGradient>
-                <clipPath id="cp"><rect id="cpRect" x="0" y="0" width="0" height="110"/></clipPath>
-              </defs>
-              <path d="M0,100 C40,95 70,88 100,78 C140,64 160,60 200,48 C240,36 260,28 300,18 C330,10 360,6 400,2" fill="none" stroke="#c8ff00" stroke-width="2"/>
-              <path d="M0,100 C40,95 70,88 100,78 C140,64 160,60 200,48 C240,36 260,28 300,18 C330,10 360,6 400,2 L400,110 L0,110Z" fill="url(#cg)" clip-path="url(#cp)"/>
-              <circle cx="400" cy="2" r="4" fill="#c8ff00"/>
-            </svg>
-          </div>
-        </div>
-
-        <div class="r-card" data-rd="80">
-          <div class="r-feat-h">Design built for<br><em>real impact.</em></div>
-          <div>
-            <div class="r-feat-item"><div class="r-feat-name">Brand Consistency</div><div class="r-feat-desc">Every asset aligned to guidelines.</div></div>
-            <div class="r-feat-item"><div class="r-feat-name">Scalable Systems</div><div class="r-feat-desc">Design that grows with your brand.</div></div>
-            <div class="r-feat-item"><div class="r-feat-name">Multi-format Ready</div><div class="r-feat-desc">Print, digital, OOH — all covered.</div></div>
-            <div class="r-feat-item"><div class="r-feat-name">Conversion-Focused</div><div class="r-feat-desc">Beautiful and strategically sharp.</div></div>
-          </div>
-        </div>
-
-        <div class="r-card" data-rd="40">
-          <div class="r-card-lbl">Workflow · One Studio</div>
-          <div class="r-team-h">From brief to <em>brand, one team.</em></div>
-          <p class="r-team-desc">Discovery, concept, design, production, delivery — no handoffs, no miscommunication, no agency markup.</p>
-          <div class="r-steps">
-            <div class="r-step"><span class="r-step-num">A</span>Brief</div>
-            <div class="r-step"><span class="r-step-num">B</span>Concept</div>
-            <div class="r-step"><span class="r-step-num">C</span>Design</div>
-            <div class="r-step"><span class="r-step-num">D</span>Deliver</div>
-          </div>
-          <div class="r-step-badge">0 Handoffs</div>
-        </div>
-
-        <div class="r-card" data-rd="120">
-          <div class="r-live"><div class="r-live-dot"></div><div class="r-live-txt">Design Standard · Awaken</div></div>
-          <div class="r-lh-h">Four pillars.<br><em>Every project.</em></div>
-          <p class="r-lh-desc">We hold ourselves to four non-negotiable creative standards on every single engagement — clarity, consistency, craft, and concept.</p>
-          <div class="r-lh-scores">
-            <div class="r-lh-item"><div class="r-lh-ring" data-lh="100">0</div><div class="r-lh-ring-lbl">Clarity</div></div>
-            <div class="r-lh-item"><div class="r-lh-ring" data-lh="100">0</div><div class="r-lh-ring-lbl">Consistency</div></div>
-            <div class="r-lh-item"><div class="r-lh-ring" data-lh="100">0</div><div class="r-lh-ring-lbl">Craft</div></div>
-            <div class="r-lh-item"><div class="r-lh-ring" data-lh="100">0</div><div class="r-lh-ring-lbl">Concept</div></div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-</div>
 
 <!-- CTA -->
-<div class="cta-sec rv">
-  <div class="cta-glow"></div>
-  <div class="sec-label" style="justify-content:center;">Let's Create</div>
-  <h2 class="cta-h">Ready to build a brand<br>people <em>remember?</em></h2>
-  <p class="cta-sub">We collaborate closely with every client — understanding your vision, your audience, and what sets you apart before a single pixel is placed.</p>
-  <div class="cta-btns">
-    <a href="https://www.awakenentertainment.org/contact" target="_blank" class="btn-acc btn-dot">Start a Project →</a>
-    <a href="tel:+959255762417" class="btn-out">Call Us</a>
-  </div>
-</div>
-
-<!-- FAQ -->
-<section class="sec" style="padding-top:0;">
-  <div class="sec-inner">
-    <div class="sec-label rv">FAQ</div>
-    <h2 class="sec-h rv rv1"><em>Answers</em> up front.</h2>
-    <div class="faq rv rv2" style="margin-top:3rem;">
-      <div class="faq-row">
-        <div class="faq-q">How long does a brand identity project take?<span class="faq-ic">+</span></div>
-        <div class="faq-a">A complete brand identity — logo, colour, typography, and brand guidelines — typically takes 3–5 weeks. Larger design systems or rebrands for established businesses may take 6–10 weeks depending on scope and feedback rounds.</div>
+<section class="cta" id="contact">
+  <div class="cta-inner">
+    <div class="cta-left">
+      <div class="cta-tag rv">Let's create together</div>
+      <h2 class="cta-h rv rv1">Let's<br><em>design</em><br>together.</h2>
+      <div class="cta-actions rv rv2">
+        <a href="https://www.awakenentertainment.org/contact" target="_blank" class="btn-primary">Start a Project →</a>
+        <a href="tel:+959255762417" class="cta-arrow">
+          <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </a>
       </div>
-      <div class="faq-row">
-        <div class="faq-q">What do we receive at the end of a project?<span class="faq-ic">+</span></div>
-        <div class="faq-a">You receive the full master file package (AI, EPS, PDF, PNG, SVG), a brand guidelines document, a digital asset library, and 90 days of post-delivery support. Everything you need to roll out confidently.</div>
-      </div>
-      <div class="faq-row">
-        <div class="faq-q">Can you redesign an existing brand without losing its equity?<span class="faq-ic">+</span></div>
-        <div class="faq-a">Yes — brand evolution is one of our specialities. We audit what your current brand communicates, identify what's worth preserving, and modernise the rest. The result feels fresh but familiar to existing audiences.</div>
-      </div>
-      <div class="faq-row">
-        <div class="faq-q">Do you handle print production alongside the design?<span class="faq-ic">+</span></div>
-        <div class="faq-a">We provide all print-ready files to exact spec. We can also manage print vendor coordination on request — ensuring what's designed is what gets produced, with no colour shifts or spec errors.</div>
-      </div>
-      <div class="faq-row">
-        <div class="faq-q">Can the design team work alongside our digital or marketing team?<span class="faq-ic">+</span></div>
-        <div class="faq-a">Absolutely. As part of the Awaken family we work directly with our Digital, Tech, Production, and PR divisions — giving you a fully integrated creative team under one roof, with no agency handoff or miscommunication.</div>
+    </div>
+    <div class="cta-right">
+      <div class="cta-visual">
+        <div class="cta-visual-core">DESIGN</div>
       </div>
     </div>
   </div>
@@ -923,256 +726,155 @@
 
 <!-- FOOTER -->
 <footer>
-  <div class="ft-grid">
-    <div>
-      <div class="ft-logo"><div class="ft-logo-box">A</div><span class="ft-logo-t">AWAKEN</span></div>
-      <p class="ft-desc">We craft visual identities that make people stop, feel, and remember. Based in Yangon, designing for the world.</p>
-    </div>
-    <div>
-      <div class="ft-h">Divisions</div>
-      <div class="ft-links">
-        <a href="digital.html">Awaken Digital</a>
-        <a href="design.html">Awaken Design</a>
-        <a href="tech.html">Awaken Tech</a>
-        <a href="production.html">Awaken Production</a>
-        <a href="pr.html">Awaken PR</a>
+  <div class="ft-inner">
+    <div class="ft-top">
+      <div>
+        <div class="ft-logo"><div class="ft-logo-sq">A</div><span class="ft-logo-t">AWAKEN</span></div>
+        <p class="ft-desc">We craft visual identities that make people stop, feel, and remember. Based in Yangon, designing for the world.</p>
+      </div>
+      <div>
+        <div class="ft-col-h">Divisions</div>
+        <div class="ft-col-links">
+          <a href="digital.html">Awaken Digital</a>
+          <a href="design.html">Awaken Design</a>
+          <a href="tech.html">Awaken Tech</a>
+          <a href="production.html">Awaken Production</a>
+          <a href="pr.html">Awaken PR</a>
+        </div>
+      </div>
+      <div>
+        <div class="ft-col-h">Contact</div>
+        <div class="ft-col-links">
+          <a href="tel:+959255762417">+95 9255762417</a>
+          <a href="tel:+959799489370">+95 9799489370</a>
+          <a href="mailto:nyinyisoewin@awakenentertainment.org">Email Us</a>
+          <a href="https://www.awakenentertainment.org" target="_blank">Website</a>
+        </div>
+      </div>
+      <div>
+        <div class="ft-col-h">Location</div>
+        <div class="ft-col-links">
+          <span>No.57, YaeKuYwarMa Street,<br>Ward 9, Mayangone,<br>Yangon, Myanmar</span>
+        </div>
       </div>
     </div>
-    <div>
-      <div class="ft-h">Contact</div>
-      <div class="ft-links">
-        <a href="tel:+959255762417">+95 9255762417</a>
-        <a href="tel:+959799489370">+95 9799489370</a>
-        <a href="mailto:nyinyisoewin@awakenentertainment.org">Email Us</a>
-        <a href="https://www.awakenentertainment.org" target="_blank">Website</a>
-      </div>
+    <div class="ft-bot">
+      <span>© 2026 <span class="ft-acc">Awaken Entertainment</span>. All rights reserved.</span>
+      <span>Designed with purpose in Yangon.</span>
     </div>
-    <div>
-      <div class="ft-h">Location</div>
-      <div class="ft-links">
-        <span>No.57, YaeKuYwarMa Street,<br>Ward 9, Mayangone,<br>Yangon, Myanmar</span>
-      </div>
-    </div>
-  </div>
-  <div class="ft-bot">
-    <span>© 2026 <span class="ft-acc">Awaken Entertainment</span>. All rights reserved.</span>
-    <span>Built with purpose in Yangon.</span>
   </div>
 </footer>
 
 <script>
-/* ─── LOADER ─── */
-const ld = document.getElementById('ld');
-const ldNum = document.getElementById('ldNum');
-const ldFill = document.getElementById('ldFill');
-let pct = 0;
-const ldInt = setInterval(() => {
-  pct = Math.min(pct + Math.random() * 18 + 4, 100);
-  ldNum.textContent = Math.floor(pct);
-  ldFill.style.width = pct + '%';
-  if (pct >= 100) {
-    clearInterval(ldInt);
-    setTimeout(() => {
-      ld.classList.add('out');
-      revealHero();
-    }, 250);
-  }
-}, 80);
+/* LOADER */
+const ld=document.getElementById('ld'),ldNum=document.getElementById('ldNum'),ldFill=document.getElementById('ldFill');
+let pct=0;
+const ldInt=setInterval(()=>{
+  pct=Math.min(pct+Math.random()*18+4,100);
+  ldNum.textContent=Math.floor(pct);
+  ldFill.style.width=pct+'%';
+  if(pct>=100){clearInterval(ldInt);setTimeout(()=>{ld.classList.add('out');revealHero()},250)}
+},80);
 
-/* ─── HERO REVEAL ─── */
-function revealHero() {
-  const words = document.querySelectorAll('.hero-word');
-  const hTag = document.getElementById('hTag');
-  const hBot = document.getElementById('hBot');
-  const hBadge = document.getElementById('hBadge');
-  const hScroll = document.getElementById('hScroll');
-  const nav = document.getElementById('nav');
-  const ease = 'cubic-bezier(0.16,1,0.3,1)';
-  const set = (el, delay, props) => setTimeout(() => Object.assign(el.style, props), delay);
-
-  setTimeout(() => nav.classList.add('vis'), 200);
-  set(hTag, 350, { opacity: '1', transform: 'none', transition: `opacity .7s ${ease}, transform .7s ${ease}` });
-  set(hBadge, 400, { opacity: '1', transition: 'opacity 1s ease' });
-  words.forEach((w, i) => {
-    setTimeout(() => {
-      w.style.transform = 'translateY(0)';
-      w.style.transition = `transform 1s ${ease}`;
-    }, 480 + i * 70);
-  });
-  set(hBot, 950, { opacity: '1', transition: `opacity .8s ease` });
-  set(hScroll, 1200, { opacity: '1', transition: `opacity .7s ease` });
-  const hTrust = document.getElementById('hTrust');
-  if (hTrust) set(hTrust, 1300, { opacity: '1', transition: `opacity .8s ease` });
+/* HERO REVEAL */
+function revealHero(){
+  const words=document.querySelectorAll('.hw');
+  const ease='cubic-bezier(0.16,1,0.3,1)';
+  const set=(el,d,p)=>setTimeout(()=>Object.assign(el.style,p),d);
+  set(document.getElementById('hKicker'),300,{opacity:'1',transform:'none',transition:`opacity .7s ${ease},transform .7s ${ease}`});
+  words.forEach((w,i)=>setTimeout(()=>{w.style.transform='translateY(0)';w.style.transition=`transform 1s ${ease}`},420+i*60));
+  set(document.getElementById('hSub'),900,{opacity:'1',transition:'opacity .8s ease'});
+  set(document.getElementById('hActions'),1100,{opacity:'1',transition:'opacity .8s ease'});
+  set(document.getElementById('hScroll'),1300,{opacity:'1',transition:'opacity .8s ease'});
 }
 
-/* ─── CURSOR ─── */
-const cd = document.getElementById('cd'), cr = document.getElementById('cr');
-let mx = 0, my = 0, rx = 0, ry = 0;
-document.addEventListener('mousemove', e => {
-  mx = e.clientX; my = e.clientY;
-  cd.style.left = mx + 'px'; cd.style.top = my + 'px';
-});
-(function animCur() {
-  rx += (mx - rx) * .1; ry += (my - ry) * .1;
-  cr.style.left = rx + 'px'; cr.style.top = ry + 'px';
-  requestAnimationFrame(animCur);
-})();
-document.querySelectorAll('a,button,.work-row,.srv-item,.faq-q').forEach(el => {
-  el.addEventListener('mouseenter', () => document.body.classList.add('hov'));
-  el.addEventListener('mouseleave', () => document.body.classList.remove('hov'));
+/* CURSOR */
+const cd=document.getElementById('cd'),cr=document.getElementById('cr');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cd.style.left=mx+'px';cd.style.top=my+'px'});
+(function ac(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;cr.style.left=rx+'px';cr.style.top=ry+'px';requestAnimationFrame(ac)})();
+document.querySelectorAll('a,button,.work-card,.pcard,.how-card').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add('hov'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('hov'));
 });
 
-/* ─── SCROLL PROGRESS ─── */
-const scrollProg = document.getElementById('scroll-prog');
-window.addEventListener('scroll', () => {
-  const docH = document.documentElement.scrollHeight - window.innerHeight;
-  if (docH > 0) scrollProg.style.width = (window.scrollY / docH * 100).toFixed(1) + '%';
-}, { passive: true });
+/* SCROLL PROGRESS */
+const sp=document.getElementById('scroll-prog');
+window.addEventListener('scroll',()=>{
+  const dh=document.documentElement.scrollHeight-window.innerHeight;
+  if(dh>0)sp.style.width=(window.scrollY/dh*100).toFixed(1)+'%';
+  /* nav scroll state */
+  const nav=document.getElementById('nav');
+  if(window.scrollY>60){nav.classList.add('scrolled');nav.classList.remove('on-dark')}
+  else{nav.classList.remove('scrolled');nav.classList.add('on-dark')}
+},{passive:true});
 
-/* ─── STATS COUNTER ─── */
-let statsDone = false;
-const statsEl = document.getElementById('stats');
-new IntersectionObserver(([e]) => {
-  if (!e.isIntersecting || statsDone) return;
-  statsDone = true;
-  document.querySelectorAll('.stat').forEach((s, i) => setTimeout(() => s.classList.add('vis'), i * 100));
-  document.querySelectorAll('.stat-n[data-to]').forEach(el => {
-    const to = +el.dataset.to, from = +el.dataset.from, sfx = el.dataset.sfx || '';
-    const dur = 1600, t0 = performance.now();
-    const tick = now => {
-      const p = Math.min((now - t0) / dur, 1);
-      const ease = 1 - Math.pow(1 - p, 3);
-      el.textContent = Math.round(from + (to - from) * ease) + sfx;
-      if (p < 1) requestAnimationFrame(tick);
+/* GENERIC REVEAL */
+const rvObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');rvObs.unobserve(e.target)}});
+},{threshold:0.1});
+document.querySelectorAll('.rv').forEach(el=>rvObs.observe(el));
+
+/* HOW CARDS */
+const hdObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting)return;
+    setTimeout(()=>e.target.classList.add('vis'),parseInt(e.target.dataset.hd)||0);
+    hdObs.unobserve(e.target);
+  });
+},{threshold:0.1});
+document.querySelectorAll('.how-card').forEach(el=>hdObs.observe(el));
+
+/* WORK CARDS */
+const wdObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting)return;
+    setTimeout(()=>e.target.classList.add('vis'),parseInt(e.target.dataset.wd)||0);
+    wdObs.unobserve(e.target);
+  });
+},{threshold:0.05});
+document.querySelectorAll('.work-card').forEach(el=>wdObs.observe(el));
+
+/* TOOL CHIPS */
+const tdObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting)return;
+    setTimeout(()=>e.target.classList.add('vis'),parseInt(e.target.dataset.td)||0);
+    tdObs.unobserve(e.target);
+  });
+},{threshold:0.1});
+document.querySelectorAll('.tool-chip').forEach(el=>tdObs.observe(el));
+
+/* STATS COUNT-UP */
+let statsDone=false;
+const statsEl=document.querySelector('.stats-sec');
+new IntersectionObserver(([e])=>{
+  if(!e.isIntersecting||statsDone)return;
+  statsDone=true;
+  document.querySelectorAll('.stat-num[data-to]').forEach(el=>{
+    const to=+el.dataset.to,from=+el.dataset.from,sfx=el.dataset.sfx||'';
+    const dur=1600,t0=performance.now();
+    const tick=now=>{
+      const p=Math.min((now-t0)/dur,1);
+      const ease=1-Math.pow(1-p,3);
+      el.textContent=Math.round(from+(to-from)*ease)+sfx;
+      if(p<1)requestAnimationFrame(tick);
     };
     requestAnimationFrame(tick);
   });
-}, { threshold: 0.4 }).observe(statsEl);
+},{threshold:0.3}).observe(statsEl);
 
-/* ─── HOVER IMAGE REVEAL ON PROJECTS ─── */
-const projImg = document.getElementById('proj-img');
-const projPh = document.getElementById('projPh');
-let imgX = 0, imgY = 0, tgtX = 0, tgtY = 0;
-(function animImg() {
-  imgX += (tgtX - imgX) * .12;
-  imgY += (tgtY - imgY) * .12;
-  projImg.style.left = imgX + 'px';
-  projImg.style.top = imgY + 'px';
-  requestAnimationFrame(animImg);
-})();
-document.querySelectorAll('.work-row').forEach(row => {
-  row.addEventListener('mouseenter', () => {
-    projPh.style.background = row.dataset.color;
-    projPh.textContent = row.dataset.emoji;
-    projPh.style.cssText += ';font-size:4rem;display:flex;align-items:center;justify-content:center;';
-    projImg.classList.add('show');
+/* PILLARS */
+document.querySelectorAll('.pcard').forEach(card=>{
+  card.addEventListener('click',()=>{
+    document.querySelectorAll('.pcard').forEach(c=>c.classList.remove('active'));
+    card.classList.add('active');
   });
-  row.addEventListener('mouseleave', () => projImg.classList.remove('show'));
-});
-document.addEventListener('mousemove', e => { tgtX = e.clientX - 140; tgtY = e.clientY - 95; });
-
-/* ─── GENERIC SCROLL REVEAL ─── */
-const rvObs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); rvObs.unobserve(e.target); } });
-}, { threshold: 0.1 });
-document.querySelectorAll('.rv').forEach(el => rvObs.observe(el));
-
-/* ─── WORK ROWS ─── */
-const wrObs = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (!e.isIntersecting) return;
-    setTimeout(() => e.target.classList.add('vis'), parseInt(e.target.dataset.delay) || 0);
-    wrObs.unobserve(e.target);
-  });
-}, { threshold: 0.05 });
-document.querySelectorAll('.work-row').forEach(el => wrObs.observe(el));
-
-/* ─── SERVICE CARDS ─── */
-const srvObs = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (!e.isIntersecting) return;
-    setTimeout(() => e.target.classList.add('vis'), parseInt(e.target.dataset.sd) || 0);
-    srvObs.unobserve(e.target);
-  });
-}, { threshold: 0.1 });
-document.querySelectorAll('.srv-item').forEach(el => srvObs.observe(el));
-
-/* ─── PROCESS STICKY SCALE ─── */
-const procCards = document.querySelectorAll('.proc-card');
-new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in-view'); });
-}, { threshold: 0.1 }).observe(document.querySelector('.proc-bg') || document.body);
-procCards.forEach(c => {
-  new IntersectionObserver(([e]) => { if (e.isIntersecting) c.classList.add('in-view'); }, { threshold: 0.05 }).observe(c);
-});
-function updateProcCards() {
-  procCards.forEach((card, i) => {
-    const rect = card.getBoundingClientRect();
-    const offset = rect.top - 80;
-    if (offset < 0 && i < procCards.length - 1) {
-      const progress = Math.min(1, Math.abs(offset) / (rect.height * 0.6));
-      card.style.transform = `scale(${(1 - progress * 0.045).toFixed(4)})`;
-      card.style.filter = `brightness(${(1 - progress * 0.18).toFixed(4)})`;
-    } else {
-      card.style.transform = 'scale(1)';
-      card.style.filter = 'brightness(1)';
-    }
-  });
-}
-window.addEventListener('scroll', updateProcCards, { passive: true });
-
-/* ─── FAQ ─── */
-document.querySelectorAll('.faq-q').forEach(q => {
-  q.addEventListener('click', () => {
-    const row = q.parentElement;
-    const open = row.classList.contains('open');
-    document.querySelectorAll('.faq-row').forEach(r => r.classList.remove('open'));
-    if (!open) row.classList.add('open');
+  card.addEventListener('mouseenter',()=>{
+    document.querySelectorAll('.pcard').forEach(c=>c.classList.remove('active'));
+    card.classList.add('active');
   });
 });
-
-/* ─── RESULTS SECTION ─── */
-const rdObs = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (!e.isIntersecting) return;
-    setTimeout(() => e.target.classList.add('vis'), parseInt(e.target.dataset.rd) || 0);
-    rdObs.unobserve(e.target);
-  });
-}, { threshold: 0.1 });
-document.querySelectorAll('.r-card').forEach(el => rdObs.observe(el));
-
-const chartCard = document.querySelector('.r-card[data-rd="0"]');
-if (chartCard) {
-  new IntersectionObserver(([e]) => {
-    if (!e.isIntersecting) return;
-    const cp = document.getElementById('cpRect');
-    if (cp) { cp.style.transition = 'width 1.8s cubic-bezier(.16,1,.3,1)'; cp.style.width = '400'; }
-  }, { threshold: 0.3 }).observe(chartCard);
-}
-
-const lhSection = document.querySelector('.r-card[data-rd="120"]');
-if (lhSection) {
-  new IntersectionObserver(([e]) => {
-    if (!e.isIntersecting) return;
-    document.querySelectorAll('.r-lh-ring[data-lh]').forEach((ring, i) => {
-      const to = parseInt(ring.dataset.lh), dur = 1200, t0 = performance.now();
-      setTimeout(() => {
-        const tick = now => {
-          const p = Math.min((now - t0) / dur, 1);
-          ring.textContent = Math.round((1 - Math.pow(1 - p, 3)) * to);
-          if (p < 1) requestAnimationFrame(tick);
-        };
-        requestAnimationFrame(tick);
-      }, i * 120);
-    });
-  }, { threshold: 0.4 }).observe(lhSection);
-}
-
-/* ─── HERO PARALLAX ─── */
-document.addEventListener('mousemove', e => {
-  const bgNum = document.querySelector('.hero-bg-num');
-  if (bgNum) bgNum.style.transform = `translate(${(e.clientX / window.innerWidth - .5) * -15}px, ${(e.clientY / window.innerHeight - .5) * -8}px)`;
-}, { passive: true });
 </script>
 </body>
 </html>
