@@ -3,679 +3,185 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AWAKEN ENTERTAINMENT — We Turn Brands Into Culture</title>
+  <title>AWAKEN — Creative Agency</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;0,14..32,900;1,14..32,700;1,14..32,900&family=Playfair+Display:ital,wght@1,700;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --bg: #0a0a0a; --surface: #111; --surface2: #161616;
-      --border: rgba(255,255,255,0.07); --text: #efefef; --muted: #555;
-      --accent: #c8ff00;
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --bg:#ffffff;--text:#0a0a0a;--text-secondary:#6b7280;--border:#e5e7eb;
+      --awaken:#1a1a1a;--digital:#0ea5e9;--design:#ec4899;--tech:#10b981;--production:#8b5cf6;--pr:#f59e0b;
     }
-    html { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); scroll-behavior: smooth; }
-    body { overflow-x: hidden; cursor: none; }
-    a { text-decoration: none; color: inherit; }
+    html{font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+    body{background:var(--bg);color:var(--text);overflow:hidden;height:100dvh}
 
-    /* ── CURSOR ── */
-    #cur { position: fixed; z-index: 9999; pointer-events: none; top: 0; left: 0; mix-blend-mode: difference; }
-    .cur-d { position: absolute; width: 8px; height: 8px; background: #fff; border-radius: 50%; transform: translate(-50%,-50%); transition: width .2s, height .2s; }
-    .cur-r { position: absolute; width: 36px; height: 36px; border: 1px solid rgba(255,255,255,.5); border-radius: 50%; transform: translate(-50%,-50%); transition: width .3s, height .3s, border-color .3s; }
-    body.hov .cur-d { width: 14px; height: 14px; }
-    body.hov .cur-r { width: 52px; height: 52px; border-color: rgba(255,255,255,.8); }
+    /* Header */
+    .header{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 2.5rem;background:rgba(255,255,255,0.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+    .logo{display:flex;align-items:center;gap:0.75rem;text-decoration:none}
+    .logo-mark{width:32px;height:32px;border:1.5px solid var(--text);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;letter-spacing:0.1em;color:var(--text)}
+    .logo-text{font-size:14px;font-weight:700;letter-spacing:0.2em;color:var(--text)}
+    .nav{display:flex;gap:2rem}
+    .nav a{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.15em;color:var(--text-secondary);text-decoration:none;transition:color 0.2s}
+    .nav a:hover{color:var(--text)}
+    .menu-btn{display:none;background:none;border:none;font-size:20px;cursor:pointer}
 
-    /* ── LOADER ── */
-    #ld { position: fixed; inset: 0; z-index: 8000; background: var(--bg); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem; transition: opacity .8s ease, visibility .8s; }
-    #ld.out { opacity: 0; visibility: hidden; }
-    .ld-num { font-size: clamp(6rem,18vw,14rem); font-weight: 900; letter-spacing: -0.06em; line-height: 1; color: var(--text); font-variant-numeric: tabular-nums; }
-    .ld-bar { width: 240px; height: 1px; background: rgba(255,255,255,.1); overflow: hidden; }
-    .ld-fill { height: 100%; background: var(--accent); width: 0; transition: width .08s linear; }
+    /* Accordion */
+    .accordion{display:flex;height:100dvh;padding-top:0}
+    .slide{position:relative;flex:1;min-width:60px;cursor:pointer;overflow:hidden;transition:flex 0.7s cubic-bezier(0.25,0.46,0.45,0.94);border-right:1px solid var(--border)}
+    .slide:last-child{border-right:none}
+    .slide.active{flex:6}
+    .slide:not(.active){flex:0.6}
 
-    /* ── NAV ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: grid; grid-template-columns: 1fr auto 1fr;
-      align-items: center; padding: 1.25rem 2rem;
-      transition: background .4s, backdrop-filter .4s;
-    }
-    nav.scrolled { background: rgba(10,10,10,.9); backdrop-filter: blur(24px); border-bottom: 1px solid var(--border); }
-    .nav-logo { display: flex; align-items: center; gap: .6rem; font-size: 11px; font-weight: 700; letter-spacing: .2em; opacity: 0; }
-    .nav-logo-box { width: 24px; height: 24px; border: 1.5px solid var(--accent); display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 900; color: var(--accent); }
-    .nav-center { display: flex; align-items: center; gap: 2rem; justify-content: center; opacity: 0; }
-    .nav-center a { font-size: 11px; font-weight: 500; color: var(--muted); letter-spacing: .06em; transition: color .2s; }
-    .nav-center a:hover { color: var(--text); }
-    .nav-right { display: flex; justify-content: flex-end; opacity: 0; }
-    .nav-pill { font-size: 11px; font-weight: 700; letter-spacing: .1em; padding: 9px 20px; border-radius: 100px; background: var(--accent); color: #000; display: flex; align-items: center; gap: .4rem; transition: box-shadow .3s, transform .2s; }
-    .nav-pill:hover { box-shadow: 0 0 28px rgba(200,255,0,.45); transform: translateY(-1px); }
+    .slide-bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:opacity 0.7s,transform 0.7s}
+    .slide.active .slide-bg{opacity:0.15;transform:scale(1.05)}
+    .slide:not(.active) .slide-bg{opacity:0.06;transform:scale(1)}
 
-    /* ── HERO ── */
-    .hero { min-height: 100svh; display: flex; flex-direction: column; position: relative; overflow: hidden; }
-    .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
-    .hero-placeholder {
-      position: absolute; inset: 0; z-index: 0;
-      background: radial-gradient(ellipse at 70% 50%, #1a1a1a 0%, #080808 70%);
-    }
-    .hero-placeholder::after {
-      content: ''; position: absolute; inset: 0;
-      background: radial-gradient(ellipse at 65% 45%, rgba(200,255,0,.05) 0%, transparent 55%);
-      animation: glowpulse 7s ease-in-out infinite alternate;
-    }
-    @keyframes glowpulse { from { opacity: .6; transform: scale(1); } to { opacity: 1; transform: scale(1.1); } }
-    .hero-overlay { position: absolute; inset: 0; z-index: 1; background: linear-gradient(105deg, rgba(10,10,10,.95) 40%, rgba(10,10,10,.3) 100%); }
+    .slide-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(255,255,255,0.9) 100%)}
+    .slide.active .slide-overlay{background:linear-gradient(180deg,rgba(255,255,255,0.3) 0%,rgba(255,255,255,0.95) 60%,rgba(255,255,255,1) 100%)}
 
-    /* Hero content grid */
-    .hero-body { position: relative; z-index: 2; flex: 1; display: grid; grid-template-columns: 1fr 1fr; align-items: center; padding: 8rem 2rem 2rem; max-width: 1400px; margin: 0 auto; width: 100%; gap: 4rem; }
+    .tab-label{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-90deg);white-space:nowrap;font-size:11px;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;color:var(--text-secondary);transition:all 0.5s;pointer-events:none}
+    .slide.active .tab-label{opacity:0;transform:translate(-50%,-50%) rotate(-90deg) translateX(-20px)}
 
-    .hero-left {}
-    .hero-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: .24em; text-transform: uppercase; color: var(--accent); display: flex; align-items: center; gap: .7rem; margin-bottom: 2rem; opacity: 0; }
-    .hero-eyebrow::before { content: ''; width: 18px; height: 1px; background: var(--accent); }
+    .slide-content{position:relative;z-index:10;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:3rem;opacity:0;transform:translateY(20px);transition:all 0.6s 0.15s;pointer-events:none}
+    .slide.active .slide-content{opacity:1;transform:translateY(0);pointer-events:auto}
 
-    .hero-title { font-size: clamp(3.2rem, 6.5vw, 7.5rem); font-weight: 900; line-height: .92; letter-spacing: -0.04em; margin-bottom: 2rem; }
-    .hero-title-line { display: block; overflow: hidden; }
-    .hero-word { display: inline-block; transform: translateY(110%); }
-    .hero-title em { font-style: italic; color: var(--accent); font-family: 'Playfair Display', serif; }
+    .eyebrow{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.2em;margin-bottom:1rem}
+    .eyebrow.awaken{color:var(--awaken)}.eyebrow.digital{color:var(--digital)}.eyebrow.design{color:var(--design)}.eyebrow.tech{color:var(--tech)}.eyebrow.production{color:var(--production)}.eyebrow.pr{color:var(--pr)}
 
-    .hero-sub { font-size: 14px; color: var(--muted); line-height: 1.85; max-width: 380px; margin-bottom: 2.5rem; opacity: 0; }
+    .headline{font-size:clamp(2rem,4vw,4.5rem);font-weight:800;line-height:0.95;letter-spacing:-0.03em;text-transform:uppercase;margin-bottom:1.25rem;max-width:600px}
+    .body-text{font-size:15px;line-height:1.7;color:var(--text-secondary);max-width:480px;margin-bottom:2rem}
 
-    .hero-btns { display: flex; align-items: center; gap: 2rem; opacity: 0; }
+    .btn-group{display:flex;gap:1rem;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:0.5rem;padding:14px 32px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;text-decoration:none;border-radius:32px;transition:all 0.3s;cursor:pointer;border:none}
+    .btn-primary{background:var(--text);color:#fff}
+    .btn-primary:hover{background:#333;transform:translateY(-2px)}
+    .btn-ghost{background:transparent;color:var(--text);border:1px solid var(--border)}
+    .btn-ghost:hover{border-color:var(--text);background:rgba(0,0,0,0.03)}
 
-    /* Circular animated CTA */
-    .btn-circle {
-      position: relative; display: inline-flex; align-items: center; justify-content: center;
-      width: 148px; height: 148px; border-radius: 50%; background: var(--accent); color: #000;
-      font-size: 10.5px; font-weight: 800; letter-spacing: .09em; text-transform: uppercase;
-      text-align: center; line-height: 1.4; overflow: hidden; flex-shrink: 0;
-      transition: transform .4s cubic-bezier(.16,1,.3,1), box-shadow .4s;
-    }
-    .btn-circle::before {
-      content: '→'; font-size: 1.9rem; font-weight: 400; letter-spacing: 0;
-      position: absolute; top: 105%; left: 50%; transform: translateX(-50%);
-      transition: top .4s cubic-bezier(.16,1,.3,1);
-    }
-    .btn-circle-text { transition: transform .4s cubic-bezier(.16,1,.3,1); }
-    .btn-circle:hover { transform: scale(1.06); box-shadow: 0 20px 60px rgba(200,255,0,.35); }
-    .btn-circle:hover .btn-circle-text { transform: translateY(-135%); }
-    .btn-circle:hover::before { top: 50%; transform: translate(-50%,-50%); }
+    /* Bottom bar */
+    .bottom-bar{position:fixed;bottom:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 2.5rem;background:rgba(255,255,255,0.9);backdrop-filter:blur(12px);border-top:1px solid var(--border)}
+    .nav-arrow{width:36px;height:36px;display:flex;align-items:center;justify-content:center;background:none;border:1px solid var(--border);border-radius:50%;cursor:pointer;font-size:16px;color:var(--text-secondary);transition:all 0.2s}
+    .nav-arrow:hover{border-color:var(--text);color:var(--text)}
+    .dots{display:flex;gap:8px}
+    .dot{width:8px;height:8px;border-radius:4px;background:var(--border);border:none;cursor:pointer;transition:all 0.3s}
+    .dot.active{width:28px;background:var(--text)}
+    .counter{font-size:11px;font-weight:600;letter-spacing:0.1em;color:var(--text-secondary)}
 
-    .btn-ghost { font-size: 12px; font-weight: 600; color: var(--muted); display: flex; align-items: center; gap: .5rem; letter-spacing: .04em; transition: color .2s; }
-    .btn-ghost span { transition: transform .3s; }
-    .btn-ghost:hover { color: var(--text); }
-    .btn-ghost:hover span { transform: translateX(4px); }
-
-    /* Hero right visual */
-    .hero-right { display: flex; align-items: center; justify-content: center; position: relative; opacity: 0; }
-    .hero-visual-wrap {
-      position: relative; width: 420px; height: 420px;
-    }
-    .hero-visual-img {
-      width: 100%; height: 100%; object-fit: cover;
-      border-radius: 50%;
-      box-shadow: 0 0 80px rgba(200,255,0,.08), 0 0 160px rgba(200,255,0,.04);
-    }
-    .hero-orbital {
-      position: absolute; inset: -30px;
-      border: 1px solid rgba(200,255,0,.18);
-      border-radius: 50%;
-      animation: spin 20s linear infinite;
-    }
-    .hero-orbital::before {
-      content: ''; position: absolute; top: -4px; left: 50%;
-      width: 8px; height: 8px; border-radius: 50%;
-      background: var(--accent); box-shadow: 0 0 16px rgba(200,255,0,1);
-      transform: translateX(-50%);
-    }
-    .hero-orbital-2 {
-      position: absolute; inset: -60px;
-      border: 1px solid rgba(255,255,255,.05);
-      border-radius: 50%;
-      animation: spin 35s linear infinite reverse;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
-    .hero-glow {
-      position: absolute; inset: -80px;
-      background: radial-gradient(ellipse, rgba(200,255,0,.08) 0%, transparent 70%);
-      pointer-events: none;
-      animation: glowpulse 5s ease-in-out infinite;
-    }
-
-    /* Rotating badge */
-    .hero-badge { position: absolute; bottom: -20px; right: -20px; width: 90px; height: 90px; }
-    .hero-badge svg { width: 100%; height: 100%; animation: spin 14s linear infinite; }
-    .hero-badge-dot { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 12px rgba(200,255,0,1); }
-
-    /* Hero stats bar */
-    .hero-stats {
-      position: relative; z-index: 2; display: flex; align-items: center;
-      padding: 1.2rem 2rem; border-top: 1px solid var(--border);
-      gap: 0; max-width: 1400px; margin: 0 auto; width: 100%;
-      opacity: 0;
-    }
-    .hero-stat { display: flex; align-items: center; gap: .75rem; flex: 1; padding: 0 1.5rem; border-right: 1px solid var(--border); }
-    .hero-stat:first-child { padding-left: 0; }
-    .hero-stat:last-child { border-right: none; }
-    .hero-stat-icon { font-size: 12px; color: var(--accent); }
-    .hero-stat-val { font-size: 12px; font-weight: 700; letter-spacing: .02em; }
-    .hero-stat-label { font-size: 11px; color: var(--muted); }
-
-    /* ── MARQUEE ── */
-    .mq { overflow: hidden; background: var(--accent); padding: 1rem 0; }
-    .mq-t { display: flex; white-space: nowrap; animation: mq 22s linear infinite; }
-    .mq:hover .mq-t { animation-play-state: paused; }
-    .mq-i { display: inline-flex; align-items: center; gap: 1.25rem; font-size: 10.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #000; padding: 0 1.25rem; flex-shrink: 0; }
-    .mq-sep { width: 4px; height: 4px; border-radius: 50%; background: rgba(0,0,0,.35); }
-    @keyframes mq { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-
-    /* ── SECTION LABELS ── */
-    .sec-eyebrow { font-size: 9.5px; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--accent); display: flex; align-items: center; gap: .7rem; margin-bottom: 1.5rem; }
-    .sec-eyebrow::before { content: ''; width: 18px; height: 1px; background: var(--accent); }
-    .sec-h { font-size: clamp(2.4rem, 4.5vw, 4.2rem); font-weight: 900; letter-spacing: -0.035em; line-height: 1.0; }
-    .sec-h em { font-style: italic; color: var(--accent); font-family: 'Playfair Display', serif; }
-
-    /* ── STACKING PROCESS CARDS ── */
-    .process-intro { padding: 6rem 2rem 3rem; max-width: 1400px; margin: 0 auto; }
-
-    .process-stack { max-width: 1400px; margin: 0 auto; padding: 0 2rem; }
-    .process-card {
-      position: sticky;
-      height: 65vh;
-      min-height: 420px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      overflow: hidden;
-      margin-bottom: 2px;
-      background: var(--surface);
-    }
-    .process-card:nth-child(1) { top: 80px; z-index: 1; }
-    .process-card:nth-child(2) { top: 100px; z-index: 2; }
-    .process-card:nth-child(3) { top: 120px; z-index: 3; }
-    .process-card:nth-child(4) { top: 140px; z-index: 4; }
-    .process-card:nth-child(5) { top: 160px; z-index: 5; }
-
-    .process-img {
-      position: relative; overflow: hidden;
-      background: #0e0e0e;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .process-img img { width: 100%; height: 100%; object-fit: cover; opacity: .7; transition: opacity .5s, transform .5s; }
-    .process-card:hover .process-img img { opacity: .9; transform: scale(1.03); }
-    .process-img-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(10,10,10,.4) 0%, transparent 60%);
-    }
-    .process-num-bg {
-      position: absolute; bottom: 1.5rem; left: 1.5rem;
-      font-size: 5rem; font-weight: 900; line-height: 1;
-      letter-spacing: -0.06em; color: rgba(255,255,255,.06);
-      pointer-events: none;
-    }
-
-    .process-content {
-      padding: 3rem 3.5rem;
-      display: flex; flex-direction: column; justify-content: center;
-      gap: 1rem;
-    }
-    .process-counter { font-size: 10px; font-weight: 600; letter-spacing: .2em; color: var(--muted); }
-    .process-title { font-size: clamp(2.2rem, 4vw, 3.8rem); font-weight: 900; letter-spacing: -0.04em; line-height: 1; }
-    .process-desc { font-size: 14px; color: var(--muted); line-height: 1.85; max-width: 380px; }
-    .process-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .5rem; }
-    .ptag { font-size: 9.5px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; padding: 4px 12px; border-radius: 100px; border: 1px solid var(--border); color: var(--muted); }
-    .process-spacer { height: 30vh; }
-
-    /* ── DIVISIONS ── */
-    .div-sec { padding: 7rem 2rem; }
-    .div-inner { max-width: 1400px; margin: 0 auto; }
-    .div-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 1px; margin-top: 4rem; background: var(--border); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
-    .div-card {
-      background: var(--bg); padding: 2rem 1.75rem;
-      display: flex; flex-direction: column; gap: .85rem;
-      position: relative; overflow: hidden;
-      text-decoration: none; color: inherit;
-      opacity: 0; transform: translateY(20px);
-      transition: opacity .6s ease, transform .6s ease, background .3s;
-    }
-    .div-card.vis { opacity: 1; transform: translateY(0); }
-    .div-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; transform: scaleX(0); transform-origin: left; transition: transform .4s cubic-bezier(.16,1,.3,1); }
-    .div-card:hover::before { transform: scaleX(1); }
-    .div-card:hover { background: var(--surface); }
-    .div-card-img { width: 100%; aspect-ratio: 3/2; object-fit: cover; border-radius: 8px; opacity: .55; transition: opacity .4s; margin-bottom: .25rem; }
-    .div-card:hover .div-card-img { opacity: 1; }
-    .div-card-num { font-size: 9.5px; font-weight: 700; letter-spacing: .16em; }
-    .div-card-name { font-size: 1rem; font-weight: 800; letter-spacing: -0.01em; }
-    .div-card-desc { font-size: 11.5px; color: var(--muted); line-height: 1.65; flex: 1; }
-    .div-card-link { font-size: 10.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; display: flex; align-items: center; gap: .4rem; transition: color .2s; margin-top: auto; color: var(--muted); }
-    .div-card:hover .div-card-link { color: var(--accent); }
-    .div-digital::before { background: #0ea5e9; } .div-digital .div-card-num { color: #0ea5e9; }
-    .div-design::before { background: #ec4899; } .div-design .div-card-num { color: #ec4899; }
-    .div-tech::before { background: #10b981; } .div-tech .div-card-num { color: #10b981; }
-    .div-prod::before { background: #8b5cf6; } .div-prod .div-card-num { color: #8b5cf6; }
-    .div-pr::before { background: #f59e0b; } .div-pr .div-card-num { color: #f59e0b; }
-
-    /* ── CTA ── */
-    .cta-sec { text-align: center; padding: 9rem 2rem; position: relative; overflow: hidden; }
-    .cta-glow { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 700px; height: 700px; background: radial-gradient(ellipse, rgba(200,255,0,.07) 0%, transparent 65%); pointer-events: none; animation: glowpulse 5s ease-in-out infinite; }
-    .cta-h { font-size: clamp(2.8rem, 6.5vw, 6rem); font-weight: 900; letter-spacing: -0.04em; line-height: .94; position: relative; }
-    .cta-h em { font-style: italic; color: var(--accent); font-family: 'Playfair Display', serif; }
-    .cta-sub { font-size: 14px; color: var(--muted); max-width: 400px; margin: 1.5rem auto 0; line-height: 1.85; position: relative; }
-    .cta-btn-wrap { margin-top: 3rem; display: flex; justify-content: center; position: relative; }
-
-    /* ── FOOTER ── */
-    footer { border-top: 1px solid var(--border); padding: 5rem 2rem 2.5rem; }
-    .ft-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; max-width: 1400px; margin: 0 auto; }
-    .ft-logo { display: flex; align-items: center; gap: .65rem; margin-bottom: 1.25rem; }
-    .ft-logo-box { width: 28px; height: 28px; border: 1.5px solid var(--accent); display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 900; color: var(--accent); }
-    .ft-logo-t { font-size: 11px; font-weight: 700; letter-spacing: .22em; }
-    .ft-desc { font-size: 12.5px; color: var(--muted); line-height: 1.85; max-width: 250px; }
-    .ft-h { font-size: 9.5px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.25rem; }
-    .ft-links { display: flex; flex-direction: column; gap: .65rem; }
-    .ft-links a, .ft-links span { font-size: 12.5px; color: var(--muted); transition: color .2s; line-height: 1.7; }
-    .ft-links a:hover { color: var(--text); }
-    .ft-bot { max-width: 1400px; margin: 3rem auto 0; padding-top: 1.75rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; font-size: 11.5px; color: var(--muted); }
-    .ft-acc { color: var(--accent); }
-
-    /* ── REVEAL ── */
-    .rv { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
-    .rv.vis { opacity: 1; transform: translateY(0); }
-    .rv1 { transition-delay: .12s; } .rv2 { transition-delay: .24s; }
-
-    /* ── MOBILE ── */
-    @media(max-width: 960px) {
-      body { cursor: auto; }
-      #cur { display: none; }
-      nav { padding: .9rem 1.25rem; grid-template-columns: 1fr 1fr; }
-      .nav-center { display: none; }
-      .hero-body { grid-template-columns: 1fr; padding-top: 6rem; }
-      .hero-right { display: none; }
-      .hero-title { font-size: clamp(2.8rem,11vw,5rem); }
-      .hero-stats { gap: 0; flex-wrap: wrap; }
-      .hero-stat { min-width: 50%; padding: .75rem 1rem; }
-      .process-card { grid-template-columns: 1fr; height: auto; min-height: unset; }
-      .process-img { height: 200px; }
-      .process-content { padding: 2rem; }
-      .div-grid { grid-template-columns: 1fr 1fr; }
-      .div-sec { padding: 4rem 1.25rem; }
-      .cta-sec { padding: 5rem 1.25rem; }
-      .ft-grid { grid-template-columns: 1fr 1fr; }
+    /* Mobile */
+    @media(max-width:768px){
+      .header{padding:1rem 1.25rem}
+      .nav{display:none}
+      .menu-btn{display:block}
+      .accordion{flex-direction:column}
+      .slide{min-height:60px;flex:0 0 auto !important;border-right:none;border-bottom:1px solid var(--border);transition:all 0.5s}
+      .slide.active{flex:1 !important;min-height:50vh}
+      .slide:not(.active){flex:0 0 60px !important}
+      .tab-label{transform:translate(-50%,-50%) rotate(0deg);font-size:10px}
+      .slide.active .tab-label{opacity:0}
+      .slide-content{padding:1.5rem}
+      .headline{font-size:2rem}
+      .bottom-bar{padding:0.75rem 1.25rem}
     }
   </style>
 </head>
 <body>
-
-<!-- CURSOR -->
-<div id="cur"><div class="cur-r" id="cr"></div><div class="cur-d" id="cd"></div></div>
-
-<!-- LOADER -->
-<div id="ld">
-  <div class="ld-num" id="ldNum">0</div>
-  <div class="ld-bar"><div class="ld-fill" id="ldFill"></div></div>
-</div>
-
-<!-- NAV -->
-<nav id="nav">
-  <div class="nav-logo" id="nLogo">
-    <div class="nav-logo-box">A</div>AWAKEN
-  </div>
-  <div class="nav-center" id="nLinks">
-    <a href="digital.html">Digital</a>
-    <a href="design.html">Design</a>
-    <a href="tech.html">Tech</a>
-    <a href="production.html">Production</a>
-    <a href="pr.html">PR</a>
-  </div>
-  <div class="nav-right" id="nCta">
-    <a href="https://www.awakenentertainment.org/contact" target="_blank" class="nav-pill">Start a project →</a>
-  </div>
-</nav>
-
-<!-- HERO -->
-<section class="hero">
-  <video class="hero-video" autoplay muted loop playsinline>
-    <!-- <source src="hero-reel.mp4" type="video/mp4"> -->
-  </video>
-  <div class="hero-placeholder" id="heroPh"></div>
-  <div class="hero-overlay"></div>
-
-  <div class="hero-body">
-    <!-- LEFT: text content -->
-    <div class="hero-left">
-      <div class="hero-eyebrow" id="hEye">2016 · Creative Agency · Myanmar</div>
-      <h1 class="hero-title" id="hTitle">
-        <span class="hero-title-line">
-          <span class="hero-word">We</span><span class="hero-word"> turn</span>
-        </span>
-        <span class="hero-title-line">
-          <span class="hero-word">brands</span><span class="hero-word"> into</span>
-        </span>
-        <span class="hero-title-line">
-          <span class="hero-word"><em>culture.</em></span>
-        </span>
-      </h1>
-      <p class="hero-sub" id="hSub">The parent company behind Digital, Design, Tech, Production and PR — each building something new across entertainment, technology and culture.</p>
-      <div class="hero-btns" id="hBtns">
-        <a href="https://www.awakenentertainment.org/contact" target="_blank" class="btn-circle">
-          <span class="btn-circle-text">Start a<br>Project</span>
-        </a>
-        <a href="#divisions" class="btn-ghost">Explore Divisions <span>→</span></a>
-      </div>
-    </div>
-
-    <!-- RIGHT: visual element -->
-    <div class="hero-right" id="hRight">
-      <div class="hero-visual-wrap">
-        <div class="hero-glow"></div>
-        <div class="hero-orbital-2"></div>
-        <div class="hero-orbital"></div>
-        <img class="hero-visual-img"
-          src="https://d8j0ntlcm91z4.cloudfront.net/user_3FE3Vvu9lYALhCwQvePKUS2plzn/hf_20260625_100620_bd79b2ba-903d-47f7-a60c-f17bd901f0d7.png"
-          alt="">
-        <!-- Rotating badge -->
-        <div class="hero-badge">
-          <svg viewBox="0 0 90 90">
-            <defs><path id="bp" d="M45,45 m-32,0 a32,32 0 1,1 64,0 a32,32 0 1,1 -64,0"/></defs>
-            <text fill="#c8ff00" font-size="9.5" font-weight="700" letter-spacing="3" font-family="Inter,sans-serif">
-              <textPath href="#bp">AWAKEN · YANGON · EST. 2016 ·</textPath>
-            </text>
-          </svg>
-          <div class="hero-badge-dot"></div>
+  <main class="accordion" id="accordion">
+    <section class="slide active" data-index="0" style="--accent:var(--awaken)" onclick="setSlide(0)">
+      <div class="slide-bg" style="background-image:url('https://d8j0ntlcm91z4.cloudfront.net/user_3FE3Vvu9lYALhCwQvePKUS2plzn/hf_20260625_100616_e966de8d-6b47-4533-9f8d-1bc1b76630d4.png')"></div>
+      <div class="slide-overlay"></div>
+      <span class="tab-label">AWAKEN</span>
+      <div class="slide-content">
+        <p class="eyebrow awaken">Main Holding Company</p>
+        <h2 class="headline">AWAKEN<br>ENTERTAINMENT</h2>
+        <p class="body-text">The parent company behind a growing family of brands — each building something new across entertainment, technology, design, and culture.</p>
+        <div class="btn-group">
+          <a href="https://www.awakenentertainment.org/" target="_blank" class="btn btn-primary">Explore Us</a>
+          <a href="https://www.awakenentertainment.org/contact" target="_blank" class="btn btn-ghost">Get In Touch</a>
         </div>
       </div>
-    </div>
-  </div>
+    </section>
 
-  <!-- Stats bar -->
-  <div class="hero-stats" id="hStats">
-    <div class="hero-stat">
-      <span class="hero-stat-icon">★</span>
-      <span class="hero-stat-val">2016</span>
-      <span class="hero-stat-label">Founded in Yangon</span>
-    </div>
-    <div class="hero-stat">
-      <span class="hero-stat-icon">◆</span>
-      <span class="hero-stat-val">5</span>
-      <span class="hero-stat-label">Divisions</span>
-    </div>
-    <div class="hero-stat">
-      <span class="hero-stat-icon">↗</span>
-      <span class="hero-stat-val">120+</span>
-      <span class="hero-stat-label">Projects Delivered</span>
-    </div>
-    <div class="hero-stat">
-      <span class="hero-stat-icon">✓</span>
-      <span class="hero-stat-val">98%</span>
-      <span class="hero-stat-label">Client Satisfaction</span>
-    </div>
-  </div>
-</section>
-
-<!-- MARQUEE -->
-<div class="mq">
-  <div class="mq-t">
-    <span class="mq-i">Digital<span class="mq-sep"></span></span>
-    <span class="mq-i">Design<span class="mq-sep"></span></span>
-    <span class="mq-i">Technology<span class="mq-sep"></span></span>
-    <span class="mq-i">Production<span class="mq-sep"></span></span>
-    <span class="mq-i">Public Relations<span class="mq-sep"></span></span>
-    <span class="mq-i">Brand Strategy<span class="mq-sep"></span></span>
-    <span class="mq-i">Awaken Entertainment<span class="mq-sep"></span></span>
-    <span class="mq-i">Digital<span class="mq-sep"></span></span>
-    <span class="mq-i">Design<span class="mq-sep"></span></span>
-    <span class="mq-i">Technology<span class="mq-sep"></span></span>
-    <span class="mq-i">Production<span class="mq-sep"></span></span>
-    <span class="mq-i">Public Relations<span class="mq-sep"></span></span>
-    <span class="mq-i">Brand Strategy<span class="mq-sep"></span></span>
-    <span class="mq-i">Awaken Entertainment<span class="mq-sep"></span></span>
-  </div>
-</div>
-
-<!-- FROM BRIEFING TO LAUNCH — STICKY STACKING CARDS -->
-<div class="process-intro">
-  <div class="sec-eyebrow rv">Our Process</div>
-  <h2 class="sec-h rv rv1">From <em>briefing</em><br>to launch.</h2>
-</div>
-
-<div class="process-stack" id="processStack">
-
-  <div class="process-card">
-    <div class="process-img">
-      <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3FE3Vvu9lYALhCwQvePKUS2plzn/hf_20260625_100620_bd79b2ba-903d-47f7-a60c-f17bd901f0d7.png" alt="">
-      <div class="process-img-overlay"></div>
-      <div class="process-num-bg">01</div>
-    </div>
-    <div class="process-content">
-      <div class="process-counter">01 / 05</div>
-      <h3 class="process-title">Brief</h3>
-      <p class="process-desc">We start by listening. A deep discovery session to understand your vision, goals, audience, and the problem we're solving together. No templates — every brief is unique.</p>
-      <div class="process-tags">
-        <span class="ptag">Discovery</span><span class="ptag">Goals</span><span class="ptag">Audience</span><span class="ptag">KPIs</span>
+    <section class="slide" data-index="1" style="--accent:var(--digital)" onclick="setSlide(1)">
+      <div class="slide-bg" style="background-image:url('https://d8j0ntlcm91z4.cloudfront.net/user_3FE3Vvu9lYALhCwQvePKUS2plzn/hf_20260625_100620_bd79b2ba-903d-47f7-a60c-f17bd901f0d7.png')"></div>
+      <div class="slide-overlay"></div>
+      <span class="tab-label">DIGITAL</span>
+      <div class="slide-content">
+        <p class="eyebrow digital">01 — Digital</p>
+        <h2 class="headline">AWAKEN<br>DIGITAL</h2>
+        <p class="body-text">Web experiences, apps, and platforms built to perform. From strategy to deployment — we make the digital world feel alive.</p>
+        <div class="btn-group">
+          <a href="digital.html" class="btn btn-primary">Learn More</a>
+        </div>
       </div>
-    </div>
-  </div>
+    </section>
 
-  <div class="process-card">
-    <div class="process-img">
-      <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3FE3Vvu9lYALhCwQvePKUS2plzn/hf_20260625_100622_18cb8e55-dad6-4a61-bb2f-476a20bed4e8.png" alt="">
-      <div class="process-img-overlay"></div>
-      <div class="process-num-bg">02</div>
-    </div>
-    <div class="process-content">
-      <div class="process-counter">02 / 05</div>
-      <h3 class="process-title">Strategy</h3>
-      <p class="process-desc">Research, competitive analysis, and channel selection. We build a strategic roadmap that connects your brand with the right people at the right moment.</p>
-      <div class="process-tags">
-        <span class="ptag">Research</span><span class="ptag">Positioning</span><span class="ptag">Channels</span><span class="ptag">Roadmap</span>
+    <section class="slide" data-index="2" style="--accent:var(--design)" onclick="setSlide(2)">
+      <div class="slide-bg" style="background-image:url('https://d8j0ntlcm91z4.cloudfront.net/user_3FE3Vvu9lYALhCwQvePKUS2plzn/hf_20260625_100622_18cb8e55-dad6-4a61-bb2f-476a20bed4e8.png')"></div>
+      <div class="slide-overlay"></div>
+      <span class="tab-label">DESIGN</span>
+      <div class="slide-content">
+        <p class="eyebrow design">02 — Design</p>
+        <h2 class="headline">AWAKEN<br>DESIGN</h2>
+        <p class="body-text">Visual identity, brand systems, and creative direction. We shape how your brand looks, feels, and is remembered.</p>
+        <div class="btn-group">
+          <a href="design.html" class="btn btn-primary">Learn More</a>
+        </div>
       </div>
-    </div>
-  </div>
+    </section>
 
-  <div class="process-card">
-    <div class="process-img">
-      <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3FE3Vvu9lYALhCwQvePKUS2plzn/hf_20260625_100622_c2a52321-157a-4f06-9af4-a1c2642110c1.png" alt="">
-      <div class="process-img-overlay"></div>
-      <div class="process-num-bg">03</div>
-    </div>
-    <div class="process-content">
-      <div class="process-counter">03 / 05</div>
-      <h3 class="process-title">Create</h3>
-      <p class="process-desc">Design, content, and production — all under one roof. Our creative team crafts the visuals, copy, and experiences that make your brand impossible to ignore.</p>
-      <div class="process-tags">
-        <span class="ptag">Design</span><span class="ptag">Copywriting</span><span class="ptag">Video</span><span class="ptag">Assets</span>
+    <section class="slide" data-index="3" style="--accent:var(--tech)" onclick="setSlide(3)">
+      <div class="slide-bg" style="background-image:url('https://d8j0ntlcm91z4.cloudfront.net/user_3FE3Vvu9lYALhCwQvePKUS2plzn/hf_20260625_100622_c2a52321-157a-4f06-9af4-a1c2642110c1.png')"></div>
+      <div class="slide-overlay"></div>
+      <span class="tab-label">TECH</span>
+      <div class="slide-content">
+        <p class="eyebrow tech">03 — Technology</p>
+        <h2 class="headline">AWAKEN<br>TECH</h2>
+        <p class="body-text">Software, infrastructure, and innovation. We engineer the systems that power ambitious brands and products at any scale.</p>
+        <div class="btn-group">
+          <a href="tech.html" class="btn btn-primary">Learn More</a>
+        </div>
       </div>
-    </div>
-  </div>
+    </section>
 
-  <div class="process-card">
-    <div class="process-img">
-      <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3FE3Vvu9lYALhCwQvePKUS2plzn/hf_20260625_100623_3a812de3-71f9-48bf-9966-44dbba776b4e.png" alt="">
-      <div class="process-img-overlay"></div>
-      <div class="process-num-bg">04</div>
-    </div>
-    <div class="process-content">
-      <div class="process-counter">04 / 05</div>
-      <h3 class="process-title">Build</h3>
-      <p class="process-desc">Our tech team takes the creative output and engineers it into reality. Websites, apps, platforms, and campaigns — built to perform at any scale, with precision and speed.</p>
-      <div class="process-tags">
-        <span class="ptag">Development</span><span class="ptag">QA</span><span class="ptag">Infrastructure</span><span class="ptag">Integrations</span>
+    <section class="slide" data-index="4" style="--accent:var(--production)" onclick="setSlide(4)">
+      <div class="slide-bg" style="background-image:url('https://d8j0ntlcm91z4.cloudfront.net/user_3FE3Vvu9lYALhCwQvePKUS2plzn/hf_20260625_100623_3a812de3-71f9-48bf-9966-44dbba776b4e.png')"></div>
+      <div class="slide-overlay"></div>
+      <span class="tab-label">PRODUCTION</span>
+      <div class="slide-content">
+        <p class="eyebrow production">04 — Production</p>
+        <h2 class="headline">AWAKEN<br>PRODUCTION</h2>
+        <p class="body-text">Film, photography, motion, and content creation. We produce the visuals that make people stop, look, and feel something.</p>
+        <div class="btn-group">
+          <a href="production.html" class="btn btn-primary">Learn More</a>
+        </div>
       </div>
-    </div>
-  </div>
+    </section>
 
-  <div class="process-card">
-    <div class="process-img">
-      <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3FE3Vvu9lYALhCwQvePKUS2plzn/hf_20260625_100625_48adce73-fcfa-45d1-8fb5-7b7f1d247d9d.png" alt="">
-      <div class="process-img-overlay"></div>
-      <div class="process-num-bg">05</div>
-    </div>
-    <div class="process-content">
-      <div class="process-counter">05 / 05</div>
-      <h3 class="process-title">Launch</h3>
-      <p class="process-desc">Go live with precision. We deploy campaigns, activate press, publish content, and monitor performance in real-time — then keep optimising until we exceed the brief.</p>
-      <div class="process-tags">
-        <span class="ptag">Activation</span><span class="ptag">PR</span><span class="ptag">Monitoring</span><span class="ptag">Optimise</span>
+    <section class="slide" data-index="5" style="--accent:var(--pr)" onclick="setSlide(5)">
+      <div class="slide-bg" style="background-image:url('https://d8j0ntlcm91z4.cloudfront.net/user_3FE3Vvu9lYALhCwQvePKUS2plzn/hf_20260625_100625_48adce73-fcfa-45d1-8fb5-7b7f1d247d9d.png')"></div>
+      <div class="slide-overlay"></div>
+      <span class="tab-label">PR</span>
+      <div class="slide-content">
+        <p class="eyebrow pr">05 — Public Relations</p>
+        <h2 class="headline">AWAKEN<br>PR</h2>
+        <p class="body-text">Press, partnerships, and public narrative. We shape the stories told about your brand and get them in front of the people who matter.</p>
+        <div class="btn-group">
+          <a href="pr.html" class="btn btn-primary">Learn More</a>
+        </div>
       </div>
-    </div>
-  </div>
+    </section>
+  </main>
 
-  <div class="process-spacer"></div>
-</div>
-
-<!-- DIVISIONS -->
-<section class="div-sec" id="divisions">
-  <div class="div-inner">
-    <div class="sec-eyebrow rv">What We Do</div>
-    <h2 class="sec-h rv rv1">Five divisions.<br><em>One vision.</em></h2>
-    <div class="div-grid">
-      <a href="digital.html" class="div-card div-digital" data-dd="0">
-        <img class="div-card-img" src="https://d8j0ntlcm91z4.cloudfront.net/user_3FE3Vvu9lYALhCwQvePKUS2plzn/hf_20260625_100620_bd79b2ba-903d-47f7-a60c-f17bd901f0d7.png" alt="Digital" loading="lazy">
-        <div class="div-card-num">01</div>
-        <div class="div-card-name">Awaken Digital</div>
-        <div class="div-card-desc">Web, apps, social media and paid campaigns that grow your brand online.</div>
-        <div class="div-card-link">Explore ↗</div>
-      </a>
-      <a href="design.html" class="div-card div-design" data-dd="80">
-        <img class="div-card-img" src="https://d8j0ntlcm91z4.cloudfront.net/user_3FE3Vvu9lYALhCwQvePKUS2plzn/hf_20260625_100622_18cb8e55-dad6-4a61-bb2f-476a20bed4e8.png" alt="Design" loading="lazy">
-        <div class="div-card-num">02</div>
-        <div class="div-card-name">Awaken Design</div>
-        <div class="div-card-desc">Visual identity, brand systems and creative direction that make you remembered.</div>
-        <div class="div-card-link">Explore ↗</div>
-      </a>
-      <a href="tech.html" class="div-card div-tech" data-dd="160">
-        <img class="div-card-img" src="https://d8j0ntlcm91z4.cloudfront.net/user_3FE3Vvu9lYALhCwQvePKUS2plzn/hf_20260625_100622_c2a52321-157a-4f06-9af4-a1c2642110c1.png" alt="Tech" loading="lazy">
-        <div class="div-card-num">03</div>
-        <div class="div-card-name">Awaken Tech</div>
-        <div class="div-card-desc">Software, infrastructure and innovation that powers ambitious products at scale.</div>
-        <div class="div-card-link">Explore ↗</div>
-      </a>
-      <a href="production.html" class="div-card div-prod" data-dd="240">
-        <img class="div-card-img" src="https://d8j0ntlcm91z4.cloudfront.net/user_3FE3Vvu9lYALhCwQvePKUS2plzn/hf_20260625_100623_3a812de3-71f9-48bf-9966-44dbba776b4e.png" alt="Production" loading="lazy">
-        <div class="div-card-num">04</div>
-        <div class="div-card-name">Awaken Production</div>
-        <div class="div-card-desc">Film, photography, motion and content that makes people stop, look and feel.</div>
-        <div class="div-card-link">Explore ↗</div>
-      </a>
-      <a href="pr.html" class="div-card div-pr" data-dd="320">
-        <img class="div-card-img" src="https://d8j0ntlcm91z4.cloudfront.net/user_3FE3Vvu9lYALhCwQvePKUS2plzn/hf_20260625_100625_48adce73-fcfa-45d1-8fb5-7b7f1d247d9d.png" alt="PR" loading="lazy">
-        <div class="div-card-num">05</div>
-        <div class="div-card-name">Awaken PR</div>
-        <div class="div-card-desc">Press, partnerships and public narrative that puts you in front of the people who matter.</div>
-        <div class="div-card-link">Explore ↗</div>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<div class="cta-sec rv">
-  <div class="cta-glow"></div>
-  <div class="sec-eyebrow" style="justify-content:center;">Let's Build Together</div>
-  <h2 class="cta-h">Ready to become<br>something <em>great?</em></h2>
-  <p class="cta-sub">We collaborate to find the right answer and bring real progress to your business and to the world.</p>
-  <div class="cta-btn-wrap">
-    <a href="https://www.awakenentertainment.org/contact" target="_blank" class="btn-circle" style="width:180px;height:180px;font-size:11px;">
-      <span class="btn-circle-text">Start a<br>Project</span>
-    </a>
-  </div>
-</div>
-
-<!-- FOOTER -->
-<footer>
-  <div class="ft-grid">
-    <div>
-      <div class="ft-logo"><div class="ft-logo-box">A</div><span class="ft-logo-t">AWAKEN</span></div>
-      <p class="ft-desc">We turn brands into culture through bold storytelling and measurable growth. Based in Yangon, building for the world.</p>
-    </div>
-    <div>
-      <div class="ft-h">Divisions</div>
-      <div class="ft-links">
-        <a href="digital.html">Awaken Digital</a>
-        <a href="design.html">Awaken Design</a>
-        <a href="tech.html">Awaken Tech</a>
-        <a href="production.html">Awaken Production</a>
-        <a href="pr.html">Awaken PR</a>
-      </div>
-    </div>
-    <div>
-      <div class="ft-h">Contact</div>
-      <div class="ft-links">
-        <a href="tel:+959255762417">+95 9255762417</a>
-        <a href="tel:+959799489370">+95 9799489370</a>
-        <a href="mailto:nyinyisoewin@awakenentertainment.org">Email Us</a>
-        <a href="https://www.awakenentertainment.org" target="_blank">Website</a>
-      </div>
-    </div>
-    <div>
-      <div class="ft-h">Location</div>
-      <div class="ft-links">
-        <span>No.57, YaeKuYwarMa Street,<br>Ward 9, Mayangone,<br>Yangon, Myanmar</span>
-      </div>
-    </div>
-  </div>
-  <div class="ft-bot">
-    <span>© 2026 <span class="ft-acc">Awaken Entertainment</span>. All rights reserved.</span>
-    <span>Built with purpose in Yangon.</span>
-  </div>
-</footer>
-
-<script>
-/* ── LOADER ── */
-const ld=document.getElementById('ld'),ldNum=document.getElementById('ldNum'),ldFill=document.getElementById('ldFill');
-let pct=0;
-const ldInt=setInterval(()=>{
-  pct=Math.min(pct+Math.random()*16+4,100);
-  ldNum.textContent=Math.floor(pct);
-  ldFill.style.width=pct+'%';
-  if(pct>=100){clearInterval(ldInt);setTimeout(()=>{ld.classList.add('out');revealHero();},280);}
-},80);
-
-/* ── HERO REVEAL ── */
-function revealHero(){
-  const E='cubic-bezier(0.16,1,0.3,1)';
-  const s=(el,d,css)=>el&&setTimeout(()=>Object.assign(el.style,css),d);
-  s(document.getElementById('nLogo'),80,{opacity:'1',transition:`opacity .6s ${E}`});
-  s(document.getElementById('nLinks'),160,{opacity:'1',transition:`opacity .6s ${E}`});
-  s(document.getElementById('nCta'),240,{opacity:'1',transition:`opacity .6s ${E}`});
-  s(document.getElementById('hEye'),320,{opacity:'1',transition:'opacity .7s ease'});
-  document.querySelectorAll('.hero-word').forEach((w,i)=>
-    setTimeout(()=>{w.style.transform='translateY(0)';w.style.transition=`transform 1s ${E}`;},440+i*75)
-  );
-  s(document.getElementById('hSub'),800,{opacity:'1',transition:'opacity .8s ease'});
-  s(document.getElementById('hBtns'),950,{opacity:'1',transition:`opacity .7s ease`});
-  s(document.getElementById('hRight'),600,{opacity:'1',transition:`opacity 1.2s ease`});
-  s(document.getElementById('hStats'),1100,{opacity:'1',transition:'opacity .8s ease'});
-}
-
-/* ── CURSOR ── */
-const cd=document.getElementById('cd'),cr=document.getElementById('cr');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cd.style.left=mx+'px';cd.style.top=my+'px';});
-(function animC(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;cr.style.left=rx+'px';cr.style.top=ry+'px';requestAnimationFrame(animC);})();
-document.querySelectorAll('a,button').forEach(el=>{
-  el.addEventListener('mouseenter',()=>document.body.classList.add('hov'));
-  el.addEventListener('mouseleave',()=>document.body.classList.remove('hov'));
-});
-
-/* ── NAV ── */
-window.addEventListener('scroll',()=>{
-  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);
-},{passive:true});
-
-/* ── GENERIC REVEAL ── */
-const rvObs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');rvObs.unobserve(e.target);}});
-},{threshold:0.1});
-document.querySelectorAll('.rv').forEach(el=>rvObs.observe(el));
-
-/* ── DIVISION CARDS ── */
-const dcObs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(!e.isIntersecting)return;
-    const d=parseInt(e.target.dataset.dd)||0;
-    setTimeout(()=>e.target.classList.add('vis'),d);
-    dcObs.unobserve(e.target);
-  });
-},{threshold:0.08});
-document.querySelectorAll('.div-card').forEach(el=>dcObs.observe(el));
-</script>
+  <script>
+    let active=0;const total=6;
+    function renderDots(){const d=document.getElementById('dots');d.innerHTML='';for(let i=0;i<total;i++){const b=document.createElement('button');b.className='dot'+(i===active?' active':'');b.onclick=(e)=>{e.stopPropagation();setSlide(i)};d.appendChild(b)}document.getElementById('counter').textContent=String(active+1).padStart(2,'0')+' / '+String(total).padStart(2,'0')}
+    function setSlide(i){active=i;document.querySelectorAll('.slide').forEach((s,idx)=>{s.classList.toggle('active',idx===i)});renderDots()}
+    function nextSlide(){setSlide((active+1)%total)}
+    function prevSlide(){setSlide((active-1+total)%total)}
+    document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')nextSlide();if(e.key==='ArrowLeft')prevSlide()})
+    renderDots()
+  </script>
 </body>
 </html>
+
