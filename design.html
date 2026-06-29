@@ -20,7 +20,8 @@
       --text-inv:#f0f0f0;
       --muted:rgba(12,12,12,.5);
       --muted-inv:rgba(240,240,240,.5);
-      --accent:#c8ff00;
+      --accent:#ff3333;
+      --accent-rgb:255,51,51;
     }
     html{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);scroll-behavior:smooth}
     body{overflow-x:hidden;cursor:none}
@@ -33,7 +34,7 @@
     .cur-d{position:absolute;width:10px;height:10px;background:#fff;border-radius:50%;transform:translate(-50%,-50%);transition:width .2s,height .2s}
     .cur-r{position:absolute;width:36px;height:36px;border:1px solid rgba(255,255,255,.4);border-radius:50%;transform:translate(-50%,-50%);transition:width .3s,height .3s,border-color .3s}
     body.hov .cur-d{width:14px;height:14px}
-    body.hov .cur-r{width:52px;height:52px;border-color:rgba(200,255,0,.6)}
+    body.hov .cur-r{width:52px;height:52px;border-color:rgba(var(--accent-rgb),.6)}
 
     /* LOADER */
     #ld{position:fixed;inset:0;z-index:8000;background:#0a0a0a;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;transition:opacity .7s ease,visibility .7s}
@@ -43,19 +44,11 @@
     .ld-fill{height:100%;background:var(--accent);width:0}
 
     /* SCROLL PROGRESS */
-    #scroll-prog{position:fixed;top:0;left:0;z-index:9000;height:2px;background:var(--accent);width:0%;transition:width .1s linear;box-shadow:0 0 8px rgba(200,255,0,.5)}
+    #scroll-prog{position:fixed;top:0;left:0;z-index:9000;height:2px;background:var(--accent);width:0%;transition:width .1s linear;box-shadow:0 0 8px rgba(var(--accent-rgb),.5)}
 
     /* NAV */
-    nav{
-      position:fixed;top:0;left:0;right:0;z-index:600;
-      display:flex;align-items:center;justify-content:space-between;
-      padding:0 2.5rem;height:68px;
-      background:transparent;
-      transition:background .4s,border-color .4s,backdrop-filter .4s;
-      border-bottom:1px solid transparent;
-    }
+    nav{position:fixed;top:0;left:0;right:0;z-index:600;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:68px;background:transparent;transition:background .4s,border-color .4s,backdrop-filter .4s;border-bottom:1px solid transparent}
     nav.scrolled{background:rgba(255,255,255,.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom-color:rgba(0,0,0,.08)}
-    nav.on-dark:not(.scrolled) .nav-logo,.nav.on-dark:not(.scrolled) .nav-links a,.nav.on-dark:not(.scrolled) .nav-cta-ghost{color:#fff}
     .nav-logo{font-size:12px;font-weight:800;letter-spacing:.22em;display:flex;align-items:center;gap:.6rem;color:#fff;transition:color .4s}
     nav.scrolled .nav-logo{color:var(--text)}
     .nav-logo-sq{width:24px;height:24px;border:1.5px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;color:var(--accent);flex-shrink:0}
@@ -66,48 +59,37 @@
     .nav-links a:hover::after,.nav-links a.active::after{width:100%}
     nav.scrolled .nav-links a{color:var(--muted)}
     nav.scrolled .nav-links a:hover,nav.scrolled .nav-links a.active{color:var(--text)}
-    .nav-cta{padding:9px 22px;border-radius:100px;background:var(--accent);color:#000;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;transition:box-shadow .3s}
-    .nav-cta:hover{box-shadow:0 0 20px rgba(200,255,0,.4)}
+    .nav-cta{padding:9px 22px;border-radius:100px;background:var(--accent);color:#fff;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;transition:box-shadow .3s}
+    .nav-cta:hover{box-shadow:0 0 20px rgba(var(--accent-rgb),.4)}
 
     /* FLOATING CONTACT */
     .float-menu{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:500;display:flex;flex-direction:column;gap:3px}
     .float-btn{width:56px;height:56px;background:rgba(10,10,10,.9);background-image:radial-gradient(rgba(255,255,255,.04) 1px,transparent 1px);background-size:5px 5px;border:1px solid rgba(255,255,255,.1);border-right:none;display:flex;align-items:center;justify-content:center;cursor:pointer;position:relative;transition:border-color .25s,background-color .25s;text-decoration:none;color:#fff;backdrop-filter:blur(8px)}
     .float-btn .fb-corner{position:absolute;top:0;right:0;width:7px;height:7px;border-top:1px solid var(--accent);border-right:1px solid var(--accent);transition:width .3s,height .3s}
-    .float-btn:hover{border-color:rgba(200,255,0,.3);background-color:rgba(200,255,0,.06)}
+    .float-btn:hover{border-color:rgba(var(--accent-rgb),.3);background-color:rgba(var(--accent-rgb),.06)}
     .float-btn:hover .fb-corner{width:100%;height:100%}
     .float-btn svg{width:20px;height:20px;stroke:rgba(255,255,255,.5);stroke-width:1.5;fill:none;transition:stroke .25s}
     .float-btn:hover svg{stroke:var(--accent)}
 
     /* ===== HERO ===== */
-    .hero{
-      height:100svh;position:relative;overflow:hidden;
-      background:var(--dark);
-      display:flex;flex-direction:column;justify-content:flex-end;
-      padding:0 2.5rem 4.5rem;
-    }
-    /* geometric design composition — right side */
-    .hero-visual{
-      position:absolute;right:0;top:0;bottom:0;width:55%;
-      overflow:hidden;
-    }
+    .hero{height:100svh;position:relative;overflow:hidden;background:var(--dark);display:flex;flex-direction:column;justify-content:flex-end;padding:0 2.5rem 4.5rem}
+    .hero-visual{position:absolute;right:0;top:0;bottom:0;width:55%;overflow:hidden}
     .hv-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:60px 60px}
-    .hv-rect{position:absolute;border:1px solid rgba(200,255,0,.15)}
-    .hv-rect1{top:15%;left:10%;width:260px;height:340px;transform:rotate(-4deg);border-color:rgba(200,255,0,.12)}
-    .hv-rect2{top:25%;left:35%;width:200px;height:260px;transform:rotate(3deg);background:rgba(200,255,0,.04)}
-    .hv-rect3{top:40%;left:20%;width:160px;height:160px;border-color:rgba(200,255,0,.25);background:rgba(200,255,0,.03)}
+    .hv-rect{position:absolute;border:1px solid rgba(var(--accent-rgb),.15)}
+    .hv-rect1{top:15%;left:10%;width:260px;height:340px;transform:rotate(-4deg);border-color:rgba(var(--accent-rgb),.12)}
+    .hv-rect2{top:25%;left:35%;width:200px;height:260px;transform:rotate(3deg);background:rgba(var(--accent-rgb),.04)}
+    .hv-rect3{top:40%;left:20%;width:160px;height:160px;border-color:rgba(var(--accent-rgb),.25);background:rgba(var(--accent-rgb),.03)}
     .hv-dot{position:absolute;border-radius:50%;background:var(--accent)}
-    .hv-dot1{width:8px;height:8px;top:30%;left:55%;box-shadow:0 0 20px rgba(200,255,0,.8);animation:hdot 3s ease-in-out infinite}
+    .hv-dot1{width:8px;height:8px;top:30%;left:55%;box-shadow:0 0 20px rgba(var(--accent-rgb),.8);animation:hdot 3s ease-in-out infinite}
     .hv-dot2{width:4px;height:4px;top:55%;left:25%;opacity:.6;animation:hdot 3s ease-in-out infinite .8s}
     .hv-dot3{width:6px;height:6px;top:20%;left:70%;opacity:.4;animation:hdot 3s ease-in-out infinite 1.6s}
     @keyframes hdot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
-    .hv-line{position:absolute;background:rgba(200,255,0,.2)}
+    .hv-line{position:absolute;background:rgba(var(--accent-rgb),.2)}
     .hv-line1{top:18%;left:0;right:0;height:1px;transform:rotate(-8deg)}
     .hv-line2{top:0;bottom:0;left:50%;width:1px;transform:rotate(4deg);opacity:.4}
-    .hv-label{position:absolute;top:1.5rem;right:1.5rem;font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);border:1px solid rgba(200,255,0,.2);padding:5px 12px;background:rgba(200,255,0,.04)}
+    .hv-label{position:absolute;top:1.5rem;right:1.5rem;font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);border:1px solid rgba(var(--accent-rgb),.2);padding:5px 12px;background:rgba(var(--accent-rgb),.04)}
     .hv-type{position:absolute;bottom:4rem;left:2rem;font-size:clamp(5rem,12vw,11rem);font-weight:900;letter-spacing:-0.06em;line-height:.85;color:rgba(255,255,255,.03);user-select:none;pointer-events:none}
-    /* hero vignette */
     .hero::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,var(--dark) 35%,rgba(10,10,10,.3) 70%,transparent);pointer-events:none}
-    /* hero content */
     .hero-content{position:relative;z-index:2;max-width:720px}
     .hero-kicker{font-size:10px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:.75rem;margin-bottom:2rem;opacity:0}
     .hero-kicker::before{content:'';width:24px;height:1px;background:var(--accent)}
@@ -117,29 +99,29 @@
     .hero-h-line{overflow:hidden;display:block}
     .hero-sub{font-size:15px;color:rgba(255,255,255,.5);line-height:1.8;max-width:420px;margin-top:2rem;opacity:0}
     .hero-actions{display:flex;align-items:center;gap:1.5rem;margin-top:2.5rem;opacity:0}
-    .btn-primary{padding:14px 32px;border-radius:100px;background:var(--accent);color:#000;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;transition:all .3s;display:inline-flex;align-items:center;gap:.5rem;position:relative;overflow:hidden}
-    .btn-primary::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(0,0,0,.18) 1px,transparent 1px);background-size:6px 6px}
-    .btn-primary:hover{box-shadow:0 8px 28px rgba(200,255,0,.35);transform:translateY(-2px)}
+    .btn-primary{padding:14px 32px;border-radius:100px;background:var(--accent);color:#fff;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;transition:all .3s;display:inline-flex;align-items:center;gap:.5rem;position:relative;overflow:hidden}
+    .btn-primary::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.15) 1px,transparent 1px);background-size:6px 6px}
+    .btn-primary:hover{box-shadow:0 8px 28px rgba(var(--accent-rgb),.4);transform:translateY(-2px)}
     .btn-ghost{padding:14px 32px;border-radius:100px;border:1px solid rgba(255,255,255,.2);color:#fff;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;transition:all .3s;display:inline-flex;align-items:center;gap:.5rem}
-    .btn-ghost:hover{border-color:rgba(200,255,0,.4);color:var(--accent)}
+    .btn-ghost:hover{border-color:rgba(var(--accent-rgb),.5);color:var(--accent)}
     .hero-scroll-cta{position:absolute;bottom:4.5rem;right:2.5rem;z-index:2;display:flex;align-items:center;gap:1rem;opacity:0}
     .hero-scroll-circle{width:52px;height:52px;border-radius:50%;border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;transition:border-color .3s,background .3s;animation:scrollbob 2.5s ease-in-out infinite}
     .hero-scroll-circle svg{width:18px;height:18px;stroke:#fff;stroke-width:1.5;fill:none;transition:stroke .3s}
-    .hero-scroll-circle:hover{border-color:var(--accent);background:rgba(200,255,0,.08)}
+    .hero-scroll-circle:hover{border-color:var(--accent);background:rgba(var(--accent-rgb),.08)}
     .hero-scroll-circle:hover svg{stroke:var(--accent)}
     @keyframes scrollbob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
 
-    /* ===== STATEMENT ===== */
-    .stmt{background:var(--dark);padding:8rem 2.5rem;text-align:center}
+    /* ===== STATEMENT (WHITE) ===== */
+    .stmt{background:var(--bg);padding:8rem 2.5rem;text-align:center;border-bottom:1px solid var(--border-light)}
     .stmt-inner{max-width:780px;margin:0 auto}
     .stmt-tag{font-size:10px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--accent);margin-bottom:2.5rem;opacity:0;transform:translateY(20px);transition:opacity .7s,transform .7s}
     .stmt-tag.vis{opacity:1;transform:none}
-    .stmt-p{font-size:clamp(1.25rem,2.5vw,2rem);color:rgba(255,255,255,.75);line-height:1.7;font-weight:400;opacity:0;transform:translateY(20px);transition:opacity .9s .15s,transform .9s .15s}
+    .stmt-p{font-size:clamp(1.25rem,2.5vw,2rem);color:rgba(12,12,12,.75);line-height:1.7;font-weight:400;opacity:0;transform:translateY(20px);transition:opacity .9s .15s,transform .9s .15s}
     .stmt-p.vis{opacity:1;transform:none}
-    .stmt-p em{color:#fff;font-style:italic;font-family:'Playfair Display',serif}
+    .stmt-p em{color:var(--text);font-style:italic;font-family:'Playfair Display',serif}
     .stmt-p strong{color:var(--accent);font-style:normal;font-family:inherit}
 
-    /* ===== HOW WE DESIGN ===== */
+    /* ===== HOW WE DO IT (WHITE — SLIDE ANIMATION) ===== */
     .how{background:var(--bg);padding:8rem 2.5rem}
     .how-inner{max-width:1300px;margin:0 auto}
     .how-hdr{text-align:center;margin-bottom:5rem}
@@ -147,23 +129,30 @@
     .how-h{font-size:clamp(2.5rem,5vw,4.5rem);font-weight:900;letter-spacing:-0.03em;line-height:1}
     .how-h em{color:var(--accent)}
     .how-sub{font-size:15px;color:var(--muted);max-width:500px;margin:.75rem auto 0;line-height:1.8}
-    /* staggered cards */
     .how-cards{display:flex;flex-direction:column;gap:0}
     .how-row{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem}
-    .how-row:nth-child(odd) .how-card:first-child{margin-top:3rem}
-    .how-row:nth-child(even) .how-card:last-child{margin-top:3rem}
-    .how-card{background:var(--dark);border-radius:16px;padding:2.5rem;border:1px solid rgba(255,255,255,.06);position:relative;overflow:hidden;opacity:0;transform:translateY(32px);transition:opacity .7s,transform .7s,border-color .3s}
+    /* SLIDE ANIMATION — odd cards from left, even from right */
+    .how-card{
+      background:var(--dark);border-radius:16px;padding:2.5rem;border:1px solid rgba(255,255,255,.06);
+      position:relative;overflow:hidden;
+      opacity:0;transition:opacity .8s ease,transform .8s cubic-bezier(.16,1,.3,1),border-color .3s;
+    }
+    .how-card[data-dir="left"]{transform:translateX(-60px)}
+    .how-card[data-dir="right"]{transform:translateX(60px)}
     .how-card.vis{opacity:1;transform:none}
-    .how-card:hover{border-color:rgba(200,255,0,.15)}
+    .how-card:hover{border-color:rgba(var(--accent-rgb),.2)}
     .how-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.16,1,.3,1)}
     .how-card:hover::before{transform:scaleX(1)}
-    .how-card-icon{width:44px;height:44px;border:1px solid rgba(200,255,0,.25);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1.75rem;font-size:18px;transition:border-color .3s,background .3s}
-    .how-card:hover .how-card-icon{border-color:var(--accent);background:rgba(200,255,0,.08)}
+    .how-card-icon{width:44px;height:44px;border:1px solid rgba(var(--accent-rgb),.25);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1.75rem;font-size:18px;transition:border-color .3s,background .3s}
+    .how-card:hover .how-card-icon{border-color:var(--accent);background:rgba(var(--accent-rgb),.08)}
     .how-card-n{font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:.75rem}
     .how-card-title{font-size:1.2rem;font-weight:800;color:#fff;margin-bottom:.75rem;line-height:1.15}
     .how-card-title em{color:var(--accent)}
     .how-card-text{font-size:13px;color:rgba(255,255,255,.45);line-height:1.85}
     .how-card-bg-num{position:absolute;bottom:-1rem;right:1rem;font-size:7rem;font-weight:900;color:rgba(255,255,255,.03);letter-spacing:-0.05em;user-select:none;pointer-events:none}
+    /* line number on white section offset */
+    .how-row:nth-child(odd) .how-card:first-child{margin-top:3rem}
+    .how-row:nth-child(even) .how-card:last-child{margin-top:3rem}
 
     /* ===== WORK ===== */
     .work{background:var(--bg);padding:0 2.5rem 6rem}
@@ -173,82 +162,62 @@
     .work-title em{color:var(--accent)}
     .work-see-all{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:10px 22px;border:1px solid var(--border-light);border-radius:100px;color:var(--muted);transition:all .3s}
     .work-see-all:hover{border-color:var(--text);color:var(--text)}
-    /* project cards */
     .work-cards{display:flex;flex-direction:column;gap:2px;margin-top:2px}
-    .work-card{
-      position:relative;overflow:hidden;height:500px;
-      display:flex;flex-direction:column;justify-content:flex-end;
-      cursor:pointer;background:#111;
-      opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s;
-    }
+    .work-card{position:relative;overflow:hidden;height:500px;display:flex;flex-direction:column;justify-content:flex-end;cursor:pointer;background:#111;opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
     .work-card.vis{opacity:1;transform:none}
-    .work-card-bg{
-      position:absolute;inset:0;transition:transform .8s cubic-bezier(.16,1,.3,1);
-      background-size:cover;background-position:center;
-    }
+    .work-card-bg{position:absolute;inset:0;transition:transform .8s cubic-bezier(.16,1,.3,1);background-size:cover;background-position:center}
     .work-card:hover .work-card-bg{transform:scale(1.04)}
     .work-card-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.75) 0%,rgba(0,0,0,.1) 50%,transparent);transition:opacity .4s}
     .work-card:hover .work-card-ov{opacity:.85}
     .work-card-info{position:relative;z-index:2;padding:2.5rem;display:flex;align-items:flex-end;justify-content:space-between}
     .work-card-meta{display:flex;align-items:center;gap:.75rem;margin-bottom:.6rem}
-    .work-card-cat{font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);background:rgba(200,255,0,.1);border:1px solid rgba(200,255,0,.2);padding:4px 10px}
+    .work-card-cat{font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);background:rgba(var(--accent-rgb),.1);border:1px solid rgba(var(--accent-rgb),.2);padding:4px 10px}
     .work-card-name{font-size:clamp(1.5rem,3vw,2.5rem);font-weight:900;color:#fff;letter-spacing:-0.02em;line-height:1.1}
     .work-card-action{display:flex;align-items:center;gap:.6rem;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6);transition:color .3s;flex-shrink:0}
     .work-card:hover .work-card-action{color:var(--accent)}
     .work-card-action svg{width:16px;height:16px;stroke:currentColor;stroke-width:1.5;fill:none;transition:transform .3s}
     .work-card:hover .work-card-action svg{transform:translate(2px,-2px)}
 
-    /* ===== TOOLS / CERTIFIED ===== */
-    .tools{background:var(--dark);padding:7rem 2.5rem;text-align:center}
+    /* ===== TOOLS / CERTIFIED (WHITE) ===== */
+    .tools{background:var(--bg);padding:7rem 2.5rem;text-align:center;border-top:1px solid var(--border-light)}
     .tools-inner{max-width:900px;margin:0 auto}
-    .tools-h{font-size:clamp(2rem,4vw,3.5rem);font-weight:900;letter-spacing:-0.03em;color:#fff;margin-bottom:.6rem}
+    .tools-h{font-size:clamp(2rem,4vw,3.5rem);font-weight:900;letter-spacing:-0.03em;color:var(--text);margin-bottom:.6rem}
     .tools-h em{color:var(--accent)}
-    .tools-sub{font-size:14px;color:rgba(255,255,255,.4);line-height:1.8;max-width:520px;margin:.75rem auto 4rem}
+    .tools-sub{font-size:14px;color:var(--muted);line-height:1.8;max-width:520px;margin:.75rem auto 4rem}
     .tools-grid{display:flex;align-items:center;justify-content:center;gap:1.25rem;flex-wrap:wrap}
-    .tool-chip{
-      width:72px;height:72px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
-      border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.3rem;
-      font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);
-      transition:border-color .3s,background .3s,color .3s;cursor:default;
-      opacity:0;transform:translateY(16px);transition:opacity .6s,transform .6s,border-color .3s,color .3s;
-    }
+    .tool-chip{width:72px;height:72px;background:var(--bg);border:1px solid var(--border-light);border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.3rem;font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);transition:opacity .6s,transform .6s,border-color .3s,color .3s;cursor:default;opacity:0;transform:translateY(16px)}
     .tool-chip.vis{opacity:1;transform:none}
-    .tool-chip:hover{border-color:rgba(200,255,0,.3);color:var(--accent);background:rgba(200,255,0,.05)}
+    .tool-chip:hover{border-color:var(--accent);color:var(--accent);background:rgba(var(--accent-rgb),.04)}
     .tool-chip-icon{font-size:20px;line-height:1}
 
-    /* ===== STATS ===== */
-    .stats-sec{background:var(--dark2);padding:8rem 2.5rem;border-top:1px solid rgba(255,255,255,.05)}
+    /* ===== MARQUEE ===== */
+    .mq-strip{overflow:hidden;background:var(--accent);padding:1rem 0}
+    .mq-track{display:flex;white-space:nowrap;animation:mq 22s linear infinite;will-change:transform}
+    .mq-strip:hover .mq-track{animation-play-state:paused}
+    .mq-item{display:inline-flex;align-items:center;gap:1.5rem;font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#fff;padding:0 1.5rem;flex-shrink:0}
+    .mq-dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.4)}
+    @keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+    /* ===== STATS (WHITE) ===== */
+    .stats-sec{background:var(--bg);padding:8rem 2.5rem;border-top:1px solid var(--border-light)}
     .stats-inner{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
-    .stats-left{}
     .stats-tag{font-size:10px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--accent);margin-bottom:2.5rem;display:flex;align-items:center;gap:.75rem}
     .stats-tag::before{content:'';width:20px;height:1px;background:var(--accent)}
-    .stat-row{padding:2rem 0;border-bottom:1px solid rgba(255,255,255,.07)}
-    .stat-row:first-of-type{border-top:1px solid rgba(255,255,255,.07)}
+    .stat-row{padding:2rem 0;border-bottom:1px solid var(--border-light)}
+    .stat-row:first-of-type{border-top:1px solid var(--border-light)}
     .stat-row-inner{display:flex;align-items:baseline;gap:1.25rem}
     .stat-num{font-size:clamp(3rem,6vw,5.5rem);font-weight:900;letter-spacing:-0.04em;color:var(--accent);line-height:1}
-    .stat-label{font-size:14px;color:rgba(255,255,255,.45);line-height:1.6;max-width:260px}
-    .stat-label strong{display:block;color:rgba(255,255,255,.8);font-size:1rem;font-weight:700;margin-bottom:.25rem}
-    /* right — abstract design grid visual */
+    .stat-label{font-size:14px;color:var(--muted);line-height:1.6;max-width:260px}
+    .stat-label strong{display:block;color:var(--text);font-size:1rem;font-weight:700;margin-bottom:.25rem}
     .stats-right{position:relative}
-    .stats-visual{
-      aspect-ratio:1;max-width:480px;margin:0 auto;
-      background:var(--dark3);border:1px solid rgba(255,255,255,.07);
-      border-radius:24px;overflow:hidden;position:relative;
-      display:flex;align-items:center;justify-content:center;
-    }
-    .sv-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:40px 40px}
+    .stats-visual{aspect-ratio:1;max-width:480px;margin:0 auto;background:#f9f9f9;border:1px solid var(--border-light);border-radius:24px;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center}
+    .sv-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(0,0,0,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.04) 1px,transparent 1px);background-size:40px 40px}
     .sv-center{position:relative;z-index:2;text-align:center}
-    .sv-ring{
-      width:180px;height:180px;border-radius:50%;
-      border:1px solid rgba(200,255,0,.2);
-      display:flex;align-items:center;justify-content:center;
-      position:relative;margin:0 auto;
-      animation:svring 6s linear infinite;
-    }
+    .sv-ring{width:180px;height:180px;border-radius:50%;border:1px solid rgba(var(--accent-rgb),.3);display:flex;align-items:center;justify-content:center;position:relative;margin:0 auto;animation:svring 6s linear infinite}
     @keyframes svring{to{transform:rotate(360deg)}}
-    .sv-ring::before{content:'';position:absolute;inset:-20px;border-radius:50%;border:1px solid rgba(200,255,0,.08);animation:svring 10s linear infinite reverse}
-    .sv-ring-dot{position:absolute;width:10px;height:10px;border-radius:50%;background:var(--accent);top:-5px;left:50%;transform:translateX(-50%);box-shadow:0 0 16px rgba(200,255,0,.8)}
-    .sv-core{width:80px;height:80px;border-radius:50%;background:rgba(200,255,0,.08);border:1px solid rgba(200,255,0,.3);display:flex;align-items:center;justify-content:center;font-size:24px}
+    .sv-ring::before{content:'';position:absolute;inset:-20px;border-radius:50%;border:1px solid rgba(var(--accent-rgb),.1);animation:svring 10s linear infinite reverse}
+    .sv-ring-dot{position:absolute;width:10px;height:10px;border-radius:50%;background:var(--accent);top:-5px;left:50%;transform:translateX(-50%);box-shadow:0 0 16px rgba(var(--accent-rgb),.6)}
+    .sv-core{width:80px;height:80px;border-radius:50%;background:rgba(var(--accent-rgb),.08);border:1px solid rgba(var(--accent-rgb),.3);display:flex;align-items:center;justify-content:center;font-size:24px}
     .sv-bars{display:flex;gap:6px;margin-top:2rem;justify-content:center}
     .sv-bar{width:6px;border-radius:3px;background:var(--accent);opacity:.6;animation:svbar 1.6s ease-in-out infinite}
     .sv-bar:nth-child(1){height:32px;animation-delay:0s}
@@ -260,43 +229,99 @@
     .sv-tags{position:absolute;display:flex;flex-direction:column;gap:.5rem}
     .sv-tags.top-left{top:1.5rem;left:1.5rem}
     .sv-tags.bottom-right{bottom:1.5rem;right:1.5rem;text-align:right}
-    .sv-tag{font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);background:rgba(200,255,0,.07);border:1px solid rgba(200,255,0,.15);padding:4px 8px;display:inline-block}
+    .sv-tag{font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);background:rgba(var(--accent-rgb),.07);border:1px solid rgba(var(--accent-rgb),.15);padding:4px 8px;display:inline-block}
 
-    /* ===== PILLARS ===== */
+    /* ===== DESIGN PILLARS (DARK) ===== */
     .pillars{background:var(--dark);padding:8rem 2.5rem;border-top:1px solid rgba(255,255,255,.05)}
     .pillars-inner{max-width:1300px;margin:0 auto}
     .pillars-hdr{text-align:center;margin-bottom:4rem}
     .pillars-tag{font-size:10px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--accent);margin-bottom:.75rem}
     .pillars-h{font-size:clamp(2.5rem,5vw,4rem);font-weight:900;letter-spacing:-0.03em;color:#fff}
     .pillars-h em{color:var(--accent)}
-    /* 4 cards in row — hover expands */
     .pillars-row{display:flex;gap:1.5px;height:380px}
-    .pcard{
-      flex:1;background:var(--dark2);border:1px solid rgba(255,255,255,.06);border-radius:16px;
-      padding:2.5rem;position:relative;overflow:hidden;cursor:pointer;
-      transition:flex .5s cubic-bezier(.16,1,.3,1),border-color .3s;
-      display:flex;flex-direction:column;justify-content:flex-end;
-    }
-    .pcard.active,.pcard:hover{flex:2.8;border-color:rgba(200,255,0,.2)}
+    .pcard{flex:1;background:var(--dark2);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:2.5rem;position:relative;overflow:hidden;cursor:pointer;transition:flex .5s cubic-bezier(.16,1,.3,1),border-color .3s;display:flex;flex-direction:column;justify-content:flex-end}
+    .pcard.active,.pcard:hover{flex:2.8;border-color:rgba(var(--accent-rgb),.2)}
     .pcard::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.16,1,.3,1)}
     .pcard.active::before,.pcard:hover::before{transform:scaleX(1)}
-    .pcard-icon{width:40px;height:40px;border:1px solid rgba(200,255,0,.2);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;margin-bottom:auto;transition:border-color .3s,background .3s}
-    .pcard.active .pcard-icon,.pcard:hover .pcard-icon{border-color:var(--accent);background:rgba(200,255,0,.08)}
+    .pcard-icon{width:40px;height:40px;border:1px solid rgba(var(--accent-rgb),.2);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;margin-bottom:auto;transition:border-color .3s,background .3s}
+    .pcard.active .pcard-icon,.pcard:hover .pcard-icon{border-color:var(--accent);background:rgba(var(--accent-rgb),.08)}
     .pcard-num{font-size:9px;font-weight:700;letter-spacing:.2em;color:var(--accent);margin-bottom:.75rem}
     .pcard-title{font-size:1.05rem;font-weight:800;color:#fff;line-height:1.2;margin-bottom:.5rem}
     .pcard-desc{font-size:12.5px;color:rgba(255,255,255,.4);line-height:1.8;max-height:0;overflow:hidden;opacity:0;transition:max-height .5s cubic-bezier(.16,1,.3,1),opacity .4s .1s}
     .pcard.active .pcard-desc,.pcard:hover .pcard-desc{max-height:200px;opacity:1}
     .pcard-bg-num{position:absolute;bottom:-1.5rem;right:1rem;font-size:8rem;font-weight:900;color:rgba(255,255,255,.025);letter-spacing:-0.05em;user-select:none}
 
-    /* ===== MARQUEE ===== */
-    .mq-strip{overflow:hidden;background:var(--accent);padding:1rem 0}
-    .mq-track{display:flex;white-space:nowrap;animation:mq 22s linear infinite;will-change:transform}
-    .mq-strip:hover .mq-track{animation-play-state:paused}
-    .mq-item{display:inline-flex;align-items:center;gap:1.5rem;font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#000;padding:0 1.5rem;flex-shrink:0}
-    .mq-dot{width:5px;height:5px;border-radius:50%;background:rgba(0,0,0,.3)}
-    @keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    /* ===== FROM YANGON TO THE WORLD (DARK) ===== */
+    .world-sec{background:var(--dark);padding:8rem 2.5rem;border-top:1px solid rgba(255,255,255,.05);overflow:hidden}
+    .world-inner{max-width:1300px;margin:0 auto}
+    .world-top{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;margin-bottom:5rem}
+    .world-left .world-tag{font-size:10px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem}
+    .world-h{font-size:clamp(2.5rem,5vw,4.5rem);font-weight:900;letter-spacing:-0.04em;line-height:1.02;color:#fff}
+    .world-h em{color:var(--accent)}
+    .world-desc{font-size:15px;color:rgba(255,255,255,.45);line-height:1.9;margin-top:1.5rem;max-width:420px}
+    .world-cities{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:2.5rem}
+    .world-city{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:6px 14px;border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.45);border-radius:100px;transition:all .3s}
+    .world-city:hover{border-color:var(--accent);color:var(--accent)}
+    /* MAP VISUAL */
+    .world-map{position:relative;height:340px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:20px;overflow:hidden}
+    .map-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:30px 30px}
+    /* continent blobs */
+    .map-blob{position:absolute;border-radius:50%;opacity:.12;background:rgba(255,255,255,1)}
+    .mb-asia{width:320px;height:200px;top:20%;left:55%;border-radius:40%}
+    .mb-europe{width:120px;height:100px;top:10%;left:38%;border-radius:50%}
+    .mb-africa{width:120px;height:180px;top:30%;left:38%;border-radius:40%}
+    .mb-americas{width:160px;height:260px;top:10%;left:8%;border-radius:40%}
+    .mb-oceania{width:100px;height:80px;top:55%;left:72%;border-radius:50%}
+    /* location pins */
+    .map-pin{position:absolute;display:flex;flex-direction:column;align-items:center;cursor:default}
+    .map-pin-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px rgba(var(--accent-rgb),.7);position:relative}
+    .map-pin-dot::before{content:'';position:absolute;inset:-4px;border-radius:50%;border:1px solid rgba(var(--accent-rgb),.4);animation:pinpulse 2s ease-in-out infinite}
+    .map-pin-label{font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:4px;white-space:nowrap;background:rgba(10,10,10,.8);padding:2px 6px;border-radius:4px}
+    @keyframes pinpulse{0%,100%{transform:scale(1);opacity:.6}50%{transform:scale(1.8);opacity:0}}
+    /* SVG lines between Yangon pin and others */
+    .map-lines{position:absolute;inset:0;pointer-events:none}
+    /* home pin (Yangon) is bigger / red */
+    .map-pin.home .map-pin-dot{width:12px;height:12px;background:var(--accent);box-shadow:0 0 20px rgba(var(--accent-rgb),.9)}
+    .map-pin.home .map-pin-dot::before{inset:-6px;border-color:rgba(var(--accent-rgb),.5)}
+    /* stats row below map */
+    .world-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:1px;background:rgba(255,255,255,.06)}
+    .ws-item{background:var(--dark);padding:2rem;text-align:center}
+    .ws-num{font-size:2.2rem;font-weight:900;color:var(--accent);letter-spacing:-0.03em}
+    .ws-label{font-size:11px;color:rgba(255,255,255,.35);margin-top:.35rem;letter-spacing:.04em}
 
-    /* ===== CTA ===== */
+    /* ===== BLOG (WHITE) ===== */
+    .blog{background:var(--bg);padding:8rem 2.5rem;border-top:1px solid var(--border-light)}
+    .blog-inner{max-width:1300px;margin:0 auto}
+    .blog-hdr{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:4rem}
+    .blog-title-wrap{}
+    .blog-sup{font-size:10px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--accent);margin-bottom:.75rem}
+    .blog-title{font-size:clamp(2.5rem,5vw,4.5rem);font-weight:900;letter-spacing:-0.04em}
+    .blog-title em{color:var(--accent)}
+    .blog-see-all{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:10px 22px;border:1px solid var(--border-light);border-radius:100px;color:var(--muted);transition:all .3s;align-self:flex-end}
+    .blog-see-all:hover{border-color:var(--text);color:var(--text)}
+    .blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+    .blog-card{position:relative;border:1px solid var(--border-light);border-radius:16px;overflow:hidden;cursor:pointer;transition:border-color .3s,transform .4s cubic-bezier(.16,1,.3,1);opacity:0;transform:translateY(28px)}
+    .blog-card.vis{opacity:1;transform:none}
+    .blog-card:hover{border-color:var(--accent);transform:translateY(-4px)}
+    .blog-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.16,1,.3,1)}
+    .blog-card:hover::before{transform:scaleX(1)}
+    .blog-card-img{height:200px;background:#f0f0f0;overflow:hidden;position:relative}
+    .blog-card-img-inner{position:absolute;inset:0;transition:transform .8s cubic-bezier(.16,1,.3,1)}
+    .blog-card:hover .blog-card-img-inner{transform:scale(1.06)}
+    .bci-1{background:linear-gradient(135deg,#1a0808 0%,#3d1010 50%,#7b2020 100%)}
+    .bci-2{background:linear-gradient(135deg,#080a1a 0%,#10163d 50%,#202070 100%)}
+    .bci-3{background:linear-gradient(135deg,#0a0a0a 0%,#222 50%,#333 100%)}
+    .blog-card-body{padding:1.75rem}
+    .blog-card-meta{display:flex;align-items:center;gap:.75rem;margin-bottom:1rem}
+    .blog-card-cat{font-size:8px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);background:rgba(var(--accent-rgb),.08);border:1px solid rgba(var(--accent-rgb),.18);padding:3px 9px}
+    .blog-card-date{font-size:10px;color:var(--muted)}
+    .blog-card-title{font-size:1.05rem;font-weight:800;color:var(--text);line-height:1.3;margin-bottom:.75rem}
+    .blog-card-excerpt{font-size:13px;color:var(--muted);line-height:1.75}
+    .blog-card-link{display:inline-flex;align-items:center;gap:.4rem;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-top:1.25rem;transition:gap .2s}
+    .blog-card:hover .blog-card-link{gap:.7rem}
+    .blog-card-link svg{width:14px;height:14px;stroke:currentColor;stroke-width:1.5;fill:none}
+
+    /* ===== CTA (DARK) ===== */
     .cta{background:var(--dark);padding:0 2.5rem}
     .cta-inner{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;min-height:60vh;align-items:center;border-left:1px solid rgba(255,255,255,.06);border-right:1px solid rgba(255,255,255,.06)}
     .cta-left{padding:6rem 4rem 6rem 0;border-right:1px solid rgba(255,255,255,.06)}
@@ -306,17 +331,13 @@
     .cta-h em{color:var(--accent)}
     .cta-actions{display:flex;align-items:center;gap:1.5rem;margin-top:3rem;flex-wrap:wrap}
     .cta-arrow{width:56px;height:56px;border-radius:50%;border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;transition:all .3s;cursor:pointer}
-    .cta-arrow:hover{border-color:var(--accent);background:rgba(200,255,0,.1)}
+    .cta-arrow:hover{border-color:var(--accent);background:rgba(var(--accent-rgb),.1)}
     .cta-arrow svg{width:20px;height:20px;stroke:#fff;stroke-width:1.5;fill:none;transition:stroke .3s}
     .cta-arrow:hover svg{stroke:var(--accent)}
     .cta-right{padding:6rem 0 6rem 4rem;display:flex;align-items:center;justify-content:center}
-    .cta-visual{
-      width:280px;height:280px;position:relative;border-radius:50%;
-      background:conic-gradient(from 180deg,var(--accent) 0deg,rgba(200,255,0,.3) 90deg,transparent 180deg,rgba(200,255,0,.1) 270deg,var(--accent) 360deg);
-      animation:ctaspin 12s linear infinite;
-    }
+    .cta-visual{width:280px;height:280px;position:relative;border-radius:50%;background:conic-gradient(from 180deg,var(--accent) 0deg,rgba(var(--accent-rgb),.3) 90deg,transparent 180deg,rgba(var(--accent-rgb),.1) 270deg,var(--accent) 360deg);animation:ctaspin 12s linear infinite}
     .cta-visual::before{content:'';position:absolute;inset:20px;border-radius:50%;background:var(--dark);animation:ctaspin 12s linear infinite reverse}
-    .cta-visual::after{content:'';position:absolute;inset:40px;border-radius:50%;border:1px solid rgba(200,255,0,.2)}
+    .cta-visual::after{content:'';position:absolute;inset:40px;border-radius:50%;border:1px solid rgba(var(--accent-rgb),.2)}
     .cta-visual-core{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:2;font-size:1.2rem;font-weight:900;color:var(--accent);letter-spacing:.1em}
     @keyframes ctaspin{to{transform:rotate(360deg)}}
 
@@ -353,6 +374,9 @@
       .how-row:nth-child(odd) .how-card:first-child,.how-row:nth-child(even) .how-card:last-child{margin-top:0}
       .stats-inner{grid-template-columns:1fr}
       .stats-right{display:none}
+      .world-top{grid-template-columns:1fr}
+      .world-stats{grid-template-columns:1fr 1fr}
+      .blog-grid{grid-template-columns:1fr}
       .pillars-row{flex-direction:column;height:auto;gap:1rem}
       .pcard{flex:none !important}
       .pcard-desc{max-height:200px !important;opacity:1 !important}
@@ -361,6 +385,7 @@
       .cta-left{border-right:none;padding:4rem 0}
       .ft-top{grid-template-columns:1fr 1fr}
       .float-menu{display:none}
+      .blog-hdr{flex-direction:column;gap:1.5rem}
     }
   </style>
 </head>
@@ -423,21 +448,19 @@
     <div class="hv-label">Awaken Design Studio</div>
     <div class="hv-type">DS</div>
   </div>
-
   <div class="hero-content">
-    <div class="hero-kicker" id="hKicker">Design Studio · Yangon</div>
+    <div class="hero-kicker" id="hKicker">Design Studio &middot; Yangon</div>
     <h1 class="hero-h" id="hTitle">
       <span class="hero-h-line"><span class="hw">We design</span> <span class="hw"><em>brands</em></span></span>
       <span class="hero-h-line"><span class="hw">that</span> <span class="hw">make</span> <span class="hw">people</span></span>
       <span class="hero-h-line"><span class="hw">stop</span> <span class="hw">&amp;</span> <span class="hw"><em>feel.</em></span></span>
     </h1>
-    <p class="hero-sub" id="hSub">From brand identity to motion — we craft visual systems with intention, built to last across every medium and market.</p>
+    <p class="hero-sub" id="hSub">From brand identity to motion &mdash; we craft visual systems with intention, built to last across every medium and market.</p>
     <div class="hero-actions" id="hActions">
-      <a href="https://www.awakenentertainment.org/contact" target="_blank" class="btn-primary">Start a Project →</a>
+      <a href="https://www.awakenentertainment.org/contact" target="_blank" class="btn-primary">Start a Project &rarr;</a>
       <a href="#work" class="btn-ghost">See Our Work</a>
     </div>
   </div>
-
   <a href="#statement" class="hero-scroll-cta" id="hScroll">
     <div class="hero-scroll-circle">
       <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
@@ -445,52 +468,52 @@
   </a>
 </section>
 
-<!-- STATEMENT -->
+<!-- STATEMENT (WHITE) -->
 <section class="stmt" id="statement">
   <div class="stmt-inner">
-    <div class="stmt-tag rv">Design Studio · Est. 2016</div>
-    <p class="stmt-p rv rv1">We are <em>Awaken Design</em> — a studio that partners with ambitious brands to create <strong>visual identities</strong> that command attention, communicate purpose, and <em>endure.</em></p>
+    <div class="stmt-tag rv">Design Studio &middot; Est. 2016</div>
+    <p class="stmt-p rv rv1">We are <em>Awaken Design</em> &mdash; a studio that partners with ambitious brands to create <strong>visual identities</strong> that command attention, communicate purpose, and <em>endure.</em></p>
   </div>
 </section>
 
-<!-- HOW WE DESIGN IT -->
+<!-- HOW WE DO IT (WHITE — SLIDE IN) -->
 <section class="how" id="process">
   <div class="how-inner">
     <div class="how-hdr">
       <div class="how-tag rv">Our Process</div>
-      <h2 class="how-h rv rv1">How we <em>design</em> it.</h2>
+      <h2 class="how-h rv rv1">How we <em>do</em> it.</h2>
       <p class="how-sub rv rv2">Four disciplines. One studio. Zero handoffs.</p>
     </div>
     <div class="how-cards">
       <div class="how-row">
-        <div class="how-card" data-hd="0">
-          <div class="how-card-icon">✦</div>
-          <div class="how-card-n">01 — Discover</div>
+        <div class="how-card" data-dir="left">
+          <div class="how-card-icon">&#10022;</div>
+          <div class="how-card-n">01 &mdash; Discover</div>
           <div class="how-card-title">We <em>know</em> our clients.</div>
           <div class="how-card-text">Before a single pixel, we immerse ourselves in your brand story, audience, and competitive landscape. Every creative decision starts with deep understanding.</div>
           <div class="how-card-bg-num">01</div>
         </div>
-        <div class="how-card" data-hd="120">
-          <div class="how-card-icon">◈</div>
-          <div class="how-card-n">02 — Concept</div>
+        <div class="how-card" data-dir="right">
+          <div class="how-card-icon">&#9672;</div>
+          <div class="how-card-n">02 &mdash; Concept</div>
           <div class="how-card-title">We set clear <em>direction.</em></div>
-          <div class="how-card-text">We present multiple visual directions — mood boards, type pairings, colour stories — then refine the one that resonates. Nothing moves to production without alignment.</div>
+          <div class="how-card-text">We present multiple visual directions &mdash; mood boards, type pairings, colour stories &mdash; then refine the one that resonates. Nothing moves to production without alignment.</div>
           <div class="how-card-bg-num">02</div>
         </div>
       </div>
       <div class="how-row">
-        <div class="how-card" data-hd="80">
-          <div class="how-card-icon">▲</div>
-          <div class="how-card-n">03 — Design</div>
+        <div class="how-card" data-dir="left">
+          <div class="how-card-icon">&#9650;</div>
+          <div class="how-card-n">03 &mdash; Design</div>
           <div class="how-card-title">We <em>QA</em> everything.</div>
-          <div class="how-card-text">Every asset, every format, every screen size. Our design system approach means nothing ships until it passes our internal review — pixel-perfect and production-ready.</div>
+          <div class="how-card-text">Every asset, every format, every screen size. Our design system approach means nothing ships until it passes our internal review &mdash; pixel-perfect and production-ready.</div>
           <div class="how-card-bg-num">03</div>
         </div>
-        <div class="how-card" data-hd="200">
-          <div class="how-card-icon">⬡</div>
-          <div class="how-card-n">04 — Deliver</div>
-          <div class="how-card-title">We're never <em>done.</em></div>
-          <div class="how-card-text">Our team stays available after delivery — fast turnaround on revisions, brand guidance, and asset extensions so your identity grows as your business does.</div>
+        <div class="how-card" data-dir="right">
+          <div class="how-card-icon">&#11041;</div>
+          <div class="how-card-n">04 &mdash; Deliver</div>
+          <div class="how-card-title">We&rsquo;re never <em>done.</em></div>
+          <div class="how-card-text">Our team stays available after delivery &mdash; fast turnaround on revisions, brand guidance, and asset extensions so your identity grows as your business does.</div>
           <div class="how-card-bg-num">04</div>
         </div>
       </div>
@@ -506,7 +529,6 @@
       <a href="https://www.awakenentertainment.org/contact" target="_blank" class="work-see-all rv rv1">See All</a>
     </div>
     <div class="work-cards">
-
       <div class="work-card" data-wd="0">
         <div class="work-card-bg" style="background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%)"></div>
         <div class="work-card-ov"></div>
@@ -518,9 +540,8 @@
           <div class="work-card-action">See Details <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
         </div>
       </div>
-
       <div class="work-card" data-wd="60">
-        <div class="work-card-bg" style="background:linear-gradient(135deg,#1e0a0a 0%,#3d1515 50%,#7b2d2d 100%)"></div>
+        <div class="work-card-bg" style="background:linear-gradient(135deg,#2a0808 0%,#4d1515 50%,#8b2a2a 100%)"></div>
         <div class="work-card-ov"></div>
         <div class="work-card-info">
           <div>
@@ -530,7 +551,6 @@
           <div class="work-card-action">See Details <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
         </div>
       </div>
-
       <div class="work-card" data-wd="120">
         <div class="work-card-bg" style="background:linear-gradient(135deg,#0a1a0a 0%,#0d2b0d 50%,#1a5c1a 100%)"></div>
         <div class="work-card-ov"></div>
@@ -542,19 +562,17 @@
           <div class="work-card-action">See Details <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
         </div>
       </div>
-
       <div class="work-card" data-wd="180">
         <div class="work-card-bg" style="background:linear-gradient(135deg,#1a0f2e 0%,#2d1b5e 50%,#4a2d8f 100%)"></div>
         <div class="work-card-ov"></div>
         <div class="work-card-info">
           <div>
-            <div class="work-card-meta"><span class="work-card-cat">Motion & Animation</span></div>
+            <div class="work-card-meta"><span class="work-card-cat">Motion &amp; Animation</span></div>
             <div class="work-card-name">City Mart Supercentre</div>
           </div>
           <div class="work-card-action">See Details <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
         </div>
       </div>
-
       <div class="work-card" data-wd="240">
         <div class="work-card-bg" style="background:linear-gradient(135deg,#0f1a1a 0%,#1a3d3d 50%,#2d7070 100%)"></div>
         <div class="work-card-ov"></div>
@@ -566,24 +584,23 @@
           <div class="work-card-action">See Details <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- TOOLS / SOFTWARE -->
+<!-- TOOLS / CERTIFIED (WHITE) -->
 <section class="tools" id="tools">
   <div class="tools-inner">
     <h2 class="tools-h rv">We are <em>certified.</em></h2>
-    <p class="tools-sub rv rv1">Our designers are certified professionals across industry-standard tools — ensuring quality, precision, and consistency on every project.</p>
+    <p class="tools-sub rv rv1">Our designers are certified professionals across industry-standard tools &mdash; ensuring quality, precision, and consistency on every project.</p>
     <div class="tools-grid">
-      <div class="tool-chip" data-td="0"><div class="tool-chip-icon">🎨</div>Figma</div>
-      <div class="tool-chip" data-td="60"><div class="tool-chip-icon">⬡</div>Illustrator</div>
-      <div class="tool-chip" data-td="120"><div class="tool-chip-icon">◻</div>Photoshop</div>
-      <div class="tool-chip" data-td="180"><div class="tool-chip-icon">▶</div>After Effects</div>
-      <div class="tool-chip" data-td="240"><div class="tool-chip-icon">◈</div>InDesign</div>
-      <div class="tool-chip" data-td="300"><div class="tool-chip-icon">✦</div>Adobe XD</div>
-      <div class="tool-chip" data-td="360"><div class="tool-chip-icon">▲</div>Cinema 4D</div>
+      <div class="tool-chip" data-td="0"><div class="tool-chip-icon">&#127912;</div>Figma</div>
+      <div class="tool-chip" data-td="60"><div class="tool-chip-icon">&#11041;</div>Illustrator</div>
+      <div class="tool-chip" data-td="120"><div class="tool-chip-icon">&#9723;</div>Photoshop</div>
+      <div class="tool-chip" data-td="180"><div class="tool-chip-icon">&#9654;</div>After Effects</div>
+      <div class="tool-chip" data-td="240"><div class="tool-chip-icon">&#9672;</div>InDesign</div>
+      <div class="tool-chip" data-td="300"><div class="tool-chip-icon">&#10022;</div>Adobe XD</div>
+      <div class="tool-chip" data-td="360"><div class="tool-chip-icon">&#9650;</div>Cinema 4D</div>
     </div>
   </div>
 </section>
@@ -610,7 +627,7 @@
   </div>
 </div>
 
-<!-- STATS -->
+<!-- STATS (WHITE) -->
 <section class="stats-sec" id="results">
   <div class="stats-inner">
     <div class="stats-left">
@@ -630,7 +647,7 @@
       <div class="stat-row rv rv3">
         <div class="stat-row-inner">
           <div class="stat-num" data-to="10" data-from="0" data-sfx="+">0+</div>
-          <div class="stat-label"><strong>Years in Yangon</strong>designing for Myanmar's leading brands and international partners since 2016.</div>
+          <div class="stat-label"><strong>Years in Yangon</strong>designing for Myanmar&rsquo;s leading brands and international partners since 2016.</div>
         </div>
       </div>
     </div>
@@ -644,7 +661,7 @@
         <div class="sv-center">
           <div class="sv-ring">
             <div class="sv-ring-dot"></div>
-            <div class="sv-core">✦</div>
+            <div class="sv-core">&#10022;</div>
           </div>
           <div class="sv-bars">
             <div class="sv-bar"></div>
@@ -663,7 +680,7 @@
   </div>
 </section>
 
-<!-- DESIGN PILLARS -->
+<!-- DESIGN PILLARS (DARK) -->
 <section class="pillars" id="pillars">
   <div class="pillars-inner">
     <div class="pillars-hdr">
@@ -672,45 +689,180 @@
     </div>
     <div class="pillars-row">
       <div class="pcard active">
-        <div class="pcard-icon">✦</div>
+        <div class="pcard-icon">&#10022;</div>
         <div class="pcard-num">01</div>
         <div class="pcard-title">Clarity &amp; Purpose</div>
-        <div class="pcard-desc">Every visual decision has a reason. We design systems where beauty and function are inseparable — where the form always serves the message.</div>
+        <div class="pcard-desc">Every visual decision has a reason. We design systems where beauty and function are inseparable &mdash; where the form always serves the message.</div>
         <div class="pcard-bg-num">01</div>
       </div>
       <div class="pcard">
-        <div class="pcard-icon">◈</div>
+        <div class="pcard-icon">&#9672;</div>
         <div class="pcard-num">02</div>
         <div class="pcard-title">Consistency &amp; Scale</div>
-        <div class="pcard-desc">A great brand works everywhere — from a 3×3mm favicon to a 30-metre billboard. We build design systems that hold their integrity at every size and medium.</div>
+        <div class="pcard-desc">A great brand works everywhere &mdash; from a 3&times;3mm favicon to a 30-metre billboard. We build design systems that hold their integrity at every size and medium.</div>
         <div class="pcard-bg-num">02</div>
       </div>
       <div class="pcard">
-        <div class="pcard-icon">▲</div>
+        <div class="pcard-icon">&#9650;</div>
         <div class="pcard-num">03</div>
         <div class="pcard-title">Craft &amp; Precision</div>
-        <div class="pcard-desc">We are obsessive about the details others skip — kerning, spacing, corner radii, colour accuracy across print and screen. Craft is not optional.</div>
+        <div class="pcard-desc">We are obsessive about the details others skip &mdash; kerning, spacing, corner radii, colour accuracy across print and screen. Craft is not optional.</div>
         <div class="pcard-bg-num">03</div>
       </div>
       <div class="pcard">
-        <div class="pcard-icon">⬡</div>
+        <div class="pcard-icon">&#11041;</div>
         <div class="pcard-num">04</div>
         <div class="pcard-title">Future-Oriented Vision</div>
-        <div class="pcard-desc">We design for where your brand is going, not where it's been. Every project is built to evolve — adaptable to new markets, products, and platforms without losing identity.</div>
+        <div class="pcard-desc">We design for where your brand is going, not where it&rsquo;s been. Every project is built to evolve &mdash; adaptable to new markets, products, and platforms without losing identity.</div>
         <div class="pcard-bg-num">04</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
+<!-- FROM YANGON TO THE WORLD (DARK) -->
+<section class="world-sec" id="global">
+  <div class="world-inner">
+    <div class="world-top">
+      <div class="world-left rv">
+        <div class="world-tag">Our Reach</div>
+        <h2 class="world-h">From <em>Yangon,</em><br>to the world.</h2>
+        <p class="world-desc">We started in a studio in Mayangone Township. Today, our design work reaches brands and markets across Southeast Asia, the Middle East, Europe, and beyond &mdash; without losing the craft-first approach that defines us.</p>
+        <div class="world-cities">
+          <span class="world-city">Yangon</span>
+          <span class="world-city">Singapore</span>
+          <span class="world-city">Bangkok</span>
+          <span class="world-city">Dubai</span>
+          <span class="world-city">London</span>
+          <span class="world-city">Tokyo</span>
+          <span class="world-city">New York</span>
+          <span class="world-city">Sydney</span>
+        </div>
+      </div>
+      <div class="world-right rv rv1">
+        <div class="world-map" id="worldMap">
+          <div class="map-grid"></div>
+          <!-- continent blobs -->
+          <div class="map-blob mb-americas"></div>
+          <div class="map-blob mb-europe"></div>
+          <div class="map-blob mb-africa"></div>
+          <div class="map-blob mb-asia"></div>
+          <div class="map-blob mb-oceania"></div>
+          <!-- SVG connection lines -->
+          <svg class="map-lines" viewBox="0 0 600 340" preserveAspectRatio="none">
+            <!-- Yangon ~(73%,52%) to Singapore ~(70%,62%) -->
+            <line x1="438" y1="177" x2="420" y2="210" stroke="rgba(255,51,51,.25)" stroke-width="1" stroke-dasharray="4 3"/>
+            <!-- Yangon to Dubai ~(46%,38%) -->
+            <line x1="438" y1="177" x2="276" y2="129" stroke="rgba(255,51,51,.2)" stroke-width="1" stroke-dasharray="4 3"/>
+            <!-- Yangon to London ~(40%,22%) -->
+            <line x1="438" y1="177" x2="240" y2="75" stroke="rgba(255,51,51,.15)" stroke-width="1" stroke-dasharray="4 3"/>
+            <!-- Yangon to Tokyo ~(82%,30%) -->
+            <line x1="438" y1="177" x2="492" y2="102" stroke="rgba(255,51,51,.2)" stroke-width="1" stroke-dasharray="4 3"/>
+            <!-- Yangon to New York ~(16%,32%) -->
+            <line x1="438" y1="177" x2="96" y2="109" stroke="rgba(255,51,51,.1)" stroke-width="1" stroke-dasharray="4 3"/>
+          </svg>
+          <!-- Pins -->
+          <!-- Yangon (home) -->
+          <div class="map-pin home" style="left:73%;top:52%;transform:translate(-50%,-50%)">
+            <div class="map-pin-dot"></div>
+            <div class="map-pin-label">Yangon</div>
+          </div>
+          <!-- Singapore -->
+          <div class="map-pin" style="left:70%;top:62%;transform:translate(-50%,-50%)">
+            <div class="map-pin-dot"></div>
+            <div class="map-pin-label">Singapore</div>
+          </div>
+          <!-- Dubai -->
+          <div class="map-pin" style="left:46%;top:38%;transform:translate(-50%,-50%)">
+            <div class="map-pin-dot"></div>
+            <div class="map-pin-label">Dubai</div>
+          </div>
+          <!-- London -->
+          <div class="map-pin" style="left:40%;top:22%;transform:translate(-50%,-50%)">
+            <div class="map-pin-dot"></div>
+            <div class="map-pin-label">London</div>
+          </div>
+          <!-- Tokyo -->
+          <div class="map-pin" style="left:82%;top:30%;transform:translate(-50%,-50%)">
+            <div class="map-pin-dot"></div>
+            <div class="map-pin-label">Tokyo</div>
+          </div>
+          <!-- New York -->
+          <div class="map-pin" style="left:16%;top:32%;transform:translate(-50%,-50%)">
+            <div class="map-pin-dot"></div>
+            <div class="map-pin-label">New York</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="world-stats rv">
+      <div class="ws-item"><div class="ws-num">15+</div><div class="ws-label">Countries reached</div></div>
+      <div class="ws-item"><div class="ws-num">8</div><div class="ws-label">International markets</div></div>
+      <div class="ws-item"><div class="ws-num">200+</div><div class="ws-label">Global brand projects</div></div>
+      <div class="ws-item"><div class="ws-num">10yr</div><div class="ws-label">Studio heritage</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG (WHITE) -->
+<section class="blog" id="blog">
+  <div class="blog-inner">
+    <div class="blog-hdr">
+      <div class="blog-title-wrap">
+        <div class="blog-sup rv">Design Thinking</div>
+        <h2 class="blog-title rv rv1">Latest <em>insights.</em></h2>
+      </div>
+      <a href="https://www.awakenentertainment.org" target="_blank" class="blog-see-all rv rv2">Read All</a>
+    </div>
+    <div class="blog-grid">
+      <div class="blog-card" data-bd="0">
+        <div class="blog-card-img"><div class="blog-card-img-inner bci-1"></div></div>
+        <div class="blog-card-body">
+          <div class="blog-card-meta">
+            <span class="blog-card-cat">Brand Strategy</span>
+            <span class="blog-card-date">Jun 2026</span>
+          </div>
+          <div class="blog-card-title">Why your brand needs a visual system, not just a logo</div>
+          <div class="blog-card-excerpt">A logo is a signature. A visual system is a language. We break down why the distinction matters for brands that want to scale.</div>
+          <a href="#" class="blog-card-link">Read Article <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+        </div>
+      </div>
+      <div class="blog-card" data-bd="100">
+        <div class="blog-card-img"><div class="blog-card-img-inner bci-2"></div></div>
+        <div class="blog-card-body">
+          <div class="blog-card-meta">
+            <span class="blog-card-cat">Typography</span>
+            <span class="blog-card-date">May 2026</span>
+          </div>
+          <div class="blog-card-title">The type choices that make Southeast Asian brands feel modern</div>
+          <div class="blog-card-excerpt">From Burmese script integration to Latin pairing strategies &mdash; how we approach bilingual design without compromising visual identity.</div>
+          <a href="#" class="blog-card-link">Read Article <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+        </div>
+      </div>
+      <div class="blog-card" data-bd="200">
+        <div class="blog-card-img"><div class="blog-card-img-inner bci-3"></div></div>
+        <div class="blog-card-body">
+          <div class="blog-card-meta">
+            <span class="blog-card-cat">Motion Design</span>
+            <span class="blog-card-date">Apr 2026</span>
+          </div>
+          <div class="blog-card-title">When to animate: the rules we follow for brand motion</div>
+          <div class="blog-card-excerpt">Motion is not decoration. We share our internal framework for deciding when animation adds value &mdash; and when it just adds noise.</div>
+          <a href="#" class="blog-card-link">Read Article <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA (DARK) -->
 <section class="cta" id="contact">
   <div class="cta-inner">
     <div class="cta-left">
-      <div class="cta-tag rv">Let's create together</div>
-      <h2 class="cta-h rv rv1">Let's<br><em>design</em><br>together.</h2>
+      <div class="cta-tag rv">Let&rsquo;s create together</div>
+      <h2 class="cta-h rv rv1">Let&rsquo;s<br><em>design</em><br>together.</h2>
       <div class="cta-actions rv rv2">
-        <a href="https://www.awakenentertainment.org/contact" target="_blank" class="btn-primary">Start a Project →</a>
+        <a href="https://www.awakenentertainment.org/contact" target="_blank" class="btn-primary">Start a Project &rarr;</a>
         <a href="tel:+959255762417" class="cta-arrow">
           <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
         </a>
@@ -759,7 +911,7 @@
       </div>
     </div>
     <div class="ft-bot">
-      <span>© 2026 <span class="ft-acc">Awaken Entertainment</span>. All rights reserved.</span>
+      <span>&copy; 2026 <span class="ft-acc">Awaken Entertainment</span>. All rights reserved.</span>
       <span>Designed with purpose in Yangon.</span>
     </div>
   </div>
@@ -793,17 +945,16 @@ const cd=document.getElementById('cd'),cr=document.getElementById('cr');
 let mx=0,my=0,rx=0,ry=0;
 document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cd.style.left=mx+'px';cd.style.top=my+'px'});
 (function ac(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;cr.style.left=rx+'px';cr.style.top=ry+'px';requestAnimationFrame(ac)})();
-document.querySelectorAll('a,button,.work-card,.pcard,.how-card').forEach(el=>{
+document.querySelectorAll('a,button,.work-card,.pcard,.how-card,.blog-card').forEach(el=>{
   el.addEventListener('mouseenter',()=>document.body.classList.add('hov'));
   el.addEventListener('mouseleave',()=>document.body.classList.remove('hov'));
 });
 
-/* SCROLL PROGRESS */
+/* SCROLL PROGRESS + NAV */
 const sp=document.getElementById('scroll-prog');
 window.addEventListener('scroll',()=>{
   const dh=document.documentElement.scrollHeight-window.innerHeight;
   if(dh>0)sp.style.width=(window.scrollY/dh*100).toFixed(1)+'%';
-  /* nav scroll state */
   const nav=document.getElementById('nav');
   if(window.scrollY>60){nav.classList.add('scrolled');nav.classList.remove('on-dark')}
   else{nav.classList.remove('scrolled');nav.classList.add('on-dark')}
@@ -815,15 +966,15 @@ const rvObs=new IntersectionObserver(entries=>{
 },{threshold:0.1});
 document.querySelectorAll('.rv').forEach(el=>rvObs.observe(el));
 
-/* HOW CARDS */
-const hdObs=new IntersectionObserver(entries=>{
+/* HOW CARDS — SLIDE FROM LEFT/RIGHT */
+const howObs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
     if(!e.isIntersecting)return;
-    setTimeout(()=>e.target.classList.add('vis'),parseInt(e.target.dataset.hd)||0);
-    hdObs.unobserve(e.target);
+    setTimeout(()=>e.target.classList.add('vis'),100);
+    howObs.unobserve(e.target);
   });
-},{threshold:0.1});
-document.querySelectorAll('.how-card').forEach(el=>hdObs.observe(el));
+},{threshold:0.15,rootMargin:'0px 0px -60px 0px'});
+document.querySelectorAll('.how-card').forEach(el=>howObs.observe(el));
 
 /* WORK CARDS */
 const wdObs=new IntersectionObserver(entries=>{
@@ -844,6 +995,16 @@ const tdObs=new IntersectionObserver(entries=>{
   });
 },{threshold:0.1});
 document.querySelectorAll('.tool-chip').forEach(el=>tdObs.observe(el));
+
+/* BLOG CARDS */
+const bdObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting)return;
+    setTimeout(()=>e.target.classList.add('vis'),parseInt(e.target.dataset.bd)||0);
+    bdObs.unobserve(e.target);
+  });
+},{threshold:0.1});
+document.querySelectorAll('.blog-card').forEach(el=>bdObs.observe(el));
 
 /* STATS COUNT-UP */
 let statsDone=false;
