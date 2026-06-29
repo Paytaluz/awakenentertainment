@@ -121,38 +121,101 @@
     .stmt-p em{color:var(--text);font-style:italic;font-family:'Playfair Display',serif}
     .stmt-p strong{color:var(--accent);font-style:normal;font-family:inherit}
 
-    /* ===== HOW WE DO IT (WHITE — SLIDE ANIMATION) ===== */
-    .how{background:var(--bg);padding:8rem 2.5rem}
-    .how-inner{max-width:1300px;margin:0 auto}
-    .how-hdr{text-align:center;margin-bottom:5rem}
-    .how-tag{font-size:10px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem}
-    .how-h{font-size:clamp(2.5rem,5vw,4.5rem);font-weight:900;letter-spacing:-0.03em;line-height:1}
-    .how-h em{color:var(--accent)}
-    .how-sub{font-size:15px;color:var(--muted);max-width:500px;margin:.75rem auto 0;line-height:1.8}
-    .how-cards{display:flex;flex-direction:column;gap:0}
-    .how-row{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem}
-    /* SLIDE ANIMATION — odd cards from left, even from right */
-    .how-card{
-      background:var(--dark);border-radius:16px;padding:2.5rem;border:1px solid rgba(255,255,255,.06);
-      position:relative;overflow:hidden;
-      opacity:0;transition:opacity .8s ease,transform .8s cubic-bezier(.16,1,.3,1),border-color .3s;
+    /* ===== HOW WE DO IT — SCROLL-DRIVEN STICKY CARDS ===== */
+    .how-wrap{position:relative;background:var(--bg)}
+    .how-sticky{
+      position:sticky;top:0;height:100vh;overflow:hidden;
+      display:grid;grid-template-columns:1fr 1fr;
+      background:var(--bg);
     }
-    .how-card[data-dir="left"]{transform:translateX(-60px)}
-    .how-card[data-dir="right"]{transform:translateX(60px)}
-    .how-card.vis{opacity:1;transform:none}
-    .how-card:hover{border-color:rgba(var(--accent-rgb),.2)}
-    .how-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.16,1,.3,1)}
-    .how-card:hover::before{transform:scaleX(1)}
-    .how-card-icon{width:44px;height:44px;border:1px solid rgba(var(--accent-rgb),.25);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1.75rem;font-size:18px;transition:border-color .3s,background .3s}
-    .how-card:hover .how-card-icon{border-color:var(--accent);background:rgba(var(--accent-rgb),.08)}
-    .how-card-n{font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:.75rem}
-    .how-card-title{font-size:1.2rem;font-weight:800;color:#fff;margin-bottom:.75rem;line-height:1.15}
-    .how-card-title em{color:var(--accent)}
-    .how-card-text{font-size:13px;color:rgba(255,255,255,.45);line-height:1.85}
-    .how-card-bg-num{position:absolute;bottom:-1rem;right:1rem;font-size:7rem;font-weight:900;color:rgba(255,255,255,.03);letter-spacing:-0.05em;user-select:none;pointer-events:none}
-    /* line number on white section offset */
-    .how-row:nth-child(odd) .how-card:first-child{margin-top:3rem}
-    .how-row:nth-child(even) .how-card:last-child{margin-top:3rem}
+    /* left panel */
+    .how-left{
+      display:flex;flex-direction:column;justify-content:center;
+      padding:5rem 4rem 5rem 2.5rem;
+      border-right:1px solid var(--border-light);
+      position:relative;
+    }
+    .how-step-label{
+      font-size:10px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;
+      color:var(--accent);margin-bottom:1.5rem;display:flex;align-items:center;gap:.75rem;
+    }
+    .how-step-label::before{content:'';width:20px;height:1px;background:var(--accent)}
+    .how-big-num{
+      font-size:clamp(6rem,14vw,12rem);font-weight:900;letter-spacing:-0.06em;line-height:.85;
+      color:rgba(12,12,12,.06);position:absolute;right:3rem;top:50%;transform:translateY(-50%);
+      user-select:none;pointer-events:none;transition:none;
+    }
+    .how-step-title{
+      font-size:clamp(2rem,4vw,3.5rem);font-weight:900;letter-spacing:-0.03em;line-height:1.05;
+      margin-bottom:1.5rem;transition:opacity .5s,transform .5s;
+    }
+    .how-step-title em{color:var(--accent)}
+    .how-step-text{font-size:15px;color:var(--muted);line-height:1.9;max-width:400px;transition:opacity .5s .05s,transform .5s .05s}
+    /* progress dots */
+    .how-progress{
+      position:absolute;bottom:3.5rem;left:2.5rem;
+      display:flex;gap:.6rem;align-items:center;
+    }
+    .how-prog-dot{
+      width:6px;height:6px;border-radius:50%;background:rgba(12,12,12,.15);
+      transition:background .3s,transform .3s;
+    }
+    .how-prog-dot.on{background:var(--accent);transform:scale(1.4)}
+    /* right panel — card stack */
+    .how-right{
+      position:relative;display:flex;align-items:center;justify-content:center;
+      padding:3rem;overflow:hidden;
+    }
+    .how-float-card{
+      position:absolute;
+      width:380px;max-width:calc(100% - 4rem);
+      background:var(--dark2);border-radius:20px;
+      border:1px solid rgba(255,255,255,.07);
+      padding:2.5rem;
+      box-shadow:0 32px 80px rgba(0,0,0,.35),0 0 0 1px rgba(255,255,255,.04);
+      will-change:transform,opacity;
+      /* initial: below the viewport */
+      transform:translateY(120px) rotate(4deg);
+      opacity:0;
+      pointer-events:none;
+      transition:none; /* JS drives this with requestAnimationFrame */
+    }
+    .how-float-card.settling{
+      transition:transform .85s cubic-bezier(.16,1,.3,1),opacity .6s ease,box-shadow .5s;
+    }
+    .how-float-card.active{transform:translateY(0) rotate(0deg);opacity:1;pointer-events:auto;box-shadow:0 48px 100px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.06)}
+    .how-float-card.stacked-1{transform:translateY(-18px) scale(.96) rotate(-1deg);opacity:.7;z-index:0}
+    .how-float-card.stacked-2{transform:translateY(-32px) scale(.92) rotate(1deg);opacity:.4;z-index:-1}
+    .how-float-card.stacked-3{transform:translateY(-44px) scale(.88) rotate(-1.5deg);opacity:.2;z-index:-2}
+    .how-float-card.gone{transform:translateY(-80px) scale(.85);opacity:0}
+    /* card internals */
+    .hfc-num{font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem;display:flex;align-items:center;gap:.6rem}
+    .hfc-num::before{content:'';width:14px;height:1px;background:var(--accent)}
+    .hfc-icon{
+      width:52px;height:52px;border:1px solid rgba(var(--accent-rgb),.25);border-radius:12px;
+      display:flex;align-items:center;justify-content:center;font-size:22px;
+      margin-bottom:2rem;background:rgba(var(--accent-rgb),.05);
+    }
+    .hfc-title{font-size:1.35rem;font-weight:800;color:#fff;line-height:1.2;margin-bottom:.85rem}
+    .hfc-title em{color:var(--accent)}
+    .hfc-text{font-size:13px;color:rgba(255,255,255,.45);line-height:1.9}
+    .hfc-tag{
+      display:inline-flex;align-items:center;gap:.5rem;margin-top:2rem;
+      font-size:9px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;
+      color:rgba(255,255,255,.25);border-top:1px solid rgba(255,255,255,.06);
+      padding-top:1.25rem;width:100%;
+    }
+    .hfc-tag-dot{width:5px;height:5px;border-radius:50%;background:var(--accent)}
+    /* scroll spacer — JS reads this height */
+    .how-spacer{height:400vh}
+    /* mobile fallback */
+    @media(max-width:900px){
+      .how-sticky{grid-template-columns:1fr;height:auto;position:relative;padding:5rem 2.5rem}
+      .how-right{display:none}
+      .how-float-card{position:relative;width:100%;transform:none;opacity:1;margin-bottom:1.5rem;pointer-events:auto}
+      .how-spacer{display:none}
+      .how-big-num{display:none}
+    }
 
     /* ===== WORK ===== */
     .work{background:var(--bg);padding:0 2.5rem 6rem}
@@ -476,50 +539,58 @@
   </div>
 </section>
 
-<!-- HOW WE DO IT (WHITE — SLIDE IN) -->
-<section class="how" id="process">
-  <div class="how-inner">
-    <div class="how-hdr">
-      <div class="how-tag rv">Our Process</div>
-      <h2 class="how-h rv rv1">How we <em>do</em> it.</h2>
-      <p class="how-sub rv rv2">Four disciplines. One studio. Zero handoffs.</p>
-    </div>
-    <div class="how-cards">
-      <div class="how-row">
-        <div class="how-card" data-dir="left">
-          <div class="how-card-icon">&#10022;</div>
-          <div class="how-card-n">01 &mdash; Discover</div>
-          <div class="how-card-title">We <em>know</em> our clients.</div>
-          <div class="how-card-text">Before a single pixel, we immerse ourselves in your brand story, audience, and competitive landscape. Every creative decision starts with deep understanding.</div>
-          <div class="how-card-bg-num">01</div>
-        </div>
-        <div class="how-card" data-dir="right">
-          <div class="how-card-icon">&#9672;</div>
-          <div class="how-card-n">02 &mdash; Concept</div>
-          <div class="how-card-title">We set clear <em>direction.</em></div>
-          <div class="how-card-text">We present multiple visual directions &mdash; mood boards, type pairings, colour stories &mdash; then refine the one that resonates. Nothing moves to production without alignment.</div>
-          <div class="how-card-bg-num">02</div>
-        </div>
+<!-- HOW WE DO IT — SCROLL-DRIVEN STICKY CARDS -->
+<div class="how-wrap" id="process">
+  <!-- sticky viewport -->
+  <div class="how-sticky" id="howSticky">
+    <!-- LEFT: text that updates per step -->
+    <div class="how-left">
+      <div class="how-step-label" id="howLabel">Our Process</div>
+      <h2 class="how-step-title" id="howTitle">How we <em>do</em> it.</h2>
+      <p class="how-step-text" id="howText">Four disciplines. One studio. Zero handoffs.</p>
+      <div class="how-big-num" id="howBigNum">01</div>
+      <div class="how-progress">
+        <div class="how-prog-dot on" data-pi="0"></div>
+        <div class="how-prog-dot" data-pi="1"></div>
+        <div class="how-prog-dot" data-pi="2"></div>
+        <div class="how-prog-dot" data-pi="3"></div>
       </div>
-      <div class="how-row">
-        <div class="how-card" data-dir="left">
-          <div class="how-card-icon">&#9650;</div>
-          <div class="how-card-n">03 &mdash; Design</div>
-          <div class="how-card-title">We <em>QA</em> everything.</div>
-          <div class="how-card-text">Every asset, every format, every screen size. Our design system approach means nothing ships until it passes our internal review &mdash; pixel-perfect and production-ready.</div>
-          <div class="how-card-bg-num">03</div>
-        </div>
-        <div class="how-card" data-dir="right">
-          <div class="how-card-icon">&#11041;</div>
-          <div class="how-card-n">04 &mdash; Deliver</div>
-          <div class="how-card-title">We&rsquo;re never <em>done.</em></div>
-          <div class="how-card-text">Our team stays available after delivery &mdash; fast turnaround on revisions, brand guidance, and asset extensions so your identity grows as your business does.</div>
-          <div class="how-card-bg-num">04</div>
-        </div>
+    </div>
+    <!-- RIGHT: floating card stack -->
+    <div class="how-right">
+      <div class="how-float-card settling active" id="hCard0">
+        <div class="hfc-num">01 &mdash; Discover</div>
+        <div class="hfc-icon">&#10022;</div>
+        <div class="hfc-title">We <em>know</em> our clients.</div>
+        <div class="hfc-text">Before a single pixel, we immerse ourselves in your brand story, audience, and competitive landscape. Every creative decision starts with deep understanding.</div>
+        <div class="hfc-tag"><span class="hfc-tag-dot"></span>Research &amp; Strategy</div>
+      </div>
+      <div class="how-float-card" id="hCard1">
+        <div class="hfc-num">02 &mdash; Concept</div>
+        <div class="hfc-icon">&#9672;</div>
+        <div class="hfc-title">We set clear <em>direction.</em></div>
+        <div class="hfc-text">We present multiple visual directions &mdash; mood boards, type pairings, colour stories &mdash; then refine the one that resonates. Nothing moves to production without alignment.</div>
+        <div class="hfc-tag"><span class="hfc-tag-dot"></span>Visual Direction</div>
+      </div>
+      <div class="how-float-card" id="hCard2">
+        <div class="hfc-num">03 &mdash; Design</div>
+        <div class="hfc-icon">&#9650;</div>
+        <div class="hfc-title">We <em>QA</em> everything.</div>
+        <div class="hfc-text">Every asset, every format, every screen size. Our design system approach means nothing ships until it passes our internal review &mdash; pixel-perfect and production-ready.</div>
+        <div class="hfc-tag"><span class="hfc-tag-dot"></span>Craft &amp; Precision</div>
+      </div>
+      <div class="how-float-card" id="hCard3">
+        <div class="hfc-num">04 &mdash; Deliver</div>
+        <div class="hfc-icon">&#11041;</div>
+        <div class="hfc-title">We&rsquo;re never <em>done.</em></div>
+        <div class="hfc-text">Our team stays available after delivery &mdash; fast turnaround on revisions, brand guidance, and asset extensions so your identity grows as your business does.</div>
+        <div class="hfc-tag"><span class="hfc-tag-dot"></span>Ongoing Support</div>
       </div>
     </div>
   </div>
-</section>
+  <!-- scroll spacer — creates scroll distance for the sticky to play through -->
+  <div class="how-spacer"></div>
+</div>
 
 <!-- WORK -->
 <section class="work" id="work">
@@ -966,15 +1037,81 @@ const rvObs=new IntersectionObserver(entries=>{
 },{threshold:0.1});
 document.querySelectorAll('.rv').forEach(el=>rvObs.observe(el));
 
-/* HOW CARDS — SLIDE FROM LEFT/RIGHT */
-const howObs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(!e.isIntersecting)return;
-    setTimeout(()=>e.target.classList.add('vis'),100);
-    howObs.unobserve(e.target);
-  });
-},{threshold:0.15,rootMargin:'0px 0px -60px 0px'});
-document.querySelectorAll('.how-card').forEach(el=>howObs.observe(el));
+/* HOW WE DO IT — SCROLL DRIVEN STICKY */
+(function(){
+  const wrap = document.getElementById('process');
+  if(!wrap) return;
+  const STEPS = 4;
+  const steps = [
+    { label:'Our Process', title:'How we <em>do</em> it.', text:'Four disciplines. One studio. Zero handoffs.', big:'01' },
+    { label:'01 — Discover', title:'We <em>know</em> our clients.', text:'Before a single pixel, we immerse in your brand story, audience, and landscape. Every creative decision starts with deep understanding.', big:'01' },
+    { label:'02 — Concept', title:'We set clear <em>direction.</em>', text:'Multiple visual directions — mood boards, type pairings, colour stories — refined to the one that resonates.', big:'02' },
+    { label:'03 — Design', title:'We <em>QA</em> everything.', text:'Every asset, every format, every screen size. Nothing ships until it passes our internal review — pixel-perfect and production-ready.', big:'03' },
+    { label:'04 — Deliver', title:'We\'re never <em>done.</em>', text:'Our team stays available after delivery — fast revisions, brand guidance, and asset extensions so your identity grows with your business.', big:'04' },
+  ];
+  const cards = [0,1,2,3].map(i=>document.getElementById('hCard'+i));
+  const titleEl = document.getElementById('howTitle');
+  const textEl = document.getElementById('howText');
+  const labelEl = document.getElementById('howLabel');
+  const bigEl = document.getElementById('howBigNum');
+  const dots = document.querySelectorAll('.how-prog-dot');
+  const STACK_CLASSES = ['active','stacked-1','stacked-2','stacked-3'];
+
+  let lastIdx = -1;
+
+  function setStep(idx) {
+    if(idx === lastIdx) return;
+    lastIdx = idx;
+
+    /* update left panel with fade */
+    const s = steps[Math.min(idx+1, steps.length-1)];
+    titleEl.style.opacity='0'; titleEl.style.transform='translateY(14px)';
+    textEl.style.opacity='0';  textEl.style.transform='translateY(10px)';
+    labelEl.style.opacity='0';
+    requestAnimationFrame(()=>{
+      titleEl.innerHTML = s.title;
+      textEl.textContent = s.text;
+      labelEl.textContent = s.label;
+      bigEl.textContent = s.big;
+      titleEl.style.transition='opacity .45s,transform .45s cubic-bezier(.16,1,.3,1)';
+      textEl.style.transition='opacity .45s .06s,transform .45s .06s cubic-bezier(.16,1,.3,1)';
+      labelEl.style.transition='opacity .4s';
+      requestAnimationFrame(()=>{
+        titleEl.style.opacity='1'; titleEl.style.transform='none';
+        textEl.style.opacity='1';  textEl.style.transform='none';
+        labelEl.style.opacity='1';
+      });
+    });
+
+    /* dots */
+    dots.forEach((d,i)=>d.classList.toggle('on', i===idx));
+
+    /* card classes: active idx floats in, previous stack behind, future stay hidden */
+    cards.forEach((c,i)=>{
+      c.classList.remove('active','stacked-1','stacked-2','stacked-3','gone','settling');
+      const diff = idx - i;
+      if(diff === 0) { c.classList.add('settling','active'); }
+      else if(diff === 1) c.classList.add('stacked-1');
+      else if(diff === 2) c.classList.add('stacked-2');
+      else if(diff >= 3) c.classList.add('stacked-3');
+      /* future cards: diff < 0, no class = hidden below */
+    });
+  }
+
+  function onScroll() {
+    const rect = wrap.getBoundingClientRect();
+    const totalScroll = wrap.offsetHeight - window.innerHeight;
+    if(totalScroll <= 0) return;
+    const scrolled = -rect.top;
+    const progress = Math.max(0, Math.min(1, scrolled / totalScroll));
+    /* 4 cards over the full scroll range; first card shows immediately */
+    const idx = Math.min(STEPS-1, Math.floor(progress * STEPS));
+    setStep(idx);
+  }
+
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll(); /* init */
+})();
 
 /* WORK CARDS */
 const wdObs=new IntersectionObserver(entries=>{
