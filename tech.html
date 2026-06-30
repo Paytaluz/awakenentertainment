@@ -45,13 +45,6 @@ nav.sc{background:rgba(255,255,255,.96);backdrop-filter:blur(14px);border-color:
 .sc-lbl{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:rgba(0,0,0,.3)}
 .hero-yr{position:absolute;bottom:72px;right:52px;font-size:11px;color:rgba(0,0,0,.2);letter-spacing:.1em;z-index:2}
 
-/* MANIFESTO */
-.manifesto{position:relative;padding:130px 52px;background:var(--off)}
-.mani-inner{position:relative;z-index:2;max-width:1000px;margin:0 auto;text-align:center;display:flex;flex-direction:column;align-items:center;gap:36px}
-.mani-arr{width:42px;height:42px;border:1.5px solid rgba(0,0,0,.15);border-radius:50%;display:flex;align-items:center;justify-content:center}
-.mani-arr svg{width:14px;height:14px;stroke:var(--dark);fill:none;stroke-width:2}
-.mani-text{font-size:clamp(20px,2.9vw,38px);font-weight:400;line-height:1.55;color:rgba(0,0,0,.75);letter-spacing:-.01em}
-.mani-text em{font-style:italic;color:var(--dark);font-weight:700;text-decoration:underline;text-decoration-color:var(--yellow);text-underline-offset:4px}
 
 /* =====================================================================
    SERVICES — STICKY SCROLL
@@ -116,21 +109,21 @@ nav.sc{background:rgba(255,255,255,.96);backdrop-filter:blur(14px);border-color:
 .itl-wrap{position:relative;height:300vh}
 .itl-stick{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0}
 .itl-hdr{text-align:center;margin-bottom:48px;position:relative;z-index:2}
-.itl-lbl{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--yellow);margin-bottom:14px}
-.itl-ttl{font-size:clamp(24px,4vw,56px);font-weight:800;letter-spacing:-.03em;color:var(--white)}
-.itl-sub{font-size:12px;color:rgba(255,255,255,.3);letter-spacing:.08em;text-transform:uppercase;margin-top:8px}
-.itl-row{position:relative;width:92%;max-width:1100px;height:260px}
+.itl-lbl{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--yellow);margin-bottom:16px}
+.itl-ttl{font-size:clamp(28px,4.5vw,62px);font-weight:800;letter-spacing:-.04em;color:var(--white)}
+.itl-sub{font-size:12px;color:rgba(255,255,255,.28);letter-spacing:.1em;text-transform:uppercase;margin-top:12px}
+.itl-row{position:relative;width:92%;max-width:1100px;height:280px}
 .itl-card{
   position:absolute;
   width:calc(25% - 12px);
   height:100%;
   background:rgba(255,255,255,.05);
   border:1px solid rgba(255,255,255,.1);
-  border-radius:4px;
-  padding:28px 22px;
+  border-radius:6px;
+  padding:30px 24px;
   display:flex;
   flex-direction:column;
-  gap:14px;
+  gap:12px;
   transform:translateX(120vw);
   transition:transform .9s cubic-bezier(.16,1,.3,1);
 }
@@ -143,11 +136,11 @@ nav.sc{background:rgba(255,255,255,.96);backdrop-filter:blur(14px);border-color:
 .itl-card::before{top:10px;left:10px;border-width:1px 0 0 1px}
 .itl-card::after{bottom:10px;right:10px;border-width:0 1px 1px 0}
 .itl-card:nth-child(4)::before,.itl-card:nth-child(4)::after{border-color:var(--yellow)}
-.ic-icon{width:36px;height:36px;display:flex;align-items:center;justify-content:center}
-.ic-icon svg{width:22px;height:22px;stroke:rgba(255,255,255,.6);fill:none;stroke-width:1.2}
+.ic-icon{width:38px;height:38px;display:flex;align-items:center;justify-content:center}
+.ic-icon svg{width:24px;height:24px;stroke:rgba(255,255,255,.55);fill:none;stroke-width:1.3}
 .itl-card:nth-child(4) .ic-icon svg{stroke:var(--yellow)}
-.ic-title{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--white)}
-.ic-body{font-size:12px;color:rgba(255,255,255,.38);line-height:1.7;flex:1}
+.ic-title{font-size:15px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--white)}
+.ic-body{font-size:13px;color:rgba(255,255,255,.42);line-height:1.68;flex:1}
 
 /* WORK */
 .work{background:var(--off)}
@@ -314,15 +307,6 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
     <span class="sc-lbl">Scroll to explore</span>
   </a>
   <div class="hero-yr">EST. 2013</div>
-</section>
-
-<!-- MANIFESTO -->
-<section class="manifesto" id="manifesto">
-  <div class="mani-inner">
-    <div class="mani-arr"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
-    <p class="mani-text rv">Awaken Entertainment is a full-service software &amp; web development studio<br>specializing in <em>custom digital products, mobile apps &amp; brand platforms</em>.<br>
-    Our engineers, designers, producers and strategists<br>bring your vision from concept to production — on time, every time.</p>
-  </div>
 </section>
 
 <!-- SERVICES — STICKY SCROLL -->
