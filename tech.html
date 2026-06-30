@@ -155,18 +155,21 @@ nav.sc{background:rgba(10,10,10,.95);backdrop-filter:blur(14px);border-color:var
 .wi-see{font-size:12px;border:1px solid rgba(255,255,255,.28);padding:7px 16px;border-radius:100px;color:var(--white);text-decoration:none;transition:background .2s,border-color .2s,color .2s;white-space:nowrap}
 .wi:hover .wi-see{background:var(--yellow);border-color:var(--yellow);color:var(--dark)}
 
-/* CERTIFIED */
-.cert{background:var(--off);padding:110px 52px;color:var(--dark);border-top:1px solid var(--bdl)}
-.cert-inner{max-width:860px;margin:0 auto;text-align:center}
+/* CERTIFIED / TECH STACK */
+.cert{background:var(--off);padding:100px 52px;color:var(--dark);border-top:1px solid var(--bdl)}
+.cert-inner{max-width:960px;margin:0 auto;text-align:center}
+.cert-lbl{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(0,0,0,.38);margin-bottom:18px}
 .cert-ttl{font-size:clamp(26px,3.8vw,52px);font-weight:700;letter-spacing:-.03em;margin-bottom:18px;color:var(--dark)}
 .cert-ttl em{font-style:italic;font-weight:300}
-.cert-desc{font-size:15px;color:rgba(0,0,0,.45);line-height:1.75;max-width:540px;margin:0 auto 48px}
+.cert-desc{font-size:15px;color:rgba(0,0,0,.45);line-height:1.75;max-width:540px;margin:0 auto 52px}
 .cert-desc strong{color:var(--dark)}
-.cert-bdg{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
-.cbadge{width:76px;height:76px;background:var(--white);border:1px solid rgba(0,0,0,.1);border-radius:14px;display:flex;align-items:center;justify-content:center;transition:border-color .2s,transform .2s,box-shadow .2s;cursor:none}
-.cbadge:hover{border-color:var(--yellow);box-shadow:0 4px 20px rgba(255,214,0,.15);transform:translateY(-2px)}
-.cbadge svg{width:28px;height:28px;stroke:rgba(0,0,0,.45);fill:none;stroke-width:1.5;transition:stroke .2s}
+.cert-bdg{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.cbadge{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;width:100px;height:100px;background:var(--white);border:1px solid rgba(0,0,0,.08);border-radius:16px;padding:14px 8px;transition:border-color .2s,transform .2s,box-shadow .2s;cursor:none}
+.cbadge:hover{border-color:var(--yellow);box-shadow:0 4px 24px rgba(255,214,0,.14);transform:translateY(-3px)}
+.cbadge svg{width:28px;height:28px;stroke:rgba(0,0,0,.45);fill:none;stroke-width:1.5;transition:stroke .2s;flex-shrink:0}
 .cbadge:hover svg{stroke:var(--yellow2)}
+.cbadge span{font-size:10px;font-weight:600;letter-spacing:.04em;color:rgba(0,0,0,.38);text-align:center;line-height:1.2;transition:color .2s}
+.cbadge:hover span{color:var(--dark)}
 
 /* WAVE */
 .wave-sec{background:var(--dark);padding:80px 0 90px;text-align:center;overflow:hidden;border-top:1px solid var(--bd)}
@@ -276,9 +279,9 @@ footer{background:var(--dark2);border-top:1px solid var(--bd);padding:60px 52px 
 <nav id="nav">
   <a href="index.html" class="n-logo">AWA<span style="color:var(--yellow)">KEN</span></a>
   <ul class="n-links">
-    <li><a href="#work">Work</a></li>
     <li><a href="#services">Services</a></li>
-    <li><a href="#world">Global</a></li>
+    <li><a href="#stack">Tech Stack</a></li>
+    <li><a href="#work">Work</a></li>
     <li><a href="#blog">Blog</a></li>
   </ul>
   <a href="#cta" class="n-btn">Contact Us</a>
@@ -290,9 +293,9 @@ footer{background:var(--dark2);border-top:1px solid var(--bd);padding:60px 52px 
   <div class="hero-grid"></div>
   <div class="hero-glow"></div>
   <div class="hero-overlay"></div>
-  <div class="hero-tag">Creative Media &amp; Production · Yangon</div>
-  <h1 class="hero-h">Premium creative<br><em>design &amp; production</em><br>for brands that matter.</h1>
-  <p class="hero-sub">Founded in 2013 in Yangon — Awaken Entertainment brings together talent from different fields to create cross-disciplinary digital solutions.</p>
+  <div class="hero-tag">Software &amp; Web Development · Yangon, Myanmar</div>
+  <h1 class="hero-h">We design, build<br><em>&amp; ship software</em><br>that drives growth.</h1>
+  <p class="hero-sub">Founded in 2013 in Yangon — Awaken Entertainment engineers high-performance websites, mobile apps and digital platforms for brands across Southeast Asia and beyond.</p>
   <a class="scroll-dn" href="#manifesto">
     <div class="sc-circle"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
     <span class="sc-lbl">Scroll to explore</span>
@@ -305,8 +308,8 @@ footer{background:var(--dark2);border-top:1px solid var(--bd);padding:60px 52px 
   <div class="mani-bg"></div>
   <div class="mani-inner">
     <div class="mani-arr"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
-    <p class="mani-text rv">Awaken Entertainment is a creative media &amp; production company<br>specializing in <em>Premium Business Creative Design</em> &amp; Production.<br>
-    Our team includes graphic, spatial and strategic designers,<br>producers, digital developers, copywriters and artisans.</p>
+    <p class="mani-text rv">Awaken Entertainment is a full-service software &amp; web development studio<br>specializing in <em>custom digital products, mobile apps &amp; brand platforms</em>.<br>
+    Our engineers, designers, producers and strategists<br>bring your vision from concept to production — on time, every time.</p>
   </div>
 </section>
 
@@ -323,7 +326,7 @@ footer{background:var(--dark2);border-top:1px solid var(--bd);padding:60px 52px 
         <div class="svc-label">OUR SERVICE</div>
 
         <div class="svc-name" id="svcName">
-          <div class="svc-name-inner" id="svcNameInner">WEB<br>DEVELOPMENT</div>
+          <div class="svc-name-inner" id="svcNameInner">WEB DESIGN &amp;<br>DEVELOPMENT</div>
         </div>
 
         <div class="svc-desc" id="svcDesc">
@@ -625,6 +628,77 @@ footer{background:var(--dark2);border-top:1px solid var(--bd);padding:60px 52px 
   </div>
 </section>
 
+<!-- TECH STACK -->
+<section class="cert" id="stack">
+  <div class="cert-inner">
+    <div class="cert-lbl rv">Technologies We Master</div>
+    <h2 class="cert-ttl rv">Built with the <em>right tools</em><br>for every job.</h2>
+    <p class="cert-desc rv">We work across the full technology stack — front-end, back-end, mobile and cloud — choosing the best tools for each project's goals, scale and budget.</p>
+    <div class="cert-bdg rv d1">
+      <!-- HTML5 -->
+      <div class="cbadge">
+        <svg viewBox="0 0 24 24"><polygon points="4,2 20,2 18,20 12,22 6,20"/></svg>
+        <span>HTML5</span>
+      </div>
+      <!-- CSS3 -->
+      <div class="cbadge">
+        <svg viewBox="0 0 24 24"><polygon points="5,2 19,2 17,20 12,22 7,20"/><path d="M8 8h8M8.5 12h7l-.5 5-3 1-3-1-.2-2"/></svg>
+        <span>CSS3</span>
+      </div>
+      <!-- JavaScript -->
+      <div class="cbadge">
+        <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M7 17c.5 1 1.5 1.5 2.5 1.5s2-1 2-2.5V11M17 11h-4M15 11v6"/></svg>
+        <span>JavaScript</span>
+      </div>
+      <!-- React -->
+      <div class="cbadge">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><ellipse cx="12" cy="12" rx="10" ry="4"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)"/></svg>
+        <span>React</span>
+      </div>
+      <!-- Node.js -->
+      <div class="cbadge">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7v10l10 5 10-5V7L12 2z"/><path d="M12 2v20M2 7l10 5M22 7l-10 5"/></svg>
+        <span>Node.js</span>
+      </div>
+      <!-- PHP -->
+      <div class="cbadge">
+        <svg viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="10" ry="6"/><path d="M8 10h2a2 2 0 010 4H8v-4zM14 10h2a2 2 0 010 4h-2v2M14 10v6"/></svg>
+        <span>PHP</span>
+      </div>
+      <!-- MySQL -->
+      <div class="cbadge">
+        <svg viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.66 3.58 3 8 3s8-1.34 8-3V6"/><path d="M4 12v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6"/></svg>
+        <span>MySQL</span>
+      </div>
+      <!-- Flutter -->
+      <div class="cbadge">
+        <svg viewBox="0 0 24 24"><path d="M14 2L4 12l4 4 10-10-4-4zM8 16l4 4 8-8-4-4-8 8z"/></svg>
+        <span>Flutter</span>
+      </div>
+      <!-- WordPress -->
+      <div class="cbadge">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h4M12 2v4M18 12h4M12 18v4"/><path d="M6 6l12 12M18 6L6 18"/></svg>
+        <span>WordPress</span>
+      </div>
+      <!-- Android -->
+      <div class="cbadge">
+        <svg viewBox="0 0 24 24"><path d="M4 16V8a8 8 0 0116 0v8"/><path d="M4 10H2M20 10h2M7 20h10M7 20v-4h10v4"/><circle cx="9" cy="8" r="1"/><circle cx="15" cy="8" r="1"/></svg>
+        <span>Android</span>
+      </div>
+      <!-- iOS -->
+      <div class="cbadge">
+        <svg viewBox="0 0 24 24"><path d="M12 2C9 2 7 4 7 4S5 6 5 9c0 4 2 8 4 10 1 1 2 1 3 1s2 0 3-1c2-2 4-6 4-10 0-3-2-5-2-5S15 2 12 2z"/><circle cx="12" cy="7" r="1"/></svg>
+        <span>iOS / Swift</span>
+      </div>
+      <!-- Cloud / AWS -->
+      <div class="cbadge">
+        <svg viewBox="0 0 24 24"><path d="M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z"/></svg>
+        <span>Cloud / AWS</span>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- WORK -->
 <section class="work" id="work">
   <div class="work-hdr rv">
@@ -687,16 +761,16 @@ footer{background:var(--dark2);border-top:1px solid var(--bd);padding:60px 52px 
       <path d="M0,100 C120,40 240,160 360,100 C480,40 600,160 720,100 C840,40 960,160 1080,100 C1200,40 1320,160 1440,100 C1560,40 1680,160 1800,100 C1920,40 2040,160 2160,100 C2280,40 2400,160 2520,100 C2640,40 2760,160 2880,100" stroke="rgba(255,255,255,0.07)" stroke-width="1" fill="none"/>
     </svg>
   </div>
-  <p class="wave-text rv">From <em>Yangon</em> to the world.</p>
+  <p class="wave-text rv">Software built in <em>Yangon.</em><br>Trusted around the world.</p>
 </section>
 
 <!-- WORLD MAP + STATS -->
 <section class="world">
   <div class="world-in rv">
     <div class="stats">
-      <div><div class="snum">45k+</div><div class="slbl"><strong>digital products</strong><br>built and shipped</div></div>
-      <div><div class="snum">300+</div><div class="slbl"><strong>websites</strong><br>built so far</div></div>
-      <div><div class="snum">99%</div><div class="slbl">of them built with<br><strong>clean, tested code</strong></div></div>
+      <div><div class="snum">13+</div><div class="slbl"><strong>years of experience</strong><br>in software &amp; web development</div></div>
+      <div><div class="snum">150+</div><div class="slbl"><strong>projects delivered</strong><br>across web, mobile &amp; app</div></div>
+      <div><div class="snum">99%</div><div class="slbl"><strong>client satisfaction</strong><br>rate on completed projects</div></div>
     </div>
     <div class="wmap">
       <svg viewBox="0 0 900 320" xmlns="http://www.w3.org/2000/svg">
@@ -741,17 +815,17 @@ footer{background:var(--dark2);border-top:1px solid var(--bd);padding:60px 52px 
         <div class="bcard">
           <div class="bc-img"><div class="bg2" style="position:absolute;inset:0;background:linear-gradient(135deg,#1a1a2e,#16213e)"><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:.2"><svg width="52" height="52" viewBox="0 0 24 24" stroke="white" fill="none" stroke-width="1"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div></div></div>
           <div class="bc-body">
-            <div class="bc-date">March 8, 2026</div>
+            <div class="bc-date">April 14, 2026</div>
             <div class="bc-h">Why System Architecture Matters Before You Write Code</div>
-            <div class="bc-p">Skipping architecture is the #1 reason products fail at scale. Here is how we approach every build.</div>
+            <div class="bc-p">Skipping architecture is the #1 reason web products fail at scale. Here is how we plan every build from day one.</div>
           </div>
         </div>
         <div class="bcard">
-          <div class="bc-img"><div class="bg2" style="position:absolute;inset:0;background:linear-gradient(135deg,#1a2e0d,#2e3d10)"><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:.2"><svg width="52" height="52" viewBox="0 0 24 24" stroke="white" fill="none" stroke-width="1"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div></div></div>
+          <div class="bc-img"><div class="bg2" style="position:absolute;inset:0;background:linear-gradient(135deg,#1a2e0d,#2e3d10)"><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:.2"><svg width="52" height="52" viewBox="0 0 24 24" stroke="white" fill="none" stroke-width="1"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg></div></div></div>
           <div class="bc-body">
-            <div class="bc-date">February 20, 2026</div>
-            <div class="bc-h">The Strategic Depth of Nearshore Tech: Beyond the Clock</div>
-            <div class="bc-p">Southeast Asia's tech advantage goes beyond time zones — discover how talent depth enables global-scale production.</div>
+            <div class="bc-date">March 2, 2026</div>
+            <div class="bc-h">Mobile-First Development: Why It Wins More Customers in 2026</div>
+            <div class="bc-p">Over 70% of web traffic now comes from mobile. We break down how a mobile-first approach directly impacts conversion and revenue.</div>
           </div>
         </div>
       </div>
@@ -765,7 +839,7 @@ footer{background:var(--dark2);border-top:1px solid var(--bd);padding:60px 52px 
     <div class="cta-text">
       Let's <span class="cw" id="ctaW">build</span><br>together.
     </div>
-    <a href="mailto:hello@awakenentertainment.com" class="cta-act">
+    <a href="mailto:nyinyisoewin@awakenentertainment.org" class="cta-act">
       <div class="cta-circ"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
       Start a project
     </a>
@@ -782,7 +856,7 @@ footer{background:var(--dark2);border-top:1px solid var(--bd);padding:60px 52px 
   <div class="foot-top">
     <div>
       <a href="index.html" class="f-logo">AWA<span>KEN</span></a>
-      <p class="f-desc">A technology studio from Yangon — building digital products that move brands forward, from Southeast Asia to the world.</p>
+      <p class="f-desc">A software &amp; web development studio from Yangon — engineering digital products that move brands forward, from Southeast Asia to the world.</p>
     </div>
     <div><div class="f-col-h">About Us</div><div class="f-links"><a href="#">Our Story</a><a href="#">The Team</a><a href="#">Careers</a></div></div>
     <div><div class="f-col-h">Services</div><div class="f-links"><a href="#">Web Design &amp; Development</a><a href="#">App &amp; Game Development</a><a href="#">Social Media &amp; Digital Marketing</a><a href="#">Graphic Design &amp; UI/UX</a><a href="#">Production</a><a href="#">Business Development</a></div></div>
@@ -822,26 +896,26 @@ document.querySelectorAll('.rv').forEach(el=>rio.observe(el));
   const services=[
     {
       name:'WEB DESIGN &<br>DEVELOPMENT',
-      desc:'We create modern, responsive, and high-performing websites tailored to your business goals. Our developers ensure seamless functionality across all devices.',
-      bullets:['Responsive web design','Custom development','SEO optimisation','E-commerce solutions'],
+      desc:'We engineer modern, fast and responsive websites built to convert visitors into customers. From landing pages to full-scale web platforms — every pixel and every line of code is intentional.',
+      bullets:['Custom website development','Responsive & mobile-first design','E-commerce & payment integration','SEO-optimised architecture'],
       illus:0
     },
     {
-      name:'APP &<br>GAME DEVELOPING',
-      desc:'Native and cross-platform mobile experiences that users love. We build iOS and Android apps and games with clean code, smooth animations, and intuitive UX.',
-      bullets:['iOS & Android apps','Game development','App Store optimisation','Cross-platform solutions'],
+      name:'APP &<br>GAME DEVELOPMENT',
+      desc:'Native and cross-platform mobile apps and games users love. We ship clean, performant iOS and Android experiences with smooth animations, intuitive UX and robust back-end APIs.',
+      bullets:['iOS & Android native apps','Cross-platform (Flutter / React Native)','Game development & deployment','App Store & Play Store optimisation'],
       illus:1
     },
     {
       name:'SOCIAL MEDIA &<br>DIGITAL MARKETING',
-      desc:'Strategic digital marketing that drives real results. We manage your social presence, run targeted campaigns and track analytics to grow your audience and revenue.',
-      bullets:['Social media management','Digital ad campaigns','Heatmap & analytics tracking','Weekly & monthly reporting'],
+      desc:'Data-driven digital marketing that delivers measurable results. We manage your online presence, run performance ad campaigns and turn analytics into actionable growth strategies.',
+      bullets:['Social media management','Paid digital ad campaigns','Heatmap & conversion analytics','Weekly & monthly performance reports'],
       illus:2
     },
     {
       name:'GRAPHIC DESIGN<br>& UI/UX',
-      desc:'From brand identity to pixel-perfect interfaces — our team of graphic and strategic designers create visuals that communicate, not just decorate a page.',
-      bullets:['Brand identity & guidelines','UI/UX design','Photography & video production','Public relations & media buying'],
+      desc:'From brand identity systems to pixel-perfect UI/UX — our designers craft interfaces that feel as good as they look, built for real user flows and tested across every device.',
+      bullets:['Brand identity & design systems','UI/UX wireframing & prototyping','Photography & video production','Public relations & media planning'],
       illus:3
     }
   ];
