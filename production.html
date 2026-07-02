@@ -180,13 +180,13 @@ nav.bg{background:rgba(0,0,0,.9);backdrop-filter:blur(12px)}
 /* ===== CREW / TEAM ===== */
 .crew-wrap{position:relative;height:300vh}
 .crew{
-  position:sticky;top:0;height:100vh;overflow:hidden;
+  position:sticky;top:0;height:100vh;
   background:#faf8f4;color:#000;
   display:grid;grid-template-columns:44% 56%;
 }
 .crew-left{
   display:flex;flex-direction:column;justify-content:center;
-  padding:0 52px 0 56px;position:relative;z-index:2;
+  padding:0 52px 0 56px;position:relative;z-index:2;overflow:hidden;
 }
 .crew-eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(0,0,0,.35);margin-bottom:24px}
 .crew-h{font-size:clamp(24px,3.2vw,44px);font-weight:800;letter-spacing:-.03em;line-height:1.18;margin-bottom:36px;color:#000}
@@ -196,10 +196,10 @@ nav.bg{background:rgba(0,0,0,.9);backdrop-filter:blur(12px)}
 .crew-btn2{font-size:14px;font-weight:600;padding:13px 26px;border-radius:100px;border:1.5px solid #000;color:#000;background:none;transition:background .2s,color .2s,transform .2s;cursor:none}
 .crew-btn2:hover{background:#000;color:#fff;transform:translateY(-2px)}
 /* right panel + moving fan group */
-.crew-right{position:relative;overflow:visible}
-/* fan group — whole group translates as one unit */
+.crew-right{position:relative;height:100vh;overflow:visible}
+/* fan group — moves as one unit via JS */
 .crew-fan{position:absolute;top:0;left:0;will-change:transform}
-/* individual cards — fixed positions relative to each other */
+/* individual cards pre-positioned in fan shape */
 .crd{
   position:absolute;
   width:185px;height:262px;
@@ -633,7 +633,7 @@ document.querySelectorAll('.hc').forEach(el=>hobs.observe(el));
 // hero down
 document.getElementById('hdown').addEventListener('click',e=>{e.preventDefault();document.getElementById('intro').scrollIntoView({behavior:'smooth'})});
 
-// crew fan — sticky scroll, whole group translates diagonally
+// crew fan — sticky scroll, fan sweeps upward as you scroll down
 (function(){
   const wrap=document.getElementById('crewWrap');
   const right=document.getElementById('crewRight');
@@ -641,47 +641,48 @@ document.getElementById('hdown').addEventListener('click',e=>{e.preventDefault()
   const cards=[...document.querySelectorAll('.crd')];
   const N=cards.length;
 
-  // Pre-position cards in the fan arrangement (relative to fan group origin)
-  // Card 0 = FRONT/BOTTOM, Card N-1 = BACK/TOP
-  // Each card steps: -30px X (left), -36px Y (up), slight scale reduction
-  // All cards share rotateY(-35deg) for the 3D tilt effect
-  const CARD_W=185, CARD_H=262;
-  const STEP_X=28, STEP_Y=36;
-  const RY=-35; // degrees Y rotation for 3D look
+  // Step offsets per card in the fan (card 0 = front/bottom, N-1 = back/top)
+  const STEP_X=30, STEP_Y=38;
 
-  function initCards(){
+  function init(){
     cards.forEach((c,i)=>{
       const sc=1-i*0.022;
-      // front card (i=0) at origin, backs go upper-left
       c.style.left=(-i*STEP_X)+'px';
       c.style.top=(-i*STEP_Y)+'px';
-      c.style.transform=`perspective(1000px) rotateY(${RY}deg) scale(${sc})`;
+      c.style.transform='perspective(900px) rotateY(-32deg) scale('+sc+')';
       c.style.zIndex=N-i;
     });
   }
-  initCards();
+  init();
 
-  // Fan group anchor: where the FRONT card's top-left sits within crew-right
-  // We'll put it lower-right of the panel and translate it diagonally
-  function updateFan(){
-    const rw=right.offsetWidth, rh=right.offsetHeight;
+  function update(){
     const rect=wrap.getBoundingClientRect();
-    const totalScroll=wrap.offsetHeight-window.innerHeight;
-    const p=Math.max(0,Math.min(1,-rect.top/totalScroll));
+    const scrollable=wrap.offsetHeight-window.innerHeight;
+    if(scrollable<=0) return;
+    const p=Math.max(0,Math.min(1,-rect.top/scrollable));
 
-    // Diagonal sweep: starts lower-right, crosses center, exits upper-left
-    // Anchor point (front card top-left) goes from (rw+50, rh*0.25) to (-rw*0.5, -rh*0.8)
-    const startX=rw+60,   startY=rh*0.22;
-    const endX=-rw*0.4,   endY=-rh*0.78;
-    const tx=startX+(endX-startX)*p;
-    const ty=startY+(endY-startY)*p;
+    const vw=window.innerWidth;
+    const vh=window.innerHeight;
+    // crew-right starts at 44% of vw, so its width is ~56% vw
+    const rw=right.offsetWidth||vw*0.56;
 
-    fan.style.transform=`translate(${tx}px,${ty}px)`;
+    // Fan enters from the RIGHT side, moves UP and slightly LEFT as you scroll
+    // p=0: fan is off-screen right (front card starts at rw, middle height)
+    // p=1: fan has exited through top (front card at -50px, far above viewport)
+    const sx = rw + 80;          // start: off screen to the right
+    const sy = vh * 0.28;        // start: upper-mid height
+    const ex = rw * 0.08;        // end: slightly left of center  
+    const ey = -vh * 0.72;       // end: above viewport
+
+    const tx = sx+(ex-sx)*p;
+    const ty = sy+(ey-sy)*p;
+
+    fan.style.transform='translate('+tx+'px,'+ty+'px)';
   }
 
-  updateFan();
-  window.addEventListener('scroll',updateFan,{passive:true});
-  window.addEventListener('resize',()=>{initCards();updateFan()});
+  update();
+  window.addEventListener('scroll',update,{passive:true});
+  window.addEventListener('resize',function(){init();update();});
 })();
 
 // CTA cycling word
