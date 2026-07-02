@@ -6,435 +6,265 @@
 <title>Production — Awaken Entertainment</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --dark:#000;
-  --dark2:#0a0a0a;
-  --card:#111111;
-  --white:#fff;
-  --off:#f5f5f5;
-  --yellow:#FFD600;
-  --bd:rgba(255,255,255,.1);
-  --bdo:rgba(0,0,0,.1);
-}
-html{scroll-behavior:smooth}
-body{
-  background:var(--dark);
-  color:var(--white);
-  font-family:'Inter',system-ui,-apple-system,sans-serif;
-  -webkit-font-smoothing:antialiased;
-  cursor:none;
-  overflow-x:hidden;
-}
+html,body{background:#000;color:#fff;font-family:'Inter',system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased;cursor:none;overflow-x:hidden;scroll-behavior:smooth}
 a{text-decoration:none;color:inherit}
 
-/* ── CURSOR ── */
-#cur{position:fixed;width:8px;height:8px;background:#fff;border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s}
-#curR{position:fixed;width:30px;height:30px;border:1px solid rgba(255,255,255,.35);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .3s,height .3s cubic-bezier(.16,1,.3,1)}
-#cur.hv{width:44px;height:44px;background:var(--yellow)}
-#curR.hv{width:0;height:0}
+/* CURSOR */
+#cur{position:fixed;z-index:9999;pointer-events:none;width:8px;height:8px;background:#fff;border-radius:50%;transform:translate(-50%,-50%);transition:width .22s,height .22s,background .22s}
+#curR{position:fixed;z-index:9998;pointer-events:none;width:30px;height:30px;border:1px solid rgba(255,255,255,.3);border-radius:50%;transform:translate(-50%,-50%);transition:width .32s,height .32s cubic-bezier(.16,1,.3,1)}
+#cur.on{width:48px;height:48px;background:#FFD600}
+#curR.on{width:0;height:0}
 
-/* ── NAV ── */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:22px 48px;
-  transition:background .4s,backdrop-filter .4s;
-}
-nav.solid{background:rgba(0,0,0,.88);backdrop-filter:blur(14px)}
-.n-logo{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fff}
-.n-logo em{color:var(--yellow);font-style:normal}
-.n-links{display:flex;gap:32px;list-style:none}
-.n-links a{font-size:13px;color:rgba(255,255,255,.55);letter-spacing:.01em;transition:color .2s}
-.n-links a:hover{color:#fff}
-.n-btn{
-  font-size:13px;padding:9px 20px;
-  border:1px solid rgba(255,255,255,.3);border-radius:100px;
-  color:#fff;transition:background .2s,border-color .2s,color .2s;
-}
-.n-btn:hover{background:#fff;border-color:#fff;color:#000}
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:22px 48px;display:flex;align-items:center;justify-content:space-between;transition:background .4s}
+nav.bg{background:rgba(0,0,0,.9);backdrop-filter:blur(12px)}
+.nl{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.nl span{color:#FFD600}
+.nc{display:flex;list-style:none;gap:32px}
+.nc a{font-size:13px;color:rgba(255,255,255,.5);transition:color .2s}
+.nc a:hover{color:#fff}
+.nb{font-size:13px;padding:9px 22px;border:1px solid rgba(255,255,255,.28);border-radius:100px;transition:background .2s,color .2s}
+.nb:hover{background:#fff;color:#000}
 
-/* ── HERO ── */
-.hero{
-  position:relative;height:100vh;overflow:hidden;
-  background:#000;
-  display:flex;align-items:flex-end;
-  padding:0 48px 72px;
-}
-/* phone mockups centered */
+/* ===== HERO ===== */
+.hero{position:relative;height:100vh;overflow:hidden;background:#000}
+
+/* scroll-driven bg panels */
+.hero-bg{position:absolute;inset:0;z-index:0;transition:opacity 1s}
+.hbg{position:absolute;inset:0;opacity:0;transition:opacity .8s;background-size:cover;background-position:center;filter:brightness(.35) grayscale(.4)}
+.hbg.show{opacity:1}
+.hbg1{background:linear-gradient(145deg,#0d0010 0%,#1a0030 40%,#050008 100%)}
+.hbg2{background:linear-gradient(145deg,#001520 0%,#00303a 40%,#000a10 100%)}
+.hbg3{background:linear-gradient(145deg,#0a0d00 0%,#202800 40%,#050700 100%)}
+
+/* phones */
 .hero-phones{
-  position:absolute;left:50%;top:50%;
-  transform:translate(-50%,-50%);
-  width:560px;height:420px;
-  display:flex;align-items:center;justify-content:center;
-}
-.phone{
   position:absolute;
-  width:160px;height:300px;
-  border-radius:22px;
-  border:1.5px solid rgba(255,255,255,.12);
-  overflow:hidden;
-  box-shadow:0 40px 80px rgba(0,0,0,.7);
-}
-.phone-inner{width:100%;height:100%;position:relative}
-.phone:nth-child(1){
   left:50%;top:50%;
   transform:translate(-50%,-50%);
+  width:680px;height:460px;
+  z-index:1;
+}
+.ph{
+  position:absolute;
+  border-radius:26px;
+  overflow:hidden;
+  box-shadow:0 60px 120px rgba(0,0,0,.9);
+}
+/* center phone */
+.ph1{
+  width:180px;height:340px;
+  left:50%;top:50%;
+  transform:translate(-50%,-50%);
+  background:#111;
+  border:1.5px solid rgba(255,255,255,.15);
   z-index:3;
-  background:linear-gradient(160deg,#1a1a1a,#0d0d0d);
-  border-color:rgba(255,255,255,.18);
 }
-.phone:nth-child(2){
+/* left phone */
+.ph2{
+  width:158px;height:300px;
   left:50%;top:50%;
-  transform:translate(-130%,-48%) rotate(-12deg);
+  transform:translate(-210%,-49%) rotate(-14deg);
+  background:#0d0d0d;
+  border:1.5px solid rgba(255,255,255,.08);
   z-index:2;
-  background:linear-gradient(160deg,#111,#0a0a0a);
-  opacity:.85;
 }
-.phone:nth-child(3){
+/* right phone */
+.ph3{
+  width:158px;height:300px;
   left:50%;top:50%;
-  transform:translate(30%,-48%) rotate(12deg);
+  transform:translate(115%,-49%) rotate(14deg);
+  background:#0d0d0d;
+  border:1.5px solid rgba(255,255,255,.08);
   z-index:2;
-  background:linear-gradient(160deg,#111,#0a0a0a);
-  opacity:.85;
 }
-.phone-screen{
-  position:absolute;inset:8px;border-radius:16px;overflow:hidden;
-  background:linear-gradient(180deg,#1a0a00 0%,#000 100%);
-  display:flex;align-items:center;justify-content:center;
-  font-size:11px;color:rgba(255,255,255,.2);letter-spacing:.08em;text-transform:uppercase;
+.ph-scr{
+  position:absolute;inset:9px;border-radius:18px;overflow:hidden;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
 }
-.phone:nth-child(1) .phone-screen{
-  background:linear-gradient(160deg,#1a0820,#060010);
+.ph1 .ph-scr{background:linear-gradient(160deg,#1a0030,#08001a)}
+.ph2 .ph-scr{background:linear-gradient(160deg,#001828,#000c18)}
+.ph3 .ph-scr{background:linear-gradient(160deg,#101800,#060c00)}
+.ph-dot{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center}
+.ph-dot svg{opacity:.3}
+.ph-bar{width:60%;height:2px;background:rgba(255,255,255,.06);border-radius:2px;margin-top:4px}
+.ph-bar2{width:40%;height:2px;background:rgba(255,255,255,.04);border-radius:2px}
+
+/* hero shade */
+.hero-shade{position:absolute;inset:0;background:radial-gradient(ellipse 75% 65% at 50% 50%,transparent 10%,rgba(0,0,0,.72) 100%);z-index:2;pointer-events:none}
+
+/* hero text */
+.hero-txt{
+  position:absolute;bottom:72px;left:48px;z-index:3;
+  max-width:520px;
 }
-.phone:nth-child(2) .phone-screen{
-  background:linear-gradient(160deg,#001828,#000810);
-}
-.phone:nth-child(3) .phone-screen{
-  background:linear-gradient(160deg,#0a1800,#020800);
-}
-/* hero vignette */
-.hero::after{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse 70% 60% at 50% 50%,transparent 20%,rgba(0,0,0,.65) 100%);
-  pointer-events:none;z-index:1;
-}
-.hero-content{position:relative;z-index:2;max-width:560px}
-.hero-h{
-  font-size:clamp(36px,5.5vw,68px);
-  font-weight:700;line-height:1.08;letter-spacing:-.03em;
-  margin-bottom:28px;
-}
-.hero-h em{font-style:italic;color:var(--yellow)}
-.hero-arrow{
+.hero-h{font-size:clamp(36px,5vw,62px);font-weight:700;line-height:1.1;letter-spacing:-.03em}
+.hero-h em{font-style:italic;color:#FFD600}
+.hero-down{
   display:inline-flex;align-items:center;justify-content:center;
   width:44px;height:44px;border-radius:50%;
-  border:1px solid rgba(255,255,255,.25);
+  border:1px solid rgba(255,255,255,.22);
+  margin-top:28px;
   transition:border-color .2s,background .2s;
 }
-.hero-arrow:hover{background:#fff;border-color:#fff}
-.hero-arrow:hover svg path{stroke:#000}
+.hero-down:hover{background:#fff;border-color:#fff}
+.hero-down:hover path{stroke:#000}
 
-/* ── INTRO ── */
-.intro{
-  background:#000;
-  padding:100px 48px;
-  display:flex;flex-direction:column;align-items:center;
-  text-align:center;
-}
-.intro-icon{
-  width:44px;height:44px;border:1px solid rgba(255,255,255,.18);border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  margin-bottom:64px;
+/* ===== INTRO ===== */
+.intro{background:#000;padding:96px 48px;text-align:center;display:flex;flex-direction:column;align-items:center}
+.intro-ic{
+  width:44px;height:44px;border:1px solid rgba(255,255,255,.15);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;margin-bottom:56px;
 }
 .intro-p{
-  font-size:clamp(20px,2.8vw,36px);
-  font-weight:400;line-height:1.5;
-  color:rgba(255,255,255,.68);
+  font-size:clamp(20px,2.8vw,36px);font-weight:400;
+  line-height:1.52;color:rgba(255,255,255,.65);
   max-width:640px;letter-spacing:-.01em;
 }
 .intro-p strong{color:#fff;font-weight:600}
-.intro-p em{font-style:italic;color:var(--yellow)}
+.intro-p em{font-style:italic;color:#FFD600}
 
-/* ── HOW WE DO IT ── */
-.how{
-  background:var(--off);
-  color:#000;
-  padding:96px 48px 120px;
+/* ===== HOW WE DO IT ===== */
+.how{background:#f5f5f5;color:#000;padding:96px 48px 120px}
+.how-h{text-align:center;margin-bottom:72px}
+.how-ttl{font-size:clamp(32px,5vw,58px);font-weight:800;letter-spacing:-.04em}
+.how-ttl em{font-style:italic}
+.how-sub{font-size:15px;color:rgba(0,0,0,.45);margin-top:14px;max-width:440px;line-height:1.65;margin-left:auto;margin-right:auto}
+/* card grid */
+.how-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:1000px;margin:0 auto}
+.hc{
+  background:#0a0a0a;border-radius:18px;padding:32px 26px 26px;
+  min-height:230px;display:flex;flex-direction:column;justify-content:space-between;
+  opacity:0;transform:translateY(40px);
+  transition:opacity .55s,transform .55s;
 }
-.how-hd{text-align:center;margin-bottom:72px}
-.how-title{
-  font-size:clamp(32px,5vw,60px);
-  font-weight:800;letter-spacing:-.04em;color:#000;
-}
-.how-title em{font-style:italic}
-.how-sub{
-  font-size:15px;color:rgba(0,0,0,.45);margin-top:14px;
-  line-height:1.65;max-width:440px;margin-left:auto;margin-right:auto;
-}
-.how-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:14px;max-width:960px;margin:0 auto;
-}
-.hcard{
-  background:#0a0a0a;border-radius:18px;
-  padding:32px 28px 28px;
-  min-height:240px;
-  display:flex;flex-direction:column;justify-content:space-between;
-  opacity:0;transform:translateY(36px);
-  transition:opacity .6s,transform .6s;
-}
-.hcard.in{opacity:1;transform:none}
-.hcard:nth-child(2){transition-delay:.1s}
-.hcard:nth-child(3){transition-delay:.2s}
-.hcard:nth-child(4){transition-delay:.3s}
-.hcard:nth-child(5){transition-delay:.4s}
-.hc-icon{font-size:22px;margin-bottom:auto;padding-bottom:28px}
-.hc-ttl{
-  font-size:clamp(16px,1.6vw,20px);
-  font-weight:700;letter-spacing:-.02em;
-  color:#fff;line-height:1.25;margin-bottom:10px;
-}
-.hc-ttl em{font-style:italic;color:var(--yellow)}
-.hc-body{font-size:13px;color:rgba(255,255,255,.38);line-height:1.68}
-/* wider first card */
-.hcard:nth-child(1){grid-column:span 2}
-.hcard:nth-child(4){grid-column:span 2}
+.hc.vis{opacity:1;transform:none}
+.hc:nth-child(1){grid-column:span 2;transition-delay:0s}
+.hc:nth-child(2){transition-delay:.1s}
+.hc:nth-child(3){transition-delay:.15s}
+.hc:nth-child(4){transition-delay:.2s}
+.hc:nth-child(5){grid-column:span 2;transition-delay:.25s}
+.hc-ico{font-size:20px;margin-bottom:auto;padding-bottom:28px}
+.hc-ttl{font-size:clamp(15px,1.5vw,19px);font-weight:700;letter-spacing:-.02em;color:#fff;line-height:1.25;margin-bottom:8px}
+.hc-ttl em{font-style:italic;color:#FFD600}
+.hc-body{font-size:12.5px;color:rgba(255,255,255,.35);line-height:1.7}
 
-/* ── WORK ── */
-.work{
-  background:var(--off);
-  color:#000;
-  padding:0 48px 96px;
-}
-.work-hd{
-  display:flex;justify-content:space-between;align-items:flex-end;
-  padding:48px 0 40px;
-}
-.work-ttl{
-  font-size:clamp(56px,9vw,108px);
-  font-weight:800;letter-spacing:-.06em;line-height:.9;
-}
-.work-all{
-  font-size:13px;padding:9px 20px;
-  border:1px solid rgba(0,0,0,.25);border-radius:100px;
-  color:#000;transition:background .2s,color .2s;
-}
+/* ===== WORK ===== */
+.work{background:#f5f5f5;color:#000;padding:0 48px 96px}
+.work-hd{display:flex;justify-content:space-between;align-items:flex-end;padding:52px 0 44px}
+.work-ttl{font-size:clamp(56px,10vw,110px);font-weight:800;letter-spacing:-.06em;line-height:.9}
+.work-all{font-size:13px;padding:9px 22px;border:1px solid rgba(0,0,0,.22);border-radius:100px;transition:background .2s,color .2s}
 .work-all:hover{background:#000;color:#fff;border-color:#000}
-.wlist{display:flex;flex-direction:column;gap:4px}
-.wcard{
-  position:relative;height:62vh;min-height:360px;
-  border-radius:18px;overflow:hidden;
-  cursor:none;
-}
-.wcard-bg{
-  position:absolute;inset:0;
-  transition:transform .9s cubic-bezier(.16,1,.3,1);
-}
-.wcard:hover .wcard-bg{transform:scale(1.06)}
-.wcard-bg.g1{background:linear-gradient(135deg,#1a0030 0%,#4a0090 60%,#200050 100%)}
-.wcard-bg.g2{background:linear-gradient(135deg,#001825 0%,#004080 60%,#001030 100%)}
-.wcard-bg.g3{background:linear-gradient(135deg,#0a1800 0%,#205000 60%,#041000 100%)}
-.wcard-bg.g4{background:linear-gradient(135deg,#250000 0%,#700000 60%,#120000 100%)}
-.wcard-bg.g5{background:linear-gradient(135deg,#151000 0%,#483000 60%,#0a0800 100%)}
-.wcard-shade{
-  position:absolute;inset:0;
-  background:linear-gradient(to top,rgba(0,0,0,.75) 0%,transparent 55%);
-}
-.wcard-foot{
-  position:absolute;bottom:0;left:0;right:0;
-  padding:28px 32px;
-  display:flex;justify-content:space-between;align-items:flex-end;
-}
-.wcard-name{font-size:clamp(16px,2vw,22px);font-weight:700;letter-spacing:-.02em;color:#fff}
-.wcard-cat{font-size:11px;color:rgba(255,255,255,.45);margin-top:5px;letter-spacing:.06em;text-transform:uppercase}
-.wcard-det{
-  font-size:12px;padding:8px 18px;
-  border:1px solid rgba(255,255,255,.3);border-radius:100px;
-  color:#fff;white-space:nowrap;flex-shrink:0;
-  transition:background .2s,border-color .2s;
-}
-.wcard:hover .wcard-det{background:#fff;border-color:#fff;color:#000}
+/* cards */
+.wl{display:flex;flex-direction:column;gap:4px}
+/* full-width card */
+.wc{position:relative;border-radius:18px;overflow:hidden;cursor:none;display:block}
+.wc-full{height:62vh;min-height:340px}
+/* 2-col row */
+.wc-row{display:grid;grid-template-columns:1fr 1fr;gap:4px}
+.wc-row .wc{height:52vh;min-height:300px}
+.wc-bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .9s cubic-bezier(.16,1,.3,1)}
+.wc:hover .wc-bg{transform:scale(1.06)}
+.g1{background:linear-gradient(135deg,#1a0038,#5a00c0,#200060)}
+.g2{background:linear-gradient(135deg,#001828,#005080,#001030)}
+.g3{background:linear-gradient(135deg,#0a1a00,#306000,#050f00)}
+.g4{background:linear-gradient(135deg,#280000,#800000,#140000)}
+.g5{background:linear-gradient(135deg,#181000,#504000,#0c0800)}
+.wc-shade{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.8) 0%,transparent 55%)}
+.wc-foot{position:absolute;bottom:0;left:0;right:0;padding:26px 30px;display:flex;justify-content:space-between;align-items:flex-end}
+.wc-name{font-size:clamp(16px,2vw,24px);font-weight:700;letter-spacing:-.02em;color:#fff}
+.wc-cat{font-size:11px;color:rgba(255,255,255,.45);margin-top:5px;letter-spacing:.06em;text-transform:uppercase}
+.wc-det{font-size:12px;padding:8px 18px;border:1px solid rgba(255,255,255,.28);border-radius:100px;color:#fff;flex-shrink:0;transition:background .2s,border-color .2s}
+.wc:hover .wc-det{background:#fff;border-color:#fff;color:#000}
 
-/* ── CERTIFIED ── */
-.cert{
-  background:var(--dark2);
-  padding:96px 48px;text-align:center;
-}
+/* ===== CERTIFIED ===== */
+.cert{background:#0a0a0a;padding:96px 48px;text-align:center}
 .cert-ttl{font-size:clamp(28px,4.5vw,54px);font-weight:800;letter-spacing:-.04em;margin-bottom:16px}
-.cert-ttl em{font-style:italic;color:var(--yellow)}
-.cert-sub{font-size:14px;color:rgba(255,255,255,.4);line-height:1.75;max-width:500px;margin:0 auto 52px}
-.cert-sub strong{color:rgba(255,255,255,.75)}
+.cert-ttl em{font-style:italic;color:#FFD600}
+.cert-sub{font-size:14px;color:rgba(255,255,255,.38);line-height:1.8;max-width:500px;margin:0 auto 52px}
+.cert-sub strong{color:rgba(255,255,255,.72)}
 .cert-row{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
-.badge{
-  width:74px;height:74px;
-  border:1px solid rgba(255,255,255,.1);border-radius:14px;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  gap:5px;font-size:10px;color:rgba(255,255,255,.35);line-height:1.3;
-  text-align:center;padding:8px;transition:border-color .2s,color .2s;
-  cursor:none;
-}
-.badge:hover{border-color:var(--yellow);color:var(--yellow)}
-.badge-icon{font-size:18px}
+.bdg{width:76px;height:76px;border:1px solid rgba(255,255,255,.1);border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;font-size:10px;color:rgba(255,255,255,.3);line-height:1.3;text-align:center;padding:8px;transition:border-color .2s,color .2s;cursor:none}
+.bdg:hover{border-color:#FFD600;color:#FFD600}
+.bdg-i{font-size:18px}
 
-/* ── WAVE ── */
-.wavesec{
-  background:var(--dark2);
-  padding:96px 48px;
-  position:relative;overflow:hidden;min-height:380px;
-  display:flex;align-items:center;justify-content:center;
-}
-.wave-svg{position:absolute;inset:0;width:100%;height:100%;opacity:.2;pointer-events:none}
-.wave-txt{
-  position:relative;z-index:1;text-align:center;
-  font-size:clamp(26px,4.5vw,56px);font-weight:700;
-  letter-spacing:-.03em;line-height:1.3;
-}
-.wave-txt em{font-style:italic;color:var(--yellow)}
+/* ===== WAVE ===== */
+.wavs{background:#0a0a0a;padding:96px 48px;position:relative;overflow:hidden;min-height:360px;display:flex;align-items:center;justify-content:center}
+.wsvg{position:absolute;inset:0;width:100%;height:100%;opacity:.18;pointer-events:none}
+.wtxt{position:relative;z-index:1;text-align:center;font-size:clamp(26px,4.5vw,54px);font-weight:700;letter-spacing:-.03em;line-height:1.3}
+.wtxt em{font-style:italic;color:#FFD600}
 
-/* ── STATS ── */
-.stats{
-  background:var(--dark2);
-  padding:80px 48px 96px;
-  display:grid;grid-template-columns:1fr 1.1fr;gap:60px;align-items:center;
-}
+/* ===== STATS ===== */
+.stats{background:#0a0a0a;padding:80px 48px 96px;display:grid;grid-template-columns:1fr 1.1fr;gap:60px;align-items:center}
 .stats-l{display:flex;flex-direction:column;gap:40px}
-.stat{}
-.stat-n{
-  font-size:clamp(56px,9vw,100px);font-weight:800;
-  letter-spacing:-.05em;line-height:1;
-  background:linear-gradient(90deg,var(--yellow) 0%,#ff8c00 100%);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-}
-.stat-d{font-size:14px;color:rgba(255,255,255,.4);margin-top:4px}
-.stat-d strong{color:rgba(255,255,255,.75)}
-.stats-r{
-  background:var(--card);border-radius:20px;
-  padding:32px;aspect-ratio:1;
-  display:flex;align-items:center;justify-content:center;
-}
-.map{width:100%;height:auto;opacity:.55}
+.stn{font-size:clamp(60px,9vw,104px);font-weight:800;letter-spacing:-.05em;line-height:1;background:linear-gradient(90deg,#FFD600 0%,#ff8c00 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.std{font-size:14px;color:rgba(255,255,255,.38);margin-top:4px}
+.std strong{color:rgba(255,255,255,.72)}
+.stats-r{background:#111;border-radius:20px;padding:32px;aspect-ratio:1;display:flex;align-items:center;justify-content:center}
 
-/* ── MARQUEE ── */
-.mq{
-  background:var(--dark2);
-  border-top:1px solid rgba(255,255,255,.06);
-  border-bottom:1px solid rgba(255,255,255,.06);
-  padding:14px 0;overflow:hidden;
-}
-.mq-track{
-  display:flex;white-space:nowrap;
-  animation:scroll 22s linear infinite;
-}
-.mq-item{
-  font-size:12px;color:rgba(255,255,255,.28);
-  padding:0 36px;letter-spacing:.1em;text-transform:uppercase;flex-shrink:0;
-}
-.mq-item span{color:rgba(255,255,255,.1);margin:0 8px}
-@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+/* ===== MARQUEE ===== */
+.mq{background:#0a0a0a;border-top:1px solid rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.05);padding:14px 0;overflow:hidden}
+.mqt{display:flex;white-space:nowrap;animation:mqs 22s linear infinite}
+.mqi{font-size:12px;color:rgba(255,255,255,.28);padding:0 36px;letter-spacing:.1em;text-transform:uppercase;flex-shrink:0}
+.mqi span{color:rgba(255,255,255,.1);margin:0 8px}
+@keyframes mqs{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-/* ── INNOVATION / SERVICES ── */
-.inno{
-  background:var(--dark2);
-  padding:96px 48px;
-}
-.inno-hd{text-align:center;margin-bottom:52px}
-.inno-ttl{font-size:clamp(26px,4vw,52px);font-weight:800;letter-spacing:-.04em}
-.inno-ttl em{font-style:italic;color:var(--yellow)}
-.inno-grid{
-  display:grid;grid-template-columns:repeat(4,1fr);
-  gap:10px;
-}
-.icard{
-  background:var(--card);border:1px solid rgba(255,255,255,.06);
-  border-radius:18px;padding:28px 22px;
-  min-height:240px;display:flex;flex-direction:column;justify-content:space-between;
-  cursor:none;
-  transition:background .3s,border-color .3s,transform .3s;
-}
-.icard:hover{background:#1c1c1c;border-color:rgba(255,255,255,.14);transform:translateY(-5px)}
+/* ===== INNOVATION ===== */
+.inno{background:#0a0a0a;padding:96px 48px}
+.inno-h{text-align:center;margin-bottom:52px}
+.inno-ttl{font-size:clamp(26px,4vw,50px);font-weight:800;letter-spacing:-.04em}
+.inno-ttl em{font-style:italic;color:#FFD600}
+.ig{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.ic{background:#111;border:1px solid rgba(255,255,255,.06);border-radius:18px;padding:28px 22px;min-height:240px;display:flex;flex-direction:column;justify-content:space-between;cursor:none;transition:background .3s,border-color .3s,transform .3s}
+.ic:hover{background:#1d1d1d;border-color:rgba(255,255,255,.15);transform:translateY(-5px)}
 .ic-ico{font-size:26px;margin-bottom:auto;padding-bottom:32px}
-.ic-ttl{font-size:14px;font-weight:700;color:#fff;line-height:1.3}
-.ic-bd{
-  font-size:12px;color:rgba(255,255,255,.0);line-height:1.65;margin-top:8px;
-  transition:color .35s;
-}
-.icard:hover .ic-bd{color:rgba(255,255,255,.38)}
+.ic-ttl{font-size:14px;font-weight:700;line-height:1.3;color:#fff}
+.ic-body{font-size:12px;color:rgba(255,255,255,0);line-height:1.65;margin-top:8px;transition:color .3s}
+.ic:hover .ic-body{color:rgba(255,255,255,.38)}
 
-/* ── CTA ── */
-.cta{
-  background:var(--dark);
-  padding:100px 48px;
-  display:flex;align-items:center;justify-content:space-between;
-  position:relative;overflow:hidden;
-}
-.cta-blob{
-  position:absolute;right:-60px;top:50%;transform:translateY(-50%);
-  width:340px;height:340px;border-radius:50%;
-  background:conic-gradient(from 0deg,#4000ff,#ff0080,#ff4000,#4000ff);
-  opacity:.35;filter:blur(60px);pointer-events:none;
-}
-.cta-text{
-  font-size:clamp(44px,7.5vw,96px);
-  font-weight:800;letter-spacing:-.05em;line-height:1.05;
-  position:relative;z-index:1;
-}
-.cta-word{
-  display:inline-block;
-  font-style:italic;
-  color:var(--yellow);
-  min-width:280px;
-}
-.cta-arr{
-  position:relative;z-index:1;flex-shrink:0;margin-left:40px;
-  width:72px;height:72px;border-radius:50%;
-  border:1px solid rgba(255,255,255,.22);
-  display:flex;align-items:center;justify-content:center;
-  transition:background .3s,border-color .3s;
-}
-.cta-arr:hover{background:var(--yellow);border-color:var(--yellow)}
+/* ===== CTA ===== */
+.cta{background:#000;padding:100px 48px;display:flex;align-items:center;justify-content:space-between;position:relative;overflow:hidden}
+.cta-blob{position:absolute;right:-80px;top:50%;transform:translateY(-50%);width:380px;height:380px;border-radius:50%;background:conic-gradient(from 0deg,#3300ff,#ff0080,#ff6600,#3300ff);opacity:.32;filter:blur(64px);pointer-events:none}
+.cta-txt{font-size:clamp(44px,8vw,96px);font-weight:800;letter-spacing:-.05em;line-height:1.05;position:relative;z-index:1}
+.cta-mid{display:inline-block;font-style:italic;color:#FFD600;min-width:300px;transition:opacity .25s,transform .25s}
+.cta-row{display:flex;align-items:center;gap:20px}
+.cta-arr{width:68px;height:68px;border-radius:50%;border:1px solid rgba(255,255,255,.22);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .25s,border-color .25s;cursor:none}
+.cta-arr:hover{background:#FFD600;border-color:#FFD600}
 .cta-arr:hover path{stroke:#000}
 
-/* ── FOOTER ── */
-footer{
-  background:var(--dark);
-  border-top:1px solid rgba(255,255,255,.06);
-  padding:56px 48px 36px;
-}
-.foot-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:40px;margin-bottom:52px}
-.foot-col-h{
-  font-size:11px;letter-spacing:.1em;text-transform:uppercase;
-  color:rgba(255,255,255,.28);margin-bottom:18px;
-}
-.foot-links{display:flex;flex-direction:column;gap:10px}
-.foot-links a{font-size:13px;color:rgba(255,255,255,.5);transition:color .2s}
-.foot-links a:hover{color:#fff}
-.foot-bottom{
-  border-top:1px solid rgba(255,255,255,.06);padding-top:22px;
-  display:flex;justify-content:space-between;align-items:center;
-}
-.foot-copy{font-size:11px;color:rgba(255,255,255,.22)}
-.foot-logo{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35)}
-.foot-logo em{color:var(--yellow);font-style:normal}
+/* ===== FOOTER ===== */
+footer{background:#000;border-top:1px solid rgba(255,255,255,.06);padding:56px 48px 36px}
+.fg{display:grid;grid-template-columns:1fr 1fr 1fr;gap:40px;margin-bottom:48px}
+.fh{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.28);margin-bottom:18px}
+.flinks{display:flex;flex-direction:column;gap:10px}
+.flinks a{font-size:13px;color:rgba(255,255,255,.48);transition:color .2s}
+.flinks a:hover{color:#fff}
+.fbot{border-top:1px solid rgba(255,255,255,.06);padding-top:22px;display:flex;justify-content:space-between;align-items:center}
+.fcp{font-size:11px;color:rgba(255,255,255,.22)}
+.flogo{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35)}
+.flogo span{color:#FFD600}
 
-/* rv */
-.rv{opacity:0;transform:translateY(24px);transition:opacity .65s,transform .65s}
+/* reveal */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .6s,transform .6s}
 .rv.in{opacity:1;transform:none}
 
 @media(max-width:768px){
   nav{padding:18px 24px}
-  .n-links{display:none}
-  .hero{padding:0 24px 56px}
-  .hero-phones{width:320px;height:280px}
-  .phone{width:110px;height:210px}
-  .how,.work,.cert,.wavesec,.stats,.inno,.cta,footer{padding-left:24px;padding-right:24px}
-  .how-grid{grid-template-columns:1fr}
-  .hcard:nth-child(1),.hcard:nth-child(4){grid-column:span 1}
-  .inno-grid{grid-template-columns:repeat(2,1fr)}
+  .nc{display:none}
+  .hero-phones{width:320px;height:300px}
+  .ph1{width:130px;height:250px}
+  .ph2,.ph3{width:110px;height:215px}
+  .ph2{transform:translate(-188%,-49%) rotate(-14deg)}
+  .ph3{transform:translate(100%,-49%) rotate(14deg)}
+  .hero-txt,.intro,.how,.work,.cert,.wavs,.stats,.inno,.cta,footer{padding-left:24px;padding-right:24px}
+  .how-cards{grid-template-columns:1fr}
+  .hc:nth-child(1),.hc:nth-child(5){grid-column:span 1}
+  .wc-row{grid-template-columns:1fr}
+  .ig{grid-template-columns:repeat(2,1fr)}
   .stats{grid-template-columns:1fr}
   .stats-r{display:none}
   .cta{flex-direction:column;gap:32px}
-  .foot-grid{grid-template-columns:1fr;gap:28px}
+  .fg{grid-template-columns:1fr;gap:28px}
 }
 </style>
 </head>
@@ -445,54 +275,62 @@ footer{
 
 <!-- NAV -->
 <nav id="nav">
-  <a href="index.html" class="n-logo">Awaken <em>Ent.</em></a>
-  <ul class="n-links">
+  <a href="index.html" class="nl">Awaken <span>Ent.</span></a>
+  <ul class="nc">
     <li><a href="#work">Work</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#process">Process</a></li>
     <li><a href="index.html">All Services</a></li>
   </ul>
-  <a href="mailto:nyinyisoewin@awakenentertainment.org" class="n-btn">Book Now</a>
+  <a href="mailto:nyinyisoewin@awakenentertainment.org" class="nb">Book Now</a>
 </nav>
 
 <!-- HERO -->
 <section class="hero" id="top">
-  <!-- 3 phone mockups -->
-  <div class="hero-phones" aria-hidden="true">
-    <div class="phone">
-      <div class="phone-inner">
-        <div class="phone-screen">
-          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" opacity=".4">
-            <circle cx="18" cy="18" r="14" stroke="rgba(255,255,255,.4)" stroke-width="1.5"/>
-            <path d="M13 18l3 3 7-7" stroke="rgba(255,255,255,.4)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </div>
+  <div class="hero-bg">
+    <div class="hbg hbg1 show" id="hbg1"></div>
+    <div class="hbg hbg2" id="hbg2"></div>
+    <div class="hbg hbg3" id="hbg3"></div>
+  </div>
+
+  <div class="hero-phones">
+    <!-- left phone -->
+    <div class="ph ph2">
+      <div class="ph-scr">
+        <div class="ph-dot"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5" stroke="rgba(255,255,255,.5)" stroke-width="1"/></svg></div>
+        <div class="ph-bar"></div><div class="ph-bar2"></div>
       </div>
     </div>
-    <div class="phone">
-      <div class="phone-inner"><div class="phone-screen"></div></div>
+    <!-- center phone -->
+    <div class="ph ph1">
+      <div class="ph-scr">
+        <div class="ph-dot"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><polygon points="7,5 14,9 7,13" fill="rgba(255,214,0,.5)"/></svg></div>
+        <div class="ph-bar"></div><div class="ph-bar2"></div>
+      </div>
     </div>
-    <div class="phone">
-      <div class="phone-inner"><div class="phone-screen"></div></div>
+    <!-- right phone -->
+    <div class="ph ph3">
+      <div class="ph-scr">
+        <div class="ph-dot"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="3" y="3" width="8" height="8" rx="1" stroke="rgba(255,255,255,.5)" stroke-width="1"/></svg></div>
+        <div class="ph-bar"></div><div class="ph-bar2"></div>
+      </div>
     </div>
   </div>
 
-  <div class="hero-content">
-    <h1 class="hero-h">We capture stories<br>that <em>move</em><br>people.</h1>
-    <a href="#intro" class="hero-arrow" id="heroDown">
-      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-        <path d="M7 2v10M2 8l5 5 5-5" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
+  <div class="hero-shade"></div>
+
+  <div class="hero-txt">
+    <h1 class="hero-h">We capture stories<br>that <em>move</em> people.</h1>
+    <a href="#intro" class="hero-down" id="hdown">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 9l5 4 5-4" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </a>
   </div>
 </section>
 
 <!-- INTRO -->
 <section class="intro" id="intro">
-  <div class="intro-icon" aria-hidden="true">
-    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-      <path d="M7 2v10M2 8l5 5 5-5" stroke="rgba(255,255,255,.4)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
+  <div class="intro-ic">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 9l5 4 5-4" stroke="rgba(255,255,255,.35)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </div>
   <p class="intro-p rv">
     We are <strong>Yangon's production house.</strong><br>
@@ -503,45 +341,30 @@ footer{
 
 <!-- HOW WE DO IT -->
 <section class="how" id="process">
-  <div class="how-hd rv">
-    <h2 class="how-title">How we <em>do</em> it</h2>
+  <div class="how-h rv">
+    <h2 class="how-ttl">How we <em>do</em> it</h2>
     <p class="how-sub">Here's how we transform your idea into a visual story that makes an impact.</p>
   </div>
-  <div class="how-grid">
-    <div class="hcard">
-      <div class="hc-icon">🎯</div>
-      <div>
-        <h3 class="hc-ttl">We <em>know</em> your brand.</h3>
-        <p class="hc-body">Every project starts with a deep dive into your brand, goals and audience. We align creative direction with your strategy before a single camera turns on.</p>
-      </div>
+  <div class="how-cards">
+    <div class="hc">
+      <div class="hc-ico">🎯</div>
+      <div><h3 class="hc-ttl">We <em>know</em> your brand.</h3><p class="hc-body">Every project starts with a deep dive into your brand, goals and audience. Creative direction aligned to your strategy before a single camera turns on.</p></div>
     </div>
-    <div class="hcard">
-      <div class="hc-icon">📋</div>
-      <div>
-        <h3 class="hc-ttl">We plan every <em>detail.</em></h3>
-        <p class="hc-body">Script, storyboard, shot list — every deliverable defined so production stays on track, on schedule, on budget.</p>
-      </div>
+    <div class="hc">
+      <div class="hc-ico">📋</div>
+      <div><h3 class="hc-ttl">We plan every <em>detail.</em></h3><p class="hc-body">Script, storyboard, shot list — every deliverable defined so production stays on track and on budget.</p></div>
     </div>
-    <div class="hcard">
-      <div class="hc-icon">🎬</div>
-      <div>
-        <h3 class="hc-ttl">We <em>film</em> everything.</h3>
-        <p class="hc-body">Our crew, gear and direction deliver broadcast-quality footage — brand films, commercials, events and social content.</p>
-      </div>
+    <div class="hc">
+      <div class="hc-ico">🎬</div>
+      <div><h3 class="hc-ttl">We <em>evolve</em> with you.</h3><p class="hc-body">Our crew and gear adapt to your vision — from studio to location, from documentary to commercial.</p></div>
     </div>
-    <div class="hcard">
-      <div class="hc-icon">✨</div>
-      <div>
-        <h3 class="hc-ttl">We <em>perfect</em> in post.</h3>
-        <p class="hc-body">Color grading, sound design, motion graphics, precision editing. We don't deliver raw footage — we deliver finished stories.</p>
-      </div>
+    <div class="hc">
+      <div class="hc-ico">✅</div>
+      <div><h3 class="hc-ttl">We QA <em>everything.</em></h3><p class="hc-body">Whether it's a brand film or a quick social reel, every frame goes through rigorous quality review before delivery.</p></div>
     </div>
-    <div class="hcard">
-      <div class="hc-icon">🚀</div>
-      <div>
-        <h3 class="hc-ttl">We're always <em>ready.</em></h3>
-        <p class="hc-body">Our team adapts fast to your needs — quick turnaround, flexible scheduling, reliable delivery every time.</p>
-      </div>
+    <div class="hc">
+      <div class="hc-ico">🚀</div>
+      <div><h3 class="hc-ttl">We're never at <em>capacity.</em></h3><p class="hc-body">Our team adapts fast — quick turnaround, flexible scheduling, reliable delivery every time, no matter the scale.</p></div>
     </div>
   </div>
 </section>
@@ -552,233 +375,157 @@ footer{
     <h2 class="work-ttl">Work.</h2>
     <a href="#" class="work-all">See All</a>
   </div>
-  <div class="wlist">
-    <div class="wcard">
-      <div class="wcard-bg g1"></div>
-      <div class="wcard-shade"></div>
-      <div class="wcard-foot">
-        <div>
-          <div class="wcard-name">Wave Money</div>
-          <div class="wcard-cat">Brand Film · 2024</div>
-        </div>
-        <a href="#" class="wcard-det">See Details</a>
+  <div class="wl">
+    <!-- full width -->
+    <a href="#" class="wc wc-full">
+      <div class="wc-bg g1"></div>
+      <div class="wc-shade"></div>
+      <div class="wc-foot">
+        <div><div class="wc-name">Wave Money</div><div class="wc-cat">Brand Film · 2024</div></div>
+        <span class="wc-det">See Details</span>
       </div>
-    </div>
-    <div class="wcard">
-      <div class="wcard-bg g2"></div>
-      <div class="wcard-shade"></div>
-      <div class="wcard-foot">
-        <div>
-          <div class="wcard-name">Myanmar Fitness</div>
-          <div class="wcard-cat">Commercial · 2024</div>
+    </a>
+    <!-- 2-col -->
+    <div class="wc-row">
+      <a href="#" class="wc">
+        <div class="wc-bg g2"></div>
+        <div class="wc-shade"></div>
+        <div class="wc-foot">
+          <div><div class="wc-name">Myanmar Fitness</div><div class="wc-cat">Commercial · 2024</div></div>
+          <span class="wc-det">See Details</span>
         </div>
-        <a href="#" class="wcard-det">See Details</a>
-      </div>
-    </div>
-    <div class="wcard">
-      <div class="wcard-bg g3"></div>
-      <div class="wcard-shade"></div>
-      <div class="wcard-foot">
-        <div>
-          <div class="wcard-name">Micromoney Launch</div>
-          <div class="wcard-cat">Event Film · 2023</div>
+      </a>
+      <a href="#" class="wc">
+        <div class="wc-bg g3"></div>
+        <div class="wc-shade"></div>
+        <div class="wc-foot">
+          <div><div class="wc-name">Strategy First</div><div class="wc-cat">Social Content · 2023</div></div>
+          <span class="wc-det">See Details</span>
         </div>
-        <a href="#" class="wcard-det">See Details</a>
-      </div>
+      </a>
     </div>
-    <div class="wcard">
-      <div class="wcard-bg g4"></div>
-      <div class="wcard-shade"></div>
-      <div class="wcard-foot">
-        <div>
-          <div class="wcard-name">Strategy First</div>
-          <div class="wcard-cat">Social Content · 2023</div>
-        </div>
-        <a href="#" class="wcard-det">See Details</a>
+    <!-- full width -->
+    <a href="#" class="wc wc-full">
+      <div class="wc-bg g4"></div>
+      <div class="wc-shade"></div>
+      <div class="wc-foot">
+        <div><div class="wc-name">Micromoney Launch</div><div class="wc-cat">Event Film · 2023</div></div>
+        <span class="wc-det">See Details</span>
       </div>
-    </div>
-    <div class="wcard">
-      <div class="wcard-bg g5"></div>
-      <div class="wcard-shade"></div>
-      <div class="wcard-foot">
-        <div>
-          <div class="wcard-name">Great Merchant</div>
-          <div class="wcard-cat">Documentary · 2022</div>
-        </div>
-        <a href="#" class="wcard-det">See Details</a>
+    </a>
+    <!-- full width -->
+    <a href="#" class="wc wc-full">
+      <div class="wc-bg g5"></div>
+      <div class="wc-shade"></div>
+      <div class="wc-foot">
+        <div><div class="wc-name">Great Merchant</div><div class="wc-cat">Documentary · 2022</div></div>
+        <span class="wc-det">See Details</span>
       </div>
-    </div>
+    </a>
   </div>
 </section>
 
 <!-- CERTIFIED -->
 <section class="cert">
   <h2 class="cert-ttl rv">We are <em>experienced.</em></h2>
-  <p class="cert-sub rv">
-    Since 2013, we have combined <strong>creative talent</strong> and <strong>technical expertise</strong>
-    to deliver production that moves people and drives results — across Myanmar and Southeast Asia.
-  </p>
+  <p class="cert-sub rv">Since 2013, we have combined <strong>creative talent</strong> and <strong>technical expertise</strong> to deliver production that moves people — across Myanmar and Southeast Asia.</p>
   <div class="cert-row rv">
-    <div class="badge"><span class="badge-icon">🎬</span>Brand<br>Films</div>
-    <div class="badge"><span class="badge-icon">📺</span>TV Spots</div>
-    <div class="badge"><span class="badge-icon">📱</span>Social<br>Content</div>
-    <div class="badge"><span class="badge-icon">🎤</span>Events</div>
-    <div class="badge"><span class="badge-icon">📷</span>Photo</div>
-    <div class="badge"><span class="badge-icon">🎨</span>Motion</div>
-    <div class="badge"><span class="badge-icon">🎧</span>Sound</div>
+    <div class="bdg"><span class="bdg-i">🎬</span>Brand Films</div>
+    <div class="bdg"><span class="bdg-i">📺</span>TV Spots</div>
+    <div class="bdg"><span class="bdg-i">📱</span>Social</div>
+    <div class="bdg"><span class="bdg-i">🎤</span>Events</div>
+    <div class="bdg"><span class="bdg-i">📷</span>Photo</div>
+    <div class="bdg"><span class="bdg-i">🎨</span>Motion</div>
+    <div class="bdg"><span class="bdg-i">🎧</span>Sound</div>
   </div>
 </section>
 
 <!-- WAVE -->
-<section class="wavesec">
-  <svg class="wave-svg" viewBox="0 0 1440 320" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M0,160 C240,280 480,40 720,160 C960,280 1200,40 1440,160" fill="none" stroke="rgba(255,255,255,.8)" stroke-width="1"/>
-    <path d="M0,200 C240,80 480,320 720,200 C960,80 1200,320 1440,200" fill="none" stroke="rgba(255,255,255,.5)" stroke-width=".8"/>
-    <path d="M0,180 C360,280 720,80 1080,180 C1260,230 1380,160 1440,180" fill="none" stroke="rgba(255,255,255,.3)" stroke-width=".6"/>
+<section class="wavs">
+  <svg class="wsvg" viewBox="0 0 1440 320" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,160 C240,280 480,40 720,160 C960,280 1200,40 1440,160" fill="none" stroke="#fff" stroke-width="1.2"/>
+    <path d="M0,200 C240,80 480,320 720,200 C960,80 1200,320 1440,200" fill="none" stroke="#fff" stroke-width=".8"/>
+    <path d="M0,180 C360,280 720,80 1080,180 C1260,230 1380,160 1440,180" fill="none" stroke="#fff" stroke-width=".6"/>
   </svg>
-  <p class="wave-txt rv">From <em>Yangon</em> to<br>the world.</p>
+  <p class="wtxt rv">From <em>Yangon</em> to<br>the world.</p>
 </section>
 
 <!-- STATS -->
 <section class="stats">
   <div class="stats-l">
-    <div class="rv">
-      <div class="stat-n">10+</div>
-      <div class="stat-d"><strong>years</strong> of production experience.</div>
-    </div>
-    <div class="rv">
-      <div class="stat-n">200+</div>
-      <div class="stat-d"><strong>projects</strong> delivered so far.</div>
-    </div>
-    <div class="rv">
-      <div class="stat-n">100%</div>
-      <div class="stat-d">of them delivered <strong>on time.</strong></div>
-    </div>
+    <div class="rv"><div class="stn">10+</div><div class="std"><strong>years</strong> of production experience.</div></div>
+    <div class="rv"><div class="stn">200+</div><div class="std"><strong>projects</strong> delivered so far.</div></div>
+    <div class="rv"><div class="stn">100%</div><div class="std">of them delivered <strong>on time.</strong></div></div>
   </div>
   <div class="stats-r rv">
-    <svg class="map" viewBox="0 0 600 360" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <pattern id="d" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse">
-          <circle cx="2" cy="2" r="1" fill="rgba(255,255,255,.3)"/>
-        </pattern>
-      </defs>
-      <ellipse cx="300" cy="180" rx="285" ry="160" fill="url(#d)"/>
-      <circle cx="308" cy="152" r="5" fill="#FFD600" opacity=".9"/>
-      <circle cx="270" cy="148" r="3.5" fill="#FFD600" opacity=".65"/>
-      <circle cx="355" cy="162" r="3" fill="#FFD600" opacity=".55"/>
-      <circle cx="400" cy="138" r="4" fill="#FFD600" opacity=".45"/>
-      <circle cx="175" cy="148" r="3" fill="rgba(255,255,255,.45)"/>
-      <circle cx="215" cy="190" r="2.5" fill="rgba(255,255,255,.35)"/>
-      <circle cx="440" cy="175" r="2.5" fill="rgba(255,255,255,.3)"/>
+    <svg viewBox="0 0 560 340" style="width:100%;height:auto;opacity:.5" xmlns="http://www.w3.org/2000/svg">
+      <defs><pattern id="dp" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="rgba(255,255,255,.35)"/></pattern></defs>
+      <ellipse cx="280" cy="170" rx="268" ry="152" fill="url(#dp)"/>
+      <circle cx="292" cy="144" r="5" fill="#FFD600" opacity=".9"/>
+      <circle cx="255" cy="140" r="3.5" fill="#FFD600" opacity=".65"/>
+      <circle cx="336" cy="154" r="3" fill="#FFD600" opacity=".55"/>
+      <circle cx="378" cy="130" r="4" fill="#FFD600" opacity=".45"/>
+      <circle cx="164" cy="140" r="3" fill="rgba(255,255,255,.45)"/>
+      <circle cx="202" cy="180" r="2.5" fill="rgba(255,255,255,.35)"/>
     </svg>
   </div>
 </section>
 
 <!-- MARQUEE -->
 <div class="mq">
-  <div class="mq-track">
-    <span class="mq-item">Brand Film<span>·</span></span>
-    <span class="mq-item">Commercial<span>·</span></span>
-    <span class="mq-item">Event Coverage<span>·</span></span>
-    <span class="mq-item">Social Content<span>·</span></span>
-    <span class="mq-item">Documentary<span>·</span></span>
-    <span class="mq-item">Photography<span>·</span></span>
-    <span class="mq-item">Motion Graphics<span>·</span></span>
-    <span class="mq-item">Color Grading<span>·</span></span>
-    <span class="mq-item">Brand Film<span>·</span></span>
-    <span class="mq-item">Commercial<span>·</span></span>
-    <span class="mq-item">Event Coverage<span>·</span></span>
-    <span class="mq-item">Social Content<span>·</span></span>
-    <span class="mq-item">Documentary<span>·</span></span>
-    <span class="mq-item">Photography<span>·</span></span>
-    <span class="mq-item">Motion Graphics<span>·</span></span>
-    <span class="mq-item">Color Grading<span>·</span></span>
+  <div class="mqt">
+    <span class="mqi">Brand Film<span>·</span></span><span class="mqi">Commercial<span>·</span></span><span class="mqi">Event Coverage<span>·</span></span><span class="mqi">Social Content<span>·</span></span><span class="mqi">Documentary<span>·</span></span><span class="mqi">Photography<span>·</span></span><span class="mqi">Motion Graphics<span>·</span></span><span class="mqi">Color Grading<span>·</span></span>
+    <span class="mqi">Brand Film<span>·</span></span><span class="mqi">Commercial<span>·</span></span><span class="mqi">Event Coverage<span>·</span></span><span class="mqi">Social Content<span>·</span></span><span class="mqi">Documentary<span>·</span></span><span class="mqi">Photography<span>·</span></span><span class="mqi">Motion Graphics<span>·</span></span><span class="mqi">Color Grading<span>·</span></span>
   </div>
 </div>
 
-<!-- SERVICES -->
+<!-- INNOVATION MARK -->
 <section class="inno" id="services">
-  <div class="inno-hd rv">
+  <div class="inno-h rv">
     <h2 class="inno-ttl">Our <em>production</em> mark.</h2>
   </div>
-  <div class="inno-grid">
-    <div class="icard rv">
-      <span class="ic-ico">🎯</span>
-      <div>
-        <div class="ic-ttl">Pre-Production</div>
-        <div class="ic-bd">Concept, scriptwriting, storyboarding, casting and location scouting.</div>
-      </div>
-    </div>
-    <div class="icard rv">
-      <span class="ic-ico">🎬</span>
-      <div>
-        <div class="ic-ttl">Video Production</div>
-        <div class="ic-bd">Brand films, commercials, events and social content — full crew and gear.</div>
-      </div>
-    </div>
-    <div class="icard rv">
-      <span class="ic-ico">📷</span>
-      <div>
-        <div class="ic-ttl">Photography</div>
-        <div class="ic-bd">Product, corporate, lifestyle — studio and on-location shoots.</div>
-      </div>
-    </div>
-    <div class="icard rv">
-      <span class="ic-ico">✨</span>
-      <div>
-        <div class="ic-ttl">Post-Production</div>
-        <div class="ic-bd">Editing, color grading, sound design, motion graphics and final delivery.</div>
-      </div>
-    </div>
+  <div class="ig">
+    <div class="ic rv"><span class="ic-ico">🎯</span><div><div class="ic-ttl">Pre-Production</div><div class="ic-body">Concept, script, storyboard, casting and location scouting.</div></div></div>
+    <div class="ic rv"><span class="ic-ico">🎬</span><div><div class="ic-ttl">Video Production</div><div class="ic-body">Brand films, commercials, events and social — full crew and gear.</div></div></div>
+    <div class="ic rv"><span class="ic-ico">📷</span><div><div class="ic-ttl">Photography</div><div class="ic-body">Product, corporate and lifestyle — studio and on-location.</div></div></div>
+    <div class="ic rv"><span class="ic-ico">✨</span><div><div class="ic-ttl">Post-Production</div><div class="ic-body">Editing, color, sound design, motion graphics and final delivery.</div></div></div>
   </div>
 </section>
 
 <!-- CTA -->
 <section class="cta" id="contact">
   <div class="cta-blob"></div>
-  <div class="cta-text rv">
+  <div class="cta-txt rv">
     Let's<br>
-    <span class="cta-word" id="ctaWord">create</span><br>
-    together. <a href="mailto:nyinyisoewin@awakenentertainment.org" class="cta-arr">
-      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-        <path d="M5 17L17 5M17 5H5M17 5v12" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </a>
+    <span class="cta-mid" id="ctaW">create</span><br>
+    <div class="cta-row">
+      together.
+      <a href="mailto:nyinyisoewin@awakenentertainment.org" class="cta-arr">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M5 17L17 5M17 5H5M17 5v12" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="foot-grid">
+  <div class="fg">
     <div>
-      <p class="foot-col-h">About Us</p>
-      <div class="foot-links">
-        <a href="index.html">Home</a>
-        <a href="digital.html">Digital</a>
-        <a href="design.html">Design</a>
-        <a href="tech.html">Tech</a>
-        <a href="production.html">Production</a>
-      </div>
+      <p class="fh">About Us</p>
+      <div class="flinks"><a href="index.html">Home</a><a href="digital.html">Digital</a><a href="design.html">Design</a><a href="tech.html">Tech</a><a href="production.html">Production</a></div>
     </div>
     <div>
-      <p class="foot-col-h">Contact Info</p>
-      <div class="foot-links">
-        <a href="tel:+959255762417">+95 925 5762 417</a>
-        <a href="mailto:nyinyisoewin@awakenentertainment.org">nyinyisoewin@awakenentertainment.org</a>
-        <a href="#">Mayangone Tsp, Yangon</a>
-      </div>
+      <p class="fh">Contact Info</p>
+      <div class="flinks"><a href="tel:+959255762417">+95 925 5762 417</a><a href="mailto:nyinyisoewin@awakenentertainment.org">nyinyisoewin@awakenentertainment.org</a><a href="#">Mayangone Tsp, Yangon</a></div>
     </div>
     <div>
-      <p class="foot-col-h">Careers</p>
-      <div class="foot-links">
-        <a href="#">Join our team!</a>
-        <a href="#">Open positions</a>
-      </div>
+      <p class="fh">Careers</p>
+      <div class="flinks"><a href="#">Join our team!</a><a href="#">Open positions</a></div>
     </div>
   </div>
-  <div class="foot-bottom">
-    <span class="foot-copy">© 2025 Awaken Entertainment. All rights reserved.</span>
-    <span class="foot-logo">Awaken <em>Ent.</em></span>
+  <div class="fbot">
+    <span class="fcp">© 2025 Awaken Entertainment. All rights reserved.</span>
+    <span class="flogo">Awaken <span>Ent.</span></span>
   </div>
 </footer>
 
@@ -786,46 +533,47 @@ footer{
 // cursor
 const cur=document.getElementById('cur'),curR=document.getElementById('curR');
 let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{
-  mx=e.clientX;my=e.clientY;
-  cur.style.left=mx+'px';cur.style.top=my+'px';
-});
-(function raf(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;curR.style.left=rx+'px';curR.style.top=ry+'px';requestAnimationFrame(raf)})();
-document.querySelectorAll('a,button,.wcard,.icard,.badge').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{cur.classList.add('hv');curR.classList.add('hv')});
-  el.addEventListener('mouseleave',()=>{cur.classList.remove('hv');curR.classList.remove('hv')});
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
+(function r(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;curR.style.left=rx+'px';curR.style.top=ry+'px';requestAnimationFrame(r)})();
+document.querySelectorAll('a,button,.wc,.ic,.bdg').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.classList.add('on');curR.classList.add('on')});
+  el.addEventListener('mouseleave',()=>{cur.classList.remove('on');curR.classList.remove('on')});
 });
 
 // nav
 const nav=document.getElementById('nav');
-window.addEventListener('scroll',()=>nav.classList.toggle('solid',scrollY>60),{passive:true});
+window.addEventListener('scroll',()=>nav.classList.toggle('bg',scrollY>60),{passive:true});
+
+// hero bg swap on scroll
+const hero=document.querySelector('.hero');
+const bgs=[document.getElementById('hbg1'),document.getElementById('hbg2'),document.getElementById('hbg3')];
+let lastBg=0;
+window.addEventListener('scroll',()=>{
+  const p=scrollY/window.innerHeight;
+  let idx=p<0.3?0:p<0.6?1:2;
+  if(idx!==lastBg){bgs[lastBg].classList.remove('show');bgs[idx].classList.add('show');lastBg=idx;}
+},{passive:true});
 
 // scroll reveal
 const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.1});
 document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
 
-// how-cards
-const hobs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.08});
-document.querySelectorAll('.hcard').forEach(el=>hobs.observe(el));
+// how cards reveal
+const hobs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')}),{threshold:.08});
+document.querySelectorAll('.hc').forEach(el=>hobs.observe(el));
 
-// smooth scroll
-document.getElementById('heroDown').addEventListener('click',e=>{
-  e.preventDefault();document.getElementById('intro').scrollIntoView({behavior:'smooth'});
-});
+// hero down
+document.getElementById('hdown').addEventListener('click',e=>{e.preventDefault();document.getElementById('intro').scrollIntoView({behavior:'smooth'})});
 
 // CTA cycling word
-const words=['create','produce','tell','film','build','design'];
+const words=['create','produce','film','tell','build'];
 let wi=0;
-const ctaWord=document.getElementById('ctaWord');
+const cw=document.getElementById('ctaW');
+cw.style.transition='opacity .25s,transform .25s';
 setInterval(()=>{
-  ctaWord.style.opacity='0';ctaWord.style.transform='translateY(8px)';
-  setTimeout(()=>{
-    wi=(wi+1)%words.length;
-    ctaWord.textContent=words[wi];
-    ctaWord.style.opacity='1';ctaWord.style.transform='none';
-  },300);
-},2200);
-ctaWord.style.transition='opacity .3s,transform .3s';
+  cw.style.opacity='0';cw.style.transform='translateY(8px)';
+  setTimeout(()=>{wi=(wi+1)%words.length;cw.textContent=words[wi];cw.style.opacity='1';cw.style.transform='none'},280);
+},2400);
 </script>
 </body>
 </html>
