@@ -641,16 +641,18 @@ document.getElementById('hdown').addEventListener('click',e=>{e.preventDefault()
   const cards=[...document.querySelectorAll('.crd')];
   const N=cards.length;
 
-  // Large step offsets so fan spreads across hundreds of pixels like the reference
-  const STEP_X=65, STEP_Y=88;
+  // Reference: front card (i=0) is lower-left, back cards spread UPPER-RIGHT
+  // As scroll progresses, whole fan moves UP — front sweeps from below
+  const STEP_X=62, STEP_Y=84;
 
   function init(){
     cards.forEach((c,i)=>{
-      const sc=1-i*0.018;
-      // card 0 = front (lower-right), card N-1 = back (upper-left)
-      c.style.left=(-i*STEP_X)+'px';
+      const sc=1-i*0.016;
+      // i=0 front at 0,0 (lower-left anchor)
+      // i increases → cards go RIGHT (+X) and UP (-Y)
+      c.style.left=(i*STEP_X)+'px';
       c.style.top=(-i*STEP_Y)+'px';
-      c.style.transform='perspective(1100px) rotateY(-28deg) scale('+sc+')';
+      c.style.transform='perspective(1100px) rotateY(26deg) scale('+sc+')';
       c.style.zIndex=N-i;
     });
   }
@@ -666,13 +668,12 @@ document.getElementById('hdown').addEventListener('click',e=>{e.preventDefault()
     const vh=window.innerHeight;
     const rw=right.offsetWidth||vw*0.56;
 
-    // p=0: front card (i=0) sits at bottom-center of right panel
-    //       back cards extend far up-left off screen
-    // p=1: whole fan has moved up so front card exits above viewport
-    const sx = rw * 0.72;
-    const sy = vh * 0.72;
-    const ex = rw * 0.72 - (N*STEP_X*0.4);
-    const ey = -vh * 0.62;
+    // p=0: front card (i=0) is below viewport, back cards span up-right
+    // p=1: whole fan lifted so front card exits above viewport
+    const sx = rw * 0.08;          // horizontal: left side of right panel
+    const sy = vh * 1.1;           // start below viewport bottom
+    const ex = rw * 0.08;          // stay roughly same horizontal
+    const ey = -vh * 0.55;         // end above viewport
 
     const tx = sx+(ex-sx)*p;
     const ty = sy+(ey-sy)*p;
