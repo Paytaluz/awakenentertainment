@@ -208,21 +208,20 @@ nav{
 .svc-head{
   position:relative;z-index:2;
   display:grid;grid-template-columns:1fr 1fr;
-  padding:60px 24px 44px;
+  padding:56px 24px 44px;
   border-bottom:1px solid rgba(0,0,0,.08);
 }
-.svc-head-l{display:flex;flex-direction:column;justify-content:space-between}
-.svc-head-tag{font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(0,0,0,.28);margin-bottom:16px}
+.svc-head-l{display:flex;flex-direction:column;gap:10px}
+.svc-head-tag{font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(0,0,0,.28)}
 .svc-head-num{
-  font-size:clamp(48px,6vw,80px);
-  font-weight:900;letter-spacing:-.04em;color:rgba(0,0,0,.06);
-  line-height:1;margin-top:auto;
+  font-size:clamp(13px,1.1vw,15px);
+  font-weight:500;color:rgba(0,0,0,.55);line-height:1.5;
 }
-.svc-head-r{text-align:right;display:flex;flex-direction:column;align-items:flex-end;justify-content:flex-end}
-.svc-est{font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(0,0,0,.22);margin-bottom:12px}
+.svc-head-r{display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-end;gap:10px}
+.svc-est{font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(0,0,0,.22)}
 .svc-desc{
-  font-size:11px;color:rgba(0,0,0,.4);line-height:1.8;
-  max-width:340px;text-align:right;
+  font-size:12px;color:rgba(0,0,0,.42);line-height:1.82;
+  max-width:360px;text-align:right;
 }
 
 /* 4 cards */
@@ -452,7 +451,7 @@ footer{
 
 <!-- NAV -->
 <nav>
-  <a href="index.html" class="nav-logo">Awaken<span>Entertainment</span></a>
+  <a href="index.html" class="nav-logo">Awaken <span>Entertainment</span></a>
   <div class="nav-mid">
     <div class="nav-col">
       <p>Visual storytelling studio.</p>
@@ -475,16 +474,16 @@ footer{
 
 <!-- SUBNAV -->
 <div class="subnav">
-  <div class="sn-item act" onclick="scrollTo('#projects')">Brand Direction</div>
-  <div class="sn-mid">Performance Marketing</div>
-  <div class="sn-item" onclick="scrollTo('#tech')">Advanced Tech</div>
+  <a class="sn-item act" href="#projects">Our Work</a>
+  <div class="sn-mid">Film · Post · Strategy</div>
+  <a class="sn-item" href="#tech">Contact</a>
 </div>
 
 <!-- HERO -->
 <div class="hero" id="top">
   <div class="hero-bg"></div>
   <div class="hero-panel"></div>
-  <p class="hero-eye">Selected Projects — 2013 / 2024</p>
+  <p class="hero-eye">Selected Work — 2013 – 2024</p>
   <div class="hero-txt">
     <h1 class="hero-h">Awaken<br>Entertainment<br>Projects.</h1>
   </div>
@@ -546,37 +545,37 @@ footer{
   </div>
   <div class="svc-head rv">
     <div class="svc-head-l">
-      <p class="svc-head-tag">Our Services</p>
-      <p class="svc-head-num">04</p>
+      <p class="svc-head-tag">What We Do</p>
+      <p class="svc-head-num">Four core disciplines.<br>One unified studio.</p>
     </div>
     <div class="svc-head-r">
-      <p class="svc-est">Est. 2013 — Yangon, Myanmar</p>
-      <p class="svc-desc">Every project we take on is a collaboration. We read the brief, understand the brand, identify where storytelling drives results — then we build the team to make it happen. We don't add noise. We bring direction.</p>
+      <p class="svc-est">Established 2013 — Yangon, Myanmar</p>
+      <p class="svc-desc">Every project begins with a conversation. We listen to the brief, understand the brand, and build the right team around your story. From a single TVC to a full campaign — we bring clarity, craft and intention to every frame.</p>
     </div>
   </div>
   <div class="svc-cards">
     <div class="sc rv d1" data-svc="0">
       <div class="sc-tag">(01) <span>→</span></div>
-      <h3 class="sc-ttl">Brand<br>Direction</h3>
+      <h3 class="sc-ttl">Creative<br>Direction</h3>
       <div class="sc-list">Concept Development<br>Creative Strategy<br>Art Direction<br>Storyboarding<br>Script Writing<br>Visual Identity</div>
       <span class="sc-arr">↗</span>
     </div>
     <div class="sc rv d2" data-svc="1">
       <div class="sc-tag">(02) <span>→</span></div>
-      <h3 class="sc-ttl">Production</h3>
+      <h3 class="sc-ttl">Film<br>Production</h3>
       <div class="sc-list">Cinematography<br>Location Scouting<br>Casting &amp; Talent<br>Set Design<br>Equipment &amp; Crew<br>On-set Direction</div>
       <span class="sc-arr">↗</span>
     </div>
     <div class="sc rv d3" data-svc="2">
       <div class="sc-tag">(03) <span>→</span></div>
       <h3 class="sc-ttl">Post<br>Production</h3>
-      <div class="sc-list">Editing<br>Color Grading<br>Sound Design<br>Motion Graphics<br>VFX Compositing<br>Deliverable Mastering</div>
+      <div class="sc-list">Editing<br>Colour Grading<br>Sound Design<br>Motion Graphics<br>VFX &amp; Compositing<br>Deliverable Mastering</div>
       <span class="sc-arr">↗</span>
     </div>
     <div class="sc rv d4" data-svc="3">
       <div class="sc-tag">(04) <span>→</span></div>
-      <h3 class="sc-ttl">Content<br>Strategy</h3>
-      <div class="sc-list">Social Content<br>Campaign Planning<br>Platform Formats<br>Deliverable Packages<br>Usage Licensing<br>Performance Tracking</div>
+      <h3 class="sc-ttl">Campaign<br>Strategy</h3>
+      <div class="sc-list">Social Content<br>Campaign Planning<br>Platform Formats<br>Content Packages<br>Usage Licensing<br>Distribution Strategy</div>
       <span class="sc-arr">↗</span>
     </div>
   </div>
@@ -584,12 +583,12 @@ footer{
 
 <!-- MANIFESTO -->
 <div class="manifesto" id="manifesto">
-  <p class="manifesto-tag rv">— Philosophy</p>
+  <p class="manifesto-tag rv">— Our Belief</p>
   <h2 class="manifesto-h rv d1">
     Storytelling is connection.<br>
     <em>We bridge the gap between</em><br>
-    <em>raw vision and finished film</em><br>
-    <em>to turn ideas into impact.</em>
+    <em>raw vision and finished film,</em><br>
+    <em>turning ideas into impact.</em>
   </h2>
 </div>
 
@@ -598,9 +597,9 @@ footer{
   <div class="reel-bar">
     <span class="reel-tc" id="reelTc">00:00:00:00</span>
     <div class="reel-meta">
-      <span>dk.024ps</span>
+      <span>AWAKEN_REEL_2024</span>
       <span>1920 × 1080</span>
-      <span>23.976 fps</span>
+      <span>24 fps</span>
     </div>
   </div>
   <div class="reel-stage">
@@ -617,7 +616,7 @@ footer{
       <svg width="8" height="10" viewBox="0 0 8 10" fill="none"><path d="M1 1l6 4L1 9V1z" fill="currentColor"/></svg>
       Play Showreel
     </div>
-    <span class="reel-file">MKV2024_SHOWREEL.MP4</span>
+    <span class="reel-file">AWAKEN_SHOWREEL_2024.MP4</span>
   </div>
   <div class="reel-strip">
     <div class="reel-th"></div>
@@ -634,12 +633,12 @@ footer{
   <div class="ed-cell">
     <div class="ed-bg"></div>
     <div class="ed-dim"></div>
-    <p class="ed-cap"><strong>On Location</strong>Myanmar, 2024 — Behind the lens</p>
+    <p class="ed-cap"><strong>On Location</strong>Myanmar, 2024 — Behind the lens with a full crew in the field.</p>
   </div>
   <div class="ed-cell">
     <div class="ed-bg"></div>
     <div class="ed-dim"></div>
-    <p class="ed-cap"><strong>Post Production</strong>Colour grading session — Yangon studio</p>
+    <p class="ed-cap"><strong>Post Production</strong>Colour grading session at our Yangon studio.</p>
   </div>
 </div>
 
@@ -647,8 +646,8 @@ footer{
 <div class="contact" id="tech">
   <div class="contact-bg"></div>
   <div class="contact-main">
-    <p class="contact-tag rv">Get in touch</p>
-    <p class="contact-h rv d1">Let's make an impact together.</p>
+    <p class="contact-tag rv">Start a conversation</p>
+    <p class="contact-h rv d1">Let's make something great together.</p>
     <a href="mailto:hello@awakenentertainment.org" class="contact-email rv d2">hello@awakenentertainment.org</a>
   </div>
   <footer>
@@ -679,7 +678,7 @@ footer{
       <button class="fg-btn">Subscribe →</button>
     </div>
     <div class="fg">
-      <p class="fg-lbl">(+4) Follow</p>
+      <p class="fg-lbl">(+4) Social</p>
       <div class="fg-social">
         <a href="#">Instagram</a>
         <a href="#">Facebook</a>
