@@ -1,133 +1,134 @@
 <!DOCTYPE html>
-<html lang='en'>
+<html lang="en">
 <head>
-	<title>BECOZIC/ABOUT US</title>
+	<title>About Us | Becozinc</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width,initial-scale=1" />
-	<meta name="keywords" content="" />
-	<meta name="description" content="" />
-	<link rel="shortcut icon" href="images/favicon.ico" />
-	<link rel="apple-touch-icon" href="images/favicon.ico" />
+	<meta name="description" content="About Becozinc — Zinc and B-Complex fortified with Vitamin C, formulated by Dr. Reddy's for everyday immunity support in Myanmar." />
+	<link rel="icon" href="images/favicon.svg" type="image/svg+xml" />
 	<link rel="stylesheet" href="css/reset.css" />
 	<link rel="stylesheet" href="css/base.css" />
 	<link rel="stylesheet" href="css/style.css" />
-	<script src="js/html5.js" type="text/javascript"></script>
-	<script src="js/jquery-3.3.1.min.js" type="text/javascript"></script>
-	<script src="js/common.js" type="text/javascript"></script>
-	<script>
-$(document).ready(function(){
-  // Add smooth scrolling to all links
-  $("a").on('click', function(event) {
-
-    // Make sure this.hash has a value before overriding default behavior
-    if (this.hash !== "") {
-      // Prevent default anchor click behavior
-      event.preventDefault();
-
-      // Store hash
-      var hash = this.hash;
-
-      // Using jQuery's animate() method to add smooth page scroll
-      // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
-      $('html, body').animate({
-        scrollTop: $(hash).offset().top
-      }, 800, function(){
-   
-        // Add hash (#) to URL when done scrolling (default click behavior)
-        window.location.hash = hash;
-      });
-    } // End if
-  });
-});
-</script>
-<script type="text/javascript">
-
-$(document).ready(function(){
-	fullscreen();
-$(window).resize(fullscreen);
-
-function fullscreen() {
-	var masthead = $('.masthead');
-	var windowH = $(window).height();
-	var windowW = $(window).width();
-
-	masthead.width(windowW);
-	masthead.height(windowH);
-}
-	});
-	
-
-</script>
-	
 </head>
-<body id="index">
-<div id="wrapper">
-	<header id="home" class="masthead">
-		<div class="header-in">
-			<h1 class="logo"><a href="./">BECOZINC</a></h1>
-			<div class="gNav pc">
+<body>
+
+<header class="topbar">
+	<div class="topbar-in">
+		<nav class="topnav">
+			<a href="index.html">Home</a>
+			<a href="index.html#product">Product</a>
+			<a href="about.html">About Us</a>
+			<a href="contact.html">Contact</a>
+		</nav>
+		<a href="index.html" class="brandmark"><span>:</span>Becozinc</a>
+		<div class="topbar-right">
+			<a href="contact.html">Contact</a>
+			<span class="divider">|</span>
+			<a href="contact.html" class="btn-square">Where to Buy</a>
+		</div>
+		<button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+	</div>
+	<div class="mobile-nav">
+		<a href="index.html">Home</a>
+		<a href="index.html#product">Product</a>
+		<a href="about.html">About Us</a>
+		<a href="contact.html">Contact</a>
+	</div>
+</header>
+
+<section class="hero hero--sub" style="background-image:url('images/img04.png')">
+	<div class="hero-overlay"></div>
+	<div class="hero-copy">
+		<p class="eyebrow">About Us</p>
+		<h1 class="hero-title" style="font-size:clamp(2.2rem,6vw,3.6rem);">Everyday Immunity, Made Simple</h1>
+	</div>
+</section>
+<div class="breadcrumb">Home <span>/</span> About Us</div>
+
+<section class="intro">
+	<div class="intro-media">
+		<img src="images/img05.png" alt="A moment from daily life in Myanmar" />
+	</div>
+	<div class="intro-copy">
+		<p class="eyebrow">Our Story</p>
+		<h2>Rooted in Myanmar, Made for Every Family</h2>
+		<p>Becozinc was brought to Myanmar to make everyday immune support simple — a single daily capsule combining Zinc, the Vitamin B-Complex and Vitamin C, formulated by Dr. Reddy's.</p>
+		<p>From busy households in Yangon to families across the country, Becozinc is designed to fit naturally into daily life, not to complicate it.</p>
+	</div>
+</section>
+
+<section class="section section-dim">
+	<div class="wrap">
+		<p class="eyebrow">What We Believe</p>
+		<h2 style="margin-top:14px;">Our Values</h2>
+		<div class="values-grid">
+			<div>
+				<p class="value-num">no. 01</p>
+				<h3>Simplicity</h3>
+				<p>One capsule, seven essential nutrients — no complicated routine to keep up with.</p>
+			</div>
+			<div>
+				<p class="value-num">no. 02</p>
+				<h3>Family First</h3>
+				<p>Formulated to support the wellness of every generation in the household.</p>
+			</div>
+			<div>
+				<p class="value-num">no. 03</p>
+				<h3>Everyday Immunity</h3>
+				<p>Zinc and Vitamin C, taken consistently, to help support the body's natural defenses.</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="connect" style="background-image:url('images/banner.jpg')">
+	<div class="connect-overlay"></div>
+	<div class="connect-copy">
+		<p class="eyebrow">Find Becozinc</p>
+		<h2>Available Near You</h2>
+		<p>Reach out to our team for the nearest pharmacy or shop stocking Becozinc.</p>
+		<a href="contact.html" class="btn-square">Get in Touch</a>
+	</div>
+</section>
+
+<footer class="site-footer">
+	<div class="footer-top">
+		<div class="footer-brand">
+			<a href="index.html" class="brandmark"><span>:</span>Becozinc</a>
+			<p>Zinc, B-Complex &amp; Vitamin C — everyday immunity support for the whole family.</p>
+		</div>
+		<div class="footer-nav">
+			<div>
+				<h4>Product</h4>
 				<ul>
-					<li><a href="./">HOME</a></li>
-	    			<li><a href="#product">PRODUCT</a></li>
-					<li><a href="about.html">ABOUT US</a></li>
+					<li><a href="index.html#ingredients">Ingredients</a></li>
+					<li><a href="index.html#benefits">Benefits</a></li>
+					<li><a href="index.html#faq">FAQ</a></li>
 				</ul>
-				<div class="h-utility"><a href="#" class="contact-btn"> contact us</a></div>
 			</div>
-
-		</div><!-- header-in -->
-		<div class="main-visual">
-		<p class="visual-txt">The Zign Power Of</p>
-		<p class="main-logo">Becozinc</p>
-		<p class="explanation">Zinc and B-complex Fortified with Vitamin C</p>
-		<!-- <div class="play">
-			<div class="play-btn"><a href="#">btn</a></div>
-			<p class="play-txt">WATCH TRAILER</p>
-		</div> -->
-	</div><!--main-visual-->
-		<div class="menu sp">
-			<img src="images/up_arw.png"  class="arrow-up" alt="arrow up">
-        	<img src="images/menu.png" class="arrow-down" alt="arrow down">
-		</div><!--menu-->
-		<div class="hd-rimg"></div>
-	</header><!-- header -->
-	<ul class="sp-nav sp">
-		<li><a href="./">HOME</a></li>
-	    <li><a href="#">PRODUCT</a></li>
-		<li><a href="#">ABOUT US</a></li>
-	</ul><!--sp_nav-->
-
-	<div id="content">
-		
-	</div><!-- content -->
-		<footer>
-			<div class="ftr-in">
-				<p class="ftr-txt">Admiration we surrounded possession frequently 
-Remarkably did increasing occasional too its 
-difficulty far especially. You day real less till dear 
-read. Considered use dispatched.</p>
-				<div class="ftr-nav">
-					<ul>
-						<li>COMPANY</li>
-						<li><a href="#home">Home</a></li>
-					</ul>
-					<ul>
-						<li>INPORTANT</li>
-						<li><a href="#about">ABOUT</a></li>
-						<li><a href="#">SERVICES</a></li>
-						<li><a href="#">TESTMONIALS</a></li>
-					</ul>
-					<ul>
-						<li>CONTACT</li>
-						<li>phone: +95-450-4322</li>
-						<li><a href="#">Email: info@becozinc.com</a></li>
-						<li><a href="#">YGN, Myanmar</a></li>
-					</ul>
-				</div>
+			<div>
+				<h4>Company</h4>
+				<ul>
+					<li><a href="about.html">About Us</a></li>
+					<li><a href="contact.html">Contact</a></li>
+				</ul>
 			</div>
-		</footer>
-	</div><!-- content -->
+			<div>
+				<h4>Contact</h4>
+				<ul>
+					<li>+95-450-4322</li>
+					<li><a href="mailto:info@becozinc.com">info@becozinc.com</a></li>
+					<li>YGN, Myanmar</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="footer-bottom">
+		<span>&copy; 2026 Becozinc. All rights reserved.</span>
+		<span>Manufactured by Dr. Reddy's</span>
+	</div>
+</footer>
 
-</div><!-- wrapper -->
-
+<script src="js/common.js"></script>
 </body>
 </html>
