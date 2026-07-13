@@ -1,5 +1,20 @@
 @charset "UTF-8";
 
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Jost:wght@300;400;500;600&display=swap');
+
+:root {
+	--cream: #f4ede0;
+	--cream-dim: #ece3d2;
+	--charcoal: #1c1815;
+	--charcoal-soft: #2a2420;
+	--brick: #c63a26;
+	--brick-dark: #a72e1c;
+	--ink: #221d19;
+	--ink-soft: rgba(34, 29, 25, 0.68);
+	--paper: rgba(244, 237, 224, 0.82);
+	--serif: 'Playfair Display', 'Georgia', serif;
+	--sans: 'Jost', 'Helvetica Neue', Arial, sans-serif;
+}
 
 *, *:before, *:after {
 	margin: 0;
@@ -14,44 +29,79 @@
 	outline: none;
 }
 
+html { scroll-behavior: smooth; }
+
 body {
-	height: 100%;
-    width: 100%;
-    font-family: verdana, sans-serif;
-	font-size: 0.875rem;
+	width: 100%;
+	font-family: var(--sans);
+	font-size: 0.95rem;
 	font-weight: 300;
-	color: #222;
-	letter-spacing: 2px;
-	line-height: 1.3rem;
-	
+	color: var(--ink);
+	letter-spacing: 0.03em;
+	line-height: 1.7;
+	background: var(--cream);
 }
 
-img { max-width: 100%; }
+img { max-width: 100%; display: block; }
+
+a { color: inherit; }
+
+h1, h2, h3, h4 { font-family: var(--serif); font-weight: 600; letter-spacing: 0.02em; }
+
+.eyebrow {
+	font-family: var(--sans);
+	font-size: 0.72rem;
+	letter-spacing: 0.35em;
+	text-transform: uppercase;
+}
+
+.wrap {
+	max-width: 1180px;
+	margin: 0 auto;
+	padding: 0 40px;
+}
 
 /* float */
 .flL { float: left; }
-
 .flR { float: right; }
-
 .floatNone { float: none; }
-
 .txtCenter { text-align: center; }
-
 
 /* margin */
 .mgT0 { margin-top: 0 !important; }
-
 .mgT50 { margin-top: 50px !important; }
-
 .mgB0 { margin-bottom: 0 !important; }
-
 .mgL0 { margin-left: 0 !important; }
-
 .mgL50 { margin-left: 50px !important; }
+.mgR0 { margin-right: 0 !important; }
 
-.mgR0 {margin-right:0 !important; }
+.btn-square {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	background: var(--brick);
+	color: var(--cream);
+	font-family: var(--sans);
+	font-size: 0.72rem;
+	letter-spacing: 0.2em;
+	text-transform: uppercase;
+	padding: 12px 22px;
+	transition: background 0.25s ease;
+}
 
+.btn-square:hover { background: var(--brick-dark); }
 
+.btn-arrow {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 42px;
+	height: 42px;
+	background: var(--brick);
+	color: var(--cream);
+	font-size: 1.1rem;
+	flex-shrink: 0;
+	transition: background 0.25s ease;
+}
 
-
-
+.btn-arrow:hover { background: var(--brick-dark); }
