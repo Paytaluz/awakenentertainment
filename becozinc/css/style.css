@@ -219,13 +219,16 @@
 
 .intro-media { position: relative; }
 
-.intro-media img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.45) sepia(0.12) contrast(1.05) brightness(0.94); }
+.intro-media > img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.45) sepia(0.12) contrast(1.05) brightness(0.94); }
 
-.intro-thumb {
+.intro-media .intro-thumb {
 	position: absolute;
 	top: -40px;
 	right: -40px;
 	width: 140px;
+	height: auto;
+	object-fit: initial;
+	filter: none;
 	border: 6px solid var(--cream);
 	box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
 }
