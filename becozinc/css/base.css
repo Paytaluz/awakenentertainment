@@ -105,3 +105,41 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 600; letter-spacing: 0.
 }
 
 .btn-arrow:hover { background: var(--brick-dark); }
+
+/* ===== scroll reveal ===== */
+.reveal {
+	opacity: 0;
+	transform: translateY(48px);
+	transition: opacity 0.9s cubic-bezier(0.16, 0.84, 0.44, 1), transform 0.9s cubic-bezier(0.16, 0.84, 0.44, 1);
+}
+
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+.reveal-fade { transform: none; }
+
+.reveal-d1 { transition-delay: 0.08s; }
+.reveal-d2 { transition-delay: 0.16s; }
+.reveal-d3 { transition-delay: 0.24s; }
+.reveal-d4 { transition-delay: 0.32s; }
+.reveal-d5 { transition-delay: 0.4s; }
+.reveal-d6 { transition-delay: 0.48s; }
+.reveal-d7 { transition-delay: 0.56s; }
+
+@media (prefers-reduced-motion: reduce) {
+	.reveal { opacity: 1; transform: none; transition: none; }
+	.parallax-layer { transform: none !important; }
+}
+
+/* ===== parallax media layer ===== */
+.media-frame { position: relative; overflow: hidden; }
+
+.parallax-layer {
+	position: absolute;
+	top: -12%;
+	left: 0;
+	right: 0;
+	height: 124%;
+	background-size: cover;
+	background-position: center;
+	will-change: transform;
+}
