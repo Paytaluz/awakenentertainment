@@ -110,16 +110,6 @@
 	background: linear-gradient(180deg, rgba(20, 16, 13, 0.55) 0%, rgba(20, 16, 13, 0.35) 40%, rgba(20, 16, 13, 0.82) 100%);
 }
 
-/* modifier for artwork that already carries its own text/focal point low in frame:
-   push the nav + title up top instead of overlapping it */
-.hero--top { align-items: flex-start; min-height: 92vh; }
-
-.hero--top .parallax-layer { top: 0; height: 100%; transform: none !important; }
-
-.hero--top .hero-overlay {
-	background: linear-gradient(180deg, rgba(20, 16, 13, 0.78) 0%, rgba(20, 16, 13, 0.4) 32%, rgba(20, 16, 13, 0.1) 60%, rgba(20, 16, 13, 0) 100%);
-}
-
 .hero--top .hero-side { top: 120px; bottom: auto; }
 
 .hero--top .hero-copy { padding: 150px 24px 0; }
