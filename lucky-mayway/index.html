@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lucky Ma-Yway — Every Pack, a Lucky Moment</title>
+<meta name="description" content="Lucky Ma-Yway — Myanmar's crispy roasted rice cracker snack. Every pack, a Lucky Moment.">
+<link rel="icon" href="images/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --yellow:#ffc72c;--yellow-deep:#f7a800;--red:#d2232a;--cream:#fff8e6;
+    --brown:#5c3a21;--text:#2a1c10;--text-soft:#7a6852;
+  }
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',system-ui,sans-serif;color:var(--text);background:var(--cream);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  h1,h2,h3,.font-display{font-family:'Fredoka',system-ui,sans-serif}
+  a{text-decoration:none;color:inherit}
+  img{max-width:100%;display:block}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 1.5rem}
+
+  /* Nav */
+  .nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0.85rem 1.75rem;background:rgba(255,248,230,0.85);backdrop-filter:blur(10px);border-bottom:1px solid rgba(92,58,33,0.08)}
+  .nav img{height:34px;border-radius:6px}
+  .nav-links{display:flex;gap:2rem}
+  .nav-links a{font-size:13px;font-weight:600;color:var(--brown);opacity:0.75;transition:opacity .2s}
+  .nav-links a:hover{opacity:1}
+  @media(max-width:640px){.nav-links{display:none}}
+
+  /* Hero */
+  .hero{position:relative;padding:7.5rem 1.5rem 4rem;overflow:hidden}
+  .hero::before{content:"";position:absolute;top:-120px;right:-120px;width:420px;height:420px;background:radial-gradient(circle,var(--yellow) 0%,rgba(255,199,44,0) 70%);z-index:0}
+  .hero-grid{position:relative;z-index:1;max-width:1120px;margin:0 auto;display:grid;grid-template-columns:1.1fr 0.9fr;gap:3rem;align-items:center}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--red);background:rgba(210,35,42,0.08);padding:6px 14px;border-radius:99px;margin-bottom:1.25rem}
+  .hero h1{font-size:clamp(2.4rem,5vw,4rem);font-weight:700;line-height:1.05;color:var(--brown);margin-bottom:1.25rem}
+  .hero h1 span{color:var(--red)}
+  .hero p.lead{font-size:1.05rem;line-height:1.7;color:var(--text-soft);max-width:480px;margin-bottom:2rem}
+  .btn-row{display:flex;gap:1rem;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 30px;border-radius:99px;font-weight:700;font-size:14px;transition:transform .25s,box-shadow .25s}
+  .btn-primary{background:var(--red);color:#fff;box-shadow:0 10px 24px -8px rgba(210,35,42,0.55)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 28px -8px rgba(210,35,42,0.6)}
+  .btn-ghost{background:#fff;color:var(--brown);border:1.5px solid rgba(92,58,33,0.15)}
+  .btn-ghost:hover{border-color:var(--brown)}
+  .hero-art{position:relative;display:flex;justify-content:center}
+  .hero-art img{width:min(100%,360px);border-radius:28px;box-shadow:0 30px 60px -20px rgba(92,58,33,0.35)}
+  .hero-badge{position:absolute;bottom:-18px;left:-10px;background:#fff;border-radius:16px;padding:10px 16px;box-shadow:0 12px 30px -10px rgba(92,58,33,0.35);font-size:12px;font-weight:700;color:var(--brown);display:flex;align-items:center;gap:8px}
+  .hero-badge .dot{width:8px;height:8px;border-radius:50%;background:var(--red)}
+  @media(max-width:860px){.hero-grid{grid-template-columns:1fr;text-align:center}.hero p.lead{margin-left:auto;margin-right:auto}.btn-row{justify-content:center}.hero-art{order:-1;margin-bottom:1rem}}
+
+  /* Section shared */
+  section{padding:5rem 0}
+  .section-head{text-align:center;max-width:640px;margin:0 auto 3rem}
+  .section-head .eyebrow{background:rgba(92,58,33,0.06);color:var(--brown)}
+  .section-head h2{font-size:clamp(1.8rem,3.4vw,2.6rem);color:var(--brown);margin-bottom:0.75rem}
+  .section-head p{color:var(--text-soft);font-size:1rem;line-height:1.7}
+
+  /* Story */
+  .story{background:#fff}
+  .story-grid{display:grid;grid-template-columns:0.85fr 1.15fr;gap:3.5rem;align-items:center}
+  .story-grid img{border-radius:24px;box-shadow:0 24px 50px -20px rgba(92,58,33,0.3)}
+  .story-copy .eyebrow{background:rgba(210,35,42,0.08);color:var(--red)}
+  .story-copy h2{font-size:clamp(1.7rem,3vw,2.3rem);color:var(--brown);margin-bottom:1rem;line-height:1.2}
+  .story-copy p{color:var(--text-soft);line-height:1.8;margin-bottom:1rem;font-size:1.02rem}
+  @media(max-width:860px){.story-grid{grid-template-columns:1fr}.story-grid img{max-width:320px;margin:0 auto}}
+
+  /* Pillars */
+  .pillars-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.75rem}
+  .pillar{background:#fff;border-radius:24px;padding:2.25rem 1.75rem;text-align:center;box-shadow:0 16px 40px -24px rgba(92,58,33,0.35);transition:transform .3s}
+  .pillar:hover{transform:translateY(-6px)}
+  .pillar .icon{width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:26px;margin:0 auto 1.25rem;background:linear-gradient(135deg,var(--yellow),var(--yellow-deep))}
+  .pillar h3{font-size:1.2rem;color:var(--brown);margin-bottom:0.6rem}
+  .pillar p{color:var(--text-soft);font-size:0.95rem;line-height:1.65}
+  @media(max-width:760px){.pillars-grid{grid-template-columns:1fr}}
+
+  /* Product */
+  .product{background:linear-gradient(180deg,#fff 0%,var(--cream) 100%)}
+  .product-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem}
+  .product-card{background:#fff;border-radius:24px;overflow:hidden;box-shadow:0 16px 40px -24px rgba(92,58,33,0.35)}
+  .product-card .shot{background:var(--cream);display:flex;align-items:center;justify-content:center;padding:2rem}
+  .product-card .shot img{width:auto;height:240px;object-fit:contain}
+  .product-card .info{padding:1.5rem 1.75rem 2rem}
+  .product-card h3{color:var(--brown);font-size:1.3rem;margin-bottom:0.35rem}
+  .product-card .weight{display:inline-block;font-size:12px;font-weight:700;color:var(--red);background:rgba(210,35,42,0.08);padding:4px 12px;border-radius:99px;margin-bottom:0.75rem}
+  .product-card p{color:var(--text-soft);font-size:0.95rem;line-height:1.6}
+  @media(max-width:760px){.product-grid{grid-template-columns:1fr}}
+
+  /* Generations */
+  .generations{background:var(--brown);color:#fff}
+  .generations .section-head h2,.generations .section-head p{color:#fff}
+  .generations .section-head p{opacity:0.75}
+  .generations .eyebrow{background:rgba(255,255,255,0.12);color:var(--yellow)}
+  .gen-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+  .gen-card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:1.75rem 1.5rem}
+  .gen-card .tag{font-size:12px;font-weight:700;color:var(--yellow);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:0.6rem}
+  .gen-card h3{font-size:1.1rem;margin-bottom:0.5rem}
+  .gen-card p{font-size:0.9rem;line-height:1.6;opacity:0.75}
+  @media(max-width:860px){.gen-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:500px){.gen-grid{grid-template-columns:1fr}}
+
+  /* Community */
+  .community{text-align:center;background:#fff}
+  .hashtag{font-family:'Fredoka';font-size:clamp(2rem,5vw,3.2rem);color:var(--red);margin-bottom:1rem}
+  .community p{color:var(--text-soft);max-width:520px;margin:0 auto 2.25rem;line-height:1.7}
+  .platform-row{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap}
+  .platform{display:flex;align-items:center;gap:8px;padding:12px 22px;border-radius:99px;background:var(--cream);font-weight:700;font-size:13px;color:var(--brown);border:1px solid rgba(92,58,33,0.1)}
+
+  /* Footer */
+  footer{background:var(--brown);color:rgba(255,255,255,0.7);padding:3rem 1.5rem 2rem;text-align:center}
+  footer img{height:30px;margin:0 auto 1rem;filter:brightness(0) invert(1);opacity:0.9}
+  footer .tag{font-size:0.85rem;margin-bottom:1.5rem;opacity:0.7}
+  footer .fine{font-size:0.75rem;opacity:0.5}
+</style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="#top"><img src="images/logo.png" alt="Lucky logo"></a>
+    <div class="nav-links">
+      <a href="#story">Our Story</a>
+      <a href="#product">Product</a>
+      <a href="#moments">Lucky Moments</a>
+      <a href="#community">Community</a>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow">Myanmar's Ma-Yway Snack</span>
+        <h1>Every Pack,<br>a <span>Lucky</span> Moment.</h1>
+        <p class="lead">Lucky Ma-Yway is the crispy, golden roasted rice cracker snack that turns ordinary Myanmar moments into something special — made for every age, shared in every corner of the country.</p>
+        <div class="btn-row">
+          <a href="#product" class="btn btn-primary">See the Pack</a>
+          <a href="#story" class="btn btn-ghost">Our Story</a>
+        </div>
+      </div>
+      <div class="hero-art">
+        <img src="images/hero.jpg" alt="Lucky Ma-Yway snack pack">
+        <div class="hero-badge"><span class="dot"></span>Freshly Roasted, Always Crispy</div>
+      </div>
+    </div>
+  </header>
+
+  <section class="story" id="story">
+    <div class="wrap story-grid">
+      <img src="images/wheat.jpg" alt="Golden grain used in Lucky Ma-Yway">
+      <div class="story-copy">
+        <span class="eyebrow">Who We Are</span>
+        <h2>A Snack Myanmar Has Always Loved</h2>
+        <p>Ma-Yway — the roasted rice cracker snack — has been part of Myanmar snacking culture for generations. It's the treat shared at school, at work, around the family table, and with grandparents telling stories.</p>
+        <p>Lucky brings that beloved snack into every generation's hands with a golden crunch, honest ingredients, and a promise: every pack opens a little burst of joy.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="pillars" id="moments">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">The Lucky Moments Philosophy</span>
+        <h2>Feel It. Share It. See It Everywhere.</h2>
+        <p>Three simple ideas guide everything Lucky does — from the pack in your hand to the moments you share it in.</p>
+      </div>
+      <div class="pillars-grid">
+        <div class="pillar">
+          <div class="icon">💛</div>
+          <h3>Feel Lucky</h3>
+          <p>Warm, familiar, and comforting — the taste that brings a little joy to an ordinary day, for every generation.</p>
+        </div>
+        <div class="pillar">
+          <div class="icon">🤝</div>
+          <h3>Share Lucky</h3>
+          <p>Made to pass around. A pack of Lucky turns a quiet moment into a shared one — with friends, family, or strangers who become friends.</p>
+        </div>
+        <div class="pillar">
+          <div class="icon">✨</div>
+          <h3>See Lucky Everywhere</h3>
+          <p>From the corner shop shelf to the family table — Lucky Ma-Yway is becoming a familiar, trusted face across Myanmar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="product" id="product">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">The Pack</span>
+        <h2>Two Sizes, One Golden Crunch</h2>
+        <p>Whichever size you reach for, every pack delivers the same crispy, roasted flavor Myanmar has loved for years.</p>
+      </div>
+      <div class="product-grid">
+        <div class="product-card">
+          <div class="shot"><img src="images/pack-family.jpg" alt="Lucky Ma-Yway family pack, net weight 336g"></div>
+          <div class="info">
+            <span class="weight">Net Weight ±336g</span>
+            <h3>Family Pack</h3>
+            <p>The share-size pack for the whole household — perfect for family time, gatherings, and guests who always ask for more.</p>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="shot"><img src="images/pack-single.jpg" alt="Lucky Ma-Yway single pack, net weight 28g"></div>
+          <div class="info">
+            <span class="weight">Net Weight ±28g</span>
+            <h3>Snack Pack</h3>
+            <p>Grab-and-go crunch for school bags, desks, and pockets — a quick Lucky Moment wherever the day takes you.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="generations">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Made For Everyone</span>
+        <h2>One Snack, Every Generation</h2>
+        <p>Ma-Yway is loved across every age group in Myanmar — Lucky is made to be part of all of their moments.</p>
+      </div>
+      <div class="gen-grid">
+        <div class="gen-card">
+          <div class="tag">Students</div>
+          <h3>After the Bell</h3>
+          <p>The after-school treat shared between classes and study sessions.</p>
+        </div>
+        <div class="gen-card">
+          <div class="tag">Young Adults</div>
+          <h3>At Work & Out</h3>
+          <p>Snacked on at the office, on commutes, and at weekend hangouts.</p>
+        </div>
+        <div class="gen-card">
+          <div class="tag">Families</div>
+          <h3>Around the Table</h3>
+          <p>The pack that comes out when the whole household is together.</p>
+        </div>
+        <div class="gen-card">
+          <div class="tag">Elders</div>
+          <h3>A Taste of Home</h3>
+          <p>The familiar, comforting crunch that's been loved for years.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="community" id="community">
+    <div class="wrap">
+      <span class="eyebrow" style="background:rgba(210,35,42,0.08);color:var(--red)">Join In</span>
+      <div class="hashtag">#LuckyMoment</div>
+      <p>Every pack is a chance for a Lucky Moment worth sharing. Show us yours — we're bringing Lucky Ma-Yway to the platforms Myanmar spends its day on.</p>
+      <div class="platform-row">
+        <span class="platform">🎵 TikTok</span>
+        <span class="platform">📘 Facebook</span>
+        <span class="platform">▶️ YouTube</span>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <img src="images/logo.png" alt="Lucky">
+    <p class="tag">Every Pack, a Lucky Moment. Made in Myanmar.</p>
+    <p class="fine">© 2026 Lucky Ma-Yway. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
