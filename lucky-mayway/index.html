@@ -109,8 +109,12 @@
 
   /* Footer */
   footer{background:var(--brown);color:rgba(255,255,255,0.7);padding:3rem 1.5rem 2rem;text-align:center}
-  footer img{height:30px;margin:0 auto 1rem;filter:brightness(0) invert(1);opacity:0.9}
-  footer .tag{font-size:0.85rem;margin-bottom:1.5rem;opacity:0.7}
+  footer .brand-mark{height:44px;margin:0 auto 1.25rem;border-radius:8px}
+  footer .tag{font-size:0.85rem;margin-bottom:1.75rem;opacity:0.7}
+  .footer-credit{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);padding:6px 20px 6px 6px;border-radius:99px;margin-bottom:1.75rem}
+  .footer-credit img{height:36px;width:36px;border-radius:50%;margin:0}
+  .footer-credit span{font-size:0.78rem;font-weight:600;color:rgba(255,255,255,0.85);text-align:left;line-height:1.3}
+  .footer-credit span small{display:block;font-size:0.68rem;font-weight:500;opacity:0.65;text-transform:uppercase;letter-spacing:0.06em}
   footer .fine{font-size:0.75rem;opacity:0.5}
 </style>
 </head>
@@ -257,8 +261,12 @@
   </section>
 
   <footer>
-    <img src="images/logo.png" alt="Lucky">
+    <img class="brand-mark" src="images/logo.png" alt="Lucky">
     <p class="tag">Every Pack, a Lucky Moment. Made in Myanmar.</p>
+    <div class="footer-credit">
+      <img src="images/manufacturer-logo.png" alt="Two Birds Manufacturing Co., Ltd logo">
+      <span><small>Manufactured by</small>Two Birds Manufacturing Co., Ltd</span>
+    </div>
     <p class="fine">© 2026 Lucky Ma-Yway. All rights reserved.</p>
   </footer>
 
