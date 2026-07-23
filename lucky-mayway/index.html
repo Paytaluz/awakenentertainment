@@ -10,6 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700;800&family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
+  @font-face{font-family:'Noto Sans Myanmar';font-style:normal;font-weight:500 700;font-display:swap;src:url('fonts/NotoSansMyanmar.woff2') format('woff2');unicode-range:U+1000-109F,U+200C-200D,U+25CC,U+A92E,U+A9E0-A9FE,U+AA60-AA7F,U+116D0-116E3}
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   :root{
     --yellow:#ffc72c;--yellow-deep:#f7a800;--red:#d2232a;--red-deep:#a91820;--cream:#fff8e6;
@@ -18,6 +19,7 @@
   html{scroll-behavior:smooth}
   body{font-family:'Inter',system-ui,sans-serif;color:var(--text);background:var(--brown-deep);-webkit-font-smoothing:antialiased;overflow-x:hidden}
   h1,h2,h3,.font-display{font-family:'Fredoka',system-ui,sans-serif}
+  .mm{font-family:'Noto Sans Myanmar','Fredoka',sans-serif}
   a{text-decoration:none;color:inherit}
   img{max-width:100%;display:block}
   .wrap{max-width:1120px;margin:0 auto;padding:0 1.5rem;position:relative}
@@ -123,6 +125,23 @@
   .story-copy h2{font-size:clamp(1.8rem,3.1vw,2.4rem);color:var(--brown);margin-bottom:1.1rem;line-height:1.2}
   .story-copy p{color:var(--text-soft);line-height:1.85;margin-bottom:1.1rem;font-size:1.03rem}
   @media(max-width:860px){.story-grid{grid-template-columns:1fr}.story-media{max-width:320px;margin:0 auto 1rem}}
+
+  /* Feature row */
+  .feature-row{display:flex;flex-wrap:wrap;gap:0.65rem;margin-top:1.5rem}
+  .feature{display:inline-flex;align-items:center;gap:7px;font-size:0.82rem;font-weight:700;color:var(--brown);background:var(--cream);border:1px solid rgba(92,58,33,0.1);padding:8px 14px;border-radius:99px}
+  .feature svg{width:16px;height:16px;flex-shrink:0}
+
+  /* Traditional process strip */
+  .process-strip{margin-top:4.5rem;padding-top:3rem;border-top:1px dashed rgba(92,58,33,0.15)}
+  .process-label{text-align:center;font-family:'Fredoka';font-weight:600;font-size:1.15rem;color:var(--brown);margin-bottom:2rem}
+  .process-track{display:grid;grid-template-columns:repeat(6,1fr);gap:1rem}
+  .process-step{position:relative;background:var(--cream);border-radius:18px;padding:1.35rem 1.15rem;transition:transform .3s,box-shadow .3s}
+  .process-step:hover{transform:translateY(-4px);box-shadow:0 14px 26px -18px rgba(92,58,33,0.5)}
+  .process-step .pn{display:flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:var(--red);color:#fff;font-family:'Fredoka';font-weight:700;font-size:0.8rem;margin-bottom:0.75rem}
+  .process-step p{font-size:0.83rem;line-height:1.55;color:var(--text-soft);margin:0}
+  .process-step:not(:last-child)::after{content:"";position:absolute;top:14px;right:-0.6rem;width:8px;height:8px;border-top:2px solid rgba(92,58,33,0.2);border-right:2px solid rgba(92,58,33,0.2);transform:rotate(45deg)}
+  @media(max-width:960px){.process-track{grid-template-columns:repeat(3,1fr)}.process-step:nth-child(3)::after{display:none}}
+  @media(max-width:640px){.process-track{grid-template-columns:1fr 1fr;gap:0.75rem}.process-step{padding:1rem}.process-step::after{display:none}}
 
   /* Pillars */
   .pillars-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.75rem;position:relative;z-index:1}
@@ -302,13 +321,32 @@
   <section class="panel panel-white" id="story">
     <div class="wrap story-grid">
       <div class="story-media reveal">
-        <img src="images/wheat.jpg" alt="Golden grain used in Lucky Ma-Yway">
+        <img src="images/ma-yway-detail.jpg" alt="Ma-Yway: puffed glutinous rice and palm sugar">
       </div>
       <div class="story-copy reveal reveal-d1">
         <span class="eyebrow">Who We Are</span>
         <h2>A Snack Myanmar Has Always Loved</h2>
-        <p>Ma-Yway — the roasted rice cracker snack — has been part of Myanmar snacking culture for generations. It's the treat shared at school, at work, around the family table, and with grandparents telling stories.</p>
-        <p>Lucky brings that beloved snack into every generation's hands with a golden crunch, honest ingredients, and a promise: every pack opens a little burst of joy.</p>
+        <p><strong>Ma-Yway (<span class="mm">မရွေး</span>)</strong> — sometimes called <strong>Ma-Yway-gyi</strong> in some regions — is a traditional Myanmar snack made from puffed glutinous rice and palm sugar. For generations it's been sold at rural markets and pagoda festivals across the country, a familiar treat at every stop.</p>
+        <p>Sweet, crispy, and unmistakably nostalgic, it's a snack that crosses every generation — the treat schoolkids grab on the way home, and the one grandparents still remember from their own childhood.</p>
+        <p>Lucky brings that same handmade heritage into every pack — golden crunch, honest ingredients, and a promise: every pack opens a little burst of joy.</p>
+        <div class="feature-row">
+          <span class="feature"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7.5-4.9-10-9.3C.4 8.1 2 4.5 5.6 4c2-.3 3.9.6 5 2.2C11.7 4.6 13.6 3.7 15.6 4c3.6.5 5.2 4.1 3.6 7.7C16.7 16.1 12 21 12 21z" fill="var(--red)"/></svg>Sweet & Crispy</span>
+          <span class="feature"><svg viewBox="0 0 24 24" fill="none"><circle cx="8.5" cy="8" r="2.6" fill="var(--yellow-deep)"/><circle cx="16" cy="8" r="2.6" fill="var(--yellow-deep)"/><path d="M2.5 19c.6-3 2.7-5 6-5s5.4 2 6 5M12.5 19c.5-2.6 2.3-4.4 5.2-4.4s4.7 1.8 5.2 4.4" stroke="var(--yellow-deep)" stroke-width="1.6" stroke-linecap="round"/></svg>Loved by All Generations</span>
+          <span class="feature"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2l2.5 3.5H9.5L12 2z" fill="var(--brown)"/><path d="M5 8h14v2H5zM6 10v9h3v-6h6v6h3v-9" stroke="var(--brown)" stroke-width="1.5" fill="none" stroke-linejoin="round"/><path d="M4 19h16v2H4z" fill="var(--brown)"/></svg>A Taste of Tradition</span>
+          <span class="feature"><svg viewBox="0 0 24 24" fill="none"><path d="M4 13c0-6 4-10 10-10 1 6-2 12-8 12H4v-2z" fill="#5c8a3a"/><path d="M4 21c2-5 5-8 10-10" stroke="#3f6528" stroke-width="1.4" stroke-linecap="round"/></svg>Simple, Natural Ingredients</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrap process-strip reveal reveal-d2">
+      <p class="process-label">The Traditional Making Process</p>
+      <div class="process-track">
+        <div class="process-step"><span class="pn">1</span><p>Steamed glutinous rice is pounded into a soft paste.</p></div>
+        <div class="process-step"><span class="pn">2</span><p>The paste is spread on a mat and strewn with bran.</p></div>
+        <div class="process-step"><span class="pn">3</span><p>Cut into small, flat pieces — about an inch each.</p></div>
+        <div class="process-step"><span class="pn">4</span><p>Dried under the sun for about half a day.</p></div>
+        <div class="process-step"><span class="pn">5</span><p>Roasted until golden, light, and perfectly puffed.</p></div>
+        <div class="process-step"><span class="pn">6</span><p>Finished with palm sugar syrup, kept warm and ready.</p></div>
       </div>
     </div>
   </section>
