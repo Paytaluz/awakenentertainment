@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Two Birds Manufacturing Co., Ltd. — Est. 1997, Myanmar</title>
+<meta name="description" content="Two Birds Manufacturing Co., Ltd. — the Myanmar manufacturer behind Ximi, Kido, Ki Ki, and Lucky. Est. 1997, Yangon & Mandalay.">
+<link rel="icon" href="images/two-birds-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --gold:#c9962a;--gold-deep:#a97a1a;--navy:#1f2a52;--navy-deep:#141b38;
+    --red:#d81f26;--cream:#faf6ea;--text:#211d17;--text-soft:#6c6455;--border:rgba(31,42,82,0.1);
+  }
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',system-ui,sans-serif;color:var(--text);background:var(--cream);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  h1,h2,h3,.font-display{font-family:'Poppins',system-ui,sans-serif}
+  a{text-decoration:none;color:inherit}
+  img{max-width:100%;display:block}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 1.5rem;position:relative}
+  ::selection{background:var(--gold);color:#fff}
+
+  .progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--red));z-index:200;width:0%;transition:width .1s linear}
+
+  /* Nav */
+  .nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.75rem;background:transparent;transition:background .35s,padding .35s,box-shadow .35s}
+  .nav.is-scrolled{background:rgba(250,246,234,0.92);backdrop-filter:blur(12px);padding:0.75rem 1.75rem;box-shadow:0 6px 24px -12px rgba(20,27,56,0.2)}
+  .nav .brand{display:flex;align-items:center;gap:10px}
+  .nav img{height:38px}
+  .nav .brand-name{font-family:'Poppins';font-weight:700;font-size:14px;color:var(--navy);letter-spacing:0.01em}
+  .nav-links{display:flex;gap:2.25rem}
+  .nav-links a{position:relative;font-size:13px;font-weight:600;color:var(--navy);opacity:0.65;transition:opacity .2s;padding-bottom:4px}
+  .nav-links a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--gold-deep);transition:width .25s}
+  .nav-links a:hover,.nav-links a.active{opacity:1}
+  .nav-links a.active::after{width:100%}
+  @media(max-width:700px){.nav-links{display:none}}
+
+  /* Hero */
+  .hero{position:relative;padding:9rem 1.5rem 5rem;overflow:hidden;background:radial-gradient(120% 90% at 12% -10%,#fbecc8 0%,var(--cream) 55%,var(--cream) 100%);min-height:88vh;display:flex;align-items:center}
+  .hero-blob{position:absolute;border-radius:50%;filter:blur(50px);z-index:0}
+  .hero-blob.b1{width:460px;height:460px;top:-160px;right:-140px;background:radial-gradient(circle,rgba(201,150,42,0.35) 0%,rgba(201,150,42,0) 70%)}
+  .hero-blob.b2{width:340px;height:340px;bottom:-140px;left:-100px;background:radial-gradient(circle,rgba(216,31,38,0.14) 0%,rgba(216,31,38,0) 70%)}
+  .hero-grid{position:relative;z-index:2;max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1.05fr 0.95fr;gap:3.5rem;align-items:center;width:100%}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--red);background:rgba(216,31,38,0.08);padding:6px 14px;border-radius:99px;margin-bottom:1.4rem}
+  .eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--red)}
+  .hero h1{font-size:clamp(2.2rem,4.6vw,3.6rem);font-weight:700;line-height:1.08;color:var(--navy);margin-bottom:1.4rem;letter-spacing:-0.01em}
+  .hero h1 span{color:var(--gold-deep)}
+  .hero p.lead{font-size:1.06rem;line-height:1.75;color:var(--text-soft);max-width:490px;margin-bottom:2.25rem}
+  .btn-row{display:flex;gap:1rem;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:15px 30px;border-radius:10px;font-weight:700;font-size:14px;transition:transform .25s,box-shadow .25s}
+  .btn-primary{background:var(--navy);color:#fff;box-shadow:0 12px 26px -8px rgba(31,42,82,0.5)}
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 18px 32px -8px rgba(31,42,82,0.55)}
+  .btn-ghost{background:#fff;color:var(--navy);border:1.5px solid var(--border)}
+  .btn-ghost:hover{border-color:var(--navy);transform:translateY(-3px)}
+
+  /* Hero brand cluster */
+  .brand-cluster{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+  .cluster-tile{background:#fff;border-radius:22px;box-shadow:0 20px 44px -22px rgba(31,42,82,0.35);display:flex;align-items:center;justify-content:center;padding:1.75rem;aspect-ratio:1.15/1;transition:transform .3s,box-shadow .3s}
+  .cluster-tile:hover{transform:translateY(-6px);box-shadow:0 28px 50px -18px rgba(31,42,82,0.4)}
+  .cluster-tile img{max-height:64px;width:auto;object-fit:contain}
+  .cluster-tile.kiki{background:linear-gradient(135deg,#ffe8ee,#ffd3e0)}
+  .cluster-tile.kiki .kiki-word{font-family:'Poppins';font-weight:800;font-size:2rem;color:#d81f6b;letter-spacing:-0.01em}
+  .cluster-badge{position:absolute;bottom:-16px;left:50%;transform:translateX(-50%);background:var(--navy);color:#fff;font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:9px 20px;border-radius:99px;box-shadow:0 14px 30px -12px rgba(31,42,82,0.5);white-space:nowrap;z-index:3}
+  @media(max-width:860px){.hero-grid{grid-template-columns:1fr;text-align:center}.hero p.lead{margin-left:auto;margin-right:auto}.btn-row{justify-content:center}.brand-cluster{order:-1;margin-bottom:2rem;max-width:420px;margin-left:auto;margin-right:auto}}
+
+  .scroll-cue{position:absolute;bottom:1.75rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-soft);z-index:2}
+  .scroll-cue .chevron{width:9px;height:9px;border-right:2px solid var(--text-soft);border-bottom:2px solid var(--text-soft);transform:rotate(45deg);animation:cue 1.6s ease-in-out infinite}
+  @keyframes cue{0%,100%{opacity:0.3;transform:rotate(45deg) translate(0,0)}50%{opacity:1;transform:rotate(45deg) translate(4px,4px)}}
+
+  /* Panels */
+  .panel{position:relative;z-index:1;border-radius:44px 44px 0 0;padding:6.5rem 0 5.5rem;margin-top:-40px}
+  .panel:nth-of-type(1){z-index:2}
+  .panel:nth-of-type(2){z-index:3}
+  .panel:nth-of-type(3){z-index:4}
+  .panel:nth-of-type(4){z-index:5}
+  .panel-white{background:#fff}
+  .panel-cream{background:var(--cream)}
+  .panel-navy{background:var(--navy);color:#fff}
+
+  .section-head{text-align:center;max-width:660px;margin:0 auto 3.25rem;position:relative;z-index:1}
+  .section-head .eyebrow{background:rgba(31,42,82,0.06);color:var(--navy)}
+  .section-head h2{font-size:clamp(1.9rem,3.6vw,2.6rem);color:var(--navy);margin-bottom:0.85rem;letter-spacing:-0.01em}
+  .section-head p{color:var(--text-soft);font-size:1rem;line-height:1.7}
+
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.22,.68,0,1.01),transform .7s cubic-bezier(.22,.68,0,1.01)}
+  .reveal.is-visible{opacity:1;transform:translateY(0)}
+  .reveal-d1{transition-delay:.1s}
+  .reveal-d2{transition-delay:.2s}
+  .reveal-d3{transition-delay:.3s}
+  .reveal-d4{transition-delay:.4s}
+
+  /* About */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center;margin-bottom:4rem}
+  .about-copy h2{font-size:clamp(1.8rem,3.1vw,2.3rem);color:var(--navy);margin-bottom:1.1rem;line-height:1.2}
+  .about-copy p{color:var(--text-soft);line-height:1.85;margin-bottom:1.1rem;font-size:1.02rem}
+  .about-visual{background:linear-gradient(160deg,var(--navy),var(--navy-deep));border-radius:28px;padding:3rem 2rem;display:flex;align-items:center;justify-content:center;box-shadow:0 30px 60px -24px rgba(31,42,82,0.5)}
+  .about-visual img{width:min(100%,220px)}
+  @media(max-width:860px){.about-grid{grid-template-columns:1fr}}
+
+  .facts-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+  .fact{text-align:center;background:var(--cream);border-radius:20px;padding:1.75rem 1rem;border:1px solid var(--border)}
+  .fact .num{font-family:'Poppins';font-weight:800;font-size:2rem;color:var(--navy);margin-bottom:0.35rem}
+  .fact .label{font-size:0.82rem;font-weight:600;color:var(--text-soft)}
+  @media(max-width:760px){.facts-row{grid-template-columns:1fr 1fr}}
+
+  /* Locations */
+  .loc-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.75rem}
+  .loc-card{background:#fff;border-radius:24px;padding:2.25rem;box-shadow:0 16px 40px -26px rgba(31,42,82,0.4)}
+  .loc-card .tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--red);background:rgba(216,31,38,0.08);padding:5px 12px;border-radius:99px;margin-bottom:1rem}
+  .loc-card h3{font-size:1.35rem;color:var(--navy);margin-bottom:0.6rem}
+  .loc-card p{color:var(--text-soft);line-height:1.7;font-size:0.96rem}
+  @media(max-width:760px){.loc-grid{grid-template-columns:1fr}}
+
+  /* Products */
+  .product-block{display:grid;grid-template-columns:0.9fr 1.1fr;gap:3rem;align-items:center;padding:3.5rem 0;border-bottom:1px solid var(--border)}
+  .product-block:last-child{border-bottom:none;padding-bottom:0}
+  .product-block:nth-child(even) .product-visual{order:2}
+  .product-visual{background:var(--cream);border-radius:26px;padding:3rem;display:flex;align-items:center;justify-content:center;min-height:220px}
+  .product-visual img{max-height:120px;width:auto;object-fit:contain}
+  .product-visual.ph{background:linear-gradient(135deg,#ffe8ee,#ffd3e0)}
+  .product-visual.ph .kiki-word{font-family:'Poppins';font-weight:800;font-size:3.2rem;color:#d81f6b}
+  .product-visual.lucky-visual{background:#fff8e6;padding:1.5rem}
+  .product-visual.lucky-visual img{max-height:220px}
+  .product-copy .ptag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--gold-deep);background:rgba(201,150,42,0.12);padding:5px 12px;border-radius:99px;margin-bottom:1rem}
+  .product-copy h3{font-size:1.6rem;color:var(--navy);margin-bottom:0.75rem}
+  .product-copy p{color:var(--text-soft);line-height:1.8;font-size:1rem;margin-bottom:1rem}
+  .flavor-row{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1.25rem}
+  .flavor{font-size:0.78rem;font-weight:700;color:var(--navy);background:var(--cream);border:1px solid var(--border);padding:5px 12px;border-radius:99px}
+  .product-copy .btn{margin-top:0.25rem}
+  @media(max-width:820px){.product-block{grid-template-columns:1fr;padding:2.5rem 0}.product-block:nth-child(even) .product-visual{order:0}}
+
+  /* Contact / Footer */
+  footer{position:relative;z-index:7;background:var(--navy-deep);color:rgba(255,255,255,0.75);padding:4.5rem 1.5rem 2rem;border-radius:44px 44px 0 0;margin-top:-40px}
+  .footer-grid{display:grid;grid-template-columns:1.1fr 0.9fr 0.9fr;gap:3rem;margin-bottom:3rem}
+  .footer-brand img{height:40px;margin-bottom:1rem}
+  .footer-brand p{font-size:0.88rem;line-height:1.7;opacity:0.65;max-width:320px}
+  .footer-col h4{color:#fff;font-size:0.85rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:1.1rem;opacity:0.9}
+  .footer-col p,.footer-col a{display:block;font-size:0.9rem;line-height:1.8;opacity:0.65;margin-bottom:0.4rem}
+  .footer-col a:hover{opacity:1}
+  .footer-bottom{border-top:1px solid rgba(255,255,255,0.1);padding-top:1.75rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;font-size:0.78rem;opacity:0.5}
+  @media(max-width:820px){.footer-grid{grid-template-columns:1fr;gap:2.25rem}}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important;animation-iteration-count:1 !important;transition-duration:0.001ms !important;scroll-behavior:auto !important}
+  }
+</style>
+</head>
+<body>
+
+  <div class="progress" id="progress"></div>
+
+  <nav class="nav" id="nav">
+    <a href="#top" class="brand">
+      <img src="images/two-birds-logo.png" alt="Two Birds Manufacturing Co., Ltd. logo">
+      <span class="brand-name">TWO BIRDS<br>MANUFACTURING</span>
+    </a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#locations">Locations</a>
+      <a href="#products">Our Brands</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="hero-blob b1"></div>
+    <div class="hero-blob b2"></div>
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow">Est. 1997 · Yangon, Myanmar</span>
+        <h1 class="reveal is-visible">Manufacturing Myanmar's <span>Favorite Everyday Treats</span></h1>
+        <p class="lead reveal is-visible reveal-d1">Two Birds Manufacturing Co., Ltd. is the company behind four of Myanmar's most familiar snack and candy brands — made daily across our Yangon and Mandalay facilities.</p>
+        <div class="btn-row reveal is-visible reveal-d2">
+          <a href="#products" class="btn btn-primary">Explore Our Brands</a>
+          <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+        </div>
+      </div>
+      <div class="brand-cluster reveal is-visible reveal-d1">
+        <div class="cluster-tile"><img src="images/ximi-logo.png" alt="Ximi logo"></div>
+        <div class="cluster-tile"><img src="images/kido-logo.png" alt="Kido logo"></div>
+        <div class="cluster-tile kiki"><span class="kiki-word">Ki Ki</span></div>
+        <div class="cluster-tile"><img src="images/lucky-logo.png" alt="Lucky logo"></div>
+        <span class="cluster-badge">4 Brands, One Family</span>
+      </div>
+    </div>
+    <div class="scroll-cue"><span>Scroll</span><span class="chevron"></span></div>
+  </header>
+
+  <section class="panel panel-white" id="about">
+    <div class="wrap">
+      <div class="about-grid">
+        <div class="about-copy reveal">
+          <span class="eyebrow" style="background:rgba(31,42,82,0.06);color:var(--navy)">Who We Are</span>
+          <h2>A Family of Brands, Built Since 1997</h2>
+          <p>For more than 25 years, Two Birds Manufacturing has been producing the candies and snacks found in corner shops, school bags, and family homes across Myanmar.</p>
+          <p>What began as a single candy line has grown into a portfolio of four trusted brands — Ximi, Kido, Ki Ki, and Lucky — each made with the same commitment to quality and consistency that's kept us in business for over two decades.</p>
+          <p>Today, our products are manufactured across two facilities — Yangon and Mandalay — and distributed to shops and households nationwide.</p>
+        </div>
+        <div class="about-visual reveal reveal-d1">
+          <img src="images/two-birds-logo.png" alt="Two Birds Manufacturing Co., Ltd. logo">
+        </div>
+      </div>
+      <div class="facts-row reveal reveal-d2">
+        <div class="fact"><div class="num">1997</div><div class="label">Established</div></div>
+        <div class="fact"><div class="num">2</div><div class="label">Manufacturing Facilities</div></div>
+        <div class="fact"><div class="num">4</div><div class="label">Household Brands</div></div>
+        <div class="fact"><div class="num">100%</div><div class="label">Made in Myanmar</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel panel-cream" id="locations">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Where We Are</span>
+        <h2>Two Facilities, Nationwide Reach</h2>
+        <p>Our products are manufactured across two production facilities in Myanmar's two largest cities.</p>
+      </div>
+      <div class="loc-grid">
+        <div class="loc-card reveal reveal-d1">
+          <span class="tag">Yangon</span>
+          <h3>Yangon Factory</h3>
+          <p>470/471, Myawaddy Min Gyi Road<br>Shwe Linban Industrial Zone<br>Hlaing Thar Yar Township, Yangon Region</p>
+        </div>
+        <div class="loc-card reveal reveal-d2">
+          <span class="tag">Mandalay</span>
+          <h3>Mandalay Factory</h3>
+          <p>A-13/14, 59th Street, Corner of 107th Street<br>Kan Thayar Myo Thit<br>Chan Mya Tharsi Township, Mandalay Region</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel panel-white" id="products">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Our Brands</span>
+        <h2>Four Brands, One Standard of Quality</h2>
+        <p>From fruity jelly snacks to traditional heritage treats, every Two Birds brand is made to be part of everyday life in Myanmar.</p>
+      </div>
+
+      <div class="product-block reveal reveal-d1">
+        <div class="product-visual"><img src="images/ximi-logo.png" alt="Ximi logo"></div>
+        <div class="product-copy">
+          <span class="ptag">Jelly Snack</span>
+          <h3>Ximi</h3>
+          <p>A colorful, fruity jelly snack popular with younger consumers across Myanmar — light, chewy, and made for sharing.</p>
+          <div class="flavor-row">
+            <span class="flavor">Strawberry</span>
+            <span class="flavor">Lychee</span>
+            <span class="flavor">Passionfruit</span>
+            <span class="flavor">Apple</span>
+            <span class="flavor">Grape</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-block reveal reveal-d1">
+        <div class="product-visual"><img src="images/kido-logo.png" alt="Kido logo"></div>
+        <div class="product-copy">
+          <span class="ptag">Candy</span>
+          <h3>Kido</h3>
+          <p>One of Two Birds' longest-running candy lines, Kido spans a wide range of formats — crispy peanut candy, fruity milk balls, lollipops, and assorted fruit candy — found on shelves nationwide.</p>
+          <div class="flavor-row">
+            <span class="flavor">Crispy Peanut Candy</span>
+            <span class="flavor">Fruity Milk Ball</span>
+            <span class="flavor">Lollipop Candy</span>
+            <span class="flavor">Assorted Fruit Candy</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-block reveal reveal-d1">
+        <div class="product-visual ph"><span class="kiki-word">Ki Ki</span></div>
+        <div class="product-copy">
+          <span class="ptag">Candy</span>
+          <h3>Ki Ki</h3>
+          <p>A companion candy line alongside Kido, Ki Ki carries the same everyday-treat spirit onto shop shelves across Myanmar.</p>
+        </div>
+      </div>
+
+      <div class="product-block reveal reveal-d1">
+        <div class="product-visual lucky-visual"><img src="images/lucky-pack.jpg" alt="Lucky Ma-Yway pack"></div>
+        <div class="product-copy">
+          <span class="ptag">Traditional Snack — Ma-Yway</span>
+          <h3>Lucky</h3>
+          <p>Lucky brings Myanmar's beloved roasted rice cracker snack, Ma-Yway, to a new generation — sold in family and snack-size packs nationwide. Every pack, a Lucky Moment.</p>
+          <a href="../lucky-mayway/" class="btn btn-primary">Visit the Lucky Ma-Yway Site</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-brand reveal">
+          <img src="images/two-birds-logo.png" alt="Two Birds Manufacturing Co., Ltd. logo" style="border-radius:10px">
+          <p>Two Birds Manufacturing Co., Ltd. — manufacturing Myanmar's favorite everyday treats since 1997.</p>
+        </div>
+        <div class="footer-col reveal reveal-d1">
+          <h4>Get in Touch</h4>
+          <a href="mailto:twobirdscandy@gmail.com">twobirdscandy@gmail.com</a>
+          <a href="tel:+95948001662">Hotline: 09 448 001 662</a>
+          <a href="https://www.facebook.com/twobirdsmyanmar/" target="_blank" rel="noopener">Facebook</a>
+        </div>
+        <div class="footer-col reveal reveal-d2">
+          <h4>Our Brands</h4>
+          <p>Ximi · Kido · Ki Ki</p>
+          <a href="../lucky-mayway/">Lucky Ma-Yway →</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Two Birds Manufacturing Co., Ltd. All rights reserved.</span>
+        <span>Yangon &amp; Mandalay, Myanmar</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    var progress = document.getElementById('progress');
+    function updateProgress(){
+      var h = document.documentElement;
+      var pct = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+      progress.style.width = pct + '%';
+    }
+    document.addEventListener('scroll', updateProgress, {passive:true});
+    updateProgress();
+
+    var nav = document.getElementById('nav');
+    function updateNav(){ nav.classList.toggle('is-scrolled', window.scrollY > 40); }
+    document.addEventListener('scroll', updateNav, {passive:true});
+    updateNav();
+
+    var navLinks = document.querySelectorAll('.nav-links a');
+    var sections = Array.prototype.map.call(navLinks, function(a){ return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
+    function updateSpy(){
+      var pos = window.scrollY + window.innerHeight * 0.35;
+      var current = sections[0];
+      sections.forEach(function(s){ if (s.offsetTop <= pos) current = s; });
+      navLinks.forEach(function(a){ a.classList.toggle('active', document.querySelector(a.getAttribute('href')) === current); });
+    }
+    document.addEventListener('scroll', updateSpy, {passive:true});
+    updateSpy();
+
+    var revealEls = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if (entry.isIntersecting) { entry.target.classList.add('is-visible'); io.unobserve(entry.target); }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+      revealEls.forEach(function(el){ io.observe(el); });
+    } else {
+      revealEls.forEach(function(el){ el.classList.add('is-visible'); });
+    }
+  </script>
+
+</body>
+</html>
