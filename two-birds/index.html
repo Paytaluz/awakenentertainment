@@ -23,7 +23,30 @@
   .wrap{max-width:1160px;margin:0 auto;padding:0 1.5rem;position:relative}
   ::selection{background:var(--gold);color:#fff}
 
+  /* Custom cursor */
+  .has-cursor,.has-cursor *{cursor:none !important}
+  .cursor-dot,.cursor-ring{position:fixed;top:0;left:0;pointer-events:none;z-index:300;border-radius:50%;transform:translate(-50%,-50%);will-change:transform}
+  .cursor-dot{width:8px;height:8px;background:var(--red);transition:background .2s,transform .15s}
+  .cursor-ring{width:38px;height:38px;border:1.5px solid rgba(31,42,82,0.45);transition:width .25s,height .25s,border-color .25s,background .25s}
+  .cursor-ring.is-active{width:66px;height:66px;background:rgba(201,150,42,0.1);border-color:var(--gold-deep)}
+  .cursor-dot.is-active{transform:translate(-50%,-50%) scale(0)}
+  @media(hover:none),(pointer:coarse){.cursor-dot,.cursor-ring{display:none !important}.has-cursor{cursor:auto !important}}
+
+  /* Grain */
+  .grain{position:fixed;inset:0;z-index:250;pointer-events:none;opacity:0.03;mix-blend-mode:overlay;background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/></filter><rect width="100%25" height="100%25" filter="url(%23n)"/></svg>')}
+
   .progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--red));z-index:200;width:0%;transition:width .1s linear}
+
+  /* Buttons */
+  .magnetic{transition:transform .18s cubic-bezier(.2,.8,.2,1),box-shadow .25s}
+  .btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:8px;padding:15px 30px;border-radius:10px;font-weight:700;font-size:14px;transition:transform .25s,box-shadow .25s}
+  .btn-primary{background:var(--navy);color:#fff;box-shadow:0 12px 26px -8px rgba(31,42,82,0.5)}
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 18px 32px -8px rgba(31,42,82,0.55)}
+  .btn-ghost{background:#fff;color:var(--navy);border:1.5px solid var(--border)}
+  .btn-ghost:hover{border-color:var(--navy);transform:translateY(-3px)}
+  .btn-ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,0.5);transform:scale(0);animation:ripple-anim .6s ease-out forwards;pointer-events:none}
+  .btn-ghost .btn-ripple{background:rgba(31,42,82,0.15)}
+  @keyframes ripple-anim{to{transform:scale(3);opacity:0}}
 
   /* Nav */
   .nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.75rem;background:transparent;transition:background .35s,padding .35s,box-shadow .35s}
@@ -39,10 +62,14 @@
   @media(max-width:700px){.nav-links{display:none}}
 
   /* Hero */
-  .hero{position:relative;padding:9rem 1.5rem 5rem;overflow:hidden;background:radial-gradient(120% 90% at 12% -10%,#fbecc8 0%,var(--cream) 55%,var(--cream) 100%);min-height:88vh;display:flex;align-items:center}
+  .hero{position:relative;padding:9rem 1.5rem 4rem;overflow:hidden;background:radial-gradient(120% 90% at 12% -10%,#fbecc8 0%,var(--cream) 55%,var(--cream) 100%);min-height:88vh;display:flex;align-items:center}
   .hero-blob{position:absolute;border-radius:50%;filter:blur(50px);z-index:0}
   .hero-blob.b1{width:460px;height:460px;top:-160px;right:-140px;background:radial-gradient(circle,rgba(201,150,42,0.35) 0%,rgba(201,150,42,0) 70%)}
   .hero-blob.b2{width:340px;height:340px;bottom:-140px;left:-100px;background:radial-gradient(circle,rgba(216,31,38,0.14) 0%,rgba(216,31,38,0) 70%)}
+  .scatter{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+  .scatter span{position:absolute;font-size:1.3rem;opacity:0.25;color:var(--gold-deep);animation:float 7s ease-in-out infinite}
+  .scatter span:nth-child(2n){animation-duration:9s;color:var(--red)}
+  @keyframes float{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-16px) rotate(10deg)}}
   .hero-grid{position:relative;z-index:2;max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1.05fr 0.95fr;gap:3.5rem;align-items:center;width:100%}
   .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--red);background:rgba(216,31,38,0.08);padding:6px 14px;border-radius:99px;margin-bottom:1.4rem}
   .eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--red)}
@@ -50,25 +77,32 @@
   .hero h1 span{color:var(--gold-deep)}
   .hero p.lead{font-size:1.06rem;line-height:1.75;color:var(--text-soft);max-width:490px;margin-bottom:2.25rem}
   .btn-row{display:flex;gap:1rem;flex-wrap:wrap}
-  .btn{display:inline-flex;align-items:center;gap:8px;padding:15px 30px;border-radius:10px;font-weight:700;font-size:14px;transition:transform .25s,box-shadow .25s}
-  .btn-primary{background:var(--navy);color:#fff;box-shadow:0 12px 26px -8px rgba(31,42,82,0.5)}
-  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 18px 32px -8px rgba(31,42,82,0.55)}
-  .btn-ghost{background:#fff;color:var(--navy);border:1.5px solid var(--border)}
-  .btn-ghost:hover{border-color:var(--navy);transform:translateY(-3px)}
 
-  /* Hero brand cluster */
+  /* Hero brand cluster + seal */
   .brand-cluster{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
-  .cluster-tile{background:#fff;border-radius:22px;box-shadow:0 20px 44px -22px rgba(31,42,82,0.35);display:flex;align-items:center;justify-content:center;padding:1.75rem;aspect-ratio:1.15/1;transition:transform .3s,box-shadow .3s}
-  .cluster-tile:hover{transform:translateY(-6px);box-shadow:0 28px 50px -18px rgba(31,42,82,0.4)}
-  .cluster-tile img{max-height:64px;width:auto;object-fit:contain}
-  .cluster-tile.kiki{background:linear-gradient(135deg,#ffe8ee,#ffd3e0)}
-  .cluster-tile.kiki .kiki-word{font-family:'Poppins';font-weight:800;font-size:2rem;color:#d81f6b;letter-spacing:-0.01em}
+  .cluster-tile{--rx:0deg;--ry:0deg;position:relative;background:#fff;border-radius:22px;box-shadow:0 20px 44px -22px rgba(31,42,82,0.35);display:flex;align-items:center;justify-content:center;padding:1.75rem;aspect-ratio:1.15/1;transform:perspective(800px) rotateX(var(--rx)) rotateY(var(--ry));transition:transform .15s ease-out,box-shadow .3s}
+  .cluster-tile:hover{box-shadow:0 28px 50px -18px rgba(31,42,82,0.4)}
+  .cluster-tile img{max-height:64px;width:auto;object-fit:contain;position:relative;z-index:1}
+  .cluster-tile.kiki{padding:1.25rem}
+  .cluster-tile.kiki img{max-height:80px}
   .cluster-badge{position:absolute;bottom:-16px;left:50%;transform:translateX(-50%);background:var(--navy);color:#fff;font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:9px 20px;border-radius:99px;box-shadow:0 14px 30px -12px rgba(31,42,82,0.5);white-space:nowrap;z-index:3}
-  @media(max-width:860px){.hero-grid{grid-template-columns:1fr;text-align:center}.hero p.lead{margin-left:auto;margin-right:auto}.btn-row{justify-content:center}.brand-cluster{order:-1;margin-bottom:2rem;max-width:420px;margin-left:auto;margin-right:auto}}
+  .seal{position:absolute;top:-42px;right:-42px;width:104px;height:104px;z-index:4;animation:spin 26s linear infinite}
+  .seal text{font-family:'Poppins';font-size:6.6px;font-weight:700;letter-spacing:1.5px;fill:var(--navy);text-transform:uppercase}
+  .seal-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:38px;height:38px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 16px -6px rgba(201,150,42,0.6);z-index:4}
+  .seal-center svg{width:18px;height:18px}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  @media(max-width:860px){.hero-grid{grid-template-columns:1fr;text-align:center}.hero p.lead{margin-left:auto;margin-right:auto}.btn-row{justify-content:center}.brand-cluster{order:-1;margin-bottom:2.5rem;max-width:420px;margin-left:auto;margin-right:auto}.seal{display:none}}
 
   .scroll-cue{position:absolute;bottom:1.75rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-soft);z-index:2}
   .scroll-cue .chevron{width:9px;height:9px;border-right:2px solid var(--text-soft);border-bottom:2px solid var(--text-soft);transform:rotate(45deg);animation:cue 1.6s ease-in-out infinite}
   @keyframes cue{0%,100%{opacity:0.3;transform:rotate(45deg) translate(0,0)}50%{opacity:1;transform:rotate(45deg) translate(4px,4px)}}
+
+  /* Marquee */
+  .marquee-strip{position:relative;background:var(--navy);overflow:hidden;padding:0.85rem 0;transform:rotate(-1deg) scale(1.03);z-index:5;box-shadow:0 10px 30px -10px rgba(0,0,0,0.35)}
+  .marquee-track{display:flex;width:max-content;animation:marquee 28s linear infinite}
+  .marquee-track span{display:flex;align-items:center;gap:0.9rem;padding:0 1.6rem;font-family:'Poppins';font-weight:600;font-size:0.95rem;color:#fff;text-transform:uppercase;letter-spacing:0.05em;white-space:nowrap}
+  .marquee-track span::after{content:"✦";color:var(--gold);font-size:0.75rem}
+  @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
   /* Panels */
   .panel{position:relative;z-index:1;border-radius:44px 44px 0 0;padding:6.5rem 0 5.5rem;margin-top:-40px}
@@ -78,7 +112,6 @@
   .panel:nth-of-type(4){z-index:5}
   .panel-white{background:#fff}
   .panel-cream{background:var(--cream)}
-  .panel-navy{background:var(--navy);color:#fff}
 
   .section-head{text-align:center;max-width:660px;margin:0 auto 3.25rem;position:relative;z-index:1}
   .section-head .eyebrow{background:rgba(31,42,82,0.06);color:var(--navy)}
@@ -96,51 +129,61 @@
   .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center;margin-bottom:4rem}
   .about-copy h2{font-size:clamp(1.8rem,3.1vw,2.3rem);color:var(--navy);margin-bottom:1.1rem;line-height:1.2}
   .about-copy p{color:var(--text-soft);line-height:1.85;margin-bottom:1.1rem;font-size:1.02rem}
-  .about-visual{background:linear-gradient(160deg,var(--navy),var(--navy-deep));border-radius:28px;padding:3rem 2rem;display:flex;align-items:center;justify-content:center;box-shadow:0 30px 60px -24px rgba(31,42,82,0.5)}
-  .about-visual img{width:min(100%,220px)}
+  .about-visual{position:relative;overflow:hidden;background:linear-gradient(160deg,var(--navy),var(--navy-deep));border-radius:28px;padding:3rem 2rem;display:flex;align-items:center;justify-content:center;box-shadow:0 30px 60px -24px rgba(31,42,82,0.5)}
+  .about-visual .spotlight{position:absolute;inset:0;pointer-events:none;background:radial-gradient(340px circle at var(--mx,50%) var(--my,30%),rgba(201,150,42,0.28),transparent 62%)}
+  .about-visual img{width:min(100%,220px);position:relative;z-index:1;border-radius:14px}
   @media(max-width:860px){.about-grid{grid-template-columns:1fr}}
 
   .facts-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
-  .fact{text-align:center;background:var(--cream);border-radius:20px;padding:1.75rem 1rem;border:1px solid var(--border)}
+  .fact{text-align:center;background:var(--cream);border-radius:20px;padding:1.75rem 1rem;border:1px solid var(--border);transition:transform .3s,box-shadow .3s}
+  .fact:hover{transform:translateY(-5px);box-shadow:0 16px 30px -20px rgba(31,42,82,0.5)}
   .fact .num{font-family:'Poppins';font-weight:800;font-size:2rem;color:var(--navy);margin-bottom:0.35rem}
   .fact .label{font-size:0.82rem;font-weight:600;color:var(--text-soft)}
   @media(max-width:760px){.facts-row{grid-template-columns:1fr 1fr}}
 
   /* Locations */
   .loc-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.75rem}
-  .loc-card{background:#fff;border-radius:24px;padding:2.25rem;box-shadow:0 16px 40px -26px rgba(31,42,82,0.4)}
+  .loc-card{position:relative;overflow:hidden;background:#fff;border-radius:24px;padding:2.25rem;box-shadow:0 16px 40px -26px rgba(31,42,82,0.4);transition:transform .3s,box-shadow .3s}
+  .loc-card:hover{transform:translateY(-6px);box-shadow:0 26px 50px -20px rgba(31,42,82,0.4)}
+  .loc-card::after{content:"";position:absolute;top:-40px;right:-40px;width:130px;height:130px;border-radius:50%;background:radial-gradient(circle,rgba(201,150,42,0.14),transparent 70%)}
+  .loc-card .pin{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--gold),var(--gold-deep));display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem;box-shadow:0 10px 20px -8px rgba(201,150,42,0.6)}
+  .loc-card .pin svg{width:22px;height:22px}
   .loc-card .tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--red);background:rgba(216,31,38,0.08);padding:5px 12px;border-radius:99px;margin-bottom:1rem}
   .loc-card h3{font-size:1.35rem;color:var(--navy);margin-bottom:0.6rem}
-  .loc-card p{color:var(--text-soft);line-height:1.7;font-size:0.96rem}
+  .loc-card p{color:var(--text-soft);line-height:1.7;font-size:0.96rem;position:relative;z-index:1}
   @media(max-width:760px){.loc-grid{grid-template-columns:1fr}}
 
   /* Products */
-  .product-block{display:grid;grid-template-columns:0.9fr 1.1fr;gap:3rem;align-items:center;padding:3.5rem 0;border-bottom:1px solid var(--border)}
+  .product-spine{position:relative}
+  .product-block{position:relative;display:grid;grid-template-columns:0.9fr 1.1fr;gap:3rem;align-items:center;padding:3.5rem 0;border-bottom:1px solid var(--border)}
   .product-block:last-child{border-bottom:none;padding-bottom:0}
   .product-block:nth-child(even) .product-visual{order:2}
-  .product-visual{background:var(--cream);border-radius:26px;padding:3rem;display:flex;align-items:center;justify-content:center;min-height:220px}
+  .product-idx{position:absolute;top:2.25rem;left:0;font-family:'Poppins';font-weight:800;font-size:0.85rem;color:var(--gold-deep);letter-spacing:0.08em}
+  .product-visual{--rx:0deg;--ry:0deg;background:var(--cream);border-radius:26px;padding:3rem;display:flex;align-items:center;justify-content:center;min-height:220px;transform:perspective(900px) rotateX(var(--rx)) rotateY(var(--ry));transition:transform .15s ease-out,box-shadow .3s;box-shadow:0 4px 0 rgba(0,0,0,0)}
   .product-visual img{max-height:120px;width:auto;object-fit:contain}
-  .product-visual.ph{background:linear-gradient(135deg,#ffe8ee,#ffd3e0)}
-  .product-visual.ph .kiki-word{font-family:'Poppins';font-weight:800;font-size:3.2rem;color:#d81f6b}
+  .product-visual.ph{background:var(--cream);padding:2rem}
+  .product-visual.ph img{max-height:150px}
   .product-visual.lucky-visual{background:#fff8e6;padding:1.5rem}
   .product-visual.lucky-visual img{max-height:220px}
   .product-copy .ptag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--gold-deep);background:rgba(201,150,42,0.12);padding:5px 12px;border-radius:99px;margin-bottom:1rem}
   .product-copy h3{font-size:1.6rem;color:var(--navy);margin-bottom:0.75rem}
   .product-copy p{color:var(--text-soft);line-height:1.8;font-size:1rem;margin-bottom:1rem}
   .flavor-row{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1.25rem}
-  .flavor{font-size:0.78rem;font-weight:700;color:var(--navy);background:var(--cream);border:1px solid var(--border);padding:5px 12px;border-radius:99px}
+  .flavor{font-size:0.78rem;font-weight:700;color:var(--navy);background:#fff;border:1px solid var(--border);padding:5px 12px;border-radius:99px;transition:transform .2s,background .2s}
+  .flavor:hover{transform:translateY(-2px);background:var(--cream)}
   .product-copy .btn{margin-top:0.25rem}
-  @media(max-width:820px){.product-block{grid-template-columns:1fr;padding:2.5rem 0}.product-block:nth-child(even) .product-visual{order:0}}
+  @media(max-width:820px){.product-block{grid-template-columns:1fr;padding:2.5rem 0}.product-block:nth-child(even) .product-visual{order:0}.product-idx{position:static;display:block;margin-bottom:0.75rem}}
 
-  /* Contact / Footer */
-  footer{position:relative;z-index:7;background:var(--navy-deep);color:rgba(255,255,255,0.75);padding:4.5rem 1.5rem 2rem;border-radius:44px 44px 0 0;margin-top:-40px}
-  .footer-grid{display:grid;grid-template-columns:1.1fr 0.9fr 0.9fr;gap:3rem;margin-bottom:3rem}
+  /* Footer */
+  footer{position:relative;z-index:7;background:var(--navy-deep);color:rgba(255,255,255,0.75);padding:4.5rem 1.5rem 2rem;border-radius:44px 44px 0 0;margin-top:-40px;overflow:hidden}
+  footer .spotlight{position:absolute;inset:0;pointer-events:none;background:radial-gradient(420px circle at var(--mx,50%) var(--my,10%),rgba(201,150,42,0.1),transparent 62%)}
+  .footer-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.1fr 0.9fr 0.9fr;gap:3rem;margin-bottom:3rem}
   .footer-brand img{height:40px;margin-bottom:1rem}
   .footer-brand p{font-size:0.88rem;line-height:1.7;opacity:0.65;max-width:320px}
   .footer-col h4{color:#fff;font-size:0.85rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:1.1rem;opacity:0.9}
-  .footer-col p,.footer-col a{display:block;font-size:0.9rem;line-height:1.8;opacity:0.65;margin-bottom:0.4rem}
+  .footer-col p,.footer-col a{display:block;font-size:0.9rem;line-height:1.8;opacity:0.65;margin-bottom:0.4rem;transition:opacity .2s}
   .footer-col a:hover{opacity:1}
-  .footer-bottom{border-top:1px solid rgba(255,255,255,0.1);padding-top:1.75rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;font-size:0.78rem;opacity:0.5}
+  .footer-bottom{position:relative;z-index:1;border-top:1px solid rgba(255,255,255,0.1);padding-top:1.75rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;font-size:0.78rem;opacity:0.5}
   @media(max-width:820px){.footer-grid{grid-template-columns:1fr;gap:2.25rem}}
 
   @media (prefers-reduced-motion: reduce){
@@ -150,6 +193,9 @@
 </head>
 <body>
 
+  <div class="cursor-ring" id="cursorRing"></div>
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="grain"></div>
   <div class="progress" id="progress"></div>
 
   <nav class="nav" id="nav">
@@ -168,26 +214,44 @@
   <header class="hero" id="top">
     <div class="hero-blob b1"></div>
     <div class="hero-blob b2"></div>
+    <div class="scatter">
+      <span style="top:16%;left:6%">✦</span>
+      <span style="top:64%;left:4%">✧</span>
+      <span style="top:10%;left:46%">⋆</span>
+      <span style="top:80%;left:42%">✦</span>
+    </div>
     <div class="hero-grid">
       <div>
         <span class="eyebrow">Est. 1997 · Yangon, Myanmar</span>
         <h1 class="reveal is-visible">Manufacturing Myanmar's <span>Favorite Everyday Treats</span></h1>
         <p class="lead reveal is-visible reveal-d1">Two Birds Manufacturing Co., Ltd. is the company behind four of Myanmar's most familiar snack and candy brands — made daily across our Yangon and Mandalay facilities.</p>
         <div class="btn-row reveal is-visible reveal-d2">
-          <a href="#products" class="btn btn-primary">Explore Our Brands</a>
-          <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+          <a href="#products" class="btn btn-primary magnetic">Explore Our Brands</a>
+          <a href="#contact" class="btn btn-ghost magnetic">Get in Touch</a>
         </div>
       </div>
       <div class="brand-cluster reveal is-visible reveal-d1">
+        <svg class="seal" viewBox="0 0 100 100">
+          <defs><path id="sealPath" d="M 50,50 m -40,0 a 40,40 0 1,1 80,0 a 40,40 0 1,1 -80,0"/></defs>
+          <text><textPath href="#sealPath">EST. 1997 • TWO BIRDS MANUFACTURING • EST. 1997 •</textPath></text>
+        </svg>
+        <div class="seal-center"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         <div class="cluster-tile"><img src="images/ximi-logo.png" alt="Ximi logo"></div>
         <div class="cluster-tile"><img src="images/kido-logo.png" alt="Kido logo"></div>
-        <div class="cluster-tile kiki"><span class="kiki-word">Ki Ki</span></div>
+        <div class="cluster-tile kiki"><img src="images/kiki-logo.png" alt="Ki Ki Candies logo"></div>
         <div class="cluster-tile"><img src="images/lucky-logo.png" alt="Lucky logo"></div>
         <span class="cluster-badge">4 Brands, One Family</span>
       </div>
     </div>
     <div class="scroll-cue"><span>Scroll</span><span class="chevron"></span></div>
   </header>
+
+  <div class="marquee-strip">
+    <div class="marquee-track">
+      <span>Ximi</span><span>Kido</span><span>Ki Ki</span><span>Lucky</span><span>Est. 1997</span>
+      <span>Ximi</span><span>Kido</span><span>Ki Ki</span><span>Lucky</span><span>Est. 1997</span>
+    </div>
+  </div>
 
   <section class="panel panel-white" id="about">
     <div class="wrap">
@@ -200,14 +264,15 @@
           <p>Today, our products are manufactured across two facilities — Yangon and Mandalay — and distributed to shops and households nationwide.</p>
         </div>
         <div class="about-visual reveal reveal-d1">
+          <div class="spotlight"></div>
           <img src="images/two-birds-logo.png" alt="Two Birds Manufacturing Co., Ltd. logo">
         </div>
       </div>
       <div class="facts-row reveal reveal-d2">
-        <div class="fact"><div class="num">1997</div><div class="label">Established</div></div>
-        <div class="fact"><div class="num">2</div><div class="label">Manufacturing Facilities</div></div>
-        <div class="fact"><div class="num">4</div><div class="label">Household Brands</div></div>
-        <div class="fact"><div class="num">100%</div><div class="label">Made in Myanmar</div></div>
+        <div class="fact"><div class="num" data-count="1997">0</div><div class="label">Established</div></div>
+        <div class="fact"><div class="num" data-count="2">0</div><div class="label">Manufacturing Facilities</div></div>
+        <div class="fact"><div class="num" data-count="4">0</div><div class="label">Household Brands</div></div>
+        <div class="fact"><div class="num" data-count="100" data-suffix="%">0%</div><div class="label">Made in Myanmar</div></div>
       </div>
     </div>
   </section>
@@ -221,11 +286,13 @@
       </div>
       <div class="loc-grid">
         <div class="loc-card reveal reveal-d1">
+          <div class="pin"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2C7.6 2 4 5.6 4 10c0 6 8 12 8 12s8-6 8-12c0-4.4-3.6-8-8-8z" fill="#fff"/><circle cx="12" cy="10" r="3" fill="var(--gold-deep)"/></svg></div>
           <span class="tag">Yangon</span>
           <h3>Yangon Factory</h3>
           <p>470/471, Myawaddy Min Gyi Road<br>Shwe Linban Industrial Zone<br>Hlaing Thar Yar Township, Yangon Region</p>
         </div>
         <div class="loc-card reveal reveal-d2">
+          <div class="pin"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2C7.6 2 4 5.6 4 10c0 6 8 12 8 12s8-6 8-12c0-4.4-3.6-8-8-8z" fill="#fff"/><circle cx="12" cy="10" r="3" fill="var(--gold-deep)"/></svg></div>
           <span class="tag">Mandalay</span>
           <h3>Mandalay Factory</h3>
           <p>A-13/14, 59th Street, Corner of 107th Street<br>Kan Thayar Myo Thit<br>Chan Mya Tharsi Township, Mandalay Region</p>
@@ -242,59 +309,66 @@
         <p>From fruity jelly snacks to traditional heritage treats, every Two Birds brand is made to be part of everyday life in Myanmar.</p>
       </div>
 
-      <div class="product-block reveal reveal-d1">
-        <div class="product-visual"><img src="images/ximi-logo.png" alt="Ximi logo"></div>
-        <div class="product-copy">
-          <span class="ptag">Jelly Snack</span>
-          <h3>Ximi</h3>
-          <p>A colorful, fruity jelly snack popular with younger consumers across Myanmar — light, chewy, and made for sharing.</p>
-          <div class="flavor-row">
-            <span class="flavor">Strawberry</span>
-            <span class="flavor">Lychee</span>
-            <span class="flavor">Passionfruit</span>
-            <span class="flavor">Apple</span>
-            <span class="flavor">Grape</span>
+      <div class="product-spine">
+        <div class="product-block reveal reveal-d1">
+          <span class="product-idx">01</span>
+          <div class="product-visual"><img src="images/ximi-logo.png" alt="Ximi logo"></div>
+          <div class="product-copy">
+            <span class="ptag">Jelly Snack</span>
+            <h3>Ximi</h3>
+            <p>A colorful, fruity jelly snack popular with younger consumers across Myanmar — light, chewy, and made for sharing.</p>
+            <div class="flavor-row">
+              <span class="flavor">Strawberry</span>
+              <span class="flavor">Lychee</span>
+              <span class="flavor">Passionfruit</span>
+              <span class="flavor">Apple</span>
+              <span class="flavor">Grape</span>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="product-block reveal reveal-d1">
-        <div class="product-visual"><img src="images/kido-logo.png" alt="Kido logo"></div>
-        <div class="product-copy">
-          <span class="ptag">Candy</span>
-          <h3>Kido</h3>
-          <p>One of Two Birds' longest-running candy lines, Kido spans a wide range of formats — crispy peanut candy, fruity milk balls, lollipops, and assorted fruit candy — found on shelves nationwide.</p>
-          <div class="flavor-row">
-            <span class="flavor">Crispy Peanut Candy</span>
-            <span class="flavor">Fruity Milk Ball</span>
-            <span class="flavor">Lollipop Candy</span>
-            <span class="flavor">Assorted Fruit Candy</span>
+        <div class="product-block reveal reveal-d1">
+          <span class="product-idx">02</span>
+          <div class="product-visual"><img src="images/kido-logo.png" alt="Kido logo"></div>
+          <div class="product-copy">
+            <span class="ptag">Candy</span>
+            <h3>Kido</h3>
+            <p>One of Two Birds' longest-running candy lines, Kido spans a wide range of formats — crispy peanut candy, fruity milk balls, lollipops, and assorted fruit candy — found on shelves nationwide.</p>
+            <div class="flavor-row">
+              <span class="flavor">Crispy Peanut Candy</span>
+              <span class="flavor">Fruity Milk Ball</span>
+              <span class="flavor">Lollipop Candy</span>
+              <span class="flavor">Assorted Fruit Candy</span>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="product-block reveal reveal-d1">
-        <div class="product-visual ph"><span class="kiki-word">Ki Ki</span></div>
-        <div class="product-copy">
-          <span class="ptag">Candy</span>
-          <h3>Ki Ki</h3>
-          <p>A companion candy line alongside Kido, Ki Ki carries the same everyday-treat spirit onto shop shelves across Myanmar.</p>
+        <div class="product-block reveal reveal-d1">
+          <span class="product-idx">03</span>
+          <div class="product-visual ph"><img src="images/kiki-logo.png" alt="Ki Ki Candies logo"></div>
+          <div class="product-copy">
+            <span class="ptag">Candy</span>
+            <h3>Ki Ki</h3>
+            <p>A companion candy line alongside Kido, Ki Ki carries the same everyday-treat spirit onto shop shelves across Myanmar.</p>
+          </div>
         </div>
-      </div>
 
-      <div class="product-block reveal reveal-d1">
-        <div class="product-visual lucky-visual"><img src="images/lucky-pack.jpg" alt="Lucky Ma-Yway pack"></div>
-        <div class="product-copy">
-          <span class="ptag">Traditional Snack — Ma-Yway</span>
-          <h3>Lucky</h3>
-          <p>Lucky brings Myanmar's beloved roasted rice cracker snack, Ma-Yway, to a new generation — sold in family and snack-size packs nationwide. Every pack, a Lucky Moment.</p>
-          <a href="../lucky-mayway/" class="btn btn-primary">Visit the Lucky Ma-Yway Site</a>
+        <div class="product-block reveal reveal-d1">
+          <span class="product-idx">04</span>
+          <div class="product-visual lucky-visual"><img src="images/lucky-pack.jpg" alt="Lucky Ma-Yway pack"></div>
+          <div class="product-copy">
+            <span class="ptag">Traditional Snack — Ma-Yway</span>
+            <h3>Lucky</h3>
+            <p>Lucky brings Myanmar's beloved roasted rice cracker snack, Ma-Yway, to a new generation — sold in family and snack-size packs nationwide. Every pack, a Lucky Moment.</p>
+            <a href="../lucky-mayway/" class="btn btn-primary magnetic">Visit the Lucky Ma-Yway Site</a>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <footer id="contact">
+    <div class="spotlight"></div>
     <div class="wrap">
       <div class="footer-grid">
         <div class="footer-brand reveal">
@@ -321,6 +395,7 @@
   </footer>
 
   <script>
+    // Scroll progress
     var progress = document.getElementById('progress');
     function updateProgress(){
       var h = document.documentElement;
@@ -330,11 +405,13 @@
     document.addEventListener('scroll', updateProgress, {passive:true});
     updateProgress();
 
+    // Nav scroll state
     var nav = document.getElementById('nav');
     function updateNav(){ nav.classList.toggle('is-scrolled', window.scrollY > 40); }
     document.addEventListener('scroll', updateNav, {passive:true});
     updateNav();
 
+    // Scrollspy
     var navLinks = document.querySelectorAll('.nav-links a');
     var sections = Array.prototype.map.call(navLinks, function(a){ return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
     function updateSpy(){
@@ -346,6 +423,7 @@
     document.addEventListener('scroll', updateSpy, {passive:true});
     updateSpy();
 
+    // Reveal on scroll
     var revealEls = document.querySelectorAll('.reveal');
     if ('IntersectionObserver' in window) {
       var io = new IntersectionObserver(function(entries){
@@ -356,6 +434,103 @@
       revealEls.forEach(function(el){ io.observe(el); });
     } else {
       revealEls.forEach(function(el){ el.classList.add('is-visible'); });
+    }
+
+    // Count-up stats, triggered once visible
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var counters = document.querySelectorAll('.num[data-count]');
+    function animateCount(el){
+      var target = parseInt(el.getAttribute('data-count'), 10);
+      var suffix = el.getAttribute('data-suffix') || '';
+      if (reduceMotion) { el.textContent = target + suffix; return; }
+      var start = performance.now();
+      var dur = 1200;
+      function frame(t){
+        var p = Math.min((t - start) / dur, 1);
+        var eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(target * eased) + suffix;
+        if (p < 1) requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
+    }
+    if ('IntersectionObserver' in window && counters.length) {
+      var cio = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if (entry.isIntersecting) { animateCount(entry.target); cio.unobserve(entry.target); }
+        });
+      }, { threshold: 0.5 });
+      counters.forEach(function(el){ cio.observe(el); });
+    }
+
+    // Button ripple
+    document.querySelectorAll('.btn').forEach(function(btn){
+      btn.addEventListener('click', function(e){
+        var r = btn.getBoundingClientRect();
+        var size = Math.max(r.width, r.height) * 1.4;
+        var ripple = document.createElement('span');
+        ripple.className = 'btn-ripple';
+        ripple.style.width = ripple.style.height = size + 'px';
+        ripple.style.left = (e.clientX - r.left - size / 2) + 'px';
+        ripple.style.top = (e.clientY - r.top - size / 2) + 'px';
+        btn.appendChild(ripple);
+        ripple.addEventListener('animationend', function(){ ripple.remove(); });
+      });
+    });
+
+    // Desktop-only enhancements
+    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches && !reduceMotion) {
+      document.documentElement.classList.add('has-cursor');
+
+      var cursorDot = document.getElementById('cursorDot');
+      var cursorRing = document.getElementById('cursorRing');
+      var mx = -100, my = -100, rx = -100, ry = -100;
+      window.addEventListener('mousemove', function(e){
+        mx = e.clientX; my = e.clientY;
+        cursorDot.style.transform = 'translate(' + mx + 'px,' + my + 'px) translate(-50%,-50%)';
+      });
+      (function cursorLoop(){
+        rx += (mx - rx) * 0.18; ry += (my - ry) * 0.18;
+        cursorRing.style.transform = 'translate(' + rx + 'px,' + ry + 'px) translate(-50%,-50%)';
+        requestAnimationFrame(cursorLoop);
+      })();
+      document.querySelectorAll('a,button,.cluster-tile,.loc-card,.fact,.flavor').forEach(function(el){
+        el.addEventListener('mouseenter', function(){ cursorRing.classList.add('is-active'); cursorDot.classList.add('is-active'); });
+        el.addEventListener('mouseleave', function(){ cursorRing.classList.remove('is-active'); cursorDot.classList.remove('is-active'); });
+      });
+
+      document.querySelectorAll('.magnetic').forEach(function(el){
+        el.addEventListener('mousemove', function(e){
+          var r = el.getBoundingClientRect();
+          var x = e.clientX - r.left - r.width / 2;
+          var y = e.clientY - r.top - r.height / 2;
+          el.style.transform = 'translate(' + (x * 0.22) + 'px,' + (y * 0.32) + 'px)';
+        });
+        el.addEventListener('mouseleave', function(){ el.style.transform = ''; });
+      });
+
+      document.querySelectorAll('.cluster-tile,.product-visual').forEach(function(card){
+        card.addEventListener('mousemove', function(e){
+          var r = card.getBoundingClientRect();
+          var x = (e.clientX - r.left) / r.width - 0.5;
+          var y = (e.clientY - r.top) / r.height - 0.5;
+          card.style.setProperty('--ry', (x * 8) + 'deg');
+          card.style.setProperty('--rx', (y * -8) + 'deg');
+        });
+        card.addEventListener('mouseleave', function(){
+          card.style.setProperty('--ry', '0deg');
+          card.style.setProperty('--rx', '0deg');
+        });
+      });
+
+      document.querySelectorAll('.about-visual, footer').forEach(function(panel){
+        var spot = panel.querySelector('.spotlight');
+        if (!spot) return;
+        panel.addEventListener('mousemove', function(e){
+          var r = panel.getBoundingClientRect();
+          spot.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100).toFixed(1) + '%');
+          spot.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100).toFixed(1) + '%');
+        });
+      });
     }
   </script>
 
