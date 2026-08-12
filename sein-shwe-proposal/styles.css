@@ -306,6 +306,27 @@ h3{font-size:1.3rem}
 .fit-tag.shwe{background:var(--slate);color:var(--steel)}
 .fit-tag.both{background:#fde3e1;color:var(--red-dark)}
 
+/* ---------- Quotation ---------- */
+.quote-tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:1rem}
+@media(max-width:800px){.quote-tiers{grid-template-columns:1fr}}
+.quote-tier{border:1px solid var(--line);border-radius:16px;padding:1.75rem;text-align:center;background:var(--paper)}
+.quote-tier .set{display:block;font-size:10.5px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--grey-light);margin-bottom:.6rem}
+.quote-tier .price{font-family:var(--serif);font-style:italic;font-size:1.7rem;color:var(--red);margin-bottom:.6rem}
+.quote-tier p{font-size:.85rem;color:var(--grey);line-height:1.5}
+
+.quote-table{width:100%;border-collapse:collapse;min-width:560px}
+.quote-table th{text-align:left;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--grey-light);padding:1rem 1.25rem;border-bottom:1px solid var(--line);background:#fff}
+.quote-table td{padding:1.1rem 1.25rem;font-size:.9rem;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.55}
+.quote-table td .muted{color:var(--grey-light);font-weight:400;font-size:.82rem}
+.quote-table td.num,.quote-table th.num{text-align:right;white-space:nowrap}
+.quote-table td.num{font-weight:800}
+.quote-table tr.total td{background:var(--cream);border-bottom:none;font-weight:800;font-size:.98rem}
+.quote-table tr.total td.num{color:var(--gold);font-family:var(--serif);font-style:italic;font-size:1.35rem}
+.quote-table tr:last-child td{border-bottom:none}
+
+.quote-notes{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2rem}
+@media(max-width:800px){.quote-notes{grid-template-columns:1fr}}
+
 /* ---------- Why Awaken ---------- */
 .proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem}
 @media(max-width:800px){.proof-grid{grid-template-columns:1fr}}
