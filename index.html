@@ -11,7 +11,7 @@
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     :root{
       --bg:#ffffff;--text:#0a0a0a;--text-secondary:#6b7280;--border:#e5e7eb;
-      --awaken:#1a1a1a;--digital:#0ea5e9;--design:#ec4899;--tech:#10b981;--production:#8b5cf6;--pr:#f59e0b;
+      --awaken:#1a1a1a;--digital:#0ea5e9;--design:#ec4899;--tech:#10b981;--production:#8b5cf6;--pr:#f59e0b;--media:#dc2626;
     }
     html{font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
     body{background:var(--bg);color:var(--text);overflow:hidden;height:100dvh}
@@ -47,7 +47,7 @@
     .slide.active .slide-content{opacity:1;transform:translateY(0);pointer-events:auto}
 
     .eyebrow{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.2em;margin-bottom:1rem}
-    .eyebrow.awaken{color:var(--awaken)}.eyebrow.digital{color:var(--digital)}.eyebrow.design{color:var(--design)}.eyebrow.tech{color:var(--tech)}.eyebrow.production{color:var(--production)}.eyebrow.pr{color:var(--pr)}
+    .eyebrow.awaken{color:var(--awaken)}.eyebrow.digital{color:var(--digital)}.eyebrow.design{color:var(--design)}.eyebrow.tech{color:var(--tech)}.eyebrow.production{color:var(--production)}.eyebrow.pr{color:var(--pr)}.eyebrow.media{color:var(--media)}
 
     .headline{font-size:clamp(2rem,4vw,4.5rem);font-weight:800;line-height:0.95;letter-spacing:-0.03em;text-transform:uppercase;margin-bottom:1.25rem;max-width:600px}
     .body-text{font-size:15px;line-height:1.7;color:var(--text-secondary);max-width:480px;margin-bottom:2rem}
@@ -171,10 +171,24 @@
         </div>
       </div>
     </section>
+
+    <section class="slide" data-index="6" style="--accent:var(--media)" onclick="setSlide(6)">
+      <div class="slide-bg" style="background-image:url('images/sanchaung-link/hero-wide.jpg')"></div>
+      <div class="slide-overlay"></div>
+      <span class="tab-label">MEDIA</span>
+      <div class="slide-content">
+        <p class="eyebrow media">06 — Media</p>
+        <h2 class="headline">AWAKEN<br>MEDIA</h2>
+        <p class="body-text">Out-of-home and venue advertising. We map, price, and produce the physical media that turns real-world spaces into brand placements — one venue at a time.</p>
+        <div class="btn-group">
+          <a href="media.html" class="btn btn-primary">Learn More</a>
+        </div>
+      </div>
+    </section>
   </main>
 
   <script>
-    let active=0;const total=6;
+    let active=0;const total=7;
     function renderDots(){const d=document.getElementById('dots');d.innerHTML='';for(let i=0;i<total;i++){const b=document.createElement('button');b.className='dot'+(i===active?' active':'');b.onclick=(e)=>{e.stopPropagation();setSlide(i)};d.appendChild(b)}document.getElementById('counter').textContent=String(active+1).padStart(2,'0')+' / '+String(total).padStart(2,'0')}
     function setSlide(i){active=i;document.querySelectorAll('.slide').forEach((s,idx)=>{s.classList.toggle('active',idx===i)});renderDots()}
     function nextSlide(){setSlide((active+1)%total)}

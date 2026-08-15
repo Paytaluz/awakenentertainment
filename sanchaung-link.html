@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sanchaung Link — Venue Media Catalogue | Awaken Media</title>
+<meta name="description" content="The Sanchaung Link venue media catalogue — seven wall formats and ten activation zones, in one system. Prepared by Awaken Media.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#0e2a20;--ink2:#123625;--mint:#8ce9b8;--mint-dim:#bff0d6;--orange:#ee7b45;
+  --paper:#f7f4ec;--paper2:#efeade;--line:rgba(14,42,32,.12);--text:#16241d;--muted:#5c6b62;
+  --white:#fff;
+}
+html{font-family:'Inter',system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+body{background:var(--paper);color:var(--text);overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%;height:auto}
+ul{list-style:none}
+.wrap{max-width:1180px;margin:0 auto;padding:0 40px}
+.eyebrow{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.18em;color:var(--mint);margin-bottom:14px;display:block}
+.eyebrow.on-light{color:#1f8a5c}
+.h2{font-size:clamp(28px,4vw,46px);font-weight:800;letter-spacing:-.03em;line-height:1.05}
+.sub{font-size:16px;color:var(--muted);line-height:1.7;max-width:560px;margin-top:14px}
+
+/* ===== NAV ===== */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:18px 40px;background:rgba(14,42,32,.0);transition:background .3s,padding .3s,box-shadow .3s}
+nav.bg{background:rgba(11,26,20,.92);backdrop-filter:blur(10px);padding:14px 40px;box-shadow:0 1px 0 rgba(255,255,255,.06)}
+.nav-l{display:flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fff}
+.nav-l .dot{width:7px;height:7px;border-radius:50%;background:var(--mint)}
+.nav-l small{display:block;font-size:10px;font-weight:500;letter-spacing:.08em;color:rgba(255,255,255,.5);text-transform:none;margin-top:2px}
+.nav-c{display:flex;gap:30px;list-style:none}
+.nav-c a{font-size:12.5px;font-weight:600;color:rgba(255,255,255,.6);letter-spacing:.02em;transition:color .2s}
+.nav-c a:hover{color:#fff}
+.nav-cta{font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;padding:11px 22px;border-radius:100px;background:var(--mint);color:#0b2318;transition:transform .2s,box-shadow .2s}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(140,233,184,.35)}
+
+/* ===== HERO ===== */
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;background:var(--ink)}
+.hero-img{position:absolute;inset:0;background-image:url('images/sanchaung-link/hero-wide.jpg');background-size:cover;background-position:center 70%;opacity:.55}
+.hero-scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,42,32,.55) 0%,rgba(11,26,20,.55) 40%,rgba(9,20,15,.97) 92%)}
+.hero-in{position:relative;z-index:2;padding:180px 40px 64px;max-width:1180px;margin:0 auto;width:100%}
+.hero-client{font-size:13px;font-weight:600;letter-spacing:.08em;color:var(--mint-dim);margin-bottom:22px}
+.hero-client b{color:#fff;font-weight:700}
+.hero-h{font-size:clamp(38px,6.6vw,84px);font-weight:800;letter-spacing:-.04em;line-height:.98;color:#fff;max-width:900px}
+.hero-p{font-size:clamp(15px,1.6vw,19px);color:rgba(255,255,255,.72);max-width:520px;margin-top:22px;line-height:1.65}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;border-radius:100px;transition:all .25s;cursor:pointer;border:1px solid transparent}
+.btn-mint{background:var(--mint);color:#0b2318}
+.btn-mint:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(140,233,184,.3)}
+.btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.3)}
+.btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.06)}
+.hero-stats{display:flex;gap:0;margin-top:56px;border-top:1px solid rgba(255,255,255,.14);padding-top:26px;flex-wrap:wrap}
+.hstat{flex:1;min-width:130px;padding-right:24px}
+.hstat b{display:block;font-size:clamp(24px,3vw,34px);font-weight:800;color:#fff;letter-spacing:-.02em}
+.hstat span{display:block;font-size:11.5px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.1em;margin-top:6px}
+
+/* ===== LOCATION STRIP ===== */
+.locstrip{background:var(--ink2);color:#fff;padding:20px 0}
+.locstrip .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.loc-l{display:flex;align-items:center;gap:12px;font-size:13.5px;color:rgba(255,255,255,.75)}
+.loc-l b{color:#fff;font-weight:700}
+.loc-map{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--mint);display:flex;align-items:center;gap:6px}
+.loc-map:hover{color:var(--mint-dim)}
+
+/* ===== SECTION GENERIC ===== */
+section.pad{padding:110px 0}
+.sec-head{max-width:640px;margin-bottom:64px}
+.sec-head.center{margin-left:auto;margin-right:auto;text-align:center}
+
+/* ===== MAP ===== */
+.mapsec{background:var(--paper)}
+.map-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:60px;align-items:start}
+.map-plot{position:relative;aspect-ratio:4/4.6;background:var(--paper2);border:1.5px solid var(--line);border-radius:4px;padding:34px 26px}
+.map-road-top,.map-road-bottom{position:absolute;left:0;right:0;text-align:center;font-size:10px;font-weight:700;letter-spacing:.18em;color:var(--muted);text-transform:uppercase}
+.map-road-top{top:8px}
+.map-road-bottom{bottom:8px}
+.map-road-left,.map-road-right{position:absolute;top:50%;font-size:10px;font-weight:700;letter-spacing:.18em;color:var(--muted);text-transform:uppercase;writing-mode:vertical-rl}
+.map-road-left{left:6px;transform:translateY(-50%) rotate(180deg)}
+.map-road-right{right:6px;transform:translateY(-50%)}
+.map-plot-inner{position:absolute;inset:34px 40px;border:1px dashed rgba(14,42,32,.25)}
+.map-green{position:absolute;left:8%;top:14%;width:38%;height:46%;background:rgba(140,233,184,.28);border-radius:2px}
+.pill{position:absolute;transform:translate(-50%,-50%);display:inline-flex;align-items:center;justify-content:center;padding:7px 12px;border-radius:100px;font-size:11px;font-weight:800;letter-spacing:.02em;color:#fff;white-space:nowrap;box-shadow:0 4px 10px rgba(0,0,0,.18);transition:transform .2s,box-shadow .2s}
+.pill:hover{transform:translate(-50%,-50%) scale(1.08);box-shadow:0 8px 18px rgba(0,0,0,.28)}
+.pill.wall{background:var(--ink)}
+.pill.zone{background:var(--orange)}
+.map-legend{border-top:1px solid var(--line)}
+.leg-row{display:flex;align-items:center;gap:16px;padding:15px 0;border-bottom:1px solid var(--line)}
+.leg-row .pill{position:static;transform:none;flex-shrink:0}
+.leg-row .pill:hover{transform:scale(1.05)}
+.leg-text b{display:block;font-size:14.5px;font-weight:700}
+.leg-text span{font-size:13px;color:var(--muted)}
+.map-note{font-size:12px;color:var(--muted);margin-top:18px;font-style:italic}
+
+/* ===== METHOD CARDS ===== */
+.methods{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:80px}
+.mcard{background:var(--paper2);border:1px solid var(--line);border-radius:16px;padding:34px 28px}
+.mcard .midx{width:44px;height:44px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;margin-bottom:26px}
+.mcard.b .midx{background:var(--orange)}
+.mcard h3{font-size:19px;font-weight:800;letter-spacing:-.01em;margin-bottom:10px}
+.mcard p{font-size:13.5px;color:var(--muted);line-height:1.65;margin-bottom:18px}
+.mcard .mtag{font-size:12px;font-weight:700;color:var(--ink)}
+.mcard.b .mtag{color:var(--orange)}
+
+/* ===== FORMAT / ZONE CARDS ===== */
+.fmt-card{display:grid;grid-template-columns:1fr 1fr;gap:0;background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;margin-bottom:28px}
+.fmt-card:nth-child(even){grid-template-columns:1fr 1fr}
+.fmt-media{position:relative;min-height:340px;background-size:cover;background-position:center}
+.fmt-body{padding:44px 42px;display:flex;flex-direction:column;justify-content:center}
+.fmt-num{font-size:15px;font-weight:800;color:var(--mint-dim);background:var(--ink);display:inline-flex;width:38px;height:38px;border-radius:50%;align-items:center;justify-content:center;margin-bottom:20px}
+.fmt-body h3{font-size:clamp(20px,2.2vw,26px);font-weight:800;letter-spacing:-.02em;line-height:1.15;margin-bottom:14px}
+.fmt-body p{font-size:14.5px;color:var(--muted);line-height:1.7;margin-bottom:22px}
+.tag-row{display:flex;flex-wrap:wrap;gap:8px}
+.tagchip{font-size:11.5px;font-weight:700;padding:8px 14px;border-radius:100px;border:1px solid var(--line);color:var(--text)}
+.tagchip.solid{background:var(--ink);color:#fff;border-color:var(--ink)}
+
+/* day/night toggle */
+.dn{position:relative}
+.dn-img{position:absolute;inset:0;background-size:cover;background-position:center;transition:opacity .5s ease}
+.dn-img.night{opacity:0}
+.dn[data-mode="night"] .dn-img.day{opacity:0}
+.dn[data-mode="night"] .dn-img.night{opacity:1}
+.dn-night-fx{position:absolute;inset:0;background:radial-gradient(circle at 30% 35%,rgba(238,123,69,.55),transparent 45%),radial-gradient(circle at 70% 60%,rgba(140,233,184,.5),transparent 45%),rgba(6,14,10,.72);mix-blend-mode:normal;opacity:0;transition:opacity .5s ease;pointer-events:none}
+.dn[data-mode="night"] .dn-night-fx{opacity:1}
+.dn-switch{position:absolute;top:18px;left:18px;z-index:5;display:flex;background:rgba(9,20,15,.65);backdrop-filter:blur(6px);border-radius:100px;padding:4px}
+.dn-btn{border:none;background:transparent;color:rgba(255,255,255,.6);font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:8px 14px;border-radius:100px;cursor:pointer;transition:background .2s,color .2s}
+.dn-btn.active{background:#fff;color:#0b2318}
+.dn-caption{position:absolute;bottom:16px;left:18px;right:18px;z-index:5;font-size:12px;color:#fff;background:rgba(9,20,15,.55);backdrop-filter:blur(4px);padding:9px 14px;border-radius:10px;line-height:1.5}
+
+/* zone cards */
+.zone-card{display:grid;grid-template-columns:1fr 1fr;gap:0;background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;margin-bottom:28px}
+.zone-card.rev{direction:rtl}
+.zone-card.rev>*{direction:ltr}
+.zone-media{min-height:320px;background-size:cover;background-position:center;position:relative}
+.zone-body{padding:42px 40px;display:flex;flex-direction:column;justify-content:center}
+.zone-num{font-size:14px;font-weight:800;color:#fff;background:var(--orange);display:inline-flex;width:36px;height:36px;border-radius:50%;align-items:center;justify-content:center;margin-bottom:18px}
+.zone-body h3{font-size:clamp(19px,2vw,24px);font-weight:800;letter-spacing:-.02em;margin-bottom:12px}
+.zone-body p.zdesc{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:20px}
+.zlist{margin-bottom:22px}
+.zlist li{position:relative;padding-left:18px;font-size:13.5px;color:var(--text);line-height:1.9}
+.zlist li::before{content:'';position:absolute;left:0;top:11px;width:5px;height:5px;border-radius:50%;background:var(--orange)}
+.ztag{align-self:flex-start;font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#fff;background:var(--ink);padding:9px 16px;border-radius:100px}
+
+/* ===== DIVIDER ===== */
+.divider{background:var(--ink);color:#fff;padding:130px 0;text-align:left}
+.divider .wrap{max-width:760px}
+.divider .eyebrow{color:var(--mint)}
+.divider h2{font-size:clamp(34px,6vw,66px);font-weight:800;letter-spacing:-.04em;line-height:1}
+.divider p{font-size:16px;color:rgba(255,255,255,.6);margin-top:20px;max-width:480px}
+
+/* ===== MENU TABLE ===== */
+.menusec{background:var(--ink);color:#fff}
+.menusec .sec-head .eyebrow{color:var(--mint)}
+.menusec .sec-head h2{color:#fff}
+.menusec .sec-head .sub{color:rgba(255,255,255,.55)}
+.menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 60px;border-top:1px solid rgba(255,255,255,.12)}
+.menu-row{display:flex;align-items:center;gap:18px;padding:20px 0;border-bottom:1px solid rgba(255,255,255,.12)}
+.menu-row .mnum{font-size:12.5px;font-weight:800;color:var(--mint);min-width:44px}
+.menu-row .mname{flex:1;font-size:15px;font-weight:700}
+.menu-row .mcount{font-size:12.5px;color:rgba(255,255,255,.45)}
+.menu-total{margin-top:36px;font-size:13.5px;color:rgba(255,255,255,.6);line-height:1.7;max-width:640px}
+.menu-total b{color:var(--mint-dim)}
+
+/* ===== CONTACT ===== */
+.contact{background:var(--paper);padding:120px 0}
+.contact-box{background:var(--ink);border-radius:24px;padding:64px 56px;color:#fff;display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap}
+.contact-box h2{font-size:clamp(24px,3.4vw,38px);font-weight:800;letter-spacing:-.02em;max-width:480px}
+.contact-box p{font-size:14px;color:rgba(255,255,255,.55);margin-top:12px;max-width:420px}
+.contact-actions{display:flex;gap:14px;flex-wrap:wrap}
+
+/* ===== FOOTER ===== */
+footer{background:#08150f;color:#fff;padding:56px 0 32px}
+.fg{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.08)}
+.fh{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:16px}
+.flinks{display:flex;flex-direction:column;gap:10px}
+.flinks a{font-size:13.5px;color:rgba(255,255,255,.7);transition:color .2s}
+.flinks a:hover{color:var(--mint)}
+.fbot{display:flex;justify-content:space-between;align-items:center;padding-top:28px;flex-wrap:wrap;gap:12px}
+.fcp{font-size:12px;color:rgba(255,255,255,.35)}
+.flogo{font-size:12px;font-weight:700;letter-spacing:.12em}
+.flogo span{color:var(--mint)}
+
+/* ===== BACK TO TOP / SCROLL PROG ===== */
+#scroll-prog{position:fixed;top:0;left:0;z-index:900;height:2px;background:var(--mint);width:0%}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+  .wrap{padding:0 24px}
+  .map-grid{grid-template-columns:1fr;gap:36px}
+  .fmt-card,.zone-card{grid-template-columns:1fr}
+  .zone-card.rev{direction:ltr}
+  .fmt-media,.zone-media{min-height:240px}
+  .methods{grid-template-columns:1fr}
+  .menu-grid{grid-template-columns:1fr}
+  .contact-box{flex-direction:column;align-items:flex-start}
+}
+@media(max-width:768px){
+  nav{padding:16px 20px}
+  nav.bg{padding:12px 20px}
+  .nav-c{display:none}
+  .hero-in{padding:140px 20px 48px}
+  section.pad{padding:72px 0}
+  .divider{padding:80px 0}
+  .contact{padding:80px 0}
+  .hero-stats{gap:20px}
+  .hstat{min-width:44%}
+}
+</style>
+</head>
+<body>
+
+<div id="scroll-prog"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="media.html" class="nav-l"><span class="dot"></span><span>Awaken Media<small>Sanchaung Link</small></span></a>
+  <ul class="nav-c">
+    <li><a href="#map">Map</a></li>
+    <li><a href="#walls">Walls</a></li>
+    <li><a href="#zones">Zones</a></li>
+    <li><a href="#menu">Menu</a></li>
+  </ul>
+  <a href="mailto:nyinyisoewin@awakenentertainment.org?subject=Sanchaung%20Link%20Media%20Proposal" class="nav-cta">Request Deck</a>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="hero-img"></div>
+  <div class="hero-scrim"></div>
+  <div class="hero-in">
+    <p class="hero-client">Prepared for <b>Chingu Soju</b> × <b>Sanchaung Link</b> — by Awaken Media</p>
+    <h1 class="hero-h">The venue media<br>catalogue</h1>
+    <p class="hero-p">Seven wall formats and ten activation zones, mapped across one venue — from arrival gantry to the last ride home. Every placement priced, tagged, and ready to produce.</p>
+    <div class="hero-actions">
+      <a href="#map" class="btn btn-mint">Explore the venue map</a>
+      <a href="#menu" class="btn btn-ghost">See the complete menu</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hstat"><b>56</b><span>Placements</span></div>
+      <div class="hstat"><b>11</b><span>Groups</span></div>
+      <div class="hstat"><b>07</b><span>Wall formats</span></div>
+      <div class="hstat"><b>10</b><span>Activation zones</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- LOCATION STRIP -->
+<div class="locstrip">
+  <div class="wrap">
+    <div class="loc-l">📍 <b>Sanchaung Link</b> — cnr Sanchaung Street &amp; Bargayar Road, Sanchaung Tsp, Yangon</div>
+    <a href="https://maps.app.goo.gl/3rtwiL3iPYNLin1d6" target="_blank" rel="noopener" class="loc-map">View on Google Maps →</a>
+  </div>
+</div>
+
+<!-- MAP -->
+<section class="pad mapsec" id="map">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow on-light">The map</span>
+      <h2 class="h2">Where each visual lives</h2>
+      <p class="sub">Photo positions and zone placements on the venue plan. Green pills are the wall formats shot on site; orange pills are the activation zones. Tap any pill to jump to it.</p>
+    </div>
+
+    <div class="map-grid">
+      <div class="map-plot">
+        <span class="map-road-top">Sanchaung Street</span>
+        <span class="map-road-bottom">Bargayar Road</span>
+        <span class="map-road-left">Street</span>
+        <span class="map-road-right">City Mart Holding</span>
+        <div class="map-plot-inner">
+          <div class="map-green"></div>
+          <a href="#fmt-05" class="pill wall" style="left:56%;top:12%">05</a>
+          <a href="#fmt-01" class="pill wall" style="left:26%;top:19%">01·03·04·07</a>
+          <a href="#fmt-02" class="pill wall" style="left:52%;top:38%">02·06</a>
+          <a href="#zone-15" class="pill zone" style="left:24%;top:52%">15</a>
+          <a href="#zone-09" class="pill zone" style="left:52%;top:62%">09·10</a>
+          <a href="#zone-11" class="pill zone" style="left:24%;top:76%">11·12·13</a>
+          <a href="#zone-14" class="pill zone" style="left:38%;top:87%">14</a>
+          <a href="#zone-08" class="pill zone" style="left:48%;top:98%">08</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="map-legend">
+          <div class="leg-row"><a href="#fmt-01" class="pill wall">01·03·04·07</a><div class="leg-text"><b>North wall</b><span>Mega-mural, photo wall, 3D relief, projection</span></div></div>
+          <div class="leg-row"><a href="#fmt-02" class="pill wall">02·06</a><div class="leg-text"><b>East wall run</b><span>Sequential panels, flavor strip</span></div></div>
+          <div class="leg-row"><a href="#fmt-05" class="pill wall">05</a><div class="leg-text"><b>North-east corner</b><span>Corner wrap</span></div></div>
+          <div class="leg-row"><a href="#zone-08" class="pill zone">08</a><div class="leg-text"><b>Main gate, Bargayar Rd</b><span>Entrance &amp; wayfinding</span></div></div>
+          <div class="leg-row"><a href="#zone-09" class="pill zone">09·10</a><div class="leg-text"><b>Carpark spine</b><span>Overhead &amp; aerial, floor &amp; ground</span></div></div>
+          <div class="leg-row"><a href="#zone-11" class="pill zone">11·12·13</a><div class="leg-text"><b>Stall rows</b><span>Furniture, tents &amp; canopies, stall media</span></div></div>
+          <div class="leg-row"><a href="#zone-14" class="pill zone">14</a><div class="leg-text"><b>Promotion area</b><span>Experiential &amp; photo</span></div></div>
+          <div class="leg-row"><a href="#zone-15" class="pill zone">15</a><div class="leg-text"><b>Soju garden</b><span>Night &amp; lighting</span></div></div>
+          <div class="leg-row"><a href="#zone-16" class="pill zone">16·17</a><div class="leg-text"><b>Venue-wide &amp; online</b><span>Mobile media, digital tie-ins</span></div></div>
+        </div>
+        <p class="map-note">Schematic, not to scale — swap for the annotated architectural plan on request.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PART ONE: WALLS -->
+<section class="pad" id="walls" style="background:var(--paper2)">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow on-light">Part one · the walls</span>
+      <h2 class="h2">Seven ways to use one hoarding run</h2>
+      <p class="sub">Every wall format is made one of three ways — that is how we brief vendors and budget.</p>
+    </div>
+
+    <div class="methods">
+      <div class="mcard a">
+        <div class="midx">A</div>
+        <h3>Printed on the wall</h3>
+        <p>Vinyl print or hand-paint with weatherproof laminate. Fastest to produce, easiest to refresh.</p>
+        <div class="mtag">01 Mega-mural · 02 Sequential panels · 03 Photo wall · 06 Flavor strip</div>
+      </div>
+      <div class="mcard b">
+        <div class="midx">B</div>
+        <h3>Built off the wall</h3>
+        <p>Fabricated foamboard, ACM or timber pieces fixed to the hoarding structure.</p>
+        <div class="mtag">04 3D relief props · 05 Corner wrap</div>
+      </div>
+      <div class="mcard a">
+        <div class="midx">C</div>
+        <h3>Lit onto the wall</h3>
+        <p>Zero print. One projector and a power point turn the same wall into night media.</p>
+        <div class="mtag">07 Projection mapping</div>
+      </div>
+    </div>
+
+    <!-- 01 -->
+    <div class="fmt-card" id="fmt-01">
+      <div class="fmt-media" style="background-image:url('images/sanchaung-link/wall-a.jpg')"></div>
+      <div class="fmt-body">
+        <span class="fmt-num">01</span>
+        <h3>Mega-mural / billboard wrap</h3>
+        <p>One artwork across the full hoarding run — the venue's biggest single canvas, seen the moment people arrive.</p>
+        <div class="tag-row"><span class="tagchip solid">Print</span><span class="tagchip">30–60 m run</span><span class="tagchip">Arrival sightline</span></div>
+      </div>
+    </div>
+
+    <!-- 02 -->
+    <div class="fmt-card" id="fmt-02">
+      <div class="fmt-media" style="background-image:url('images/sanchaung-link/wall-b.jpg')"></div>
+      <div class="fmt-body">
+        <span class="fmt-num">02</span>
+        <h3>Sequential panel storytelling</h3>
+        <p>Chapters read while walking — pour, clink, laugh. Repetition builds recall by the time guests reach the stalls.</p>
+        <div class="tag-row"><span class="tagchip solid">Print</span><span class="tagchip">3–8 panels</span><span class="tagchip">Walkway walls</span></div>
+      </div>
+    </div>
+
+    <!-- 03 -->
+    <div class="fmt-card" id="fmt-03">
+      <div class="fmt-media" style="background-image:url('images/sanchaung-link/wall-a.jpg')"></div>
+      <div class="fmt-body">
+        <span class="fmt-num">03</span>
+        <h3>Instagrammable photo wall</h3>
+        <p>A backdrop people step into — wings and props sized for a phone frame. Every photo posts the brand for free.</p>
+        <div class="tag-row"><span class="tagchip solid">Print</span><span class="tagchip">3–5 m panel</span><span class="tagchip">UGC engine</span></div>
+      </div>
+    </div>
+
+    <!-- 04 -->
+    <div class="fmt-card" id="fmt-04">
+      <div class="fmt-media" style="background-image:url('images/sanchaung-link/wall-a.jpg')"></div>
+      <div class="fmt-body">
+        <span class="fmt-num">04</span>
+        <h3>3D relief wall props</h3>
+        <p>A dimensional bottle breaking above the wall line — visible over the fence from the street outside, not just inside.</p>
+        <div class="tag-row"><span class="tagchip solid">Build</span><span class="tagchip">Hero piece</span><span class="tagchip">Street visibility</span></div>
+      </div>
+    </div>
+
+    <!-- 05 -->
+    <div class="fmt-card" id="fmt-05">
+      <div class="fmt-media" style="background-image:url('images/sanchaung-link/wall-c.jpg')"></div>
+      <div class="fmt-body">
+        <span class="fmt-num">05</span>
+        <h3>Corner wrap</h3>
+        <p>One message bending around two planes, read from two directions at the venue's busiest junctions.</p>
+        <div class="tag-row"><span class="tagchip solid">Build</span><span class="tagchip">2 planes</span><span class="tagchip">Double sightline</span></div>
+      </div>
+    </div>
+
+    <!-- 06 -->
+    <div class="fmt-card" id="fmt-06">
+      <div class="fmt-media" style="background-image:url('images/sanchaung-link/wall-b.jpg')"></div>
+      <div class="fmt-body">
+        <span class="fmt-num">06</span>
+        <h3>Wall-base flavor strip</h3>
+        <p>A skirting band on repeat along the wall base — the flavor lineup at seated eye level, low cost per metre.</p>
+        <div class="tag-row"><span class="tagchip solid">Print</span><span class="tagchip">Full wall run</span><span class="tagchip">Range education</span></div>
+      </div>
+    </div>
+
+    <!-- 07 — day/night trick -->
+    <div class="fmt-card" id="fmt-07">
+      <div class="fmt-media dn" data-mode="day" id="dn-07">
+        <div class="dn-img day" style="background-image:url('images/sanchaung-link/wall-a.jpg')"></div>
+        <div class="dn-img night" style="background-image:url('images/sanchaung-link/wall-a.jpg');filter:brightness(.4) saturate(1.3)"></div>
+        <div class="dn-night-fx"></div>
+        <div class="dn-switch">
+          <button class="dn-btn active" data-mode="day" onclick="setDN('dn-07','day',this)">☀ Day</button>
+          <button class="dn-btn" data-mode="night" onclick="setDN('dn-07','night',this)">🌙 Night</button>
+        </div>
+        <div class="dn-caption">Same wall, two lives — concept preview, not a photo. By night the print goes dark and the projector takes over.</div>
+      </div>
+      <div class="fmt-body">
+        <span class="fmt-num">07</span>
+        <h3>Projection mapping surface</h3>
+        <p>After dark the printed wall switches off and the projected one switches on — animated loops and event visuals for the night crowd.</p>
+        <div class="tag-row"><span class="tagchip solid">Light</span><span class="tagchip">Night hours</span><span class="tagchip">No print cost</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIVIDER -->
+<div class="divider">
+  <div class="wrap">
+    <span class="eyebrow">Part two</span>
+    <h2>Beyond the walls</h2>
+    <p>Ten activation zones that carry the brand from the gate to the last ride home.</p>
+  </div>
+</div>
+
+<!-- PART TWO: ZONES -->
+<section class="pad" id="zones">
+  <div class="wrap">
+
+    <!-- 08 -->
+    <div class="zone-card" id="zone-08">
+      <div class="zone-media" style="background-image:url('images/sanchaung-link/entrance.jpg')"></div>
+      <div class="zone-body">
+        <span class="zone-num">08</span>
+        <h3>Entrance &amp; wayfinding</h3>
+        <p class="zdesc">Own the arrival moment — the gate, the pylon, and every decision point after it.</p>
+        <ul class="zlist">
+          <li>Gantry / arch takeover</li><li>Pylon wrap + neon bottle sign</li><li>Directional totems and signage</li>
+          <li>Security booth wrap</li><li>Fence mesh banners</li><li>Ride-hail pick-up co-brand</li>
+        </ul>
+        <span class="ztag">Zone: gates</span>
+      </div>
+    </div>
+
+    <!-- 09 — day/night trick (real photos) -->
+    <div class="zone-card rev" id="zone-09">
+      <div class="zone-media dn" data-mode="day" id="dn-09">
+        <div class="dn-img day" style="background-image:url('images/sanchaung-link/overhead.jpg')"></div>
+        <div class="dn-img night" style="background-image:url('images/sanchaung-link/night-tree.jpg')"></div>
+        <div class="dn-switch">
+          <button class="dn-btn active" data-mode="day" onclick="setDN('dn-09','day',this)">☀ Day</button>
+          <button class="dn-btn" data-mode="night" onclick="setDN('dn-09','night',this)">🌙 Night</button>
+        </div>
+        <div class="dn-caption">Real photos — the flags and lanterns installed by day are the glow the venue runs on after dark.</div>
+      </div>
+      <div class="zone-body">
+        <span class="zone-num">09</span>
+        <h3>Overhead &amp; aerial</h3>
+        <p class="zdesc">The layer above eye level — flags, bunting and lanterns that fill every camera frame.</p>
+        <ul class="zlist">
+          <li>Pole flag corridor</li><li>Bunting flag lines</li><li>Hanging bottle lanterns</li>
+          <li>Festoon light branding</li><li>LED tree wrap</li><li>Inflatable rooftop bottle</li>
+        </ul>
+        <span class="ztag">Zone: full venue</span>
+      </div>
+    </div>
+
+    <!-- 10 -->
+    <div class="zone-card" id="zone-10">
+      <div class="zone-media" style="background-image:url('images/sanchaung-link/floor-ground.jpg')"></div>
+      <div class="zone-body">
+        <span class="zone-num">10</span>
+        <h3>Floor &amp; ground</h3>
+        <p class="zdesc">The surface everyone looks at in the rain — decals, bays and one drone-worthy mural.</p>
+        <ul class="zlist">
+          <li>Footprint decal trails</li><li>Parking bay decals + wheel stops</li>
+          <li>Giant ground mural</li><li>Stage apron branding</li>
+        </ul>
+        <span class="ztag">Zone: carpark + ground</span>
+      </div>
+    </div>
+
+    <!-- 11 -->
+    <div class="zone-card rev" id="zone-11">
+      <div class="zone-media" style="background-image:url('images/sanchaung-link/furniture.jpg')"></div>
+      <div class="zone-body">
+        <span class="zone-num">11</span>
+        <h3>Furniture &amp; fixtures</h3>
+        <p class="zdesc">Everything guests touch and sit on — the barrel fleet claims the floor plane.</p>
+        <ul class="zlist">
+          <li>Barrel table fleet</li><li>Table wraps + chair backs</li><li>Menus and table tents</li>
+          <li>Branded parasols</li><li>Bin / barrel / generator wraps</li>
+        </ul>
+        <span class="ztag">Zone: dining clusters</span>
+      </div>
+    </div>
+
+    <!-- 12 -->
+    <div class="zone-card" id="zone-12">
+      <div class="zone-media" style="background-image:url('images/sanchaung-link/tents.jpg')"></div>
+      <div class="zone-body">
+        <span class="zone-num">12</span>
+        <h3>Tents &amp; canopies</h3>
+        <p class="zdesc">The venue's roofline — a canopy fleet plus the marquee header everyone walks under.</p>
+        <ul class="zlist">
+          <li>Canopy fleet takeover</li><li>Marquee header banner</li>
+          <li>Pop-up soju bar pavilion</li><li>Tree bar counter wrap</li>
+        </ul>
+        <span class="ztag">Zone: stall rows</span>
+      </div>
+    </div>
+
+    <!-- 13 -->
+    <div class="zone-card rev" id="zone-13">
+      <div class="zone-media" style="background-image:url('images/sanchaung-link/stall-media.jpg')"></div>
+      <div class="zone-body">
+        <span class="zone-num">13</span>
+        <h3>Stall-level media</h3>
+        <p class="zdesc">Point of sale — where soju meets mala and BBQ, and the fridge is the ad.</p>
+        <ul class="zlist">
+          <li>Counter-front panels</li><li>Menu co-branding with food partners</li><li>Branded chillers + ice buckets</li>
+          <li>Bottle glorifiers</li><li>Glassware and coasters</li><li>Partner-stall staff aprons</li>
+        </ul>
+        <span class="ztag">Zone: food stalls</span>
+      </div>
+    </div>
+
+    <!-- 14 -->
+    <div class="zone-card" id="zone-14">
+      <div class="zone-media" style="background-image:url('images/sanchaung-link/experiential.jpg')"></div>
+      <div class="zone-body">
+        <span class="zone-num">14</span>
+        <h3>Experiential &amp; photo</h3>
+        <p class="zdesc">Things to do, not just see — tastings, games and photo moments that earn dwell time.</p>
+        <ul class="zlist">
+          <li>Tasting bar (ID-checked)</li><li>Photo booth + AR filter</li><li>Soju-pong games corner</li>
+          <li>Claw machine / gacha merch</li><li>Flavor voting wall</li><li>Doodle-character standees</li>
+        </ul>
+        <span class="ztag">Zone: promotion area</span>
+      </div>
+    </div>
+
+    <!-- 15 — real night gallery -->
+    <div class="zone-card rev" id="zone-15">
+      <div class="zone-media dn" data-mode="day" id="dn-15">
+        <div class="dn-img day" style="background-image:url('images/sanchaung-link/tents.jpg')"></div>
+        <div class="dn-img night" style="background-image:url('images/sanchaung-link/night-stalls.jpg')"></div>
+        <div class="dn-switch">
+          <button class="dn-btn active" data-mode="day" onclick="setDN('dn-15','day',this)">☀ Day</button>
+          <button class="dn-btn" data-mode="night" onclick="setDN('dn-15','night',this)">🌙 Night</button>
+        </div>
+        <div class="dn-caption">Real photos — the stall rows before opening vs. lit and running after dark.</div>
+      </div>
+      <div class="zone-body">
+        <span class="zone-num">15</span>
+        <h3>Night &amp; lighting</h3>
+        <p class="zdesc">The drinking hours — glow, spotlights and lightboxes that own the venue after dark.</p>
+        <ul class="zlist">
+          <li>Backlit lightboxes</li><li>Projection nights</li>
+          <li>Glow furniture and cups</li><li>Spotlit hero bottle installation</li>
+        </ul>
+        <span class="ztag">Zone: night venue</span>
+      </div>
+    </div>
+
+    <!-- 16 -->
+    <div class="zone-card" id="zone-16">
+      <div class="zone-media" style="background-image:url('images/sanchaung-link/mobile-human.jpg')"></div>
+      <div class="zone-body">
+        <span class="zone-num">16</span>
+        <h3>Mobile &amp; human media</h3>
+        <p class="zdesc">Media that walks — staff, bikes and umbrellas that carry the brand beyond the gate.</p>
+        <ul class="zlist">
+          <li>Staff uniforms and caps</li><li>Branded delivery bikes / carts</li>
+          <li>Umbrella share + rain ponchos</li><li>Sticker packs and merch</li>
+        </ul>
+        <span class="ztag">Zone: everywhere</span>
+      </div>
+    </div>
+
+    <!-- 17 -->
+    <div class="zone-card rev" id="zone-17">
+      <div class="zone-media" style="background-image:url('images/sanchaung-link/digital-tiein.jpg')"></div>
+      <div class="zone-body">
+        <span class="zone-num">17</span>
+        <h3>Digital tie-ins</h3>
+        <p class="zdesc">The connective layer — every physical touchpoint links to promos, events and Wi-Fi.</p>
+        <ul class="zlist">
+          <li>QR codes on every touchpoint</li><li>Wi-Fi splash page sponsorship</li>
+          <li>Chingu Fridays stage naming</li><li>Event calendar + playlist links</li>
+        </ul>
+        <span class="ztag">Zone: online</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="pad menusec" id="menu">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">The complete menu</span>
+      <h2 class="h2">56 placements, 11 groups</h2>
+      <p class="sub">Every group from the catalogue, at a glance.</p>
+    </div>
+    <div class="menu-grid">
+      <div>
+        <div class="menu-row"><span class="mnum">01–07</span><span class="mname">Wall media</span><span class="mcount">7 formats</span></div>
+        <div class="menu-row"><span class="mnum">08</span><span class="mname">Entrance &amp; wayfinding</span><span class="mcount">6 items</span></div>
+        <div class="menu-row"><span class="mnum">09</span><span class="mname">Overhead &amp; aerial</span><span class="mcount">6 items</span></div>
+        <div class="menu-row"><span class="mnum">10</span><span class="mname">Floor &amp; ground</span><span class="mcount">4 items</span></div>
+        <div class="menu-row"><span class="mnum">11</span><span class="mname">Furniture &amp; fixtures</span><span class="mcount">5 items</span></div>
+        <div class="menu-row"><span class="mnum">12</span><span class="mname">Tents &amp; canopies</span><span class="mcount">4 items</span></div>
+      </div>
+      <div>
+        <div class="menu-row"><span class="mnum">13</span><span class="mname">Stall-level media</span><span class="mcount">6 items</span></div>
+        <div class="menu-row"><span class="mnum">14</span><span class="mname">Experiential &amp; photo</span><span class="mcount">6 items</span></div>
+        <div class="menu-row"><span class="mnum">15</span><span class="mname">Night &amp; lighting</span><span class="mcount">4 items</span></div>
+        <div class="menu-row"><span class="mnum">16</span><span class="mname">Mobile &amp; human media</span><span class="mcount">4 items</span></div>
+        <div class="menu-row"><span class="mnum">17</span><span class="mname">Digital tie-ins</span><span class="mcount">4 items</span></div>
+      </div>
+    </div>
+    <p class="menu-total"><b>56 placements across 11 groups</b> · all creative carries 18+ and responsible-drinking marks at production.</p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact">
+  <div class="wrap">
+    <div class="contact-box">
+      <div>
+        <h2>Ready to walk the venue together?</h2>
+        <p>We'll turn this catalogue into a priced media plan, vendor briefs, and a production timeline for Chingu Soju at Sanchaung Link.</p>
+      </div>
+      <div class="contact-actions">
+        <a href="mailto:nyinyisoewin@awakenentertainment.org?subject=Sanchaung%20Link%20Media%20Proposal" class="btn btn-mint">Email Awaken Media</a>
+        <a href="tel:+959255762417" class="btn btn-ghost">Call +95 925 5762 417</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="fg">
+      <div>
+        <p class="fh">Awaken Media</p>
+        <p style="font-size:13.5px;color:rgba(255,255,255,.55);line-height:1.7;max-width:340px">Out-of-home and venue advertising under Awaken Entertainment. Sanchaung Link is our first mapped venue — more are on the way.</p>
+      </div>
+      <div>
+        <p class="fh">Explore</p>
+        <div class="flinks"><a href="media.html">Awaken Media</a><a href="index.html">All Divisions</a><a href="#map">Venue Map</a><a href="#menu">Menu</a></div>
+      </div>
+      <div>
+        <p class="fh">Contact</p>
+        <div class="flinks"><a href="tel:+959255762417">+95 925 5762 417</a><a href="mailto:nyinyisoewin@awakenentertainment.org">nyinyisoewin@awakenentertainment.org</a><a href="#">Mayangone Tsp, Yangon</a></div>
+      </div>
+    </div>
+    <div class="fbot">
+      <span class="fcp">© 2026 Awaken Entertainment. All rights reserved.</span>
+      <span class="flogo">Awaken <span>Media</span></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+function setDN(id,mode,btn){
+  const el=document.getElementById(id);
+  el.dataset.mode=mode;
+  btn.parentElement.querySelectorAll('.dn-btn').forEach(b=>b.classList.toggle('active',b===btn));
+}
+// nav bg on scroll + progress bar
+const nav=document.getElementById('nav');
+const prog=document.getElementById('scroll-prog');
+window.addEventListener('scroll',()=>{
+  nav.classList.toggle('bg',window.scrollY>40);
+  const h=document.documentElement.scrollHeight-window.innerHeight;
+  prog.style.width=(h>0?(window.scrollY/h)*100:0)+'%';
+},{passive:true});
+</script>
+</body>
+</html>
