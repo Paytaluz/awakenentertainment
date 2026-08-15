@@ -74,15 +74,10 @@ section.pad{padding:110px 0}
 /* ===== MAP ===== */
 .mapsec{background:var(--paper)}
 .map-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:60px;align-items:start}
-.map-plot{position:relative;aspect-ratio:4/4.6;background:var(--paper2);border:1.5px solid var(--line);border-radius:4px;padding:34px 26px}
-.map-road-top,.map-road-bottom{position:absolute;left:0;right:0;text-align:center;font-size:10px;font-weight:700;letter-spacing:.18em;color:var(--muted);text-transform:uppercase}
-.map-road-top{top:8px}
-.map-road-bottom{bottom:8px}
-.map-road-left,.map-road-right{position:absolute;top:50%;font-size:10px;font-weight:700;letter-spacing:.18em;color:var(--muted);text-transform:uppercase;writing-mode:vertical-rl}
-.map-road-left{left:6px;transform:translateY(-50%) rotate(180deg)}
-.map-road-right{right:6px;transform:translateY(-50%)}
-.map-plot-inner{position:absolute;inset:34px 40px;border:1px dashed rgba(14,42,32,.25)}
-.map-green{position:absolute;left:8%;top:14%;width:38%;height:46%;background:rgba(140,233,184,.28);border-radius:2px}
+.map-plot{position:relative;border:1.5px solid var(--line);border-radius:4px;overflow:hidden;background:#fff}
+.map-plot img{display:block;width:100%;height:auto}
+.map-hot{position:absolute;transform:translate(-50%,-50%);border-radius:100px;transition:box-shadow .2s,outline-color .2s}
+.map-hot:hover,.map-hot:focus-visible{box-shadow:0 0 0 3px rgba(140,233,184,.9),0 0 0 6px rgba(14,42,32,.15);outline:none}
 .pill{position:absolute;transform:translate(-50%,-50%);display:inline-flex;align-items:center;justify-content:center;padding:7px 12px;border-radius:100px;font-size:11px;font-weight:800;letter-spacing:.02em;color:#fff;white-space:nowrap;box-shadow:0 4px 10px rgba(0,0,0,.18);transition:transform .2s,box-shadow .2s}
 .pill:hover{transform:translate(-50%,-50%) scale(1.08);box-shadow:0 8px 18px rgba(0,0,0,.28)}
 .pill.wall{background:var(--ink)}
@@ -261,26 +256,20 @@ footer{background:#08150f;color:#fff;padding:56px 0 32px}
     <div class="sec-head">
       <span class="eyebrow on-light">The map</span>
       <h2 class="h2">Where each visual lives</h2>
-      <p class="sub">Photo positions and zone placements on the venue plan. Green pills are the wall formats shot on site; orange pills are the activation zones. Tap any pill to jump to it.</p>
+      <p class="sub">The official annotated site plan for Sanchaung Link. Green labels are the wall formats shot on site; orange labels are the activation zones. Tap any label to jump to it.</p>
     </div>
 
     <div class="map-grid">
       <div class="map-plot">
-        <span class="map-road-top">Sanchaung Street</span>
-        <span class="map-road-bottom">Bargayar Road</span>
-        <span class="map-road-left">Street</span>
-        <span class="map-road-right">City Mart Holding</span>
-        <div class="map-plot-inner">
-          <div class="map-green"></div>
-          <a href="#fmt-05" class="pill wall" style="left:56%;top:12%">05</a>
-          <a href="#fmt-01" class="pill wall" style="left:26%;top:19%">01·03·04·07</a>
-          <a href="#fmt-02" class="pill wall" style="left:52%;top:38%">02·06</a>
-          <a href="#zone-15" class="pill zone" style="left:24%;top:52%">15</a>
-          <a href="#zone-09" class="pill zone" style="left:52%;top:62%">09·10</a>
-          <a href="#zone-11" class="pill zone" style="left:24%;top:76%">11·12·13</a>
-          <a href="#zone-14" class="pill zone" style="left:38%;top:87%">14</a>
-          <a href="#zone-08" class="pill zone" style="left:48%;top:98%">08</a>
-        </div>
+        <img src="images/sanchaung-link/site-plan.png" alt="Sanchaung Link annotated site plan — wall formats and activation zones mapped across the venue" loading="lazy">
+        <a href="#fmt-05" class="map-hot" aria-label="05 North-east corner" style="left:52.83%;top:24.51%;width:12%;height:6.2%"></a>
+        <a href="#fmt-01" class="map-hot" aria-label="01, 03, 04, 07 North wall" style="left:35.33%;top:31.81%;width:27.5%;height:6.3%"></a>
+        <a href="#fmt-02" class="map-hot" aria-label="02, 06 East wall run" style="left:51.35%;top:44.50%;width:7.5%;height:15.5%"></a>
+        <a href="#zone-15" class="map-hot" aria-label="15 Soju garden" style="left:38.52%;top:52.22%;width:12%;height:6.2%"></a>
+        <a href="#zone-09" class="map-hot" aria-label="09, 10 Carpark spine" style="left:60.25%;top:67.03%;width:7.5%;height:15.5%"></a>
+        <a href="#zone-11" class="map-hot" aria-label="11, 12, 13 Stall rows" style="left:38.52%;top:73.66%;width:23%;height:6.2%"></a>
+        <a href="#zone-14" class="map-hot" aria-label="14 Promotion area" style="left:43.73%;top:83.11%;width:12%;height:6.2%"></a>
+        <a href="#zone-08" class="map-hot" aria-label="08 Main gate" style="left:58.52%;top:88.15%;width:12%;height:6%"></a>
       </div>
 
       <div>
@@ -295,7 +284,7 @@ footer{background:#08150f;color:#fff;padding:56px 0 32px}
           <div class="leg-row"><a href="#zone-15" class="pill zone">15</a><div class="leg-text"><b>Soju garden</b><span>Night &amp; lighting</span></div></div>
           <div class="leg-row"><a href="#zone-16" class="pill zone">16·17</a><div class="leg-text"><b>Venue-wide &amp; online</b><span>Mobile media, digital tie-ins</span></div></div>
         </div>
-        <p class="map-note">Schematic, not to scale — swap for the annotated architectural plan on request.</p>
+        <p class="map-note">Official architectural site plan, annotated by wall format and activation zone.</p>
       </div>
     </div>
   </div>
