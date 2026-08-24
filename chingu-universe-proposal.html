@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chingu Universe — Production Proposal | Awaken Production</title>
+<meta name="description" content="Full production proposal for Chingu Universe: a 48-episode, 9:16 Korean-style friendship series for Chingu Soju. Creative treatment, execution plan, timeline, team, and terms.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#ffffff;--surface:#f7faf8;--surface-2:#eef2ef;--text:#0f1420;--text-secondary:#5b6472;--border:#e3e7ea;
+  --accent:#1f9d5c;--accent-dark:#167a48;--navy:#0f1b3d;--amber:#d9822b;
+  --radius-sm:6px;--radius:12px;--radius-lg:16px;--radius-xl:24px;
+}
+html{font-family:'Inter',system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+.serif{font-family:'Source Serif 4',Georgia,serif}
+
+/* Header */
+.header{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 2.5rem;background:rgba(255,255,255,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.logo{display:flex;align-items:center;gap:0.75rem}
+.logo-mark{width:32px;height:32px;border:1.5px solid var(--text);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;letter-spacing:0.1em}
+.logo-text{font-size:13px;font-weight:700;letter-spacing:0.15em}
+.logo-text span{color:var(--accent)}
+.nav{display:flex;gap:1.75rem}
+.nav a{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-secondary);transition:color 0.2s}
+.nav a:hover{color:var(--text)}
+.header-cta{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;padding:10px 20px;border-radius:32px;background:var(--text);color:#fff;white-space:nowrap;display:inline-flex;align-items:center;gap:6px}
+.menu-btn{display:none;background:none;border:none;font-size:20px;cursor:pointer}
+
+/* Hero */
+.hero{position:relative;padding:5.5rem 2.5rem 3.5rem;max-width:1200px;margin:0 auto;border-bottom:1px solid var(--border)}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.2em;color:var(--accent-dark);margin-bottom:1.5rem}
+.hero-eyebrow::before{content:'';width:20px;height:1px;background:var(--accent)}
+.hero-title{font-size:clamp(2.75rem,7vw,5.75rem);font-weight:800;line-height:0.95;letter-spacing:-0.03em;text-transform:uppercase}
+.hero-title small{display:block;font-size:0.32em;font-weight:600;color:var(--text-secondary);text-transform:none;letter-spacing:0;margin-top:.9rem}
+.hero-sub{font-size:1.05rem;line-height:1.75;color:var(--text-secondary);max-width:660px;margin-top:1.75rem}
+.hero-meta{display:flex;flex-wrap:wrap;gap:2rem;margin-top:2.5rem;padding-top:2rem;border-top:1px solid var(--border)}
+.hero-meta-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;color:var(--text-secondary);margin-bottom:.35rem}
+.hero-meta-value{font-size:15px;font-weight:700}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem}
+.btn{display:inline-flex;align-items:center;gap:0.5rem;padding:14px 30px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;border-radius:32px;transition:all 0.3s;cursor:pointer;border:none}
+.btn-primary{background:var(--text);color:#fff}
+.btn-primary:hover{background:#222;transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:var(--text);border:1px solid var(--border)}
+.btn-ghost:hover{border-color:var(--text);background:rgba(0,0,0,0.03)}
+
+/* Sticky sub-nav */
+.subnav{position:sticky;top:64px;z-index:190;background:rgba(255,255,255,0.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);overflow-x:auto;white-space:nowrap}
+.subnav-inner{display:flex;gap:2rem;padding:0.9rem 2.5rem;max-width:1200px;margin:0 auto}
+.subnav a{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-secondary);flex-shrink:0;transition:color .2s}
+.subnav a.active,.subnav a:hover{color:var(--accent-dark)}
+
+/* Viewer */
+.viewer-wrap{max-width:1200px;margin:0 auto;padding:3rem 2.5rem 1rem}
+.viewer-head{display:flex;justify-content:space-between;align-items:flex-end;gap:1rem;margin-bottom:1.5rem;flex-wrap:wrap}
+.viewer-section-tag{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;color:var(--accent-dark);margin-bottom:.4rem}
+.viewer-slide-title{font-size:1.35rem;font-weight:700;letter-spacing:-0.01em}
+.viewer-counter{font-size:12px;font-weight:600;color:var(--text-secondary);letter-spacing:.08em}
+
+.stage{position:relative;background:var(--navy);border-radius:var(--radius-lg);overflow:hidden;box-shadow:0 24px 60px rgba(15,27,61,0.18);aspect-ratio:16/9}
+.stage img{width:100%;height:100%;object-fit:contain;background:var(--navy);cursor:zoom-in;user-select:none}
+.stage-arrow{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.92);border:none;display:flex;align-items:center;justify-content:center;font-size:18px;cursor:pointer;color:var(--navy);transition:all .2s;box-shadow:0 6px 20px rgba(0,0,0,0.2)}
+.stage-arrow:hover{background:#fff;transform:translateY(-50%) scale(1.06)}
+.stage-arrow.prev{left:16px}
+.stage-arrow.next{right:16px}
+.stage-zoom{position:absolute;bottom:16px;right:16px;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.92);border:none;display:flex;align-items:center;justify-content:center;font-size:15px;cursor:pointer;color:var(--navy)}
+.stage-progress{height:3px;background:var(--surface-2);border-radius:2px;margin-top:1rem;overflow:hidden}
+.stage-progress-bar{height:100%;background:var(--accent);transition:width .3s}
+
+.thumbs{display:flex;gap:10px;overflow-x:auto;padding:1.25rem 0 .5rem;scroll-behavior:smooth}
+.thumbs::-webkit-scrollbar{height:6px}
+.thumbs::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+.thumb{flex:0 0 auto;width:110px;aspect-ratio:16/9;border-radius:6px;overflow:hidden;border:2px solid transparent;cursor:pointer;opacity:.55;transition:all .2s;background:var(--navy)}
+.thumb img{width:100%;height:100%;object-fit:cover}
+.thumb:hover{opacity:.85}
+.thumb.active{opacity:1;border-color:var(--accent)}
+
+.keys-hint{text-align:center;font-size:11px;color:var(--text-secondary);margin-top:.75rem}
+
+/* Section index list */
+.section{padding:4rem 2.5rem;max-width:1200px;margin:0 auto}
+.section-alt{background:var(--surface)}
+.section-alt>.section{background:none}
+.section-header{margin-bottom:2.5rem;max-width:680px}
+.section-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.2em;color:var(--accent-dark);margin-bottom:0.75rem}
+.section-title{font-size:clamp(1.6rem,3vw,2.35rem);font-weight:800;letter-spacing:-0.02em;line-height:1.15}
+.section-desc{font-size:15px;color:var(--text-secondary);margin-top:0.85rem;line-height:1.75}
+
+.toc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem}
+.toc-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;cursor:pointer;transition:all .25s}
+.toc-card:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,0.06)}
+.toc-num{font-size:11px;font-weight:800;color:var(--accent-dark);letter-spacing:.1em;margin-bottom:.6rem}
+.toc-title{font-size:1rem;font-weight:700;margin-bottom:.35rem}
+.toc-range{font-size:12.5px;color:var(--text-secondary)}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:2rem;text-align:left;padding:3rem 2.5rem;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--surface)}
+.stats-inner{max-width:1200px;margin:0 auto;display:contents}
+.stat-value{font-size:2.15rem;font-weight:800;letter-spacing:-0.02em;line-height:1;color:var(--accent-dark)}
+.stat-label{font-size:12px;color:var(--text-secondary);margin-top:0.5rem;line-height:1.5}
+
+/* CTA */
+.cta{padding:5rem 2.5rem;max-width:900px;margin:0 auto;text-align:center}
+.cta-title{font-size:clamp(1.9rem,4vw,2.75rem);font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem}
+.cta-title em{font-style:italic;color:var(--accent)}
+.cta-text{font-size:15px;color:var(--text-secondary);max-width:520px;margin:0 auto 2rem}
+.cta-contacts{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;font-size:13px;font-weight:600}
+.cta-contacts a{padding-bottom:2px;border-bottom:1px solid var(--border);transition:border-color .2s}
+.cta-contacts a:hover{border-color:var(--text)}
+.footer-bottom{margin-top:2.5rem;font-size:11.5px;color:var(--text-secondary)}
+
+/* Lightbox */
+.lightbox{position:fixed;inset:0;z-index:500;background:rgba(10,14,25,0.96);display:none;align-items:center;justify-content:center;padding:2rem}
+.lightbox.open{display:flex}
+.lightbox img{max-width:100%;max-height:100%;object-fit:contain;border-radius:6px;box-shadow:0 20px 80px rgba(0,0,0,0.5)}
+.lightbox-close{position:absolute;top:22px;right:28px;width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.25);color:#fff;font-size:18px;cursor:pointer}
+.lightbox-arrow{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.25);color:#fff;font-size:20px;cursor:pointer}
+.lightbox-arrow.prev{left:24px}
+.lightbox-arrow.next{right:24px}
+.lightbox-counter{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,0.75);font-size:12px;letter-spacing:.1em}
+
+/* Mobile */
+@media(max-width:768px){
+  .header{padding:1rem 1.25rem}
+  .nav{display:none}
+  .menu-btn{display:block}
+  .hero{padding:4rem 1.25rem 2.5rem}
+  .subnav-inner{padding:0.8rem 1.25rem}
+  .viewer-wrap{padding:2rem 1.25rem 1rem}
+  .section{padding:3rem 1.25rem}
+  .stage-arrow{width:36px;height:36px;font-size:15px}
+  .thumb{width:84px}
+  .cta{padding:3.5rem 1.25rem}
+  .cta-contacts{flex-direction:column;gap:.85rem}
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <a href="index.html" class="logo">
+    <div class="logo-mark">A</div>
+    <div class="logo-text">AWAKEN <span>PRODUCTION</span></div>
+  </a>
+  <nav class="nav">
+    <a href="#overview">Overview</a>
+    <a href="#viewer" data-jump="4">Creative Treatment</a>
+    <a href="#viewer" data-jump="21">Execution &amp; Production</a>
+    <a href="#viewer" data-jump="31">Costing &amp; Terms</a>
+  </nav>
+  <a href="assets/chingu-universe-proposal/Chingu-Universe-Production-Proposal-2026.pdf" target="_blank" class="header-cta">Download PDF ↓</a>
+  <button class="menu-btn" aria-label="Menu">&#9776;</button>
+</header>
+
+<section class="hero" id="overview">
+  <p class="hero-eyebrow">Production Proposal · Prepared for Chingu Soju · 2026</p>
+  <h1 class="hero-title">Chingu Universe<small>48-Episode Korean-Style Friendship Series — full creative and production response to the Chingu Soju production house brief.</small></h1>
+  <p class="hero-sub">Six monthly batches, shot 9:16 vertical, targeting an October 2026 launch. One build phase establishes the series bible, sets, wardrobe and outro system once — then six identical, low-risk monthly cycles run against it, keeping quality and continuity intact across all 48 episodes.</p>
+  <div class="hero-meta">
+    <div class="hero-meta-item"><div class="hero-meta-label">Episodes</div><div class="hero-meta-value">48</div></div>
+    <div class="hero-meta-item"><div class="hero-meta-label">Batches</div><div class="hero-meta-value">6 Monthly</div></div>
+    <div class="hero-meta-item"><div class="hero-meta-label">Shoot Days</div><div class="hero-meta-value">18 Principal + 3</div></div>
+    <div class="hero-meta-item"><div class="hero-meta-label">Format</div><div class="hero-meta-value">9:16 Vertical</div></div>
+    <div class="hero-meta-item"><div class="hero-meta-label">Prepared by</div><div class="hero-meta-value">Awaken Entertainment</div></div>
+  </div>
+  <div class="hero-btns">
+    <a href="#viewer" class="btn btn-primary">Read Full Proposal ↓</a>
+    <a href="assets/chingu-universe-proposal/Chingu-Universe-Production-Proposal-2026.pdf" target="_blank" class="btn btn-ghost">Download Original PDF</a>
+  </div>
+</section>
+
+<nav class="subnav">
+  <div class="subnav-inner">
+    <a href="#viewer" data-jump="0">01 Cover &amp; Approach</a>
+    <a href="#viewer" data-jump="4">02 Creative Treatment</a>
+    <a href="#viewer" data-jump="21">03 Execution &amp; Production</a>
+    <a href="#viewer" data-jump="31">04 Costing &amp; Terms</a>
+    <a href="#viewer" data-jump="35">05 Next Steps</a>
+  </div>
+</nav>
+
+<div class="viewer-wrap" id="viewer">
+  <div class="viewer-head">
+    <div>
+      <p class="viewer-section-tag" id="sectionTag">Cover</p>
+      <h2 class="viewer-slide-title" id="slideTitleTop">Production Proposal</h2>
+    </div>
+    <div class="viewer-counter" id="counterTop">SLIDE 01 / 36</div>
+  </div>
+
+  <div class="stage">
+    <button class="stage-arrow prev" onclick="go(-1)" aria-label="Previous slide">‹</button>
+    <img id="stageImg" src="assets/chingu-universe-proposal/slide-01.jpg" alt="Chingu Universe proposal, slide 1">
+    <button class="stage-arrow next" onclick="go(1)" aria-label="Next slide">›</button>
+    <button class="stage-zoom" onclick="openLightbox()" aria-label="View full screen">⤢</button>
+  </div>
+  <div class="stage-progress"><div class="stage-progress-bar" id="progressBar" style="width:2.7%"></div></div>
+  <p class="keys-hint">Use ← → to navigate, click any slide to zoom, or download the original PDF above.</p>
+
+  <div class="thumbs" id="thumbs"></div>
+</div>
+
+<div class="section-alt"><div class="section" id="toc-section">
+  <div class="section-header">
+    <p class="section-label">What's Inside</p>
+    <h2 class="section-title">Every section maps to a numbered deliverable from the brief</h2>
+    <p class="section-desc">Jump straight to any part of the deck — the full 36-slide proposal covers creative treatment, execution and production planning, and costing &amp; terms in full.</p>
+  </div>
+  <div class="toc-grid" id="tocGrid"></div>
+</div></div>
+
+<div class="stats">
+  <div class="stats-inner">
+    <div><div class="stat-value">6</div><div class="stat-label">Friendship situation buckets — 8 episodes each, 48 total</div></div>
+    <div><div class="stat-value">2</div><div class="stat-label">Lighting &amp; grade states — Filtered and No Filter, designed once</div></div>
+    <div><div class="stat-value">4</div><div class="stat-label">Outro templates, built once and rendered 48 times</div></div>
+    <div><div class="stat-value">1</div><div class="stat-label">Director, DoP, editor and colourist retained across all six batches</div></div>
+  </div>
+</div>
+
+<div class="cta">
+  <h2 class="cta-title">Chingu moves beyond simply <em>being present</em>.</h2>
+  <p class="cta-text">We'd like to build the world where it becomes the key. Ready to talk through the title direction, casting, or the build-phase timeline?</p>
+  <div class="cta-contacts">
+    <a href="mailto:nyinyisoewin@awakenentertainment.org">nyinyisoewin@awakenentertainment.org</a>
+    <a href="tel:+959255762417">+95 925 5762 417</a>
+    <a href="https://www.awakenentertainment.org/contact" target="_blank">awakenentertainment.org/contact</a>
+    <a href="https://facebook.com/awakenentertainment" target="_blank">facebook.com/awakenentertainment</a>
+  </div>
+  <p class="footer-bottom">Awaken Production &middot; Chingu Universe — Production Proposal &middot; Prepared for Chingu Soju &middot; 2026</p>
+</div>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close">✕</button>
+  <button class="lightbox-arrow prev" onclick="go(-1)" aria-label="Previous slide">‹</button>
+  <img id="lightboxImg" src="" alt="">
+  <button class="lightbox-arrow next" onclick="go(1)" aria-label="Next slide">›</button>
+  <div class="lightbox-counter" id="lightboxCounter">01 / 36</div>
+</div>
+
+<script>
+const TOTAL = 36;
+const BASE = "assets/chingu-universe-proposal/slide-";
+function pad(n){return String(n).padStart(2,'0')}
+function src(i){return BASE + pad(i) + ".jpg"}
+
+const titles = [
+  "Cover — Production Proposal","What's Inside","How We Read The Brief","Our Strategic Answer",
+  "Section 01 — Creative Treatment","The Episode Engine","The Season Map","Alternative Title Directions",
+  "The Three Chingu","Recurring Characters & Guest Logic","The No-Filter Turn","Sample Episodes · 01–03",
+  "Sample Episodes · 04–06","Storyboard · Episode 01, 'The Read Receipt'","Directing Approach",
+  "Visual Style, Cinematography & Lighting","The 9:16 Frame","Editing, Pacing, Music & Sound",
+  "Holding Consistency Across 48 Episodes","The Outro System","Product Beauty Shot",
+  "Section 02 — Execution & Production","Overall Production Approach","Pre-Production Process",
+  "Casting Strategy","One Shoot Day, Hour by Hour","Post-Production Workflow",
+  "Review Process & Responsibilities","Team Structure","Shooting Requirements",
+  "Equipment, Props, Wardrobe & Logistics","Section 03 — Costing & Terms","Revision Policy",
+  "Payment Terms","Risk & Contingency Plan","Next Steps"
+];
+
+const sections = [
+  {start:0,end:4,label:"Overview"},
+  {start:4,end:21,label:"Section 01 · Creative Treatment"},
+  {start:21,end:31,label:"Section 02 · Execution & Production"},
+  {start:31,end:35,label:"Section 03 · Costing & Terms"},
+  {start:35,end:36,label:"Next Steps"}
+];
+function sectionFor(i){return sections.find(s=>i>=s.start&&i<s.end)?.label || ""}
+
+const tocEntries = [
+  {n:"01",title:"Detailed Cost Breakdown",range:"Not in this file — see Payment Terms",jump:33},
+  {n:"02",title:"Execution & Production Plan",range:"Slides 22–31",jump:21},
+  {n:"03",title:"Production Timeline",range:"Slide 4 — monthly cycle",jump:3},
+  {n:"04",title:"Team Structure",range:"Slide 29",jump:28},
+  {n:"05",title:"Creative Treatment",range:"Slides 6–21",jump:5},
+  {n:"06",title:"Shooting Requirements",range:"Slides 30–31",jump:29},
+  {n:"07",title:"Revision Policy",range:"Slide 33",jump:32},
+  {n:"08",title:"Payment Terms",range:"Slide 34",jump:33},
+  {n:"09",title:"Risk & Contingency Plan",range:"Slide 35",jump:34}
+];
+
+let current = 0;
+let lightboxOpen = false;
+
+function buildThumbs(){
+  const wrap = document.getElementById('thumbs');
+  for(let i=1;i<=TOTAL;i++){
+    const b = document.createElement('button');
+    b.className = 'thumb' + (i===1?' active':'');
+    b.innerHTML = `<img src="${src(i)}" alt="Slide ${i}: ${titles[i-1]}" loading="lazy">`;
+    b.onclick = () => setSlide(i-1);
+    wrap.appendChild(b);
+  }
+}
+
+function buildToc(){
+  const grid = document.getElementById('tocGrid');
+  tocEntries.forEach(e=>{
+    const card = document.createElement('div');
+    card.className = 'toc-card';
+    card.onclick = () => { setSlide(e.jump); document.getElementById('viewer').scrollIntoView({behavior:'smooth'}); };
+    card.innerHTML = `<div class="toc-num">${e.n}</div><div class="toc-title">${e.title}</div><div class="toc-range">${e.range}</div>`;
+    grid.appendChild(card);
+  });
+}
+
+function setSlide(i){
+  current = Math.max(0, Math.min(TOTAL-1, i));
+  const n = current+1;
+  document.getElementById('stageImg').src = src(n);
+  document.getElementById('stageImg').alt = `Chingu Universe proposal, slide ${n}: ${titles[current]}`;
+  document.getElementById('slideTitleTop').textContent = titles[current];
+  document.getElementById('sectionTag').textContent = sectionFor(current);
+  document.getElementById('counterTop').textContent = `SLIDE ${pad(n)} / ${TOTAL}`;
+  document.getElementById('progressBar').style.width = (n/TOTAL*100)+'%';
+  document.querySelectorAll('.thumb').forEach((t,idx)=>{
+    t.classList.toggle('active', idx===current);
+    if(idx===current) t.scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'});
+  });
+  if(lightboxOpen){
+    document.getElementById('lightboxImg').src = src(n);
+    document.getElementById('lightboxCounter').textContent = `${pad(n)} / ${TOTAL}`;
+  }
+}
+function go(dir){ setSlide(current+dir) }
+
+function openLightbox(){
+  lightboxOpen = true;
+  document.getElementById('lightboxImg').src = src(current+1);
+  document.getElementById('lightboxCounter').textContent = `${pad(current+1)} / ${TOTAL}`;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeLightbox(){
+  lightboxOpen = false;
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow='';
+}
+
+document.addEventListener('keydown', e=>{
+  if(e.key==='ArrowRight') go(1);
+  if(e.key==='ArrowLeft') go(-1);
+  if(e.key==='Escape' && lightboxOpen) closeLightbox();
+});
+document.getElementById('stageImg').addEventListener('click', openLightbox);
+document.getElementById('lightbox').addEventListener('click', e=>{ if(e.target.id==='lightbox') closeLightbox(); });
+
+document.querySelectorAll('a[data-jump]').forEach(a=>{
+  a.addEventListener('click', e=>{
+    e.preventDefault();
+    setSlide(parseInt(a.dataset.jump,10));
+    document.getElementById('viewer').scrollIntoView({behavior:'smooth'});
+  });
+});
+
+buildThumbs();
+buildToc();
+setSlide(0);
+</script>
+
+</body>
+</html>
