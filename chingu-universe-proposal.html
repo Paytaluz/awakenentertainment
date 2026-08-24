@@ -40,8 +40,8 @@ ul{list-style:none}
 .hero-bg{position:absolute;inset:0;object-fit:cover;width:100%;height:100%;opacity:0.55}
 .hero-bg-overlay{position:absolute;inset:0;background:linear-gradient(100deg,rgba(15,27,61,0.96) 0%,rgba(15,27,61,0.88) 32%,rgba(15,27,61,0.55) 62%,rgba(15,27,61,0.25) 100%)}
 .hero-content{position:relative;z-index:2;display:flex;gap:2.5rem;align-items:flex-end;padding:2.5rem;width:100%;flex-wrap:wrap}
-.hero-photo{flex:0 0 auto;width:230px;border-radius:var(--radius-lg);overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,0.4);border:3px solid rgba(255,255,255,0.15)}
-.hero-photo img{aspect-ratio:591/746;object-fit:cover}
+.hero-photo{flex:0 0 auto;width:230px;min-height:290px;border-radius:var(--radius-lg);overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,0.4);border:3px solid rgba(255,255,255,0.15)}
+.hero-photo img{width:100%;height:100%;aspect-ratio:591/746;object-fit:cover}
 .hero-text{flex:1 1 420px;min-width:280px;color:#fff}
 .hero-logo{width:74px;margin-bottom:1.25rem;border-radius:10px;background:#fff;padding:4px}
 .hero-eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.2em;color:#8fe3b8;margin-bottom:1.1rem}
@@ -126,7 +126,7 @@ ul{list-style:none}
 .char-head h3{font-family:'Source Serif 4',Georgia,serif;font-size:1.3rem}
 .char-head p{font-size:12px;opacity:.9;margin-top:2px}
 .char-body{display:flex;gap:1.1rem;padding:1.4rem}
-.char-photo{flex:0 0 110px;border-radius:var(--radius-sm);overflow:hidden;aspect-ratio:3/4.6}
+.char-photo{flex:0 0 110px;min-height:169px;border-radius:var(--radius-sm);overflow:hidden;aspect-ratio:3/4.6}
 .char-photo img{width:100%;height:100%;object-fit:cover}
 .char-info{flex:1;font-size:12.8px;color:var(--text-secondary);line-height:1.65}
 .char-info b{color:var(--text)}
@@ -137,7 +137,7 @@ ul{list-style:none}
 /* Ambassador cards */
 .ambassadors{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem}
 .amb-card{display:flex;gap:1.4rem;background:var(--surface-2);border-radius:var(--radius-lg);padding:1.5rem;align-items:flex-start}
-.amb-photo{flex:0 0 100px;border-radius:var(--radius-sm);overflow:hidden;aspect-ratio:3/4.6}
+.amb-photo{flex:0 0 100px;min-height:153px;border-radius:var(--radius-sm);overflow:hidden;aspect-ratio:3/4.6}
 .amb-photo img{width:100%;height:100%;object-fit:cover}
 .amb-name{font-family:'Source Serif 4',Georgia,serif;font-size:1.2rem;font-weight:700}
 .amb-tag{font-size:12px;font-weight:700;margin:.25rem 0 .6rem}
@@ -145,7 +145,7 @@ ul{list-style:none}
 
 /* Before/After turn */
 .turn-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
-.turn-photo{border-radius:var(--radius) var(--radius) 0 0;overflow:hidden;aspect-ratio:835/260}
+.turn-photo{border-radius:var(--radius) var(--radius) 0 0;overflow:hidden;aspect-ratio:835/260;min-height:120px}
 .turn-photo img{width:100%;height:100%;object-fit:cover}
 .turn-panel{border-radius:0 0 var(--radius) var(--radius);overflow:hidden;border:1px solid var(--border);border-top:none}
 .turn-head{padding:.9rem 1.4rem;font-weight:700;font-size:12.5px;letter-spacing:.08em;color:#fff;text-transform:uppercase}
@@ -355,17 +355,17 @@ tr:hover td{background:var(--surface)}
   </div>
   <div class="split">
     <div class="split-card">
-      <div class="split-icon" style="background:var(--accent)">⧉</div>
+      <div class="split-icon" style="background:var(--accent)"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="12" height="12" rx="1.5"></rect><path d="M9 9h12v12H9z"></path></svg></div>
       <h3 class="split-title">Volume is the real challenge</h3>
       <p class="split-text">48 complete stories in six months is not a film problem — it is a systems problem. It is won in pre-production, in a script bank and a repeatable shoot grammar, not on set.</p>
     </div>
     <div class="split-card">
-      <div class="split-icon" style="background:var(--red)">↻</div>
+      <div class="split-icon" style="background:var(--red)"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7"></path><polyline points="21 3 21 9 15 9"></polyline></svg></div>
       <h3 class="split-title">Consistency must survive six months</h3>
       <p class="split-text">The same three faces, the same apartment, the same grade, half a year apart. Without a locked bible and continuity discipline, batch 6 will not cut against batch 1.</p>
     </div>
     <div class="split-card">
-      <div class="split-icon" style="background:var(--amber)">◎</div>
+      <div class="split-icon" style="background:var(--amber)"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"></path><circle cx="12" cy="12" r="3"></circle></svg></div>
       <h3 class="split-title">The turn must be seen, not said</h3>
       <p class="split-text">'No Filter Unlocked' is a craft brief, not a caption. It lives in two lighting states, two grades and two editing rhythms — designed once, executed 48 times.</p>
     </div>
@@ -1021,7 +1021,7 @@ tr:hover td{background:var(--surface)}
   </div>
   <div class="quad">
     <div class="quad-card green">
-      <div class="quad-title">✓ Included in the quotation</div>
+      <div class="quad-title"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Included in the quotation</div>
       <div class="quad-row"><span>Scripts</span><b>2 rounds / episode</b></div>
       <div class="quad-row"><span>Storyboards</span><b>1 round / batch</b></div>
       <div class="quad-row"><span>Offline edit</span><b>2 rounds / episode</b></div>
@@ -1030,15 +1030,15 @@ tr:hover td{background:var(--surface)}
       <div class="quad-row" style="border:none"><span>Beauty shot</span><b>1 round / flavour</b></div>
     </div>
     <div class="quad-card blue">
-      <div class="quad-title">↻ What a round covers</div>
+      <div class="quad-title"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7"></path><polyline points="21 3 21 9 15 9"></polyline></svg> What a round covers</div>
       <ul><li>Dialogue, structure and pacing changes within the approved story</li><li>Shot selection, trims and reordering within existing footage</li><li>Graphics, subtitle and payoff-card amendments</li><li>Colour and audio adjustments within the approved look</li><li>One consolidated set of notes, within 3 working days</li></ul>
     </div>
     <div class="quad-card amber">
-      <div class="quad-title">$ Chargeable as additional</div>
+      <div class="quad-title"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg> Chargeable as additional</div>
       <ul><li>Any round beyond those included</li><li>Notes returned later than 3 working days, or in separate waves</li><li>Changes to an approved script after the batch has been shot</li><li>Changes to brand assets or label artwork after approval</li><li>New episodes, characters or locations outside the approved map</li></ul>
     </div>
     <div class="quad-card red">
-      <div class="quad-title">⚠ Reshoot conditions</div>
+      <div class="quad-title"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg> Reshoot conditions</div>
       <p style="font-size:13px;color:var(--text-secondary);line-height:1.75">A reshoot is triggered only by a change that cannot be resolved in post: a rewritten scene after shooting, a product or label change after the batch, or a cast change mid-season. Reshoots are quoted at a half or full day rate and scheduled into the next batch's pick-up window. Technical failure on our side is reshot at our cost.</p>
     </div>
   </div>
