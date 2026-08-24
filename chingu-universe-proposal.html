@@ -260,6 +260,81 @@ tr:hover td{background:var(--surface)}
 .cta-contacts a:hover{border-color:var(--text)}
 .footer-bottom{margin-top:2.5rem;font-size:11.5px;color:var(--text-secondary)}
 
+/* Headed split-card (colored header bar + icon) */
+.split-card-h{border-radius:var(--radius-lg);overflow:hidden;background:#fff;border:1px solid var(--border);display:flex;flex-direction:column}
+.split-card-h-head{padding:1rem 1.4rem;color:#fff;display:flex;justify-content:space-between;align-items:center;font-family:'Source Serif 4',Georgia,serif;font-weight:700;font-size:1.15rem}
+.split-card-h-body{padding:1.4rem;flex:1}
+.split-card-h-body ul{font-size:13px;color:var(--text-secondary);line-height:1.85}
+.split-card-h-body li{display:flex;gap:.6rem;margin-bottom:.55rem}
+.split-card-h-body li svg{flex-shrink:0;margin-top:2px}
+
+/* Row with colored badge + icon (editing / post-production timelines) */
+.icon-row{display:grid;grid-template-columns:120px 28px 1fr;gap:1rem;align-items:center;padding:1rem 1.4rem;border-top:1px solid var(--border)}
+.icon-row:first-child{border-top:none}
+.icon-row-badge{padding:8px 10px;border-radius:8px;color:#fff;font-weight:700;font-size:11.5px;text-align:center}
+.icon-row-icon{width:26px;height:26px;display:flex;align-items:center;justify-content:center;color:var(--navy)}
+.icon-row-main{}
+.icon-row-main b{display:block;font-size:13.5px;font-weight:700;margin-bottom:.15rem}
+.icon-row-main span{font-size:12.5px;color:var(--text-secondary);line-height:1.55}
+@media(max-width:640px){.icon-row{grid-template-columns:26px 1fr;grid-template-areas:"icon label" "badge badge" "desc desc";row-gap:.4rem}
+  .icon-row-badge{grid-area:badge;justify-self:start}
+  .icon-row-icon{grid-area:icon}
+  .icon-row-main{grid-area:label}
+}
+
+/* Outro steps with icon circles */
+.outro-steps{display:flex;flex-wrap:wrap;gap:1rem}
+.outro-step{flex:1 1 140px;text-align:center}
+.outro-num{font-size:11px;color:var(--text-secondary);text-align:left;margin-bottom:.6rem}
+.outro-icon{width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto .9rem;color:#fff}
+.outro-text{font-size:12.5px;color:var(--text-secondary);line-height:1.5}
+
+/* Stat with icon */
+.stats-icon{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1.75rem;border:1px solid var(--border);border-radius:var(--radius);padding:2rem}
+.stat-icon-item{display:flex;align-items:center;gap:.9rem}
+.stat-icon-badge{width:38px;height:38px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+
+/* Divider photo as floating cutout bubble (no box) */
+.divider-photo.bubble{background:none;flex:0 0 220px;display:flex;align-items:center;justify-content:center;padding:1rem}
+.divider-photo.bubble img{width:100%;height:auto;object-fit:contain}
+
+/* 9:16 frame diagram */
+.frame-diagram{display:flex;gap:1.75rem;flex-wrap:wrap;align-items:flex-start;margin-bottom:1.75rem}
+.phone-mock{width:150px;text-align:center}
+.phone-shell{width:150px;height:290px;border:3px solid var(--navy);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;background:var(--navy);box-shadow:0 10px 24px rgba(0,0,0,0.12)}
+.phone-cap{margin-top:.85rem;font-weight:700;font-size:13px}
+.phone-desc{font-size:11.5px;color:var(--text-secondary);margin-top:.3rem;line-height:1.5}
+.pz-ui{background:var(--red);color:#fff;font-size:8.5px;font-weight:700;letter-spacing:.08em;display:flex;align-items:center;justify-content:center;flex:0 0 12%}
+.pz-safe{background:var(--accent);color:#fff;font-size:10px;font-weight:700;letter-spacing:.03em;display:flex;align-items:center;justify-content:center;text-align:center;flex:1;line-height:1.4}
+.pz-caption{background:var(--red);color:#fff;font-size:8.5px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:0 0 18%}
+.pz-face{background:var(--navy);color:rgba(255,255,255,0.9);flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem;font-size:9.5px;font-weight:700;letter-spacing:.03em}
+.pz-dots{display:flex;gap:6px}
+.pz-dots span{width:15px;height:15px;border-radius:50%;background:rgba(255,255,255,0.35)}
+.pz-product{background:var(--amber);flex:0 0 30%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.4rem;color:#fff;font-size:9px;font-weight:700}
+.pz-product-bar{width:10px;height:26px;border-radius:3px;background:rgba(255,255,255,0.85)}
+.pz-payoffbg{background:var(--navy);flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.7rem}
+.pz-payoffcard{background:var(--red);color:#fff;font-weight:700;font-size:9.5px;text-align:center;padding:.6rem .9rem;border-radius:6px;line-height:1.4;width:75%}
+.pz-logo{background:#fff;color:var(--navy);font-size:8px;font-weight:700;padding:3px 10px;border-radius:4px}
+.frame-side{flex:1;min-width:260px;background:var(--surface-2);border-radius:var(--radius);padding:1.75rem}
+.frame-side-title{display:flex;align-items:center;gap:.6rem;font-family:'Source Serif 4',Georgia,serif;font-size:1.1rem;font-weight:700;margin-bottom:1.4rem}
+.frame-bullet{display:flex;gap:.8rem;margin-bottom:1.1rem}
+.frame-bullet:last-child{margin-bottom:0}
+.frame-bullet svg{flex-shrink:0;margin-top:2px;color:var(--accent-dark)}
+.frame-bullet b{display:block;font-size:13px;margin-bottom:.2rem}
+.frame-bullet p{font-size:12.3px;color:var(--text-secondary);line-height:1.6}
+
+/* Shoot-day gantt timeline */
+.gantt{border-radius:var(--radius);overflow:hidden}
+.gantt-ticks{display:flex;font-size:10.5px;color:var(--text-secondary);font-weight:600;margin-bottom:.4rem}
+.gantt-ticks span{flex:1;text-align:left}
+.gantt-bar{display:flex;border-radius:8px;overflow:hidden;height:52px}
+.gantt-seg{display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:700;text-align:center;padding:0 4px;overflow:hidden;white-space:nowrap}
+.gantt-pointers{display:flex;height:34px;position:relative;margin-top:2px}
+.gantt-pointer-cell{display:flex;align-items:flex-start;justify-content:center}
+.gantt-pointer{position:relative;padding-top:14px;font-size:10.5px;font-weight:700;color:#fff;background:var(--navy);border-radius:20px;padding-left:12px;padding-right:12px;padding-bottom:5px;white-space:nowrap}
+.gantt-pointer::before{content:'';position:absolute;top:0;left:50%;width:2px;height:14px;background:var(--navy)}
+@media(max-width:768px){.gantt-ticks,.gantt-bar,.gantt-pointers{display:none}}
+
 /* Mobile */
 @media(max-width:768px){
   .header{padding:1rem 1.25rem}
@@ -671,11 +746,27 @@ tr:hover td{background:var(--surface)}
     <h2 class="section-title">Directing Approach</h2>
     <p class="section-desc">The comedy is in the reaction, not the line. We direct for the face that hears it.</p>
   </div>
-  <div class="cards">
-    <div class="card"><div class="card-title">Cast the chemistry, not the résumé</div><p class="card-text" style="margin-top:.5rem">We screen-test in threes, never alone. The audition brief is an improvised version of a real episode — what we're buying is the interruption rhythm between three people.</p></div>
-    <div class="card"><div class="card-title">Shoot the listener</div><p class="card-text" style="margin-top:.5rem">Every set-up is covered for reactions before the speaker. In a two-minute episode the laugh is almost always on the face receiving the line.</p></div>
-    <div class="card"><div class="card-title">Rehearse the turn, improvise the set-up</div><p class="card-text" style="margin-top:.5rem">The no-filter section is run three times: as written, one degree warmer, then unscripted. The third take is usually the one that airs.</p></div>
-    <div class="card"><div class="card-title">Direct in K-drama grammar, deliberately</div><p class="card-text" style="margin-top:.5rem">The push-in, the held pause, the sudden cut to a wide — quoted knowingly, not imitated. The audience enjoys being in on it.</p></div>
+  <div class="split" style="grid-template-columns:1fr 1fr">
+    <div class="split-card">
+      <div class="split-icon" style="background:var(--accent)"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
+      <h3 class="split-title">Cast the chemistry, not the résumé</h3>
+      <p class="split-text">We screen-test in threes, never alone. The audition brief is an improvised version of a real episode — what we're buying is the interruption rhythm between three people.</p>
+    </div>
+    <div class="split-card">
+      <div class="split-icon" style="background:var(--red)"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"></path></svg></div>
+      <h3 class="split-title">Shoot the listener</h3>
+      <p class="split-text">Every set-up is covered for reactions before the speaker. In a two-minute episode the laugh is almost always on the face receiving the line.</p>
+    </div>
+    <div class="split-card">
+      <div class="split-icon" style="background:var(--amber)"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7"></path><polyline points="21 3 21 9 15 9"></polyline></svg></div>
+      <h3 class="split-title">Rehearse the turn, improvise the set-up</h3>
+      <p class="split-text">The no-filter section is run three times: as written, one degree warmer, then unscripted. The third take is usually the one that airs.</p>
+    </div>
+    <div class="split-card">
+      <div class="split-icon" style="background:var(--blue)"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect></svg></div>
+      <h3 class="split-title">Direct in K-drama grammar, deliberately</h3>
+      <p class="split-text">The push-in, the held pause, the sudden cut to a wide — quoted knowingly, not imitated. The audience enjoys being in on it.</p>
+    </div>
   </div>
   <div class="callout">One director across all six batches, with a second-unit AD for pick-ups. Consistency of performance is a directing decision before it is a post decision.</div>
 </section>
@@ -687,15 +778,24 @@ tr:hover td{background:var(--surface)}
     <p class="section-desc">Polished Korean web drama, adapted for a vertical frame and a scrolling thumb.</p>
   </div>
   <div class="split">
-    <div class="split-card"><h3 class="split-title">Cinematography</h3><ul style="font-size:13px;color:var(--text-secondary);line-height:1.9">
-      <li>— Cinema camera, 4K, shot &amp; framed natively for 9:16</li><li>— Prime lenses: 35 / 50 / 85mm</li><li>— Shallow depth on singles, deep on group wides</li><li>— Eye-level for the squad; slight low angle for the sunbae</li><li>— Product always in the lower third, in focus, never centred over a face</li>
-    </ul></div>
-    <div class="split-card"><h3 class="split-title">Lighting</h3><ul style="font-size:13px;color:var(--text-secondary);line-height:1.9">
-      <li>— Soft key through diffusion, natural window direction</li><li>— Practicals carry the warmth: neon, pendant lamps, table lights</li><li>— Filtered state: flat, even, cool top light</li><li>— No Filter state: modelled, warm, directional, deeper falloff</li><li>— Two lighting states pre-built per set — the switch is a re-plug, not a re-rig</li>
-    </ul></div>
-    <div class="split-card"><h3 class="split-title">Grade &amp; Frame</h3><ul style="font-size:13px;color:var(--text-secondary);line-height:1.9">
-      <li>— Two locked LUTs applied from Batch 1 to Batch 6</li><li>— Cinematic but never glossy — grain retained, highlights soft</li><li>— Safe-zone template for platform UI on every export</li><li>— Text and payoff cards positioned above the caption band</li><li>— One colourist across the season, single reference still per set</li>
-    </ul></div>
+    <div class="split-card-h">
+      <div class="split-card-h-head" style="background:var(--accent)">Cinematography<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg></div>
+      <div class="split-card-h-body"><ul>
+        <li>— Cinema camera, 4K, shot &amp; framed natively for 9:16</li><li>— Prime lenses: 35 / 50 / 85mm</li><li>— Shallow depth on singles, deep on group wides</li><li>— Eye-level for the squad; slight low angle for the sunbae</li><li>— Product always in the lower third, in focus, never centred over a face</li>
+      </ul></div>
+    </div>
+    <div class="split-card-h">
+      <div class="split-card-h-head" style="background:var(--red)">Lighting<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></div>
+      <div class="split-card-h-body"><ul>
+        <li>— Soft key through diffusion, natural window direction</li><li>— Practicals carry the warmth: neon, pendant lamps, table lights</li><li>— Filtered state: flat, even, cool top light</li><li>— No Filter state: modelled, warm, directional, deeper falloff</li><li>— Two lighting states pre-built per set — the switch is a re-plug, not a re-rig</li>
+      </ul></div>
+    </div>
+    <div class="split-card-h">
+      <div class="split-card-h-head" style="background:var(--amber)">Grade &amp; Frame<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg></div>
+      <div class="split-card-h-body"><ul>
+        <li>— Two locked LUTs applied from Batch 1 to Batch 6</li><li>— Cinematic but never glossy — grain retained, highlights soft</li><li>— Safe-zone template for platform UI on every export</li><li>— Text and payoff cards positioned above the caption band</li><li>— One colourist across the season, single reference still per set</li>
+      </ul></div>
+    </div>
   </div>
   <div class="callout">References: <b>Work Later, Drink Now</b> (tone and drinking-table blocking) · <b>Netflix's "The Swoon" shorts</b> (vertical comedy timing) · Korean web-drama singles coverage · Hong Dae Pocha as the real-world anchor.</div>
 </div></div>
@@ -706,13 +806,43 @@ tr:hover td{background:var(--surface)}
     <h2 class="section-title">The 9:16 Frame</h2>
     <p class="section-desc">Vertical is a composition discipline, not a crop. Every set-up is blocked for a phone in a hand, with platform UI accounted for at shot-list stage.</p>
   </div>
-  <div class="cards">
-    <div class="card"><div class="card-title">Framed natively, not cropped</div><p class="card-text" style="margin-top:.5rem">We shoot 9:16 in camera with a 16:9 protect. Cropping a horizontal master loses the faces.</p></div>
-    <div class="card"><div class="card-title">Three people, one vertical frame</div><p class="card-text" style="margin-top:.5rem">Two-shots stack diagonally rather than sitting side by side. Five-hand scenes are covered in singles.</p></div>
-    <div class="card"><div class="card-title">Closer than you think</div><p class="card-text" style="margin-top:.5rem">A 9:16 wide reads as a mid. Our 'wide' is roughly a waist-up, or the group is unreadable at phone size.</p></div>
-    <div class="card"><div class="card-title">Text sized for a thumb</div><p class="card-text" style="margin-top:.5rem">Payoff cards and subtitles are set at a size legible on a 6-inch screen, checked on device before delivery.</p></div>
+  <div class="frame-diagram">
+    <div class="phone-mock">
+      <div class="phone-shell">
+        <div class="pz-ui">UI</div>
+        <div class="pz-safe">SAFE<br>ACTION<br>AREA</div>
+        <div class="pz-caption">CAPTIONS</div>
+      </div>
+      <div class="phone-cap">Safe zones</div>
+      <div class="phone-desc">Top 12% and bottom 20% belong to platform UI. Nothing meaningful sits there.</div>
+    </div>
+    <div class="phone-mock">
+      <div class="phone-shell">
+        <div class="pz-face"><span class="pz-dots"><span></span><span></span><span></span></span>FACE ZONE</div>
+        <div class="pz-product"><span class="pz-product-bar"></span>PRODUCT</div>
+      </div>
+      <div class="phone-cap">Product blocking</div>
+      <div class="phone-desc">Faces upper two-thirds, product lower third — in focus, never over a face.</div>
+    </div>
+    <div class="phone-mock">
+      <div class="phone-shell">
+        <div class="pz-payoffbg">
+          <div class="pz-payoffcard">NO FILTER<br>UNLOCKED</div>
+          <div class="pz-logo">LOGO</div>
+        </div>
+      </div>
+      <div class="phone-cap">The payoff card</div>
+      <div class="phone-desc">Lands in the safe band, above captions, at a fixed position every episode.</div>
+    </div>
+    <div class="frame-side">
+      <div class="frame-side-title"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg> What this changes on set</div>
+      <div class="frame-bullet"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2v14a2 2 0 0 0 2 2h14"></path><path d="M18 22V8a2 2 0 0 0-2-2H2"></path></svg><div><b>Framed natively, not cropped</b><p>We shoot 9:16 in camera with a 16:9 protect. Cropping a horizontal master loses the faces.</p></div></div>
+      <div class="frame-bullet"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg><div><b>Three people, one vertical frame</b><p>Two-shots stack diagonally rather than sitting side by side. Five-hand scenes are covered in singles.</p></div></div>
+      <div class="frame-bullet"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3"></path><path d="M21 8V5a2 2 0 0 0-2-2h-3"></path><path d="M3 16v3a2 2 0 0 0 2 2h3"></path><path d="M16 21h3a2 2 0 0 0 2-2v-3"></path></svg><div><b>Closer than you think</b><p>A 9:16 wide reads as a mid. Our 'wide' is roughly a waist-up, or the group is unreadable at phone size.</p></div></div>
+      <div class="frame-bullet"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"></polyline><line x1="9" y1="20" x2="15" y2="20"></line><line x1="12" y1="4" x2="12" y2="20"></line></svg><div><b>Text sized for a thumb</b><p>Payoff cards and subtitles are set at a size legible on a 6-inch screen, checked on device before delivery.</p></div></div>
+      <div class="frame-bullet"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg><div><b>Reviewed on a phone</b><p>Every first cut is QC'd on an actual handset, in the safe-zone template, before it goes to the client.</p></div></div>
+    </div>
   </div>
-  <div class="callout"><b>Safe zones:</b> top 12% and bottom 20% belong to platform UI — nothing meaningful sits there. <b>Product blocking:</b> faces upper two-thirds, product lower third, in focus, never over a face. Every first cut is QC'd on an actual handset, in the safe-zone template, before it goes to the client.</div>
 </section>
 
 <div class="section-alt"><div class="section">
@@ -721,16 +851,16 @@ tr:hover td{background:var(--surface)}
     <h2 class="section-title">Editing, Pacing, Music &amp; Sound</h2>
     <p class="section-desc">Two minutes is the ceiling, not the target. Most episodes should land at 90–105 seconds.</p>
   </div>
-  <div class="timeline">
-    <div class="tl-row"><div class="tl-time">0:00–0:08</div><div class="tl-label">The Hook</div><div class="tl-desc">Cold open on the problem. No establishing shot, no logo, no names.</div></div>
-    <div class="tl-row"><div class="tl-time">0:08–0:45</div><div class="tl-label">Filtered</div><div class="tl-desc">Politeness holds. Wide, still, cool. Tension builds under the surface.</div></div>
-    <div class="tl-row"><div class="tl-time">0:45–0:55</div><div class="tl-label">The Trigger</div><div class="tl-desc">The bottle opens or the glass is poured. Grade shifts, camera comes off the tripod, music enters.</div></div>
-    <div class="tl-row"><div class="tl-time">0:55–1:30</div><div class="tl-label">No Filter</div><div class="tl-desc">Fast reaction cutting, singles, overlapping dialogue. The truth surfaces and lands.</div></div>
-    <div class="tl-row"><div class="tl-time">1:30–1:50</div><div class="tl-label">Outro</div><div class="tl-desc">Freeze, 2D transformation, Chingu label world, bottle, campaign line.</div></div>
+  <div class="table-wrap" style="border:1px solid var(--border);border-radius:var(--radius);overflow-x:visible">
+    <div class="icon-row"><div class="icon-row-badge" style="background:var(--accent)">0:00–0:08</div><div class="icon-row-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg></div><div class="icon-row-main"><b>The Hook</b><span>Cold open on the problem. No establishing shot, no logo, no names.</span></div></div>
+    <div class="icon-row"><div class="icon-row-badge" style="background:#5b6472">0:08–0:45</div><div class="icon-row-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div><div class="icon-row-main"><b>Filtered</b><span>Politeness holds. Wide, still, cool. Tension builds under the surface.</span></div></div>
+    <div class="icon-row"><div class="icon-row-badge" style="background:var(--amber)">0:45–0:55</div><div class="icon-row-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 9.9-1"></path></svg></div><div class="icon-row-main"><b>The Trigger</b><span>The bottle opens or the glass is poured. Grade shifts, camera comes off the tripod, music enters.</span></div></div>
+    <div class="icon-row"><div class="icon-row-badge" style="background:var(--red)">0:55–1:30</div><div class="icon-row-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg></div><div class="icon-row-main"><b>No Filter</b><span>Fast reaction cutting, singles, overlapping dialogue. The truth surfaces and lands.</span></div></div>
+    <div class="icon-row"><div class="icon-row-badge" style="background:var(--navy)">1:30–1:50</div><div class="icon-row-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path><circle cx="11" cy="11" r="2"></circle></svg></div><div class="icon-row-main"><b>Outro</b><span>Freeze, 2D transformation, Chingu label world, bottle, campaign line.</span></div></div>
   </div>
   <div class="split" style="margin-top:1.5rem">
-    <div class="split-card"><h3 class="split-title">Music</h3><p class="split-text">One custom cue library commissioned in the build phase: three moods, six lengths. Fully licensed, reusable across all 48.</p></div>
-    <div class="split-card"><h3 class="split-title">Sound</h3><p class="split-text">Clean location dialogue, lavs plus boom. The pour, the clink and the cap are treated as signature brand sound effects.</p></div>
+    <div class="split-card"><div class="split-icon" style="background:var(--accent);width:38px;height:38px"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg></div><h3 class="split-title">Music</h3><p class="split-text">One custom cue library commissioned in the build phase: three moods, six lengths. Fully licensed, reusable across all 48.</p></div>
+    <div class="split-card"><div class="split-icon" style="background:var(--amber);width:38px;height:38px"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line></svg></div><h3 class="split-title">Sound</h3><p class="split-text">Clean location dialogue, lavs plus boom. The pour, the clink and the cap are treated as signature brand sound effects.</p></div>
   </div>
 </div></div>
 
@@ -740,13 +870,13 @@ tr:hover td{background:var(--surface)}
     <h2 class="section-title">Holding Consistency Across 48 Episodes</h2>
     <p class="section-desc">The brief's hardest requirement. It is answered by documents and discipline, not by talent.</p>
   </div>
-  <div class="docs">
-    <div class="doc-card"><h4>Series Bible</h4><p>Locked in the build phase and version-controlled. Characters, voice, world rules, what each person would and would not say.</p></div>
-    <div class="doc-card"><h4>Look Book &amp; LUTs</h4><p>Two graded LUTs plus a reference still for every set-up. The colourist matches to the still, not to memory.</p></div>
-    <div class="doc-card"><h4>Wardrobe Continuity Plan</h4><p>Issued before every batch shoot. Per-character colour and silhouette locked; each look logged and photographed.</p></div>
-    <div class="doc-card"><h4>Set Continuity Log</h4><p>The apartment is photographed from six fixed marks. Nothing moves between batches without being logged.</p></div>
-    <div class="doc-card"><h4>Shot-Grammar Card</h4><p>A one-page card on every call sheet: the six recurring set-ups, their lens, height and lighting state.</p></div>
-    <div class="doc-card"><h4>Single-Owner Rule</h4><p>One director, one DoP, one editor, one colourist across all six batches. Continuity is cheapest when it lives in the same heads.</p></div>
+  <div class="split" style="grid-template-columns:repeat(3,1fr)">
+    <div class="split-card"><div class="split-icon" style="background:var(--accent)"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg></div><h3 class="split-title">Series Bible</h3><p class="split-text">Locked in the build phase and version-controlled. Characters, voice, world rules, what each person would and would not say.</p></div>
+    <div class="split-card"><div class="split-icon" style="background:var(--red)"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg></div><h3 class="split-title">Look Book &amp; LUTs</h3><p class="split-text">Two graded LUTs plus a reference still for every set-up. The colourist matches to the still, not to memory.</p></div>
+    <div class="split-card"><div class="split-icon" style="background:var(--amber)"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7h-3V6a4 4 0 0 0-8 0v1H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"></path><path d="M9 7V6a3 3 0 0 1 6 0v1"></path></svg></div><h3 class="split-title">Wardrobe Continuity Plan</h3><p class="split-text">Issued before every batch shoot. Per-character colour and silhouette locked; each look logged and photographed.</p></div>
+    <div class="split-card"><div class="split-icon" style="background:var(--blue)"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></div><h3 class="split-title">Set Continuity Log</h3><p class="split-text">The apartment is photographed from six fixed marks. Nothing moves between batches without being logged.</p></div>
+    <div class="split-card"><div class="split-icon" style="background:#8b5cf6"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect></svg></div><h3 class="split-title">Shot-Grammar Card</h3><p class="split-text">A one-page card on every call sheet: the six recurring set-ups, their lens, height and lighting state.</p></div>
+    <div class="split-card"><div class="split-icon" style="background:#0d9488"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg></div><h3 class="split-title">Single-Owner Rule</h3><p class="split-text">One director, one DoP, one editor, one colourist across all six batches. Continuity is cheapest when it lives in the same heads.</p></div>
   </div>
 </section>
 
@@ -756,17 +886,17 @@ tr:hover td{background:var(--surface)}
     <h2 class="section-title">The Outro System</h2>
     <p class="section-desc">Built once as four reusable templates, then rendered 48 times. Subcontracted to a Myanmar animation studio for fast revision turnaround.</p>
   </div>
-  <div class="steps">
-    <div class="step"><div class="step-num">1</div><div class="step-text">Final friendship reaction</div></div>
-    <div class="step"><div class="step-num">2</div><div class="step-text">Everyone freezes in a group pose</div></div>
-    <div class="step"><div class="step-num">3</div><div class="step-text">Live action becomes 2D illustration</div></div>
-    <div class="step"><div class="step-num">4</div><div class="step-text">They enter the Chingu label world</div></div>
-    <div class="step"><div class="step-num">5</div><div class="step-text">Camera transitions to the bottle</div></div>
-    <div class="step"><div class="step-num">6</div><div class="step-text">Beauty shot + campaign message</div></div>
+  <div class="outro-steps">
+    <div class="outro-step"><div class="outro-num">1</div><div class="outro-icon" style="background:var(--navy)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg></div><div class="outro-text">Final friendship reaction</div></div>
+    <div class="outro-step"><div class="outro-num">2</div><div class="outro-icon" style="background:var(--navy)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="5" width="14" height="14" rx="1"></rect></svg></div><div class="outro-text">Everyone freezes in a group pose</div></div>
+    <div class="outro-step"><div class="outro-num">3</div><div class="outro-icon" style="background:var(--navy)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5z"></path></svg></div><div class="outro-text">Live action becomes 2D illustration</div></div>
+    <div class="outro-step"><div class="outro-num">4</div><div class="outro-icon" style="background:var(--accent)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41L13.42 20.6a2 2 0 0 1-2.83 0L2.41 12.4A2 2 0 0 1 2 11V4a2 2 0 0 1 2-2h7c.5 0 1 .2 1.41.59l8.18 8.18a2 2 0 0 1 0 2.83z"></path><line x1="7.5" y1="7.5" x2="7.51" y2="7.5"></line></svg></div><div class="outro-text">They enter the Chingu label world</div></div>
+    <div class="outro-step"><div class="outro-num">5</div><div class="outro-icon" style="background:var(--accent)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg></div><div class="outro-text">Camera transitions to the bottle</div></div>
+    <div class="outro-step"><div class="outro-num">6</div><div class="outro-icon" style="background:var(--accent)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></div><div class="outro-text">Beauty shot + campaign message</div></div>
   </div>
-  <div class="callout" style="margin-top:1.75rem">
-    <b>Four templates, built to the cast mix:</b> 2-cast (10 eps) · 3-cast (26 eps) · 4-cast (8 eps) · 5-cast (4 eps).<br><br>
-    <b>How we keep it cheap at volume:</b> character illustrations drawn once from the locked cast then reused; freeze pose shot against a marked floor position every time; label world, bottle transition and campaign card are a single locked back half; per-episode work is limited to pose swap, wardrobe recolour and timing; two rounds of template revision built into the build phase, before Batch 1 locks.
+  <div class="split" style="grid-template-columns:1fr 1fr;margin-top:1.75rem">
+    <div class="callout" style="margin-top:0"><b style="display:flex;align-items:center;gap:.5rem;margin-bottom:.5rem"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg> Four templates, built to the cast mix</b>2-cast (10 eps) · 3-cast (26 eps) · 4-cast (8 eps) · 5-cast (4 eps).</div>
+    <div class="callout amber" style="margin-top:0"><b style="display:flex;align-items:center;gap:.5rem;margin-bottom:.5rem"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg> How we keep it cheap at volume</b>Character illustrations drawn once from the locked cast then reused; freeze pose shot against a marked floor position every time; label world, bottle transition and campaign card are a single locked back half; per-episode work is limited to pose swap, wardrobe recolour and timing; two rounds of template revision built into the build phase, before Batch 1 locks.</div>
   </div>
 </div></div>
 
@@ -778,7 +908,7 @@ tr:hover td{background:var(--surface)}
   </div>
   <div class="split">
     <div class="split-card">
-      <h3 class="split-title">Shoot Direction</h3>
+      <h3 class="split-title" style="display:flex;align-items:center;gap:.5rem"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg> Shoot Direction</h3>
       <ul style="font-size:13px;color:var(--text-secondary);line-height:1.9">
         <li>— Chilled bottle with built condensation, held on a cooled surface</li>
         <li>— Label kept clean, level and fully readable at thumbnail size</li>
@@ -788,13 +918,13 @@ tr:hover td{background:var(--surface)}
       </ul>
     </div>
     <div class="split-card">
-      <h3 class="split-title">What It Produces</h3>
+      <h3 class="split-title" style="display:flex;align-items:center;gap:.5rem"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg> What It Produces</h3>
       <ul style="font-size:13px;color:var(--text-secondary);line-height:1.9">
-        <li>— <b style="color:var(--text)">Master beauty film</b> — one per approved flavour, 6–8 seconds, 9:16</li>
-        <li>— <b style="color:var(--text)">Outro end-plate</b> — cut to the exact outro duration</li>
-        <li>— <b style="color:var(--text)">Still frames</b> — high-res stills for social and key visual use</li>
-        <li>— <b style="color:var(--text)">Clean plates</b> — background-only passes for future versioning</li>
-        <li>— <b style="color:var(--text)">Loop variants</b> — seamless loops for platform end-screens</li>
+        <li>— <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--text-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px;margin-right:2px"><rect x="2" y="3" width="20" height="18" rx="2"></rect><line x1="7" y1="3" x2="7" y2="21"></line><line x1="17" y1="3" x2="17" y2="21"></line><line x1="2" y1="9" x2="7" y2="9"></line><line x1="2" y1="15" x2="7" y2="15"></line><line x1="17" y1="9" x2="22" y2="9"></line><line x1="17" y1="15" x2="22" y2="15"></line></svg> <b style="color:var(--text)">Master beauty film</b> — one per approved flavour, 6–8 seconds, 9:16</li>
+        <li>— <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--text-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px;margin-right:2px"><path d="M20.59 13.41 13.42 20.58a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg> <b style="color:var(--text)">Outro end-plate</b> — cut to the exact outro duration</li>
+        <li>— <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--text-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px;margin-right:2px"><rect x="3" y="3" width="18" height="18" rx="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg> <b style="color:var(--text)">Still frames</b> — high-res stills for social and key visual use</li>
+        <li>— <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--text-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px;margin-right:2px"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg> <b style="color:var(--text)">Clean plates</b> — background-only passes for future versioning</li>
+        <li>— <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--text-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px;margin-right:2px"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg> <b style="color:var(--text)">Loop variants</b> — seamless loops for platform end-screens</li>
       </ul>
     </div>
   </div>
@@ -809,6 +939,7 @@ tr:hover td{background:var(--surface)}
 </section>
 
 <div class="divider-banner" id="execution">
+  <div class="divider-photo bubble"><img src="assets/chingu-universe-proposal/execution-bubble.png" alt=""></div>
   <div class="divider-text">
     <span class="divider-tag">Section 02</span>
     <h2 class="divider-title">Execution &amp; Production</h2>
@@ -885,17 +1016,40 @@ tr:hover td{background:var(--surface)}
     <h2 class="section-title">One Shoot Day, Hour by Hour</h2>
     <p class="section-desc">A twelve-hour call, eleven hours on the floor, one company move, two lighting states, three episodes banked.</p>
   </div>
-  <div class="timeline">
-    <div class="tl-row"><div class="tl-time">07:00 · 1h</div><div class="tl-label">Crew call &amp; rig</div><div class="tl-desc">Pre-light both states on set-up 1. Camera and sound build.</div></div>
-    <div class="tl-row"><div class="tl-time">08:00 · 1h</div><div class="tl-label">H/MU &amp; blocking</div><div class="tl-desc">Cast in hair and makeup while the AD walks blocking with stand-ins.</div></div>
-    <div class="tl-row"><div class="tl-time">09:00 · 3.5h</div><div class="tl-label">Block A · Filtered</div><div class="tl-desc">Every filtered-state scene in the batch, across all episodes on this set. <b>EP1 banked.</b></div></div>
-    <div class="tl-row"><div class="tl-time">12:30 · 0.75h</div><div class="tl-label">Lunch</div><div class="tl-desc">Crew break. Art department resets the table dressing.</div></div>
-    <div class="tl-row"><div class="tl-time">13:15 · 3.25h</div><div class="tl-label">Block B · No Filter</div><div class="tl-desc">Re-plug to the warm state. Handheld, singles, reaction coverage. <b>EP2 banked.</b></div></div>
-    <div class="tl-row"><div class="tl-time">16:30 · 1h</div><div class="tl-label">Block C · Inserts</div><div class="tl-desc">Product, phone screens, the pour, and every insert the batch needs.</div></div>
-    <div class="tl-row"><div class="tl-time">17:30 · 2h</div><div class="tl-label">Look B · Block D</div><div class="tl-desc">Wardrobe change, then the second wardrobe look's scenes back to back. <b>EP3 banked.</b></div></div>
-    <div class="tl-row"><div class="tl-time">19:30 · 0.5h</div><div class="tl-label">Wrap &amp; backup</div><div class="tl-desc">Continuity stills, triplicate backup, rushes uploaded for the editor.</div></div>
+  <div class="gantt">
+    <div class="gantt-ticks"><span>07:00</span><span>09:00</span><span>11:00</span><span>13:00</span><span>15:00</span><span>17:00</span><span>19:00</span></div>
+    <div class="gantt-bar">
+      <div class="gantt-seg" style="flex:7.7;background:var(--navy-2)">Crew call</div>
+      <div class="gantt-seg" style="flex:7.7;background:var(--navy)">H/MU</div>
+      <div class="gantt-seg" style="flex:26.9;background:var(--accent)">Block A · Filtered</div>
+      <div class="gantt-seg" style="flex:5.8;background:var(--border);color:var(--text-secondary)">Lunch</div>
+      <div class="gantt-seg" style="flex:25;background:var(--red)">Block B · No Filter</div>
+      <div class="gantt-seg" style="flex:7.7;background:var(--amber)">Inserts</div>
+      <div class="gantt-seg" style="flex:15.4;background:var(--blue)">Look B</div>
+      <div class="gantt-seg" style="flex:3.8;background:var(--navy-2)">Wrap</div>
+    </div>
+    <div class="gantt-pointers">
+      <div class="gantt-pointer-cell" style="flex:7.7"></div>
+      <div class="gantt-pointer-cell" style="flex:7.7"></div>
+      <div class="gantt-pointer-cell" style="flex:26.9"><div class="gantt-pointer">EP1 banked</div></div>
+      <div class="gantt-pointer-cell" style="flex:5.8"></div>
+      <div class="gantt-pointer-cell" style="flex:25"><div class="gantt-pointer">EP2 banked</div></div>
+      <div class="gantt-pointer-cell" style="flex:7.7"></div>
+      <div class="gantt-pointer-cell" style="flex:15.4"><div class="gantt-pointer">EP3 banked</div></div>
+      <div class="gantt-pointer-cell" style="flex:3.8"></div>
+    </div>
   </div>
-  <div class="callout">Company moves are the enemy of a three-episode day. Days 1 and 2 stay in the apartment; only day 3 travels, and it travels once.</div>
+  <div class="split" style="grid-template-columns:repeat(4,1fr);margin-top:1.75rem">
+    <div class="split-card" style="padding:1.1rem 1.2rem"><h3 class="split-title" style="font-size:.95rem">07:00 · Crew call &amp; rig</h3><p class="split-text">Pre-light both states on set-up 1. Camera and sound build.</p></div>
+    <div class="split-card" style="padding:1.1rem 1.2rem"><h3 class="split-title" style="font-size:.95rem">08:00 · H/MU &amp; blocking</h3><p class="split-text">Cast in hair and makeup while the AD walks blocking with stand-ins.</p></div>
+    <div class="split-card" style="padding:1.1rem 1.2rem"><h3 class="split-title" style="font-size:.95rem">09:00 · Block A · Filtered</h3><p class="split-text">Every filtered-state scene in the batch, across all episodes on this set. <b>EP1 banked.</b></p></div>
+    <div class="split-card" style="padding:1.1rem 1.2rem"><h3 class="split-title" style="font-size:.95rem">12:30 · Lunch</h3><p class="split-text">Crew break. Art department resets the table dressing.</p></div>
+    <div class="split-card" style="padding:1.1rem 1.2rem"><h3 class="split-title" style="font-size:.95rem">13:15 · Block B · No Filter</h3><p class="split-text">Re-plug to the warm state. Handheld, singles, reaction coverage. <b>EP2 banked.</b></p></div>
+    <div class="split-card" style="padding:1.1rem 1.2rem"><h3 class="split-title" style="font-size:.95rem">16:30 · Block C · Inserts</h3><p class="split-text">Product, phone screens, the pour, and every insert the batch needs.</p></div>
+    <div class="split-card" style="padding:1.1rem 1.2rem"><h3 class="split-title" style="font-size:.95rem">17:30 · Look B · Block D</h3><p class="split-text">Wardrobe change, then the second wardrobe look's scenes back to back. <b>EP3 banked.</b></p></div>
+    <div class="split-card" style="padding:1.1rem 1.2rem"><h3 class="split-title" style="font-size:.95rem">19:30 · Wrap &amp; backup</h3><p class="split-text">Continuity stills, triplicate backup, rushes uploaded for the editor.</p></div>
+  </div>
+  <div class="callout" style="margin-top:1.75rem">Company moves are the enemy of a three-episode day. Days 1 and 2 stay in the apartment; only day 3 travels, and it travels once.</div>
 </div></div>
 
 <section class="section">
@@ -904,15 +1058,15 @@ tr:hover td{background:var(--surface)}
     <h2 class="section-title">Post-Production Workflow</h2>
     <p class="section-desc">Eight episodes from wrap to delivery in twelve working days, repeated identically six times.</p>
   </div>
-  <div class="timeline">
-    <div class="tl-row"><div class="tl-time">D+1</div><div class="tl-label">Ingest &amp; sync</div><div class="tl-desc">Rushes backed up in triplicate, synced, logged against the batch board.</div></div>
-    <div class="tl-row"><div class="tl-time">D+2–4</div><div class="tl-label">Offline edit</div><div class="tl-desc">First cuts of all eight episodes. Timing pass to bring each under 2:00.</div></div>
-    <div class="tl-row"><div class="tl-time">D+5</div><div class="tl-label">Internal review</div><div class="tl-desc">Director and EP review. Notes applied before anything leaves the building.</div></div>
-    <div class="tl-row"><div class="tl-time">D+6</div><div class="tl-label">First cut to client</div><div class="tl-desc">All eight delivered together with a single consolidated review call.</div></div>
-    <div class="tl-row"><div class="tl-time">D+7–8</div><div class="tl-label">Client feedback</div><div class="tl-desc">Consolidated notes returned within three working days. Revision round one applied.</div></div>
-    <div class="tl-row"><div class="tl-time">D+9–10</div><div class="tl-label">Grade &amp; sound</div><div class="tl-desc">Colour to locked LUT and reference stills. Sound design, mix, music cues laid.</div></div>
-    <div class="tl-row"><div class="tl-time">D+11</div><div class="tl-label">Outro &amp; graphics</div><div class="tl-desc">2D transformation rendered from the correct cast template. Titles and payoff cards.</div></div>
-    <div class="tl-row"><div class="tl-time">D+12</div><div class="tl-label">QC &amp; delivery</div><div class="tl-desc">Subtitles, platform specs, safe-zone check, master and platform files handed over.</div></div>
+  <div class="split-card" style="padding:0">
+    <div class="icon-row"><div class="icon-row-badge" style="background:var(--navy-2)">D+1</div><div class="icon-row-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg></div><div class="icon-row-main"><b>Ingest &amp; sync</b><span>Rushes backed up in triplicate, synced, logged against the batch board.</span></div></div>
+    <div class="icon-row"><div class="icon-row-badge" style="background:var(--navy)">D+2–4</div><div class="icon-row-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><line x1="20" y1="4" x2="8.12" y2="15.88"></line><line x1="14.47" y1="14.48" x2="20" y2="20"></line><line x1="8.12" y1="8.12" x2="12" y2="12"></line></svg></div><div class="icon-row-main"><b>Offline edit</b><span>First cuts of all eight episodes. Timing pass to bring each under 2:00.</span></div></div>
+    <div class="icon-row"><div class="icon-row-badge" style="background:var(--accent)">D+5</div><div class="icon-row-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div><div class="icon-row-main"><b>Internal review</b><span>Director and EP review. Notes applied before anything leaves the building.</span></div></div>
+    <div class="icon-row"><div class="icon-row-badge" style="background:var(--accent-dark)">D+6</div><div class="icon-row-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg></div><div class="icon-row-main"><b>First cut to client</b><span>All eight delivered together with a single consolidated review call.</span></div></div>
+    <div class="icon-row"><div class="icon-row-badge" style="background:var(--amber)">D+7–8</div><div class="icon-row-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></div><div class="icon-row-main"><b>Client feedback</b><span>Consolidated notes returned within three working days. Revision round one applied.</span></div></div>
+    <div class="icon-row"><div class="icon-row-badge" style="background:var(--blue)">D+9–10</div><div class="icon-row-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"></path></svg></div><div class="icon-row-main"><b>Grade &amp; sound</b><span>Colour to locked LUT and reference stills. Sound design, mix, music cues laid.</span></div></div>
+    <div class="icon-row"><div class="icon-row-badge" style="background:var(--red)">D+11</div><div class="icon-row-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path><circle cx="11" cy="11" r="2"></circle></svg></div><div class="icon-row-main"><b>Outro &amp; graphics</b><span>2D transformation rendered from the correct cast template. Titles and payoff cards.</span></div></div>
+    <div class="icon-row"><div class="icon-row-badge" style="background:var(--navy-2)">D+12</div><div class="icon-row-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg></div><div class="icon-row-main"><b>QC &amp; delivery</b><span>Subtitles, platform specs, safe-zone check, master and platform files handed over.</span></div></div>
   </div>
   <div class="callout">Delivery formats: 9:16 master (ProRes), platform-ready H.264 per channel, burned-in and sidecar subtitles in Myanmar and English, plus a clean textless version of every episode for archive and re-versioning.</div>
 </section>
@@ -983,23 +1137,21 @@ tr:hover td{background:var(--surface)}
     <h2 class="section-title">Shooting Requirements</h2>
     <p class="section-desc">Days, locations and studio needs. Recurring-location costs are separated from additional-location costs, as the brief requires.</p>
   </div>
-  <div class="stats" style="border:1px solid var(--border);border-radius:var(--radius);padding:2rem;margin-bottom:2rem">
-    <div class="stats-inner">
-      <div><div class="stat-value">18</div><div class="stat-label">Principal days</div></div>
-      <div><div class="stat-value">2</div><div class="stat-label">Beauty shoot days</div></div>
-      <div><div class="stat-value">1</div><div class="stat-label">Pick-up day</div></div>
-      <div><div class="stat-value">21</div><div class="stat-label">Total shoot days</div></div>
-    </div>
+  <div class="stats-icon" style="margin-bottom:2rem">
+    <div class="stat-icon-item"><div class="stat-icon-badge" style="background:var(--accent)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg></div><div><div class="stat-value" style="font-size:1.9rem">18</div><div class="stat-label">Principal days</div></div></div>
+    <div class="stat-icon-item"><div class="stat-icon-badge" style="background:var(--red)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle><circle cx="12" cy="13" r="1.5" fill="#fff" stroke="none"></circle></svg></div><div><div class="stat-value" style="font-size:1.9rem">2</div><div class="stat-label">Beauty shoot days</div></div></div>
+    <div class="stat-icon-item"><div class="stat-icon-badge" style="background:var(--amber)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg></div><div><div class="stat-value" style="font-size:1.9rem">1</div><div class="stat-label">Pick-up day</div></div></div>
+    <div class="stat-icon-item"><div class="stat-icon-badge" style="background:var(--blue)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg></div><div><div class="stat-value" style="font-size:1.9rem">21</div><div class="stat-label">Total shoot days</div></div></div>
   </div>
   <div class="split" style="grid-template-columns:1fr 1fr">
     <div class="split-card">
-      <h3 class="split-title">Recurring Locations</h3>
+      <h3 class="split-title" style="display:flex;align-items:center;gap:.5rem"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg> Recurring Locations</h3>
       <p class="split-text" style="margin-bottom:.8rem">Cost these separately in the quotation — they are a fixed six-month commitment.</p>
-      <p class="split-text"><b style="color:var(--text)">Character's apartment</b> — retained for six months, flexible for day and night, photographed from six fixed marks for continuity.</p>
-      <p class="split-text" style="margin-top:.6rem"><b style="color:var(--text)">Korean restaurant</b> — Hong Dae Pocha, Myanmar Plaza, booked for 18 pre-agreed shooting slots.</p>
+      <p class="split-text" style="display:flex;gap:.5rem"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--text-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg><span><b style="color:var(--text)">Character's apartment</b> — retained for six months, flexible for day and night, photographed from six fixed marks for continuity.</span></p>
+      <p class="split-text" style="display:flex;gap:.5rem;margin-top:.6rem"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--text-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line></svg><span><b style="color:var(--text)">Korean restaurant</b> — Hong Dae Pocha, Myanmar Plaza, booked for 18 pre-agreed shooting slots.</span></p>
     </div>
     <div class="split-card">
-      <h3 class="split-title">Additional Locations</h3>
+      <h3 class="split-title" style="display:flex;align-items:center;gap:.5rem"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon><line x1="8" y1="2" x2="8" y2="18"></line><line x1="16" y1="6" x2="16" y2="22"></line></svg> Additional Locations</h3>
       <p class="split-text" style="margin-bottom:.8rem">Quoted per use, drawn down as storylines require. We plan roughly eight across the season.</p>
       <ul style="font-size:13px;color:var(--text-secondary);line-height:1.9">
         <li>— Convenience store</li><li>— Office or shared workspace</li><li>— University or MBA-related setting</li><li>— Café · Street or car</li><li>— Additional Korean restaurant</li><li>— Secondary character's home</li><li>— Celebration or karaoke environment</li>
@@ -1016,15 +1168,41 @@ tr:hover td{background:var(--surface)}
     <p class="section-desc">Full commercial-tier package, held for the season so the look never changes between batches.</p>
   </div>
   <div class="split">
-    <div class="split-card"><h3 class="split-title">Equipment</h3><ul style="font-size:13px;color:var(--text-secondary);line-height:1.85">
-      <li>— Cinema camera body, 4K, native 9:16 framing</li><li>— Prime lens set: 35 / 50 / 85mm</li><li>— Second camera body for reaction coverage</li><li>— Gimbal and slider for the no-filter state</li><li>— Full lighting package: soft key, practicals, negative fill</li><li>— Grip: stands, flags, diffusion, rigging</li><li>— Sound: radio mics × 5, boom, mixer/recorder</li><li>— Monitors, DIT cart, media and backup drives</li>
-    </ul></div>
-    <div class="split-card"><h3 class="split-title">Props &amp; Set</h3><ul style="font-size:13px;color:var(--text-secondary);line-height:1.85">
-      <li>— Recurring apartment dressing kept in place between batches</li><li>— Character prop kits — tote, sunglasses, cracked phone</li><li>— Product props: bottles, glasses, coolers, condensation kit</li><li>— Korean food styling for pocha and beauty-shot days</li><li>— Group-chat and phone-screen graphics prepared in advance</li><li>— Continuity photo log from six fixed marks</li>
-    </ul></div>
-    <div class="split-card"><h3 class="split-title">Wardrobe, Makeup &amp; Logistics</h3><ul style="font-size:13px;color:var(--text-secondary);line-height:1.85">
-      <li>— Locked colour and silhouette per character</li><li>— No competitor alcohol branding or third-party logos</li><li>— Wardrobe continuity plan issued before every batch</li><li>— Natural, youthful makeup; touch-up between lighting states</li><li>— Crew, cast and equipment transport across 21 shoot days</li><li>— Catering for crew and cast; accommodation only if required</li>
-    </ul></div>
+    <div class="split-card-h">
+      <div class="split-card-h-head" style="background:var(--navy)"><span>Equipment</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg></div>
+      <div class="split-card-h-body"><ul>
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Cinema camera body, 4K, native 9:16 framing</li>
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Prime lens set: 35 / 50 / 85mm</li>
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Second camera body for reaction coverage</li>
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Gimbal and slider for the no-filter state</li>
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Full lighting package: soft key, practicals, negative fill</li>
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Grip: stands, flags, diffusion, rigging</li>
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Sound: radio mics × 5, boom, mixer/recorder</li>
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Monitors, DIT cart, media and backup drives</li>
+      </ul></div>
+    </div>
+    <div class="split-card-h">
+      <div class="split-card-h-head" style="background:var(--accent)"><span>Props &amp; Set</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg></div>
+      <div class="split-card-h-body"><ul>
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Recurring apartment dressing kept in place between batches</li>
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Character prop kits — tote, sunglasses, cracked phone</li>
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Product props: bottles, glasses, coolers, condensation kit</li>
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Korean food styling for pocha and beauty-shot days</li>
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Group-chat and phone-screen graphics prepared in advance</li>
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Continuity photo log from six fixed marks</li>
+      </ul></div>
+    </div>
+    <div class="split-card-h">
+      <div class="split-card-h-head" style="background:var(--red)"><span>Wardrobe, Makeup &amp; Logistics</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v2a2 2 0 0 0 4 0V2"></path><path d="M4 22V10a2 2 0 0 1 1.2-1.83L9 6.5v2a3 3 0 0 0 6 0v-2l3.8 1.67A2 2 0 0 1 20 10v12"></path></svg></div>
+      <div class="split-card-h-body"><ul>
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Locked colour and silhouette per character</li>
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> No competitor alcohol branding or third-party logos</li>
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Wardrobe continuity plan issued before every batch</li>
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Natural, youthful makeup; touch-up between lighting states</li>
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Crew, cast and equipment transport across 21 shoot days</li>
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Catering for crew and cast; accommodation only if required</li>
+      </ul></div>
+    </div>
   </div>
   <div class="callout">Supporting cast and extras: approximately two supporting roles and six extras per batch, cast from a standing pool built during lead casting.</div>
 </section>
