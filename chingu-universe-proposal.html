@@ -77,13 +77,15 @@ ul{list-style:none}
 .section-desc{font-size:14.5px;color:var(--text-secondary);margin-top:0.85rem;line-height:1.75}
 
 /* divider banners */
-.divider-banner{background:var(--navy);color:#fff;border-radius:var(--radius-xl);max-width:1200px;margin:3rem auto;padding:3.5rem 3rem;position:relative;overflow:hidden;display:flex;gap:2rem;align-items:center;flex-wrap:wrap}
-.divider-photo{flex:0 0 260px;height:220px;border-radius:var(--radius-lg);overflow:hidden;box-shadow:0 16px 40px rgba(0,0,0,0.35)}
-.divider-photo img{width:100%;height:100%;object-fit:cover}
-.divider-text{flex:1 1 380px;min-width:260px}
+.divider-banner{background:var(--navy);color:#fff;border-radius:var(--radius-xl);max-width:1200px;margin:3rem auto;position:relative;overflow:hidden;display:flex;align-items:stretch;min-height:340px}
+.divider-photo{flex:0 0 36%;min-width:200px;align-self:stretch}
+.divider-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.divider-text{flex:1 1 auto;min-width:260px;padding:3rem 3rem;align-self:center}
 .divider-tag{display:inline-block;background:var(--accent);color:#fff;font-size:10.5px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;padding:6px 16px;border-radius:20px;margin-bottom:1.1rem}
 .divider-title{font-family:'Source Serif 4',Georgia,serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700}
 .divider-desc{color:rgba(255,255,255,0.72);margin-top:.9rem;font-size:14.5px;max-width:520px;line-height:1.7}
+.divider-icons{flex:0 0 auto;display:flex;flex-direction:column;gap:1rem;padding:1.75rem 1.75rem 1.75rem 0;align-self:center}
+.divider-icons span{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff}
 
 /* TOC grid */
 .toc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem}
@@ -99,6 +101,10 @@ ul{list-style:none}
 .split-icon{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:19px;margin-bottom:1rem;color:#fff}
 .split-title{font-size:1.05rem;font-weight:700;margin-bottom:.55rem}
 .split-text{font-size:13.5px;color:var(--text-secondary);line-height:1.7}
+.episode-bubble{position:absolute;right:2.5rem;bottom:0;width:170px;height:170px;border-radius:50%;overflow:hidden;box-shadow:0 12px 30px rgba(0,0,0,0.18);border:4px solid #fff;z-index:2}
+.episode-bubble img{width:100%;height:100%;object-fit:cover}
+.callout.callout-episode{padding-right:200px}
+@media(max-width:768px){.callout.callout-episode{padding-right:1.75rem}}
 .callout{background:var(--surface-2);border-radius:var(--radius);padding:1.5rem 1.75rem;margin-top:1.75rem;font-size:14px;line-height:1.7}
 .callout b{color:var(--accent-dark)}
 .callout.amber{background:#fdf3e5}
@@ -125,10 +131,10 @@ ul{list-style:none}
 .char-head{padding:1.1rem 1.4rem;color:#fff;display:flex;justify-content:space-between;align-items:center}
 .char-head h3{font-family:'Source Serif 4',Georgia,serif;font-size:1.3rem}
 .char-head p{font-size:12px;opacity:.9;margin-top:2px}
-.char-body{display:flex;gap:1.1rem;padding:1.4rem}
-.char-photo{flex:0 0 110px;min-height:169px;border-radius:var(--radius-sm);overflow:hidden;aspect-ratio:3/4.6}
-.char-photo img{width:100%;height:100%;object-fit:cover}
-.char-info{flex:1;font-size:12.8px;color:var(--text-secondary);line-height:1.65}
+.char-body{position:relative;min-height:300px;padding:1.1rem 1.4rem 0}
+.char-photo{position:absolute;left:0;bottom:0;width:132px;height:270px;overflow:hidden}
+.char-photo img{width:100%;height:100%;object-fit:cover;object-position:top center}
+.char-info{padding-left:142px;padding-bottom:1.4rem;font-size:12.8px;color:var(--text-secondary);line-height:1.65}
 .char-info b{color:var(--text)}
 .char-info .filtered{color:#6b7280}
 .char-info .nofilter{color:var(--accent-dark);font-weight:700}
@@ -136,9 +142,10 @@ ul{list-style:none}
 
 /* Ambassador cards */
 .ambassadors{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem}
-.amb-card{display:flex;gap:1.4rem;background:var(--surface-2);border-radius:var(--radius-lg);padding:1.5rem;align-items:flex-start}
-.amb-photo{flex:0 0 100px;min-height:153px;border-radius:var(--radius-sm);overflow:hidden;aspect-ratio:3/4.6}
-.amb-photo img{width:100%;height:100%;object-fit:cover}
+.amb-card{display:flex;gap:1.6rem;background:var(--surface-2);border-radius:var(--radius-lg);overflow:hidden;align-items:stretch;min-height:280px}
+.amb-photo{flex:0 0 190px;min-height:280px;overflow:hidden}
+.amb-photo img{width:100%;height:100%;object-fit:cover;object-position:top center}
+.amb-copy{padding:1.6rem 1.6rem 1.6rem 0;align-self:center}
 .amb-name{font-family:'Source Serif 4',Georgia,serif;font-size:1.2rem;font-weight:700}
 .amb-tag{font-size:12px;font-weight:700;margin:.25rem 0 .6rem}
 .amb-text{font-size:13px;color:var(--text-secondary);line-height:1.65}
@@ -264,11 +271,16 @@ tr:hover td{background:var(--surface)}
   .hero-btns{padding:0 1.25rem}
   .subnav-inner{padding:0.8rem 1.25rem}
   .section{padding:3rem 1.25rem}
-  .divider-banner{padding:2rem 1.5rem;margin:2rem auto}
+  .divider-banner{flex-direction:column;min-height:auto;margin:2rem auto}
+  .divider-photo{flex:0 0 auto;width:100%;height:200px}
+  .divider-text{padding:1.75rem 1.5rem}
+  .divider-icons{flex-direction:row;padding:0 1.5rem 1.5rem}
   .cta{padding:3.5rem 1.25rem}
   .cta-contacts{flex-direction:column;gap:.85rem}
-  .char-body{flex-direction:column}
-  .char-photo{width:140px}
+  .episode-bubble{display:none}
+  .char-body{min-height:260px}
+  .char-photo{width:115px;height:230px}
+  .char-info{padding-left:125px}
 }
 </style>
 </head>
@@ -405,20 +417,26 @@ tr:hover td{background:var(--surface)}
 </section>
 
 <div class="divider-banner" id="creative">
-  <div class="divider-photo"><img src="assets/chingu-universe-proposal/episode-engine-photo.jpg" alt=""></div>
   <div class="divider-text">
     <span class="divider-tag">Section 01</span>
     <h2 class="divider-title">Creative Treatment</h2>
     <p class="divider-desc">Deliverable 5. Directing approach, visual style, mood and tone, cinematography, lighting, editing, music, references, and how all of it stays identical across 48 episodes.</p>
   </div>
+  <div class="divider-icons">
+    <span style="background:var(--accent)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg></span>
+    <span style="background:var(--red)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg></span>
+    <span style="background:var(--amber)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><line x1="20" y1="4" x2="8.12" y2="15.88"></line><line x1="14.47" y1="14.48" x2="20" y2="20"></line><line x1="8.12" y1="8.12" x2="12" y2="12"></line></svg></span>
+    <span style="background:var(--blue)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg></span>
+  </div>
 </div>
 
-<section class="section">
+<section class="section" style="position:relative">
   <div class="section-header">
     <p class="section-label"><span class="tag">Deliverable 5</span></p>
     <h2 class="section-title">The Episode Engine</h2>
     <p class="section-desc">The brief names six friendship situations. Six situations × eight episodes each = 48. That is the whole season.</p>
   </div>
+  <div class="episode-bubble"><img src="assets/chingu-universe-proposal/episode-engine-photo.jpg" alt=""></div>
   <div class="cards">
     <div class="card"><div class="card-head"><div class="card-num" style="background:var(--accent)">8</div><div class="card-title">Misunderstanding</div></div><p class="card-text">Something is read the wrong way and nobody corrects it in time.</p></div>
     <div class="card"><div class="card-head"><div class="card-num" style="background:var(--red)">8</div><div class="card-title">Hidden Opinion</div></div><p class="card-text">Everyone agrees out loud. Nobody agrees privately.</p></div>
@@ -427,7 +445,7 @@ tr:hover td{background:var(--surface)}
     <div class="card"><div class="card-head"><div class="card-num" style="background:#8b5cf6">8</div><div class="card-title">Awkward Reunion</div></div><p class="card-text">Someone returns and the old dynamic no longer fits.</p></div>
     <div class="card"><div class="card-head"><div class="card-num" style="background:#0d9488">8</div><div class="card-title">Group-Chat Problem</div></div><p class="card-text">A message, a screenshot, a typo, a wrong recipient.</p></div>
   </div>
-  <div class="callout"><b>Why this matters commercially</b><br>
+  <div class="callout callout-episode"><b>Why this matters commercially</b><br>
     Writers are never staring at a blank page — every brief starts inside a defined bucket. Eight variations of one situation type can be shot in the same batch, on the same set-up, in the same wardrobe. The audience learns the shape of the show, so the 'No Filter' turn lands harder every time, and any episode can be replaced from within its own bucket without disturbing the release order.
   </div>
 </section>
@@ -522,7 +540,7 @@ tr:hover td{background:var(--surface)}
   <div class="ambassadors">
     <div class="amb-card">
       <div class="amb-photo"><img src="assets/chingu-universe-proposal/ambassador-alinnyoung.jpg" alt="A Linn Young"></div>
-      <div>
+      <div class="amb-copy">
         <div class="amb-name">A Linn Young</div>
         <div class="amb-tag" style="color:var(--accent-dark)">The Sunbae · 3 episodes</div>
         <p class="amb-text">The senior everyone straightens up for. His presence raises the group's filter to maximum — which makes the collapse funnier. Placed at Episodes 9, 25 and 41 so each batch-quarter has one 'best behaviour' peak.</p>
@@ -530,7 +548,7 @@ tr:hover td{background:var(--surface)}
     </div>
     <div class="amb-card">
       <div class="amb-photo"><img src="assets/chingu-universe-proposal/ambassador-khinwintwah.jpg" alt="Khin Wint Wah"></div>
-      <div>
+      <div class="amb-copy">
         <div class="amb-name">Khin Wint Wah</div>
         <div class="amb-tag" style="color:var(--red)">The Returnee · 3 episodes</div>
         <p class="amb-text">The friend who left and came back. She owns the 'awkward reunion' bucket and gives the universe a sense of elapsed time. Placed at Episodes 16, 32 and 48 as season punctuation, including the finale.</p>
@@ -795,6 +813,12 @@ tr:hover td{background:var(--surface)}
     <h2 class="divider-title">Execution &amp; Production</h2>
     <p class="divider-desc">Deliverables 2, 3, 4 and 6. How the work actually gets made: approach, pre-production, shooting plan, post workflow, timeline, team structure and shooting requirements.</p>
   </div>
+  <div class="divider-icons">
+    <span style="background:var(--accent)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2h6a1 1 0 0 1 1 1v2H8V3a1 1 0 0 1 1-1z"></path><rect x="4" y="4" width="16" height="18" rx="2"></rect></svg></span>
+    <span style="background:var(--red)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg></span>
+    <span style="background:var(--amber)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></span>
+    <span style="background:var(--blue)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><path d="M16 8h4l3 3v5h-7V8z"></path><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg></span>
+  </div>
 </div>
 
 <section class="section">
@@ -1010,6 +1034,12 @@ tr:hover td{background:var(--surface)}
     <span class="divider-tag">Section 03</span>
     <h2 class="divider-title">Costing &amp; Terms</h2>
     <p class="divider-desc">Deliverables 1, 7, 8 and 9. Revision policy, payment terms and the risk and contingency plan. (Detailed line-item costs are shared separately with the client.)</p>
+  </div>
+  <div class="divider-icons">
+    <span style="background:var(--accent)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg></span>
+    <span style="background:var(--red)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7"></path><polyline points="21 3 21 9 15 9"></polyline></svg></span>
+    <span style="background:var(--amber)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg></span>
+    <span style="background:var(--blue)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg></span>
   </div>
 </div>
 
