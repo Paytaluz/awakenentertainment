@@ -12,7 +12,7 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --bg:#ffffff;--surface:#f7faf8;--surface-2:#eef2ef;--text:#0f1420;--text-secondary:#5b6472;--border:#e3e7ea;
-  --accent:#1f9d5c;--accent-dark:#167a48;--navy:#0f1b3d;--amber:#d9822b;
+  --accent:#1f9d5c;--accent-dark:#167a48;--navy:#0f1b3d;--navy-2:#16234a;--amber:#d9822b;--red:#e2574c;--blue:#3b6fd6;
   --radius-sm:6px;--radius:12px;--radius-lg:16px;--radius-xl:24px;
 }
 html{font-family:'Inter',system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
@@ -28,23 +28,32 @@ ul{list-style:none}
 .logo-mark{width:32px;height:32px;border:1.5px solid var(--text);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;letter-spacing:0.1em}
 .logo-text{font-size:13px;font-weight:700;letter-spacing:0.15em}
 .logo-text span{color:var(--accent)}
-.nav{display:flex;gap:1.75rem}
-.nav a{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-secondary);transition:color 0.2s}
+.nav{display:flex;gap:1.6rem}
+.nav a{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-secondary);transition:color 0.2s}
 .nav a:hover{color:var(--text)}
 .header-cta{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;padding:10px 20px;border-radius:32px;background:var(--text);color:#fff;white-space:nowrap;display:inline-flex;align-items:center;gap:6px}
 .menu-btn{display:none;background:none;border:none;font-size:20px;cursor:pointer}
 
 /* Hero */
-.hero{position:relative;padding:5.5rem 2.5rem 3.5rem;max-width:1200px;margin:0 auto;border-bottom:1px solid var(--border)}
-.hero-eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.2em;color:var(--accent-dark);margin-bottom:1.5rem}
-.hero-eyebrow::before{content:'';width:20px;height:1px;background:var(--accent)}
-.hero-title{font-size:clamp(2.75rem,7vw,5.75rem);font-weight:800;line-height:0.95;letter-spacing:-0.03em;text-transform:uppercase}
-.hero-title small{display:block;font-size:0.32em;font-weight:600;color:var(--text-secondary);text-transform:none;letter-spacing:0;margin-top:.9rem}
-.hero-sub{font-size:1.05rem;line-height:1.75;color:var(--text-secondary);max-width:660px;margin-top:1.75rem}
-.hero-meta{display:flex;flex-wrap:wrap;gap:2rem;margin-top:2.5rem;padding-top:2rem;border-top:1px solid var(--border)}
-.hero-meta-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;color:var(--text-secondary);margin-bottom:.35rem}
-.hero-meta-value{font-size:15px;font-weight:700}
-.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem}
+.hero{position:relative;padding:3.5rem 2.5rem 0;max-width:1200px;margin:0 auto;overflow:hidden;border-radius:var(--radius-xl)}
+.hero-inner{position:relative;border-radius:var(--radius-xl);overflow:hidden;background:var(--navy);min-height:560px;display:flex;align-items:flex-end}
+.hero-bg{position:absolute;inset:0;object-fit:cover;width:100%;height:100%;opacity:0.55}
+.hero-bg-overlay{position:absolute;inset:0;background:linear-gradient(100deg,rgba(15,27,61,0.96) 0%,rgba(15,27,61,0.88) 32%,rgba(15,27,61,0.55) 62%,rgba(15,27,61,0.25) 100%)}
+.hero-content{position:relative;z-index:2;display:flex;gap:2.5rem;align-items:flex-end;padding:2.5rem;width:100%;flex-wrap:wrap}
+.hero-photo{flex:0 0 auto;width:230px;border-radius:var(--radius-lg);overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,0.4);border:3px solid rgba(255,255,255,0.15)}
+.hero-photo img{aspect-ratio:591/746;object-fit:cover}
+.hero-text{flex:1 1 420px;min-width:280px;color:#fff}
+.hero-logo{width:74px;margin-bottom:1.25rem;border-radius:10px;background:#fff;padding:4px}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.2em;color:#8fe3b8;margin-bottom:1.1rem}
+.hero-eyebrow::before{content:'';width:20px;height:1px;background:#8fe3b8}
+.hero-title{font-size:clamp(2.4rem,5.5vw,4.4rem);font-weight:800;line-height:0.95;letter-spacing:-0.03em;text-transform:uppercase}
+.hero-sub-title{font-family:'Source Serif 4',Georgia,serif;font-style:italic;font-size:clamp(1.1rem,2.2vw,1.5rem);color:#f0a860;margin-top:.85rem;font-weight:600}
+.hero-desc{font-size:14.5px;line-height:1.75;color:rgba(255,255,255,0.78);max-width:560px;margin-top:1.25rem}
+.hero-meta{display:flex;flex-wrap:wrap;gap:1.75rem;margin-top:1.75rem}
+.hero-meta-item{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.14);border-radius:var(--radius);padding:.75rem 1.15rem}
+.hero-meta-label{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;color:rgba(255,255,255,0.55);margin-bottom:.3rem}
+.hero-meta-value{font-size:16px;font-weight:800;color:#fff}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;margin:1.75rem 0 2.5rem;max-width:1200px;margin-left:auto;margin-right:auto;padding:0 2.5rem}
 .btn{display:inline-flex;align-items:center;gap:0.5rem;padding:14px 30px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;border-radius:32px;transition:all 0.3s;cursor:pointer;border:none}
 .btn-primary{background:var(--text);color:#fff}
 .btn-primary:hover{background:#222;transform:translateY(-2px)}
@@ -55,44 +64,28 @@ ul{list-style:none}
 .subnav{position:sticky;top:64px;z-index:190;background:rgba(255,255,255,0.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);overflow-x:auto;white-space:nowrap}
 .subnav-inner{display:flex;gap:2rem;padding:0.9rem 2.5rem;max-width:1200px;margin:0 auto}
 .subnav a{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-secondary);flex-shrink:0;transition:color .2s}
-.subnav a.active,.subnav a:hover{color:var(--accent-dark)}
+.subnav a:hover{color:var(--accent-dark)}
 
-/* Viewer */
-.viewer-wrap{max-width:1200px;margin:0 auto;padding:3rem 2.5rem 1rem}
-.viewer-head{display:flex;justify-content:space-between;align-items:flex-end;gap:1rem;margin-bottom:1.5rem;flex-wrap:wrap}
-.viewer-section-tag{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;color:var(--accent-dark);margin-bottom:.4rem}
-.viewer-slide-title{font-size:1.35rem;font-weight:700;letter-spacing:-0.01em}
-.viewer-counter{font-size:12px;font-weight:600;color:var(--text-secondary);letter-spacing:.08em}
-
-.stage{position:relative;background:var(--navy);border-radius:var(--radius-lg);overflow:hidden;box-shadow:0 24px 60px rgba(15,27,61,0.18);aspect-ratio:16/9}
-.stage img{width:100%;height:100%;object-fit:contain;background:var(--navy);cursor:zoom-in;user-select:none}
-.stage-arrow{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.92);border:none;display:flex;align-items:center;justify-content:center;font-size:18px;cursor:pointer;color:var(--navy);transition:all .2s;box-shadow:0 6px 20px rgba(0,0,0,0.2)}
-.stage-arrow:hover{background:#fff;transform:translateY(-50%) scale(1.06)}
-.stage-arrow.prev{left:16px}
-.stage-arrow.next{right:16px}
-.stage-zoom{position:absolute;bottom:16px;right:16px;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.92);border:none;display:flex;align-items:center;justify-content:center;font-size:15px;cursor:pointer;color:var(--navy)}
-.stage-progress{height:3px;background:var(--surface-2);border-radius:2px;margin-top:1rem;overflow:hidden}
-.stage-progress-bar{height:100%;background:var(--accent);transition:width .3s}
-
-.thumbs{display:flex;gap:10px;overflow-x:auto;padding:1.25rem 0 .5rem;scroll-behavior:smooth}
-.thumbs::-webkit-scrollbar{height:6px}
-.thumbs::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
-.thumb{flex:0 0 auto;width:110px;aspect-ratio:16/9;border-radius:6px;overflow:hidden;border:2px solid transparent;cursor:pointer;opacity:.55;transition:all .2s;background:var(--navy)}
-.thumb img{width:100%;height:100%;object-fit:cover}
-.thumb:hover{opacity:.85}
-.thumb.active{opacity:1;border-color:var(--accent)}
-
-.keys-hint{text-align:center;font-size:11px;color:var(--text-secondary);margin-top:.75rem}
-
-/* Section index list */
-.section{padding:4rem 2.5rem;max-width:1200px;margin:0 auto}
+/* Sections */
+.section{padding:4.25rem 2.5rem;max-width:1200px;margin:0 auto}
 .section-alt{background:var(--surface)}
 .section-alt>.section{background:none}
-.section-header{margin-bottom:2.5rem;max-width:680px}
-.section-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.2em;color:var(--accent-dark);margin-bottom:0.75rem}
-.section-title{font-size:clamp(1.6rem,3vw,2.35rem);font-weight:800;letter-spacing:-0.02em;line-height:1.15}
-.section-desc{font-size:15px;color:var(--text-secondary);margin-top:0.85rem;line-height:1.75}
+.section-header{margin-bottom:2.5rem;max-width:700px}
+.section-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.2em;color:var(--accent-dark);margin-bottom:0.75rem;display:flex;align-items:center;gap:.6rem}
+.section-label .tag{background:var(--accent);color:#fff;font-size:9.5px;padding:3px 9px;border-radius:20px;letter-spacing:.12em}
+.section-title{font-size:clamp(1.55rem,3vw,2.25rem);font-weight:800;letter-spacing:-0.02em;line-height:1.15}
+.section-desc{font-size:14.5px;color:var(--text-secondary);margin-top:0.85rem;line-height:1.75}
 
+/* divider banners */
+.divider-banner{background:var(--navy);color:#fff;border-radius:var(--radius-xl);max-width:1200px;margin:3rem auto;padding:3.5rem 3rem;position:relative;overflow:hidden;display:flex;gap:2rem;align-items:center;flex-wrap:wrap}
+.divider-photo{flex:0 0 260px;height:220px;border-radius:var(--radius-lg);overflow:hidden;box-shadow:0 16px 40px rgba(0,0,0,0.35)}
+.divider-photo img{width:100%;height:100%;object-fit:cover}
+.divider-text{flex:1 1 380px;min-width:260px}
+.divider-tag{display:inline-block;background:var(--accent);color:#fff;font-size:10.5px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;padding:6px 16px;border-radius:20px;margin-bottom:1.1rem}
+.divider-title{font-family:'Source Serif 4',Georgia,serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700}
+.divider-desc{color:rgba(255,255,255,0.72);margin-top:.9rem;font-size:14.5px;max-width:520px;line-height:1.7}
+
+/* TOC grid */
 .toc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem}
 .toc-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;cursor:pointer;transition:all .25s}
 .toc-card:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,0.06)}
@@ -100,44 +93,182 @@ ul{list-style:none}
 .toc-title{font-size:1rem;font-weight:700;margin-bottom:.35rem}
 .toc-range{font-size:12.5px;color:var(--text-secondary)}
 
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:2rem;text-align:left;padding:3rem 2.5rem;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--surface)}
+/* Split cards (3-up constraints) */
+.split{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem}
+.split-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.85rem;position:relative}
+.split-icon{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:19px;margin-bottom:1rem;color:#fff}
+.split-title{font-size:1.05rem;font-weight:700;margin-bottom:.55rem}
+.split-text{font-size:13.5px;color:var(--text-secondary);line-height:1.7}
+.callout{background:var(--surface-2);border-radius:var(--radius);padding:1.5rem 1.75rem;margin-top:1.75rem;font-size:14px;line-height:1.7}
+.callout b{color:var(--accent-dark)}
+.callout.amber{background:#fdf3e5}
+.callout.amber b{color:#a8621c}
+
+/* Stats */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1.75rem;text-align:left;padding:2.75rem 2.5rem;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--surface)}
 .stats-inner{max-width:1200px;margin:0 auto;display:contents}
-.stat-value{font-size:2.15rem;font-weight:800;letter-spacing:-0.02em;line-height:1;color:var(--accent-dark)}
-.stat-label{font-size:12px;color:var(--text-secondary);margin-top:0.5rem;line-height:1.5}
+.stat-value{font-size:2rem;font-weight:800;letter-spacing:-0.02em;line-height:1;color:var(--accent-dark)}
+.stat-label{font-size:11.5px;color:var(--text-secondary);margin-top:0.5rem;line-height:1.5}
+
+/* Cards */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.4rem}
+.card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:1.6rem;transition:all 0.3s}
+.card:hover{border-color:#d1d5db;transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,0.05)}
+.card-head{display:flex;align-items:center;gap:.7rem;margin-bottom:.75rem}
+.card-num{width:30px;height:30px;border-radius:50%;color:#fff;font-size:12.5px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.card-title{font-size:1rem;font-weight:700}
+.card-text{font-size:13px;color:var(--text-secondary);line-height:1.7}
+
+/* Character cards */
+.chars{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.4rem}
+.char-card{border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;background:#fff}
+.char-head{padding:1.1rem 1.4rem;color:#fff;display:flex;justify-content:space-between;align-items:center}
+.char-head h3{font-family:'Source Serif 4',Georgia,serif;font-size:1.3rem}
+.char-head p{font-size:12px;opacity:.9;margin-top:2px}
+.char-body{display:flex;gap:1.1rem;padding:1.4rem}
+.char-photo{flex:0 0 110px;border-radius:var(--radius-sm);overflow:hidden;aspect-ratio:3/4.6}
+.char-photo img{width:100%;height:100%;object-fit:cover}
+.char-info{flex:1;font-size:12.8px;color:var(--text-secondary);line-height:1.65}
+.char-info b{color:var(--text)}
+.char-info .filtered{color:#6b7280}
+.char-info .nofilter{color:var(--accent-dark);font-weight:700}
+.char-info .prop{color:var(--amber);font-style:italic;display:block;margin-top:.5rem}
+
+/* Ambassador cards */
+.ambassadors{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem}
+.amb-card{display:flex;gap:1.4rem;background:var(--surface-2);border-radius:var(--radius-lg);padding:1.5rem;align-items:flex-start}
+.amb-photo{flex:0 0 100px;border-radius:var(--radius-sm);overflow:hidden;aspect-ratio:3/4.6}
+.amb-photo img{width:100%;height:100%;object-fit:cover}
+.amb-name{font-family:'Source Serif 4',Georgia,serif;font-size:1.2rem;font-weight:700}
+.amb-tag{font-size:12px;font-weight:700;margin:.25rem 0 .6rem}
+.amb-text{font-size:13px;color:var(--text-secondary);line-height:1.65}
+
+/* Before/After turn */
+.turn-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.turn-photo{border-radius:var(--radius) var(--radius) 0 0;overflow:hidden;aspect-ratio:835/260}
+.turn-photo img{width:100%;height:100%;object-fit:cover}
+.turn-panel{border-radius:0 0 var(--radius) var(--radius);overflow:hidden;border:1px solid var(--border);border-top:none}
+.turn-head{padding:.9rem 1.4rem;font-weight:700;font-size:12.5px;letter-spacing:.08em;color:#fff;text-transform:uppercase}
+.turn-head.before{background:#5b6472}
+.turn-head.after{background:var(--red)}
+.turn-rows{background:#fff}
+.turn-rows.after-bg{background:#fdf3e5}
+.turn-row{display:flex;gap:1rem;padding:.85rem 1.4rem;border-top:1px solid var(--border);font-size:13px}
+.turn-row b{flex:0 0 90px;color:var(--text)}
+.turn-row span{color:var(--text-secondary)}
+@media(max-width:700px){.turn-grid{grid-template-columns:1fr}}
+
+/* Episode mini cards */
+.episodes{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.4rem}
+.ep-card{border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+.ep-tagbar{display:flex;justify-content:space-between;padding:.7rem 1.1rem;background:var(--surface-2);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-secondary)}
+.ep-body{padding:1.1rem 1.2rem}
+.ep-title{font-family:'Source Serif 4',Georgia,serif;font-weight:700;font-size:1.05rem;margin-bottom:.7rem}
+.ep-block{margin-bottom:.65rem}
+.ep-block b{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-dark);display:block;margin-bottom:.2rem}
+.ep-block p{font-size:12.5px;color:var(--text-secondary);line-height:1.6}
+.ep-block.payoff b{color:var(--red)}
+
+/* Storyboard strip */
+.board{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem}
+.board-frame{border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;background:#fff}
+.board-top{aspect-ratio:16/10;background:var(--surface-2);display:flex;align-items:center;justify-content:center;position:relative;color:var(--text-secondary);font-size:11px}
+.board-num{position:absolute;top:8px;left:8px;background:var(--navy);color:#fff;font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:5px}
+.board-time{position:absolute;top:8px;right:8px;font-size:10.5px;font-weight:700;color:var(--text-secondary)}
+.board-tag{font-size:10px;font-weight:700;padding:2px 10px;border-radius:12px;color:#fff}
+.board-info{padding:.8rem 1rem}
+.board-info h4{font-size:12.5px;font-weight:700;margin-bottom:.3rem}
+.board-info p{font-size:11.5px;color:var(--text-secondary);line-height:1.55}
+
+/* Timeline (editing / one shoot day / post) */
+.timeline{display:flex;flex-direction:column;gap:0;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border)}
+.tl-row{display:grid;grid-template-columns:140px 160px 1fr;gap:1rem;padding:1rem 1.4rem;align-items:center;border-top:1px solid var(--border)}
+.tl-row:first-child{border-top:none}
+.tl-time{font-size:12.5px;font-weight:700;color:var(--accent-dark)}
+.tl-label{font-size:13px;font-weight:700}
+.tl-desc{font-size:13px;color:var(--text-secondary)}
+@media(max-width:640px){.tl-row{grid-template-columns:1fr;gap:.3rem}}
+
+/* Docs grid */
+.docs{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.4rem}
+.doc-card{border-left:3px solid var(--accent);background:var(--surface);border-radius:0 var(--radius) var(--radius) 0;padding:1.3rem 1.5rem}
+.doc-card h4{font-size:.98rem;font-weight:700;margin-bottom:.5rem}
+.doc-card p{font-size:12.8px;color:var(--text-secondary);line-height:1.65}
+
+/* Outro steps */
+.steps{display:flex;flex-wrap:wrap;gap:.9rem}
+.step{flex:1 1 140px;background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem 1rem;text-align:center}
+.step-num{width:26px;height:26px;border-radius:50%;background:var(--navy);color:#fff;font-size:11.5px;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto .7rem}
+.step-text{font-size:12px;color:var(--text-secondary);line-height:1.5}
+
+/* Flavor swatches */
+.swatches{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem}
+.swatch{border-radius:var(--radius);padding:1.25rem 1.4rem;color:#fff}
+.swatch h4{font-size:1rem;font-weight:700}
+.swatch p{font-size:12px;opacity:.9;margin-top:.25rem}
+
+/* Table */
+.table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:var(--radius)}
+table{width:100%;border-collapse:collapse;font-size:13px;min-width:640px}
+th{text-align:left;background:var(--surface-2);padding:.85rem 1.2rem;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--text-secondary);font-weight:700}
+td{padding:.85rem 1.2rem;border-top:1px solid var(--border)}
+tr:hover td{background:var(--surface)}
+.muted{color:var(--text-secondary);font-size:12.5px}
+
+/* Two-col quadrant (revision policy) */
+.quad{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem}
+.quad-card{border-radius:var(--radius-lg);padding:1.6rem 1.75rem}
+.quad-card.green{background:#eaf7f0}
+.quad-card.blue{background:#eaf1fc}
+.quad-card.amber{background:#fdf3e5}
+.quad-card.red{background:#fdecea}
+.quad-title{font-weight:700;font-size:1rem;margin-bottom:.8rem;display:flex;align-items:center;gap:.5rem}
+.quad-card ul{font-size:13px;color:var(--text-secondary);line-height:1.9}
+.quad-card ul li::before{content:'—';margin-right:.5rem;color:var(--text-secondary)}
+.quad-row{display:flex;justify-content:space-between;font-size:13px;padding:.35rem 0;border-bottom:1px dashed rgba(0,0,0,0.08)}
+.quad-row b{color:var(--text)}
+
+/* Payment split */
+.pay-split{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.25rem;margin-bottom:1.75rem}
+.pay-card{background:var(--navy);color:#fff;border-radius:var(--radius-lg);padding:1.75rem}
+.pay-pct{font-size:2.4rem;font-weight:800;color:#8fe3b8}
+.pay-label{font-size:13px;font-weight:700;margin:.3rem 0 .6rem}
+.pay-desc{font-size:12.5px;color:rgba(255,255,255,0.7);line-height:1.6}
+
+/* Next steps */
+.next-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.25rem}
+.ns-card{background:var(--navy);color:#fff;border-radius:var(--radius-lg);padding:1.6rem}
+.ns-num{font-family:'Source Serif 4',Georgia,serif;font-size:2.2rem;color:#f0a860;font-weight:700}
+.ns-title{font-weight:700;margin:.4rem 0 .5rem;font-size:1rem}
+.ns-desc{font-size:12.5px;color:rgba(255,255,255,0.72);line-height:1.6}
 
 /* CTA */
 .cta{padding:5rem 2.5rem;max-width:900px;margin:0 auto;text-align:center}
-.cta-title{font-size:clamp(1.9rem,4vw,2.75rem);font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem}
+.cta-title{font-family:'Source Serif 4',Georgia,serif;font-size:clamp(1.7rem,4vw,2.5rem);font-weight:700;letter-spacing:-0.01em;margin-bottom:1rem;line-height:1.3}
 .cta-title em{font-style:italic;color:var(--accent)}
-.cta-text{font-size:15px;color:var(--text-secondary);max-width:520px;margin:0 auto 2rem}
+.cta-text{font-size:14.5px;color:var(--text-secondary);max-width:520px;margin:0 auto 2rem}
 .cta-contacts{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;font-size:13px;font-weight:600}
 .cta-contacts a{padding-bottom:2px;border-bottom:1px solid var(--border);transition:border-color .2s}
 .cta-contacts a:hover{border-color:var(--text)}
 .footer-bottom{margin-top:2.5rem;font-size:11.5px;color:var(--text-secondary)}
-
-/* Lightbox */
-.lightbox{position:fixed;inset:0;z-index:500;background:rgba(10,14,25,0.96);display:none;align-items:center;justify-content:center;padding:2rem}
-.lightbox.open{display:flex}
-.lightbox img{max-width:100%;max-height:100%;object-fit:contain;border-radius:6px;box-shadow:0 20px 80px rgba(0,0,0,0.5)}
-.lightbox-close{position:absolute;top:22px;right:28px;width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.25);color:#fff;font-size:18px;cursor:pointer}
-.lightbox-arrow{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.25);color:#fff;font-size:20px;cursor:pointer}
-.lightbox-arrow.prev{left:24px}
-.lightbox-arrow.next{right:24px}
-.lightbox-counter{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,0.75);font-size:12px;letter-spacing:.1em}
 
 /* Mobile */
 @media(max-width:768px){
   .header{padding:1rem 1.25rem}
   .nav{display:none}
   .menu-btn{display:block}
-  .hero{padding:4rem 1.25rem 2.5rem}
+  .hero{padding:2rem 1.25rem 0}
+  .hero-inner{min-height:auto}
+  .hero-content{padding:1.5rem;flex-direction:column;align-items:stretch}
+  .hero-photo{width:100%;max-width:220px}
+  .hero-btns{padding:0 1.25rem}
   .subnav-inner{padding:0.8rem 1.25rem}
-  .viewer-wrap{padding:2rem 1.25rem 1rem}
   .section{padding:3rem 1.25rem}
-  .stage-arrow{width:36px;height:36px;font-size:15px}
-  .thumb{width:84px}
+  .divider-banner{padding:2rem 1.5rem;margin:2rem auto}
   .cta{padding:3.5rem 1.25rem}
   .cta-contacts{flex-direction:column;gap:.85rem}
+  .char-body{flex-direction:column}
+  .char-photo{width:140px}
 }
 </style>
 </head>
@@ -150,83 +281,829 @@ ul{list-style:none}
   </a>
   <nav class="nav">
     <a href="#overview">Overview</a>
-    <a href="#viewer" data-jump="4">Creative Treatment</a>
-    <a href="#viewer" data-jump="21">Execution &amp; Production</a>
-    <a href="#viewer" data-jump="31">Costing &amp; Terms</a>
+    <a href="#creative">Creative Treatment</a>
+    <a href="#execution">Execution &amp; Production</a>
+    <a href="#costing">Costing &amp; Terms</a>
+    <a href="#next">Next Steps</a>
   </nav>
   <a href="assets/chingu-universe-proposal/Chingu-Universe-Production-Proposal-2026.pdf" target="_blank" class="header-cta">Download PDF ↓</a>
   <button class="menu-btn" aria-label="Menu">&#9776;</button>
 </header>
 
 <section class="hero" id="overview">
-  <p class="hero-eyebrow">Production Proposal · Prepared for Chingu Soju · 2026</p>
-  <h1 class="hero-title">Chingu Universe<small>48-Episode Korean-Style Friendship Series — full creative and production response to the Chingu Soju production house brief.</small></h1>
-  <p class="hero-sub">Six monthly batches, shot 9:16 vertical, targeting an October 2026 launch. One build phase establishes the series bible, sets, wardrobe and outro system once — then six identical, low-risk monthly cycles run against it, keeping quality and continuity intact across all 48 episodes.</p>
-  <div class="hero-meta">
-    <div class="hero-meta-item"><div class="hero-meta-label">Episodes</div><div class="hero-meta-value">48</div></div>
-    <div class="hero-meta-item"><div class="hero-meta-label">Batches</div><div class="hero-meta-value">6 Monthly</div></div>
-    <div class="hero-meta-item"><div class="hero-meta-label">Shoot Days</div><div class="hero-meta-value">18 Principal + 3</div></div>
-    <div class="hero-meta-item"><div class="hero-meta-label">Format</div><div class="hero-meta-value">9:16 Vertical</div></div>
-    <div class="hero-meta-item"><div class="hero-meta-label">Prepared by</div><div class="hero-meta-value">Awaken Entertainment</div></div>
+  <div class="hero-inner">
+    <img class="hero-bg" src="assets/chingu-universe-proposal/cover-bg.jpg" alt="">
+    <div class="hero-bg-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-photo"><img src="assets/chingu-universe-proposal/cover-photo.jpg" alt="The Chingu Universe cast on a Yangon rooftop"></div>
+      <div class="hero-text">
+        <img class="hero-logo" src="assets/chingu-universe-proposal/chingu-logo.jpg" alt="Chingu Soju logo">
+        <p class="hero-eyebrow">Production Proposal · Prepared for Chingu Soju · 2026</p>
+        <h1 class="hero-title">Chingu Universe</h1>
+        <p class="hero-sub-title">A 48-Episode Korean-Style Friendship Series</p>
+        <p class="hero-desc">Full creative and production response to the Chingu Soju production house brief. Six monthly batches, shot 9:16 vertical, targeting an October 2026 launch — one build phase establishes the series bible, sets, wardrobe and outro system once, then six identical, low-risk monthly cycles run against it.</p>
+        <div class="hero-meta">
+          <div class="hero-meta-item"><div class="hero-meta-label">Episodes</div><div class="hero-meta-value">48</div></div>
+          <div class="hero-meta-item"><div class="hero-meta-label">Batches</div><div class="hero-meta-value">6 Monthly</div></div>
+          <div class="hero-meta-item"><div class="hero-meta-label">Shoot Days</div><div class="hero-meta-value">18 + 3</div></div>
+          <div class="hero-meta-item"><div class="hero-meta-label">Format</div><div class="hero-meta-value">9:16 Vertical</div></div>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="hero-btns">
-    <a href="#viewer" class="btn btn-primary">Read Full Proposal ↓</a>
+    <a href="#toc-section" class="btn btn-primary">Read Full Proposal ↓</a>
     <a href="assets/chingu-universe-proposal/Chingu-Universe-Production-Proposal-2026.pdf" target="_blank" class="btn btn-ghost">Download Original PDF</a>
   </div>
 </section>
 
 <nav class="subnav">
   <div class="subnav-inner">
-    <a href="#viewer" data-jump="0">01 Cover &amp; Approach</a>
-    <a href="#viewer" data-jump="4">02 Creative Treatment</a>
-    <a href="#viewer" data-jump="21">03 Execution &amp; Production</a>
-    <a href="#viewer" data-jump="31">04 Costing &amp; Terms</a>
-    <a href="#viewer" data-jump="35">05 Next Steps</a>
+    <a href="#toc-section">What's Inside</a>
+    <a href="#brief">How We Read The Brief</a>
+    <a href="#creative">Creative Treatment</a>
+    <a href="#execution">Execution &amp; Production</a>
+    <a href="#costing">Costing &amp; Terms</a>
+    <a href="#next">Next Steps</a>
   </div>
 </nav>
-
-<div class="viewer-wrap" id="viewer">
-  <div class="viewer-head">
-    <div>
-      <p class="viewer-section-tag" id="sectionTag">Cover</p>
-      <h2 class="viewer-slide-title" id="slideTitleTop">Production Proposal</h2>
-    </div>
-    <div class="viewer-counter" id="counterTop">SLIDE 01 / 36</div>
-  </div>
-
-  <div class="stage">
-    <button class="stage-arrow prev" onclick="go(-1)" aria-label="Previous slide">‹</button>
-    <img id="stageImg" src="assets/chingu-universe-proposal/slide-01.jpg" alt="Chingu Universe proposal, slide 1">
-    <button class="stage-arrow next" onclick="go(1)" aria-label="Next slide">›</button>
-    <button class="stage-zoom" onclick="openLightbox()" aria-label="View full screen">⤢</button>
-  </div>
-  <div class="stage-progress"><div class="stage-progress-bar" id="progressBar" style="width:2.7%"></div></div>
-  <p class="keys-hint">Use ← → to navigate, click any slide to zoom, or download the original PDF above.</p>
-
-  <div class="thumbs" id="thumbs"></div>
-</div>
 
 <div class="section-alt"><div class="section" id="toc-section">
   <div class="section-header">
     <p class="section-label">What's Inside</p>
     <h2 class="section-title">Every section maps to a numbered deliverable from the brief</h2>
-    <p class="section-desc">Jump straight to any part of the deck — the full 36-slide proposal covers creative treatment, execution and production planning, and costing &amp; terms in full.</p>
+    <p class="section-desc">Nine deliverables from the Chingu Soju brief, answered in full below — creative treatment, execution and production planning, and costing &amp; terms.</p>
   </div>
-  <div class="toc-grid" id="tocGrid"></div>
+  <div class="toc-grid">
+    <div class="toc-card" onclick="document.getElementById('costing').scrollIntoView({behavior:'smooth'})"><div class="toc-num">01</div><div class="toc-title">Detailed Cost Breakdown</div><div class="toc-range">Section 03 · figures excluded from this public deck</div></div>
+    <div class="toc-card" onclick="document.getElementById('execution').scrollIntoView({behavior:'smooth'})"><div class="toc-num">02</div><div class="toc-title">Execution &amp; Production Plan</div><div class="toc-range">Approach, pre-production, shooting, post, responsibilities</div></div>
+    <div class="toc-card" onclick="document.getElementById('brief').scrollIntoView({behavior:'smooth'})"><div class="toc-num">03</div><div class="toc-title">Production Timeline</div><div class="toc-range">Build phase + monthly batch cycle</div></div>
+    <div class="toc-card" onclick="document.getElementById('team-structure').scrollIntoView({behavior:'smooth'})"><div class="toc-num">04</div><div class="toc-title">Team Structure</div><div class="toc-range">Full crew map, department by department</div></div>
+    <div class="toc-card" onclick="document.getElementById('creative').scrollIntoView({behavior:'smooth'})"><div class="toc-num">05</div><div class="toc-title">Creative Treatment</div><div class="toc-range">Directing, visual style, tone, references, consistency</div></div>
+    <div class="toc-card" onclick="document.getElementById('shooting-req').scrollIntoView({behavior:'smooth'})"><div class="toc-num">06</div><div class="toc-title">Shooting Requirements</div><div class="toc-range">Days, locations, equipment, props, wardrobe</div></div>
+    <div class="toc-card" onclick="document.getElementById('revision').scrollIntoView({behavior:'smooth'})"><div class="toc-num">07</div><div class="toc-title">Revision Policy</div><div class="toc-range">Rounds included, coverage, extra charges, reshoots</div></div>
+    <div class="toc-card" onclick="document.getElementById('payment').scrollIntoView({behavior:'smooth'})"><div class="toc-num">08</div><div class="toc-title">Payment Terms</div><div class="toc-range">Schedule, advance, milestones, cancellation</div></div>
+    <div class="toc-card" onclick="document.getElementById('risk').scrollIntoView({behavior:'smooth'})"><div class="toc-num">09</div><div class="toc-title">Risk &amp; Contingency Plan</div><div class="toc-range">Talent, weather, equipment, delays, reshoots</div></div>
+  </div>
 </div></div>
 
-<div class="stats">
-  <div class="stats-inner">
-    <div><div class="stat-value">6</div><div class="stat-label">Friendship situation buckets — 8 episodes each, 48 total</div></div>
-    <div><div class="stat-value">2</div><div class="stat-label">Lighting &amp; grade states — Filtered and No Filter, designed once</div></div>
-    <div><div class="stat-value">4</div><div class="stat-label">Outro templates, built once and rendered 48 times</div></div>
-    <div><div class="stat-value">1</div><div class="stat-label">Director, DoP, editor and colourist retained across all six batches</div></div>
+<section class="section" id="brief">
+  <div class="section-header">
+    <p class="section-label">How We Read The Brief</p>
+    <h2 class="section-title">Three constraints define this project</h2>
+    <p class="section-desc">Everything in our plan answers one of them.</p>
+  </div>
+  <div class="split">
+    <div class="split-card">
+      <div class="split-icon" style="background:var(--accent)">⧉</div>
+      <h3 class="split-title">Volume is the real challenge</h3>
+      <p class="split-text">48 complete stories in six months is not a film problem — it is a systems problem. It is won in pre-production, in a script bank and a repeatable shoot grammar, not on set.</p>
+    </div>
+    <div class="split-card">
+      <div class="split-icon" style="background:var(--red)">↻</div>
+      <h3 class="split-title">Consistency must survive six months</h3>
+      <p class="split-text">The same three faces, the same apartment, the same grade, half a year apart. Without a locked bible and continuity discipline, batch 6 will not cut against batch 1.</p>
+    </div>
+    <div class="split-card">
+      <div class="split-icon" style="background:var(--amber)">◎</div>
+      <h3 class="split-title">The turn must be seen, not said</h3>
+      <p class="split-text">'No Filter Unlocked' is a craft brief, not a caption. It lives in two lighting states, two grades and two editing rhythms — designed once, executed 48 times.</p>
+    </div>
+  </div>
+  <div class="callout"><b>Our answer in one line:</b> Build the universe once — bible, sets, wardrobe, outro templates, beauty shots — then run six identical, low-risk monthly cycles against it.</div>
+
+  <div class="section-header" style="margin-top:3.5rem">
+    <p class="section-label">Our Strategic Answer</p>
+    <h2 class="section-title">One build phase, six repeating cycles, one bank of finished episodes always ahead of air</h2>
+  </div>
+  <div class="split" style="grid-template-columns:1fr 1.3fr">
+    <div class="split-card">
+      <div class="section-label" style="margin-bottom:.5rem">Phase 01 · The Build</div>
+      <p class="split-text" style="margin-bottom:1rem">Roughly three weeks, once.</p>
+      <ul style="font-size:13px;color:var(--text-secondary);line-height:2">
+        <li>— Series bible &amp; 48-episode story map</li>
+        <li>— Casting and chemistry test</li>
+        <li>— Location lock + apartment retainer</li>
+        <li>— Wardrobe &amp; character prop kits</li>
+        <li>— Grade LUTs: Filtered / No Filter</li>
+        <li>— 2D outro templates (2/3/4/5 cast)</li>
+        <li>— Master beauty shot per flavour</li>
+      </ul>
+    </div>
+    <div class="split-card">
+      <div class="section-label" style="margin-bottom:.5rem">Phase 02 · The Monthly Cycle</div>
+      <p class="split-text" style="margin-bottom:1rem">Identical every month, across four weeks — keeping the crew fast and the cost predictable.</p>
+      <div class="timeline" style="border:none">
+        <div class="tl-row" style="grid-template-columns:80px 1fr"><div class="tl-time">Week 1</div><div class="tl-desc">Scripts locked &amp; approved — 8 episodes signed off from the story bank</div></div>
+        <div class="tl-row" style="grid-template-columns:80px 1fr"><div class="tl-time">Week 2</div><div class="tl-desc">Prep &amp; table read — shot lists, wardrobe continuity plan, call sheets</div></div>
+        <div class="tl-row" style="grid-template-columns:80px 1fr"><div class="tl-time">Week 3</div><div class="tl-desc">3-day batch shoot — ~3 episodes per day, grouped by set-up not story</div></div>
+        <div class="tl-row" style="grid-template-columns:80px 1fr"><div class="tl-time">Week 4</div><div class="tl-desc">Post &amp; delivery — 8 edits, grade, sound, outro render, subtitles</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="callout">From month two onward we shoot one batch ahead of transmission. A weather day, a sick actor or a late approval never touches the release calendar — <b>one batch is always in the bank.</b></div>
+</section>
+
+<div class="divider-banner" id="creative">
+  <div class="divider-photo"><img src="assets/chingu-universe-proposal/episode-engine-photo.jpg" alt=""></div>
+  <div class="divider-text">
+    <span class="divider-tag">Section 01</span>
+    <h2 class="divider-title">Creative Treatment</h2>
+    <p class="divider-desc">Deliverable 5. Directing approach, visual style, mood and tone, cinematography, lighting, editing, music, references, and how all of it stays identical across 48 episodes.</p>
   </div>
 </div>
 
+<section class="section">
+  <div class="section-header">
+    <p class="section-label"><span class="tag">Deliverable 5</span></p>
+    <h2 class="section-title">The Episode Engine</h2>
+    <p class="section-desc">The brief names six friendship situations. Six situations × eight episodes each = 48. That is the whole season.</p>
+  </div>
+  <div class="cards">
+    <div class="card"><div class="card-head"><div class="card-num" style="background:var(--accent)">8</div><div class="card-title">Misunderstanding</div></div><p class="card-text">Something is read the wrong way and nobody corrects it in time.</p></div>
+    <div class="card"><div class="card-head"><div class="card-num" style="background:var(--red)">8</div><div class="card-title">Hidden Opinion</div></div><p class="card-text">Everyone agrees out loud. Nobody agrees privately.</p></div>
+    <div class="card"><div class="card-head"><div class="card-num" style="background:var(--amber)">8</div><div class="card-title">Small Lie</div></div><p class="card-text">A harmless lie told to be polite, then defended past all reason.</p></div>
+    <div class="card"><div class="card-head"><div class="card-num" style="background:var(--blue)">8</div><div class="card-title">Secret Crush</div></div><p class="card-text">The one thing the group has all noticed and nobody will name.</p></div>
+    <div class="card"><div class="card-head"><div class="card-num" style="background:#8b5cf6">8</div><div class="card-title">Awkward Reunion</div></div><p class="card-text">Someone returns and the old dynamic no longer fits.</p></div>
+    <div class="card"><div class="card-head"><div class="card-num" style="background:#0d9488">8</div><div class="card-title">Group-Chat Problem</div></div><p class="card-text">A message, a screenshot, a typo, a wrong recipient.</p></div>
+  </div>
+  <div class="callout"><b>Why this matters commercially</b><br>
+    Writers are never staring at a blank page — every brief starts inside a defined bucket. Eight variations of one situation type can be shot in the same batch, on the same set-up, in the same wardrobe. The audience learns the shape of the show, so the 'No Filter' turn lands harder every time, and any episode can be replaced from within its own bucket without disturbing the release order.
+  </div>
+</section>
+
+<div class="section-alt"><div class="section">
+  <div class="section-header">
+    <p class="section-label"><span class="tag">Deliverable 5</span></p>
+    <h2 class="section-title">The Season Map</h2>
+    <p class="section-desc">All 48 episodes assigned to a bucket and a batch before a single word is written — the document the writers' room works from.</p>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Batch</th><th>Month</th><th>Episodes</th><th>Ambassador</th></tr></thead>
+      <tbody>
+        <tr><td>Batch 1</td><td>October</td><td class="muted">EP 1 – EP 8</td><td class="muted">—</td></tr>
+        <tr><td>Batch 2</td><td>November</td><td class="muted">EP 9 – EP 16</td><td class="muted">A Linn Young (EP9) · Khin Wint Wah (EP16)</td></tr>
+        <tr><td>Batch 3</td><td>December</td><td class="muted">EP 17 – EP 24</td><td class="muted">—</td></tr>
+        <tr><td>Batch 4</td><td>January</td><td class="muted">EP 25 – EP 32</td><td class="muted">A Linn Young (EP25) · Khin Wint Wah (EP32)</td></tr>
+        <tr><td>Batch 5</td><td>February</td><td class="muted">EP 33 – EP 40</td><td class="muted">—</td></tr>
+        <tr><td>Batch 6</td><td>March</td><td class="muted">EP 41 – EP 48</td><td class="muted">A Linn Young (EP41) · Khin Wint Wah (EP48, finale)</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout">Situation buckets rotate evenly across all six batches: <b>Misunderstanding · Hidden Opinion · Small Lie · Secret Crush · Awkward Reunion · Group-Chat</b> — 8 episodes each, plus 6 ambassador episodes woven through as season punctuation.</div>
+</div></div>
+
+<section class="section">
+  <div class="section-header">
+    <p class="section-label"><span class="tag">Deliverable 5</span></p>
+    <h2 class="section-title">Alternative Title Directions</h2>
+    <p class="section-desc">The brief invites alternatives that keep a Korean identity and the transformation cue. Four directions, one recommended.</p>
+  </div>
+  <div class="cards">
+    <div class="card" style="border-top:3px solid var(--text-secondary)"><div class="card-title">Chingu Mode: On</div><p class="card-text" style="margin:.4rem 0 .6rem"><i>The client's working title · Retain</i></p><p class="card-text">Already carries the transformation cue and the brand name. Safest, and it tests well as a spoken tag.</p></div>
+    <div class="card" style="border-top:3px solid var(--accent)"><div class="card-title">No Filter, Please</div><p class="card-text" style="margin:.4rem 0 .6rem"><i>Recommended</i></p><p class="card-text">Reads as a restaurant order — the exact register of the show's world. Turns the payoff into a request rather than a slogan.</p></div>
+    <div class="card"><div class="card-title">90 Seconds of Honesty</div><p class="card-text" style="margin:.4rem 0 .6rem"><i>Format-forward · Alternative</i></p><p class="card-text">Names the runtime as a promise. Strong for the algorithm; risks dating the format if episode length ever changes.</p></div>
+    <div class="card"><div class="card-title">Chingu Unlocked</div><p class="card-text" style="margin:.4rem 0 .6rem"><i>Brand-forward · Alternative</i></p><p class="card-text">Puts the product name first. Most direct for DBA recall; least distinctive as a show title.</p></div>
+  </div>
+  <div class="callout">In every direction the on-screen payoff card stays as briefed: <b>NO FILTER UNLOCKED.</b></div>
+</section>
+
+<div class="section-alt"><div class="section">
+  <div class="section-header">
+    <p class="section-label"><span class="tag">Deliverable 5</span></p>
+    <h2 class="section-title">The Three Chingu</h2>
+    <p class="section-desc">Two male, one female, early twenties, university-age. Each one's filter hides the opposite of what you'd expect.</p>
+  </div>
+  <div class="chars">
+    <div class="char-card">
+      <div class="char-head" style="background:var(--accent)"><div><h3>Ko Zin</h3><p>22 · The Overthinker</p></div></div>
+      <div class="char-body">
+        <div class="char-photo"><img src="assets/chingu-universe-proposal/character-kozin.jpg" alt="Ko Zin"></div>
+        <div class="char-info">
+          Plans everything twice, says half of it. The one who books the table and brings a spare charger.
+          <div style="margin-top:.5rem"><span class="filtered">Filtered: diplomatic to the point of uselessness.</span><br><span class="nofilter">No Filter: devastatingly blunt, and always right.</span></div>
+          <span class="prop">Prop: an oversized tote with a contingency for every outcome.</span>
+        </div>
+      </div>
+    </div>
+    <div class="char-card">
+      <div class="char-head" style="background:var(--red)"><div><h3>Sai Naing</h3><p>21 · The Chaos</p></div></div>
+      <div class="char-body">
+        <div class="char-photo"><img src="assets/chingu-universe-proposal/character-sainaing.jpg" alt="Sai Naing"></div>
+        <div class="char-info">
+          Speaks before thinking and thinks out loud. Volume is his entire personality — until it isn't.
+          <div style="margin-top:.5rem"><span class="filtered">Filtered: loud opinions about nothing that matters.</span><br><span class="nofilter">No Filter: unexpectedly sincere. His noise hides feeling, not opinion.</span></div>
+          <span class="prop">Prop: sunglasses worn indoors, at night, permanently.</span>
+        </div>
+      </div>
+    </div>
+    <div class="char-card">
+      <div class="char-head" style="background:var(--blue)"><div><h3>Ei Mon</h3><p>22 · The Scanner</p></div></div>
+      <div class="char-body">
+        <div class="char-photo"><img src="assets/chingu-universe-proposal/character-eimon.jpg" alt="Ei Mon"></div>
+        <div class="char-info">
+          Reads the room before anyone opens their mouth. Keeps everyone's secrets, including the ones they never told her.
+          <div style="margin-top:.5rem"><span class="filtered">Filtered: perfectly agreeable, gives nothing away.</span><br><span class="nofilter">No Filter: reveals she has known the whole time.</span></div>
+          <span class="prop">Prop: a cracked phone screen she refuses to replace.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="callout">Names are placeholders for the client's approval. The inversion — each character's filter concealing their opposite — is the mechanism we would keep.</div>
+</div></div>
+
+<section class="section">
+  <div class="section-header">
+    <p class="section-label"><span class="tag">Deliverable 5</span></p>
+    <h2 class="section-title">Recurring Characters &amp; Guest Logic</h2>
+    <p class="section-desc">Approximately six of the 48 episodes feature the brand ambassadors. We propose where, and why.</p>
+  </div>
+  <div class="ambassadors">
+    <div class="amb-card">
+      <div class="amb-photo"><img src="assets/chingu-universe-proposal/ambassador-alinnyoung.jpg" alt="A Linn Young"></div>
+      <div>
+        <div class="amb-name">A Linn Young</div>
+        <div class="amb-tag" style="color:var(--accent-dark)">The Sunbae · 3 episodes</div>
+        <p class="amb-text">The senior everyone straightens up for. His presence raises the group's filter to maximum — which makes the collapse funnier. Placed at Episodes 9, 25 and 41 so each batch-quarter has one 'best behaviour' peak.</p>
+      </div>
+    </div>
+    <div class="amb-card">
+      <div class="amb-photo"><img src="assets/chingu-universe-proposal/ambassador-khinwintwah.jpg" alt="Khin Wint Wah"></div>
+      <div>
+        <div class="amb-name">Khin Wint Wah</div>
+        <div class="amb-tag" style="color:var(--red)">The Returnee · 3 episodes</div>
+        <p class="amb-text">The friend who left and came back. She owns the 'awkward reunion' bucket and gives the universe a sense of elapsed time. Placed at Episodes 16, 32 and 48 as season punctuation, including the finale.</p>
+      </div>
+    </div>
+  </div>
+  <div class="section-header" style="margin-top:2.5rem;margin-bottom:1.5rem"><p class="section-label">Cast-Size Rhythm Across The Season</p></div>
+  <div class="stats" style="border:1px solid var(--border);border-radius:var(--radius);padding:2rem">
+    <div class="stats-inner">
+      <div><div class="stat-value">10 eps</div><div class="stat-label"><b>2 characters</b> — two-handers, cheapest to shoot, strongest for intimacy</div></div>
+      <div><div class="stat-value">26 eps</div><div class="stat-label"><b>3 characters</b> — the default; the core squad, no guests</div></div>
+      <div><div class="stat-value">8 eps</div><div class="stat-label"><b>4 characters</b> — core three plus one supporting or ambassador</div></div>
+      <div><div class="stat-value">4 eps</div><div class="stat-label"><b>5 characters</b> — event episodes, both ambassadors or a celebration</div></div>
+    </div>
+  </div>
+  <div class="callout">This mix drives the four outro templates below. Ambassador fees are excluded from our costing, per the brief.</div>
+</section>
+
+<div class="section-alt"><div class="section">
+  <div class="section-header">
+    <p class="section-label"><span class="tag">Deliverable 5</span></p>
+    <h2 class="section-title">The No-Filter Turn</h2>
+    <p class="section-desc">The brief asks for a visible transition. We design it once as a two-state system and execute it identically 48 times.</p>
+  </div>
+  <div class="turn-grid">
+    <div>
+      <div class="turn-photo"><img src="assets/chingu-universe-proposal/turn-before.jpg" alt="Filtered — before"></div>
+      <div class="turn-panel">
+        <div class="turn-head before">Before · Filtered</div>
+        <div class="turn-rows">
+          <div class="turn-row"><b>Camera</b><span>Locked-off, symmetrical, wide. Nobody moves the frame.</span></div>
+          <div class="turn-row"><b>Lens</b><span>35mm. Everyone kept in the same shot together.</span></div>
+          <div class="turn-row"><b>Grade</b><span>Cooler LUT, lifted blacks, lower saturation.</span></div>
+          <div class="turn-row"><b>Light</b><span>Even, flat, top-heavy. No modelling on faces.</span></div>
+          <div class="turn-row"><b>Cut</b><span>Long holds. Average shot length ~4 seconds.</span></div>
+          <div class="turn-row"><b>Sound</b><span>Room tone only. Clean, slightly sterile.</span></div>
+          <div class="turn-row"><b>Performance</b><span>Restrained. Politeness doing all the work.</span></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="turn-photo"><img src="assets/chingu-universe-proposal/turn-after.jpg" alt="No Filter — after"></div>
+      <div class="turn-panel">
+        <div class="turn-head after">After · No Filter</div>
+        <div class="turn-rows after-bg">
+          <div class="turn-row"><b>Camera</b><span>Handheld, off-axis, closer. The frame reacts.</span></div>
+          <div class="turn-row"><b>Lens</b><span>50mm and 85mm. Faces isolated, singles only.</span></div>
+          <div class="turn-row"><b>Grade</b><span>Warm LUT, deeper blacks, richer skin.</span></div>
+          <div class="turn-row"><b>Light</b><span>Practicals and neon. Modelled, directional.</span></div>
+          <div class="turn-row"><b>Cut</b><span>Fast reaction cutting. ~1.5 seconds.</span></div>
+          <div class="turn-row"><b>Sound</b><span>Music enters. Room comes alive.</span></div>
+          <div class="turn-row"><b>Performance</b><span>Unguarded. The truth arrives mid-sentence.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></div>
+
+<section class="section">
+  <div class="section-header">
+    <p class="section-label"><span class="tag">Deliverable 5</span></p>
+    <h2 class="section-title">Sample Episodes</h2>
+    <p class="section-desc">Six concepts written to prove the engine. Each sits in a named bucket and runs to 90–120 seconds. Full scripts for Batch 1 would be delivered for approval during the build phase.</p>
+  </div>
+  <div class="episodes">
+    <div class="ep-card"><div class="ep-tagbar"><span>Group-Chat · 3 cast · Home</span></div><div class="ep-body"><div class="ep-title">The Read Receipt</div>
+      <div class="ep-block"><b>Set-up</b><p>Sai's message to his crush has been read for six hours. No reply. The squad conducts a forensic examination of all fourteen words.</p></div>
+      <div class="ep-block"><b>Turn</b><p>Ei Mon quietly reveals she has had the crush's number the entire time.</p></div>
+      <div class="ep-block payoff"><b>No Filter Unlocked</b><p>Sai admits he doesn't want a reply. He wants a reason to go over there.</p></div>
+    </div></div>
+    <div class="ep-card"><div class="ep-tagbar"><span>Hidden Opinion · 3 cast · Pocha</span></div><div class="ep-body"><div class="ep-title">Who Poured This</div>
+      <div class="ep-block"><b>Set-up</b><p>A fourth glass sits filled at a table for three. Nobody will admit to pouring it. Everyone is extremely gracious about it.</p></div>
+      <div class="ep-block"><b>Turn</b><p>The politeness escalates until they are arguing about who is being most polite.</p></div>
+      <div class="ep-block payoff"><b>No Filter Unlocked</b><p>Ko Zin poured it for someone who does not come out with them anymore.</p></div>
+    </div></div>
+    <div class="ep-card"><div class="ep-tagbar"><span>Small Lie · 4 cast · Home</span></div><div class="ep-body"><div class="ep-title">Screenshot</div>
+      <div class="ep-block"><b>Set-up</b><p>Someone screenshotted the group chat into a different group chat. It has come back. All three perform total innocence.</p></div>
+      <div class="ep-block"><b>Turn</b><p>Each denial contains a detail only the person who took it could know.</p></div>
+      <div class="ep-block payoff"><b>No Filter Unlocked</b><p>All three of them did it. In three separate chats. About each other.</p></div>
+    </div></div>
+    <div class="ep-card"><div class="ep-tagbar"><span>Misunderstanding · 4 cast · Pocha</span></div><div class="ep-body"><div class="ep-title">Sunbae Is Watching</div>
+      <div class="ep-block"><b>Set-up</b><p>A Linn Young joins the table. The squad performs the most mature, well-adjusted version of themselves that has ever existed.</p></div>
+      <div class="ep-block"><b>Turn</b><p>He matches their formality perfectly, which they read as disapproval and escalate against.</p></div>
+      <div class="ep-block payoff"><b>No Filter Unlocked</b><p>The sunbae is more chaotic than all three of them combined.</p></div>
+    </div></div>
+    <div class="ep-card"><div class="ep-tagbar"><span>Awkward Reunion · 5 cast · Pocha</span></div><div class="ep-body"><div class="ep-title">The Welcome Committee</div>
+      <div class="ep-block"><b>Set-up</b><p>Khin Wint Wah is back from abroad. The group has over-prepared a welcome so thoughtful it is unbearable for everyone involved.</p></div>
+      <div class="ep-block"><b>Turn</b><p>Every gesture lands slightly wrong. She is gracious about all of it, which makes it worse.</p></div>
+      <div class="ep-block payoff"><b>No Filter Unlocked</b><p>She didn't miss the restaurant. She missed the way they argue about it.</p></div>
+    </div></div>
+    <div class="ep-card"><div class="ep-tagbar"><span>Secret Crush · 2 cast · Home</span></div><div class="ep-body"><div class="ep-title">Two Truths</div>
+      <div class="ep-block"><b>Set-up</b><p>Ko Zin and Ei Mon wait for Sai, who is late. They make conversation. They run out of conversation.</p></div>
+      <div class="ep-block"><b>Turn</b><p>Both keep checking the door for a person they already know is not coming.</p></div>
+      <div class="ep-block payoff"><b>No Filter Unlocked</b><p>They each knew Sai wasn't coming. Neither wanted to be the one to say it.</p></div>
+    </div></div>
+  </div>
+</section>
+
+<div class="section-alt"><div class="section">
+  <div class="section-header">
+    <p class="section-label"><span class="tag">Deliverable 5</span></p>
+    <h2 class="section-title">Storyboard · Episode 01, "The Read Receipt"</h2>
+    <p class="section-desc">Six frames, ninety seconds. The grade, the lens and the cutting rhythm all change on frame four — every episode is boarded to this same six-frame spine.</p>
+  </div>
+  <div class="board">
+    <div class="board-frame"><div class="board-top"><span class="board-num">01</span><span class="board-time">0:00</span>WIDE</div><div class="board-info"><span class="board-tag" style="background:#5b6472">Filtered</span><p style="margin-top:.5rem">Cold open. Three friends, one table, symmetrical and still. Sai stares at his phone.</p></div></div>
+    <div class="board-frame"><div class="board-top"><span class="board-num">02</span><span class="board-time">0:12</span>INSERT</div><div class="board-info"><span class="board-tag" style="background:#5b6472">Filtered</span><p style="margin-top:.5rem">Cut to the phone. 'Read 6h ago'. Held two beats longer than comfortable.</p></div></div>
+    <div class="board-frame"><div class="board-top"><span class="board-num">03</span><span class="board-time">0:30</span>OTS</div><div class="board-info"><span class="board-tag" style="background:#5b6472">Filtered</span><p style="margin-top:.5rem">Over Ko Zin's shoulder. The forensic analysis begins. Nobody moves the frame.</p></div></div>
+    <div class="board-frame"><div class="board-top"><span class="board-num">04</span><span class="board-time">0:48</span>CU · PUSH</div><div class="board-info"><span class="board-tag" style="background:var(--amber)">The Turn</span><p style="margin-top:.5rem">The pour. Camera comes off the tripod and pushes in. Grade warms mid-shot.</p></div></div>
+    <div class="board-frame"><div class="board-top"><span class="board-num">05</span><span class="board-time">0:56</span>SINGLES</div><div class="board-info"><span class="board-tag" style="background:var(--red)">No Filter</span><p style="margin-top:.5rem">Fast reaction cutting between three faces. Ei Mon reveals she has the number.</p></div></div>
+    <div class="board-frame"><div class="board-top"><span class="board-num">06</span><span class="board-time">1:32</span>OUTRO</div><div class="board-info"><span class="board-tag" style="background:var(--navy)">Payoff</span><p style="margin-top:.5rem">Freeze, 2D transformation, label world, bottle, campaign line.</p></div></div>
+  </div>
+  <div class="callout">Boarding 48 episodes is only affordable because the shape never changes. The writers vary the situation and the payoff; the shot grammar stays fixed — which is also what lets us shoot three episodes in a day.</div>
+</div></div>
+
+<section class="section">
+  <div class="section-header">
+    <p class="section-label"><span class="tag">Deliverable 5</span></p>
+    <h2 class="section-title">Directing Approach</h2>
+    <p class="section-desc">The comedy is in the reaction, not the line. We direct for the face that hears it.</p>
+  </div>
+  <div class="cards">
+    <div class="card"><div class="card-title">Cast the chemistry, not the résumé</div><p class="card-text" style="margin-top:.5rem">We screen-test in threes, never alone. The audition brief is an improvised version of a real episode — what we're buying is the interruption rhythm between three people.</p></div>
+    <div class="card"><div class="card-title">Shoot the listener</div><p class="card-text" style="margin-top:.5rem">Every set-up is covered for reactions before the speaker. In a two-minute episode the laugh is almost always on the face receiving the line.</p></div>
+    <div class="card"><div class="card-title">Rehearse the turn, improvise the set-up</div><p class="card-text" style="margin-top:.5rem">The no-filter section is run three times: as written, one degree warmer, then unscripted. The third take is usually the one that airs.</p></div>
+    <div class="card"><div class="card-title">Direct in K-drama grammar, deliberately</div><p class="card-text" style="margin-top:.5rem">The push-in, the held pause, the sudden cut to a wide — quoted knowingly, not imitated. The audience enjoys being in on it.</p></div>
+  </div>
+  <div class="callout">One director across all six batches, with a second-unit AD for pick-ups. Consistency of performance is a directing decision before it is a post decision.</div>
+</section>
+
+<div class="section-alt"><div class="section">
+  <div class="section-header">
+    <p class="section-label"><span class="tag">Deliverable 5</span></p>
+    <h2 class="section-title">Visual Style, Cinematography &amp; Lighting</h2>
+    <p class="section-desc">Polished Korean web drama, adapted for a vertical frame and a scrolling thumb.</p>
+  </div>
+  <div class="split">
+    <div class="split-card"><h3 class="split-title">Cinematography</h3><ul style="font-size:13px;color:var(--text-secondary);line-height:1.9">
+      <li>— Cinema camera, 4K, shot &amp; framed natively for 9:16</li><li>— Prime lenses: 35 / 50 / 85mm</li><li>— Shallow depth on singles, deep on group wides</li><li>— Eye-level for the squad; slight low angle for the sunbae</li><li>— Product always in the lower third, in focus, never centred over a face</li>
+    </ul></div>
+    <div class="split-card"><h3 class="split-title">Lighting</h3><ul style="font-size:13px;color:var(--text-secondary);line-height:1.9">
+      <li>— Soft key through diffusion, natural window direction</li><li>— Practicals carry the warmth: neon, pendant lamps, table lights</li><li>— Filtered state: flat, even, cool top light</li><li>— No Filter state: modelled, warm, directional, deeper falloff</li><li>— Two lighting states pre-built per set — the switch is a re-plug, not a re-rig</li>
+    </ul></div>
+    <div class="split-card"><h3 class="split-title">Grade &amp; Frame</h3><ul style="font-size:13px;color:var(--text-secondary);line-height:1.9">
+      <li>— Two locked LUTs applied from Batch 1 to Batch 6</li><li>— Cinematic but never glossy — grain retained, highlights soft</li><li>— Safe-zone template for platform UI on every export</li><li>— Text and payoff cards positioned above the caption band</li><li>— One colourist across the season, single reference still per set</li>
+    </ul></div>
+  </div>
+  <div class="callout">References: <b>Work Later, Drink Now</b> (tone and drinking-table blocking) · <b>Netflix's "The Swoon" shorts</b> (vertical comedy timing) · Korean web-drama singles coverage · Hong Dae Pocha as the real-world anchor.</div>
+</div></div>
+
+<section class="section">
+  <div class="section-header">
+    <p class="section-label"><span class="tag">Deliverable 5</span></p>
+    <h2 class="section-title">The 9:16 Frame</h2>
+    <p class="section-desc">Vertical is a composition discipline, not a crop. Every set-up is blocked for a phone in a hand, with platform UI accounted for at shot-list stage.</p>
+  </div>
+  <div class="cards">
+    <div class="card"><div class="card-title">Framed natively, not cropped</div><p class="card-text" style="margin-top:.5rem">We shoot 9:16 in camera with a 16:9 protect. Cropping a horizontal master loses the faces.</p></div>
+    <div class="card"><div class="card-title">Three people, one vertical frame</div><p class="card-text" style="margin-top:.5rem">Two-shots stack diagonally rather than sitting side by side. Five-hand scenes are covered in singles.</p></div>
+    <div class="card"><div class="card-title">Closer than you think</div><p class="card-text" style="margin-top:.5rem">A 9:16 wide reads as a mid. Our 'wide' is roughly a waist-up, or the group is unreadable at phone size.</p></div>
+    <div class="card"><div class="card-title">Text sized for a thumb</div><p class="card-text" style="margin-top:.5rem">Payoff cards and subtitles are set at a size legible on a 6-inch screen, checked on device before delivery.</p></div>
+  </div>
+  <div class="callout"><b>Safe zones:</b> top 12% and bottom 20% belong to platform UI — nothing meaningful sits there. <b>Product blocking:</b> faces upper two-thirds, product lower third, in focus, never over a face. Every first cut is QC'd on an actual handset, in the safe-zone template, before it goes to the client.</div>
+</section>
+
+<div class="section-alt"><div class="section">
+  <div class="section-header">
+    <p class="section-label"><span class="tag">Deliverable 5</span></p>
+    <h2 class="section-title">Editing, Pacing, Music &amp; Sound</h2>
+    <p class="section-desc">Two minutes is the ceiling, not the target. Most episodes should land at 90–105 seconds.</p>
+  </div>
+  <div class="timeline">
+    <div class="tl-row"><div class="tl-time">0:00–0:08</div><div class="tl-label">The Hook</div><div class="tl-desc">Cold open on the problem. No establishing shot, no logo, no names.</div></div>
+    <div class="tl-row"><div class="tl-time">0:08–0:45</div><div class="tl-label">Filtered</div><div class="tl-desc">Politeness holds. Wide, still, cool. Tension builds under the surface.</div></div>
+    <div class="tl-row"><div class="tl-time">0:45–0:55</div><div class="tl-label">The Trigger</div><div class="tl-desc">The bottle opens or the glass is poured. Grade shifts, camera comes off the tripod, music enters.</div></div>
+    <div class="tl-row"><div class="tl-time">0:55–1:30</div><div class="tl-label">No Filter</div><div class="tl-desc">Fast reaction cutting, singles, overlapping dialogue. The truth surfaces and lands.</div></div>
+    <div class="tl-row"><div class="tl-time">1:30–1:50</div><div class="tl-label">Outro</div><div class="tl-desc">Freeze, 2D transformation, Chingu label world, bottle, campaign line.</div></div>
+  </div>
+  <div class="split" style="margin-top:1.5rem">
+    <div class="split-card"><h3 class="split-title">Music</h3><p class="split-text">One custom cue library commissioned in the build phase: three moods, six lengths. Fully licensed, reusable across all 48.</p></div>
+    <div class="split-card"><h3 class="split-title">Sound</h3><p class="split-text">Clean location dialogue, lavs plus boom. The pour, the clink and the cap are treated as signature brand sound effects.</p></div>
+  </div>
+</div></div>
+
+<section class="section">
+  <div class="section-header">
+    <p class="section-label"><span class="tag">Deliverable 5</span></p>
+    <h2 class="section-title">Holding Consistency Across 48 Episodes</h2>
+    <p class="section-desc">The brief's hardest requirement. It is answered by documents and discipline, not by talent.</p>
+  </div>
+  <div class="docs">
+    <div class="doc-card"><h4>Series Bible</h4><p>Locked in the build phase and version-controlled. Characters, voice, world rules, what each person would and would not say.</p></div>
+    <div class="doc-card"><h4>Look Book &amp; LUTs</h4><p>Two graded LUTs plus a reference still for every set-up. The colourist matches to the still, not to memory.</p></div>
+    <div class="doc-card"><h4>Wardrobe Continuity Plan</h4><p>Issued before every batch shoot. Per-character colour and silhouette locked; each look logged and photographed.</p></div>
+    <div class="doc-card"><h4>Set Continuity Log</h4><p>The apartment is photographed from six fixed marks. Nothing moves between batches without being logged.</p></div>
+    <div class="doc-card"><h4>Shot-Grammar Card</h4><p>A one-page card on every call sheet: the six recurring set-ups, their lens, height and lighting state.</p></div>
+    <div class="doc-card"><h4>Single-Owner Rule</h4><p>One director, one DoP, one editor, one colourist across all six batches. Continuity is cheapest when it lives in the same heads.</p></div>
+  </div>
+</section>
+
+<div class="section-alt"><div class="section">
+  <div class="section-header">
+    <p class="section-label"><span class="tag">Deliverable 5</span></p>
+    <h2 class="section-title">The Outro System</h2>
+    <p class="section-desc">Built once as four reusable templates, then rendered 48 times. Subcontracted to a Myanmar animation studio for fast revision turnaround.</p>
+  </div>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-text">Final friendship reaction</div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-text">Everyone freezes in a group pose</div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-text">Live action becomes 2D illustration</div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-text">They enter the Chingu label world</div></div>
+    <div class="step"><div class="step-num">5</div><div class="step-text">Camera transitions to the bottle</div></div>
+    <div class="step"><div class="step-num">6</div><div class="step-text">Beauty shot + campaign message</div></div>
+  </div>
+  <div class="callout" style="margin-top:1.75rem">
+    <b>Four templates, built to the cast mix:</b> 2-cast (10 eps) · 3-cast (26 eps) · 4-cast (8 eps) · 5-cast (4 eps).<br><br>
+    <b>How we keep it cheap at volume:</b> character illustrations drawn once from the locked cast then reused; freeze pose shot against a marked floor position every time; label world, bottle transition and campaign card are a single locked back half; per-episode work is limited to pose swap, wardrobe recolour and timing; two rounds of template revision built into the build phase, before Batch 1 locks.
+  </div>
+</div></div>
+
+<section class="section">
+  <div class="section-header">
+    <p class="section-label"><span class="tag">Deliverable 5</span></p>
+    <h2 class="section-title">Product Beauty Shot</h2>
+    <p class="section-desc">A dedicated table-top shoot in the build phase. One reusable master per approved flavour, plus versioning plates.</p>
+  </div>
+  <div class="split">
+    <div class="split-card">
+      <h3 class="split-title">Shoot Direction</h3>
+      <ul style="font-size:13px;color:var(--text-secondary);line-height:1.9">
+        <li>— Chilled bottle with built condensation, held on a cooled surface</li>
+        <li>— Label kept clean, level and fully readable at thumbnail size</li>
+        <li>— Approved flavour-matched fruit only, fresh cuts, droplets and splashes</li>
+        <li>— Motion-control moves so every flavour matches frame for frame</li>
+        <li>— Clean plate backgrounds shot for later versioning</li>
+      </ul>
+    </div>
+    <div class="split-card">
+      <h3 class="split-title">What It Produces</h3>
+      <ul style="font-size:13px;color:var(--text-secondary);line-height:1.9">
+        <li>— <b style="color:var(--text)">Master beauty film</b> — one per approved flavour, 6–8 seconds, 9:16</li>
+        <li>— <b style="color:var(--text)">Outro end-plate</b> — cut to the exact outro duration</li>
+        <li>— <b style="color:var(--text)">Still frames</b> — high-res stills for social and key visual use</li>
+        <li>— <b style="color:var(--text)">Clean plates</b> — background-only passes for future versioning</li>
+        <li>— <b style="color:var(--text)">Loop variants</b> — seamless loops for platform end-screens</li>
+      </ul>
+    </div>
+  </div>
+  <div class="section-header" style="margin-top:2.5rem;margin-bottom:1.25rem"><p class="section-label">A Colour World Per Approved Flavour</p></div>
+  <div class="swatches">
+    <div class="swatch" style="background:var(--accent)"><h4>Original</h4><p>Cucumber · green apple</p></div>
+    <div class="swatch" style="background:var(--red)"><h4>Strawberry</h4><p>Fresh cuts · splash</p></div>
+    <div class="swatch" style="background:#8b5cf6"><h4>Grape</h4><p>Deep violet · gloss</p></div>
+    <div class="swatch" style="background:var(--amber)"><h4>Peach</h4><p>Warm blush · droplets</p></div>
+  </div>
+  <div class="callout amber" style="margin-top:1.75rem"><b>Scheduling note:</b> the beauty shoot runs as two dedicated days inside the build phase, before Batch 1 principal photography — it must be scheduled after flavour approval and final label sign-off, since a late label change is the single most likely cause of a costly reshoot on this project.</div>
+</section>
+
+<div class="divider-banner" id="execution">
+  <div class="divider-text">
+    <span class="divider-tag">Section 02</span>
+    <h2 class="divider-title">Execution &amp; Production</h2>
+    <p class="divider-desc">Deliverables 2, 3, 4 and 6. How the work actually gets made: approach, pre-production, shooting plan, post workflow, timeline, team structure and shooting requirements.</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="section-header">
+    <p class="section-label"><span class="tag">Deliverable 2</span></p>
+    <h2 class="section-title">Overall Production Approach</h2>
+    <p class="section-desc">Batch production is not a compromise for volume work — it is the only method that protects quality at 48 episodes.</p>
+  </div>
+  <div class="docs">
+    <div class="doc-card"><h4>Shoot by set-up, never by episode</h4><p>Within a batch we group every scene that shares a location, lighting state and wardrobe look — regardless of episode. One lighting rig serves nine scenes across four episodes.</p></div>
+    <div class="doc-card"><h4>Approve in blocks of eight</h4><p>Scripts, storyboards and cuts move through approval eight at a time. Fewer approval events, faster turnaround, no single late note stalling the line.</p></div>
+    <div class="doc-card"><h4>Bank one batch ahead</h4><p>From Batch 2 onward we are always shooting the month after next. The release calendar is insulated from weather, illness and late feedback.</p></div>
+    <div class="doc-card"><h4>Keep the same hands on it</h4><p>One director, one DoP, one editor, one colourist for all six batches — the single largest driver of six-month consistency.</p></div>
+  </div>
+  <div class="callout">Effect on cost: the same 48 episodes shot episode-by-episode would need roughly 30–35 crew days. Grouped by set-up, they need <b>18.</b></div>
+</section>
+
+<div class="section-alt"><div class="section">
+  <div class="section-header">
+    <p class="section-label"><span class="tag">Deliverable 2</span></p>
+    <h2 class="section-title">Pre-Production Process</h2>
+    <p class="section-desc">The build phase, roughly three weeks, plus a one-week prep cycle before every batch.</p>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Stage</th><th>What Happens</th><th>Output</th><th>Approval</th></tr></thead>
+      <tbody>
+        <tr><td>Script development</td><td class="muted">Story map of 48 episodes across six situation buckets. Batch 1 written in full; a rolling bank of eight stays one month ahead.</td><td class="muted">Series bible + map + scripts</td><td class="muted">Client &amp; agency, per batch of 8</td></tr>
+        <tr><td>Script finalisation</td><td class="muted">Table read with cast, timing pass to bring every episode under 2:00, product-integration check.</td><td class="muted">Locked shooting scripts</td><td class="muted">Client sign-off before prep</td></tr>
+        <tr><td>Storyboard &amp; shot list</td><td class="muted">Vertical-frame boards for the turn and outro; full shot list tagged by lighting state.</td><td class="muted">Boards + shot list + grammar card</td><td class="muted">Director &amp; DoP; client on boards</td></tr>
+        <tr><td>Location scouting</td><td class="muted">Recce of shortlisted apartments and confirmation of Hong Dae Pocha. Sound, power, access all tested.</td><td class="muted">Recce report + floor plans + photos</td><td class="muted">Client on final selection</td></tr>
+        <tr><td>Casting (supporting)</td><td class="muted">Supporting cast and extras cast per batch from a standing pool built during leads casting.</td><td class="muted">Cast list + contracts</td><td class="muted">Client on featured roles</td></tr>
+        <tr><td>Rehearsal</td><td class="muted">One rehearsal per batch: blocking on shot-grammar set-ups, then improvisation on no-filter sections.</td><td class="muted">Blocking plan + rehearsal notes</td><td class="muted">Internal</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div></div>
+
+<section class="section">
+  <div class="section-header">
+    <p class="section-label"><span class="tag">Deliverable 2</span></p>
+    <h2 class="section-title">Casting Strategy</h2>
+    <p class="section-desc">Two male, one female, early twenties, university-appropriate. A hybrid approach: audition for range, filter for reach.</p>
+  </div>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-text"><b>Open call</b><br>Wide call through university drama groups, agencies and social platforms. Target 120–150 submissions.</div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-text"><b>Self-tape round</b><br>One scripted scene, one improvised no-filter beat. Cuts to a shortlist of ~24.</div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-text"><b>Chemistry test</b><br>Shortlist run in threes. Testing interruption rhythm and comic timing between people.</div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-text"><b>Screen &amp; product test</b><br>Final six on camera in the real grade, holding the product.</div></div>
+    <div class="step"><div class="step-num">5</div><div class="step-text"><b>Client presentation</b><br>Three recommended trios with test footage — the client chooses a group, not three individuals.</div></div>
+  </div>
+  <div class="split" style="margin-top:1.5rem">
+    <div class="split-card"><h3 class="split-title">Why hybrid, not pure creator casting</h3><p class="split-text">A creator with a following can carry a launch, but 48 episodes across six months needs actors who can hit a comedic turn on take four at 9pm. We audition for craft first, then weight toward candidates who bring an existing audience.</p></div>
+    <div class="split-card"><h3 class="split-title">Contracting the leads</h3><ul style="font-size:13px;color:var(--text-secondary);line-height:1.85">
+      <li>— Six-month engagement with dated availability holds for all 18 shoot days</li><li>— Category exclusivity for alcohol for the series term</li><li>— Appearance clause: no significant change without approval</li><li>— Stand-ins contracted per batch as insurance</li>
+    </ul></div>
+  </div>
+</section>
+
+<div class="section-alt"><div class="section">
+  <div class="section-header">
+    <p class="section-label"><span class="tag">Deliverable 6</span></p>
+    <h2 class="section-title">One Shoot Day, Hour by Hour</h2>
+    <p class="section-desc">A twelve-hour call, eleven hours on the floor, one company move, two lighting states, three episodes banked.</p>
+  </div>
+  <div class="timeline">
+    <div class="tl-row"><div class="tl-time">07:00 · 1h</div><div class="tl-label">Crew call &amp; rig</div><div class="tl-desc">Pre-light both states on set-up 1. Camera and sound build.</div></div>
+    <div class="tl-row"><div class="tl-time">08:00 · 1h</div><div class="tl-label">H/MU &amp; blocking</div><div class="tl-desc">Cast in hair and makeup while the AD walks blocking with stand-ins.</div></div>
+    <div class="tl-row"><div class="tl-time">09:00 · 3.5h</div><div class="tl-label">Block A · Filtered</div><div class="tl-desc">Every filtered-state scene in the batch, across all episodes on this set. <b>EP1 banked.</b></div></div>
+    <div class="tl-row"><div class="tl-time">12:30 · 0.75h</div><div class="tl-label">Lunch</div><div class="tl-desc">Crew break. Art department resets the table dressing.</div></div>
+    <div class="tl-row"><div class="tl-time">13:15 · 3.25h</div><div class="tl-label">Block B · No Filter</div><div class="tl-desc">Re-plug to the warm state. Handheld, singles, reaction coverage. <b>EP2 banked.</b></div></div>
+    <div class="tl-row"><div class="tl-time">16:30 · 1h</div><div class="tl-label">Block C · Inserts</div><div class="tl-desc">Product, phone screens, the pour, and every insert the batch needs.</div></div>
+    <div class="tl-row"><div class="tl-time">17:30 · 2h</div><div class="tl-label">Look B · Block D</div><div class="tl-desc">Wardrobe change, then the second wardrobe look's scenes back to back. <b>EP3 banked.</b></div></div>
+    <div class="tl-row"><div class="tl-time">19:30 · 0.5h</div><div class="tl-label">Wrap &amp; backup</div><div class="tl-desc">Continuity stills, triplicate backup, rushes uploaded for the editor.</div></div>
+  </div>
+  <div class="callout">Company moves are the enemy of a three-episode day. Days 1 and 2 stay in the apartment; only day 3 travels, and it travels once.</div>
+</div></div>
+
+<section class="section">
+  <div class="section-header">
+    <p class="section-label"><span class="tag">Deliverable 2</span></p>
+    <h2 class="section-title">Post-Production Workflow</h2>
+    <p class="section-desc">Eight episodes from wrap to delivery in twelve working days, repeated identically six times.</p>
+  </div>
+  <div class="timeline">
+    <div class="tl-row"><div class="tl-time">D+1</div><div class="tl-label">Ingest &amp; sync</div><div class="tl-desc">Rushes backed up in triplicate, synced, logged against the batch board.</div></div>
+    <div class="tl-row"><div class="tl-time">D+2–4</div><div class="tl-label">Offline edit</div><div class="tl-desc">First cuts of all eight episodes. Timing pass to bring each under 2:00.</div></div>
+    <div class="tl-row"><div class="tl-time">D+5</div><div class="tl-label">Internal review</div><div class="tl-desc">Director and EP review. Notes applied before anything leaves the building.</div></div>
+    <div class="tl-row"><div class="tl-time">D+6</div><div class="tl-label">First cut to client</div><div class="tl-desc">All eight delivered together with a single consolidated review call.</div></div>
+    <div class="tl-row"><div class="tl-time">D+7–8</div><div class="tl-label">Client feedback</div><div class="tl-desc">Consolidated notes returned within three working days. Revision round one applied.</div></div>
+    <div class="tl-row"><div class="tl-time">D+9–10</div><div class="tl-label">Grade &amp; sound</div><div class="tl-desc">Colour to locked LUT and reference stills. Sound design, mix, music cues laid.</div></div>
+    <div class="tl-row"><div class="tl-time">D+11</div><div class="tl-label">Outro &amp; graphics</div><div class="tl-desc">2D transformation rendered from the correct cast template. Titles and payoff cards.</div></div>
+    <div class="tl-row"><div class="tl-time">D+12</div><div class="tl-label">QC &amp; delivery</div><div class="tl-desc">Subtitles, platform specs, safe-zone check, master and platform files handed over.</div></div>
+  </div>
+  <div class="callout">Delivery formats: 9:16 master (ProRes), platform-ready H.264 per channel, burned-in and sidecar subtitles in Myanmar and English, plus a clean textless version of every episode for archive and re-versioning.</div>
+</section>
+
+<div class="section-alt"><div class="section">
+  <div class="section-header">
+    <p class="section-label"><span class="tag">Deliverable 2</span></p>
+    <h2 class="section-title">Review Process &amp; Responsibilities</h2>
+    <p class="section-desc">Clear ownership at every stage. Approval speed is the single biggest schedule risk on a batch series.</p>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Stage</th><th>Client (Chingu Soju)</th><th>Agency</th><th>Production House</th></tr></thead>
+      <tbody>
+        <tr><td>Story map &amp; bible</td><td class="muted">Approve</td><td class="muted">Review &amp; consolidate</td><td class="muted">Author</td></tr>
+        <tr><td>Scripts (per batch of 8)</td><td class="muted">Approve</td><td class="muted">Consolidate notes</td><td class="muted">Write &amp; revise</td></tr>
+        <tr><td>Casting</td><td class="muted">Approve final trio</td><td class="muted">Recommend</td><td class="muted">Source, test, present, contract</td></tr>
+        <tr><td>Locations</td><td class="muted">Approve</td><td class="muted">Review</td><td class="muted">Scout, negotiate, permit, insure</td></tr>
+        <tr><td>Wardrobe &amp; continuity</td><td class="muted">Note</td><td class="muted">Review</td><td class="muted">Author &amp; maintain</td></tr>
+        <tr><td>Product integration &amp; DBA</td><td class="muted">Approve</td><td class="muted">Brand guardian</td><td class="muted">Execute on set</td></tr>
+        <tr><td>Beauty shot &amp; label</td><td class="muted">Approve artwork</td><td class="muted">Supply final artwork</td><td class="muted">Shoot &amp; deliver</td></tr>
+        <tr><td>First cut (per batch)</td><td class="muted">Notes in 3 days</td><td class="muted">Consolidate &amp; submit</td><td class="muted">Deliver &amp; revise</td></tr>
+        <tr><td>Final master</td><td class="muted">Approve</td><td class="muted">Approve</td><td class="muted">QC, deliver, archive</td></tr>
+        <tr><td>Publishing &amp; scheduling</td><td class="muted">Own</td><td class="muted">Own</td><td class="muted">Supply platform-ready files</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout amber">Feedback must be consolidated into a single response per batch. Sequential or conflicting notes from multiple stakeholders are the most common cause of schedule slip, and are treated as an additional revision round.</div>
+</div></div>
+
+<section class="section" id="team-structure">
+  <div class="section-header">
+    <p class="section-label"><span class="tag">Deliverable 4</span></p>
+    <h2 class="section-title">Team Structure</h2>
+    <p class="section-desc">Core team retained across all six batches. Department sizes scale with the batch's cast count and locations.</p>
+  </div>
+  <div class="cards">
+    <div class="card"><div class="card-title">Leadership</div><ul style="font-size:12.8px;color:var(--text-secondary);line-height:1.9;margin-top:.6rem">
+      <li><b style="color:var(--text)">Executive Producer</b> — retained, 6 months</li><li><b style="color:var(--text)">Director</b> — retained, 6 months</li><li><b style="color:var(--text)">Line Producer / PM</b> — retained, 6 months</li><li><b style="color:var(--text)">Assistant Director</b> — per shoot day</li><li><b style="color:var(--text)">Production Coordinator</b> — retained</li>
+    </ul></div>
+    <div class="card"><div class="card-title">Script &amp; Continuity</div><ul style="font-size:12.8px;color:var(--text-secondary);line-height:1.9;margin-top:.6rem">
+      <li><b style="color:var(--text)">Head Writer</b> — retained, 6 months</li><li><b style="color:var(--text)">Scriptwriter × 2</b> — 48 episodes</li><li><b style="color:var(--text)">Script Supervisor</b> — per shoot day</li><li><b style="color:var(--text)">Casting Director</b> — build + per batch</li>
+    </ul></div>
+    <div class="card"><div class="card-title">Camera, Light &amp; Sound</div><ul style="font-size:12.8px;color:var(--text-secondary);line-height:1.9;margin-top:.6rem">
+      <li><b style="color:var(--text)">Director of Photography</b> — retained, 6 months</li><li><b style="color:var(--text)">Camera Operator / 1st AC</b> — per shoot day</li><li><b style="color:var(--text)">2nd AC / DIT</b> — per shoot day</li><li><b style="color:var(--text)">Gaffer &amp; Lighting Crew × 3</b> — per shoot day</li><li><b style="color:var(--text)">Key Grip</b> — per shoot day</li><li><b style="color:var(--text)">Sound Recordist + Boom</b> — per shoot day</li>
+    </ul></div>
+    <div class="card"><div class="card-title">Art, Wardrobe &amp; Support</div><ul style="font-size:12.8px;color:var(--text-secondary);line-height:1.9;margin-top:.6rem">
+      <li><b style="color:var(--text)">Art Director</b> — retained, 6 months</li><li><b style="color:var(--text)">Set Dresser / Props</b> — per shoot day</li><li><b style="color:var(--text)">Wardrobe Stylist</b> — retained, 6 months</li><li><b style="color:var(--text)">Makeup &amp; Hair × 2</b> — per shoot day</li><li><b style="color:var(--text)">Location Manager</b> — build + per batch</li><li><b style="color:var(--text)">Production Assistants × 3</b> — per shoot day</li>
+    </ul></div>
+  </div>
+  <div class="section-header" style="margin-top:2.5rem;margin-bottom:1.25rem"><p class="section-label">Post-Production Team</p></div>
+  <div class="stats" style="border:1px solid var(--border);border-radius:var(--radius);padding:1.75rem">
+    <div class="stats-inner">
+      <div><div class="stat-value" style="font-size:1.1rem">Editor</div><div class="stat-label">Retained</div></div>
+      <div><div class="stat-value" style="font-size:1.1rem">Asst. Editor</div><div class="stat-label">Per batch</div></div>
+      <div><div class="stat-value" style="font-size:1.1rem">Colourist</div><div class="stat-label">Retained</div></div>
+      <div><div class="stat-value" style="font-size:1.1rem">Sound Designer</div><div class="stat-label">Retained</div></div>
+      <div><div class="stat-value" style="font-size:1.1rem">Motion Designer</div><div class="stat-label">Retained</div></div>
+      <div><div class="stat-value" style="font-size:1.1rem">Subtitler / QC</div><div class="stat-label">Per batch</div></div>
+    </div>
+  </div>
+  <div class="callout">Plus the subcontracted 2D animation studio for the outro system — costed as a line item, managed by our Motion Graphic Designer.</div>
+</section>
+
+<div class="section-alt"><div class="section" id="shooting-req">
+  <div class="section-header">
+    <p class="section-label"><span class="tag">Deliverable 6</span></p>
+    <h2 class="section-title">Shooting Requirements</h2>
+    <p class="section-desc">Days, locations and studio needs. Recurring-location costs are separated from additional-location costs, as the brief requires.</p>
+  </div>
+  <div class="stats" style="border:1px solid var(--border);border-radius:var(--radius);padding:2rem;margin-bottom:2rem">
+    <div class="stats-inner">
+      <div><div class="stat-value">18</div><div class="stat-label">Principal days</div></div>
+      <div><div class="stat-value">2</div><div class="stat-label">Beauty shoot days</div></div>
+      <div><div class="stat-value">1</div><div class="stat-label">Pick-up day</div></div>
+      <div><div class="stat-value">21</div><div class="stat-label">Total shoot days</div></div>
+    </div>
+  </div>
+  <div class="split" style="grid-template-columns:1fr 1fr">
+    <div class="split-card">
+      <h3 class="split-title">Recurring Locations</h3>
+      <p class="split-text" style="margin-bottom:.8rem">Cost these separately in the quotation — they are a fixed six-month commitment.</p>
+      <p class="split-text"><b style="color:var(--text)">Character's apartment</b> — retained for six months, flexible for day and night, photographed from six fixed marks for continuity.</p>
+      <p class="split-text" style="margin-top:.6rem"><b style="color:var(--text)">Korean restaurant</b> — Hong Dae Pocha, Myanmar Plaza, booked for 18 pre-agreed shooting slots.</p>
+    </div>
+    <div class="split-card">
+      <h3 class="split-title">Additional Locations</h3>
+      <p class="split-text" style="margin-bottom:.8rem">Quoted per use, drawn down as storylines require. We plan roughly eight across the season.</p>
+      <ul style="font-size:13px;color:var(--text-secondary);line-height:1.9">
+        <li>— Convenience store</li><li>— Office or shared workspace</li><li>— University or MBA-related setting</li><li>— Café · Street or car</li><li>— Additional Korean restaurant</li><li>— Secondary character's home</li><li>— Celebration or karaoke environment</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout">No studio build is required. The apartment retainer replaces a set build at lower cost and higher realism.</div>
+</div></div>
+
+<section class="section">
+  <div class="section-header">
+    <p class="section-label"><span class="tag">Deliverable 6</span></p>
+    <h2 class="section-title">Equipment, Props, Wardrobe &amp; Logistics</h2>
+    <p class="section-desc">Full commercial-tier package, held for the season so the look never changes between batches.</p>
+  </div>
+  <div class="split">
+    <div class="split-card"><h3 class="split-title">Equipment</h3><ul style="font-size:13px;color:var(--text-secondary);line-height:1.85">
+      <li>— Cinema camera body, 4K, native 9:16 framing</li><li>— Prime lens set: 35 / 50 / 85mm</li><li>— Second camera body for reaction coverage</li><li>— Gimbal and slider for the no-filter state</li><li>— Full lighting package: soft key, practicals, negative fill</li><li>— Grip: stands, flags, diffusion, rigging</li><li>— Sound: radio mics × 5, boom, mixer/recorder</li><li>— Monitors, DIT cart, media and backup drives</li>
+    </ul></div>
+    <div class="split-card"><h3 class="split-title">Props &amp; Set</h3><ul style="font-size:13px;color:var(--text-secondary);line-height:1.85">
+      <li>— Recurring apartment dressing kept in place between batches</li><li>— Character prop kits — tote, sunglasses, cracked phone</li><li>— Product props: bottles, glasses, coolers, condensation kit</li><li>— Korean food styling for pocha and beauty-shot days</li><li>— Group-chat and phone-screen graphics prepared in advance</li><li>— Continuity photo log from six fixed marks</li>
+    </ul></div>
+    <div class="split-card"><h3 class="split-title">Wardrobe, Makeup &amp; Logistics</h3><ul style="font-size:13px;color:var(--text-secondary);line-height:1.85">
+      <li>— Locked colour and silhouette per character</li><li>— No competitor alcohol branding or third-party logos</li><li>— Wardrobe continuity plan issued before every batch</li><li>— Natural, youthful makeup; touch-up between lighting states</li><li>— Crew, cast and equipment transport across 21 shoot days</li><li>— Catering for crew and cast; accommodation only if required</li>
+    </ul></div>
+  </div>
+  <div class="callout">Supporting cast and extras: approximately two supporting roles and six extras per batch, cast from a standing pool built during lead casting.</div>
+</section>
+
+<div class="divider-banner" id="costing">
+  <div class="divider-photo"><img src="assets/chingu-universe-proposal/section03-photo.jpg" alt=""></div>
+  <div class="divider-text">
+    <span class="divider-tag">Section 03</span>
+    <h2 class="divider-title">Costing &amp; Terms</h2>
+    <p class="divider-desc">Deliverables 1, 7, 8 and 9. Revision policy, payment terms and the risk and contingency plan. (Detailed line-item costs are shared separately with the client.)</p>
+  </div>
+</div>
+
+<section class="section" id="revision">
+  <div class="section-header">
+    <p class="section-label"><span class="tag">Deliverable 7</span></p>
+    <h2 class="section-title">Revision Policy</h2>
+    <p class="section-desc">What is included, what is chargeable, and the conditions under which a reshoot becomes necessary.</p>
+  </div>
+  <div class="quad">
+    <div class="quad-card green">
+      <div class="quad-title">✓ Included in the quotation</div>
+      <div class="quad-row"><span>Scripts</span><b>2 rounds / episode</b></div>
+      <div class="quad-row"><span>Storyboards</span><b>1 round / batch</b></div>
+      <div class="quad-row"><span>Offline edit</span><b>2 rounds / episode</b></div>
+      <div class="quad-row"><span>Grade and mix</span><b>1 round / batch</b></div>
+      <div class="quad-row"><span>Outro templates</span><b>2 rounds / build</b></div>
+      <div class="quad-row" style="border:none"><span>Beauty shot</span><b>1 round / flavour</b></div>
+    </div>
+    <div class="quad-card blue">
+      <div class="quad-title">↻ What a round covers</div>
+      <ul><li>Dialogue, structure and pacing changes within the approved story</li><li>Shot selection, trims and reordering within existing footage</li><li>Graphics, subtitle and payoff-card amendments</li><li>Colour and audio adjustments within the approved look</li><li>One consolidated set of notes, within 3 working days</li></ul>
+    </div>
+    <div class="quad-card amber">
+      <div class="quad-title">$ Chargeable as additional</div>
+      <ul><li>Any round beyond those included</li><li>Notes returned later than 3 working days, or in separate waves</li><li>Changes to an approved script after the batch has been shot</li><li>Changes to brand assets or label artwork after approval</li><li>New episodes, characters or locations outside the approved map</li></ul>
+    </div>
+    <div class="quad-card red">
+      <div class="quad-title">⚠ Reshoot conditions</div>
+      <p style="font-size:13px;color:var(--text-secondary);line-height:1.75">A reshoot is triggered only by a change that cannot be resolved in post: a rewritten scene after shooting, a product or label change after the batch, or a cast change mid-season. Reshoots are quoted at a half or full day rate and scheduled into the next batch's pick-up window. Technical failure on our side is reshot at our cost.</p>
+    </div>
+  </div>
+</section>
+
+<div class="section-alt"><div class="section" id="payment">
+  <div class="section-header">
+    <p class="section-label"><span class="tag">Deliverable 8</span></p>
+    <h2 class="section-title">Payment Terms</h2>
+    <p class="section-desc">Mobilisation advance to fund the build phase, then payment on delivery of each batch.</p>
+  </div>
+  <div class="pay-split">
+    <div class="pay-card"><div class="pay-pct">40%</div><div class="pay-label">On Signing</div><div class="pay-desc">Mobilisation. Funds the build phase: bible, scripts, casting, location retainer deposit, LUT and outro development, beauty shoot.</div></div>
+    <div class="pay-card"><div class="pay-pct">30%</div><div class="pay-label">On Delivery Of Each Batch</div><div class="pay-desc">Payable on acceptance of each set of eight episodes.</div></div>
+    <div class="pay-card"><div class="pay-pct">20%</div><div class="pay-label">On Final Delivery</div><div class="pay-desc">Payable on acceptance of Episode 48 and handover of masters, textless versions and project archive.</div></div>
+  </div>
+  <div class="split">
+    <div class="split-card"><h3 class="split-title">Conditions</h3><ul style="font-size:13px;color:var(--text-secondary);line-height:1.9">
+      <li>— Invoices payable within 14 days of issue</li><li>— Acceptance deemed given if no notes within 5 working days</li><li>— Batch payments are independent — a query on one doesn't hold another</li><li>— All figures exclusive of applicable taxes</li>
+    </ul></div>
+    <div class="split-card"><h3 class="split-title">Cancellation, Postponement &amp; Additional Costs</h3><ul style="font-size:13px;color:var(--text-secondary);line-height:1.9">
+      <li>— Postponement &gt;14 days' notice: rescheduled at no charge</li><li>— Postponement within 14 days: committed costs are payable</li><li>— Cancellation after mobilisation: advance retained against work completed</li><li>— No additional cost without written client approval in advance</li>
+    </ul></div>
+  </div>
+</div></div>
+
+<section class="section" id="risk">
+  <div class="section-header">
+    <p class="section-label"><span class="tag">Deliverable 9</span></p>
+    <h2 class="section-title">Risk &amp; Contingency Plan</h2>
+    <p class="section-desc">The one-batch buffer absorbs most of what follows. These are the mitigations behind it.</p>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Risk</th><th>Exposure</th><th>Mitigation</th><th>Impact If It Lands</th></tr></thead>
+      <tbody>
+        <tr><td>Talent unavailability</td><td class="muted">High</td><td class="muted">Dated availability holds for all 18 days. Stand-ins per batch. Episodes are cast-flexible within a bucket.</td><td class="muted">Absorbed by the batch buffer</td></tr>
+        <tr><td>Weather or location loss</td><td class="muted">Medium</td><td class="muted">Both recurring locations are interiors. Additional locations always have a named alternate.</td><td class="muted">Absorbed — no cost impact</td></tr>
+        <tr><td>Equipment failure</td><td class="muted">Low</td><td class="muted">Two camera bodies every shoot day. Rental house within same-day reach. Media backed up in triplicate.</td><td class="muted">Half day at most</td></tr>
+        <tr><td>Late or conflicting approvals</td><td class="muted">High</td><td class="muted">Approvals batched in eights. Single consolidated feedback route. Acceptance deemed after 5 days.</td><td class="muted">Chargeable revision; buffer absorbs schedule</td></tr>
+        <tr><td>Label or flavour change</td><td class="muted">Medium</td><td class="muted">Beauty shoot scheduled only after artwork sign-off. Clean plates shot for versioning.</td><td class="muted">Graphics cost only, if plates exist</td></tr>
+        <tr><td>Reshoot required</td><td class="muted">Low</td><td class="muted">Pick-up window built into every batch's day 3. Reshoots roll into the next batch.</td><td class="muted">No separate crew call</td></tr>
+        <tr><td>Cast change mid-season</td><td class="muted">Low</td><td class="muted">Scripted as an in-world departure and return. Recast handled in the next prep week.</td><td class="muted">One prep week; story absorbs it</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout amber">A contingency of 8% is carried in the cost breakdown. Production insurance covering equipment, third-party liability and cast is included.</div>
+</section>
+
+<div class="section-alt"><div class="section" id="next">
+  <div class="section-header">
+    <p class="section-label">Next Steps</p>
+    <h2 class="section-title">What happens after you say yes</h2>
+  </div>
+  <div class="next-steps">
+    <div class="ns-card"><div class="ns-num">01</div><div class="ns-title">Title &amp; creative direction</div><div class="ns-desc">Client selects a title direction and confirms the character bible. Two working days.</div></div>
+    <div class="ns-card"><div class="ns-num">02</div><div class="ns-title">Contracting &amp; mobilisation</div><div class="ns-desc">Agreement signed, advance released, build phase begins. Week 1 of September.</div></div>
+    <div class="ns-card"><div class="ns-num">03</div><div class="ns-title">Casting presentation</div><div class="ns-desc">Three recommended trios presented with test footage. End of week 2.</div></div>
+    <div class="ns-card"><div class="ns-num">04</div><div class="ns-title">Shoot</div><div class="ns-desc">Three days. Episodes 1–8 in the bank, one month before launch. Week 3.</div></div>
+  </div>
+</div></div>
+
 <div class="cta">
-  <h2 class="cta-title">Chingu moves beyond simply <em>being present</em>.</h2>
-  <p class="cta-text">We'd like to build the world where it becomes the key. Ready to talk through the title direction, casting, or the build-phase timeline?</p>
+  <h2 class="cta-title">Chingu moves beyond simply <em>being present</em> at the gathering.<br>We'd like to build the world where it becomes the key.</h2>
+  <p class="cta-text">Ready to talk through the title direction, casting, or the build-phase timeline?</p>
   <div class="cta-contacts">
     <a href="mailto:nyinyisoewin@awakenentertainment.org">nyinyisoewin@awakenentertainment.org</a>
     <a href="tel:+959255762417">+95 925 5762 417</a>
@@ -235,134 +1112,6 @@ ul{list-style:none}
   </div>
   <p class="footer-bottom">Awaken Production &middot; Chingu Universe — Production Proposal &middot; Prepared for Chingu Soju &middot; 2026</p>
 </div>
-
-<div class="lightbox" id="lightbox">
-  <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close">✕</button>
-  <button class="lightbox-arrow prev" onclick="go(-1)" aria-label="Previous slide">‹</button>
-  <img id="lightboxImg" src="" alt="">
-  <button class="lightbox-arrow next" onclick="go(1)" aria-label="Next slide">›</button>
-  <div class="lightbox-counter" id="lightboxCounter">01 / 36</div>
-</div>
-
-<script>
-const TOTAL = 36;
-const BASE = "assets/chingu-universe-proposal/slide-";
-function pad(n){return String(n).padStart(2,'0')}
-function src(i){return BASE + pad(i) + ".jpg"}
-
-const titles = [
-  "Cover — Production Proposal","What's Inside","How We Read The Brief","Our Strategic Answer",
-  "Section 01 — Creative Treatment","The Episode Engine","The Season Map","Alternative Title Directions",
-  "The Three Chingu","Recurring Characters & Guest Logic","The No-Filter Turn","Sample Episodes · 01–03",
-  "Sample Episodes · 04–06","Storyboard · Episode 01, 'The Read Receipt'","Directing Approach",
-  "Visual Style, Cinematography & Lighting","The 9:16 Frame","Editing, Pacing, Music & Sound",
-  "Holding Consistency Across 48 Episodes","The Outro System","Product Beauty Shot",
-  "Section 02 — Execution & Production","Overall Production Approach","Pre-Production Process",
-  "Casting Strategy","One Shoot Day, Hour by Hour","Post-Production Workflow",
-  "Review Process & Responsibilities","Team Structure","Shooting Requirements",
-  "Equipment, Props, Wardrobe & Logistics","Section 03 — Costing & Terms","Revision Policy",
-  "Payment Terms","Risk & Contingency Plan","Next Steps"
-];
-
-const sections = [
-  {start:0,end:4,label:"Overview"},
-  {start:4,end:21,label:"Section 01 · Creative Treatment"},
-  {start:21,end:31,label:"Section 02 · Execution & Production"},
-  {start:31,end:35,label:"Section 03 · Costing & Terms"},
-  {start:35,end:36,label:"Next Steps"}
-];
-function sectionFor(i){return sections.find(s=>i>=s.start&&i<s.end)?.label || ""}
-
-const tocEntries = [
-  {n:"01",title:"Detailed Cost Breakdown",range:"Not in this file — see Payment Terms",jump:33},
-  {n:"02",title:"Execution & Production Plan",range:"Slides 22–31",jump:21},
-  {n:"03",title:"Production Timeline",range:"Slide 4 — monthly cycle",jump:3},
-  {n:"04",title:"Team Structure",range:"Slide 29",jump:28},
-  {n:"05",title:"Creative Treatment",range:"Slides 6–21",jump:5},
-  {n:"06",title:"Shooting Requirements",range:"Slides 30–31",jump:29},
-  {n:"07",title:"Revision Policy",range:"Slide 33",jump:32},
-  {n:"08",title:"Payment Terms",range:"Slide 34",jump:33},
-  {n:"09",title:"Risk & Contingency Plan",range:"Slide 35",jump:34}
-];
-
-let current = 0;
-let lightboxOpen = false;
-
-function buildThumbs(){
-  const wrap = document.getElementById('thumbs');
-  for(let i=1;i<=TOTAL;i++){
-    const b = document.createElement('button');
-    b.className = 'thumb' + (i===1?' active':'');
-    b.innerHTML = `<img src="${src(i)}" alt="Slide ${i}: ${titles[i-1]}" loading="lazy">`;
-    b.onclick = () => setSlide(i-1);
-    wrap.appendChild(b);
-  }
-}
-
-function buildToc(){
-  const grid = document.getElementById('tocGrid');
-  tocEntries.forEach(e=>{
-    const card = document.createElement('div');
-    card.className = 'toc-card';
-    card.onclick = () => { setSlide(e.jump); document.getElementById('viewer').scrollIntoView({behavior:'smooth'}); };
-    card.innerHTML = `<div class="toc-num">${e.n}</div><div class="toc-title">${e.title}</div><div class="toc-range">${e.range}</div>`;
-    grid.appendChild(card);
-  });
-}
-
-function setSlide(i){
-  current = Math.max(0, Math.min(TOTAL-1, i));
-  const n = current+1;
-  document.getElementById('stageImg').src = src(n);
-  document.getElementById('stageImg').alt = `Chingu Universe proposal, slide ${n}: ${titles[current]}`;
-  document.getElementById('slideTitleTop').textContent = titles[current];
-  document.getElementById('sectionTag').textContent = sectionFor(current);
-  document.getElementById('counterTop').textContent = `SLIDE ${pad(n)} / ${TOTAL}`;
-  document.getElementById('progressBar').style.width = (n/TOTAL*100)+'%';
-  document.querySelectorAll('.thumb').forEach((t,idx)=>{
-    t.classList.toggle('active', idx===current);
-    if(idx===current) t.scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'});
-  });
-  if(lightboxOpen){
-    document.getElementById('lightboxImg').src = src(n);
-    document.getElementById('lightboxCounter').textContent = `${pad(n)} / ${TOTAL}`;
-  }
-}
-function go(dir){ setSlide(current+dir) }
-
-function openLightbox(){
-  lightboxOpen = true;
-  document.getElementById('lightboxImg').src = src(current+1);
-  document.getElementById('lightboxCounter').textContent = `${pad(current+1)} / ${TOTAL}`;
-  document.getElementById('lightbox').classList.add('open');
-  document.body.style.overflow='hidden';
-}
-function closeLightbox(){
-  lightboxOpen = false;
-  document.getElementById('lightbox').classList.remove('open');
-  document.body.style.overflow='';
-}
-
-document.addEventListener('keydown', e=>{
-  if(e.key==='ArrowRight') go(1);
-  if(e.key==='ArrowLeft') go(-1);
-  if(e.key==='Escape' && lightboxOpen) closeLightbox();
-});
-document.getElementById('stageImg').addEventListener('click', openLightbox);
-document.getElementById('lightbox').addEventListener('click', e=>{ if(e.target.id==='lightbox') closeLightbox(); });
-
-document.querySelectorAll('a[data-jump]').forEach(a=>{
-  a.addEventListener('click', e=>{
-    e.preventDefault();
-    setSlide(parseInt(a.dataset.jump,10));
-    document.getElementById('viewer').scrollIntoView({behavior:'smooth'});
-  });
-});
-
-buildThumbs();
-buildToc();
-setSlide(0);
-</script>
 
 </body>
 </html>
