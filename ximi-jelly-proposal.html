@@ -34,10 +34,11 @@ ul{list-style:none}
 .menu-btn{display:none;background:none;border:none;font-size:20px;cursor:pointer}
 
 /* Hero */
-.hero{position:relative;padding:6rem 2.5rem 4rem;max-width:1200px;margin:0 auto;border-bottom:1px solid var(--border)}
+.hero{position:relative;padding:4rem 2.5rem 4rem;max-width:1200px;margin:0 auto;border-bottom:1px solid var(--border)}
+.hero-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:3rem;align-items:center}
 .hero-eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.2em;color:var(--accent-dark);margin-bottom:1.5rem}
 .hero-eyebrow::before{content:'';width:20px;height:1px;background:var(--accent)}
-.hero-title{font-size:clamp(2.75rem,7vw,6rem);font-weight:800;line-height:0.95;letter-spacing:-0.03em;text-transform:uppercase}
+.hero-title{font-size:clamp(2.75rem,6vw,5rem);font-weight:800;line-height:0.95;letter-spacing:-0.03em;text-transform:uppercase}
 .hero-title em{font-style:italic;color:var(--accent)}
 .hero-title small{display:block;font-size:0.4em;font-weight:600;color:var(--text-secondary);text-transform:none;letter-spacing:0;margin-top:.75rem}
 .hero-sub{font-size:1.05rem;line-height:1.75;color:var(--text-secondary);max-width:640px;margin-top:1.75rem}
@@ -45,6 +46,21 @@ ul{list-style:none}
 .hero-meta-item{}
 .hero-meta-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;color:var(--text-secondary);margin-bottom:.35rem}
 .hero-meta-value{font-size:15px;font-weight:700}
+.hero-visual{position:relative}
+.hero-photo{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--radius-xl);box-shadow:0 20px 50px rgba(0,0,0,0.12)}
+.hero-product{position:absolute;right:-1.25rem;bottom:-1.5rem;width:44%;filter:drop-shadow(0 12px 24px rgba(0,0,0,0.18))}
+
+/* Icons & photo cards */
+.icon-badge{width:22px;height:22px;flex-shrink:0;object-fit:contain}
+.icon-badge-lg{width:32px;height:32px}
+.platform-badges{display:flex;align-items:center;gap:1.25rem;margin:.25rem 0 1rem}
+.platform-badges .badge{display:flex;align-items:center;gap:.5rem;font-size:13px;font-weight:600;color:var(--text-secondary)}
+.photo-card{border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--border)}
+.photo-card img{width:100%;height:100%;object-fit:cover;display:block}
+.step-icon{width:26px;height:26px;object-fit:contain;margin-bottom:.85rem}
+.split-icon{width:20px;height:20px;object-fit:contain;flex-shrink:0;margin-top:2px}
+.split-li{display:flex;gap:.75rem}
+.banner-photo{width:100%;max-height:340px;object-fit:cover;border-radius:var(--radius-xl);margin-bottom:2rem}
 
 /* Sticky sub-nav */
 .subnav{position:sticky;top:64px;z-index:90;background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);overflow-x:auto;white-space:nowrap}
@@ -137,10 +153,19 @@ td.muted{color:var(--text-secondary)}
 .invest-total-sub{font-size:13.5px;opacity:.9;max-width:480px;margin:1rem auto 0;line-height:1.6}
 
 /* KOL roster */
-.kol-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}
-.kol-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:1.1rem 1.3rem}
-.kol-name{font-size:13.5px;font-weight:700}
-.kol-stat{font-size:12px;color:var(--text-secondary);margin-top:.25rem}
+.kol-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1.25rem}
+.kol-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;transition:all .3s}
+.kol-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,0.08)}
+.kol-photo{width:100%;aspect-ratio:3/4;object-fit:cover;display:block;background:var(--surface-2)}
+.kol-body{padding:.9rem 1rem}
+.kol-name{font-size:13px;font-weight:700}
+.kol-stat{font-size:11.5px;color:var(--text-secondary);margin-top:.2rem}
+
+/* Market split (stats + photo) */
+.market-split{display:grid;grid-template-columns:1fr 260px;gap:2rem;align-items:stretch}
+.market-photo{border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--border);background:#fff;display:flex;align-items:center;justify-content:center;padding:1rem}
+.market-photo img{width:100%;object-fit:contain}
+@media(max-width:860px){.market-split{grid-template-columns:1fr}}
 
 /* CTA / footer */
 .cta{text-align:center;padding:5rem 2.5rem;background:#111827;color:#fff}
@@ -162,6 +187,8 @@ td.muted{color:var(--text-secondary)}
   .roadmap{grid-template-columns:1fr}
   .steps{flex-direction:column}
   .step-arrow{transform:rotate(90deg)}
+  .hero-grid{grid-template-columns:1fr}
+  .hero-visual{order:-1;max-width:420px;margin:0 auto 1rem}
 }
 @media(max-width:768px){
   .header{padding:1rem 1.25rem}
@@ -193,14 +220,22 @@ td.muted{color:var(--text-secondary)}
 </header>
 
 <section class="hero">
-  <p class="hero-eyebrow">Campaign &amp; CSR Proposal · Prepared for Ximi Jelly Myanmar · August 2026</p>
-  <h1 class="hero-title">XimiSnap<span style="color:var(--text-secondary)">.</span><br><em>The Wall.</em><small>A campaign built for reach. A cause built for trust. Two separate ideas for Ximi Jelly Myanmar.</small></h1>
-  <p class="hero-sub">A 3-month activation running October–December 2026: XimiSnap turns Yangon's bus stops into a city-wide selfie trail, while the Ximi Giving Wall runs a pure CSR activation built on everyday generosity — funded, quietly, by every selfie the campaign collects.</p>
-  <div class="hero-meta">
-    <div class="hero-meta-item"><div class="hero-meta-label">Duration</div><div class="hero-meta-value">3 Months — Oct to Dec 2026</div></div>
-    <div class="hero-meta-item"><div class="hero-meta-label">Market</div><div class="hero-meta-value">Yangon, Myanmar</div></div>
-    <div class="hero-meta-item"><div class="hero-meta-label">Investment</div><div class="hero-meta-value">350 Lakh (Campaign)</div></div>
-    <div class="hero-meta-item"><div class="hero-meta-label">Prepared by</div><div class="hero-meta-value">Awaken Digital</div></div>
+  <div class="hero-grid">
+    <div>
+      <p class="hero-eyebrow">Campaign &amp; CSR Proposal · Prepared for Ximi Jelly Myanmar · August 2026</p>
+      <h1 class="hero-title">XimiSnap<span style="color:var(--text-secondary)">.</span><br><em>The Wall.</em><small>A campaign built for reach. A cause built for trust. Two separate ideas for Ximi Jelly Myanmar.</small></h1>
+      <p class="hero-sub">A 3-month activation running October–December 2026: XimiSnap turns Yangon's bus stops into a city-wide selfie trail, while the Ximi Giving Wall runs a pure CSR activation built on everyday generosity — funded, quietly, by every selfie the campaign collects.</p>
+      <div class="hero-meta">
+        <div class="hero-meta-item"><div class="hero-meta-label">Duration</div><div class="hero-meta-value">3 Months — Oct to Dec 2026</div></div>
+        <div class="hero-meta-item"><div class="hero-meta-label">Market</div><div class="hero-meta-value">Yangon, Myanmar</div></div>
+        <div class="hero-meta-item"><div class="hero-meta-label">Investment</div><div class="hero-meta-value">350 Lakh (Campaign)</div></div>
+        <div class="hero-meta-item"><div class="hero-meta-label">Prepared by</div><div class="hero-meta-value">Awaken Digital</div></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <img class="hero-photo" src="ximi-assets/hero-cover.jpg" alt="Yangon commuter taking a selfie at a bus stop with Ximi Jelly">
+      <img class="hero-product" src="ximi-assets/ximi-product.png" alt="Ximi Jelly — five flavours: lychee, passion fruit, apple, strawberry, grape">
+    </div>
   </div>
 </section>
 
@@ -247,21 +282,31 @@ td.muted{color:var(--text-secondary)}
   </div>
   <div class="text-block">
     <p>Awaken has been Ximi Jelly's launch partner since day one. Our platform-native TikTok strategy gave the account an opening run that outpaced most first-time FMCG launches in Myanmar — without a single paid boost. That existing goodwill is the foundation this new campaign builds on, not a cold start.</p>
-    <p><strong>TikTok</strong> @ximijelly &nbsp;·&nbsp; <strong>Facebook</strong> facebook.com/ximijelly</p>
+    <div class="platform-badges">
+      <span class="badge"><img class="icon-badge-lg" src="ximi-assets/tiktok-logo.png" alt="TikTok">@ximijelly</span>
+      <span class="badge"><img class="icon-badge-lg" src="ximi-assets/facebook-logo.png" alt="Facebook">facebook.com/ximijelly</span>
+    </div>
     <p>Organic proof, already circulating — independent of any paid post: 5 flavors in circulation (strawberry, lychee, passion fruit, apple, grape), unprompted unboxing &amp; taste-review content from ordinary users, and retail price point referenced organically in reviews.</p>
   </div>
   <div class="table-note" style="max-width:720px">A note on the numbers: current follower and engagement figures are pending a live audit with the client's admin access. We haven't estimated or invented a baseline here — the plans in this deck are built against Ximi's own launch trajectory and regional benchmarks, and will be re-based the moment admin access is confirmed.</div>
 </section>
 
 <div class="section-alt">
-  <div class="stats">
-    <div class="stats-inner">
-      <div><div class="stat-value">39.8M</div><div class="stat-label">Internet users nationwide — 72.5% penetration</div></div>
-      <div><div class="stat-value">21.0M</div><div class="stat-label">Active social media identities in Myanmar</div></div>
-      <div><div class="stat-value">1.3M+</div><div class="stat-label">Daily bus commuters across Yangon — the YBS network</div></div>
-      <div><div class="stat-value">135</div><div class="stat-label">Bus routes, reaching nearly every Yangon township</div></div>
+  <div class="section" style="padding:3rem 2.5rem">
+    <div class="market-split">
+      <div>
+        <div class="stats" style="border:none;padding:0;background:none">
+          <div class="stats-inner">
+            <div><div class="stat-value">39.8M</div><div class="stat-label">Internet users nationwide — 72.5% penetration</div></div>
+            <div><div class="stat-value">21.0M</div><div class="stat-label">Active social media identities in Myanmar</div></div>
+            <div><div class="stat-value">1.3M+</div><div class="stat-label">Daily bus commuters across Yangon — the YBS network</div></div>
+            <div><div class="stat-value">135</div><div class="stat-label">Bus routes, reaching nearly every Yangon township</div></div>
+          </div>
+        </div>
+        <p class="stats-source">Yangon's Circular Railway moves ~7,000 riders a day. The bus network moves well over a million, across 135 routes. A campaign built on bus stops is parked exactly where Yangon already is. Source: DataReportal, Digital 2026: Myanmar (Kepios); Yangon Bus Service (YBS) network data.</p>
+      </div>
+      <div class="market-photo"><img src="ximi-assets/market-bus.png" alt="A Yangon YBS bus, route 37"></div>
     </div>
-    <p class="stats-source">Yangon's Circular Railway moves ~7,000 riders a day. The bus network moves well over a million, across 135 routes. A campaign built on bus stops is parked exactly where Yangon already is. Source: DataReportal, Digital 2026: Myanmar (Kepios); Yangon Bus Service (YBS) network data.</p>
   </div>
 </div>
 
@@ -285,6 +330,7 @@ td.muted{color:var(--text-secondary)}
     <h2 class="section-title">A specific commuter, not "youth" in general</h2>
     <p class="section-desc">Built around one repeatable behaviour — the daily wait — and one repeatable emotion: pride in your own township. Both already exist; the campaign just gives them a place to go.</p>
   </div>
+  <img class="banner-photo" src="ximi-assets/audience-night.jpg" alt="Yangon commuters on their phones while waiting at night">
   <div class="cards">
     <div class="card"><p class="card-num">01</p><h3 class="card-title">15–29, mobile-first</h3><p class="card-text">Myanmar's young population and rising disposable income are the category's core growth driver.</p></div>
     <div class="card"><p class="card-num">02</p><h3 class="card-title">Commutes or waits daily</h3><p class="card-text">Bus stops are already a fixed, repeated moment in their day — not a place they have to be persuaded to visit.</p></div>
@@ -300,10 +346,10 @@ td.muted{color:var(--text-secondary)}
     <p class="section-desc">TikTok is where a Yangon teenager finds out Ximi exists; Facebook is where they stay in touch with it afterwards. XimiSnap is built for the first job.</p>
   </div>
   <div class="cards">
-    <div class="card"><p class="card-num">Mobile</p><h3 class="card-title">74.1%</h3><p class="card-text">Of all Myanmar web traffic is mobile.</p></div>
-    <div class="card"><p class="card-num">Concentration</p><h3 class="card-title">71.8%</h3><p class="card-text">Of national traffic from Yangon + Mandalay.</p></div>
-    <div class="card"><p class="card-num">Discovery</p><h3 class="card-title">21M+</h3><p class="card-text">TikTok-reachable adult users in Myanmar.</p></div>
-    <div class="card"><p class="card-num">Retention</p><h3 class="card-title">13–14M</h3><p class="card-text">Facebook ad-reach — retention, not discovery.</p></div>
+    <div class="card"><img class="step-icon" src="ximi-assets/platform-phone.jpg" alt="" style="width:44px;height:44px;object-fit:cover;border-radius:6px"><p class="card-num">Mobile</p><h3 class="card-title">74.1%</h3><p class="card-text">Of all Myanmar web traffic is mobile.</p></div>
+    <div class="card"><img class="step-icon" src="ximi-assets/platform-map.jpg" alt="" style="width:44px;height:44px;object-fit:contain"><p class="card-num">Concentration</p><h3 class="card-title">71.8%</h3><p class="card-text">Of national traffic from Yangon + Mandalay.</p></div>
+    <div class="card"><img class="step-icon icon-badge-lg" src="ximi-assets/tiktok-logo.png" alt="TikTok"><p class="card-num">Discovery</p><h3 class="card-title">21M+</h3><p class="card-text">TikTok-reachable adult users in Myanmar.</p></div>
+    <div class="card"><img class="step-icon icon-badge-lg" src="ximi-assets/facebook-logo.png" alt="Facebook"><p class="card-num">Retention</p><h3 class="card-title">13–14M</h3><p class="card-text">Facebook ad-reach — retention, not discovery.</p></div>
   </div>
   <p class="stats-source" style="margin-top:1.5rem">Source: DataReportal, Digital 2026: Myanmar (Kepios, Oct 2025 data).</p>
 </section>
@@ -320,17 +366,17 @@ td.muted{color:var(--text-secondary)}
     <div class="split-card campaign">
       <p class="split-tag">The Campaign — Objectives</p>
       <ul style="display:grid;gap:1rem;margin-top:.5rem">
-        <li><strong>Own the everyday commute</strong><div class="split-text">Turn Yangon's bus stops into Ximi's own content trail, not just a backdrop.</div></li>
-        <li><strong>Drive real volume</strong><div class="split-text">Selfies, reach, and shareability — measured in posts and impressions.</div></li>
-        <li><strong>Feel like everyday Yangon</strong><div class="split-text">Native to how people already move through the city, township by township.</div></li>
+        <li class="split-li"><img class="split-icon" src="ximi-assets/icon-bus.png" alt=""><div><strong>Own the everyday commute</strong><div class="split-text">Turn Yangon's bus stops into Ximi's own content trail, not just a backdrop.</div></div></li>
+        <li class="split-li"><img class="split-icon" src="ximi-assets/icon-chart.png" alt=""><div><strong>Drive real volume</strong><div class="split-text">Selfies, reach, and shareability — measured in posts and impressions.</div></div></li>
+        <li class="split-li"><img class="split-icon" src="ximi-assets/icon-people.png" alt=""><div><strong>Feel like everyday Yangon</strong><div class="split-text">Native to how people already move through the city, township by township.</div></div></li>
       </ul>
     </div>
     <div class="split-card cause">
       <p class="split-tag">The CSR — Objectives</p>
       <ul style="display:grid;gap:1rem;margin-top:.5rem">
-        <li><strong>Be seen giving</strong><div class="split-text">A physical, public act of generosity — not a quiet donation.</div></li>
-        <li><strong>Maximize footfall reach</strong><div class="split-text">Placed where Yangon already gathers, for months, not one day.</div></li>
-        <li><strong>Earn trust, not attention</strong><div class="split-text">No hashtag required to participate — generosity needs no strings.</div></li>
+        <li class="split-li"><img class="split-icon" src="ximi-assets/icon-heart.png" alt=""><div><strong>Be seen giving</strong><div class="split-text">A physical, public act of generosity — not a quiet donation.</div></div></li>
+        <li class="split-li"><img class="split-icon" src="ximi-assets/icon-target.png" alt=""><div><strong>Maximize footfall reach</strong><div class="split-text">Placed where Yangon already gathers, for months, not one day.</div></div></li>
+        <li class="split-li"><img class="split-icon" src="ximi-assets/icon-share.png" alt=""><div><strong>Earn trust, not attention</strong><div class="split-text">No hashtag required to participate — generosity needs no strings.</div></div></li>
       </ul>
     </div>
   </div>
@@ -343,17 +389,19 @@ td.muted{color:var(--text-secondary)}
     <p class="section-desc">More than a million people pass through Yangon's bus stops every single day — far more than any train could ever reach. We're turning that everyday wait into Ximi's own photo op: strike a pose, snap it, tag your town.</p>
   </div>
 
+  <img class="banner-photo" src="ximi-assets/campaign-hero.jpg" alt="A commuter taking a XimiSnap selfie at a Yangon bus stop">
+
   <h3 style="font-size:1.1rem;font-weight:700;margin-bottom:1.25rem">How it works — find it. Snap it. Win it.</h3>
   <div class="steps">
-    <div class="step"><div class="step-num">1</div><div class="step-title">Find</div><div class="step-text">Locate a XimiSnap point or bus stop in your township.</div></div>
+    <div class="step"><img class="step-icon" src="ximi-assets/icon-pin.png" alt=""><div class="step-title">1. Find</div><div class="step-text">Locate a XimiSnap point or bus stop in your township.</div></div>
     <div class="step-arrow">&rarr;</div>
-    <div class="step"><div class="step-num">2</div><div class="step-title">Grab</div><div class="step-text">Pick up a photo prop — or just bring your best pose.</div></div>
+    <div class="step"><img class="step-icon" src="ximi-assets/icon-bag.png" alt=""><div class="step-title">2. Grab</div><div class="step-text">Pick up a photo prop — or just bring your best pose.</div></div>
     <div class="step-arrow">&rarr;</div>
-    <div class="step"><div class="step-num">3</div><div class="step-title">Snap</div><div class="step-text">Shoot in the frame — solo, squad, or with the Ximi Jelly pack.</div></div>
+    <div class="step"><img class="step-icon" src="ximi-assets/icon-camera.png" alt=""><div class="step-title">3. Snap</div><div class="step-text">Shoot in the frame — solo, squad, or with the Ximi Jelly pack.</div></div>
     <div class="step-arrow">&rarr;</div>
-    <div class="step"><div class="step-num">4</div><div class="step-title">Post</div><div class="step-text">Share with #XimiSnap + your township tag.</div></div>
+    <div class="step"><img class="step-icon" src="ximi-assets/icon-hashtag.png" alt=""><div class="step-title">4. Post</div><div class="step-text">Share with #XimiSnap + your township tag.</div></div>
     <div class="step-arrow">&rarr;</div>
-    <div class="step"><div class="step-num">5</div><div class="step-title">Win</div><div class="step-text">Weekly leaderboard, plus an iPhone 16 Pro grand prize.</div></div>
+    <div class="step"><img class="step-icon" src="ximi-assets/icon-trophy.png" alt=""><div class="step-title">5. Win</div><div class="step-text">Weekly leaderboard, plus an iPhone 16 Pro grand prize.</div></div>
   </div>
 
   <p style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text-secondary);margin:2rem 0 .75rem">Every township is in play</p>
@@ -416,11 +464,11 @@ td.muted{color:var(--text-secondary)}
     <h2 class="section-title">The two ideas connect — just once</h2>
   </div>
   <div class="steps">
-    <div class="step"><div class="step-num">1</div><div class="step-title">Selfie</div><div class="step-text">Posted anywhere, any time.</div></div>
+    <div class="step"><img class="step-icon" src="ximi-assets/icon-camera.png" alt=""><div class="step-title">1. Selfie</div><div class="step-text">Posted anywhere, any time.</div></div>
     <div class="step-arrow">&rarr;</div>
-    <div class="step"><div class="step-num">2</div><div class="step-title">1,000 MMK</div><div class="step-text">Pledged per approved post.</div></div>
+    <div class="step"><img class="step-icon" src="ximi-assets/icon-dollar.png" alt=""><div class="step-title">2. 1,000 MMK</div><div class="step-text">Pledged per approved post.</div></div>
     <div class="step-arrow">&rarr;</div>
-    <div class="step"><div class="step-num">3</div><div class="step-title">1 Wall</div><div class="step-text">Funded a little more, live.</div></div>
+    <div class="step"><img class="step-icon" src="ximi-assets/icon-heart.png" alt=""><div class="step-title">3. 1 Wall</div><div class="step-text">Funded a little more, live.</div></div>
   </div>
   <p class="section-desc" style="max-width:100%;margin-top:1.5rem">Every approved #XimiSnap selfie adds 1,000 MMK to the Ximi Giving Wall's pool — funded separately, outside the 350 Lakh campaign budget, and scaling directly with how many people take part. That's the only connection between the two ideas: performance funds generosity. Nothing else crosses over — no shared hashtag, no shared creative, no shared roster.</p>
 </div></div>
@@ -505,13 +553,13 @@ td.muted{color:var(--text-secondary)}
 
   <p style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text-secondary);margin-bottom:.75rem">Creator network (TikTok reach)</p>
   <div class="kol-grid">
-    <div class="kol-card"><div class="kol-name">Nann May Myat Noe</div><div class="kol-stat">TikTok — 697K</div></div>
-    <div class="kol-card"><div class="kol-name">TAZ3 One Minute Single</div><div class="kol-stat">TikTok — 1.1M</div></div>
-    <div class="kol-card"><div class="kol-name">Lin Thit</div><div class="kol-stat">TikTok — 412.1K</div></div>
-    <div class="kol-card"><div class="kol-name">I Preffer Prank</div><div class="kol-stat">TikTok — 392.9K</div></div>
-    <div class="kol-card"><div class="kol-name">ThireKhin</div><div class="kol-stat">TikTok — 349.6K</div></div>
-    <div class="kol-card"><div class="kol-name">ChitSieSar Official</div><div class="kol-stat">TikTok — 271.5K</div></div>
-    <div class="kol-card"><div class="kol-name">Liam_Still_Learning</div><div class="kol-stat">TikTok — 51.9K</div></div>
+    <div class="kol-card"><img class="kol-photo" src="ximi-assets/kol-nannmay.jpg" alt="Nann May Myat Noe"><div class="kol-body"><div class="kol-name">Nann May Myat Noe</div><div class="kol-stat">TikTok — 697K</div></div></div>
+    <div class="kol-card"><img class="kol-photo" src="ximi-assets/kol-taz3.jpg" alt="TAZ3 One Minute Single"><div class="kol-body"><div class="kol-name">TAZ3 One Minute Single</div><div class="kol-stat">TikTok — 1.1M</div></div></div>
+    <div class="kol-card"><img class="kol-photo" src="ximi-assets/kol-linthit.jpg" alt="Lin Thit"><div class="kol-body"><div class="kol-name">Lin Thit</div><div class="kol-stat">TikTok — 412.1K</div></div></div>
+    <div class="kol-card"><img class="kol-photo" src="ximi-assets/kol-ipreferprank.jpg" alt="I Preffer Prank"><div class="kol-body"><div class="kol-name">I Preffer Prank</div><div class="kol-stat">TikTok — 392.9K</div></div></div>
+    <div class="kol-card"><img class="kol-photo" src="ximi-assets/kol-thirekhin.jpg" alt="ThireKhin"><div class="kol-body"><div class="kol-name">ThireKhin</div><div class="kol-stat">TikTok — 349.6K</div></div></div>
+    <div class="kol-card"><img class="kol-photo" src="ximi-assets/kol-chitsiesar.jpg" alt="ChitSieSar Official"><div class="kol-body"><div class="kol-name">ChitSieSar Official</div><div class="kol-stat">TikTok — 271.5K</div></div></div>
+    <div class="kol-card"><img class="kol-photo" src="ximi-assets/kol-liam.jpg" alt="Liam_Still_Learning"><div class="kol-body"><div class="kol-name">Liam_Still_Learning</div><div class="kol-stat">TikTok — 51.9K</div></div></div>
   </div>
 </section>
 
@@ -621,6 +669,7 @@ td.muted{color:var(--text-secondary)}
 </section>
 
 <div class="cta">
+  <img src="ximi-assets/ximi-logo.png" alt="Ximi" style="height:44px;margin:0 auto 1.5rem;object-fit:contain">
   <h2 class="cta-title">Two ideas. <em>One Ximi.</em></h2>
   <p class="cta-text">Ready to talk through scope, timing, or the townships in Wave 1? Reach the Awaken Digital team directly.</p>
   <div class="cta-contacts">
