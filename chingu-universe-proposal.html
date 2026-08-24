@@ -36,21 +36,21 @@ ul{list-style:none}
 
 /* Hero */
 .hero{position:relative;padding:3.5rem 2.5rem 0;max-width:1200px;margin:0 auto}
-.hero-inner{position:relative;border-radius:var(--radius-xl);overflow:hidden;background:var(--navy);min-height:540px;display:grid;grid-template-columns:1.2fr 1fr}
-.hero-text-panel{position:relative;z-index:2;padding:3.25rem 3rem;display:flex;flex-direction:column;justify-content:center;color:#fff}
-.hero-photo-panel{position:relative;overflow:hidden;background:var(--navy)}
-.hero-photo-panel>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 38%}
-.hero-photo-seam{position:absolute;inset:0;background:linear-gradient(90deg,var(--navy) 0%,rgba(15,27,61,0.32) 10%,rgba(15,27,61,0) 24%)}
-.hero-accent{position:absolute;left:1.5rem;bottom:1.5rem;width:140px;border-radius:14px;overflow:hidden;box-shadow:0 16px 34px rgba(0,0,0,0.35);border:3px solid #fff;z-index:2}
+.hero-inner{position:relative;border-radius:var(--radius-xl);overflow:hidden;background:var(--navy)}
+.hero-media{position:relative;height:clamp(260px,32vw,380px)}
+.hero-media-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.hero-media-fade{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(15,27,61,0) 58%,var(--navy) 100%)}
+.hero-logo-badge{position:absolute;top:1.5rem;left:1.5rem;width:56px;padding:4px;background:#fff;border-radius:10px;box-shadow:0 8px 20px rgba(0,0,0,0.28);z-index:2}
+.hero-accent{position:absolute;right:1.75rem;bottom:1.5rem;width:118px;border-radius:12px;overflow:hidden;box-shadow:0 14px 30px rgba(0,0,0,0.35);border:3px solid #fff;z-index:2}
 .hero-accent img{width:100%;display:block;aspect-ratio:591/746;object-fit:cover}
-.hero-logo{width:62px;margin-bottom:1.4rem;border-radius:10px;background:#fff;padding:4px}
+.hero-body{position:relative;z-index:2;padding:2.5rem 3rem 3rem;color:#fff}
 .hero-eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.2em;color:#8fe3b8;margin-bottom:1.1rem}
 .hero-eyebrow::before{content:'';width:20px;height:1px;background:#8fe3b8}
-.hero-title{font-size:clamp(2rem,4vw,3.2rem);font-weight:800;line-height:0.98;letter-spacing:-0.03em;text-transform:uppercase}
-.hero-sub-title{font-family:'Source Serif 4',Georgia,serif;font-style:italic;font-size:clamp(1.05rem,1.8vw,1.3rem);color:#f0a860;margin-top:.85rem;font-weight:600}
-.hero-desc{font-size:14px;line-height:1.75;color:rgba(255,255,255,0.78);max-width:480px;margin-top:1.25rem}
-.hero-meta{display:grid;grid-template-columns:repeat(2,1fr);gap:.9rem;margin-top:1.75rem;max-width:420px}
-.hero-meta-item{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.14);border-radius:var(--radius);padding:.7rem 1rem}
+.hero-title{font-size:clamp(2.2rem,4.5vw,3.6rem);font-weight:800;line-height:0.98;letter-spacing:-0.03em;text-transform:uppercase}
+.hero-sub-title{font-family:'Source Serif 4',Georgia,serif;font-style:italic;font-size:clamp(1.1rem,2vw,1.4rem);color:#f0a860;margin-top:.85rem;font-weight:600}
+.hero-desc{font-size:14.5px;line-height:1.75;color:rgba(255,255,255,0.78);max-width:640px;margin-top:1.25rem}
+.hero-meta{display:flex;flex-wrap:wrap;gap:1.25rem;margin-top:1.75rem}
+.hero-meta-item{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.14);border-radius:var(--radius);padding:.75rem 1.15rem}
 .hero-meta-label{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;color:rgba(255,255,255,0.55);margin-bottom:.3rem}
 .hero-meta-value{font-size:16px;font-weight:800;color:#fff}
 .hero-btns{display:flex;gap:1rem;flex-wrap:wrap;margin:1.75rem 0 2.5rem;max-width:1200px;margin-left:auto;margin-right:auto;padding:0 2.5rem}
@@ -377,12 +377,9 @@ tr:hover td{background:var(--surface)}
   .nav{display:none}
   .menu-btn{display:block}
   .hero{padding:2rem 1.25rem 0}
-  .hero-inner{min-height:auto;grid-template-columns:1fr}
-  .hero-photo-panel{height:240px;order:-1}
-  .hero-photo-seam{background:linear-gradient(0deg,var(--navy) 0%,rgba(15,27,61,0.15) 30%,rgba(15,27,61,0) 60%)}
-  .hero-accent{display:none}
-  .hero-text-panel{padding:1.75rem 1.5rem}
-  .hero-meta{max-width:none}
+  .hero-media{height:220px}
+  .hero-accent{width:84px;right:1.1rem;bottom:1.1rem}
+  .hero-body{padding:1.75rem 1.5rem 2rem}
   .hero-btns{padding:0 1.25rem}
   .subnav-inner{padding:0.8rem 1.25rem}
   .section{padding:3rem 1.25rem}
@@ -419,8 +416,13 @@ tr:hover td{background:var(--surface)}
 
 <section class="hero" id="overview">
   <div class="hero-inner">
-    <div class="hero-text-panel">
-      <img class="hero-logo" src="assets/chingu-universe-proposal/chingu-logo.jpg" alt="Chingu Soju logo">
+    <div class="hero-media">
+      <img class="hero-media-bg" src="assets/chingu-universe-proposal/cover-bg.jpg" alt="The Chingu Universe cast">
+      <div class="hero-media-fade"></div>
+      <img class="hero-logo-badge" src="assets/chingu-universe-proposal/chingu-logo.jpg" alt="Chingu Soju logo">
+      <div class="hero-accent"><img src="assets/chingu-universe-proposal/cover-photo.jpg" alt="The Chingu Universe cast on a Yangon rooftop"></div>
+    </div>
+    <div class="hero-body">
       <p class="hero-eyebrow">Production Proposal · Prepared for Chingu Soju · 2026</p>
       <h1 class="hero-title">Chingu Universe</h1>
       <p class="hero-sub-title">A 48-Episode Korean-Style Friendship Series</p>
@@ -431,11 +433,6 @@ tr:hover td{background:var(--surface)}
         <div class="hero-meta-item"><div class="hero-meta-label">Shoot Days</div><div class="hero-meta-value">18 + 3</div></div>
         <div class="hero-meta-item"><div class="hero-meta-label">Format</div><div class="hero-meta-value">9:16 Vertical</div></div>
       </div>
-    </div>
-    <div class="hero-photo-panel">
-      <img src="assets/chingu-universe-proposal/cover-bg.jpg" alt="The Chingu Universe cast">
-      <div class="hero-photo-seam"></div>
-      <div class="hero-accent"><img src="assets/chingu-universe-proposal/cover-photo.jpg" alt="The Chingu Universe cast on a Yangon rooftop"></div>
     </div>
   </div>
   <div class="hero-btns">
