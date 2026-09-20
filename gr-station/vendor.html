@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="assets/gr.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23D6A658'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='16' font-weight='700' text-anchor='middle' fill='%231A100E'%3EGR%3C/text%3E%3C/svg%3E">
+<title>GR Station — Vendor Portal</title>
+<meta name="description" content="Vendor portal for the Grand Royal Station: scan or type a voucher code, check the prize, hand it over, and review the day's claims for the venue.">
+</head>
+<body>
+<div class="demo-strip"><div class="wrap">
+  <b>Proposal prototype.</b> Working demonstration of the live website in the Awaken&nbsp;&times;&nbsp;Grand Royal Station proposal. Sample data only &mdash; no real accounts, no real phone numbers, no real prizes. 18+.
+</div></div>
+<header class="topbar"><div class="wrap topbar-in">
+  <a class="brand" href="index.html">
+    <span class="brand-mark">GR</span>
+    <span><span class="brand-name">Grand Royal Station</span><br><span class="brand-sub">Awaken Entertainment</span></span>
+  </a>
+  <nav class="topnav" aria-label="Station surfaces">
+    <a href="index.html" data-nav="index">Overview</a>
+    <a href="live.html" data-nav="live">Live board</a>
+    <a href="account.html" data-nav="account">My account</a>
+    <a href="vendor.html" data-nav="vendor" aria-current="page">Vendor</a>
+    <a href="dashboard.html" data-nav="dashboard">Dashboard</a>
+  </nav>
+</div></header>
+
+<main>
+<section class="page-head"><div class="wrap">
+  <p class="eyebrow">Accounts, live data and rewards</p>
+  <h1 style="margin-top:12px">Vendor portal</h1>
+  <p class="lede">Scan a voucher, check the prize, hand it over, and see the day&rsquo;s claims for your venue. Login is by vendor code.</p>
+</div></section>
+
+<!-- ===== signed out ===== -->
+<section id="vendor-signin" style="padding-bottom:clamp(32px,5vw,58px)"><div class="wrap">
+  <div style="max-width:520px">
+    <div class="card" style="background:#fff">
+      <p class="eyebrow">Venue staff</p>
+      <h3 style="margin-top:10px">Enter your vendor code</h3>
+      <div class="stack" style="margin-top:18px">
+        <div class="field">
+          <label for="vcode">Vendor code</label>
+          <input class="input" id="vcode" type="text" autocomplete="off" placeholder="VA-2043">
+        </div>
+        <div id="vendor-error" class="notice notice-bad" hidden></div>
+        <button class="btn btn-block" id="vendor-in">Sign in</button>
+      </div>
+    </div>
+    <div class="notice" style="margin-top:16px">
+      <b>Demo codes:</b>
+      <span id="codes"></span>
+    </div>
+  </div>
+</div></section>
+
+<!-- ===== signed in ===== -->
+<section id="vendor-app" hidden style="padding-bottom:clamp(32px,5vw,58px)"><div class="wrap">
+  <div class="spread" style="margin-bottom:22px">
+    <div>
+      <p class="eyebrow">Signed in</p>
+      <h2 id="venue-name" style="margin-top:8px"></h2>
+      <p class="hint" id="venue-city"></p>
+    </div>
+    <button class="btn btn-ghost btn-sm" id="vendor-out">Sign out</button>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px">
+    <div class="card" style="background:#fff">
+      <p class="eyebrow">Step 5 &middot; scan or type</p>
+      <h3 style="margin-top:8px">Check a voucher</h3>
+      <div class="stack" style="margin-top:16px">
+        <div class="field">
+          <label for="code-in">Voucher code</label>
+          <input class="input" id="code-in" type="text" autocomplete="off" placeholder="GR-4821">
+        </div>
+        <button class="btn btn-block" id="lookup">Check the code</button>
+        <button class="btn btn-ghost btn-block" id="scan" hidden>Scan with the camera</button>
+        <p class="hint" id="scan-note"></p>
+      </div>
+      <video id="cam" playsinline muted hidden style="width:100%;border-radius:11px;margin-top:14px;background:#000"></video>
+    </div>
+
+    <div id="result"></div>
+  </div>
+
+  <div style="margin-top:22px" class="card">
+    <div class="spread">
+      <div>
+        <p class="eyebrow">Today</p>
+        <h3 style="margin-top:8px">Claims handed over at this venue</h3>
+      </div>
+      <button class="btn btn-ghost btn-sm" id="export">Export CSV</button>
+    </div>
+    <div class="table-scroll" style="margin-top:16px">
+      <table class="data">
+        <thead><tr><th>Time</th><th>Code</th><th>Player</th><th>Prize</th><th style="text-align:right">Step</th></tr></thead>
+        <tbody id="claims"></tbody>
+      </table>
+    </div>
+    <p class="hint" style="margin-top:14px">A list of prizes handed over is matched to the cloud each week. Repayment terms are agreed in the pilot terms.</p>
+  </div>
+
+  <div class="card card-dark" style="margin-top:22px">
+    <h3>Before you hand a prize over</h3>
+    <p style="margin-top:8px">Rewards are 18+ only, with ID checked at collection. Prizes are non-alcohol. One claim per step per player per season. A voucher that reads <b>already handed over</b> must not be honoured again.</p>
+  </div>
+</div></section>
+</main>
+<footer class="footer"><div class="wrap">
+  <div class="footer-grid">
+    <div>
+      <p class="eyebrow on-dark">The prototype</p>
+      <p style="margin-top:8px">Four views on one ledger: the public board, the player account, the vendor portal and the brand dashboard. Everything you change on one page shows up on the others.</p>
+    </div>
+    <div>
+      <p class="eyebrow on-dark">Compliance envelope</p>
+      <p style="margin-top:8px">Free to play, no purchase or stake. Skill-based ranking, never a random draw. 18+ only, ID checked at collection. Non-alcohol rewards. No betting language.</p>
+    </div>
+    <div>
+      <p class="eyebrow on-dark">Surfaces</p>
+      <p style="margin-top:8px">
+        <a href="live.html">Live board</a> &middot; <a href="account.html">Player account</a><br>
+        <a href="vendor.html">Vendor portal</a> &middot; <a href="dashboard.html">Brand dashboard</a>
+      </p>
+    </div>
+  </div>
+  <hr style="border:0;border-top:1px solid var(--ink-3);margin:26px 0 18px">
+  <p style="color:var(--muted-2)">Awaken Entertainment &times; Grand Royal &mdash; Interactive Charging Station, full-device proposal. Prototype for review; screens, points, prizes and rules are proposals to be tuned in the pilot. Rewards switch on only with counsel clearance.</p>
+</div></footer>
+
+<script src="assets/gr.js"></script>
+<script>
+(function () {
+  'use strict';
+  GR.startSim();
+
+  var appEl = GR.el('#vendor-app');
+  var signinEl = GR.el('#vendor-signin');
+  var stream = null;
+  var scanTimer = null;
+
+  GR.el('#codes').innerHTML = GR.VENUES.map(function (v) {
+    return '<b>' + GR.esc(v.vendorCode) + '</b> (' + GR.esc(v.name) + ')';
+  }).join(' &middot; ');
+
+  function venueForCode(code) {
+    var c = String(code || '').trim().toUpperCase();
+    return GR.VENUES.filter(function (v) { return v.vendorCode === c; })[0] || null;
+  }
+
+  GR.el('#vendor-in').addEventListener('click', function () {
+    var v = venueForCode(GR.el('#vcode').value);
+    var err = GR.el('#vendor-error');
+    if (!v) {
+      err.hidden = false;
+      err.textContent = 'That vendor code was not recognised.';
+      return;
+    }
+    err.hidden = true;
+    GR.session('vendorVenue', v.id);
+    render();
+  });
+
+  GR.el('#vendor-out').addEventListener('click', function () {
+    stopScan();
+    GR.session('vendorVenue', null);
+    GR.el('#vcode').value = '';
+    render();
+  });
+
+  GR.el('#lookup').addEventListener('click', function () {
+    showResult(GR.el('#code-in').value);
+  });
+  GR.el('#code-in').addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') showResult(GR.el('#code-in').value);
+  });
+
+  function showResult(rawCode) {
+    var host = GR.el('#result');
+    var code = String(rawCode || '').trim().toUpperCase();
+    if (!code) {
+      host.innerHTML = '';
+      return;
+    }
+    var v = GR.getVoucher(code);
+    if (!v) {
+      host.innerHTML = '<div class="card" style="background:#fff"><p class="eyebrow">Result</p>' +
+        '<div class="notice notice-bad" style="margin-top:12px">No voucher with the code <b>' + GR.esc(code) + '</b>.</div></div>';
+      return;
+    }
+
+    var venue = GR.venueById(v.venueId);
+    var done = v.status === 'claimed';
+    host.innerHTML = '<div class="card" style="background:#fff">' +
+      '<p class="eyebrow">Result</p>' +
+      '<h3 style="margin-top:8px">' + GR.esc(v.reward) + '</h3>' +
+      '<p style="color:var(--muted);margin-top:10px">' +
+        'Code <b>' + GR.esc(v.code) + '</b><br>' +
+        'Player <b>' + GR.esc(v.playerNick) + '</b><br>' +
+        'Step <b class="mono-num">' + GR.fmt(v.step) + '</b> points<br>' +
+        'Registered at <b>' + GR.esc(venue.name) + '</b>' +
+      '</p>' +
+      (done
+        ? '<div class="notice notice-ok" style="margin-top:14px">Already handed over ' + GR.timeAgo(v.claimedAt) + '.</div>'
+        : '<div class="notice" style="margin-top:14px">Check ID for 18+, then hand the prize over.</div>' +
+          '<button class="btn btn-gold btn-block" id="handover" style="margin-top:14px">Hand over</button>') +
+      '</div>';
+
+    if (!done) {
+      GR.el('#handover').addEventListener('click', function () {
+        var res = GR.redeem(v.code, GR.session('vendorVenue'));
+        if (!res.ok) { window.alert(res.error); return; }
+        showResult(v.code);
+      });
+    }
+  }
+
+  /* Camera scanning where the browser supports BarcodeDetector; the typed code
+     is always available, so this is a convenience, never the only route. */
+  function supportsScan() { return 'BarcodeDetector' in window; }
+
+  function stopScan() {
+    if (scanTimer) { window.clearInterval(scanTimer); scanTimer = null; }
+    if (stream) { stream.getTracks().forEach(function (t) { t.stop(); }); stream = null; }
+    var cam = GR.el('#cam');
+    cam.hidden = true;
+    cam.srcObject = null;
+    GR.el('#scan').textContent = 'Scan with the camera';
+  }
+
+  GR.el('#scan').addEventListener('click', function () {
+    if (stream) { stopScan(); return; }
+    var cam = GR.el('#cam');
+    var detector = new window.BarcodeDetector({ formats: ['qr_code'] });
+    navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } }).then(function (s) {
+      stream = s;
+      cam.srcObject = s;
+      cam.hidden = false;
+      GR.el('#scan').textContent = 'Stop the camera';
+      return cam.play();
+    }).then(function () {
+      scanTimer = window.setInterval(function () {
+        detector.detect(cam).then(function (codes) {
+          if (!codes.length) return;
+          var value = codes[0].rawValue || '';
+          var match = value.match(/GR-\d{4}/i);
+          if (!match) return;
+          stopScan();
+          GR.el('#code-in').value = match[0].toUpperCase();
+          showResult(match[0]);
+        }).catch(function () { /* a frame that will not decode is not an error */ });
+      }, 400);
+    }).catch(function () {
+      stopScan();
+      GR.el('#scan-note').textContent = 'The camera could not be opened. Type the code instead.';
+    });
+  });
+
+  GR.el('#export').addEventListener('click', function () {
+    var venueId = GR.session('vendorVenue');
+    var rows = [['time', 'code', 'player', 'prize', 'step']].concat(
+      GR.claimsToday(venueId).map(function (v) {
+        return [v.claimedAt, v.code, v.playerNick, v.reward, v.step];
+      })
+    );
+    GR.download('gr-station-claims-' + venueId + '.csv', GR.csv(rows));
+  });
+
+  function renderClaims() {
+    var venueId = GR.session('vendorVenue');
+    var rows = GR.claimsToday(venueId);
+    GR.el('#claims').innerHTML = rows.length
+      ? rows.map(function (v) {
+          return '<tr><td>' + GR.timeAgo(v.claimedAt) + '</td><td><b>' + GR.esc(v.code) + '</b></td>' +
+                 '<td>' + GR.esc(v.playerNick) + '</td><td>' + GR.esc(v.reward) + '</td>' +
+                 '<td style="text-align:right" class="mono-num">' + GR.fmt(v.step) + '</td></tr>';
+        }).join('')
+      : '<tr><td colspan="5">Nothing handed over yet today.</td></tr>';
+  }
+
+  function render() {
+    var venueId = GR.session('vendorVenue');
+    if (!venueId) {
+      signinEl.hidden = false;
+      appEl.hidden = true;
+      return;
+    }
+    signinEl.hidden = true;
+    appEl.hidden = false;
+
+    var v = GR.venueById(venueId);
+    GR.el('#venue-name').textContent = v.name;
+    GR.el('#venue-city').textContent = v.city + ' · vendor code ' + v.vendorCode;
+
+    GR.el('#scan').hidden = !supportsScan();
+    GR.el('#scan-note').textContent = supportsScan()
+      ? 'Or type the code above.'
+      : 'This browser cannot open a QR scanner, so type the code above.';
+
+    renderClaims();
+
+    // a code that arrived by QR before sign-in is picked up here
+    var pending = GR.session('pendingCode');
+    if (pending) {
+      GR.session('pendingCode', null);
+      GR.el('#code-in').value = pending;
+      showResult(pending);
+    }
+  }
+
+  GR.onChange(renderClaims);
+  render();
+
+  // A voucher QR scanned with the phone camera lands here with ?code=
+  var fromQR = new URLSearchParams(window.location.search).get('code');
+  if (fromQR && GR.session('vendorVenue')) {
+    GR.el('#code-in').value = fromQR.toUpperCase();
+    showResult(fromQR);
+  } else if (fromQR) {
+    GR.el('#vendor-error').hidden = false;
+    GR.el('#vendor-error').textContent = 'Sign in with your vendor code first, then the voucher ' + fromQR.toUpperCase() + ' will be checked.';
+    GR.session('pendingCode', fromQR.toUpperCase());
+  }
+})();
+</script>
+</body>
+</html>
