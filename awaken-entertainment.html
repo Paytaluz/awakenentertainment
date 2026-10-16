@@ -9,28 +9,18 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap">
 <style>
-/* Layout: dark editorial landing — centered hero, scrolling ticker, portfolio grid, manifesto */
+/* Layout: light editorial landing — centered hero, scrolling ticker, portfolio grid, manifesto */
 :root {
-  --bg:      #0b0b0b;
-  --bg2:     #141414;
-  --fg:      #f0ede8;
-  --fg2:     rgba(240,237,232,.5);
-  --fg3:     rgba(240,237,232,.12);
+  --bg:      #ffffff;
+  --bg2:     #f5f3ef;
+  --fg:      #0a0a0a;
+  --fg2:     rgba(10,10,10,.52);
+  --fg3:     rgba(10,10,10,.12);
   --a1:      #bc80bb;
   --a2:      #96c594;
-  --border:  rgba(240,237,232,.1);
+  --border:  rgba(10,10,10,.1);
   --nav-h:   64px;
-  color-scheme: dark;
-}
-@media(prefers-color-scheme:light){:root:not([data-theme="dark"]){
-  --bg:#f5f3ef;--bg2:#ece9e4;--fg:#111;
-  --fg2:rgba(17,17,17,.52);--fg3:rgba(17,17,17,.1);--border:rgba(17,17,17,.1);
-  color-scheme:light;
-}}
-:root[data-theme="light"]{
-  --bg:#f5f3ef;--bg2:#ece9e4;--fg:#111;
-  --fg2:rgba(17,17,17,.52);--fg3:rgba(17,17,17,.1);--border:rgba(17,17,17,.1);
-  color-scheme:light;
+  color-scheme: light;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -44,8 +34,8 @@ img{max-width:100%}
 
 /* ── CURSOR ── */
 #cur,#curring{position:fixed;border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .28s,height .28s,opacity .28s}
-#cur{width:8px;height:8px;background:var(--fg);mix-blend-mode:difference}
-#curring{width:36px;height:36px;border:1px solid rgba(240,237,232,.3);transition:width .22s,height .22s,opacity .22s}
+#cur{width:8px;height:8px;background:var(--fg);mix-blend-mode:multiply}
+#curring{width:36px;height:36px;border:1px solid rgba(10,10,10,.25);transition:width .22s,height .22s,opacity .22s}
 @media(max-width:768px){#cur,#curring{display:none}body,a{cursor:auto}}
 
 /* ── NAV ── */
@@ -57,7 +47,7 @@ nav{
   background:var(--bg);
 }
 .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--fg)}
-.nav-logo img{height:20px;width:auto;filter:invert(1) brightness(10)}
+.nav-logo img{height:20px;width:auto;display:block}
 .nav-logo-text{font-family:'Syne',sans-serif;font-weight:800;font-size:12px;letter-spacing:.1em;text-transform:uppercase}
 .nav-links{display:flex;align-items:center;gap:36px;list-style:none}
 .nav-links a{font-size:13px;font-weight:400;color:var(--fg2);text-decoration:none;letter-spacing:.02em;transition:color .2s}
