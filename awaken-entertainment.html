@@ -41,14 +41,15 @@ nav{
 @media(max-width:768px){nav{padding:0 20px}.nav-links li:not(:last-child){display:none}}
 
 /* ── HERO ── */
-.hero{padding:calc(var(--nav-h) + 32px) 20px 72px}
+.hero{padding:calc(var(--nav-h) + 32px) 40px 72px;display:flex;justify-content:center}
 .hero-card{
   position:relative;border-radius:24px;
   background:linear-gradient(135deg,#fb923c 0%,#ec4899 30%,#8b5cf6 60%,#06b6d4 100%);
-  min-height:460px;
+  min-height:480px;width:100%;max-width:1280px;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
-  text-align:center;padding:64px 40px 90px;overflow:visible;
+  text-align:center;padding:80px 40px 100px;overflow:visible;
 }
+@media(max-width:768px){.hero{padding:calc(var(--nav-h) + 20px) 20px 56px}.hero-card{min-height:380px;padding:56px 24px 80px}}
 .hero-h{
   font-family:'Futura','Century Gothic','Trebuchet MS',sans-serif;font-weight:800;
   font-size:clamp(36px,7.5vw,96px);line-height:.93;letter-spacing:-.04em;
@@ -121,37 +122,9 @@ nav{
 .pc-meta{padding:16px 24px;background:var(--bg);border-top:1px solid var(--border)}
 .pc-meta-name{font-size:14px;font-weight:500;color:var(--fg)}
 .pc-meta-sub{font-size:12px;color:var(--fg2);margin-top:2px}
+.pc-hover-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .45s ease;pointer-events:none}
+.pc:hover .pc-hover-img{opacity:1}
 @media(max-width:600px){.pf-grid{grid-template-columns:1fr}}
-
-/* ── SERVICES ── */
-.services{padding:0 24px 80px}
-.svc-header{padding:0 0 32px;display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:12px}
-.services-track{
-  display:flex;gap:16px;
-  overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;
-}
-.services-track::-webkit-scrollbar{display:none}
-.svc-card{
-  flex-shrink:0;width:230px;min-height:280px;
-  background:var(--fg);border-radius:20px;
-  padding:32px 28px;
-  display:flex;flex-direction:column;gap:14px;
-}
-.svc-icon{
-  width:36px;height:36px;border-radius:10px;
-  border:1px solid rgba(255,255,255,.18);
-  display:flex;align-items:center;justify-content:center;
-}
-.svc-icon svg{stroke:rgba(255,255,255,.65);fill:none;stroke-width:1.5;width:18px;height:18px}
-.svc-name{font-family:'Futura','Century Gothic','Trebuchet MS',sans-serif;font-weight:800;font-size:20px;line-height:1.1;color:#fff}
-.svc-desc{font-size:13px;font-weight:300;color:rgba(255,255,255,.48);line-height:1.6;flex:1}
-.svc-link{
-  font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;
-  color:rgba(255,255,255,.45);text-decoration:none;
-  display:inline-flex;align-items:center;gap:5px;
-  transition:color .2s;margin-top:auto;
-}
-.svc-link:hover{color:#fff}
 
 /* ── ABOUT TEXT ── */
 .about{padding:80px 24px;display:grid;grid-template-columns:140px 1fr;gap:60px;max-width:960px;margin:0 auto;align-items:start}
@@ -238,7 +211,6 @@ footer{background:var(--fg);color:#fff;padding:72px 40px 0;margin-top:80px}
   <ul class="nav-links">
     <li><a href="#portfolio">Portfolio</a></li>
     <li><a href="#about">About</a></li>
-    <li><a href="#services">Services</a></li>
     <li><a href="#contact" class="nav-cta">Contact Us</a></li>
   </ul>
 </nav>
@@ -329,6 +301,7 @@ footer{background:var(--fg);color:#fff;padding:72px 40px 0;margin-top:80px}
 
     <div class="pc pc-zatt rv">
       <div class="pc-visual">
+        <img class="pc-hover-img" src="" alt="Zatt">
         <p class="pc-tag">Film &amp; Streaming &middot; Digital</p>
         <p class="pc-name">Zatt</p>
       </div>
@@ -340,6 +313,7 @@ footer{background:var(--fg);color:#fff;padding:72px 40px 0;margin-top:80px}
 
     <div class="pc pc-wonder rv d1">
       <div class="pc-visual">
+        <img class="pc-hover-img" src="" alt="Wonderxland">
         <p class="pc-tag">F&amp;B &middot; Hospitality</p>
         <p class="pc-name">Wonderxland</p>
       </div>
@@ -351,6 +325,7 @@ footer{background:var(--fg);color:#fff;padding:72px 40px 0;margin-top:80px}
 
     <div class="pc pc-thabin rv">
       <div class="pc-visual">
+        <img class="pc-hover-img" src="" alt="Thabinthe">
         <p class="pc-tag">Entertainment &middot; Media</p>
         <p class="pc-name">Thabinthe</p>
       </div>
@@ -362,6 +337,7 @@ footer{background:var(--fg);color:#fff;padding:72px 40px 0;margin-top:80px}
 
     <div class="pc pc-planbe rv d1">
       <div class="pc-visual">
+        <img class="pc-hover-img" src="" alt="Plan Be">
         <p class="pc-tag">Strategy &middot; Creative</p>
         <p class="pc-name">Plan Be</p>
       </div>
@@ -369,64 +345,6 @@ footer{background:var(--fg);color:#fff;padding:72px 40px 0;margin-top:80px}
         <p class="pc-meta-name">Plan Be</p>
         <p class="pc-meta-sub">Strategy &amp; creative agency · Under review</p>
       </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- SERVICES -->
-<section class="services" id="services">
-  <div class="svc-header rv">
-    <div>
-      <p class="section-label">What We Do</p>
-      <h2 class="section-h">Services</h2>
-    </div>
-  </div>
-  <div class="services-track">
-
-    <div class="svc-card">
-      <div class="svc-icon">
-        <svg viewBox="0 0 18 18"><rect x="1.5" y="1.5" width="6" height="6" rx="1.5"/><rect x="10.5" y="1.5" width="6" height="6" rx="1.5"/><rect x="1.5" y="10.5" width="6" height="6" rx="1.5"/><rect x="10.5" y="10.5" width="6" height="6" rx="1.5"/></svg>
-      </div>
-      <p class="svc-name">Digital</p>
-      <p class="svc-desc">Web experiences, apps, and platforms built to perform. From strategy to deployment.</p>
-      <a href="digital.html" class="svc-link">Discover →</a>
-    </div>
-
-    <div class="svc-card">
-      <div class="svc-icon">
-        <svg viewBox="0 0 18 18"><circle cx="9" cy="6" r="3"/><path d="M1 17c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-      </div>
-      <p class="svc-name">Design &amp;<br>Identity</p>
-      <p class="svc-desc">Visual identity, brand systems, and creative direction. Shape how your brand is remembered.</p>
-      <a href="design.html" class="svc-link">Discover →</a>
-    </div>
-
-    <div class="svc-card">
-      <div class="svc-icon">
-        <svg viewBox="0 0 18 18"><polyline points="2,13 6,5 9,10 12,7 16,13"/></svg>
-      </div>
-      <p class="svc-name">Technology</p>
-      <p class="svc-desc">Software, infrastructure, and innovation. We engineer the systems that power ambitious products.</p>
-      <a href="tech.html" class="svc-link">Discover →</a>
-    </div>
-
-    <div class="svc-card">
-      <div class="svc-icon">
-        <svg viewBox="0 0 18 18"><circle cx="9" cy="9" r="7"/><circle cx="9" cy="9" r="2.5"/><line x1="9" y1="2" x2="9" y2="4"/><line x1="9" y1="14" x2="9" y2="16"/><line x1="2" y1="9" x2="4" y2="9"/><line x1="14" y1="9" x2="16" y2="9"/></svg>
-      </div>
-      <p class="svc-name">Production</p>
-      <p class="svc-desc">Film, photography, motion, and content creation. Visuals that make people stop and feel.</p>
-      <a href="production.html" class="svc-link">Discover →</a>
-    </div>
-
-    <div class="svc-card">
-      <div class="svc-icon">
-        <svg viewBox="0 0 18 18"><path d="M2 3h14M2 9h10M2 15h7"/></svg>
-      </div>
-      <p class="svc-name">Public<br>Relations</p>
-      <p class="svc-desc">Press, partnerships, and public narrative. We shape the stories told about your brand.</p>
-      <a href="pr.html" class="svc-link">Discover →</a>
     </div>
 
   </div>
