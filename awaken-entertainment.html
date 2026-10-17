@@ -94,10 +94,12 @@ nav{
 .section-h{font-family:'Futura','Century Gothic','Trebuchet MS',sans-serif;font-weight:800;font-size:clamp(28px,4vw,52px);letter-spacing:-.04em;text-transform:uppercase}
 
 /* ── PORTFOLIO ── */
-.portfolio{padding:80px 24px}
+.portfolio{padding:80px 40px}
+.pf-inner{max-width:1280px;margin:0 auto}
 .pf-header{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:40px}
 .pf-count{font-size:13px;color:var(--fg2)}
 .pf-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:768px){.portfolio{padding:60px 20px}}
 .pc{
   border-radius:20px;overflow:hidden;
   display:flex;flex-direction:column;
@@ -290,6 +292,7 @@ footer{background:var(--fg);color:#fff;padding:72px 40px 0;margin-top:80px}
 
 <!-- PORTFOLIO -->
 <section class="portfolio" id="portfolio">
+  <div class="pf-inner">
   <div class="pf-header rv">
     <div>
       <p class="section-label">Initial Business Review</p>
@@ -301,7 +304,7 @@ footer{background:var(--fg);color:#fff;padding:72px 40px 0;margin-top:80px}
 
     <div class="pc pc-zatt rv">
       <div class="pc-visual">
-        <img class="pc-hover-img" src="zatt.jpg" alt="Zatt">
+        <img class="pc-hover-img" src="thabinthe.jpg" alt="Zatt">
         <p class="pc-tag">Film &amp; Streaming &middot; Digital</p>
         <p class="pc-name">Zatt</p>
       </div>
@@ -325,7 +328,7 @@ footer{background:var(--fg);color:#fff;padding:72px 40px 0;margin-top:80px}
 
     <div class="pc pc-thabin rv">
       <div class="pc-visual">
-        <img class="pc-hover-img" src="thabinthe.jpg" alt="Thabinthe">
+        <img class="pc-hover-img" src="zatt.jpg" alt="Thabinthe">
         <p class="pc-tag">Entertainment &middot; Media</p>
         <p class="pc-name">Thabinthe</p>
       </div>
@@ -347,6 +350,7 @@ footer{background:var(--fg);color:#fff;padding:72px 40px 0;margin-top:80px}
       </div>
     </div>
 
+  </div>
   </div>
 </section>
 
