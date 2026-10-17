@@ -124,8 +124,16 @@ nav{
 .pc-meta{padding:16px 24px;background:var(--bg);border-top:1px solid var(--border)}
 .pc-meta-name{font-size:14px;font-weight:500;color:var(--fg)}
 .pc-meta-sub{font-size:12px;color:var(--fg2);margin-top:2px}
-.pc-hover-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .45s ease;pointer-events:none}
+.pc-hover-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .45s ease;pointer-events:none;z-index:2}
 .pc:hover .pc-hover-img{opacity:1}
+.pc-logo{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  max-width:160px;max-height:110px;width:auto;height:auto;
+  object-fit:contain;opacity:1;transition:opacity .45s ease;
+  pointer-events:none;z-index:1;
+}
+.pc-planbe .pc-logo{filter:brightness(0) invert(1);max-width:200px}
+.pc:hover .pc-logo{opacity:0}
 @media(max-width:600px){.pf-grid{grid-template-columns:1fr}}
 
 /* ── ABOUT TEXT ── */
@@ -305,6 +313,7 @@ footer{background:var(--fg);color:#fff;padding:72px 40px 0;margin-top:80px}
     <div class="pc pc-zatt rv">
       <div class="pc-visual">
         <img class="pc-hover-img" src="thabinthe.jpg" alt="Zatt">
+        <img class="pc-logo" src="logo-zatt.png" alt="Zatt logo">
         <p class="pc-tag">Film &amp; Streaming &middot; Digital</p>
         <p class="pc-name">Zatt</p>
       </div>
@@ -317,6 +326,7 @@ footer{background:var(--fg);color:#fff;padding:72px 40px 0;margin-top:80px}
     <div class="pc pc-wonder rv d1">
       <div class="pc-visual">
         <img class="pc-hover-img" src="wonderxland.jpg" alt="Wonderxland">
+        <img class="pc-logo" src="logo-wonderxland.png" alt="Wonderxland logo">
         <p class="pc-tag">F&amp;B &middot; Hospitality</p>
         <p class="pc-name">Wonderxland</p>
       </div>
@@ -329,6 +339,7 @@ footer{background:var(--fg);color:#fff;padding:72px 40px 0;margin-top:80px}
     <div class="pc pc-thabin rv">
       <div class="pc-visual">
         <img class="pc-hover-img" src="zatt.jpg" alt="Thabinthe">
+        <img class="pc-logo" src="logo-thabinthe.png" alt="Thabinthe logo">
         <p class="pc-tag">Entertainment &middot; Media</p>
         <p class="pc-name">Thabinthe</p>
       </div>
@@ -341,6 +352,7 @@ footer{background:var(--fg);color:#fff;padding:72px 40px 0;margin-top:80px}
     <div class="pc pc-planbe rv d1">
       <div class="pc-visual">
         <img class="pc-hover-img" src="" alt="Plan Be">
+        <img class="pc-logo" src="logo-planbe.png" alt="Plan Be logo">
         <p class="pc-tag">Strategy &middot; Creative</p>
         <p class="pc-name">Plan Be</p>
       </div>
