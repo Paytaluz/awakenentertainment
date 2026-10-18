@@ -113,17 +113,21 @@ nav{
 .pc-zatt    .pc-visual{background:#1e3a6e}
 .pc-wonder  .pc-visual{background:#4c1d95}
 .pc-thabin  .pc-visual{background:#c8921a}
-.pc-digital .pc-visual{background:#0e7490}
+.pc-digital .pc-visual{background:#bae6fd}
+.pc-design  .pc-visual{background:#fecaca}
+.pc-dev     .pc-visual{background:#fde68a}
 .pc-prod    .pc-visual{background:#1c1917}
 .pc-pr      .pc-visual{background:#9f1239}
 .pc-gaming  .pc-visual{background:#065f46}
 .pc-celev   .pc-visual{background:#7c2d12}
 .pc-tag{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.65)}
+.pc-digital .pc-tag,.pc-design .pc-tag,.pc-dev .pc-tag{color:rgba(10,10,10,.45)}
 .pc-name{
   font-family:'Futura','Century Gothic','Trebuchet MS',sans-serif;font-weight:800;
   font-size:clamp(28px,3.5vw,48px);letter-spacing:-.04em;line-height:1;
   color:#fff;margin-top:auto;
 }
+.pc-digital .pc-name,.pc-design .pc-name,.pc-dev .pc-name{color:#0a0a0a}
 .pc-meta{padding:16px 24px;background:var(--bg);border-top:1px solid var(--border)}
 .pc-meta-name{font-size:14px;font-weight:500;color:var(--fg)}
 .pc-meta-sub{font-size:12px;color:var(--fg2);margin-top:2px}
@@ -136,6 +140,7 @@ nav{
   pointer-events:none;z-index:1;
 }
 .pc-prod .pc-logo,.pc-gaming .pc-logo{filter:brightness(0) invert(1) brightness(0.9)}
+.pc-digital .pc-logo,.pc-design .pc-logo,.pc-dev .pc-logo{mix-blend-mode:multiply;max-width:180px;max-height:130px}
 .pc:hover .pc-logo{opacity:0}
 @media(max-width:600px){.pf-grid{grid-template-columns:1fr}}
 
@@ -307,7 +312,7 @@ footer{background:var(--fg);color:#fff;padding:72px 40px 0;margin-top:80px}
       <p class="section-label">Initial Business Review</p>
       <h2 class="section-h">Portfolio</h2>
     </div>
-    <span class="pf-count">8 Businesses</span>
+    <span class="pf-count">10 Businesses</span>
   </div>
   <div class="pf-grid">
 
@@ -352,6 +357,7 @@ footer{background:var(--fg);color:#fff;padding:72px 40px 0;margin-top:80px}
 
     <div class="pc pc-digital rv d1">
       <div class="pc-visual">
+        <img class="pc-logo" src="/logo-digital.png" alt="Awaken Digital logo">
         <p class="pc-tag">Digital &middot; Web &amp; Apps</p>
         <p class="pc-name">Digital</p>
       </div>
@@ -402,6 +408,30 @@ footer{background:var(--fg);color:#fff;padding:72px 40px 0;margin-top:80px}
       <div class="pc-meta">
         <p class="pc-meta-name">CeleVoice</p>
         <p class="pc-meta-sub">Talent management &amp; celebrity platform</p>
+      </div>
+    </div>
+
+    <div class="pc pc-design rv">
+      <div class="pc-visual">
+        <img class="pc-logo" src="/logo-design.png" alt="Awaken Design logo">
+        <p class="pc-tag">Design &middot; Brand Identity</p>
+        <p class="pc-name">Design</p>
+      </div>
+      <div class="pc-meta">
+        <p class="pc-meta-name">Awaken Design</p>
+        <p class="pc-meta-sub">Visual identity, brand systems &amp; creative direction</p>
+      </div>
+    </div>
+
+    <div class="pc pc-dev rv d1">
+      <div class="pc-visual">
+        <img class="pc-logo" src="/logo-development.png" alt="Awaken Development logo">
+        <p class="pc-tag">Development &middot; Technology</p>
+        <p class="pc-name">Development</p>
+      </div>
+      <div class="pc-meta">
+        <p class="pc-meta-name">Awaken Development</p>
+        <p class="pc-meta-sub">Software, infrastructure &amp; product engineering</p>
       </div>
     </div>
 
