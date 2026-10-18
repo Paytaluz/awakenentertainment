@@ -111,10 +111,14 @@ nav{
   display:flex;flex-direction:column;justify-content:space-between;
   position:relative;overflow:hidden;
 }
-.pc-zatt   .pc-visual{background:#1e3a6e}
-.pc-wonder .pc-visual{background:#4c1d95}
-.pc-thabin .pc-visual{background:#c8921a}
-.pc-planbe .pc-visual{background:#10b981}
+.pc-zatt    .pc-visual{background:#1e3a6e}
+.pc-wonder  .pc-visual{background:#4c1d95}
+.pc-thabin  .pc-visual{background:#c8921a}
+.pc-digital .pc-visual{background:#0e7490}
+.pc-prod    .pc-visual{background:#1c1917}
+.pc-pr      .pc-visual{background:#9f1239}
+.pc-gaming  .pc-visual{background:#065f46}
+.pc-celev   .pc-visual{background:#7c2d12}
 .pc-tag{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.65)}
 .pc-name{
   font-family:'Futura','Century Gothic','Trebuchet MS',sans-serif;font-weight:800;
@@ -132,7 +136,7 @@ nav{
   object-fit:contain;opacity:1;transition:opacity .45s ease;
   pointer-events:none;z-index:1;
 }
-.pc-planbe .pc-logo{filter:brightness(0) invert(1);max-width:200px}
+.pc-prod .pc-logo,.pc-gaming .pc-logo{filter:brightness(0) invert(1) brightness(0.9)}
 .pc:hover .pc-logo{opacity:0}
 @media(max-width:600px){.pf-grid{grid-template-columns:1fr}}
 
@@ -306,7 +310,7 @@ footer{background:var(--fg);color:#fff;padding:72px 40px 0;margin-top:80px}
       <p class="section-label">Initial Business Review</p>
       <h2 class="section-h">Portfolio</h2>
     </div>
-    <span class="pf-count">4 Ventures Under Review</span>
+    <span class="pf-count">8 Businesses</span>
   </div>
   <div class="pf-grid">
 
@@ -340,25 +344,67 @@ footer{background:var(--fg);color:#fff;padding:72px 40px 0;margin-top:80px}
       <div class="pc-visual">
         <img class="pc-hover-img" src="/zatt.jpg" alt="Thabinthe">
         <img class="pc-logo" src="/logo-thabinthe.png" alt="Thabinthe logo">
-        <p class="pc-tag">Entertainment &middot; Media</p>
+        <p class="pc-tag">Gaming &middot; Entertainment</p>
         <p class="pc-name">Thabinthe</p>
       </div>
       <div class="pc-meta">
         <p class="pc-meta-name">Thabinthe</p>
-        <p class="pc-meta-sub">Entertainment &amp; media · Under review</p>
+        <p class="pc-meta-sub">Gaming &amp; entertainment platform · Yangon, Myanmar</p>
       </div>
     </div>
 
-    <div class="pc pc-planbe rv d1">
+    <div class="pc pc-digital rv d1">
       <div class="pc-visual">
-        <img class="pc-hover-img" src="" alt="Plan Be">
-        <img class="pc-logo" src="/logo-planbe.png" alt="Plan Be logo">
-        <p class="pc-tag">Strategy &middot; Creative</p>
-        <p class="pc-name">Plan Be</p>
+        <p class="pc-tag">Digital &middot; Web &amp; Apps</p>
+        <p class="pc-name">Digital</p>
       </div>
       <div class="pc-meta">
-        <p class="pc-meta-name">Plan Be</p>
-        <p class="pc-meta-sub">Strategy &amp; creative agency · Under review</p>
+        <p class="pc-meta-name">Awaken Digital</p>
+        <p class="pc-meta-sub">Web experiences, apps &amp; digital platforms</p>
+      </div>
+    </div>
+
+    <div class="pc pc-prod rv">
+      <div class="pc-visual">
+        <p class="pc-tag">Film &amp; Series &middot; Commercial</p>
+        <p class="pc-name">Production</p>
+      </div>
+      <div class="pc-meta">
+        <p class="pc-meta-name">Awaken Production</p>
+        <p class="pc-meta-sub">Film, series &amp; commercial production · Yangon, Myanmar</p>
+      </div>
+    </div>
+
+    <div class="pc pc-pr rv d1">
+      <div class="pc-visual">
+        <p class="pc-tag">Public Relations &middot; Media</p>
+        <p class="pc-name">PR</p>
+      </div>
+      <div class="pc-meta">
+        <p class="pc-meta-name">Awaken PR</p>
+        <p class="pc-meta-sub">Press, partnerships &amp; public narrative</p>
+      </div>
+    </div>
+
+    <div class="pc pc-gaming rv">
+      <div class="pc-visual">
+        <p class="pc-tag">Gaming &middot; Interactive</p>
+        <p class="pc-name">Gaming</p>
+      </div>
+      <div class="pc-meta">
+        <p class="pc-meta-name">Awaken Gaming</p>
+        <p class="pc-meta-sub">Interactive entertainment &amp; gaming</p>
+      </div>
+    </div>
+
+    <div class="pc pc-celev rv d1">
+      <div class="pc-visual">
+        <p class="pc-tag">Talent &middot; Celebrity</p>
+        <p class="pc-name">CeleVoice</p>
+      </div>
+      <div class="pc-meta">
+        <p class="pc-meta-name">CeleVoice</p>
+        <p class="pc-meta-sub">Talent management &amp; celebrity platform</p>
       </div>
     </div>
 
