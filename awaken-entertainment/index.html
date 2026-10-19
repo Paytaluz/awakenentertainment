@@ -115,21 +115,21 @@ nav{
 .pc-wonder  .pc-visual{background:#4c1d95}
 .pc-thabin  .pc-visual{background:#c8921a}
 .pc-digital .pc-visual{background:#bae6fd}
-.pc-design  .pc-visual{background:#fecaca}
+.pc-design  .pc-visual{background:#dc2626}
 .pc-dev     .pc-visual{background:#fde68a}
 .pc-prod    .pc-visual{background:#1c1917}
-.pc-pr      .pc-visual{background:#9f1239}
+.pc-pr      .pc-visual{background:#1e40af}
 .pc-gaming  .pc-visual{background:#065f46}
 .pc-celev   .pc-visual{background:#fce7f3}
 .pc-tag{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.65)}
-.pc-digital .pc-tag,.pc-design .pc-tag,.pc-dev .pc-tag,.pc-celev .pc-tag{color:rgba(10,10,10,.45)}
+.pc-digital .pc-tag,.pc-dev .pc-tag,.pc-celev .pc-tag{color:rgba(10,10,10,.45)}
 .pc-name{
   font-family:'Futura','Century Gothic','Trebuchet MS',sans-serif;font-weight:800;
   font-size:clamp(28px,3.5vw,48px);letter-spacing:-.04em;line-height:1;
   color:#fff;margin-top:auto;
 }
-.pc-digital .pc-name,.pc-design .pc-name,.pc-dev .pc-name,.pc-celev .pc-name{color:#0a0a0a}
-.pc-meta{padding:16px 24px;background:var(--bg);border-top:1px solid var(--border)}
+.pc-digital .pc-name,.pc-dev .pc-name,.pc-celev .pc-name{color:#0a0a0a}
+.pc-meta{padding:16px 24px;background:var(--bg);border-top:1px solid var(--border);min-height:64px}
 .pc-meta-name{font-size:14px;font-weight:500;color:var(--fg)}
 .pc-meta-sub{font-size:12px;color:var(--fg2);margin-top:2px}
 .pc-hover-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .45s ease;pointer-events:none;z-index:2}
@@ -140,9 +140,8 @@ nav{
   object-fit:contain;opacity:1;transition:opacity .45s ease;
   pointer-events:none;z-index:1;
 }
-.pc-prod .pc-logo,.pc-pr .pc-logo,.pc-gaming .pc-logo{filter:brightness(0) invert(1)}
-.pc-pr .pc-logo{max-width:110px;max-height:80px}
-.pc-digital .pc-logo,.pc-design .pc-logo,.pc-dev .pc-logo,.pc-celev .pc-logo{mix-blend-mode:multiply;max-width:180px;max-height:130px}
+.pc-prod .pc-logo,.pc-pr .pc-logo,.pc-gaming .pc-logo,.pc-design .pc-logo{filter:brightness(0) invert(1)}
+.pc-digital .pc-logo,.pc-dev .pc-logo,.pc-celev .pc-logo{mix-blend-mode:multiply}
 .pc:hover .pc-logo{opacity:0}
 @media(max-width:600px){.pf-grid{grid-template-columns:1fr}}
 
