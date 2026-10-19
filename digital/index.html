@@ -32,10 +32,10 @@
 
     /* ─── CURSOR ─── */
     #cur { position: fixed; z-index: 9999; pointer-events: none; top: 0; left: 0; mix-blend-mode: difference; }
-    .cur-d { position: absolute; width: 10px; height: 10px; background: #000; border-radius: 50%; transform: translate(-50%,-50%); transition: width .2s, height .2s; }
-    .cur-r { position: absolute; width: 40px; height: 40px; border: 1px solid rgba(0,0,0,.3); border-radius: 50%; transform: translate(-50%,-50%); }
+    .cur-d { position: absolute; width: 10px; height: 10px; background: #fff; border-radius: 50%; transform: translate(-50%,-50%); transition: width .2s, height .2s; }
+    .cur-r { position: absolute; width: 40px; height: 40px; border: 1px solid rgba(255,255,255,.6); border-radius: 50%; transform: translate(-50%,-50%); }
     body.hov .cur-d { width: 16px; height: 16px; }
-    body.hov .cur-r { width: 56px; height: 56px; border-color: rgba(0,0,0,.6); }
+    body.hov .cur-r { width: 56px; height: 56px; border-color: rgba(255,255,255,.9); }
 
     /* ─── LOADER ─── */
     #ld { position: fixed; inset: 0; z-index: 8000; background: #ffffff; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2rem; transition: opacity .7s ease, visibility .7s; }
