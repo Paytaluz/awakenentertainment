@@ -185,11 +185,18 @@
         <p class="body-text">Press, partnerships, and public narrative. We shape the stories told about your brand and get them in front of the people who matter.</p>
         <div class="btn-group">
           <a href="/pr/" class="btn btn-primary">Learn More</a>
+          <button class="btn btn-ghost btn-kols" id="openKolsBtn">Explore Our KOLs</button>
         </div>
       </div>
     </section>
 
   </main>
+
+  <!-- MCDB OVERLAY -->
+  <div id="kolsOverlay" style="display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,.85);align-items:center;justify-content:center;">
+    <button onclick="closeKols()" style="position:absolute;top:16px;right:20px;width:40px;height:40px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:50%;color:#fff;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;">&times;</button>
+    <iframe id="kolsFrame" src="" title="Myanmar Celebrity Database" style="width:calc(100vw - 48px);height:calc(100vh - 48px);max-width:1440px;border:none;border-radius:10px;background:#0f1117;"></iframe>
+  </div>
 
   <!-- BOTTOM BAR -->
   <div class="bottom-bar">
@@ -233,6 +240,27 @@
     });
 
     renderDots();
+  </script>
+  <style>
+    .btn-kols{border-color:#f59e0b;color:#f59e0b;}
+    .btn-kols:hover{background:rgba(245,158,11,.08);border-color:#f59e0b;}
+    @media(max-width:640px){#kolsOverlay iframe{width:100vw;height:100dvh;border-radius:0;}}
+  </style>
+  <script>
+    function openKols(){
+      var o=document.getElementById('kolsOverlay');
+      var f=document.getElementById('kolsFrame');
+      if(!f.src)f.src='/mcdb/';
+      o.style.display='flex';
+      document.body.style.overflow='hidden';
+    }
+    function closeKols(){
+      document.getElementById('kolsOverlay').style.display='none';
+      document.body.style.overflow='';
+    }
+    document.getElementById('openKolsBtn').addEventListener('click',openKols);
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')closeKols();});
+    document.getElementById('kolsOverlay').addEventListener('click',function(e){if(e.target===this)closeKols();});
   </script>
 </body>
 </html>
