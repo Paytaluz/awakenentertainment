@@ -39,7 +39,7 @@
     body.hov .cur-r { width: 56px; height: 56px; border-color: rgba(255,255,255,.9); }
 
     /* ─── LOADER ─── */
-    #ld { position: fixed; inset: 0; z-index: 8000; background: #ffffff; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2rem; transition: opacity .7s ease, visibility .7s; }
+    #ld { position: fixed; inset: 0; z-index: 8000; background: #ffffff; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2rem; transition: opacity .45s ease, visibility .45s; }
     #ld.out { opacity: 0; visibility: hidden; }
     .ld-num { font-size: clamp(5rem,15vw,12rem); font-weight: 900; letter-spacing: -0.05em; line-height: 1; color: #0c0c0c; font-variant-numeric: tabular-nums; }
     .ld-bar { width: 200px; height: 1px; background: var(--border); overflow: hidden; }
@@ -52,8 +52,8 @@
       opacity: 0;
       z-index: 600;
       background: rgba(255,255,255,.92);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       border: 1px solid rgba(0,0,0,.1);
       border-radius: 100px;
       padding: .45rem .45rem .45rem 1.5rem;
@@ -84,6 +84,7 @@
 
     /* ─── HERO ─── */
     .snap { scroll-snap-align: start; scroll-snap-stop: always; }
+    html.js-paging { scroll-snap-type: none; scroll-behavior: auto; }
     .first-screen { min-height: 100svh; display: flex; flex-direction: column; }
     .hero {
       flex: 1; display: flex; flex-direction: column;
@@ -207,13 +208,10 @@
       display: grid; grid-template-columns: 1fr 1fr;
       border-radius: 20px; overflow: hidden;
       border: 1px solid var(--border); background: var(--surface2);
-      transform-origin: top center; will-change: transform, filter;
+      transform-origin: top center; will-change: transform;
       transition: border-color .3s;
     }
-    .proc-card:nth-child(1) { z-index: 1; }
-    .proc-card:nth-child(2) { z-index: 2; }
-    .proc-card:nth-child(3) { z-index: 3; }
-    .proc-card:nth-child(4) { z-index: 4; }
+    .proc-card::after { content: ''; position: absolute; inset: 0; background: #000; opacity: var(--dim, 0); pointer-events: none; z-index: 5; }
     .proc-card:hover { border-color: rgba(63,98,18,.12); }
     .proc-card-img { position: relative; overflow: hidden; background: #e8e8e8; }
     .proc-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s cubic-bezier(.16,1,.3,1); }
@@ -378,7 +376,7 @@
     .float-btn:hover svg { stroke: var(--accent); }
 
     /* ─── SCROLL PROGRESS ─── */
-    #scroll-prog { position: fixed; top: 0; left: 0; z-index: 9000; height: 2px; background: var(--accent); width: 0%; transition: width .1s linear; box-shadow: 0 0 8px rgba(63,98,18,.4); }
+    #scroll-prog { position: fixed; top: 0; left: 0; z-index: 9000; height: 2px; background: var(--accent); width: 100%; transform: scaleX(0); transform-origin: left; box-shadow: 0 0 8px rgba(63,98,18,.4); }
 
     /* ─── REVEAL ─── */
     .rv { opacity: 0; transform: translateY(32px); transition: opacity .7s ease, transform .7s ease; }
@@ -755,7 +753,7 @@
       <h2 class="sec-h rv rv1">From idea to <em>impact.</em></h2>
       <div class="proc-stack">
 
-        <div class="proc-card">
+        <div class="proc-card" style="z-index:1">
           <div class="proc-card-bar"></div>
           <div class="proc-card-img">
             <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3FE3Vvu9lYALhCwQvePKUS2plzn/hf_20260625_100620_bd79b2ba-903d-47f7-a60c-f17bd901f0d7.png" alt="Strategy">
@@ -776,7 +774,7 @@
         </div>
 
         <div class="proc-snap"></div>
-        <div class="proc-card">
+        <div class="proc-card" style="z-index:2">
           <div class="proc-card-bar"></div>
           <div class="proc-card-img">
             <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3FE3Vvu9lYALhCwQvePKUS2plzn/hf_20260625_100622_18cb8e55-dad6-4a61-bb2f-476a20bed4e8.png" alt="Create">
@@ -797,7 +795,7 @@
         </div>
 
         <div class="proc-snap"></div>
-        <div class="proc-card">
+        <div class="proc-card" style="z-index:3">
           <div class="proc-card-bar"></div>
           <div class="proc-card-img">
             <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3FE3Vvu9lYALhCwQvePKUS2plzn/hf_20260625_100622_c2a52321-157a-4f06-9af4-a1c2642110c1.png" alt="Launch">
@@ -818,7 +816,7 @@
         </div>
 
         <div class="proc-snap"></div>
-        <div class="proc-card">
+        <div class="proc-card" style="z-index:4">
           <div class="proc-card-bar"></div>
           <div class="proc-card-img">
             <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3FE3Vvu9lYALhCwQvePKUS2plzn/hf_20260625_100623_3a812de3-71f9-48bf-9966-44dbba776b4e.png" alt="Grow">
@@ -1102,7 +1100,7 @@ const ldNum = document.getElementById('ldNum');
 const ldFill = document.getElementById('ldFill');
 let pct = 0;
 const ldInt = setInterval(() => {
-  pct = Math.min(pct + Math.random() * 18 + 4, 100);
+  pct = Math.min(pct + Math.random() * 22 + 14, 100);
   ldNum.textContent = Math.floor(pct);
   ldFill.style.width = pct + '%';
   if (pct >= 100) {
@@ -1110,9 +1108,9 @@ const ldInt = setInterval(() => {
     setTimeout(() => {
       ld.classList.add('out');
       revealHero();
-    }, 250);
+    }, 120);
   }
-}, 80);
+}, 45);
 
 /* ─── HERO REVEAL ─── */
 function revealHero() {
@@ -1160,9 +1158,15 @@ document.querySelectorAll('a,button,.work-row,.srv-item,.faq-q').forEach(el => {
 
 /* ─── SCROLL PROGRESS ─── */
 const scrollProg = document.getElementById('scroll-prog');
+let progTick = false;
 window.addEventListener('scroll', () => {
-  const docH = document.documentElement.scrollHeight - window.innerHeight;
-  if (docH > 0) scrollProg.style.width = (window.scrollY / docH * 100).toFixed(1) + '%';
+  if (progTick) return;
+  progTick = true;
+  requestAnimationFrame(() => {
+    progTick = false;
+    const docH = document.documentElement.scrollHeight - window.innerHeight;
+    if (docH > 0) scrollProg.style.transform = `scaleX(${(window.scrollY / docH).toFixed(4)})`;
+  });
 }, { passive: true });
 
 /* ─── STATS COUNTER ─── */
@@ -1241,21 +1245,25 @@ new IntersectionObserver(entries => {
 procCards.forEach(c => {
   new IntersectionObserver(([e]) => { if (e.isIntersecting) c.classList.add('in-view'); }, { threshold: 0.05 }).observe(c);
 });
+const procBg = document.querySelector('.proc-bg');
+let procTick = false;
 function updateProcCards() {
+  procTick = false;
+  const box = procBg.getBoundingClientRect();
+  if (box.bottom < -200 || box.top > innerHeight + 200) return;
+  const tops = [...procCards].map(c => c.getBoundingClientRect());
   procCards.forEach((card, i) => {
-    const rect = card.getBoundingClientRect();
-    const offset = rect.top - 80;
-    if (offset < 0 && i < procCards.length - 1) {
-      const progress = Math.min(1, Math.abs(offset) / (rect.height * 0.6));
-      card.style.transform = `scale(${(1 - progress * 0.045).toFixed(4)})`;
-      card.style.filter = `brightness(${(1 - progress * 0.18).toFixed(4)})`;
-    } else {
-      card.style.transform = 'scale(1)';
-      card.style.filter = 'brightness(1)';
-    }
+    const rect = tops[i];
+    const next = tops[i + 1];
+    let progress = 0;
+    if (next) progress = Math.min(1, Math.max(0, 1 - (next.top - 80) / rect.height));
+    card.style.transform = `scale(${(1 - progress * 0.045).toFixed(4)})`;
+    card.style.setProperty('--dim', (progress * 0.18).toFixed(3));
   });
 }
-window.addEventListener('scroll', updateProcCards, { passive: true });
+window.addEventListener('scroll', () => {
+  if (!procTick) { procTick = true; requestAnimationFrame(updateProcCards); }
+}, { passive: true });
 
 /* ─── FAQ ─── */
 document.querySelectorAll('.faq-q').forEach(q => {
@@ -1289,40 +1297,80 @@ if (chartCard) {
 /* ─── BLOCK-BY-BLOCK SCROLL (desktop) ─── */
 (function () {
   const desktop = matchMedia('(min-width: 901px) and (pointer: fine)');
-  let busy = false, lastWheel = 0;
+  const root = document.documentElement;
+  const sync = () => root.classList.toggle('js-paging', desktop.matches);
+  sync();
+  desktop.addEventListener('change', sync);
+
   const stops = () => {
     const pts = [...document.querySelectorAll('.snap, .proc-snap')].map(el => {
       const off = el.classList.contains('proc-snap') ? parseFloat(getComputedStyle(el).scrollMarginTop) || 0 : 0;
       return Math.round(el.getBoundingClientRect().top + scrollY - off);
     });
-    pts.push(document.documentElement.scrollHeight - innerHeight);
+    pts.push(root.scrollHeight - innerHeight);
     return [...new Set(pts)].sort((a, b) => a - b);
   };
+
+  const ease = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  let animating = false, raf = 0;
+  function animateTo(target) {
+    cancelAnimationFrame(raf);
+    const start = scrollY, dist = target - start;
+    if (Math.abs(dist) < 2) return;
+    const dur = Math.min(850, 480 + Math.abs(dist) * 0.22);
+    const t0 = performance.now();
+    animating = true;
+    const step = now => {
+      const p = Math.min((now - t0) / dur, 1);
+      scrollTo(0, start + dist * ease(p));
+      if (p < 1) raf = requestAnimationFrame(step);
+      else { animating = false; deltas.length = 0; }
+    };
+    raf = requestAnimationFrame(step);
+  }
   function go(dir) {
     const pts = stops(), y = scrollY;
     const target = dir > 0 ? pts.find(p => p > y + 4) : [...pts].reverse().find(p => p < y - 4);
-    if (target === undefined) return;
-    busy = true;
-    scrollTo({ top: target, behavior: 'smooth' });
-    const t0 = performance.now();
-    const release = () => {
-      const now = performance.now();
-      const settled = Math.abs(scrollY - target) < 2 || now - t0 > 1200;
-      if (settled && now - lastWheel > 220) busy = false; else setTimeout(release, 60);
-    };
-    setTimeout(release, 300);
+    if (target !== undefined) animateTo(target);
   }
+
+  // A new swipe/wheel spin shows rising deltas; trackpad momentum only decays.
+  const deltas = [];
+  let lastT = 0, lastDir = 0;
   addEventListener('wheel', e => {
     if (!desktop.matches || e.ctrlKey) return;
     e.preventDefault();
-    lastWheel = performance.now();
-    if (!busy && Math.abs(e.deltaY) > 2) go(Math.sign(e.deltaY));
+    const now = performance.now();
+    const d = Math.abs(e.deltaY) * (e.deltaMode === 1 ? 16 : 1);
+    const dir = Math.sign(e.deltaY);
+    if (!dir) return;
+    if (now - lastT > 160 || dir !== lastDir) deltas.length = 0;
+    lastT = now; lastDir = dir;
+    deltas.push(d);
+    if (deltas.length > 20) deltas.shift();
+    if (animating) return;
+    const recent = deltas.slice(-3), avgRecent = recent.reduce((a, b) => a + b, 0) / recent.length;
+    const avgAll = deltas.reduce((a, b) => a + b, 0) / deltas.length;
+    const fresh = deltas.length <= 2 || avgRecent >= avgAll;
+    if (fresh && d >= 4) { deltas.length = 0; go(dir); }
   }, { passive: false });
+
   addEventListener('keydown', e => {
-    if (!desktop.matches || busy || /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)) return;
+    if (!desktop.matches || animating || /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)) return;
     const down = ['PageDown', 'ArrowDown', ' '].includes(e.key) && !e.shiftKey;
     const up = ['PageUp', 'ArrowUp'].includes(e.key) || (e.key === ' ' && e.shiftKey);
-    if (down || up) { e.preventDefault(); lastWheel = 0; go(down ? 1 : -1); }
+    if (down || up) { e.preventDefault(); go(down ? 1 : -1); }
+    if (e.key === 'Home') { e.preventDefault(); animateTo(0); }
+    if (e.key === 'End') { e.preventDefault(); animateTo(root.scrollHeight - innerHeight); }
+  });
+
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a[href^="#"]');
+    if (!a || !desktop.matches) return;
+    const el = a.getAttribute('href').length > 1 && document.querySelector(a.getAttribute('href'));
+    if (!el) return;
+    e.preventDefault();
+    animateTo(Math.round(el.getBoundingClientRect().top + scrollY));
   });
 })();
 
