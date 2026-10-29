@@ -384,6 +384,19 @@ a.prow{color:inherit}
 .fbot{flex-direction:column;gap:12px;text-align:center}
 @media(max-width:768px){.stats-l{flex-direction:column;gap:32px}}
 @media(min-width:769px){.hero-phones{top:41%}.how-cards{grid-template-columns:repeat(6,1fr)}.hc:nth-child(1),.hc:nth-child(2){grid-column:span 3}.hc:nth-child(n+3){grid-column:span 2}}
+
+/* ===== COMPACT SERIES + SLATE ===== */
+/* Series artwork sizes: full card 16:9 (upload 1920x1080), half card 4:3 (upload 1440x1080) */
+.wl{max-width:960px;margin:0 auto;gap:8px}
+.wc-row{gap:8px}
+.wc-full{height:auto;min-height:0;aspect-ratio:16/9}
+.wc-row .wc{height:auto;min-height:0;aspect-ratio:4/3}
+.wc-foot{padding:22px 24px}
+.pt{padding-bottom:24px}
+.pt-hd,.prow{max-width:960px;margin-left:auto;margin-right:auto;padding:14px 24px}
+.pt-hd{margin-top:36px}
+.pt-img{width:240px;height:168px}
+@media(max-width:768px){.pt-img{width:200px;height:140px}.wc-full{aspect-ratio:4/3}}
 </style>
 </head>
 <body>
@@ -834,7 +847,7 @@ document.getElementById('hdown').addEventListener('click',e=>{e.preventDefault()
     const rect = body.getBoundingClientRect();
     const relY = e.clientY - rect.top;
     // offset by half image height so it centers on cursor row
-    imgEl.style.top = (relY - 105) + 'px';
+    imgEl.style.top = (relY - imgEl.offsetHeight / 2) + 'px';
     imgEl.style.transform = 'translateX(-50%) scale(1)';
   });
 
