@@ -425,6 +425,27 @@ a.prow{color:inherit}
 .ns-meta{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35);padding-top:14px;border-top:1px solid rgba(255,255,255,.07);width:100%}
 @media(max-width:900px){.ns-feat{grid-template-columns:1fr}.ns-poster{max-height:520px}.ns-grid{grid-template-columns:1fr}}
 @media(max-width:768px){.ns{padding:64px 20px 80px}.ns-info{padding:28px 20px}.ns-facts{grid-template-columns:repeat(2,1fr)}}
+/* ===== EPISODES CHART ===== */
+.stats-r{display:block!important;aspect-ratio:auto!important;width:min(720px,100%)!important;padding:32px 36px 28px}
+.ec-hd{text-align:center;margin-bottom:22px}
+.ec-ttl{font-size:15px;font-weight:700;color:#fff;letter-spacing:-.01em}
+.ec-sub{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-top:6px}
+.ec{display:flex;flex-direction:column;gap:9px}
+.ec-row{display:grid;grid-template-columns:170px 1fr 104px;align-items:center;gap:14px;text-align:left}
+.ec-n{font-family:'Inter','Noto Sans Myanmar',sans-serif;font-size:12.5px;color:rgba(255,255,255,.62);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.6}
+.ec-bar{height:10px;border-radius:100px;background:rgba(255,255,255,.05);overflow:hidden}
+.ec-bar i{display:block;height:100%;width:0;border-radius:100px;background:rgba(255,214,0,.45);transition:width 1.1s cubic-bezier(.16,1,.3,1)}
+.stats-r.in .ec-bar i{width:var(--w)}
+.ec-row:nth-child(2) .ec-bar i{transition-delay:.05s}.ec-row:nth-child(n+3) .ec-bar i{transition-delay:.12s}
+.ec-top .ec-n{color:#fff;font-weight:600}
+.ec-top .ec-bar i{background:linear-gradient(90deg,#FFD600,#ff8c00)}
+.ec-v{font-size:12px;font-weight:700;color:#fff;font-variant-numeric:tabular-nums;white-space:nowrap}
+.ec-v small{font-weight:400;font-size:10.5px;color:rgba(255,255,255,.4)}
+.ec-genres{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:24px;padding-top:20px;border-top:1px solid rgba(255,255,255,.07)}
+.ec-genres span{font-size:11px;color:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.1);border-radius:100px;padding:5px 12px}
+.ec-genres b{color:#FFD600;margin-right:3px}
+@media(max-width:768px){.stats-r{padding:24px 18px 20px}.ec-row{grid-template-columns:118px 1fr 30px;gap:10px}.ec-v small{display:none}.ec-n{font-size:11.5px}}
+@media(prefers-reduced-motion:reduce){.ec-bar i{transition:none}}
 </style>
 </head>
 <body>
@@ -743,16 +764,22 @@ a.prow{color:inherit}
     <div class="rv"><div class="stn">25M+</div><div class="std"><strong>combined followers</strong> across our casts.</div></div>
   </div>
   <div class="stats-r rv">
-    <svg viewBox="0 0 560 340" style="width:100%;height:auto;opacity:.5" xmlns="http://www.w3.org/2000/svg">
-      <defs><pattern id="dp" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="rgba(255,255,255,.35)"/></pattern></defs>
-      <ellipse cx="280" cy="170" rx="268" ry="152" fill="url(#dp)"/>
-      <circle cx="292" cy="144" r="5" fill="#FFD600" opacity=".9"/>
-      <circle cx="255" cy="140" r="3.5" fill="#FFD600" opacity=".65"/>
-      <circle cx="336" cy="154" r="3" fill="#FFD600" opacity=".55"/>
-      <circle cx="378" cy="130" r="4" fill="#FFD600" opacity=".45"/>
-      <circle cx="164" cy="140" r="3" fill="rgba(255,255,255,.45)"/>
-      <circle cx="202" cy="180" r="2.5" fill="rgba(255,255,255,.35)"/>
-    </svg>
+    <div class="ec-hd"><div class="ec-ttl">Episodes per series</div><div class="ec-sub">2025 slate · 12 series · 67 episodes</div></div>
+    <div class="ec">
+      <div class="ec-row ec-top"><span class="ec-n">ချစ်သော အတာ</span><span class="ec-bar"><i style="--w:100.0%"></i></span><span class="ec-v">13<small> · Fortune TV</small></span></div>
+      <div class="ec-row ec-top"><span class="ec-n">WinGeTa</span><span class="ec-bar"><i style="--w:76.9%"></i></span><span class="ec-v">10<small> · Channel K</small></span></div>
+      <div class="ec-row"><span class="ec-n">EXIT (ထွက်ပေါက်)</span><span class="ec-bar"><i style="--w:38.5%"></i></span><span class="ec-v">5</span></div>
+      <div class="ec-row"><span class="ec-n">မောင်ကျောက်ခဲ</span><span class="ec-bar"><i style="--w:38.5%"></i></span><span class="ec-v">5</span></div>
+      <div class="ec-row"><span class="ec-n">လူပျိုကြီး ကုန်စုံဆိုင်</span><span class="ec-bar"><i style="--w:38.5%"></i></span><span class="ec-v">5</span></div>
+      <div class="ec-row"><span class="ec-n">နောက်ဆုံးဆုတောင်း</span><span class="ec-bar"><i style="--w:38.5%"></i></span><span class="ec-v">5</span></div>
+      <div class="ec-row"><span class="ec-n">အချစ်ဆုံး ရန်ဖက်</span><span class="ec-bar"><i style="--w:38.5%"></i></span><span class="ec-v">5</span></div>
+      <div class="ec-row"><span class="ec-n">အပါယ်ခံ မေတ္တာ</span><span class="ec-bar"><i style="--w:38.5%"></i></span><span class="ec-v">5</span></div>
+      <div class="ec-row"><span class="ec-n">အချစ်စိတ်</span><span class="ec-bar"><i style="--w:38.5%"></i></span><span class="ec-v">5</span></div>
+      <div class="ec-row"><span class="ec-n">တောသား · The Hick</span><span class="ec-bar"><i style="--w:30.8%"></i></span><span class="ec-v">4</span></div>
+      <div class="ec-row"><span class="ec-n">လေထဲက ပုံပြင်</span><span class="ec-bar"><i style="--w:23.1%"></i></span><span class="ec-v">3</span></div>
+      <div class="ec-row"><span class="ec-n">Soul of Love</span><span class="ec-bar"><i style="--w:15.4%"></i></span><span class="ec-v">2</span></div>
+    </div>
+    <div class="ec-genres"><span><b>9</b> Drama</span><span><b>4</b> Romance</span><span><b>4</b> Horror</span><span><b>4</b> Comedy</span><span><b>1</b> Thriller</span><span><b>1</b> Mystery</span></div>
   </div>
 </section>
 
