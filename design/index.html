@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Awaken Design — We design brands that command attention.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;0,14..32,900;1,14..32,700;1,14..32,900&family=Playfair+Display:ital,wght@1,700;1,900&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --bg:#ffffff;
+      --dark:#0a0a0a;
+      --dark2:#111111;
+      --dark3:#1a1a1a;
+      --border-light:rgba(0,0,0,.1);
+      --border-dark:rgba(255,255,255,.08);
+      --text:#0c0c0c;
+      --text-inv:#f0f0f0;
+      --muted:rgba(12,12,12,.5);
+      --muted-inv:rgba(240,240,240,.5);
+      --accent:#ff3333;
+      --accent-rgb:255,51,51;
+    }
+    html{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);scroll-behavior:smooth}
+    body{overflow-x:hidden;cursor:none}
+    a{text-decoration:none;color:inherit}
+    img{display:block;max-width:100%}
+    em{font-style:italic;font-family:'Playfair Display',serif}
+
+    /* CURSOR */
+    #cur{position:fixed;z-index:9999;pointer-events:none;top:0;left:0;mix-blend-mode:difference}
+    .cur-d{position:absolute;width:10px;height:10px;background:#fff;border-radius:50%;transform:translate(-50%,-50%);transition:width .2s,height .2s}
+    .cur-r{position:absolute;width:36px;height:36px;border:1px solid rgba(255,255,255,.4);border-radius:50%;transform:translate(-50%,-50%);transition:width .3s,height .3s,border-color .3s}
+    body.hov .cur-d{width:14px;height:14px}
+    body.hov .cur-r{width:52px;height:52px;border-color:rgba(var(--accent-rgb),.6)}
+
+    /* LOADER */
+    #ld{position:fixed;inset:0;z-index:8000;background:#0a0a0a;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;transition:opacity .7s ease,visibility .7s}
+    #ld.out{opacity:0;visibility:hidden}
+    .ld-num{font-size:clamp(5rem,15vw,12rem);font-weight:900;letter-spacing:-0.05em;line-height:1;color:#fff;font-variant-numeric:tabular-nums}
+    .ld-bar{width:200px;height:1px;background:rgba(255,255,255,.15);overflow:hidden}
+    .ld-fill{height:100%;background:var(--accent);width:0}
+
+    /* SCROLL PROGRESS */
+    #scroll-prog{position:fixed;top:0;left:0;z-index:9000;height:2px;background:var(--accent);width:0%;transition:width .1s linear;box-shadow:0 0 8px rgba(var(--accent-rgb),.5)}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:600;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:68px;background:transparent;transition:background .4s,border-color .4s,backdrop-filter .4s;border-bottom:1px solid transparent}
+    nav.scrolled{background:rgba(255,255,255,.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom-color:rgba(0,0,0,.08)}
+    .nav-logo{font-size:12px;font-weight:800;letter-spacing:.22em;display:flex;align-items:center;gap:.6rem;color:#fff;transition:color .4s}
+    nav.scrolled .nav-logo{color:var(--text)}
+    .nav-logo-sq{width:24px;height:24px;border:1.5px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;color:var(--accent);flex-shrink:0}
+    .nav-links{display:flex;gap:2.5rem}
+    .nav-links a{font-size:11px;font-weight:500;letter-spacing:.06em;color:rgba(255,255,255,.7);transition:color .3s;position:relative}
+    .nav-links a::after{content:'';position:absolute;left:0;bottom:-3px;width:0;height:1px;background:var(--accent);transition:width .3s}
+    .nav-links a:hover,.nav-links a.active{color:#fff}
+    .nav-links a:hover::after,.nav-links a.active::after{width:100%}
+    nav.scrolled .nav-links a{color:var(--muted)}
+    nav.scrolled .nav-links a:hover,nav.scrolled .nav-links a.active{color:var(--text)}
+    .nav-cta{padding:9px 22px;border-radius:100px;background:var(--accent);color:#fff;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;transition:box-shadow .3s}
+    .nav-cta:hover{box-shadow:0 0 20px rgba(var(--accent-rgb),.4)}
+
+    /* FLOATING CONTACT */
+    .float-menu{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:500;display:flex;flex-direction:column;gap:3px}
+    .float-btn{width:56px;height:56px;background:rgba(10,10,10,.9);background-image:radial-gradient(rgba(255,255,255,.04) 1px,transparent 1px);background-size:5px 5px;border:1px solid rgba(255,255,255,.1);border-right:none;display:flex;align-items:center;justify-content:center;cursor:pointer;position:relative;transition:border-color .25s,background-color .25s;text-decoration:none;color:#fff;backdrop-filter:blur(8px)}
+    .float-btn .fb-corner{position:absolute;top:0;right:0;width:7px;height:7px;border-top:1px solid var(--accent);border-right:1px solid var(--accent);transition:width .3s,height .3s}
+    .float-btn:hover{border-color:rgba(var(--accent-rgb),.3);background-color:rgba(var(--accent-rgb),.06)}
+    .float-btn:hover .fb-corner{width:100%;height:100%}
+    .float-btn svg{width:20px;height:20px;stroke:rgba(255,255,255,.5);stroke-width:1.5;fill:none;transition:stroke .25s}
+    .float-btn:hover svg{stroke:var(--accent)}
+
+    /* ===== HERO ===== */
+    .hero{height:100svh;position:relative;overflow:hidden;background:var(--dark);display:flex;flex-direction:column;justify-content:flex-end;padding:0 2.5rem 4.5rem}
+    .hero-visual{position:absolute;right:0;top:0;bottom:0;width:55%;overflow:hidden}
+    .hv-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:60px 60px}
+    .hv-rect{position:absolute;border:1px solid rgba(var(--accent-rgb),.15)}
+    .hv-rect1{top:15%;left:10%;width:260px;height:340px;transform:rotate(-4deg);border-color:rgba(var(--accent-rgb),.12)}
+    .hv-rect2{top:25%;left:35%;width:200px;height:260px;transform:rotate(3deg);background:rgba(var(--accent-rgb),.04)}
+    .hv-rect3{top:40%;left:20%;width:160px;height:160px;border-color:rgba(var(--accent-rgb),.25);background:rgba(var(--accent-rgb),.03)}
+    .hv-dot{position:absolute;border-radius:50%;background:var(--accent)}
+    .hv-dot1{width:8px;height:8px;top:30%;left:55%;box-shadow:0 0 20px rgba(var(--accent-rgb),.8);animation:hdot 3s ease-in-out infinite}
+    .hv-dot2{width:4px;height:4px;top:55%;left:25%;opacity:.6;animation:hdot 3s ease-in-out infinite .8s}
+    .hv-dot3{width:6px;height:6px;top:20%;left:70%;opacity:.4;animation:hdot 3s ease-in-out infinite 1.6s}
+    @keyframes hdot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+    .hv-line{position:absolute;background:rgba(var(--accent-rgb),.2)}
+    .hv-line1{top:18%;left:0;right:0;height:1px;transform:rotate(-8deg)}
+    .hv-line2{top:0;bottom:0;left:50%;width:1px;transform:rotate(4deg);opacity:.4}
+    .hv-label{position:absolute;top:1.5rem;right:1.5rem;font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);border:1px solid rgba(var(--accent-rgb),.2);padding:5px 12px;background:rgba(var(--accent-rgb),.04)}
+    .hv-type{position:absolute;bottom:4rem;left:2rem;font-size:clamp(5rem,12vw,11rem);font-weight:900;letter-spacing:-0.06em;line-height:.85;color:rgba(255,255,255,.03);user-select:none;pointer-events:none}
+    .hero::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,var(--dark) 35%,rgba(10,10,10,.3) 70%,transparent);pointer-events:none}
+    .hero-content{position:relative;z-index:2;max-width:720px}
+    .hero-kicker{font-size:10px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:.75rem;margin-bottom:2rem;opacity:0}
+    .hero-kicker::before{content:'';width:24px;height:1px;background:var(--accent)}
+    .hero-h{font-size:clamp(3rem,7vw,7.5rem);font-weight:900;line-height:.92;letter-spacing:-0.04em;color:#fff}
+    .hero-h em{color:var(--accent)}
+    .hero-h .hw{display:inline-block;transform:translateY(110%);overflow:visible}
+    .hero-h-line{overflow:hidden;display:block}
+    .hero-sub{font-size:15px;color:rgba(255,255,255,.5);line-height:1.8;max-width:420px;margin-top:2rem;opacity:0}
+    .hero-actions{display:flex;align-items:center;gap:1.5rem;margin-top:2.5rem;opacity:0}
+    .btn-primary{padding:14px 32px;border-radius:100px;background:var(--accent);color:#fff;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;transition:all .3s;display:inline-flex;align-items:center;gap:.5rem;position:relative;overflow:hidden}
+    .btn-primary::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.15) 1px,transparent 1px);background-size:6px 6px}
+    .btn-primary:hover{box-shadow:0 8px 28px rgba(var(--accent-rgb),.4);transform:translateY(-2px)}
+    .btn-ghost{padding:14px 32px;border-radius:100px;border:1px solid rgba(255,255,255,.2);color:#fff;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;transition:all .3s;display:inline-flex;align-items:center;gap:.5rem}
+    .btn-ghost:hover{border-color:rgba(var(--accent-rgb),.5);color:var(--accent)}
+    .hero-scroll-cta{position:absolute;bottom:4.5rem;right:2.5rem;z-index:2;display:flex;align-items:center;gap:1rem;opacity:0}
+    .hero-scroll-circle{width:52px;height:52px;border-radius:50%;border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;transition:border-color .3s,background .3s;animation:scrollbob 2.5s ease-in-out infinite}
+    .hero-scroll-circle svg{width:18px;height:18px;stroke:#fff;stroke-width:1.5;fill:none;transition:stroke .3s}
+    .hero-scroll-circle:hover{border-color:var(--accent);background:rgba(var(--accent-rgb),.08)}
+    .hero-scroll-circle:hover svg{stroke:var(--accent)}
+    @keyframes scrollbob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+
+    /* ===== STATEMENT (WHITE) ===== */
+    .stmt{background:var(--bg);padding:8rem 2.5rem;text-align:center;border-bottom:1px solid var(--border-light)}
+    .stmt-inner{max-width:780px;margin:0 auto}
+    .stmt-tag{font-size:10px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--accent);margin-bottom:2.5rem;opacity:0;transform:translateY(20px);transition:opacity .7s,transform .7s}
+    .stmt-tag.vis{opacity:1;transform:none}
+    .stmt-p{font-size:clamp(1.25rem,2.5vw,2rem);color:rgba(12,12,12,.75);line-height:1.7;font-weight:400;opacity:0;transform:translateY(20px);transition:opacity .9s .15s,transform .9s .15s}
+    .stmt-p.vis{opacity:1;transform:none}
+    .stmt-p em{color:var(--text);font-style:italic;font-family:'Playfair Display',serif}
+    .stmt-p strong{color:var(--accent);font-style:normal;font-family:inherit}
+
+    /* ===== HOW WE DO IT — SCROLL-DRIVEN STICKY CARDS ===== */
+    .how-wrap{position:relative;background:var(--bg)}
+    .how-sticky{
+      position:sticky;top:0;height:100vh;overflow:hidden;
+      display:grid;grid-template-columns:1fr 1fr;
+      background:var(--bg);
+    }
+    /* left panel */
+    .how-left{
+      display:flex;flex-direction:column;justify-content:center;
+      padding:5rem 4rem 5rem 2.5rem;
+      border-right:1px solid var(--border-light);
+      position:relative;
+    }
+    .how-step-label{
+      font-size:10px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;
+      color:var(--accent);margin-bottom:1.5rem;display:flex;align-items:center;gap:.75rem;
+    }
+    .how-step-label::before{content:'';width:20px;height:1px;background:var(--accent)}
+    .how-big-num{
+      font-size:clamp(6rem,14vw,12rem);font-weight:900;letter-spacing:-0.06em;line-height:.85;
+      color:rgba(12,12,12,.06);position:absolute;right:3rem;top:50%;transform:translateY(-50%);
+      user-select:none;pointer-events:none;transition:none;
+    }
+    .how-step-title{
+      font-size:clamp(2rem,4vw,3.5rem);font-weight:900;letter-spacing:-0.03em;line-height:1.05;
+      margin-bottom:1.5rem;transition:opacity .5s,transform .5s;
+    }
+    .how-step-title em{color:var(--accent)}
+    .how-step-text{font-size:15px;color:var(--muted);line-height:1.9;max-width:400px;transition:opacity .5s .05s,transform .5s .05s}
+    /* progress dots */
+    .how-progress{
+      position:absolute;bottom:3.5rem;left:2.5rem;
+      display:flex;gap:.6rem;align-items:center;
+    }
+    .how-prog-dot{
+      width:6px;height:6px;border-radius:50%;background:rgba(12,12,12,.15);
+      transition:background .3s,transform .3s;
+    }
+    .how-prog-dot.on{background:var(--accent);transform:scale(1.4)}
+    /* right panel — card stack */
+    .how-right{
+      position:relative;display:flex;align-items:center;justify-content:center;
+      padding:3rem;overflow:hidden;
+    }
+    .how-float-card{
+      position:absolute;
+      width:380px;max-width:calc(100% - 4rem);
+      background:var(--dark2);border-radius:20px;
+      border:1px solid rgba(255,255,255,.07);
+      padding:2.5rem;
+      box-shadow:0 32px 80px rgba(0,0,0,.35),0 0 0 1px rgba(255,255,255,.04);
+      will-change:transform,opacity;
+      /* initial: below the viewport */
+      transform:translateY(120px) rotate(4deg);
+      opacity:0;
+      pointer-events:none;
+      transition:none; /* JS drives this with requestAnimationFrame */
+    }
+    .how-float-card.settling{
+      transition:transform .85s cubic-bezier(.16,1,.3,1),opacity .6s ease,box-shadow .5s;
+    }
+    .how-float-card.active{transform:translateY(0) rotate(0deg);opacity:1;pointer-events:auto;box-shadow:0 48px 100px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.06)}
+    .how-float-card.stacked-1{transform:translateY(-18px) scale(.96) rotate(-1deg);opacity:.7;z-index:0}
+    .how-float-card.stacked-2{transform:translateY(-32px) scale(.92) rotate(1deg);opacity:.4;z-index:-1}
+    .how-float-card.stacked-3{transform:translateY(-44px) scale(.88) rotate(-1.5deg);opacity:.2;z-index:-2}
+    .how-float-card.gone{transform:translateY(-80px) scale(.85);opacity:0}
+    /* card internals */
+    .hfc-num{font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem;display:flex;align-items:center;gap:.6rem}
+    .hfc-num::before{content:'';width:14px;height:1px;background:var(--accent)}
+    .hfc-icon{
+      width:52px;height:52px;border:1px solid rgba(var(--accent-rgb),.25);border-radius:12px;
+      display:flex;align-items:center;justify-content:center;font-size:22px;
+      margin-bottom:2rem;background:rgba(var(--accent-rgb),.05);
+    }
+    .hfc-title{font-size:1.35rem;font-weight:800;color:#fff;line-height:1.2;margin-bottom:.85rem}
+    .hfc-title em{color:var(--accent)}
+    .hfc-text{font-size:13px;color:rgba(255,255,255,.45);line-height:1.9}
+    .hfc-tag{
+      display:inline-flex;align-items:center;gap:.5rem;margin-top:2rem;
+      font-size:9px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;
+      color:rgba(255,255,255,.25);border-top:1px solid rgba(255,255,255,.06);
+      padding-top:1.25rem;width:100%;
+    }
+    .hfc-tag-dot{width:5px;height:5px;border-radius:50%;background:var(--accent)}
+    /* scroll spacer — JS reads this height */
+    .how-spacer{height:400vh}
+    /* mobile fallback */
+    @media(max-width:900px){
+      .how-sticky{grid-template-columns:1fr;height:auto;position:relative;padding:5rem 2.5rem}
+      .how-right{display:none}
+      .how-float-card{position:relative;width:100%;transform:none;opacity:1;margin-bottom:1.5rem;pointer-events:auto}
+      .how-spacer{display:none}
+      .how-big-num{display:none}
+    }
+
+    /* ===== WORK ===== */
+    .work{background:var(--bg);padding:0 2.5rem 6rem}
+    .work-inner{max-width:1300px;margin:0 auto}
+    .work-hdr{display:flex;align-items:baseline;justify-content:space-between;padding:5rem 0 3.5rem;border-bottom:1px solid var(--border-light)}
+    .work-title{font-size:clamp(3rem,7vw,6rem);font-weight:900;letter-spacing:-0.04em}
+    .work-title em{color:var(--accent)}
+    .work-see-all{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:10px 22px;border:1px solid var(--border-light);border-radius:100px;color:var(--muted);transition:all .3s}
+    .work-see-all:hover{border-color:var(--text);color:var(--text)}
+    .work-cards{display:flex;flex-direction:column;gap:2px;margin-top:2px}
+    .work-card{position:relative;overflow:hidden;height:500px;display:flex;flex-direction:column;justify-content:flex-end;cursor:pointer;background:#111;opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
+    .work-card.vis{opacity:1;transform:none}
+    .work-card-bg{position:absolute;inset:0;transition:transform .8s cubic-bezier(.16,1,.3,1);background-size:cover;background-position:center}
+    .work-card:hover .work-card-bg{transform:scale(1.04)}
+    .work-card-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.75) 0%,rgba(0,0,0,.1) 50%,transparent);transition:opacity .4s}
+    .work-card:hover .work-card-ov{opacity:.85}
+    .work-card-info{position:relative;z-index:2;padding:2.5rem;display:flex;align-items:flex-end;justify-content:space-between}
+    .work-card-meta{display:flex;align-items:center;gap:.75rem;margin-bottom:.6rem}
+    .work-card-cat{font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);background:rgba(var(--accent-rgb),.1);border:1px solid rgba(var(--accent-rgb),.2);padding:4px 10px}
+    .work-card-name{font-size:clamp(1.5rem,3vw,2.5rem);font-weight:900;color:#fff;letter-spacing:-0.02em;line-height:1.1}
+    .work-card-action{display:flex;align-items:center;gap:.6rem;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6);transition:color .3s;flex-shrink:0}
+    .work-card:hover .work-card-action{color:var(--accent)}
+    .work-card-action svg{width:16px;height:16px;stroke:currentColor;stroke-width:1.5;fill:none;transition:transform .3s}
+    .work-card:hover .work-card-action svg{transform:translate(2px,-2px)}
+
+    /* ===== TOOLS / CERTIFIED (WHITE) ===== */
+    .tools{background:var(--bg);padding:7rem 2.5rem;text-align:center;border-top:1px solid var(--border-light)}
+    .tools-inner{max-width:900px;margin:0 auto}
+    .tools-h{font-size:clamp(2rem,4vw,3.5rem);font-weight:900;letter-spacing:-0.03em;color:var(--text);margin-bottom:.6rem}
+    .tools-h em{color:var(--accent)}
+    .tools-sub{font-size:14px;color:var(--muted);line-height:1.8;max-width:520px;margin:.75rem auto 4rem}
+    .tools-grid{display:flex;align-items:center;justify-content:center;gap:1.25rem;flex-wrap:wrap}
+    .tool-chip{width:72px;height:72px;background:var(--bg);border:1px solid var(--border-light);border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.3rem;font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);transition:opacity .6s,transform .6s,border-color .3s,color .3s;cursor:default;opacity:0;transform:translateY(16px)}
+    .tool-chip.vis{opacity:1;transform:none}
+    .tool-chip:hover{border-color:var(--accent);color:var(--accent);background:rgba(var(--accent-rgb),.04)}
+    .tool-chip-icon{font-size:20px;line-height:1}
+
+    /* ===== MARQUEE ===== */
+    .mq-strip{overflow:hidden;background:var(--accent);padding:1rem 0}
+    .mq-track{display:flex;white-space:nowrap;animation:mq 22s linear infinite;will-change:transform}
+    .mq-strip:hover .mq-track{animation-play-state:paused}
+    .mq-item{display:inline-flex;align-items:center;gap:1.5rem;font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#fff;padding:0 1.5rem;flex-shrink:0}
+    .mq-dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.4)}
+    @keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+    /* ===== STATS (WHITE) ===== */
+    .stats-sec{background:var(--bg);padding:8rem 2.5rem;border-top:1px solid var(--border-light)}
+    .stats-inner{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
+    .stats-tag{font-size:10px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--accent);margin-bottom:2.5rem;display:flex;align-items:center;gap:.75rem}
+    .stats-tag::before{content:'';width:20px;height:1px;background:var(--accent)}
+    .stat-row{padding:2rem 0;border-bottom:1px solid var(--border-light)}
+    .stat-row:first-of-type{border-top:1px solid var(--border-light)}
+    .stat-row-inner{display:flex;align-items:baseline;gap:1.25rem}
+    .stat-num{font-size:clamp(3rem,6vw,5.5rem);font-weight:900;letter-spacing:-0.04em;color:var(--accent);line-height:1}
+    .stat-label{font-size:14px;color:var(--muted);line-height:1.6;max-width:260px}
+    .stat-label strong{display:block;color:var(--text);font-size:1rem;font-weight:700;margin-bottom:.25rem}
+    .stats-right{position:relative}
+    .stats-visual{aspect-ratio:1;max-width:480px;margin:0 auto;background:#f9f9f9;border:1px solid var(--border-light);border-radius:24px;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center}
+    .sv-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(0,0,0,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.04) 1px,transparent 1px);background-size:40px 40px}
+    .sv-center{position:relative;z-index:2;text-align:center}
+    .sv-ring{width:180px;height:180px;border-radius:50%;border:1px solid rgba(var(--accent-rgb),.3);display:flex;align-items:center;justify-content:center;position:relative;margin:0 auto;animation:svring 6s linear infinite}
+    @keyframes svring{to{transform:rotate(360deg)}}
+    .sv-ring::before{content:'';position:absolute;inset:-20px;border-radius:50%;border:1px solid rgba(var(--accent-rgb),.1);animation:svring 10s linear infinite reverse}
+    .sv-ring-dot{position:absolute;width:10px;height:10px;border-radius:50%;background:var(--accent);top:-5px;left:50%;transform:translateX(-50%);box-shadow:0 0 16px rgba(var(--accent-rgb),.6)}
+    .sv-core{width:80px;height:80px;border-radius:50%;background:rgba(var(--accent-rgb),.08);border:1px solid rgba(var(--accent-rgb),.3);display:flex;align-items:center;justify-content:center;font-size:24px}
+    .sv-bars{display:flex;gap:6px;margin-top:2rem;justify-content:center}
+    .sv-bar{width:6px;border-radius:3px;background:var(--accent);opacity:.6;animation:svbar 1.6s ease-in-out infinite}
+    .sv-bar:nth-child(1){height:32px;animation-delay:0s}
+    .sv-bar:nth-child(2){height:48px;animation-delay:.15s}
+    .sv-bar:nth-child(3){height:24px;animation-delay:.3s}
+    .sv-bar:nth-child(4){height:40px;animation-delay:.45s}
+    .sv-bar:nth-child(5){height:32px;animation-delay:.6s}
+    @keyframes svbar{0%,100%{opacity:.3;transform:scaleY(.6)}50%{opacity:.8;transform:scaleY(1)}}
+    .sv-tags{position:absolute;display:flex;flex-direction:column;gap:.5rem}
+    .sv-tags.top-left{top:1.5rem;left:1.5rem}
+    .sv-tags.bottom-right{bottom:1.5rem;right:1.5rem;text-align:right}
+    .sv-tag{font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);background:rgba(var(--accent-rgb),.07);border:1px solid rgba(var(--accent-rgb),.15);padding:4px 8px;display:inline-block}
+
+    /* ===== DESIGN PILLARS (DARK) ===== */
+    .pillars{background:var(--dark);padding:8rem 2.5rem;border-top:1px solid rgba(255,255,255,.05)}
+    .pillars-inner{max-width:1300px;margin:0 auto}
+    .pillars-hdr{text-align:center;margin-bottom:4rem}
+    .pillars-tag{font-size:10px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--accent);margin-bottom:.75rem}
+    .pillars-h{font-size:clamp(2.5rem,5vw,4rem);font-weight:900;letter-spacing:-0.03em;color:#fff}
+    .pillars-h em{color:var(--accent)}
+    .pillars-row{display:flex;gap:1.5px;height:380px}
+    .pcard{flex:1;background:var(--dark2);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:2.5rem;position:relative;overflow:hidden;cursor:pointer;transition:flex .5s cubic-bezier(.16,1,.3,1),border-color .3s;display:flex;flex-direction:column;justify-content:flex-end}
+    .pcard.active,.pcard:hover{flex:2.8;border-color:rgba(var(--accent-rgb),.2)}
+    .pcard::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.16,1,.3,1)}
+    .pcard.active::before,.pcard:hover::before{transform:scaleX(1)}
+    .pcard-icon{width:40px;height:40px;border:1px solid rgba(var(--accent-rgb),.2);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;margin-bottom:auto;transition:border-color .3s,background .3s}
+    .pcard.active .pcard-icon,.pcard:hover .pcard-icon{border-color:var(--accent);background:rgba(var(--accent-rgb),.08)}
+    .pcard-num{font-size:9px;font-weight:700;letter-spacing:.2em;color:var(--accent);margin-bottom:.75rem}
+    .pcard-title{font-size:1.05rem;font-weight:800;color:#fff;line-height:1.2;margin-bottom:.5rem}
+    .pcard-desc{font-size:12.5px;color:rgba(255,255,255,.4);line-height:1.8;max-height:0;overflow:hidden;opacity:0;transition:max-height .5s cubic-bezier(.16,1,.3,1),opacity .4s .1s}
+    .pcard.active .pcard-desc,.pcard:hover .pcard-desc{max-height:200px;opacity:1}
+    .pcard-bg-num{position:absolute;bottom:-1.5rem;right:1rem;font-size:8rem;font-weight:900;color:rgba(255,255,255,.025);letter-spacing:-0.05em;user-select:none}
+
+    /* ===== FROM YANGON TO THE WORLD (DARK) ===== */
+    .world-sec{background:var(--dark);padding:8rem 2.5rem;border-top:1px solid rgba(255,255,255,.05);overflow:hidden}
+    .world-inner{max-width:1300px;margin:0 auto}
+    .world-top{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;margin-bottom:5rem}
+    .world-left .world-tag{font-size:10px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem}
+    .world-h{font-size:clamp(2.5rem,5vw,4.5rem);font-weight:900;letter-spacing:-0.04em;line-height:1.02;color:#fff}
+    .world-h em{color:var(--accent)}
+    .world-desc{font-size:15px;color:rgba(255,255,255,.45);line-height:1.9;margin-top:1.5rem;max-width:420px}
+    .world-cities{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:2.5rem}
+    .world-city{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:6px 14px;border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.45);border-radius:100px;transition:all .3s}
+    .world-city:hover{border-color:var(--accent);color:var(--accent)}
+    /* MAP VISUAL */
+    .world-map{position:relative;height:340px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:20px;overflow:hidden}
+    .map-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:30px 30px}
+    /* continent blobs */
+    .map-blob{position:absolute;border-radius:50%;opacity:.12;background:rgba(255,255,255,1)}
+    .mb-asia{width:320px;height:200px;top:20%;left:55%;border-radius:40%}
+    .mb-europe{width:120px;height:100px;top:10%;left:38%;border-radius:50%}
+    .mb-africa{width:120px;height:180px;top:30%;left:38%;border-radius:40%}
+    .mb-americas{width:160px;height:260px;top:10%;left:8%;border-radius:40%}
+    .mb-oceania{width:100px;height:80px;top:55%;left:72%;border-radius:50%}
+    /* location pins */
+    .map-pin{position:absolute;display:flex;flex-direction:column;align-items:center;cursor:default}
+    .map-pin-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px rgba(var(--accent-rgb),.7);position:relative}
+    .map-pin-dot::before{content:'';position:absolute;inset:-4px;border-radius:50%;border:1px solid rgba(var(--accent-rgb),.4);animation:pinpulse 2s ease-in-out infinite}
+    .map-pin-label{font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:4px;white-space:nowrap;background:rgba(10,10,10,.8);padding:2px 6px;border-radius:4px}
+    @keyframes pinpulse{0%,100%{transform:scale(1);opacity:.6}50%{transform:scale(1.8);opacity:0}}
+    /* SVG lines between Yangon pin and others */
+    .map-lines{position:absolute;inset:0;pointer-events:none}
+    /* home pin (Yangon) is bigger / red */
+    .map-pin.home .map-pin-dot{width:12px;height:12px;background:var(--accent);box-shadow:0 0 20px rgba(var(--accent-rgb),.9)}
+    .map-pin.home .map-pin-dot::before{inset:-6px;border-color:rgba(var(--accent-rgb),.5)}
+    /* stats row below map */
+    .world-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:1px;background:rgba(255,255,255,.06)}
+    .ws-item{background:var(--dark);padding:2rem;text-align:center}
+    .ws-num{font-size:2.2rem;font-weight:900;color:var(--accent);letter-spacing:-0.03em}
+    .ws-label{font-size:11px;color:rgba(255,255,255,.35);margin-top:.35rem;letter-spacing:.04em}
+
+    /* ===== BLOG (WHITE) ===== */
+    .blog{background:var(--bg);padding:8rem 2.5rem;border-top:1px solid var(--border-light)}
+    .blog-inner{max-width:1300px;margin:0 auto}
+    .blog-hdr{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:4rem}
+    .blog-title-wrap{}
+    .blog-sup{font-size:10px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--accent);margin-bottom:.75rem}
+    .blog-title{font-size:clamp(2.5rem,5vw,4.5rem);font-weight:900;letter-spacing:-0.04em}
+    .blog-title em{color:var(--accent)}
+    .blog-see-all{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:10px 22px;border:1px solid var(--border-light);border-radius:100px;color:var(--muted);transition:all .3s;align-self:flex-end}
+    .blog-see-all:hover{border-color:var(--text);color:var(--text)}
+    .blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+    .blog-card{position:relative;border:1px solid var(--border-light);border-radius:16px;overflow:hidden;cursor:pointer;transition:border-color .3s,transform .4s cubic-bezier(.16,1,.3,1);opacity:0;transform:translateY(28px)}
+    .blog-card.vis{opacity:1;transform:none}
+    .blog-card:hover{border-color:var(--accent);transform:translateY(-4px)}
+    .blog-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.16,1,.3,1)}
+    .blog-card:hover::before{transform:scaleX(1)}
+    .blog-card-img{height:200px;background:#f0f0f0;overflow:hidden;position:relative}
+    .blog-card-img-inner{position:absolute;inset:0;transition:transform .8s cubic-bezier(.16,1,.3,1)}
+    .blog-card:hover .blog-card-img-inner{transform:scale(1.06)}
+    .bci-1{background:linear-gradient(135deg,#1a0808 0%,#3d1010 50%,#7b2020 100%)}
+    .bci-2{background:linear-gradient(135deg,#080a1a 0%,#10163d 50%,#202070 100%)}
+    .bci-3{background:linear-gradient(135deg,#0a0a0a 0%,#222 50%,#333 100%)}
+    .blog-card-body{padding:1.75rem}
+    .blog-card-meta{display:flex;align-items:center;gap:.75rem;margin-bottom:1rem}
+    .blog-card-cat{font-size:8px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);background:rgba(var(--accent-rgb),.08);border:1px solid rgba(var(--accent-rgb),.18);padding:3px 9px}
+    .blog-card-date{font-size:10px;color:var(--muted)}
+    .blog-card-title{font-size:1.05rem;font-weight:800;color:var(--text);line-height:1.3;margin-bottom:.75rem}
+    .blog-card-excerpt{font-size:13px;color:var(--muted);line-height:1.75}
+    .blog-card-link{display:inline-flex;align-items:center;gap:.4rem;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-top:1.25rem;transition:gap .2s}
+    .blog-card:hover .blog-card-link{gap:.7rem}
+    .blog-card-link svg{width:14px;height:14px;stroke:currentColor;stroke-width:1.5;fill:none}
+
+    /* ===== CTA (DARK) ===== */
+    .cta{background:var(--dark);padding:0 2.5rem}
+    .cta-inner{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;min-height:60vh;align-items:center;border-left:1px solid rgba(255,255,255,.06);border-right:1px solid rgba(255,255,255,.06)}
+    .cta-left{padding:6rem 4rem 6rem 0;border-right:1px solid rgba(255,255,255,.06)}
+    .cta-tag{font-size:10px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--accent);margin-bottom:2rem;display:flex;align-items:center;gap:.75rem}
+    .cta-tag::before{content:'';width:20px;height:1px;background:var(--accent)}
+    .cta-h{font-size:clamp(2.5rem,5vw,4.5rem);font-weight:900;letter-spacing:-0.04em;color:#fff;line-height:1}
+    .cta-h em{color:var(--accent)}
+    .cta-actions{display:flex;align-items:center;gap:1.5rem;margin-top:3rem;flex-wrap:wrap}
+    .cta-arrow{width:56px;height:56px;border-radius:50%;border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;transition:all .3s;cursor:pointer}
+    .cta-arrow:hover{border-color:var(--accent);background:rgba(var(--accent-rgb),.1)}
+    .cta-arrow svg{width:20px;height:20px;stroke:#fff;stroke-width:1.5;fill:none;transition:stroke .3s}
+    .cta-arrow:hover svg{stroke:var(--accent)}
+    .cta-right{padding:6rem 0 6rem 4rem;display:flex;align-items:center;justify-content:center}
+    .cta-visual{width:280px;height:280px;position:relative;border-radius:50%;background:conic-gradient(from 180deg,var(--accent) 0deg,rgba(var(--accent-rgb),.3) 90deg,transparent 180deg,rgba(var(--accent-rgb),.1) 270deg,var(--accent) 360deg);animation:ctaspin 12s linear infinite}
+    .cta-visual::before{content:'';position:absolute;inset:20px;border-radius:50%;background:var(--dark);animation:ctaspin 12s linear infinite reverse}
+    .cta-visual::after{content:'';position:absolute;inset:40px;border-radius:50%;border:1px solid rgba(var(--accent-rgb),.2)}
+    .cta-visual-core{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:2;font-size:1.2rem;font-weight:900;color:var(--accent);letter-spacing:.1em}
+    @keyframes ctaspin{to{transform:rotate(360deg)}}
+
+    /* ===== FOOTER ===== */
+    footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.07);padding:4rem 2.5rem 2rem}
+    .ft-inner{max-width:1300px;margin:0 auto}
+    .ft-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,.07)}
+    .ft-logo{display:flex;align-items:center;gap:.75rem;margin-bottom:1.25rem}
+    .ft-logo-sq{width:28px;height:28px;border:1.5px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;color:var(--accent)}
+    .ft-logo-t{font-size:11px;font-weight:800;letter-spacing:.22em;color:#fff}
+    .ft-desc{font-size:13px;color:rgba(255,255,255,.35);line-height:1.9;max-width:240px}
+    .ft-col-h{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:1.25rem}
+    .ft-col-links{display:flex;flex-direction:column;gap:.7rem}
+    .ft-col-links a,.ft-col-links span{font-size:13px;color:rgba(255,255,255,.45);transition:color .2s;line-height:1.7}
+    .ft-col-links a:hover{color:var(--accent)}
+    .ft-bot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;padding-top:2rem;font-size:12px;color:rgba(255,255,255,.25)}
+    .ft-acc{color:var(--accent)}
+
+    /* REVEAL */
+    .rv{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+    .rv.vis{opacity:1;transform:none}
+    .rv1{transition-delay:.1s}
+    .rv2{transition-delay:.2s}
+    .rv3{transition-delay:.3s}
+
+    /* MOBILE */
+    @media(max-width:900px){
+      body{cursor:auto}
+      #cur{display:none}
+      nav .nav-links{display:none}
+      .hero-visual{display:none}
+      .hero::after{background:linear-gradient(180deg,transparent,rgba(10,10,10,.85))}
+      .how-row{grid-template-columns:1fr}
+      .how-row:nth-child(odd) .how-card:first-child,.how-row:nth-child(even) .how-card:last-child{margin-top:0}
+      .stats-inner{grid-template-columns:1fr}
+      .stats-right{display:none}
+      .world-top{grid-template-columns:1fr}
+      .world-stats{grid-template-columns:1fr 1fr}
+      .blog-grid{grid-template-columns:1fr}
+      .pillars-row{flex-direction:column;height:auto;gap:1rem}
+      .pcard{flex:none !important}
+      .pcard-desc{max-height:200px !important;opacity:1 !important}
+      .cta-inner{grid-template-columns:1fr}
+      .cta-right{display:none}
+      .cta-left{border-right:none;padding:4rem 0}
+      .ft-top{grid-template-columns:1fr 1fr}
+      .float-menu{display:none}
+      .blog-hdr{flex-direction:column;gap:1.5rem}
+    }
+  </style>
+</head>
+<body>
+
+<div id="scroll-prog"></div>
+
+<!-- FLOATING CONTACT -->
+<div class="float-menu">
+  <a href="https://wa.me/959255762417" target="_blank" class="float-btn" title="WhatsApp">
+    <div class="fb-corner"></div>
+    <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+  </a>
+  <a href="tel:+959255762417" class="float-btn" title="Call">
+    <div class="fb-corner"></div>
+    <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.57 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.48 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.09 6.09l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  </a>
+  <a href="mailto:nyinyisoewin@awakenentertainment.org" class="float-btn" title="Email">
+    <div class="fb-corner"></div>
+    <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+  </a>
+</div>
+
+<!-- CURSOR -->
+<div id="cur"><div class="cur-r" id="cr"></div><div class="cur-d" id="cd"></div></div>
+
+<!-- LOADER -->
+<div id="ld">
+  <div class="ld-num" id="ldNum">0</div>
+  <div class="ld-bar"><div class="ld-fill" id="ldFill"></div></div>
+</div>
+
+<!-- NAV -->
+<nav id="nav" class="on-dark">
+  <a href="/" class="nav-logo">
+    <div class="nav-logo-sq">A</div>AWAKEN
+  </a>
+  <div class="nav-links">
+    <a href="/digital/">Digital</a>
+    <a href="/design/" class="active">Design</a>
+    <a href="/tech/">Tech</a>
+    <a href="/production/">Production</a>
+    <a href="/pr/">PR</a>
+  </div>
+  <a href="https://www.awakenentertainment.org/contact" target="_blank" class="nav-cta">Contact Us</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-visual">
+    <div class="hv-grid"></div>
+    <div class="hv-rect hv-rect1"></div>
+    <div class="hv-rect hv-rect2"></div>
+    <div class="hv-rect hv-rect3"></div>
+    <div class="hv-dot hv-dot1"></div>
+    <div class="hv-dot hv-dot2"></div>
+    <div class="hv-dot hv-dot3"></div>
+    <div class="hv-line hv-line1"></div>
+    <div class="hv-line hv-line2"></div>
+    <div class="hv-label">Awaken Design Studio</div>
+    <div class="hv-type">DS</div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-kicker" id="hKicker">Design Studio &middot; Yangon</div>
+    <h1 class="hero-h" id="hTitle">
+      <span class="hero-h-line"><span class="hw">We design</span> <span class="hw"><em>brands</em></span></span>
+      <span class="hero-h-line"><span class="hw">that</span> <span class="hw">make</span> <span class="hw">people</span></span>
+      <span class="hero-h-line"><span class="hw">stop</span> <span class="hw">&amp;</span> <span class="hw"><em>feel.</em></span></span>
+    </h1>
+    <p class="hero-sub" id="hSub">From brand identity to motion &mdash; we craft visual systems with intention, built to last across every medium and market.</p>
+    <div class="hero-actions" id="hActions">
+      <a href="https://www.awakenentertainment.org/contact" target="_blank" class="btn-primary">Start a Project &rarr;</a>
+      <a href="#work" class="btn-ghost">See Our Work</a>
+    </div>
+  </div>
+  <a href="#statement" class="hero-scroll-cta" id="hScroll">
+    <div class="hero-scroll-circle">
+      <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+  </a>
+</section>
+
+<!-- STATEMENT (WHITE) -->
+<section class="stmt" id="statement">
+  <div class="stmt-inner">
+    <div class="stmt-tag rv">Design Studio &middot; Est. 2016</div>
+    <p class="stmt-p rv rv1">We are <em>Awaken Design</em> &mdash; a studio that partners with ambitious brands to create <strong>visual identities</strong> that command attention, communicate purpose, and <em>endure.</em></p>
+  </div>
+</section>
+
+<!-- HOW WE DO IT — SCROLL-DRIVEN STICKY CARDS -->
+<div class="how-wrap" id="process">
+  <!-- sticky viewport -->
+  <div class="how-sticky" id="howSticky">
+    <!-- LEFT: text that updates per step -->
+    <div class="how-left">
+      <div class="how-step-label" id="howLabel">Our Process</div>
+      <h2 class="how-step-title" id="howTitle">How we <em>do</em> it.</h2>
+      <p class="how-step-text" id="howText">Four disciplines. One studio. Zero handoffs.</p>
+      <div class="how-big-num" id="howBigNum">01</div>
+      <div class="how-progress">
+        <div class="how-prog-dot on" data-pi="0"></div>
+        <div class="how-prog-dot" data-pi="1"></div>
+        <div class="how-prog-dot" data-pi="2"></div>
+        <div class="how-prog-dot" data-pi="3"></div>
+      </div>
+    </div>
+    <!-- RIGHT: floating card stack -->
+    <div class="how-right">
+      <div class="how-float-card settling active" id="hCard0">
+        <div class="hfc-num">01 &mdash; Discover</div>
+        <div class="hfc-icon">&#10022;</div>
+        <div class="hfc-title">We <em>know</em> our clients.</div>
+        <div class="hfc-text">Before a single pixel, we immerse ourselves in your brand story, audience, and competitive landscape. Every creative decision starts with deep understanding.</div>
+        <div class="hfc-tag"><span class="hfc-tag-dot"></span>Research &amp; Strategy</div>
+      </div>
+      <div class="how-float-card" id="hCard1">
+        <div class="hfc-num">02 &mdash; Concept</div>
+        <div class="hfc-icon">&#9672;</div>
+        <div class="hfc-title">We set clear <em>direction.</em></div>
+        <div class="hfc-text">We present multiple visual directions &mdash; mood boards, type pairings, colour stories &mdash; then refine the one that resonates. Nothing moves to production without alignment.</div>
+        <div class="hfc-tag"><span class="hfc-tag-dot"></span>Visual Direction</div>
+      </div>
+      <div class="how-float-card" id="hCard2">
+        <div class="hfc-num">03 &mdash; Design</div>
+        <div class="hfc-icon">&#9650;</div>
+        <div class="hfc-title">We <em>QA</em> everything.</div>
+        <div class="hfc-text">Every asset, every format, every screen size. Our design system approach means nothing ships until it passes our internal review &mdash; pixel-perfect and production-ready.</div>
+        <div class="hfc-tag"><span class="hfc-tag-dot"></span>Craft &amp; Precision</div>
+      </div>
+      <div class="how-float-card" id="hCard3">
+        <div class="hfc-num">04 &mdash; Deliver</div>
+        <div class="hfc-icon">&#11041;</div>
+        <div class="hfc-title">We&rsquo;re never <em>done.</em></div>
+        <div class="hfc-text">Our team stays available after delivery &mdash; fast turnaround on revisions, brand guidance, and asset extensions so your identity grows as your business does.</div>
+        <div class="hfc-tag"><span class="hfc-tag-dot"></span>Ongoing Support</div>
+      </div>
+    </div>
+  </div>
+  <!-- scroll spacer — creates scroll distance for the sticky to play through -->
+  <div class="how-spacer"></div>
+</div>
+
+<!-- WORK -->
+<section class="work" id="work">
+  <div class="work-inner">
+    <div class="work-hdr">
+      <h2 class="work-title rv">Work.<em>.</em></h2>
+      <a href="https://www.awakenentertainment.org/contact" target="_blank" class="work-see-all rv rv1">See All</a>
+    </div>
+    <div class="work-cards">
+      <div class="work-card" data-wd="0">
+        <div class="work-card-bg" style="background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%)"></div>
+        <div class="work-card-ov"></div>
+        <div class="work-card-info">
+          <div>
+            <div class="work-card-meta"><span class="work-card-cat">Brand Identity</span></div>
+            <div class="work-card-name">Yoma Strategic Holdings</div>
+          </div>
+          <div class="work-card-action">See Details <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+        </div>
+      </div>
+      <div class="work-card" data-wd="60">
+        <div class="work-card-bg" style="background:linear-gradient(135deg,#2a0808 0%,#4d1515 50%,#8b2a2a 100%)"></div>
+        <div class="work-card-ov"></div>
+        <div class="work-card-info">
+          <div>
+            <div class="work-card-meta"><span class="work-card-cat">Visual Design</span></div>
+            <div class="work-card-name">Shwe Taung Group</div>
+          </div>
+          <div class="work-card-action">See Details <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+        </div>
+      </div>
+      <div class="work-card" data-wd="120">
+        <div class="work-card-bg" style="background:linear-gradient(135deg,#0a1a0a 0%,#0d2b0d 50%,#1a5c1a 100%)"></div>
+        <div class="work-card-ov"></div>
+        <div class="work-card-info">
+          <div>
+            <div class="work-card-meta"><span class="work-card-cat">UI / UX Design</span></div>
+            <div class="work-card-name">KBZ Bank Digital Platform</div>
+          </div>
+          <div class="work-card-action">See Details <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+        </div>
+      </div>
+      <div class="work-card" data-wd="180">
+        <div class="work-card-bg" style="background:linear-gradient(135deg,#1a0f2e 0%,#2d1b5e 50%,#4a2d8f 100%)"></div>
+        <div class="work-card-ov"></div>
+        <div class="work-card-info">
+          <div>
+            <div class="work-card-meta"><span class="work-card-cat">Motion &amp; Animation</span></div>
+            <div class="work-card-name">City Mart Supercentre</div>
+          </div>
+          <div class="work-card-action">See Details <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+        </div>
+      </div>
+      <div class="work-card" data-wd="240">
+        <div class="work-card-bg" style="background:linear-gradient(135deg,#0f1a1a 0%,#1a3d3d 50%,#2d7070 100%)"></div>
+        <div class="work-card-ov"></div>
+        <div class="work-card-info">
+          <div>
+            <div class="work-card-meta"><span class="work-card-cat">Packaging Design</span></div>
+            <div class="work-card-name">Lotte Hotel &amp; Residences</div>
+          </div>
+          <div class="work-card-action">See Details <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS / CERTIFIED (WHITE) -->
+<section class="tools" id="tools">
+  <div class="tools-inner">
+    <h2 class="tools-h rv">We are <em>certified.</em></h2>
+    <p class="tools-sub rv rv1">Our designers are certified professionals across industry-standard tools &mdash; ensuring quality, precision, and consistency on every project.</p>
+    <div class="tools-grid">
+      <div class="tool-chip" data-td="0"><div class="tool-chip-icon">&#127912;</div>Figma</div>
+      <div class="tool-chip" data-td="60"><div class="tool-chip-icon">&#11041;</div>Illustrator</div>
+      <div class="tool-chip" data-td="120"><div class="tool-chip-icon">&#9723;</div>Photoshop</div>
+      <div class="tool-chip" data-td="180"><div class="tool-chip-icon">&#9654;</div>After Effects</div>
+      <div class="tool-chip" data-td="240"><div class="tool-chip-icon">&#9672;</div>InDesign</div>
+      <div class="tool-chip" data-td="300"><div class="tool-chip-icon">&#10022;</div>Adobe XD</div>
+      <div class="tool-chip" data-td="360"><div class="tool-chip-icon">&#9650;</div>Cinema 4D</div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="mq-strip">
+  <div class="mq-track">
+    <span class="mq-item">Brand Identity<span class="mq-dot"></span></span>
+    <span class="mq-item">Visual Design<span class="mq-dot"></span></span>
+    <span class="mq-item">Motion Graphics<span class="mq-dot"></span></span>
+    <span class="mq-item">UI / UX<span class="mq-dot"></span></span>
+    <span class="mq-item">Typography<span class="mq-dot"></span></span>
+    <span class="mq-item">Packaging<span class="mq-dot"></span></span>
+    <span class="mq-item">Design Systems<span class="mq-dot"></span></span>
+    <span class="mq-item">Art Direction<span class="mq-dot"></span></span>
+    <span class="mq-item">Brand Identity<span class="mq-dot"></span></span>
+    <span class="mq-item">Visual Design<span class="mq-dot"></span></span>
+    <span class="mq-item">Motion Graphics<span class="mq-dot"></span></span>
+    <span class="mq-item">UI / UX<span class="mq-dot"></span></span>
+    <span class="mq-item">Typography<span class="mq-dot"></span></span>
+    <span class="mq-item">Packaging<span class="mq-dot"></span></span>
+    <span class="mq-item">Design Systems<span class="mq-dot"></span></span>
+    <span class="mq-item">Art Direction<span class="mq-dot"></span></span>
+  </div>
+</div>
+
+<!-- STATS (WHITE) -->
+<section class="stats-sec" id="results">
+  <div class="stats-inner">
+    <div class="stats-left">
+      <div class="stats-tag rv">By the numbers</div>
+      <div class="stat-row rv rv1">
+        <div class="stat-row-inner">
+          <div class="stat-num" data-to="200" data-from="0" data-sfx="+">0+</div>
+          <div class="stat-label"><strong>Brands designed</strong>across 15+ industries in Southeast Asia and beyond.</div>
+        </div>
+      </div>
+      <div class="stat-row rv rv2">
+        <div class="stat-row-inner">
+          <div class="stat-num" data-to="98" data-from="0" data-sfx="%">0%</div>
+          <div class="stat-label"><strong>Client satisfaction</strong>measured every project. Most clients return for a second, third, fourth engagement.</div>
+        </div>
+      </div>
+      <div class="stat-row rv rv3">
+        <div class="stat-row-inner">
+          <div class="stat-num" data-to="10" data-from="0" data-sfx="+">0+</div>
+          <div class="stat-label"><strong>Years in Yangon</strong>designing for Myanmar&rsquo;s leading brands and international partners since 2016.</div>
+        </div>
+      </div>
+    </div>
+    <div class="stats-right rv">
+      <div class="stats-visual">
+        <div class="sv-grid"></div>
+        <div class="sv-tags top-left">
+          <span class="sv-tag">Brand Identity</span>
+          <span class="sv-tag">Visual Systems</span>
+        </div>
+        <div class="sv-center">
+          <div class="sv-ring">
+            <div class="sv-ring-dot"></div>
+            <div class="sv-core">&#10022;</div>
+          </div>
+          <div class="sv-bars">
+            <div class="sv-bar"></div>
+            <div class="sv-bar"></div>
+            <div class="sv-bar"></div>
+            <div class="sv-bar"></div>
+            <div class="sv-bar"></div>
+          </div>
+        </div>
+        <div class="sv-tags bottom-right">
+          <span class="sv-tag">Motion &amp; UI</span>
+          <span class="sv-tag">Packaging</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DESIGN PILLARS (DARK) -->
+<section class="pillars" id="pillars">
+  <div class="pillars-inner">
+    <div class="pillars-hdr">
+      <div class="pillars-tag rv">Our design mark</div>
+      <h2 class="pillars-h rv rv1">Our <em>design</em> pillars.</h2>
+    </div>
+    <div class="pillars-row">
+      <div class="pcard active">
+        <div class="pcard-icon">&#10022;</div>
+        <div class="pcard-num">01</div>
+        <div class="pcard-title">Clarity &amp; Purpose</div>
+        <div class="pcard-desc">Every visual decision has a reason. We design systems where beauty and function are inseparable &mdash; where the form always serves the message.</div>
+        <div class="pcard-bg-num">01</div>
+      </div>
+      <div class="pcard">
+        <div class="pcard-icon">&#9672;</div>
+        <div class="pcard-num">02</div>
+        <div class="pcard-title">Consistency &amp; Scale</div>
+        <div class="pcard-desc">A great brand works everywhere &mdash; from a 3&times;3mm favicon to a 30-metre billboard. We build design systems that hold their integrity at every size and medium.</div>
+        <div class="pcard-bg-num">02</div>
+      </div>
+      <div class="pcard">
+        <div class="pcard-icon">&#9650;</div>
+        <div class="pcard-num">03</div>
+        <div class="pcard-title">Craft &amp; Precision</div>
+        <div class="pcard-desc">We are obsessive about the details others skip &mdash; kerning, spacing, corner radii, colour accuracy across print and screen. Craft is not optional.</div>
+        <div class="pcard-bg-num">03</div>
+      </div>
+      <div class="pcard">
+        <div class="pcard-icon">&#11041;</div>
+        <div class="pcard-num">04</div>
+        <div class="pcard-title">Future-Oriented Vision</div>
+        <div class="pcard-desc">We design for where your brand is going, not where it&rsquo;s been. Every project is built to evolve &mdash; adaptable to new markets, products, and platforms without losing identity.</div>
+        <div class="pcard-bg-num">04</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FROM YANGON TO THE WORLD (DARK) -->
+<section class="world-sec" id="global">
+  <div class="world-inner">
+    <div class="world-top">
+      <div class="world-left rv">
+        <div class="world-tag">Our Reach</div>
+        <h2 class="world-h">From <em>Yangon,</em><br>to the world.</h2>
+        <p class="world-desc">We started in a studio in Mayangone Township. Today, our design work reaches brands and markets across Southeast Asia, the Middle East, Europe, and beyond &mdash; without losing the craft-first approach that defines us.</p>
+        <div class="world-cities">
+          <span class="world-city">Yangon</span>
+          <span class="world-city">Singapore</span>
+          <span class="world-city">Bangkok</span>
+          <span class="world-city">Dubai</span>
+          <span class="world-city">London</span>
+          <span class="world-city">Tokyo</span>
+          <span class="world-city">New York</span>
+          <span class="world-city">Sydney</span>
+        </div>
+      </div>
+      <div class="world-right rv rv1">
+        <div class="world-map" id="worldMap">
+          <div class="map-grid"></div>
+          <!-- continent blobs -->
+          <div class="map-blob mb-americas"></div>
+          <div class="map-blob mb-europe"></div>
+          <div class="map-blob mb-africa"></div>
+          <div class="map-blob mb-asia"></div>
+          <div class="map-blob mb-oceania"></div>
+          <!-- SVG connection lines -->
+          <svg class="map-lines" viewBox="0 0 600 340" preserveAspectRatio="none">
+            <!-- Yangon ~(73%,52%) to Singapore ~(70%,62%) -->
+            <line x1="438" y1="177" x2="420" y2="210" stroke="rgba(255,51,51,.25)" stroke-width="1" stroke-dasharray="4 3"/>
+            <!-- Yangon to Dubai ~(46%,38%) -->
+            <line x1="438" y1="177" x2="276" y2="129" stroke="rgba(255,51,51,.2)" stroke-width="1" stroke-dasharray="4 3"/>
+            <!-- Yangon to London ~(40%,22%) -->
+            <line x1="438" y1="177" x2="240" y2="75" stroke="rgba(255,51,51,.15)" stroke-width="1" stroke-dasharray="4 3"/>
+            <!-- Yangon to Tokyo ~(82%,30%) -->
+            <line x1="438" y1="177" x2="492" y2="102" stroke="rgba(255,51,51,.2)" stroke-width="1" stroke-dasharray="4 3"/>
+            <!-- Yangon to New York ~(16%,32%) -->
+            <line x1="438" y1="177" x2="96" y2="109" stroke="rgba(255,51,51,.1)" stroke-width="1" stroke-dasharray="4 3"/>
+          </svg>
+          <!-- Pins -->
+          <!-- Yangon (home) -->
+          <div class="map-pin home" style="left:73%;top:52%;transform:translate(-50%,-50%)">
+            <div class="map-pin-dot"></div>
+            <div class="map-pin-label">Yangon</div>
+          </div>
+          <!-- Singapore -->
+          <div class="map-pin" style="left:70%;top:62%;transform:translate(-50%,-50%)">
+            <div class="map-pin-dot"></div>
+            <div class="map-pin-label">Singapore</div>
+          </div>
+          <!-- Dubai -->
+          <div class="map-pin" style="left:46%;top:38%;transform:translate(-50%,-50%)">
+            <div class="map-pin-dot"></div>
+            <div class="map-pin-label">Dubai</div>
+          </div>
+          <!-- London -->
+          <div class="map-pin" style="left:40%;top:22%;transform:translate(-50%,-50%)">
+            <div class="map-pin-dot"></div>
+            <div class="map-pin-label">London</div>
+          </div>
+          <!-- Tokyo -->
+          <div class="map-pin" style="left:82%;top:30%;transform:translate(-50%,-50%)">
+            <div class="map-pin-dot"></div>
+            <div class="map-pin-label">Tokyo</div>
+          </div>
+          <!-- New York -->
+          <div class="map-pin" style="left:16%;top:32%;transform:translate(-50%,-50%)">
+            <div class="map-pin-dot"></div>
+            <div class="map-pin-label">New York</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="world-stats rv">
+      <div class="ws-item"><div class="ws-num">15+</div><div class="ws-label">Countries reached</div></div>
+      <div class="ws-item"><div class="ws-num">8</div><div class="ws-label">International markets</div></div>
+      <div class="ws-item"><div class="ws-num">200+</div><div class="ws-label">Global brand projects</div></div>
+      <div class="ws-item"><div class="ws-num">10yr</div><div class="ws-label">Studio heritage</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG (WHITE) -->
+<section class="blog" id="blog">
+  <div class="blog-inner">
+    <div class="blog-hdr">
+      <div class="blog-title-wrap">
+        <div class="blog-sup rv">Design Thinking</div>
+        <h2 class="blog-title rv rv1">Latest <em>insights.</em></h2>
+      </div>
+      <a href="https://www.awakenentertainment.org" target="_blank" class="blog-see-all rv rv2">Read All</a>
+    </div>
+    <div class="blog-grid">
+      <div class="blog-card" data-bd="0">
+        <div class="blog-card-img"><div class="blog-card-img-inner bci-1"></div></div>
+        <div class="blog-card-body">
+          <div class="blog-card-meta">
+            <span class="blog-card-cat">Brand Strategy</span>
+            <span class="blog-card-date">Jun 2026</span>
+          </div>
+          <div class="blog-card-title">Why your brand needs a visual system, not just a logo</div>
+          <div class="blog-card-excerpt">A logo is a signature. A visual system is a language. We break down why the distinction matters for brands that want to scale.</div>
+          <a href="#" class="blog-card-link">Read Article <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+        </div>
+      </div>
+      <div class="blog-card" data-bd="100">
+        <div class="blog-card-img"><div class="blog-card-img-inner bci-2"></div></div>
+        <div class="blog-card-body">
+          <div class="blog-card-meta">
+            <span class="blog-card-cat">Typography</span>
+            <span class="blog-card-date">May 2026</span>
+          </div>
+          <div class="blog-card-title">The type choices that make Southeast Asian brands feel modern</div>
+          <div class="blog-card-excerpt">From Burmese script integration to Latin pairing strategies &mdash; how we approach bilingual design without compromising visual identity.</div>
+          <a href="#" class="blog-card-link">Read Article <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+        </div>
+      </div>
+      <div class="blog-card" data-bd="200">
+        <div class="blog-card-img"><div class="blog-card-img-inner bci-3"></div></div>
+        <div class="blog-card-body">
+          <div class="blog-card-meta">
+            <span class="blog-card-cat">Motion Design</span>
+            <span class="blog-card-date">Apr 2026</span>
+          </div>
+          <div class="blog-card-title">When to animate: the rules we follow for brand motion</div>
+          <div class="blog-card-excerpt">Motion is not decoration. We share our internal framework for deciding when animation adds value &mdash; and when it just adds noise.</div>
+          <a href="#" class="blog-card-link">Read Article <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA (DARK) -->
+<section class="cta" id="contact">
+  <div class="cta-inner">
+    <div class="cta-left">
+      <div class="cta-tag rv">Let&rsquo;s create together</div>
+      <h2 class="cta-h rv rv1">Let&rsquo;s<br><em>design</em><br>together.</h2>
+      <div class="cta-actions rv rv2">
+        <a href="https://www.awakenentertainment.org/contact" target="_blank" class="btn-primary">Start a Project &rarr;</a>
+        <a href="tel:+959255762417" class="cta-arrow">
+          <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="cta-right">
+      <div class="cta-visual">
+        <div class="cta-visual-core">DESIGN</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-inner">
+    <div class="ft-top">
+      <div>
+        <div class="ft-logo"><div class="ft-logo-sq">A</div><span class="ft-logo-t">AWAKEN</span></div>
+        <p class="ft-desc">We craft visual identities that make people stop, feel, and remember. Based in Yangon, designing for the world.</p>
+      </div>
+      <div>
+        <div class="ft-col-h">Divisions</div>
+        <div class="ft-col-links">
+          <a href="/digital/">Awaken Digital</a>
+          <a href="/design/">Awaken Design</a>
+          <a href="/tech/">Awaken Tech</a>
+          <a href="/production/">Awaken Production</a>
+          <a href="/pr/">Awaken PR</a>
+        </div>
+      </div>
+      <div>
+        <div class="ft-col-h">Contact</div>
+        <div class="ft-col-links">
+          <a href="tel:+959255762417">+95 9255762417</a>
+          <a href="tel:+959799489370">+95 9799489370</a>
+          <a href="mailto:nyinyisoewin@awakenentertainment.org">Email Us</a>
+          <a href="https://www.awakenentertainment.org" target="_blank">Website</a>
+        </div>
+      </div>
+      <div>
+        <div class="ft-col-h">Location</div>
+        <div class="ft-col-links">
+          <span>No.57, YaeKuYwarMa Street,<br>Ward 9, Mayangone,<br>Yangon, Myanmar</span>
+        </div>
+      </div>
+    </div>
+    <div class="ft-bot">
+      <span>&copy; 2026 <span class="ft-acc">Awaken Entertainment</span>. All rights reserved.</span>
+      <span>Designed with purpose in Yangon.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* LOADER */
+const ld=document.getElementById('ld'),ldNum=document.getElementById('ldNum'),ldFill=document.getElementById('ldFill');
+let pct=0;
+const ldInt=setInterval(()=>{
+  pct=Math.min(pct+Math.random()*18+4,100);
+  ldNum.textContent=Math.floor(pct);
+  ldFill.style.width=pct+'%';
+  if(pct>=100){clearInterval(ldInt);setTimeout(()=>{ld.classList.add('out');revealHero()},250)}
+},80);
+
+/* HERO REVEAL */
+function revealHero(){
+  const words=document.querySelectorAll('.hw');
+  const ease='cubic-bezier(0.16,1,0.3,1)';
+  const set=(el,d,p)=>setTimeout(()=>Object.assign(el.style,p),d);
+  set(document.getElementById('hKicker'),300,{opacity:'1',transform:'none',transition:`opacity .7s ${ease},transform .7s ${ease}`});
+  words.forEach((w,i)=>setTimeout(()=>{w.style.transform='translateY(0)';w.style.transition=`transform 1s ${ease}`},420+i*60));
+  set(document.getElementById('hSub'),900,{opacity:'1',transition:'opacity .8s ease'});
+  set(document.getElementById('hActions'),1100,{opacity:'1',transition:'opacity .8s ease'});
+  set(document.getElementById('hScroll'),1300,{opacity:'1',transition:'opacity .8s ease'});
+}
+
+/* CURSOR */
+const cd=document.getElementById('cd'),cr=document.getElementById('cr');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cd.style.left=mx+'px';cd.style.top=my+'px'});
+(function ac(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;cr.style.left=rx+'px';cr.style.top=ry+'px';requestAnimationFrame(ac)})();
+document.querySelectorAll('a,button,.work-card,.pcard,.how-card,.blog-card').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add('hov'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('hov'));
+});
+
+/* SCROLL PROGRESS + NAV */
+const sp=document.getElementById('scroll-prog');
+window.addEventListener('scroll',()=>{
+  const dh=document.documentElement.scrollHeight-window.innerHeight;
+  if(dh>0)sp.style.width=(window.scrollY/dh*100).toFixed(1)+'%';
+  const nav=document.getElementById('nav');
+  if(window.scrollY>60){nav.classList.add('scrolled');nav.classList.remove('on-dark')}
+  else{nav.classList.remove('scrolled');nav.classList.add('on-dark')}
+},{passive:true});
+
+/* GENERIC REVEAL */
+const rvObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');rvObs.unobserve(e.target)}});
+},{threshold:0.1});
+document.querySelectorAll('.rv').forEach(el=>rvObs.observe(el));
+
+/* HOW WE DO IT — SCROLL DRIVEN STICKY */
+(function(){
+  const wrap = document.getElementById('process');
+  if(!wrap) return;
+  const STEPS = 4;
+  const steps = [
+    { label:'Our Process', title:'How we <em>do</em> it.', text:'Four disciplines. One studio. Zero handoffs.', big:'01' },
+    { label:'01 — Discover', title:'We <em>know</em> our clients.', text:'Before a single pixel, we immerse in your brand story, audience, and landscape. Every creative decision starts with deep understanding.', big:'01' },
+    { label:'02 — Concept', title:'We set clear <em>direction.</em>', text:'Multiple visual directions — mood boards, type pairings, colour stories — refined to the one that resonates.', big:'02' },
+    { label:'03 — Design', title:'We <em>QA</em> everything.', text:'Every asset, every format, every screen size. Nothing ships until it passes our internal review — pixel-perfect and production-ready.', big:'03' },
+    { label:'04 — Deliver', title:'We\'re never <em>done.</em>', text:'Our team stays available after delivery — fast revisions, brand guidance, and asset extensions so your identity grows with your business.', big:'04' },
+  ];
+  const cards = [0,1,2,3].map(i=>document.getElementById('hCard'+i));
+  const titleEl = document.getElementById('howTitle');
+  const textEl = document.getElementById('howText');
+  const labelEl = document.getElementById('howLabel');
+  const bigEl = document.getElementById('howBigNum');
+  const dots = document.querySelectorAll('.how-prog-dot');
+  const STACK_CLASSES = ['active','stacked-1','stacked-2','stacked-3'];
+
+  let lastIdx = -1;
+
+  function setStep(idx) {
+    if(idx === lastIdx) return;
+    lastIdx = idx;
+
+    /* update left panel with fade */
+    const s = steps[Math.min(idx+1, steps.length-1)];
+    titleEl.style.opacity='0'; titleEl.style.transform='translateY(14px)';
+    textEl.style.opacity='0';  textEl.style.transform='translateY(10px)';
+    labelEl.style.opacity='0';
+    requestAnimationFrame(()=>{
+      titleEl.innerHTML = s.title;
+      textEl.textContent = s.text;
+      labelEl.textContent = s.label;
+      bigEl.textContent = s.big;
+      titleEl.style.transition='opacity .45s,transform .45s cubic-bezier(.16,1,.3,1)';
+      textEl.style.transition='opacity .45s .06s,transform .45s .06s cubic-bezier(.16,1,.3,1)';
+      labelEl.style.transition='opacity .4s';
+      requestAnimationFrame(()=>{
+        titleEl.style.opacity='1'; titleEl.style.transform='none';
+        textEl.style.opacity='1';  textEl.style.transform='none';
+        labelEl.style.opacity='1';
+      });
+    });
+
+    /* dots */
+    dots.forEach((d,i)=>d.classList.toggle('on', i===idx));
+
+    /* card classes: active idx floats in, previous stack behind, future stay hidden */
+    cards.forEach((c,i)=>{
+      c.classList.remove('active','stacked-1','stacked-2','stacked-3','gone','settling');
+      const diff = idx - i;
+      if(diff === 0) { c.classList.add('settling','active'); }
+      else if(diff === 1) c.classList.add('stacked-1');
+      else if(diff === 2) c.classList.add('stacked-2');
+      else if(diff >= 3) c.classList.add('stacked-3');
+      /* future cards: diff < 0, no class = hidden below */
+    });
+  }
+
+  function onScroll() {
+    const rect = wrap.getBoundingClientRect();
+    const totalScroll = wrap.offsetHeight - window.innerHeight;
+    if(totalScroll <= 0) return;
+    const scrolled = -rect.top;
+    const progress = Math.max(0, Math.min(1, scrolled / totalScroll));
+    /* 4 cards over the full scroll range; first card shows immediately */
+    const idx = Math.min(STEPS-1, Math.floor(progress * STEPS));
+    setStep(idx);
+  }
+
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll(); /* init */
+})();
+
+/* WORK CARDS */
+const wdObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting)return;
+    setTimeout(()=>e.target.classList.add('vis'),parseInt(e.target.dataset.wd)||0);
+    wdObs.unobserve(e.target);
+  });
+},{threshold:0.05});
+document.querySelectorAll('.work-card').forEach(el=>wdObs.observe(el));
+
+/* TOOL CHIPS */
+const tdObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting)return;
+    setTimeout(()=>e.target.classList.add('vis'),parseInt(e.target.dataset.td)||0);
+    tdObs.unobserve(e.target);
+  });
+},{threshold:0.1});
+document.querySelectorAll('.tool-chip').forEach(el=>tdObs.observe(el));
+
+/* BLOG CARDS */
+const bdObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting)return;
+    setTimeout(()=>e.target.classList.add('vis'),parseInt(e.target.dataset.bd)||0);
+    bdObs.unobserve(e.target);
+  });
+},{threshold:0.1});
+document.querySelectorAll('.blog-card').forEach(el=>bdObs.observe(el));
+
+/* STATS COUNT-UP */
+let statsDone=false;
+const statsEl=document.querySelector('.stats-sec');
+new IntersectionObserver(([e])=>{
+  if(!e.isIntersecting||statsDone)return;
+  statsDone=true;
+  document.querySelectorAll('.stat-num[data-to]').forEach(el=>{
+    const to=+el.dataset.to,from=+el.dataset.from,sfx=el.dataset.sfx||'';
+    const dur=1600,t0=performance.now();
+    const tick=now=>{
+      const p=Math.min((now-t0)/dur,1);
+      const ease=1-Math.pow(1-p,3);
+      el.textContent=Math.round(from+(to-from)*ease)+sfx;
+      if(p<1)requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  });
+},{threshold:0.3}).observe(statsEl);
+
+/* PILLARS */
+document.querySelectorAll('.pcard').forEach(card=>{
+  card.addEventListener('click',()=>{
+    document.querySelectorAll('.pcard').forEach(c=>c.classList.remove('active'));
+    card.classList.add('active');
+  });
+  card.addEventListener('mouseenter',()=>{
+    document.querySelectorAll('.pcard').forEach(c=>c.classList.remove('active'));
+    card.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>

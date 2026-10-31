@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Awaken Entertainment — Myanmar Investment Holding</title>
+<link rel="icon" type="image/svg+xml" href="/logo.svg">
+<meta name="description" content="Awaken Entertainment is developing a Myanmar-focused diversified holding company connecting private capital with operating businesses across entertainment, digital services, and beyond.">
+<style>
+:root {
+  --bg:     #ffffff;
+  --bg2:    #f5f3ef;
+  --fg:     #0a0a0a;
+  --fg2:    rgba(10,10,10,.48);
+  --fg3:    rgba(10,10,10,.08);
+  --border: rgba(10,10,10,.1);
+  --cta:    #e8845a;
+  --nav-h:  60px;
+  color-scheme: light;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font-family:'Futura','Century Gothic','Trebuchet MS',sans-serif;font-size:16px;line-height:1.6;overflow-x:hidden}
+img{max-width:100%}
+
+/* ── NAV ── */
+nav{
+  position:fixed;inset:0 0 auto;z-index:200;height:var(--nav-h);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 32px;
+  background:rgba(255,255,255,.92);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--fg)}
+.nav-logo img{height:18px;width:auto;display:block}
+.nav-logo-text{font-family:'Futura','Century Gothic','Trebuchet MS',sans-serif;font-weight:800;font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none}
+.nav-links a{font-size:12px;font-weight:400;color:var(--fg2);text-decoration:none;letter-spacing:.02em;transition:color .2s}
+.nav-links a:hover{color:var(--fg)}
+.nav-cta{background:var(--fg)!important;color:#fff!important;padding:9px 22px;border-radius:100px;font-size:12px;font-weight:500;letter-spacing:.04em;text-decoration:none;transition:opacity .2s;white-space:nowrap}
+.nav-cta:hover{opacity:.72}
+@media(max-width:768px){nav{padding:0 20px}.nav-links li:not(:last-child){display:none}}
+
+/* ── HERO ── */
+.hero{padding:calc(var(--nav-h) + 32px) 40px 72px;display:flex;justify-content:center}
+.hero-card{
+  position:relative;border-radius:24px;
+  background:linear-gradient(135deg,#fb923c 0%,#ec4899 30%,#8b5cf6 60%,#06b6d4 100%);
+  min-height:480px;width:100%;max-width:1280px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:80px 40px 100px;overflow:visible;
+}
+@media(max-width:768px){.hero{padding:calc(var(--nav-h) + 20px) 20px 56px}.hero-card{min-height:380px;padding:56px 24px 80px}}
+.hero-h{
+  font-family:'Futura','Century Gothic','Trebuchet MS',sans-serif;font-weight:800;
+  font-size:clamp(36px,7.5vw,96px);line-height:.93;letter-spacing:-.04em;
+  text-transform:uppercase;color:#fff;max-width:14ch;text-wrap:balance;
+}
+.hero-sub{
+  font-size:clamp(13px,1.3vw,16px);font-weight:300;color:rgba(255,255,255,.75);
+  max-width:50ch;margin-top:24px;line-height:1.75;
+}
+/* Spinning badge */
+.spin-badge{
+  position:absolute;bottom:-44px;left:50%;transform:translateX(-50%);
+  width:88px;height:88px;border-radius:50%;background:#fff;
+  box-shadow:0 4px 28px rgba(0,0,0,.14);
+  display:flex;align-items:center;justify-content:center;
+}
+.spin-badge-ring{position:absolute;inset:0;animation:spin 12s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.spin-badge-arrow{
+  position:relative;z-index:1;display:flex;align-items:center;justify-content:center;
+}
+
+/* ── LOGOS TICKER ── */
+.logos-wrap{padding:72px 0 0;overflow:hidden}
+.logos-row{display:flex;width:max-content;margin-bottom:12px}
+.logos-row.fwd{animation:ticker 32s linear infinite}
+.logos-row.rev{animation:ticker 32s linear infinite reverse}
+.logos-row:hover{animation-play-state:paused}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.logos-row{animation:none}}
+.logo-item{
+  display:flex;align-items:center;gap:10px;
+  padding:0 32px;
+  font-family:'Futura','Century Gothic','Trebuchet MS',sans-serif;font-size:12px;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--fg2);white-space:nowrap;
+}
+.logo-dot{width:4px;height:4px;border-radius:50%;background:var(--fg3);flex-shrink:0}
+
+/* ── SECTION SHARED ── */
+.section-label{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--fg2);margin-bottom:10px}
+.section-h{font-family:'Futura','Century Gothic','Trebuchet MS',sans-serif;font-weight:800;font-size:clamp(28px,4vw,52px);letter-spacing:-.04em;text-transform:uppercase}
+
+/* ── PORTFOLIO ── */
+.portfolio{padding:80px 40px}
+.pf-inner{max-width:1280px;margin:0 auto}
+.pf-header{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:40px}
+.pf-count{font-size:13px;color:var(--fg2)}
+.pf-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:768px){.portfolio{padding:60px 20px}}
+.pc{
+  border-radius:20px;overflow:hidden;
+  display:flex;flex-direction:column;
+  transition:transform .35s cubic-bezier(.25,.46,.45,.94);cursor:pointer;
+}
+.pc:hover{transform:translateY(-5px)}
+.pc-visual{
+  aspect-ratio:16/9;padding:32px 28px;
+  display:flex;flex-direction:column;justify-content:space-between;
+  position:relative;overflow:hidden;
+}
+.pc-zatt    .pc-visual{background:#1e3a6e}
+.pc-wonder  .pc-visual{background:#4c1d95}
+.pc-thabin  .pc-visual{background:#c8921a}
+.pc-digital .pc-visual{background:#bae6fd}
+.pc-design  .pc-visual{background:#dc2626}
+.pc-dev     .pc-visual{background:#fde68a}
+.pc-prod    .pc-visual{background:#1c1917}
+.pc-pr      .pc-visual{background:#1e40af}
+.pc-gaming  .pc-visual{background:#065f46}
+.pc-celev   .pc-visual{background:#fce7f3}
+.pc-tag{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.65)}
+.pc-digital .pc-tag,.pc-dev .pc-tag,.pc-celev .pc-tag{color:rgba(10,10,10,.45)}
+.pc-name{
+  font-family:'Futura','Century Gothic','Trebuchet MS',sans-serif;font-weight:800;
+  font-size:clamp(28px,3.5vw,48px);letter-spacing:-.04em;line-height:1;
+  color:#fff;margin-top:auto;
+}
+.pc-digital .pc-name,.pc-dev .pc-name,.pc-celev .pc-name{color:#0a0a0a}
+.pc-meta{padding:16px 24px;background:var(--bg);border-top:1px solid var(--border);min-height:64px}
+.pc-meta-name{font-size:14px;font-weight:500;color:var(--fg)}
+.pc-meta-sub{font-size:12px;color:var(--fg2);margin-top:2px}
+.pc-hover-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .45s ease;pointer-events:none;z-index:2}
+.pc:hover .pc-hover-img{opacity:1}
+.pc-logo{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  max-width:160px;max-height:110px;width:auto;height:auto;
+  object-fit:contain;opacity:1;transition:opacity .45s ease;
+  pointer-events:none;z-index:1;
+}
+.pc-prod .pc-logo,.pc-pr .pc-logo,.pc-gaming .pc-logo,.pc-design .pc-logo{filter:brightness(0) invert(1)}
+.pc-digital .pc-logo,.pc-dev .pc-logo,.pc-celev .pc-logo{mix-blend-mode:multiply}
+.pc-thabin .pc-logo{max-width:140px;max-height:140px;border-radius:20px}
+.pc:hover .pc-logo{opacity:0}
+@media(max-width:600px){.pf-grid{grid-template-columns:1fr}}
+
+/* ── ABOUT TEXT ── */
+.about{padding:80px 24px;display:grid;grid-template-columns:140px 1fr;gap:60px;max-width:960px;margin:0 auto;align-items:start}
+.badge-wrap{width:120px;height:120px;position:relative;flex-shrink:0}
+.badge-ring{position:absolute;inset:0;animation:spin 16s linear infinite}
+.badge-center{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.badge-center svg{position:static;animation:none}
+.about-body p{font-size:clamp(15px,1.4vw,18px);font-weight:300;color:var(--fg);line-height:1.8;margin-bottom:22px}
+.about-body p:last-of-type{margin-bottom:0}
+.btn-cta{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--cta);color:#fff;
+  padding:12px 28px;border-radius:100px;
+  font-size:13px;font-weight:500;letter-spacing:.04em;
+  text-decoration:none;transition:opacity .25s;margin-top:16px;
+}
+.btn-cta:hover{opacity:.8}
+.btn-hint{font-size:11px;color:var(--fg2);margin-top:10px;font-style:italic}
+@media(max-width:640px){.about{grid-template-columns:1fr;gap:32px}.badge-wrap{width:80px;height:80px}}
+
+/* ── MARQUEE BAND ── */
+.marquee-band{
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  background:var(--bg2);overflow:hidden;margin:80px 0 0;
+}
+.mq-row{display:flex;width:max-content}
+.mq-row.mfwd{animation:ticker 18s linear infinite}
+.mq-row.mrev{animation:ticker 18s linear infinite reverse}
+@media(prefers-reduced-motion:reduce){.mq-row{animation:none}}
+.mq-item{
+  padding:13px 36px;
+  font-family:'Futura','Century Gothic','Trebuchet MS',sans-serif;font-size:11px;font-weight:800;
+  letter-spacing:.22em;text-transform:uppercase;
+  color:var(--fg2);white-space:nowrap;
+  display:flex;align-items:center;gap:16px;
+}
+.mq-star{color:var(--cta)}
+
+/* ── FOOTER ── */
+footer{background:var(--fg);color:#fff;padding:72px 40px 0;margin-top:80px}
+.footer-wordmark{
+  text-align:center;
+  font-family:'Futura','Century Gothic','Trebuchet MS',sans-serif;font-weight:800;
+  font-size:clamp(52px,12vw,140px);letter-spacing:-.04em;text-transform:uppercase;
+  color:rgba(255,255,255,.07);margin-bottom:56px;pointer-events:none;line-height:1;
+}
+.footer-main{display:grid;grid-template-columns:1fr 1fr 1fr;gap:48px;max-width:960px;margin:0 auto 56px;align-items:start}
+.footer-cta-h{font-family:'Futura','Century Gothic','Trebuchet MS',sans-serif;font-weight:800;font-size:clamp(24px,3vw,42px);line-height:1.1;letter-spacing:-.03em;margin-bottom:20px}
+.footer-col h4{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:16px}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:12px}
+.footer-col a{font-size:14px;font-weight:300;color:rgba(255,255,255,.55);text-decoration:none;transition:color .2s}
+.footer-col a:hover{color:#fff}
+.footer-shapes{
+  display:flex;align-items:center;justify-content:center;
+  gap:28px;padding:40px 0 28px;
+  border-top:1px solid rgba(255,255,255,.08);
+}
+.fshape{font-size:30px;line-height:1}
+.footer-legal{
+  display:flex;justify-content:center;flex-wrap:wrap;gap:20px;
+  padding:20px 0 32px;
+  font-size:11px;letter-spacing:.04em;color:rgba(255,255,255,.22);
+}
+.footer-legal a{color:rgba(255,255,255,.22);text-decoration:none;transition:color .2s}
+.footer-legal a:hover{color:rgba(255,255,255,.55)}
+@media(max-width:768px){footer{padding:56px 20px 0}.footer-main{grid-template-columns:1fr;gap:36px}}
+
+/* ── SCROLL REVEAL ── */
+.rv{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
+.rv.vis{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">
+    <img src="/logo.svg" alt="Awaken">
+    <span class="nav-logo-text">Awaken</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="/contact/" class="nav-cta">Contact Us</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-card">
+    <h1 class="hero-h rv">
+      Patient Capital.<br>Bold Ventures.
+    </h1>
+    <p class="hero-sub rv d1">
+      Awaken Entertainment is developing a Myanmar-focused diversified holding company — connecting private capital with operating businesses across entertainment, digital services, and beyond.
+    </p>
+    <div class="spin-badge">
+      <svg class="spin-badge-ring" viewBox="0 0 88 88">
+        <defs><path id="bp" d="M44,44 m-32,0 a32,32 0 1,1 64,0 a32,32 0 1,1 -64,0"/></defs>
+        <text font-size="8.2" fill="rgba(10,10,10,.45)" font-family="Futura, Century Gothic, sans-serif" letter-spacing="2" font-weight="500">
+          <textPath href="#bp">Driven By Creativity · Driven By Creativity · </textPath>
+        </text>
+      </svg>
+      <div class="spin-badge-arrow">
+        <img src="/logo.svg" alt="Awaken" style="width:32px;height:auto;display:block">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOGOS TICKER -->
+<div class="logos-wrap" aria-hidden="true">
+  <div class="logos-row fwd">
+    <div class="logo-item"><span class="logo-dot"></span>Zatt</div>
+    <div class="logo-item"><span class="logo-dot"></span>Wonderxland</div>
+    <div class="logo-item"><span class="logo-dot"></span>Thabinthe</div>
+    <div class="logo-item"><span class="logo-dot"></span>Plan Be</div>
+    <div class="logo-item"><span class="logo-dot"></span>Myanmar</div>
+    <div class="logo-item"><span class="logo-dot"></span>Entertainment</div>
+    <div class="logo-item"><span class="logo-dot"></span>Digital Services</div>
+    <div class="logo-item"><span class="logo-dot"></span>Content &amp; Streaming</div>
+    <div class="logo-item"><span class="logo-dot"></span>F&amp;B</div>
+    <div class="logo-item"><span class="logo-dot"></span>Holding Company</div>
+    <div class="logo-item"><span class="logo-dot"></span>Zatt</div>
+    <div class="logo-item"><span class="logo-dot"></span>Wonderxland</div>
+    <div class="logo-item"><span class="logo-dot"></span>Thabinthe</div>
+    <div class="logo-item"><span class="logo-dot"></span>Plan Be</div>
+    <div class="logo-item"><span class="logo-dot"></span>Myanmar</div>
+    <div class="logo-item"><span class="logo-dot"></span>Entertainment</div>
+    <div class="logo-item"><span class="logo-dot"></span>Digital Services</div>
+    <div class="logo-item"><span class="logo-dot"></span>Content &amp; Streaming</div>
+    <div class="logo-item"><span class="logo-dot"></span>F&amp;B</div>
+    <div class="logo-item"><span class="logo-dot"></span>Holding Company</div>
+  </div>
+  <div class="logos-row rev">
+    <div class="logo-item"><span class="logo-dot"></span>Patient Capital</div>
+    <div class="logo-item"><span class="logo-dot"></span>Private Investment</div>
+    <div class="logo-item"><span class="logo-dot"></span>Yangon, Myanmar</div>
+    <div class="logo-item"><span class="logo-dot"></span>Est. 2018</div>
+    <div class="logo-item"><span class="logo-dot"></span>US$1M–$5M Raise</div>
+    <div class="logo-item"><span class="logo-dot"></span>Portfolio Growth</div>
+    <div class="logo-item"><span class="logo-dot"></span>Southeast Asia</div>
+    <div class="logo-item"><span class="logo-dot"></span>Disciplined Investment</div>
+    <div class="logo-item"><span class="logo-dot"></span>Transparent Reporting</div>
+    <div class="logo-item"><span class="logo-dot"></span>Long-Term Ownership</div>
+    <div class="logo-item"><span class="logo-dot"></span>Patient Capital</div>
+    <div class="logo-item"><span class="logo-dot"></span>Private Investment</div>
+    <div class="logo-item"><span class="logo-dot"></span>Yangon, Myanmar</div>
+    <div class="logo-item"><span class="logo-dot"></span>Est. 2018</div>
+    <div class="logo-item"><span class="logo-dot"></span>US$1M–$5M Raise</div>
+    <div class="logo-item"><span class="logo-dot"></span>Portfolio Growth</div>
+    <div class="logo-item"><span class="logo-dot"></span>Southeast Asia</div>
+    <div class="logo-item"><span class="logo-dot"></span>Disciplined Investment</div>
+    <div class="logo-item"><span class="logo-dot"></span>Transparent Reporting</div>
+    <div class="logo-item"><span class="logo-dot"></span>Long-Term Ownership</div>
+  </div>
+</div>
+
+<!-- PORTFOLIO -->
+<section class="portfolio" id="portfolio">
+  <div class="pf-inner">
+  <div class="pf-header rv">
+    <div>
+      <p class="section-label">Initial Business Review</p>
+      <h2 class="section-h">Portfolio</h2>
+    </div>
+    <span class="pf-count">10 Businesses</span>
+  </div>
+  <div class="pf-grid">
+
+    <div class="pc pc-zatt rv">
+      <div class="pc-visual">
+        <img class="pc-hover-img" src="/thabinthe.jpg" alt="Zatt">
+        <img class="pc-logo" src="/logo-zatt.png" alt="Zatt logo">
+        <p class="pc-tag">Film &amp; Streaming &middot; Digital</p>
+        <p class="pc-name">Zatt</p>
+      </div>
+      <div class="pc-meta">
+        <p class="pc-meta-name">Zatt — Myanmar Streaming Platform</p>
+        <p class="pc-meta-sub">Film, movie &amp; content streaming · zatt.live</p>
+      </div>
+    </div>
+
+    <div class="pc pc-wonder rv d1">
+      <div class="pc-visual">
+        <img class="pc-hover-img" src="/wonderxland.jpg" alt="Wonderxland">
+        <img class="pc-logo" src="/logo-wonderxland.png" alt="Wonderxland logo">
+        <p class="pc-tag">F&amp;B &middot; Hospitality</p>
+        <p class="pc-name">Wonderxland</p>
+      </div>
+      <div class="pc-meta">
+        <p class="pc-meta-name">Wonderxland</p>
+        <p class="pc-meta-sub">F&amp;B &amp; lifestyle concept · Yangon, Myanmar</p>
+      </div>
+    </div>
+
+    <div class="pc pc-thabin rv">
+      <div class="pc-visual">
+        <img class="pc-hover-img" src="/zatt.jpg" alt="Thabinthe">
+        <img class="pc-logo" src="/logo-thabinthe.webp" alt="Thabinthe logo">
+        <p class="pc-tag">Gaming &middot; Entertainment</p>
+        <p class="pc-name">Thabinthe</p>
+      </div>
+      <div class="pc-meta">
+        <p class="pc-meta-name">Thabinthe</p>
+        <p class="pc-meta-sub">Gaming &amp; entertainment platform · Yangon, Myanmar</p>
+      </div>
+    </div>
+
+    <div class="pc pc-digital rv d1">
+      <div class="pc-visual">
+        <img class="pc-logo" src="/logo-digital.png" alt="Awaken Digital logo">
+        <p class="pc-tag">Digital &middot; Web &amp; Apps</p>
+        <p class="pc-name">Digital</p>
+      </div>
+      <div class="pc-meta">
+        <p class="pc-meta-name">Awaken Digital</p>
+        <p class="pc-meta-sub">Web experiences, apps &amp; digital platforms</p>
+      </div>
+    </div>
+
+    <div class="pc pc-prod rv">
+      <div class="pc-visual">
+        <img class="pc-logo" src="/logo-production.svg" alt="Awaken Production logo">
+        <p class="pc-tag">Film &amp; Series &middot; Commercial</p>
+        <p class="pc-name">Production</p>
+      </div>
+      <div class="pc-meta">
+        <p class="pc-meta-name">Awaken Production</p>
+        <p class="pc-meta-sub">Film, series &amp; commercial production · Yangon, Myanmar</p>
+      </div>
+    </div>
+
+    <div class="pc pc-pr rv d1">
+      <div class="pc-visual">
+        <img class="pc-logo" src="/logo-pr.png" alt="Awaken PR logo">
+        <p class="pc-tag">Public Relations &middot; Media</p>
+        <p class="pc-name">PR</p>
+      </div>
+      <div class="pc-meta">
+        <p class="pc-meta-name">Awaken PR</p>
+        <p class="pc-meta-sub">Press, partnerships &amp; public narrative</p>
+      </div>
+    </div>
+
+    <div class="pc pc-gaming rv">
+      <div class="pc-visual">
+        <img class="pc-hover-img" src="/gaming.jpg" alt="Awaken Gaming">
+        <img class="pc-logo" src="/logo-gaming.svg" alt="Awaken Gaming logo">
+        <p class="pc-tag">Gaming &middot; Interactive</p>
+        <p class="pc-name">Gaming</p>
+      </div>
+      <div class="pc-meta">
+        <p class="pc-meta-name">Awaken Gaming</p>
+        <p class="pc-meta-sub">Interactive entertainment &amp; gaming</p>
+      </div>
+    </div>
+
+    <div class="pc pc-celev rv d1">
+      <div class="pc-visual">
+        <img class="pc-logo" src="/logo-celevoice.webp" alt="CeleVoice logo">
+        <p class="pc-tag">Talent &middot; Celebrity</p>
+        <p class="pc-name">CeleVoice</p>
+      </div>
+      <div class="pc-meta">
+        <p class="pc-meta-name">CeleVoice</p>
+        <p class="pc-meta-sub">Talent management &amp; celebrity platform</p>
+      </div>
+    </div>
+
+    <div class="pc pc-design rv">
+      <div class="pc-visual">
+        <img class="pc-logo" src="/logo-design.png" alt="Awaken Design logo">
+        <p class="pc-tag">Design &middot; Brand Identity</p>
+        <p class="pc-name">Design</p>
+      </div>
+      <div class="pc-meta">
+        <p class="pc-meta-name">Awaken Design</p>
+        <p class="pc-meta-sub">Visual identity, brand systems &amp; creative direction</p>
+      </div>
+    </div>
+
+    <div class="pc pc-dev rv d1">
+      <div class="pc-visual">
+        <img class="pc-logo" src="/logo-development.png" alt="Awaken Development logo">
+        <p class="pc-tag">Development &middot; Technology</p>
+        <p class="pc-name">Development</p>
+      </div>
+      <div class="pc-meta">
+        <p class="pc-meta-name">Awaken Development</p>
+        <p class="pc-meta-sub">Software, infrastructure &amp; product engineering</p>
+      </div>
+    </div>
+
+  </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="badge-wrap">
+    <svg class="badge-ring" viewBox="0 0 120 120">
+      <defs><path id="bp2" d="M60,60 m-40,0 a40,40 0 1,1 80,0 a40,40 0 1,1 -80,0"/></defs>
+      <text font-size="9" fill="rgba(10,10,10,.38)" font-family="Futura, Century Gothic, sans-serif" letter-spacing="2.5" font-weight="500">
+        <textPath href="#bp2">Driven By Creativity · Driven By Creativity · </textPath>
+      </text>
+    </svg>
+    <div class="badge-center">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="#0a0a0a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 11h16M13 5l6 6-6 6"/>
+      </svg>
+    </div>
+  </div>
+  <div class="about-body rv">
+    <p>Our mission is to put patient capital to productive use — backing businesses with identifiable demand, credible operators, and a measurable path to profitability across Myanmar's growing economy.</p>
+    <p>We seek long-term capital partners who want an ownership interest in business growth without assuming responsibility for daily operations. Investment selection, financial oversight, and portfolio reporting sit within a common framework, while operating teams remain responsible for delivery within each business.</p>
+    <p>Awaken is targeting <strong>US$1 million to US$5 million</strong> in investment capital, deployed in stages according to opportunity quality, verified funding needs, and agreed investment terms.</p>
+    <a href="/contact/" class="btn-cta">Explore Partnership →</a>
+    <p class="btn-hint">Reach out to begin the conversation.</p>
+  </div>
+</section>
+
+<!-- MARQUEE BANDS -->
+<div class="marquee-band" aria-hidden="true">
+  <div class="mq-row mfwd">
+    <div class="mq-item">AWAKEN <span class="mq-star">✦</span></div><div class="mq-item">AWAKEN <span class="mq-star">✦</span></div>
+    <div class="mq-item">AWAKEN <span class="mq-star">✦</span></div><div class="mq-item">AWAKEN <span class="mq-star">✦</span></div>
+    <div class="mq-item">AWAKEN <span class="mq-star">✦</span></div><div class="mq-item">AWAKEN <span class="mq-star">✦</span></div>
+    <div class="mq-item">AWAKEN <span class="mq-star">✦</span></div><div class="mq-item">AWAKEN <span class="mq-star">✦</span></div>
+    <div class="mq-item">AWAKEN <span class="mq-star">✦</span></div><div class="mq-item">AWAKEN <span class="mq-star">✦</span></div>
+    <div class="mq-item">AWAKEN <span class="mq-star">✦</span></div><div class="mq-item">AWAKEN <span class="mq-star">✦</span></div>
+    <div class="mq-item">AWAKEN <span class="mq-star">✦</span></div><div class="mq-item">AWAKEN <span class="mq-star">✦</span></div>
+    <div class="mq-item">AWAKEN <span class="mq-star">✦</span></div><div class="mq-item">AWAKEN <span class="mq-star">✦</span></div>
+  </div>
+  <div class="mq-row mrev">
+    <div class="mq-item">ENTERTAINMENT <span class="mq-star">✦</span></div><div class="mq-item">ENTERTAINMENT <span class="mq-star">✦</span></div>
+    <div class="mq-item">ENTERTAINMENT <span class="mq-star">✦</span></div><div class="mq-item">ENTERTAINMENT <span class="mq-star">✦</span></div>
+    <div class="mq-item">ENTERTAINMENT <span class="mq-star">✦</span></div><div class="mq-item">ENTERTAINMENT <span class="mq-star">✦</span></div>
+    <div class="mq-item">ENTERTAINMENT <span class="mq-star">✦</span></div><div class="mq-item">ENTERTAINMENT <span class="mq-star">✦</span></div>
+    <div class="mq-item">ENTERTAINMENT <span class="mq-star">✦</span></div><div class="mq-item">ENTERTAINMENT <span class="mq-star">✦</span></div>
+    <div class="mq-item">ENTERTAINMENT <span class="mq-star">✦</span></div><div class="mq-item">ENTERTAINMENT <span class="mq-star">✦</span></div>
+    <div class="mq-item">ENTERTAINMENT <span class="mq-star">✦</span></div><div class="mq-item">ENTERTAINMENT <span class="mq-star">✦</span></div>
+    <div class="mq-item">ENTERTAINMENT <span class="mq-star">✦</span></div><div class="mq-item">ENTERTAINMENT <span class="mq-star">✦</span></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <p class="footer-wordmark" aria-hidden="true">AWAKEN</p>
+  <div class="footer-main">
+    <div>
+      <h2 class="footer-cta-h">This is<br>where it<br>begins.</h2>
+      <a href="mailto:hello@awakenentertainment.org" class="btn-cta">Explore Partnership →</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="/pr/">Media &amp; PR</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="/digital/">Digital</a></li>
+        <li><a href="/design/">Design</a></li>
+        <li><a href="/tech/">Technology</a></li>
+        <li><a href="/production/">Production</a></li>
+        <li><a href="/pr/">Public Relations</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-shapes" aria-hidden="true">
+    <span class="fshape" style="color:#c084fc">✳</span>
+    <span class="fshape" style="color:#60a5fa">∞</span>
+    <span class="fshape" style="color:#fb923c">Ω</span>
+    <span class="fshape" style="color:#10b981">✦</span>
+    <span class="fshape" style="color:#f43f5e">❋</span>
+    <span class="fshape" style="color:#facc15">✸</span>
+    <span class="fshape" style="color:#94a3b8">◎</span>
+  </div>
+  <div class="footer-legal">
+    <span>© 2025 Awaken Entertainment Co., Ltd. — Yangon, Myanmar</span>
+    <a href="/">Back to Home</a>
+    <a href="/pr/">Media</a>
+  </div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target)} })
+},{threshold:.1});
+document.querySelectorAll('.rv').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
