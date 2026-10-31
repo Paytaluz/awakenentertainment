@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Awaken Design — We design brands that command attention.</title>
+  <title>Awaken Design — We design brands that make people stop &amp; feel.</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;0,14..32,900;1,14..32,700;1,14..32,900&family=Playfair+Display:ital,wght@1,700;1,900&display=swap" rel="stylesheet">
@@ -450,6 +450,32 @@
       .float-menu{display:none}
       .blog-hdr{flex-direction:column;gap:1.5rem}
     }
+
+    /* ─── AWAKEN DESIGN ADDITIONS ─── */
+    .brand-mark{width:26px;height:23px;flex-shrink:0;background:currentColor;-webkit-mask:url(/logo-design.png) center/contain no-repeat;mask:url(/logo-design.png) center/contain no-repeat}
+    .nav-logo em{font-style:normal;color:var(--accent)}
+    .hv-mark{position:absolute;right:12%;top:50%;width:min(30vw,420px);aspect-ratio:1206/1050;transform:translateY(-50%);background:var(--accent);opacity:.12;-webkit-mask:url(/logo-design.png) center/contain no-repeat;mask:url(/logo-design.png) center/contain no-repeat;pointer-events:none}
+    .ft-logo .brand-mark{width:30px;height:26px;color:var(--accent)}
+    .work-card-desc{font-size:13px;color:rgba(255,255,255,.65);line-height:1.7;max-width:520px;margin-top:.6rem}
+    .client-chip{width:auto;height:auto;padding:14px 22px;border-radius:100px;font-size:11px;letter-spacing:.08em;flex-direction:row;gap:.55rem;color:var(--text)}
+    .client-chip small{font-size:8px;letter-spacing:.14em;color:var(--accent);font-weight:800}
+    .tools-note{font-size:12px;color:var(--muted);margin-top:3rem;letter-spacing:.02em}
+    .studio-map{position:relative;height:380px;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,.08);background:#111}
+    .studio-map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(1) invert(.92) contrast(.9)}
+    .studio-map-tag{position:absolute;left:1rem;bottom:1rem;z-index:2;background:rgba(10,10,10,.85);border:1px solid rgba(var(--accent-rgb),.35);color:#fff;font-size:11px;font-weight:600;padding:8px 14px;border-radius:100px;backdrop-filter:blur(6px)}
+    .studio-map-tag b{color:var(--accent)}
+    .studio-actions{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:2.25rem}
+    .studio-btn{display:inline-flex;align-items:center;gap:.5rem;padding:13px 26px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;transition:all .3s}
+    .studio-btn.primary{background:var(--accent);color:#fff}
+    .studio-btn.primary:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(var(--accent-rgb),.35)}
+    .studio-btn.ghost{border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.75)}
+    .studio-btn.ghost:hover{border-color:#fff;color:#fff}
+    .ws-num.sm{font-size:1.5rem;line-height:1.5}
+    .blog-grid.four{grid-template-columns:repeat(4,1fr)}
+    .blog-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.16,1,.3,1)}
+    .blog-card:hover .blog-card-img img{transform:scale(1.05)}
+    @media(max-width:1100px){.blog-grid.four{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:900px){.hv-mark{display:none}.studio-map{height:300px}.blog-grid.four{grid-template-columns:1fr}.ws-num.sm{font-size:1.05rem}.ws-item{padding:1.25rem .75rem}}
   </style>
 </head>
 <body>
@@ -484,7 +510,7 @@
 <!-- NAV -->
 <nav id="nav" class="on-dark">
   <a href="/" class="nav-logo">
-    <div class="nav-logo-sq">A</div>AWAKEN
+    <span class="brand-mark" aria-hidden="true"></span>AWAKEN <em>DESIGN</em>
   </a>
   <div class="nav-links">
     <a href="/digital/">Digital</a>
@@ -509,7 +535,7 @@
     <div class="hv-line hv-line1"></div>
     <div class="hv-line hv-line2"></div>
     <div class="hv-label">Awaken Design Studio</div>
-    <div class="hv-type">DS</div>
+    <div class="hv-mark" aria-hidden="true"></div>
   </div>
   <div class="hero-content">
     <div class="hero-kicker" id="hKicker">Design Studio &middot; Yangon</div>
@@ -518,7 +544,7 @@
       <span class="hero-h-line"><span class="hw">that</span> <span class="hw">make</span> <span class="hw">people</span></span>
       <span class="hero-h-line"><span class="hw">stop</span> <span class="hw">&amp;</span> <span class="hw"><em>feel.</em></span></span>
     </h1>
-    <p class="hero-sub" id="hSub">From brand identity to motion &mdash; we craft visual systems with intention, built to last across every medium and market.</p>
+    <p class="hero-sub" id="hSub">Branding &amp; advertising studio in Yangon &mdash; identity, campaign key visuals and social content for brands like MPT, Gery and MacArthur&rsquo;s.</p>
     <div class="hero-actions" id="hActions">
       <a href="https://www.awakenentertainment.org/contact" target="_blank" class="btn-primary">Start a Project &rarr;</a>
       <a href="#work" class="btn-ghost">See Our Work</a>
@@ -534,7 +560,7 @@
 <!-- STATEMENT (WHITE) -->
 <section class="stmt" id="statement">
   <div class="stmt-inner">
-    <div class="stmt-tag rv">Design Studio &middot; Est. 2016</div>
+    <div class="stmt-tag rv">Design Studio &middot; Yangon</div>
     <p class="stmt-p rv rv1">We are <em>Awaken Design</em> &mdash; a studio that partners with ambitious brands to create <strong>visual identities</strong> that command attention, communicate purpose, and <em>endure.</em></p>
   </div>
 </section>
@@ -601,78 +627,78 @@
     </div>
     <div class="work-cards">
       <div class="work-card" data-wd="0">
-        <div class="work-card-bg" style="background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%)"></div>
+        <div class="work-card-bg" style="background-image:url('/design/img/mpt-2.jpg');background-position:center"></div>
         <div class="work-card-ov"></div>
         <div class="work-card-info">
           <div>
-            <div class="work-card-meta"><span class="work-card-cat">Brand Identity</span></div>
-            <div class="work-card-name">Yoma Strategic Holdings</div>
+            <div class="work-card-meta"><span class="work-card-cat">Telecom &middot; Social Design</span></div>
+            <div class="work-card-name">MPT</div>
+            <p class="work-card-desc">Monthly content calendars, digital campaigns, daily social creative and videography for Myanmar&rsquo;s national telecom brand.</p>
           </div>
-          <div class="work-card-action">See Details <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+          <a href="#cases" class="work-card-action">Case Story <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
         </div>
       </div>
       <div class="work-card" data-wd="60">
-        <div class="work-card-bg" style="background:linear-gradient(135deg,#2a0808 0%,#4d1515 50%,#8b2a2a 100%)"></div>
+        <div class="work-card-bg" style="background-image:url('/design/img/gery-1.jpg');background-position:center 20%"></div>
         <div class="work-card-ov"></div>
         <div class="work-card-info">
           <div>
-            <div class="work-card-meta"><span class="work-card-cat">Visual Design</span></div>
-            <div class="work-card-name">Shwe Taung Group</div>
+            <div class="work-card-meta"><span class="work-card-cat">FMCG &middot; Campaigns</span></div>
+            <div class="work-card-name">Gery</div>
+            <p class="work-card-desc">With Garudafood&rsquo;s Gery from its Myanmar launch &mdash; Crunch Roll and Cheese Cracker key visuals.</p>
           </div>
-          <div class="work-card-action">See Details <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+          <a href="#cases" class="work-card-action">Case Story <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
         </div>
       </div>
       <div class="work-card" data-wd="120">
-        <div class="work-card-bg" style="background:linear-gradient(135deg,#0a1a0a 0%,#0d2b0d 50%,#1a5c1a 100%)"></div>
+        <div class="work-card-bg" style="background-image:url('/design/img/mac-1.jpg');background-position:center 35%"></div>
         <div class="work-card-ov"></div>
         <div class="work-card-info">
           <div>
-            <div class="work-card-meta"><span class="work-card-cat">UI / UX Design</span></div>
-            <div class="work-card-name">KBZ Bank Digital Platform</div>
+            <div class="work-card-meta"><span class="work-card-cat">Scotch Whisky &middot; Campaigns</span></div>
+            <div class="work-card-name">MacArthur&rsquo;s Whisky</div>
+            <p class="work-card-desc">Awareness campaigns online and offline since the brand arrived in Myanmar in 2019.</p>
           </div>
-          <div class="work-card-action">See Details <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+          <a href="#cases" class="work-card-action">Case Story <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
         </div>
       </div>
       <div class="work-card" data-wd="180">
-        <div class="work-card-bg" style="background:linear-gradient(135deg,#1a0f2e 0%,#2d1b5e 50%,#4a2d8f 100%)"></div>
+        <div class="work-card-bg" style="background-image:url('/design/img/beco-1.jpg');background-position:center"></div>
         <div class="work-card-ov"></div>
         <div class="work-card-info">
           <div>
-            <div class="work-card-meta"><span class="work-card-cat">Motion &amp; Animation</span></div>
-            <div class="work-card-name">City Mart Supercentre</div>
+            <div class="work-card-meta"><span class="work-card-cat">Healthcare &middot; Brand Launch</span></div>
+            <div class="work-card-name">Becozinc</div>
+            <p class="work-card-desc">Website, social media and locally shot photography for the Dr. Reddy&rsquo;s zinc &amp; B-complex launch.</p>
           </div>
-          <div class="work-card-action">See Details <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
-        </div>
-      </div>
-      <div class="work-card" data-wd="240">
-        <div class="work-card-bg" style="background:linear-gradient(135deg,#0f1a1a 0%,#1a3d3d 50%,#2d7070 100%)"></div>
-        <div class="work-card-ov"></div>
-        <div class="work-card-info">
-          <div>
-            <div class="work-card-meta"><span class="work-card-cat">Packaging Design</span></div>
-            <div class="work-card-name">Lotte Hotel &amp; Residences</div>
-          </div>
-          <div class="work-card-action">See Details <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+          <a href="#cases" class="work-card-action">Case Story <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- TOOLS / CERTIFIED (WHITE) -->
+<!-- CLIENTS (WHITE) -->
 <section class="tools" id="tools">
   <div class="tools-inner">
-    <h2 class="tools-h rv">We are <em>certified.</em></h2>
-    <p class="tools-sub rv rv1">Our designers are certified professionals across industry-standard tools &mdash; ensuring quality, precision, and consistency on every project.</p>
+    <h2 class="tools-h rv">Brands we&rsquo;ve <em>shaped.</em></h2>
+    <p class="tools-sub rv rv1">Thirteen brands across telecom, fintech, FMCG, beverage, healthcare, agriculture and NGOs trust Awaken Design with how they look.</p>
     <div class="tools-grid">
-      <div class="tool-chip" data-td="0"><div class="tool-chip-icon">&#127912;</div>Figma</div>
-      <div class="tool-chip" data-td="60"><div class="tool-chip-icon">&#11041;</div>Illustrator</div>
-      <div class="tool-chip" data-td="120"><div class="tool-chip-icon">&#9723;</div>Photoshop</div>
-      <div class="tool-chip" data-td="180"><div class="tool-chip-icon">&#9654;</div>After Effects</div>
-      <div class="tool-chip" data-td="240"><div class="tool-chip-icon">&#9672;</div>InDesign</div>
-      <div class="tool-chip" data-td="300"><div class="tool-chip-icon">&#10022;</div>Adobe XD</div>
-      <div class="tool-chip" data-td="360"><div class="tool-chip-icon">&#9650;</div>Cinema 4D</div>
+      <div class="tool-chip client-chip" data-td="0"><small>Telecom</small>MPT</div>
+      <div class="tool-chip client-chip" data-td="50"><small>FMCG</small>Gery</div>
+      <div class="tool-chip client-chip" data-td="100"><small>Whisky</small>MacArthur&rsquo;s</div>
+      <div class="tool-chip client-chip" data-td="150"><small>Healthcare</small>Becozinc</div>
+      <div class="tool-chip client-chip" data-td="200"><small>Fintech</small>Wave Money</div>
+      <div class="tool-chip client-chip" data-td="250"><small>Beverage</small>Kirin Ichiban</div>
+      <div class="tool-chip client-chip" data-td="300"><small>Whisky</small>Grand Royal</div>
+      <div class="tool-chip client-chip" data-td="350"><small>Agriculture</small>awba</div>
+      <div class="tool-chip client-chip" data-td="400"><small>Fintech</small>Micromoney</div>
+      <div class="tool-chip client-chip" data-td="450"><small>NGO</small>Handicap International</div>
+      <div class="tool-chip client-chip" data-td="500"><small>Internet</small>Myanmar Link</div>
+      <div class="tool-chip client-chip" data-td="550"><small>Business</small>UMG</div>
+      <div class="tool-chip client-chip" data-td="600"><small>Brand</small>ananda</div>
     </div>
+    <p class="tools-note rv">Crafted in Figma, Illustrator, Photoshop, InDesign, After Effects &amp; Adobe XD.</p>
   </div>
 </section>
 
@@ -680,21 +706,21 @@
 <div class="mq-strip">
   <div class="mq-track">
     <span class="mq-item">Brand Identity<span class="mq-dot"></span></span>
-    <span class="mq-item">Visual Design<span class="mq-dot"></span></span>
-    <span class="mq-item">Motion Graphics<span class="mq-dot"></span></span>
+    <span class="mq-item">Advertising<span class="mq-dot"></span></span>
+    <span class="mq-item">Key Visuals<span class="mq-dot"></span></span>
+    <span class="mq-item">Social Media Design<span class="mq-dot"></span></span>
+    <span class="mq-item">Campaign Design<span class="mq-dot"></span></span>
     <span class="mq-item">UI / UX<span class="mq-dot"></span></span>
-    <span class="mq-item">Typography<span class="mq-dot"></span></span>
-    <span class="mq-item">Packaging<span class="mq-dot"></span></span>
-    <span class="mq-item">Design Systems<span class="mq-dot"></span></span>
     <span class="mq-item">Art Direction<span class="mq-dot"></span></span>
+    <span class="mq-item">Photography<span class="mq-dot"></span></span>
     <span class="mq-item">Brand Identity<span class="mq-dot"></span></span>
-    <span class="mq-item">Visual Design<span class="mq-dot"></span></span>
-    <span class="mq-item">Motion Graphics<span class="mq-dot"></span></span>
+    <span class="mq-item">Advertising<span class="mq-dot"></span></span>
+    <span class="mq-item">Key Visuals<span class="mq-dot"></span></span>
+    <span class="mq-item">Social Media Design<span class="mq-dot"></span></span>
+    <span class="mq-item">Campaign Design<span class="mq-dot"></span></span>
     <span class="mq-item">UI / UX<span class="mq-dot"></span></span>
-    <span class="mq-item">Typography<span class="mq-dot"></span></span>
-    <span class="mq-item">Packaging<span class="mq-dot"></span></span>
-    <span class="mq-item">Design Systems<span class="mq-dot"></span></span>
     <span class="mq-item">Art Direction<span class="mq-dot"></span></span>
+    <span class="mq-item">Photography<span class="mq-dot"></span></span>
   </div>
 </div>
 
@@ -705,14 +731,14 @@
       <div class="stats-tag rv">By the numbers</div>
       <div class="stat-row rv rv1">
         <div class="stat-row-inner">
-          <div class="stat-num" data-to="200" data-from="0" data-sfx="+">0+</div>
-          <div class="stat-label"><strong>Brands designed</strong>across 15+ industries in Southeast Asia and beyond.</div>
+          <div class="stat-num" data-to="13" data-from="0" data-sfx="+">0+</div>
+          <div class="stat-label"><strong>Client brands</strong>including MPT, Gery, MacArthur&rsquo;s, Becozinc and Wave Money.</div>
         </div>
       </div>
       <div class="stat-row rv rv2">
         <div class="stat-row-inner">
-          <div class="stat-num" data-to="98" data-from="0" data-sfx="%">0%</div>
-          <div class="stat-label"><strong>Client satisfaction</strong>measured every project. Most clients return for a second, third, fourth engagement.</div>
+          <div class="stat-num" data-to="7" data-from="0" data-sfx="+">0+</div>
+          <div class="stat-label"><strong>Industries served</strong>telecom, fintech, FMCG, beverage, healthcare, agriculture and NGOs.</div>
         </div>
       </div>
       <div class="stat-row rv rv3">
@@ -744,7 +770,7 @@
         </div>
         <div class="sv-tags bottom-right">
           <span class="sv-tag">Motion &amp; UI</span>
-          <span class="sv-tag">Packaging</span>
+          <span class="sv-tag">Social Design</span>
         </div>
       </div>
     </div>
@@ -791,135 +817,95 @@
   </div>
 </section>
 
-<!-- FROM YANGON TO THE WORLD (DARK) -->
-<section class="world-sec" id="global">
+<!-- STUDIO SPACE (DARK) -->
+<section class="world-sec" id="studio">
   <div class="world-inner">
     <div class="world-top">
       <div class="world-left rv">
-        <div class="world-tag">Our Reach</div>
-        <h2 class="world-h">From <em>Yangon,</em><br>to the world.</h2>
-        <p class="world-desc">We started in a studio in Mayangone Township. Today, our design work reaches brands and markets across Southeast Asia, the Middle East, Europe, and beyond &mdash; without losing the craft-first approach that defines us.</p>
+        <div class="world-tag">Studio Space</div>
+        <h2 class="world-h">Our studio,<br><em>your space.</em></h2>
+        <p class="world-desc">The Awaken Design studio in Mayangone is where our team designs every day &mdash; and it&rsquo;s open for booking. Bring your shoot, workshop or creative session and use the space, with lighting and camera kit from Awaken Production on request.</p>
         <div class="world-cities">
-          <span class="world-city">Yangon</span>
-          <span class="world-city">Singapore</span>
-          <span class="world-city">Bangkok</span>
-          <span class="world-city">Dubai</span>
-          <span class="world-city">London</span>
-          <span class="world-city">Tokyo</span>
-          <span class="world-city">New York</span>
-          <span class="world-city">Sydney</span>
+          <span class="world-city">Photo &amp; video shoots</span>
+          <span class="world-city">Product photography</span>
+          <span class="world-city">Brand workshops</span>
+          <span class="world-city">Client presentations</span>
+          <span class="world-city">Creative sessions</span>
+        </div>
+        <div class="studio-actions">
+          <a href="https://wa.me/959255762417?text=Hi%20Awaken%2C%20I%27d%20like%20to%20book%20the%20studio." target="_blank" rel="noopener" class="studio-btn primary">Book the Studio &rarr;</a>
+          <a href="https://maps.app.goo.gl/HuiVWz5wNQ3381Vv5" target="_blank" rel="noopener" class="studio-btn ghost">Get Directions &#8599;</a>
         </div>
       </div>
       <div class="world-right rv rv1">
-        <div class="world-map" id="worldMap">
-          <div class="map-grid"></div>
-          <!-- continent blobs -->
-          <div class="map-blob mb-americas"></div>
-          <div class="map-blob mb-europe"></div>
-          <div class="map-blob mb-africa"></div>
-          <div class="map-blob mb-asia"></div>
-          <div class="map-blob mb-oceania"></div>
-          <!-- SVG connection lines -->
-          <svg class="map-lines" viewBox="0 0 600 340" preserveAspectRatio="none">
-            <!-- Yangon ~(73%,52%) to Singapore ~(70%,62%) -->
-            <line x1="438" y1="177" x2="420" y2="210" stroke="rgba(255,51,51,.25)" stroke-width="1" stroke-dasharray="4 3"/>
-            <!-- Yangon to Dubai ~(46%,38%) -->
-            <line x1="438" y1="177" x2="276" y2="129" stroke="rgba(255,51,51,.2)" stroke-width="1" stroke-dasharray="4 3"/>
-            <!-- Yangon to London ~(40%,22%) -->
-            <line x1="438" y1="177" x2="240" y2="75" stroke="rgba(255,51,51,.15)" stroke-width="1" stroke-dasharray="4 3"/>
-            <!-- Yangon to Tokyo ~(82%,30%) -->
-            <line x1="438" y1="177" x2="492" y2="102" stroke="rgba(255,51,51,.2)" stroke-width="1" stroke-dasharray="4 3"/>
-            <!-- Yangon to New York ~(16%,32%) -->
-            <line x1="438" y1="177" x2="96" y2="109" stroke="rgba(255,51,51,.1)" stroke-width="1" stroke-dasharray="4 3"/>
-          </svg>
-          <!-- Pins -->
-          <!-- Yangon (home) -->
-          <div class="map-pin home" style="left:73%;top:52%;transform:translate(-50%,-50%)">
-            <div class="map-pin-dot"></div>
-            <div class="map-pin-label">Yangon</div>
-          </div>
-          <!-- Singapore -->
-          <div class="map-pin" style="left:70%;top:62%;transform:translate(-50%,-50%)">
-            <div class="map-pin-dot"></div>
-            <div class="map-pin-label">Singapore</div>
-          </div>
-          <!-- Dubai -->
-          <div class="map-pin" style="left:46%;top:38%;transform:translate(-50%,-50%)">
-            <div class="map-pin-dot"></div>
-            <div class="map-pin-label">Dubai</div>
-          </div>
-          <!-- London -->
-          <div class="map-pin" style="left:40%;top:22%;transform:translate(-50%,-50%)">
-            <div class="map-pin-dot"></div>
-            <div class="map-pin-label">London</div>
-          </div>
-          <!-- Tokyo -->
-          <div class="map-pin" style="left:82%;top:30%;transform:translate(-50%,-50%)">
-            <div class="map-pin-dot"></div>
-            <div class="map-pin-label">Tokyo</div>
-          </div>
-          <!-- New York -->
-          <div class="map-pin" style="left:16%;top:32%;transform:translate(-50%,-50%)">
-            <div class="map-pin-dot"></div>
-            <div class="map-pin-label">New York</div>
-          </div>
+        <div class="studio-map">
+          <iframe title="Awaken Design studio on Google Maps" src="https://www.google.com/maps/embed?origin=mfe&amp;pb=!1m3!2m1!1s16.854952,96.1600278!6i16" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <div class="studio-map-tag"><b>&#9679;</b> No.57, YaeKuYwarMa St &middot; Mayangone, Yangon</div>
         </div>
       </div>
     </div>
     <div class="world-stats rv">
-      <div class="ws-item"><div class="ws-num">15+</div><div class="ws-label">Countries reached</div></div>
-      <div class="ws-item"><div class="ws-num">8</div><div class="ws-label">International markets</div></div>
-      <div class="ws-item"><div class="ws-num">200+</div><div class="ws-label">Global brand projects</div></div>
-      <div class="ws-item"><div class="ws-num">10yr</div><div class="ws-label">Studio heritage</div></div>
+      <div class="ws-item"><div class="ws-num sm">Mon&ndash;Sat</div><div class="ws-label">Open for bookings</div></div>
+      <div class="ws-item"><div class="ws-num sm">9 AM &ndash; 6 PM</div><div class="ws-label">Studio hours</div></div>
+      <div class="ws-item"><div class="ws-num sm">Lighting kit</div><div class="ws-label">Camera &amp; lights on request</div></div>
+      <div class="ws-item"><div class="ws-num sm">WhatsApp</div><div class="ws-label">+95 9255762417 to book</div></div>
     </div>
   </div>
 </section>
 
-<!-- BLOG (WHITE) -->
-<section class="blog" id="blog">
+<!-- CASE STORIES (WHITE) -->
+<section class="blog" id="cases">
   <div class="blog-inner">
     <div class="blog-hdr">
       <div class="blog-title-wrap">
-        <div class="blog-sup rv">Design Thinking</div>
-        <h2 class="blog-title rv rv1">Latest <em>insights.</em></h2>
+        <div class="blog-sup rv">Selected Work</div>
+        <h2 class="blog-title rv rv1">Case <em>stories.</em></h2>
       </div>
-      <a href="https://www.awakenentertainment.org" target="_blank" class="blog-see-all rv rv2">Read All</a>
+      <a href="https://www.awakenentertainment.org/contact" target="_blank" class="blog-see-all rv rv2">Start Yours</a>
     </div>
-    <div class="blog-grid">
+    <div class="blog-grid four">
       <div class="blog-card" data-bd="0">
-        <div class="blog-card-img"><div class="blog-card-img-inner bci-1"></div></div>
+        <div class="blog-card-img"><img src="/design/img/mpt-1.jpg" alt="MPT &mdash; Moving Myanmar Forward artwork by Awaken Design" loading="lazy"></div>
         <div class="blog-card-body">
           <div class="blog-card-meta">
-            <span class="blog-card-cat">Brand Strategy</span>
-            <span class="blog-card-date">Jun 2026</span>
+            <span class="blog-card-cat">Telecom</span>
+            <span class="blog-card-date">Ongoing</span>
           </div>
-          <div class="blog-card-title">Why your brand needs a visual system, not just a logo</div>
-          <div class="blog-card-excerpt">A logo is a signature. A visual system is a language. We break down why the distinction matters for brands that want to scale.</div>
-          <a href="#" class="blog-card-link">Read Article <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+          <div class="blog-card-title">MPT &mdash; Moving Myanmar Forward</div>
+          <div class="blog-card-excerpt">Awaken manages MPT&rsquo;s digital social platforms: monthly content calendars, digital campaigns, daily social media tasks and videography.</div>
         </div>
       </div>
       <div class="blog-card" data-bd="100">
-        <div class="blog-card-img"><div class="blog-card-img-inner bci-2"></div></div>
+        <div class="blog-card-img"><img src="/design/img/gery-2.jpg" alt="Gery &mdash; a new brand, kept relevant artwork by Awaken Design" loading="lazy"></div>
         <div class="blog-card-body">
           <div class="blog-card-meta">
-            <span class="blog-card-cat">Typography</span>
-            <span class="blog-card-date">May 2026</span>
+            <span class="blog-card-cat">FMCG</span>
+            <span class="blog-card-date">Since 2016</span>
           </div>
-          <div class="blog-card-title">The type choices that make Southeast Asian brands feel modern</div>
-          <div class="blog-card-excerpt">From Burmese script integration to Latin pairing strategies &mdash; how we approach bilingual design without compromising visual identity.</div>
-          <a href="#" class="blog-card-link">Read Article <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+          <div class="blog-card-title">Gery &mdash; a new brand, kept relevant</div>
+          <div class="blog-card-excerpt">Garudafood&rsquo;s coated-biscuit brand arrived in Myanmar around 2016. We worked with Gery from the start, helping it shape-shift and stay fresh.</div>
         </div>
       </div>
       <div class="blog-card" data-bd="200">
-        <div class="blog-card-img"><div class="blog-card-img-inner bci-3"></div></div>
+        <div class="blog-card-img"><img src="/design/img/mac-3.jpg" alt="MacArthur&rsquo;s &mdash; the mark of fine taste artwork by Awaken Design" loading="lazy"></div>
         <div class="blog-card-body">
           <div class="blog-card-meta">
-            <span class="blog-card-cat">Motion Design</span>
-            <span class="blog-card-date">Apr 2026</span>
+            <span class="blog-card-cat">Beverage</span>
+            <span class="blog-card-date">Since 2019</span>
           </div>
-          <div class="blog-card-title">When to animate: the rules we follow for brand motion</div>
-          <div class="blog-card-excerpt">Motion is not decoration. We share our internal framework for deciding when animation adds value &mdash; and when it just adds noise.</div>
-          <a href="#" class="blog-card-link">Read Article <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+          <div class="blog-card-title">MacArthur&rsquo;s &mdash; the mark of fine taste</div>
+          <div class="blog-card-excerpt">Brand-awareness campaigns online and offline for the Scotch whisky&rsquo;s Myanmar arrival, optimised on KPIs and real-time evaluation.</div>
+        </div>
+      </div>
+      <div class="blog-card" data-bd="300">
+        <div class="blog-card-img"><img src="/design/img/beco-2.jpg" alt="Becozinc &mdash; a first for Myanmar artwork by Awaken Design" loading="lazy"></div>
+        <div class="blog-card-body">
+          <div class="blog-card-meta">
+            <span class="blog-card-cat">Healthcare</span>
+            <span class="blog-card-date">Since 2017</span>
+          </div>
+          <div class="blog-card-title">Becozinc &mdash; a first for Myanmar</div>
+          <div class="blog-card-excerpt">Website, Facebook, Instagram and locally shot stock photography &mdash; rare for big brands in Myanmar at the time.</div>
         </div>
       </div>
     </div>
@@ -952,8 +938,8 @@
   <div class="ft-inner">
     <div class="ft-top">
       <div>
-        <div class="ft-logo"><div class="ft-logo-sq">A</div><span class="ft-logo-t">AWAKEN</span></div>
-        <p class="ft-desc">We craft visual identities that make people stop, feel, and remember. Based in Yangon, designing for the world.</p>
+        <div class="ft-logo"><span class="brand-mark" aria-hidden="true"></span><span class="ft-logo-t">AWAKEN DESIGN</span></div>
+        <p class="ft-desc">Branding &amp; advertising studio in Yangon. We design brands that make people stop, feel, and remember.</p>
       </div>
       <div>
         <div class="ft-col-h">Divisions</div>
@@ -1174,5 +1160,6 @@ document.querySelectorAll('.pcard').forEach(card=>{
   });
 });
 </script>
+<script src="/assets/smooth.js?v=2"></script>
 </body>
 </html>

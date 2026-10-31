@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="assets/gr.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23D6A658'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='16' font-weight='700' text-anchor='middle' fill='%231A100E'%3EGR%3C/text%3E%3C/svg%3E">
+<title>GR Station — Live Website Prototype</title>
+<meta name="description" content="Working prototype of the live website in the Awaken x Grand Royal Interactive Charging Station proposal: public leaderboard, player account, vendor portal and brand dashboard on one ledger.">
+</head>
+<body>
+<div class="demo-strip"><div class="wrap">
+  <b>Proposal prototype.</b> Working demonstration of the live website in the Awaken&nbsp;&times;&nbsp;Grand Royal Station proposal. Sample data only &mdash; no real accounts, no real phone numbers, no real prizes. 18+.
+</div></div>
+<header class="topbar"><div class="wrap topbar-in">
+  <a class="brand" href="index.html">
+    <span class="brand-mark">GR</span>
+    <span><span class="brand-name">Grand Royal Station</span><br><span class="brand-sub">Awaken Entertainment</span></span>
+  </a>
+  <nav class="topnav" aria-label="Station surfaces">
+    <a href="index.html" data-nav="index" aria-current="page">Overview</a>
+    <a href="live.html" data-nav="live">Live board</a>
+    <a href="account.html" data-nav="account">My account</a>
+    <a href="vendor.html" data-nav="vendor">Vendor</a>
+    <a href="dashboard.html" data-nav="dashboard">Dashboard</a>
+  </nav>
+</div></header>
+
+<main>
+<section class="band" style="background:var(--ink);color:var(--sand)">
+  <div class="wrap">
+    <p class="eyebrow on-dark">Awaken Entertainment &times; Grand Royal</p>
+    <h1 style="color:var(--cream);margin-top:14px;max-width:900px">The Station, and everything around it</h1>
+    <p class="lede" style="color:var(--sand);max-width:60ch;margin-top:18px">
+      A counter-top Station plays Grand Royal&rsquo;s films and runs three events. Players scan the QR,
+      register with a local mobile number, earn points in the cloud and claim prizes at the vendor.
+      This prototype is the live website that sits behind it.
+    </p>
+    <div class="row" style="margin-top:28px">
+      <a class="btn btn-gold" href="live.html">Open the live board</a>
+      <a class="btn" href="account.html" style="background:var(--ink-2)">Create a demo account</a>
+    </div>
+    <div class="grid grid-4" style="margin-top:38px">
+      <div class="stat"><div class="stat-num" data-bind="playingNow">128</div><div class="stat-label">playing now</div></div>
+      <div class="stat"><div class="stat-num" data-bind="playsToday">1,940</div><div class="stat-label">plays today</div></div>
+      <div class="stat"><div class="stat-num" data-bind="signups">312</div><div class="stat-label">sign-ups</div></div>
+      <div class="stat"><div class="stat-num" data-bind="stations">19 of 20</div><div class="stat-label">Stations online</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <p class="eyebrow">One database, four views</p>
+    <h2 style="margin-top:12px">Four surfaces, one ledger</h2>
+    <p class="lede">Every number on this site comes from the same cloud ledger, so the screens never disagree. Play on one page and watch the others move.</p>
+    <div class="grid grid-2" style="margin-top:30px">
+
+      <a class="card" href="live.html" style="text-decoration:none;display:block">
+        <div class="spread"><h3>Public live page</h3><span class="live-pill"><i class="live-dot"></i>Live</span></div>
+        <p class="eyebrow" style="margin-top:10px">Anyone &middot; no login</p>
+        <p style="color:var(--muted);margin-top:10px">Leaderboards by venue and city, the just-now feed, match predictions and Station status. Nicknames only &mdash; phone numbers never appear here.</p>
+        <p style="color:var(--bronze);font-weight:700;margin-top:14px">Open the board &rarr;</p>
+      </a>
+
+      <a class="card" href="account.html" style="text-decoration:none;display:block">
+        <div class="spread"><h3>Player account</h3><span class="live-pill"><i class="live-dot"></i>Live</span></div>
+        <p class="eyebrow" style="margin-top:10px">The player &middot; phone + SMS code</p>
+        <p style="color:var(--muted);margin-top:10px">Points, progress to the next prize, the full history and a one-time voucher with a QR code for the vendor to scan.</p>
+        <p style="color:var(--bronze);font-weight:700;margin-top:14px">Sign in with a demo number &rarr;</p>
+      </a>
+
+      <a class="card" href="vendor.html" style="text-decoration:none;display:block">
+        <div class="spread"><h3>Vendor portal</h3><span class="live-pill"><i class="live-dot"></i>Live</span></div>
+        <p class="eyebrow" style="margin-top:10px">Venue staff &middot; vendor code</p>
+        <p style="color:var(--muted);margin-top:10px">Scan or type a voucher, check the prize, hand it over and see the day&rsquo;s claims for the venue.</p>
+        <p style="color:var(--bronze);font-weight:700;margin-top:14px">Open the portal &rarr;</p>
+      </a>
+
+      <a class="card" href="dashboard.html" style="text-decoration:none;display:block">
+        <div class="spread"><h3>Brand dashboard</h3><span class="live-pill"><i class="live-dot"></i>Live</span></div>
+        <p class="eyebrow" style="margin-top:10px">Grand Royal and Awaken</p>
+        <p style="color:var(--muted);margin-top:10px">Sessions, plays, sign-ups, points, claims and uptime for every Station, with filters and a CSV export.</p>
+        <p style="color:var(--bronze);font-weight:700;margin-top:14px">Open the dashboard &rarr;</p>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<section class="band" style="background:var(--cream-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <p class="eyebrow">Register and start playing</p>
+    <h2 style="margin-top:12px">Four steps, one mobile number</h2>
+    <div class="grid grid-4" style="margin-top:28px">
+      <div class="card" style="background:#fff">
+        <p class="eyebrow">Step 1</p>
+        <h3 style="margin-top:8px">Scan the QR</h3>
+        <p style="color:var(--muted);margin-top:8px">Point your camera at the Station. The QR is on the logo plate and on the screen.</p>
+      </div>
+      <div class="card" style="background:#fff">
+        <p class="eyebrow">Step 2</p>
+        <h3 style="margin-top:8px">Your number</h3>
+        <p style="color:var(--muted);margin-top:8px">A local mobile number is the only ID needed. Numbers are stored encrypted.</p>
+      </div>
+      <div class="card" style="background:#fff">
+        <p class="eyebrow">Step 3</p>
+        <h3 style="margin-top:8px">Enter the code</h3>
+        <p style="color:var(--muted);margin-top:8px">An SMS code and an 18+ tick confirm it. One phone number is one account.</p>
+      </div>
+      <div class="card" style="background:#fff">
+        <p class="eyebrow">Step 4</p>
+        <h3 style="margin-top:8px">You are in</h3>
+        <p style="color:var(--muted);margin-top:8px">The Station assigns the account and the round starts.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <p class="eyebrow">More points, bigger prize</p>
+    <h2 style="margin-top:12px">The points ladder</h2>
+    <p class="lede">Points come from all three events: the brand and general quiz, the series question, and the EPL quiz and prediction.</p>
+    <div class="ladder" id="ladder" style="margin-top:30px"></div>
+    <p class="hint" style="margin-top:18px">Claim each step once per season at the vendor. Prizes are non-alcohol, won by skill, and switched on only when counsel clears them. Steps and prizes are a proposal, tuned in the pilot.</p>
+  </div>
+</section>
+
+<section class="band" style="background:var(--ink);color:var(--sand)">
+  <div class="wrap">
+    <p class="eyebrow on-dark">What the site shows, and how fresh</p>
+    <h2 style="color:var(--cream);margin-top:12px">Data, roles and refresh</h2>
+    <div class="table-scroll" style="margin-top:26px;background:var(--cream);border-radius:var(--radius)">
+      <table class="data">
+        <thead><tr><th>Data</th><th>Who sees it</th><th>Refresh</th><th>Note</th></tr></thead>
+        <tbody>
+          <tr><td><b>Leaderboards by venue and city</b></td><td>Public</td><td>Live</td><td>Nicknames only</td></tr>
+          <tr><td><b>Match predictions and results</b></td><td>Public</td><td>Live</td><td>Locks at kick-off</td></tr>
+          <tr><td><b>Series answers and crowd split</b></td><td>Public</td><td>After the reveal</td><td>One result per episode</td></tr>
+          <tr><td><b>My points, history and prizes</b></td><td>The player</td><td>Live</td><td>Login by SMS code</td></tr>
+          <tr><td><b>Voucher status</b></td><td>Player and vendor</td><td>Live</td><td>One-time code</td></tr>
+          <tr><td><b>Station status and uptime</b></td><td>Awaken, Grand Royal</td><td>Every minute</td><td>Alerts on faults</td></tr>
+          <tr><td><b>Sessions, plays and sign-ups</b></td><td>Awaken, Grand Royal</td><td>Live</td><td>By venue, city and day</td></tr>
+          <tr><td><b>Claims and prize stock</b></td><td>Awaken, Grand Royal, vendors</td><td>Live</td><td>Weekly reconciliation</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="hint" style="color:var(--muted-2);margin-top:16px">Live means within seconds of the event. Public pages show nicknames and table names only; phone numbers are never shown outside the player&rsquo;s own account and the cloud.</p>
+  </div>
+</section>
+
+<section class="band" style="background:var(--cream-2);border-top:1px solid var(--line)">
+  <div class="wrap">
+    <p class="eyebrow">Prototype notes</p>
+    <h2 style="margin-top:12px">How this demo behaves</h2>
+    <div class="grid grid-3" style="margin-top:26px">
+      <div class="card">
+        <h3>No server</h3>
+        <p style="color:var(--muted);margin-top:8px">The &ldquo;cloud&rdquo; is a ledger in your own browser. Nothing is sent anywhere, and nothing is shared between devices.</p>
+      </div>
+      <div class="card">
+        <h3>Demo sign-in</h3>
+        <p style="color:var(--muted);margin-top:8px">Any local mobile number works, and the SMS code is shown on screen. Vendor codes are listed on the portal page.</p>
+      </div>
+      <div class="card">
+        <h3>Start over</h3>
+        <p style="color:var(--muted);margin-top:8px">Reset the ledger to its seeded state at any time.<br>
+        <button class="btn btn-ghost btn-sm" id="reset" style="margin-top:12px">Reset the demo data</button></p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="footer"><div class="wrap">
+  <div class="footer-grid">
+    <div>
+      <p class="eyebrow on-dark">The prototype</p>
+      <p style="margin-top:8px">Four views on one ledger: the public board, the player account, the vendor portal and the brand dashboard. Everything you change on one page shows up on the others.</p>
+    </div>
+    <div>
+      <p class="eyebrow on-dark">Compliance envelope</p>
+      <p style="margin-top:8px">Free to play, no purchase or stake. Skill-based ranking, never a random draw. 18+ only, ID checked at collection. Non-alcohol rewards. No betting language.</p>
+    </div>
+    <div>
+      <p class="eyebrow on-dark">Surfaces</p>
+      <p style="margin-top:8px">
+        <a href="live.html">Live board</a> &middot; <a href="account.html">Player account</a><br>
+        <a href="vendor.html">Vendor portal</a> &middot; <a href="dashboard.html">Brand dashboard</a>
+      </p>
+    </div>
+  </div>
+  <hr style="border:0;border-top:1px solid var(--ink-3);margin:26px 0 18px">
+  <p style="color:var(--muted-2)">Awaken Entertainment &times; Grand Royal &mdash; Interactive Charging Station, full-device proposal. Prototype for review; screens, points, prizes and rules are proposals to be tuned in the pilot. Rewards switch on only with counsel clearance.</p>
+</div></footer>
+
+<script src="assets/gr.js"></script>
+<script>
+(function () {
+  'use strict';
+  GR.startSim();
+
+  var ladderEl = GR.el('#ladder');
+  GR.LADDER.forEach(function (rung) {
+    var d = document.createElement('div');
+    d.className = 'rung';
+    d.style.background = rung.tone;
+    d.style.color = rung.ink;
+    d.style.minHeight = rung.height + 'px';
+    d.innerHTML = '<div class="rung-pts">' + GR.fmt(rung.step) + '</div>' +
+                  '<div class="rung-label">points</div>' +
+                  '<div class="rung-prize">' + GR.esc(rung.prize) + '</div>';
+    ladderEl.appendChild(d);
+  });
+
+  function paint() {
+    var c = GR.state.counters;
+    GR.el('[data-bind="playingNow"]').textContent = GR.fmt(c.playingNow);
+    GR.el('[data-bind="playsToday"]').textContent = GR.fmt(c.playsToday);
+    GR.el('[data-bind="signups"]').textContent = GR.fmt(c.signups);
+    GR.el('[data-bind="stations"]').textContent = GR.state.stationsOnline + ' of ' + GR.state.stationsTotal;
+  }
+  GR.onChange(paint);
+  paint();
+
+  GR.el('#reset').addEventListener('click', function () {
+    if (window.confirm('Reset the demo ledger? This clears the demo accounts, points and vouchers in this browser.')) {
+      GR.reset();
+      window.alert('The demo data has been reset.');
+    }
+  });
+})();
+</script>
+</body>
+</html>
