@@ -135,6 +135,7 @@ section{position:relative;background:var(--bg);color:var(--fg)}
 .t-lilac{--bg:#EFEAF9;--fg:#150F24;--mute:rgba(21,15,36,.64);--card:#fff;--line:rgba(70,40,140,.13);--acc:#5B3BD6;--fill:#5B3BD6;--on:#fff}
 .t-ice{--bg:#EAF2FD;--fg:#0B1A2E;--mute:rgba(11,26,46,.64);--card:#fff;--line:rgba(20,60,120,.13);--acc:#1D63E0;--fill:#1D63E0;--on:#fff}
 .t-teal{--bg:#062A2D;--fg:#fff;--mute:rgba(220,255,248,.7);--card:rgba(255,255,255,.06);--line:rgba(255,255,255,.13);--acc:#3EE0B4;--fill:#22C59A;--on:#04231F}
+.t-gold{--bg:#FBF2D9;--fg:#1E1606;--mute:rgba(30,22,6,.66);--card:#FFFDF7;--line:rgba(120,90,10,.16);--acc:#A86A00;--fill:#C98A0B;--on:#fff}
 .t-ivory{--bg:#FBF7F0;--fg:#18120E;--mute:rgba(24,18,14,.64);--card:#fff;--line:rgba(80,50,20,.12);--acc:#E50D0C;--fill:#E50D0C;--on:#fff}
 .red{color:var(--acc)}
 
@@ -560,6 +561,7 @@ h5.for{color:#0A9A58}h5.against{color:var(--red)}
 .t-green .opener{background:radial-gradient(ellipse at 90% 0%,rgba(255,209,0,.22),transparent 50%),radial-gradient(ellipse at 0% 100%,rgba(16,160,90,.55),transparent 60%),linear-gradient(180deg,#064A2B,#05341E)}
 .t-red .opener{background:radial-gradient(ellipse at 100% 0%,rgba(255,255,255,.18),transparent 50%),linear-gradient(160deg,#E50D0C,#A80808)}
 .t-red .tag,.t-red .num{color:#FFE1DD}
+.t-gold .opener{background:radial-gradient(ellipse at 100% 0%,rgba(229,13,12,.16),transparent 52%),radial-gradient(ellipse at 0% 130%,rgba(201,138,11,.3),transparent 55%),#FBF2D9}
 .t-teal .opener{background:radial-gradient(ellipse at 100% 0%,rgba(62,224,180,.26),transparent 55%),radial-gradient(ellipse at 0% 120%,rgba(30,120,200,.3),transparent 55%),#062A2D}
 .card.accent{background:var(--fill);border-color:var(--fill);color:var(--on)}
 .card.accent>.ic{background:color-mix(in srgb,var(--on) 16%,transparent);color:var(--on)}
@@ -879,7 +881,7 @@ h5.for{color:#0A9A58}h5.against{color:var(--red)}
 <script>
 (() => {
   'use strict';
-  const SALT = 'JClMfZjNcEefIPDMc7ugww==', ITER = 210000, VER = '2611132119';
+  const SALT = '35HTzSPTkwtNQac/x4ew1g==', ITER = 210000, VER = '2611132120';
   const $ = id => document.getElementById(id);
   const root = document.documentElement, body = document.body;
   const qs = new URLSearchParams(location.search);
