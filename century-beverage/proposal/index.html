@@ -655,6 +655,9 @@ h5.for{color:#0A9A58}h5.against{color:var(--red)}
 .hlock .hk{line-height:1.7}
 .gate .cplate{margin:-20px 0 26px;padding:8px 13px;border-radius:13px}
 .gate .cplate img{height:44px}
+.callout.guarantee{margin:0 0 6px;padding:22px 24px;align-items:center;box-shadow:0 18px 40px color-mix(in srgb,var(--fill) 28%,transparent)}
+.callout.guarantee p{font-size:clamp(17px,1.7vw,22px);line-height:1.4;font-weight:600}
+.callout.guarantee .ic{width:28px;height:28px}
 /* ---------------- reveal ---------------- */
 .js .rv{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
 .js .rv.in{opacity:1;transform:none}
@@ -918,7 +921,7 @@ h5.for{color:#0A9A58}h5.against{color:var(--red)}
 <script>
 (() => {
   'use strict';
-  const SALT = 'aLJBqmPfGz8iQpd5UaAB9Q==', ITER = 210000, VER = '2611141527';
+  const SALT = 'zLr6P2IRvmOhK6l8Yms1Kw==', ITER = 210000, VER = '2611141607';
   const $ = id => document.getElementById(id);
   const root = document.documentElement, body = document.body;
   const qs = new URLSearchParams(location.search);
