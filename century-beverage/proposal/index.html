@@ -634,6 +634,19 @@ h5.for{color:#0A9A58}h5.against{color:var(--red)}
 .tbl.plain.kpi td:last-child{white-space:normal;text-align:left;width:34%;font-weight:600;color:var(--acc)}
 .tbl.plain.kpi th:last-child{text-align:left}
 
+
+/* Arena hero with key visual: image right, solid fade under the text */
+.arenahero{padding:0;min-height:clamp(440px,44vw,580px);display:flex;align-items:center;background:#043A21;isolation:isolate}
+.ahmedia{position:absolute;inset:0;z-index:-1}
+.ahmedia img{width:100%;height:100%;object-fit:cover;object-position:72% 40%;display:block;opacity:0;transition:opacity 1.2s var(--ease)}
+.ahmedia.ok img{opacity:1}
+.ahmedia::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#043A21 0%,rgba(4,58,33,.97) 30%,rgba(4,58,33,.86) 42%,rgba(4,58,33,.45) 56%,rgba(4,58,33,.08) 70%,rgba(4,58,33,0) 80%),linear-gradient(0deg,rgba(4,58,33,.5),transparent 30%)}
+.ahin{position:relative;padding:clamp(36px,5vw,70px) clamp(22px,4.5vw,64px);max-width:min(620px,56%)}
+.arenahero .ahin>span{font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#FFD100}
+.arenahero h3{font-size:clamp(46px,7.4vw,116px);text-shadow:0 6px 30px rgba(0,0,0,.35)}
+.arenahero .ahin .ah2{font-size:clamp(19px,1.9vw,26px)}
+.arenahero .ahin p:last-child{max-width:46ch;text-shadow:0 1px 12px rgba(0,0,0,.35)}
+
 /* ---------------- reveal ---------------- */
 .js .rv{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
 .js .rv.in{opacity:1;transform:none}
@@ -815,6 +828,16 @@ h5.for{color:#0A9A58}h5.against{color:var(--red)}
   .tm p{margin:0;font-size:13px}
   .tbl.plain.kpi td:last-child{width:40%}
   .t-white .step{box-shadow:none}
+  .arenahero{display:block;min-height:0}
+  .ahmedia{position:relative;inset:auto;z-index:0;aspect-ratio:16/11}
+  .ahmedia img{object-position:80% 32%}
+  .ahmedia::after{background:linear-gradient(0deg,#043A21 0%,rgba(4,58,33,.65) 20%,rgba(4,58,33,0) 48%)}
+  .ahin{max-width:none;padding:0 20px 28px;margin-top:-26px}
+  .arenahero h3{font-size:46px}
+}
+@media (max-width:1180px) and (min-width:721px){
+  .ahin{max-width:62%}
+  .ahmedia::after{background:linear-gradient(90deg,#043A21 0%,rgba(4,58,33,.95) 36%,rgba(4,58,33,.7) 52%,rgba(4,58,33,.15) 72%,rgba(4,58,33,0) 86%)}
 }
 @media (prefers-reduced-motion:reduce){
   .js .rv{opacity:1;transform:none;transition:none}
@@ -881,7 +904,7 @@ h5.for{color:#0A9A58}h5.against{color:var(--red)}
 <script>
 (() => {
   'use strict';
-  const SALT = '35HTzSPTkwtNQac/x4ew1g==', ITER = 210000, VER = '2611132120';
+  const SALT = 'K5pmHAj2DdesfdM6IqJvOw==', ITER = 210000, VER = '2611140716';
   const $ = id => document.getElementById(id);
   const root = document.documentElement, body = document.body;
   const qs = new URLSearchParams(location.search);
