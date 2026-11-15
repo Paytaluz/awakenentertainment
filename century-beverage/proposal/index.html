@@ -693,6 +693,14 @@ h5.for{color:#0A9A58}h5.against{color:var(--red)}
 .vplayer.on .vprog{opacity:1}
 .vprog i{display:block;height:100%;width:0;background:#fff}
 .vbadge{z-index:2}
+.opener.has-bg .obg{position:absolute;top:0;bottom:0;right:0;left:36%;z-index:0;pointer-events:none}
+.opener.has-bg .obg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:right center;opacity:0;transition:opacity 1.2s var(--ease)}
+.opener.has-bg .obg.ok img{opacity:1}
+.opener.has-bg .obg img{-webkit-mask-image:linear-gradient(90deg,transparent 0%,transparent 24%,rgba(0,0,0,.35) 40%,rgba(0,0,0,.85) 58%,#000 70%);mask-image:linear-gradient(90deg,transparent 0%,transparent 24%,rgba(0,0,0,.35) 40%,rgba(0,0,0,.85) 58%,#000 70%)}
+.opener.has-bg .otext{max-width:min(560px,44vw)}
+.opener.has-bg h2{font-size:clamp(36px,4.3vw,64px)}
+.opener.has-bg .wrap{z-index:1}
+.t-show-bg{}
 /* ---------------- reveal ---------------- */
 .js .rv{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
 .js .rv.in{opacity:1;transform:none}
@@ -874,6 +882,11 @@ h5.for{color:#0A9A58}h5.against{color:var(--red)}
   .tm p{margin:0;font-size:13px}
   .tbl.plain.kpi td:last-child{width:40%}
   .t-white .step{box-shadow:none}
+  .opener.has-bg .obg{left:0}
+  .opener.has-bg .otext{max-width:none}
+  .opener.has-bg h2{font-size:38px}
+  .opener.has-bg .obg img{-webkit-mask-image:linear-gradient(0deg,transparent 0%,transparent 42%,rgba(0,0,0,.45) 64%,#000 100%);mask-image:linear-gradient(0deg,transparent 0%,transparent 42%,rgba(0,0,0,.45) 64%,#000 100%)}
+  .opener.has-bg .obg img{object-position:82% center}
   .talent{grid-template-columns:84px minmax(0,1fr);gap:14px;align-items:center}
   .talent .tbody{display:contents}
   .talent .tstats,.talent .tbody>.note{grid-column:1/-1}
@@ -962,7 +975,7 @@ h5.for{color:#0A9A58}h5.against{color:var(--red)}
 <script>
 (() => {
   'use strict';
-  const SALT = 'Qo1XF0BhhRs98BPOJ3eHtw==', ITER = 210000, VER = '2611151449';
+  const SALT = 'z20bXRVJv6DZSUjAhGNibg==', ITER = 210000, VER = '2611151550';
   const $ = id => document.getElementById(id);
   const root = document.documentElement, body = document.body;
   const qs = new URLSearchParams(location.search);
