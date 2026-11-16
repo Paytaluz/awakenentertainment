@@ -723,6 +723,10 @@ h5.for{color:#0A9A58}h5.against{color:var(--red)}
 .omega{display:block;width:min(100%,940px);height:auto;filter:drop-shadow(0 12px 30px rgba(80,0,0,.35))}
 .scopebar{margin:4px 0 14px;padding:14px 18px;border-radius:14px;background:var(--fill);color:var(--on);font-size:15px;line-height:1.5}
 .scopebar b{font-weight:700}
+.roster .dots i.rp{background:#0A7A45;overflow:hidden;position:relative}
+.roster .dots i.rp img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s}
+.roster .dots i.rp.ok img{opacity:1}
+.roster .dots i{width:52px;height:52px}
 /* ---------------- reveal ---------------- */
 .js .rv{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
 .js .rv.in{opacity:1;transform:none}
@@ -997,7 +1001,7 @@ h5.for{color:#0A9A58}h5.against{color:var(--red)}
 <script>
 (() => {
   'use strict';
-  const SALT = '6LHIoxLY8wXTn2u2hrRcAA==', ITER = 210000, VER = '2611160839';
+  const SALT = 'Agpj1ZmF00uQKWGQV8sLag==', ITER = 210000, VER = '2611161239';
   const $ = id => document.getElementById(id);
   const root = document.documentElement, body = document.body;
   const qs = new URLSearchParams(location.search);
