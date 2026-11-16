@@ -705,6 +705,8 @@ h5.for{color:#0A9A58}h5.against{color:var(--red)}
 .kick .plogo{width:1.9em;height:1.9em;margin-top:-.25em}
 .stats.rows .stat span .plogo{width:30px;height:30px;flex:none;margin:0 10px 0 0}
 .stats.rows .stat span:has(.plogo){display:flex;align-items:center}
+.kpic{width:52px;height:52px;border-radius:50%;overflow:hidden;flex:none;background:color-mix(in srgb,var(--c) 16%,transparent);box-shadow:0 0 0 2px #fff,0 0 0 4px color-mix(in srgb,var(--c) 45%,transparent)}
+.kpic img{width:100%;height:100%;object-fit:cover;display:block;opacity:0;transition:opacity .6s}.kpic.ok img{opacity:1}
 /* ---------------- reveal ---------------- */
 .js .rv{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
 .js .rv.in{opacity:1;transform:none}
@@ -979,7 +981,7 @@ h5.for{color:#0A9A58}h5.against{color:var(--red)}
 <script>
 (() => {
   'use strict';
-  const SALT = 'cSIAKEq606yGY6SlSgnRLQ==', ITER = 210000, VER = '2611160542';
+  const SALT = 'nHDifxeNE7Kl+hv02IdFNQ==', ITER = 210000, VER = '2611160546';
   const $ = id => document.getElementById(id);
   const root = document.documentElement, body = document.body;
   const qs = new URLSearchParams(location.search);
