@@ -528,7 +528,7 @@ h5.for{color:#0A9A58}h5.against{color:var(--red)}
 .total .tl b{font-size:clamp(40px,5vw,64px);letter-spacing:-.05em;line-height:1}
 .total .tl em{font-style:normal;color:var(--mute);font-size:15px}
 .ibar{display:flex;gap:3px;height:84px;border-radius:14px;overflow:hidden}
-.ibar i{flex-basis:0;min-width:0;background:var(--c);display:flex;align-items:flex-end;padding:10px;font-style:normal;transform-origin:0 50%;transform:scaleX(0);transition:transform 1.2s var(--ease)}
+.ibar i{flex-basis:0;min-width:86px;background:var(--c);display:flex;align-items:flex-end;padding:10px;font-style:normal;transform-origin:0 50%;transform:scaleX(0);transition:transform 1.2s var(--ease)}
 .total.in .ibar i{transform:none}
 .ibar span{font-size:12px;font-weight:600;line-height:1.25;color:rgba(255,255,255,.92);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ibar span b{display:block;font-size:17px;color:#fff}
@@ -707,6 +707,12 @@ h5.for{color:#0A9A58}h5.against{color:var(--red)}
 .stats.rows .stat span:has(.plogo){display:flex;align-items:center}
 .kpic{width:52px;height:52px;border-radius:50%;overflow:hidden;flex:none;background:color-mix(in srgb,var(--c) 16%,transparent);box-shadow:0 0 0 2px #fff,0 0 0 4px color-mix(in srgb,var(--c) 45%,transparent)}
 .kpic img{width:100%;height:100%;object-fit:cover;display:block;opacity:0;transition:opacity .6s}.kpic.ok img{opacity:1}
+.rscope{font-size:14px;color:rgba(255,255,255,.9);margin:-6px 0 14px;padding:9px 12px;border-radius:10px;background:rgba(255,255,255,.14);line-height:1.45}
+.rscope b{color:#fff}
+.tbl b.free{display:inline-block;padding:3px 10px;border-radius:99px;background:#0A9A58;color:#fff;font-size:12.5px;letter-spacing:.08em}
+.freebox{margin-top:16px;padding:20px 22px;border-radius:20px;background:linear-gradient(135deg,rgba(10,154,88,.12),rgba(10,154,88,.04));border:1px solid rgba(10,154,88,.35)}
+.freebox span{display:block;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:#0A8A50;margin-bottom:6px}
+.freebox p{font-size:15px;line-height:1.55}
 /* ---------------- reveal ---------------- */
 .js .rv{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
 .js .rv.in{opacity:1;transform:none}
@@ -981,7 +987,7 @@ h5.for{color:#0A9A58}h5.against{color:var(--red)}
 <script>
 (() => {
   'use strict';
-  const SALT = '/YM1bszDrZn574PRwaN7tQ==', ITER = 210000, VER = '2611160553';
+  const SALT = 'zp2gMUgt+sZx3P6HlBSM6g==', ITER = 210000, VER = '2611160629';
   const $ = id => document.getElementById(id);
   const root = document.documentElement, body = document.body;
   const qs = new URLSearchParams(location.search);
