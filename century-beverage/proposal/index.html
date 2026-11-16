@@ -948,6 +948,32 @@ h5.for{color:#0A9A58}h5.against{color:var(--red)}
   .js .rv{opacity:1;transform:none}
   .opener{padding-top:60px}
 }
+/* LEGEND x NEXT hosts */
+.mcvs{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:18px;align-items:center;margin:0 0 22px}
+.mcside{border-radius:26px;padding:20px 20px 22px;position:relative}
+.mcside.leg{background:linear-gradient(160deg,rgba(232,170,90,.22),rgba(232,170,90,.04));border:1px solid rgba(232,170,90,.35)}
+.mcside.nxt{background:linear-gradient(200deg,rgba(110,180,255,.22),rgba(110,180,255,.04));border:1px solid rgba(110,180,255,.35)}
+.mclab{display:block;font-size:12px;font-weight:800;letter-spacing:.18em;margin:2px 0 14px}
+.leg .mclab{color:#F2C27E}.nxt .mclab{color:#8CC6FF;text-align:right}
+.mcrow{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.mc{margin:0}
+.mcpic{display:block;aspect-ratio:3/4;border-radius:16px;overflow:hidden;background:rgba(255,255,255,.06);position:relative}
+.mcpic img{width:100%;height:100%;object-fit:cover;object-position:50% 15%;display:block;opacity:0;transition:opacity .7s}
+.mcpic.ok img{opacity:1}
+.mcpic::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.28),transparent 22%,transparent 70%,rgba(0,0,0,.35))}
+.mc figcaption{padding:10px 2px 0}
+.mc figcaption b{display:block;font-size:17px;color:#fff}
+.mc figcaption em{font-style:normal;font-size:12.5px;color:rgba(255,255,255,.6)}
+.mcx{font-weight:800;font-size:clamp(28px,3.4vw,46px);letter-spacing:-.03em;background:linear-gradient(180deg,#F2C27E,#8CC6FF);-webkit-background-clip:text;background-clip:text;color:transparent}
+.mcnote{grid-column:1/-1;text-align:center;font-size:13px;color:rgba(255,255,255,.55);margin-top:2px}
+@media (max-width:760px){
+  .mcvs{grid-template-columns:minmax(0,1fr);gap:10px}
+  .mcx{text-align:center;font-size:30px}
+  .nxt .mclab{text-align:left}
+  .mcside{padding:16px}
+  .mcrow{gap:10px}
+  .mc figcaption b{font-size:15px}
+}
 </style>
 </head>
 <body class="locked">
@@ -1004,7 +1030,7 @@ h5.for{color:#0A9A58}h5.against{color:var(--red)}
 <script>
 (() => {
   'use strict';
-  const SALT = 'F05kTSjd+65djJSmDSjnPQ==', ITER = 210000, VER = '2611161934';
+  const SALT = '73gnxf8YxifmVrVMSsSGag==', ITER = 210000, VER = '2611162003';
   const $ = id => document.getElementById(id);
   const root = document.documentElement, body = document.body;
   const qs = new URLSearchParams(location.search);
