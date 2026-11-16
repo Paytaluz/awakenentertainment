@@ -713,6 +713,14 @@ h5.for{color:#0A9A58}h5.against{color:var(--red)}
 .freebox{margin-top:16px;padding:20px 22px;border-radius:20px;background:linear-gradient(135deg,rgba(10,154,88,.12),rgba(10,154,88,.04));border:1px solid rgba(10,154,88,.35)}
 .freebox span{display:block;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:#0A8A50;margin-bottom:6px}
 .freebox p{font-size:15px;line-height:1.55}
+/* red chapters: white blocks on red */
+.t-red :where(.stat,.card,.tm,.chiprow>span:not(.lbl)){--fg:#1A1013;--mute:rgba(26,16,19,.66);--acc:#D10A0A;--soft:rgba(209,10,10,.08);--line:rgba(26,16,19,.1);--fill:#D10A0A;--on:#fff;background:#fff;color:var(--fg);border-color:transparent;box-shadow:0 16px 36px rgba(70,0,0,.22)}
+.t-red .card.accent{--fg:#fff;--mute:rgba(255,255,255,.78);--fill:#120E12;--on:#fff;background:#120E12;color:#fff}
+.t-red .card.accent .tag{color:#FF8A86}
+.t-red .card:not(.accent) .tag,.t-red .card:not(.accent) .num{color:#D10A0A}
+@media (min-width:721px){.t-red .step{--fg:#1A1013;--mute:rgba(26,16,19,.66);--acc:#D10A0A;background:#fff;color:var(--fg);border-color:transparent;box-shadow:0 16px 36px rgba(70,0,0,.22)}}
+#why .omega-wrap{position:relative;z-index:1;margin-bottom:clamp(28px,4vw,48px)}
+.omega{display:block;width:min(100%,940px);height:auto;filter:drop-shadow(0 12px 30px rgba(80,0,0,.35))}
 /* ---------------- reveal ---------------- */
 .js .rv{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
 .js .rv.in{opacity:1;transform:none}
@@ -987,7 +995,7 @@ h5.for{color:#0A9A58}h5.against{color:var(--red)}
 <script>
 (() => {
   'use strict';
-  const SALT = 'zp2gMUgt+sZx3P6HlBSM6g==', ITER = 210000, VER = '2611160629';
+  const SALT = '1iPYHY2D3LaDhqAL2A5Xiw==', ITER = 210000, VER = '2611160633';
   const $ = id => document.getElementById(id);
   const root = document.documentElement, body = document.body;
   const qs = new URLSearchParams(location.search);
