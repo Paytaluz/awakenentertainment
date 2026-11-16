@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="assets/gr.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23D6A658'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='16' font-weight='700' text-anchor='middle' fill='%231A100E'%3EGR%3C/text%3E%3C/svg%3E">
+<title>GR Station — Brand Dashboard</title>
+<meta name="description" content="Brand dashboard for the Grand Royal Station: live counters, plays per hour, Station uptime, venue and city breakdowns, and CSV export.">
+</head>
+<body>
+<div class="demo-strip"><div class="wrap">
+  <b>Proposal prototype.</b> Working demonstration of the live website in the Awaken&nbsp;&times;&nbsp;Grand Royal Station proposal. Sample data only &mdash; no real accounts, no real phone numbers, no real prizes. 18+.
+</div></div>
+<header class="topbar"><div class="wrap topbar-in">
+  <a class="brand" href="index.html">
+    <span class="brand-mark">GR</span>
+    <span><span class="brand-name">Grand Royal Station</span><br><span class="brand-sub">Awaken Entertainment</span></span>
+  </a>
+  <nav class="topnav" aria-label="Station surfaces">
+    <a href="index.html" data-nav="index">Overview</a>
+    <a href="live.html" data-nav="live">Live board</a>
+    <a href="account.html" data-nav="account">My account</a>
+    <a href="vendor.html" data-nav="vendor">Vendor</a>
+    <a href="dashboard.html" data-nav="dashboard" aria-current="page">Dashboard</a>
+  </nav>
+</div></header>
+
+<main>
+<section class="page-head"><div class="wrap">
+  <div class="spread">
+    <div>
+      <p class="eyebrow">Accounts, live data and rewards</p>
+      <h1 style="margin-top:12px">Brand dashboard</h1>
+    </div>
+    <span class="live-pill"><i class="live-dot"></i>Live</span>
+  </div>
+  <p class="lede">Sessions, plays, sign-ups, points, claims and uptime for every Station. For Grand Royal and Awaken.</p>
+</div></section>
+
+<section style="padding-bottom:clamp(32px,5vw,58px)"><div class="wrap">
+  <div class="screen">
+    <div class="screen-bar">
+      <span class="screen-dots"><i style="background:var(--gold)"></i><i style="background:var(--gold-light)"></i><i style="background:var(--bronze)"></i></span>
+      <span class="screen-title">Grand Royal Station &middot; Live</span>
+      <span class="live-pill"><i class="live-dot"></i>Live</span>
+    </div>
+    <div class="screen-body">
+
+      <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(140px,1fr))">
+        <div class="stat"><div class="stat-num" data-k="playingNow">0</div><div class="stat-label">Playing now</div></div>
+        <div class="stat"><div class="stat-num" data-k="playsToday">0</div><div class="stat-label">Plays today</div></div>
+        <div class="stat"><div class="stat-num" data-k="signups">0</div><div class="stat-label">Sign-ups</div></div>
+        <div class="stat"><div class="stat-num" data-k="points">0</div><div class="stat-label">Points</div></div>
+        <div class="stat"><div class="stat-num" data-k="claims">0</div><div class="stat-label">Claims</div></div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:16px">
+        <div style="background:var(--ink-2);border-radius:12px;padding:16px;min-width:0">
+          <p class="eyebrow on-dark">Plays per hour</p>
+          <div class="bars" id="bars" style="margin-top:14px" role="img" aria-label="Plays per hour, last twelve hours"></div>
+          <div class="spread" style="margin-top:8px"><span class="stat-label">18:00</span><span class="stat-label">24:00</span></div>
+        </div>
+        <div style="background:var(--ink-2);border-radius:12px;padding:16px;min-width:0">
+          <p class="eyebrow on-dark">Stations and uptime</p>
+          <div id="uptime" style="margin-top:10px"></div>
+        </div>
+      </div>
+
+      <div class="chips" style="margin-top:16px" id="scope" role="tablist" aria-label="Breakdown">
+        <button class="chip" role="tab" data-scope="venue" aria-selected="true">Venue</button>
+        <button class="chip" role="tab" data-scope="city" aria-selected="false">City</button>
+        <button class="chip" role="tab" data-scope="today" aria-selected="false">Today</button>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section class="band" style="background:var(--cream-2);border-top:1px solid var(--line)"><div class="wrap">
+  <div class="spread">
+    <div>
+      <p class="eyebrow">Breakdown</p>
+      <h2 style="margin-top:8px" id="table-title">By venue</h2>
+    </div>
+    <button class="btn btn-ghost btn-sm" id="export">Export CSV</button>
+  </div>
+  <div class="table-scroll" style="margin-top:20px;background:#fff;border-radius:var(--radius)">
+    <table class="data">
+      <thead id="thead"></thead>
+      <tbody id="tbody"></tbody>
+    </table>
+  </div>
+  <p class="hint" style="margin-top:14px">Illustrative data; the real dashboard shows the pilot as it runs. A weekly PDF for the brand team is produced from the same ledger.</p>
+</div></section>
+
+<section class="band"><div class="wrap">
+  <h2>What the dashboard covers</h2>
+  <div class="grid grid-4" style="margin-top:24px">
+    <div class="card"><h3>Live counters</h3><p style="color:var(--muted);margin-top:8px">Playing now, plays, sign-ups, points and claims.</p></div>
+    <div class="card"><h3>Trends</h3><p style="color:var(--muted);margin-top:8px">By hour, day and week, for each venue and city.</p></div>
+    <div class="card"><h3>Stations and uptime</h3><p style="color:var(--muted);margin-top:8px">Status, battery and drawer faults, with alerts.</p></div>
+    <div class="card"><h3>Filters and exports</h3><p style="color:var(--muted);margin-top:8px">CSV export and a weekly PDF for the brand team.</p></div>
+  </div>
+</div></section>
+
+<section class="band" style="background:var(--ink);color:var(--sand)"><div class="wrap">
+  <p class="eyebrow on-dark">Rewards</p>
+  <h2 style="color:var(--cream);margin-top:12px">Claims against the ladder</h2>
+  <div class="grid grid-3" id="ladder-stats" style="margin-top:26px"></div>
+  <p class="hint" style="color:var(--muted-2);margin-top:18px">Claim each step once per season at the vendor. Prizes are non-alcohol, won by skill, and switched on only when counsel clears them.</p>
+</div></section>
+</main>
+<footer class="footer"><div class="wrap">
+  <div class="footer-grid">
+    <div>
+      <p class="eyebrow on-dark">The prototype</p>
+      <p style="margin-top:8px">Four views on one ledger: the public board, the player account, the vendor portal and the brand dashboard. Everything you change on one page shows up on the others.</p>
+    </div>
+    <div>
+      <p class="eyebrow on-dark">Compliance envelope</p>
+      <p style="margin-top:8px">Free to play, no purchase or stake. Skill-based ranking, never a random draw. 18+ only, ID checked at collection. Non-alcohol rewards. No betting language.</p>
+    </div>
+    <div>
+      <p class="eyebrow on-dark">Surfaces</p>
+      <p style="margin-top:8px">
+        <a href="live.html">Live board</a> &middot; <a href="account.html">Player account</a><br>
+        <a href="vendor.html">Vendor portal</a> &middot; <a href="dashboard.html">Brand dashboard</a>
+      </p>
+    </div>
+  </div>
+  <hr style="border:0;border-top:1px solid var(--ink-3);margin:26px 0 18px">
+  <p style="color:var(--muted-2)">Awaken Entertainment &times; Grand Royal &mdash; Interactive Charging Station, full-device proposal. Prototype for review; screens, points, prizes and rules are proposals to be tuned in the pilot. Rewards switch on only with counsel clearance.</p>
+</div></footer>
+
+<script src="assets/gr.js"></script>
+<script>
+(function () {
+  'use strict';
+  GR.startSim();
+
+  var scope = 'venue';
+
+  GR.el('#scope').addEventListener('click', function (e) {
+    var btn = e.target.closest('[data-scope]');
+    if (!btn) return;
+    scope = btn.getAttribute('data-scope');
+    GR.els('[data-scope]').forEach(function (b) { b.setAttribute('aria-selected', String(b === btn)); });
+    paintTable();
+  });
+
+  function rowsForScope() {
+    if (scope === 'venue') {
+      return {
+        title: 'By venue',
+        head: ['Venue', 'City', 'Players', 'Points', 'Claims today', 'Uptime'],
+        body: GR.VENUES.map(function (v) {
+          var players = GR.leaderboard({ venueId: v.id });
+          var points = players.reduce(function (sum, p) { return sum + p.points; }, 0);
+          return [v.name, v.city, players.length, GR.fmt(points), GR.claimsToday(v.id).length, v.uptime + '%'];
+        })
+      };
+    }
+    if (scope === 'city') {
+      return {
+        title: 'By city',
+        head: ['City', 'Venues', 'Players', 'Points', 'Claims today'],
+        body: GR.cities().map(function (city) {
+          var venues = GR.VENUES.filter(function (v) { return v.city === city; });
+          var players = GR.leaderboard({ city: city });
+          var points = players.reduce(function (sum, p) { return sum + p.points; }, 0);
+          var claims = venues.reduce(function (n, v) { return n + GR.claimsToday(v.id).length; }, 0);
+          return [city, venues.length, players.length, GR.fmt(points), claims];
+        })
+      };
+    }
+    return {
+      title: 'Today',
+      head: ['Time', 'Code', 'Player', 'Prize', 'Venue'],
+      body: GR.claimsToday(null).map(function (v) {
+        return [GR.timeAgo(v.claimedAt), v.code, v.playerNick, v.reward, GR.venueById(v.handedBy || v.venueId).name];
+      })
+    };
+  }
+
+  function paintTable() {
+    var data = rowsForScope();
+    GR.el('#table-title').textContent = data.title;
+    GR.el('#thead').innerHTML = '<tr>' + data.head.map(function (h) { return '<th>' + GR.esc(h) + '</th>'; }).join('') + '</tr>';
+    GR.el('#tbody').innerHTML = data.body.length
+      ? data.body.map(function (row) {
+          return '<tr>' + row.map(function (cell, i) {
+            return '<td>' + (i === 0 ? '<b>' + GR.esc(cell) + '</b>' : GR.esc(cell)) + '</td>';
+          }).join('') + '</tr>';
+        }).join('')
+      : '<tr><td colspan="' + data.head.length + '">Nothing to show yet.</td></tr>';
+  }
+
+  GR.el('#export').addEventListener('click', function () {
+    var data = rowsForScope();
+    GR.download('gr-station-' + scope + '.csv', GR.csv([data.head].concat(data.body)));
+  });
+
+  function paint() {
+    var c = GR.state.counters;
+    GR.el('[data-k="playingNow"]').textContent = GR.fmt(c.playingNow);
+    GR.el('[data-k="playsToday"]').textContent = GR.fmt(c.playsToday);
+    GR.el('[data-k="signups"]').textContent = GR.fmt(c.signups);
+    GR.el('[data-k="points"]').textContent = c.points >= 1000 ? Math.round(c.points / 1000) + 'k' : GR.fmt(c.points);
+    GR.el('[data-k="claims"]').textContent = GR.fmt(c.claims);
+
+    var max = Math.max.apply(null, GR.state.hourly);
+    GR.el('#bars').innerHTML = GR.state.hourly.map(function (v) {
+      return '<i style="height:' + Math.round((v / max) * 100) + '%"></i>';
+    }).join('');
+
+    GR.el('#uptime').innerHTML = GR.VENUES.map(function (v) {
+      var colour = v.uptime >= 97 ? 'var(--gold)' : 'var(--amber)';
+      return '<div class="status-row">' +
+        '<span class="status-dot" style="background:' + colour + '"></span>' +
+        '<span style="color:var(--cream);flex:1">' + GR.esc(v.name) + '</span>' +
+        '<span class="stat-label mono-num">' + v.uptime + '%</span></div>';
+    }).join('');
+
+    var all = Object.keys(GR.state.vouchers).map(function (k) { return GR.state.vouchers[k]; });
+    GR.el('#ladder-stats').innerHTML = GR.LADDER.map(function (rung) {
+      var issued = all.filter(function (v) { return v.step === rung.step; });
+      var done = issued.filter(function (v) { return v.status === 'claimed'; });
+      return '<div class="card card-dark">' +
+        '<p class="eyebrow on-dark">' + GR.fmt(rung.step) + ' points</p>' +
+        '<h3 style="margin-top:8px;font-size:1.15rem">' + GR.esc(rung.prize) + '</h3>' +
+        '<p style="margin-top:10px"><b class="mono-num" style="color:var(--cream)">' + issued.length + '</b> issued &middot; ' +
+        '<b class="mono-num" style="color:var(--cream)">' + done.length + '</b> handed over</p></div>';
+    }).join('');
+
+    paintTable();
+  }
+
+  GR.onChange(paint);
+  paint();
+  window.setInterval(paint, 6000);
+})();
+</script>
+</body>
+</html>

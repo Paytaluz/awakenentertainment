@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="assets/gr.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23D6A658'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='16' font-weight='700' text-anchor='middle' fill='%231A100E'%3EGR%3C/text%3E%3C/svg%3E">
+<title>GR Station — Player Account</title>
+<meta name="description" content="Player account for the Grand Royal Station: points, progress to the next prize, round history and a one-time voucher QR code to claim at the vendor.">
+</head>
+<body>
+<div class="demo-strip"><div class="wrap">
+  <b>Proposal prototype.</b> Working demonstration of the live website in the Awaken&nbsp;&times;&nbsp;Grand Royal Station proposal. Sample data only &mdash; no real accounts, no real phone numbers, no real prizes. 18+.
+</div></div>
+<header class="topbar"><div class="wrap topbar-in">
+  <a class="brand" href="index.html">
+    <span class="brand-mark">GR</span>
+    <span><span class="brand-name">Grand Royal Station</span><br><span class="brand-sub">Awaken Entertainment</span></span>
+  </a>
+  <nav class="topnav" aria-label="Station surfaces">
+    <a href="index.html" data-nav="index">Overview</a>
+    <a href="live.html" data-nav="live">Live board</a>
+    <a href="account.html" data-nav="account" aria-current="page">My account</a>
+    <a href="vendor.html" data-nav="vendor">Vendor</a>
+    <a href="dashboard.html" data-nav="dashboard">Dashboard</a>
+  </nav>
+</div></header>
+
+<main>
+<section class="page-head"><div class="wrap">
+  <p class="eyebrow">Accounts, live data and rewards</p>
+  <h1 style="margin-top:12px">Your account</h1>
+  <p class="lede">Points, progress to the next prize, your history and a one-time voucher with a QR code. Login is by mobile number and an SMS code.</p>
+</div></section>
+
+<!-- ===== signed out ===== -->
+<section id="signin" style="padding-bottom:clamp(32px,5vw,58px)"><div class="wrap">
+  <div style="max-width:520px">
+    <div class="card" style="background:#fff">
+      <div id="step-phone">
+        <p class="eyebrow">Step 2 &middot; your number</p>
+        <h3 style="margin-top:10px">Register or sign in</h3>
+        <p class="hint" style="margin-top:8px">Local mobile numbers only. A local mobile number is the only ID needed.</p>
+        <div class="stack" style="margin-top:18px">
+          <div class="field">
+            <label for="phone">Mobile number</label>
+            <input class="input" id="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="09 771 234 567">
+          </div>
+          <div class="field">
+            <label for="venue">Where are you playing?</label>
+            <select class="input" id="venue"></select>
+          </div>
+          <div id="phone-error" class="notice notice-bad" hidden></div>
+          <button class="btn btn-block" id="send-code">Send code</button>
+        </div>
+      </div>
+
+      <div id="step-code" hidden>
+        <p class="eyebrow">Step 3 &middot; enter the code</p>
+        <h3 style="margin-top:10px">Check your messages</h3>
+        <p class="hint" style="margin-top:8px">We sent a code to <b id="masked"></b>.</p>
+        <div class="notice" style="margin-top:14px">
+          <b>Demo:</b> the code is <b id="demo-code"></b>. No SMS is actually sent.
+        </div>
+        <div class="stack" style="margin-top:18px">
+          <div class="field">
+            <label for="code">Four-digit code</label>
+            <input class="input input-code" id="code" type="text" inputmode="numeric" maxlength="4" autocomplete="one-time-code" placeholder="••••">
+          </div>
+          <div class="field">
+            <label for="nick">Nickname shown on the board</label>
+            <input class="input" id="nick" type="text" maxlength="18" placeholder="Ko Aung">
+          </div>
+          <label class="row" style="gap:10px;align-items:flex-start;font-size:.92rem;color:var(--muted)">
+            <input type="checkbox" id="age" style="margin-top:4px;width:18px;height:18px;flex:none">
+            <span>I am 18 or older, and I agree my nickname and points may appear on the public board.</span>
+          </label>
+          <div id="code-error" class="notice notice-bad" hidden></div>
+          <button class="btn btn-block" id="confirm">Confirm</button>
+          <button class="btn btn-ghost btn-block" id="back">Use a different number</button>
+        </div>
+      </div>
+    </div>
+    <p class="hint" style="margin-top:14px">Free to play. No purchase, fee or stake. 18+ only.</p>
+  </div>
+</div></section>
+
+<!-- ===== signed in ===== -->
+<section id="account" hidden style="padding-bottom:clamp(32px,5vw,58px)"><div class="wrap">
+  <div class="spread" style="margin-bottom:22px">
+    <div>
+      <p class="eyebrow">Signed in</p>
+      <h2 id="hello" style="margin-top:8px">Welcome</h2>
+      <p class="hint" id="whoami"></p>
+    </div>
+    <button class="btn btn-ghost btn-sm" id="signout">Sign out</button>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:18px">
+
+    <div class="card" style="background:#fff">
+      <p class="eyebrow">My points</p>
+      <p class="stat-num" style="font-size:3.4rem;color:var(--bronze);margin-top:6px" id="points">0</p>
+      <p class="hint">points this season</p>
+      <div class="progress" style="margin-top:16px"><i id="bar" style="width:0%"></i></div>
+      <p class="hint" style="margin-top:8px" id="togo"></p>
+      <hr class="rule" style="margin:18px 0">
+      <p class="eyebrow">Play a round</p>
+      <p class="hint" style="margin-top:6px">On a real Station these come from the screen. Here you can play them by hand.</p>
+      <div class="stack" style="margin-top:12px" id="play"></div>
+    </div>
+
+    <div class="card" style="background:#fff">
+      <p class="eyebrow">Claim a prize</p>
+      <h3 style="margin-top:8px">The points ladder</h3>
+      <p class="hint" style="margin-top:6px">Each step can be claimed once per season.</p>
+      <div class="stack" style="margin-top:14px" id="steps"></div>
+    </div>
+
+    <div id="voucher-card"></div>
+
+  </div>
+
+  <div style="margin-top:22px" class="card">
+    <p class="eyebrow">Points and history</p>
+    <h3 style="margin-top:8px">Every point, with the event it came from</h3>
+    <div class="table-scroll" style="margin-top:16px">
+      <table class="data">
+        <thead><tr><th>When</th><th>Event</th><th style="text-align:right">Points</th></tr></thead>
+        <tbody id="history"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="grid grid-2" style="margin-top:22px">
+    <div class="card card-dark">
+      <h3>Your data</h3>
+      <p style="margin-top:8px">View, download or delete the account. Your number is never shown on the public board.</p>
+      <div class="row" style="margin-top:16px">
+        <button class="btn btn-gold btn-sm" id="download-data">Download my data</button>
+        <button class="btn btn-sm" id="delete-account" style="background:var(--ink-3);color:var(--cream)">Delete my account</button>
+      </div>
+    </div>
+    <div class="card">
+      <h3>How a claim works</h3>
+      <ol style="color:var(--muted);margin:10px 0 0;padding-left:20px;line-height:1.7">
+        <li>Your points reach a prize step.</li>
+        <li>Tap <b>Claim</b> on this page.</li>
+        <li>A one-time voucher with a QR code appears.</li>
+        <li>Show it at the vendor before it expires.</li>
+        <li>The vendor scans or types the code in the portal.</li>
+        <li>The prize is handed over and the cloud marks it claimed.</li>
+      </ol>
+    </div>
+  </div>
+</div></section>
+</main>
+<footer class="footer"><div class="wrap">
+  <div class="footer-grid">
+    <div>
+      <p class="eyebrow on-dark">The prototype</p>
+      <p style="margin-top:8px">Four views on one ledger: the public board, the player account, the vendor portal and the brand dashboard. Everything you change on one page shows up on the others.</p>
+    </div>
+    <div>
+      <p class="eyebrow on-dark">Compliance envelope</p>
+      <p style="margin-top:8px">Free to play, no purchase or stake. Skill-based ranking, never a random draw. 18+ only, ID checked at collection. Non-alcohol rewards. No betting language.</p>
+    </div>
+    <div>
+      <p class="eyebrow on-dark">Surfaces</p>
+      <p style="margin-top:8px">
+        <a href="live.html">Live board</a> &middot; <a href="account.html">Player account</a><br>
+        <a href="vendor.html">Vendor portal</a> &middot; <a href="dashboard.html">Brand dashboard</a>
+      </p>
+    </div>
+  </div>
+  <hr style="border:0;border-top:1px solid var(--ink-3);margin:26px 0 18px">
+  <p style="color:var(--muted-2)">Awaken Entertainment &times; Grand Royal &mdash; Interactive Charging Station, full-device proposal. Prototype for review; screens, points, prizes and rules are proposals to be tuned in the pilot. Rewards switch on only with counsel clearance.</p>
+</div></footer>
+
+<script src="assets/gr.js"></script>
+<script src="assets/qr.js"></script>
+<script>
+(function () {
+  'use strict';
+  GR.startSim();
+
+  var pendingPhone = null;
+  var pendingVenue = null;
+
+  var signinEl = GR.el('#signin');
+  var accountEl = GR.el('#account');
+
+  // venue picker
+  var venueSel = GR.el('#venue');
+  GR.VENUES.forEach(function (v) {
+    var o = document.createElement('option');
+    o.value = v.id;
+    o.textContent = v.name + ' — ' + v.city;
+    venueSel.appendChild(o);
+  });
+  GR.el('#demo-code').textContent = GR.DEMO_SMS_CODE;
+
+  function showError(id, message) {
+    var box = GR.el(id);
+    if (!message) { box.hidden = true; return; }
+    box.hidden = false;
+    box.textContent = message;
+  }
+
+  GR.el('#send-code').addEventListener('click', function () {
+    var phone = GR.el('#phone').value;
+    if (!GR.isValidPhone(phone)) {
+      showError('#phone-error', 'Enter a local mobile number, for example 09 771 234 567.');
+      return;
+    }
+    showError('#phone-error', null);
+    pendingPhone = phone;
+    pendingVenue = venueSel.value;
+    GR.el('#masked').textContent = GR.maskPhone(phone);
+    GR.el('#step-phone').hidden = true;
+    GR.el('#step-code').hidden = false;
+    GR.el('#code').focus();
+  });
+
+  GR.el('#back').addEventListener('click', function () {
+    GR.el('#step-code').hidden = true;
+    GR.el('#step-phone').hidden = false;
+    showError('#code-error', null);
+  });
+
+  GR.el('#confirm').addEventListener('click', function () {
+    if (GR.el('#code').value.trim() !== GR.DEMO_SMS_CODE) {
+      showError('#code-error', 'That code does not match. For this demo it is ' + GR.DEMO_SMS_CODE + '.');
+      return;
+    }
+    if (!GR.el('#age').checked) {
+      showError('#code-error', 'Please confirm you are 18 or older.');
+      return;
+    }
+    showError('#code-error', null);
+    var nick = GR.el('#nick').value.trim();
+    var player = GR.signIn(pendingPhone, pendingVenue, nick || null);
+    GR.session('playerId', player.id);
+    render();
+  });
+
+  GR.el('#signout').addEventListener('click', function () {
+    GR.session('playerId', null);
+    GR.el('#step-code').hidden = true;
+    GR.el('#step-phone').hidden = false;
+    GR.el('#phone').value = '';
+    GR.el('#code').value = '';
+    GR.el('#age').checked = false;
+    render();
+  });
+
+  GR.el('#download-data').addEventListener('click', function () {
+    var p = GR.getPlayer(GR.session('playerId'));
+    if (!p) return;
+    var rows = [['when', 'event', 'points']].concat(p.history.map(function (h) {
+      return [h.ts, h.detail, h.points];
+    }));
+    GR.download('gr-station-' + p.id + '.csv', GR.csv(rows));
+  });
+
+  GR.el('#delete-account').addEventListener('click', function () {
+    var id = GR.session('playerId');
+    if (!id) return;
+    if (!window.confirm('Delete this demo account, its points and its vouchers?')) return;
+    delete GR.state.players[id];
+    Object.keys(GR.state.vouchers).forEach(function (code) {
+      if (GR.state.vouchers[code].playerId === id) delete GR.state.vouchers[code];
+    });
+    GR.commit();
+    GR.session('playerId', null);
+    render();
+  });
+
+  function renderPlay(player) {
+    var wrap = GR.el('#play');
+    wrap.innerHTML = '';
+    GR.EVENTS.forEach(function (ev) {
+      var b = document.createElement('button');
+      b.className = 'btn btn-ghost btn-sm btn-block';
+      b.textContent = ev.name;
+      b.addEventListener('click', function () {
+        GR.award(player.id, ev.id, Math.floor(Math.random() * 61) + 40, ev.name);
+      });
+      wrap.appendChild(b);
+    });
+  }
+
+  function renderSteps(player) {
+    var wrap = GR.el('#steps');
+    wrap.innerHTML = '';
+    GR.LADDER.forEach(function (rung) {
+      var reached = player.points >= rung.step;
+      var claimed = player.claimedSteps.indexOf(rung.step) !== -1;
+      var row = document.createElement('div');
+      row.className = 'spread';
+      row.style.cssText = 'border-top:1px solid var(--line);padding-top:12px;gap:10px';
+      var label = document.createElement('div');
+      label.style.minWidth = '0';
+      label.innerHTML = '<b class="mono-num">' + GR.fmt(rung.step) + '</b> ' +
+                        '<span style="color:var(--muted)">' + GR.esc(rung.prize) + '</span>';
+      var btn = document.createElement('button');
+      btn.className = 'btn btn-sm' + (reached && !claimed ? '' : ' btn-ghost');
+      btn.textContent = claimed ? 'Claimed' : (reached ? 'Claim' : 'Locked');
+      btn.disabled = claimed || !reached;
+      btn.addEventListener('click', function () {
+        var res = GR.claim(player.id, rung.step);
+        if (!res.ok) window.alert(res.error);
+      });
+      row.appendChild(label);
+      row.appendChild(btn);
+      wrap.appendChild(row);
+    });
+  }
+
+  function renderVoucher(player) {
+    var host = GR.el('#voucher-card');
+    var list = GR.vouchersFor(player.id);
+    var open = list.filter(function (v) { return v.status === 'ready'; })[0] || list[0];
+
+    if (!open) {
+      host.innerHTML = '<div class="card" style="background:#fff">' +
+        '<p class="eyebrow">Voucher</p>' +
+        '<h3 style="margin-top:8px">No voucher yet</h3>' +
+        '<p class="hint" style="margin-top:8px">Reach a step on the ladder and tap Claim. Your one-time QR code appears here for the vendor to scan.</p></div>';
+      return;
+    }
+
+    var statusClass = open.status === 'claimed' ? 'badge-claimed' : 'badge-ready';
+    var statusText = open.status === 'claimed' ? 'Handed over' : 'Ready to claim';
+
+    host.innerHTML =
+      '<div class="voucher">' +
+        '<p class="eyebrow">Voucher</p>' +
+        '<h3 style="font-family:var(--serif)">' + GR.esc(open.reward) + '</h3>' +
+        '<svg id="qr" role="img" aria-label="Voucher QR code ' + GR.esc(open.code) + '"></svg>' +
+        '<p class="voucher-code">' + GR.esc(open.code) + '</p>' +
+        '<p class="hint">Show it at the vendor.</p>' +
+        '<span class="badge ' + statusClass + '">' + statusText + '</span>' +
+      '</div>';
+
+    // The QR carries the claim link, so a vendor's camera lands straight on the portal.
+    var target = window.location.href.replace(/account\.html.*$/, '') + 'vendor.html?code=' + encodeURIComponent(open.code);
+    if (!GRQR.render(GR.el('#qr'), target, { dark: '#1A100E', light: '#FFFFFF' })) {
+      GRQR.render(GR.el('#qr'), open.code, { dark: '#1A100E', light: '#FFFFFF' });
+    }
+  }
+
+  function renderHistory(player) {
+    var body = GR.el('#history');
+    body.innerHTML = player.history.length
+      ? player.history.map(function (h) {
+          return '<tr><td>' + GR.timeAgo(h.ts) + '</td><td><b>' + GR.esc(h.detail) + '</b></td>' +
+                 '<td style="text-align:right" class="mono-num">+' + h.points + '</td></tr>';
+        }).join('')
+      : '<tr><td colspan="3">No rounds played yet.</td></tr>';
+  }
+
+  function render() {
+    var player = GR.getPlayer(GR.session('playerId'));
+    if (!player) {
+      signinEl.hidden = false;
+      accountEl.hidden = true;
+      return;
+    }
+    signinEl.hidden = true;
+    accountEl.hidden = false;
+
+    var venue = GR.venueById(player.venueId);
+    GR.el('#hello').textContent = 'Welcome, ' + player.nick;
+    GR.el('#whoami').textContent = venue.name + ', ' + venue.city + ' · ' + GR.maskPhone(player.phone);
+    GR.el('#points').textContent = GR.fmt(player.points);
+
+    var next = GR.nextStep(player.points);
+    if (next) {
+      var prev = 0;
+      GR.LADDER.forEach(function (r) { if (r.step < next.step && r.step > prev) prev = r.step; });
+      var pct = Math.round(((player.points - prev) / (next.step - prev)) * 100);
+      GR.el('#bar').style.width = Math.max(0, Math.min(100, pct)) + '%';
+      GR.el('#togo').textContent = GR.fmt(next.step - player.points) + ' to go: ' + next.prize;
+    } else {
+      GR.el('#bar').style.width = '100%';
+      GR.el('#togo').textContent = 'Every step reached this season.';
+    }
+
+    renderPlay(player);
+    renderSteps(player);
+    renderVoucher(player);
+    renderHistory(player);
+  }
+
+  GR.onChange(render);
+  render();
+  window.setInterval(function () {
+    if (GR.getPlayer(GR.session('playerId'))) renderHistory(GR.getPlayer(GR.session('playerId')));
+  }, 15000);
+})();
+</script>
+</body>
+</html>

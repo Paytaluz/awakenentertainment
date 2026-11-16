@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="assets/gr.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23D6A658'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='16' font-weight='700' text-anchor='middle' fill='%231A100E'%3EGR%3C/text%3E%3C/svg%3E">
+<title>GR Station — Live Leaderboard</title>
+<meta name="description" content="Public live leaderboard for the Grand Royal Interactive Charging Station: venue, city and weekly boards, the just-now feed and Station status. Nicknames only, no login.">
+</head>
+<body>
+<div class="demo-strip"><div class="wrap">
+  <b>Proposal prototype.</b> Working demonstration of the live website in the Awaken&nbsp;&times;&nbsp;Grand Royal Station proposal. Sample data only &mdash; no real accounts, no real phone numbers, no real prizes. 18+.
+</div></div>
+<header class="topbar"><div class="wrap topbar-in">
+  <a class="brand" href="index.html">
+    <span class="brand-mark">GR</span>
+    <span><span class="brand-name">Grand Royal Station</span><br><span class="brand-sub">Awaken Entertainment</span></span>
+  </a>
+  <nav class="topnav" aria-label="Station surfaces">
+    <a href="index.html" data-nav="index">Overview</a>
+    <a href="live.html" data-nav="live" aria-current="page">Live board</a>
+    <a href="account.html" data-nav="account">My account</a>
+    <a href="vendor.html" data-nav="vendor">Vendor</a>
+    <a href="dashboard.html" data-nav="dashboard">Dashboard</a>
+  </nav>
+</div></header>
+
+<main>
+<section class="page-head"><div class="wrap">
+  <div class="spread">
+    <div>
+      <p class="eyebrow">Accounts, live data and rewards</p>
+      <h1 style="margin-top:12px">Live leaderboard</h1>
+    </div>
+    <span class="live-pill"><i class="live-dot"></i>Live</span>
+  </div>
+  <p class="lede">Venue, city and weekly boards move as people play. Nicknames and table names only &mdash; phone numbers are never shown on this page. No login needed.</p>
+</div></section>
+
+<section style="padding-bottom:clamp(32px,5vw,58px)"><div class="wrap">
+  <div class="screen">
+    <div class="screen-bar">
+      <span class="screen-dots"><i style="background:var(--gold)"></i><i style="background:var(--gold-light)"></i><i style="background:var(--bronze)"></i></span>
+      <span class="screen-title">Station Hub &middot; Live</span>
+      <span class="live-pill"><i class="live-dot"></i>Live</span>
+    </div>
+    <div class="screen-body">
+      <div class="chips" role="tablist" aria-label="Leaderboard scope" id="scope">
+        <button class="chip" role="tab" data-scope="venue" aria-selected="true">Venue</button>
+        <button class="chip" role="tab" data-scope="city" aria-selected="false">City</button>
+        <button class="chip" role="tab" data-scope="all" aria-selected="false">This week</button>
+      </div>
+
+      <div class="chips" style="margin-top:12px" id="filters" aria-label="Filter"></div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:16px">
+        <div>
+          <div class="board" id="board" aria-live="polite"></div>
+        </div>
+        <div style="background:var(--ink-2);border-radius:12px;padding:16px;min-width:0">
+          <p class="eyebrow on-dark">Just now</p>
+          <div class="feed" id="feed" style="margin-top:12px" aria-live="polite"></div>
+        </div>
+      </div>
+
+      <div class="grid grid-3" style="margin-top:16px">
+        <div class="stat"><div class="stat-num" data-bind="playingNow">0</div><div class="stat-label">playing now</div></div>
+        <div class="stat"><div class="stat-num" data-bind="playsToday">0</div><div class="stat-label">players today</div></div>
+        <div class="stat"><div class="stat-num" data-bind="stations">0</div><div class="stat-label">Stations online</div></div>
+      </div>
+    </div>
+  </div>
+  <p class="hint" style="margin-top:14px">Sample data. Sign in on the <a href="account.html" style="color:var(--bronze);font-weight:600">account page</a> and your own nickname joins these boards.</p>
+</div></section>
+
+<section class="band" style="background:var(--cream-2);border-top:1px solid var(--line)"><div class="wrap">
+  <h2>What this page shows</h2>
+  <div class="grid grid-4" style="margin-top:24px">
+    <div class="card"><h3>Live ranks</h3><p style="color:var(--muted);margin-top:8px">Venue, city and weekly boards move as people play.</p></div>
+    <div class="card"><h3>Just-now feed</h3><p style="color:var(--muted);margin-top:8px">Recent results, with nicknames only.</p></div>
+    <div class="card"><h3>Station status</h3><p style="color:var(--muted);margin-top:8px">Which Stations are online and in play.</p></div>
+    <div class="card"><h3>Privacy</h3><p style="color:var(--muted);margin-top:8px">Phone numbers are never shown on this page.</p></div>
+  </div>
+</div></section>
+
+<section class="band"><div class="wrap">
+  <p class="eyebrow">Station status</p>
+  <h2 style="margin-top:12px">Every venue, right now</h2>
+  <div class="grid grid-4" id="venues" style="margin-top:26px"></div>
+</div></section>
+</main>
+<footer class="footer"><div class="wrap">
+  <div class="footer-grid">
+    <div>
+      <p class="eyebrow on-dark">The prototype</p>
+      <p style="margin-top:8px">Four views on one ledger: the public board, the player account, the vendor portal and the brand dashboard. Everything you change on one page shows up on the others.</p>
+    </div>
+    <div>
+      <p class="eyebrow on-dark">Compliance envelope</p>
+      <p style="margin-top:8px">Free to play, no purchase or stake. Skill-based ranking, never a random draw. 18+ only, ID checked at collection. Non-alcohol rewards. No betting language.</p>
+    </div>
+    <div>
+      <p class="eyebrow on-dark">Surfaces</p>
+      <p style="margin-top:8px">
+        <a href="live.html">Live board</a> &middot; <a href="account.html">Player account</a><br>
+        <a href="vendor.html">Vendor portal</a> &middot; <a href="dashboard.html">Brand dashboard</a>
+      </p>
+    </div>
+  </div>
+  <hr style="border:0;border-top:1px solid var(--ink-3);margin:26px 0 18px">
+  <p style="color:var(--muted-2)">Awaken Entertainment &times; Grand Royal &mdash; Interactive Charging Station, full-device proposal. Prototype for review; screens, points, prizes and rules are proposals to be tuned in the pilot. Rewards switch on only with counsel clearance.</p>
+</div></footer>
+
+<script src="assets/gr.js"></script>
+<script>
+(function () {
+  'use strict';
+  GR.startSim();
+
+  var scope = 'venue';
+  var filter = GR.VENUES[0].id;
+
+  var scopeEl = GR.el('#scope');
+  var filtersEl = GR.el('#filters');
+  var boardEl = GR.el('#board');
+  var feedEl = GR.el('#feed');
+  var venuesEl = GR.el('#venues');
+
+  scopeEl.addEventListener('click', function (e) {
+    var btn = e.target.closest('[data-scope]');
+    if (!btn) return;
+    scope = btn.getAttribute('data-scope');
+    GR.els('[data-scope]', scopeEl).forEach(function (b) {
+      b.setAttribute('aria-selected', String(b === btn));
+    });
+    filter = scope === 'venue' ? GR.VENUES[0].id : (scope === 'city' ? GR.cities()[0] : null);
+    renderFilters();
+    paint();
+  });
+
+  function renderFilters() {
+    filtersEl.innerHTML = '';
+    var options = [];
+    if (scope === 'venue') {
+      options = GR.VENUES.map(function (v) { return { key: v.id, label: v.name }; });
+    } else if (scope === 'city') {
+      options = GR.cities().map(function (c) { return { key: c, label: c }; });
+    }
+    options.forEach(function (o) {
+      var b = document.createElement('button');
+      b.className = 'chip';
+      b.textContent = o.label;
+      b.setAttribute('aria-selected', String(o.key === filter));
+      b.addEventListener('click', function () {
+        filter = o.key;
+        GR.els('.chip', filtersEl).forEach(function (x) { x.setAttribute('aria-selected', String(x === b)); });
+        paint();
+      });
+      filtersEl.appendChild(b);
+    });
+  }
+
+  function currentRows() {
+    if (scope === 'venue') return GR.leaderboard({ venueId: filter, limit: 8 });
+    if (scope === 'city') return GR.leaderboard({ city: filter, limit: 8 });
+    return GR.leaderboard({ limit: 8 });
+  }
+
+  function paint() {
+    var me = GR.session('playerId');
+    var rows = currentRows();
+    boardEl.innerHTML = rows.length
+      ? rows.map(function (r, i) {
+          return '<div class="board-row' + (r.id === me ? ' is-you' : '') + '">' +
+                 '<span class="board-rank">' + (i + 1) + '</span>' +
+                 '<span class="board-name">' + GR.esc(r.nick) + (r.id === me ? ' <span style="color:var(--gold);font-size:.75rem;letter-spacing:.1em">YOU</span>' : '') + '</span>' +
+                 '<span class="board-venue">' + GR.esc(r.venue) + '</span>' +
+                 '<span class="board-pts mono-num">' + GR.fmt(r.points) + '</span></div>';
+        }).join('')
+      : '<div class="board-row"><span class="board-name" style="color:var(--sand)">No players here yet.</span></div>';
+
+    feedEl.innerHTML = GR.state.feed.slice(0, 6).map(function (f) {
+      return '<div class="feed-item">' + GR.esc(f.text) +
+             '<span class="feed-time">' + GR.timeAgo(f.ts) + '</span></div>';
+    }).join('');
+
+    var c = GR.state.counters;
+    GR.el('[data-bind="playingNow"]').textContent = GR.fmt(c.playingNow);
+    GR.el('[data-bind="playsToday"]').textContent = GR.fmt(c.playsToday);
+    GR.el('[data-bind="stations"]').textContent = GR.state.stationsOnline + ' of ' + GR.state.stationsTotal;
+
+    venuesEl.innerHTML = GR.VENUES.map(function (v) {
+      var count = GR.leaderboard({ venueId: v.id }).length;
+      var colour = v.uptime >= 97 ? 'var(--gold)' : 'var(--amber)';
+      return '<div class="card">' +
+        '<div class="status-row"><span class="status-dot" style="background:' + colour + '"></span>' +
+        '<strong>' + GR.esc(v.name) + '</strong></div>' +
+        '<p class="hint">' + GR.esc(v.city) + '</p>' +
+        '<p style="margin-top:10px;color:var(--muted)"><b class="mono-num">' + count + '</b> players on the board<br>' +
+        '<b class="mono-num">' + v.uptime + '%</b> uptime</p></div>';
+    }).join('');
+  }
+
+  renderFilters();
+  GR.onChange(paint);
+  paint();
+  window.setInterval(paint, 5000);   // keep the "just now" timestamps honest
+})();
+</script>
+</body>
+</html>

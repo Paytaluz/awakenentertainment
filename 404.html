@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>MCDB</title>
+  <script>
+    var l = window.location;
+    var path = l.pathname;
+    if (path.indexOf('/mcdb/') === 0 && path.length > '/mcdb/'.length) {
+      l.replace(
+        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+        '/mcdb/?/' +
+        path.slice('/mcdb/'.length).replace(/&/g, '~and~') +
+        (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+        l.hash
+      );
+    } else {
+      l.replace('/');
+    }
+  </script>
+</head>
+<body></body>
+</html>
