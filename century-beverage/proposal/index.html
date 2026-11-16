@@ -125,7 +125,7 @@ body.scrolled .cpill{transform:translate(-50%,0)}
 /* ---------------- sections & themes ---------------- */
 section{position:relative;background:var(--bg);color:var(--fg)}
 .chapter{--soft:color-mix(in srgb,var(--acc) 11%,transparent)}
-.t-red{--bg:#D10A0A;--fg:#fff;--mute:rgba(255,255,255,.84);--card:rgba(255,255,255,.1);--line:rgba(255,255,255,.24);--acc:#FFE1DD;--fill:#fff;--on:#C80A0A}
+.t-red{--bg:#7E1416;--fg:#fff;--mute:rgba(255,255,255,.84);--card:rgba(255,255,255,.1);--line:rgba(255,255,255,.24);--acc:#FFE1DD;--fill:#fff;--on:#C80A0A}
 .t-sand{--bg:#F3ECE1;--fg:#1C140F;--mute:rgba(28,20,15,.66);--card:#FFFDF9;--line:rgba(80,50,20,.13);--acc:#C0261A;--fill:#C0261A;--on:#fff}
 .t-ink{--bg:#120E12;--fg:#fff;--mute:rgba(255,255,255,.64);--card:rgba(255,255,255,.05);--line:rgba(255,255,255,.12);--acc:#FF4A47;--fill:#E50D0C;--on:#fff}
 .t-peach{--bg:#FFEDE4;--fg:#1E0F0A;--mute:rgba(30,15,10,.66);--card:#fff;--line:rgba(160,70,30,.15);--acc:#DD3F0A;--fill:#E0400B;--on:#fff}
@@ -293,7 +293,7 @@ a.pill span{font-size:12.5px;color:rgba(255,255,255,.62)}
 @keyframes nudge{50%{transform:rotate(90deg) translateX(5px)}}
 
 /* brief */
-.brief{padding:clamp(56px,7vw,96px) 0;background:radial-gradient(ellipse at 100% 0%,rgba(255,255,255,.16),transparent 50%),linear-gradient(160deg,#E50D0C,#B00909)}
+.brief{padding:clamp(56px,7vw,96px) 0;background:radial-gradient(ellipse at 100% 0%,rgba(255,120,110,.16),transparent 50%),linear-gradient(160deg,#9A1518,#6A1012)}
 
 /* ch01 */
 .findings{display:grid;gap:12px}
@@ -559,7 +559,7 @@ h5.for{color:#0A9A58}h5.against{color:var(--red)}
 .t-white :is(.card,.stat,.step,.tbl,.talent,.share,.kcol,.plat){box-shadow:0 14px 36px rgba(240,21,122,.07),0 2px 6px rgba(18,18,18,.04)}
 .t-studio .opener{background:radial-gradient(ellipse at 12% -10%,rgba(245,174,78,.42),transparent 50%),radial-gradient(ellipse at 92% 0%,rgba(83,184,255,.26),transparent 46%),#17110C}
 .t-green .opener{background:radial-gradient(ellipse at 90% 0%,rgba(255,209,0,.22),transparent 50%),radial-gradient(ellipse at 0% 100%,rgba(16,160,90,.55),transparent 60%),linear-gradient(180deg,#064A2B,#05341E)}
-.t-red .opener{background:radial-gradient(ellipse at 100% 0%,rgba(255,255,255,.18),transparent 50%),linear-gradient(160deg,#E50D0C,#A80808)}
+.t-red .opener{background:radial-gradient(ellipse at 100% 0%,rgba(255,120,110,.18),transparent 50%),linear-gradient(160deg,#9A1518,#6A1012)}
 .t-red .tag,.t-red .num{color:#FFE1DD}
 .t-gold .opener{background:radial-gradient(ellipse at 100% 0%,rgba(229,13,12,.16),transparent 52%),radial-gradient(ellipse at 0% 130%,rgba(201,138,11,.3),transparent 55%),#FBF2D9}
 .t-teal .opener{background:radial-gradient(ellipse at 100% 0%,rgba(62,224,180,.26),transparent 55%),radial-gradient(ellipse at 0% 120%,rgba(30,120,200,.3),transparent 55%),#062A2D}
@@ -995,7 +995,7 @@ h5.for{color:#0A9A58}h5.against{color:var(--red)}
 <script>
 (() => {
   'use strict';
-  const SALT = '1iPYHY2D3LaDhqAL2A5Xiw==', ITER = 210000, VER = '2611160633';
+  const SALT = 'EWw+G7evzRPDIJzdjkHqoQ==', ITER = 210000, VER = '2611160636';
   const $ = id => document.getElementById(id);
   const root = document.documentElement, body = document.body;
   const qs = new URLSearchParams(location.search);
