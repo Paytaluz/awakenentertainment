@@ -480,7 +480,10 @@ h4{margin:0 0 8px;font-family:var(--serif);font-weight:700;font-size:23px;line-h
 .umb{display:flex;justify-content:center;align-items:center;gap:18px;margin-top:22px;padding:16px 20px;border:1.5px solid var(--gold);border-radius:999px;background:var(--ink)}
 .umb span{font-size:12px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
 .umb em{font-family:var(--serif);font-size:26px;color:var(--champ)}
-.roles{display:grid;grid-template-columns:250px 1fr 250px;gap:26px;align-items:center;margin-top:26px}
+.roles{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start;margin-top:30px;position:relative}
+.roles .rkv:first-child{order:1}.roles .rkv:last-child{order:2}.roles .rtab{order:3;grid-column:1/-1;width:100%;max-width:960px;margin:14px auto 0}
+.roles::after{content:"VS";position:absolute;left:50%;top:clamp(160px,30vw,350px);transform:translate(-50%,-50%);width:64px;height:64px;border-radius:50%;display:grid;place-items:center;background:#4A0B12;color:var(--gold2);border:2px solid var(--gold);font-weight:700;letter-spacing:.14em;font-size:15px;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.rkv figcaption{margin-top:12px;text-align:center;font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--goldDk)}
 .rkv{margin:0}.rkv img,.kvs img{width:100%;display:block;border-radius:10px;box-shadow:0 24px 50px rgba(22,17,13,.3)}
 .rtab{display:grid;gap:0}
 .rh{display:grid;grid-template-columns:1fr 70px 1fr;align-items:center;gap:10px;margin-bottom:6px}
@@ -540,7 +543,7 @@ h4{margin:0 0 8px;font-family:var(--serif);font-weight:700;font-size:23px;line-h
 .yt thead th{background:rgba(201,161,74,.12);color:var(--gold);font-size:12px;letter-spacing:.14em;text-transform:uppercase}
 .yt tbody th{color:var(--gold2);width:130px}
 .vboard{margin:30px 0 0}.vboard img{width:100%;display:block;border-radius:14px}
-@media (max-width:860px){.roles{grid-template-columns:1fr 1fr}.rtab{grid-column:1/-1;order:-1}.rr{font-size:14px;grid-template-columns:1fr 80px 1fr}.rules,.phases,.gline,.kvs,.setd,.setd.b{grid-template-columns:1fr}.pstats{grid-template-columns:1fr}.formats{grid-template-columns:1fr 1fr}.umb{flex-direction:column;gap:4px;border-radius:18px}.umb em{font-size:22px}.mnem{font-size:20px}.gl-big{font-size:24px}}
+@media (max-width:860px){.roles{gap:14px}.roles::after{display:none}.rkv figcaption{font-size:10.5px;letter-spacing:.1em}.rr{font-size:14px;grid-template-columns:1fr 80px 1fr}.rules,.phases,.gline,.kvs,.setd,.setd.b{grid-template-columns:1fr}.pstats{grid-template-columns:1fr}.formats{grid-template-columns:1fr 1fr}.umb{flex-direction:column;gap:4px;border-radius:18px}.umb em{font-size:22px}.mnem{font-size:20px}.gl-big{font-size:24px}}
 @media (max-width:520px){.formats{grid-template-columns:1fr}.gl-els{grid-template-columns:1fr 1fr}.gl-els .w2,.gl-els .w3{grid-column:span 2}}
 .ident{margin:0}
 .ident video{width:100%;aspect-ratio:16/9;border-radius:18px;background:#0b0806;border:1px solid rgba(201,161,74,.3);box-shadow:0 30px 60px rgba(0,0,0,.45);display:block}
@@ -655,7 +658,7 @@ h4{margin:0 0 8px;font-family:var(--serif);font-weight:700;font-size:23px;line-h
 <script>
 (() => {
   'use strict';
-  const SALT = 'm6ueg4NcsDL9tok5IpYTKw==', ITER = 210000, VER = '2611171700', SK = 'srt_pass';
+  const SALT = 'dJkv3VLd9FwMVbSH9tnEfw==', ITER = 210000, VER = '2611171706', SK = 'srt_pass';
   const $ = id => document.getElementById(id);
   const b64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
