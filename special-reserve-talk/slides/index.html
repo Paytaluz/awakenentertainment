@@ -41,6 +41,7 @@ body.locked{overflow:hidden}
 .vbar .cnt{margin-left:auto;font-variant-numeric:tabular-nums;color:var(--gold);font-weight:700}
 .stage{flex:1;position:relative;display:flex;align-items:center;justify-content:center;min-height:0;padding:14px}
 .stage img{max-width:100%;max-height:100%;box-shadow:0 20px 60px rgba(0,0,0,.6);border-radius:6px;background:#16110D}
+.vo{position:absolute;pointer-events:none}.vo video{position:absolute;object-fit:cover;pointer-events:auto;background:transparent;opacity:0;transition:opacity .4s}
 .navb{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;border:1px solid rgba(201,161,74,.4);background:rgba(15,11,8,.6);color:var(--champ);font-size:22px;cursor:pointer}
 .navb:hover{border-color:var(--gold);color:var(--gold2)}
 .prev{left:14px}.next{right:14px}
@@ -63,13 +64,13 @@ body.locked{overflow:hidden}
 <button type="submit">Open the slides</button><p class="err" id="err" role="alert"></p></form></div>
 <div class="viewer" id="viewer" hidden>
   <div class="vbar"><a href="../">← <span class="lbl">Proposal</span></a><button id="gridBtn">▦ <span class="lbl">All slides</span></button><button id="notesBtn">✎ <span class="lbl">Presenter notes</span></button><button id="fsBtn">⤢ <span class="lbl">Full screen</span></button><span class="cnt" id="cnt"></span></div>
-  <div class="stage" id="stage"><button class="navb prev" id="prev" aria-label="Previous">‹</button><img id="img" alt=""><button class="navb next" id="next" aria-label="Next">›</button></div>
+  <div class="stage" id="stage"><button class="navb prev" id="prev" aria-label="Previous">‹</button><img id="img" alt=""><div class="vo" id="vo"></div><button class="navb next" id="next" aria-label="Next">›</button></div>
   <div class="notes"><b>Presenter notes</b><span id="nt"></span></div>
 </div>
 <div class="grid" id="grid"><button class="gx" id="gx" aria-label="Close">×</button></div>
 <script>
 (() => {
-  const SALT = '8QMIC83C+TFCE21mztAztg==', ITER = 210000, VER = '2611171230', SK = 'srt_pass';
+  const SALT = 'mTO4GJTH3N1dzUZmrtEjSA==', ITER = 210000, VER = '2611171232', SK = 'srt_pass';
   const $ = id => document.getElementById(id);
   const b64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
   let key = null, M = null, cur = 0; const cache = {};
@@ -86,9 +87,26 @@ body.locked{overflow:hidden}
   let auto = null; try { auto = sessionStorage.getItem(SK); } catch (e) {}
   if (auto) unlock(auto).catch(() => { $('err').textContent = ''; });
   function src(i) { const f = M.files[i]; if (!cache[f]) cache[f] = fetch('s/' + f + '.bin?v=' + VER).then(r => r.arrayBuffer()).then(decBuf).then(d => URL.createObjectURL(new Blob([d], { type: 'image/webp' }))); return cache[f]; }
+  // live video on slides that carry one (positions in slide fractions, from build.js)
+  const VIDS = {19: [{ k: 'anim', x: .0465, y: .216, w: .6375, h: .6375, c: 1 }, { k: 'teaser', x: .73652, y: .216, w: .1965, h: .62104 }], 24: [{ k: 'ident', x: .0465, y: .216, w: .6375, h: .6375 }]};
+  const vcache = {};
+  function vsrc(k) { if (!vcache[k]) vcache[k] = fetch('../i/' + k + '.vbin?v=' + VER).then(r => r.arrayBuffer()).then(decBuf).then(d => URL.createObjectURL(new Blob([d], { type: 'video/mp4' }))); return vcache[k]; }
+  function placeVo() { const a = $('img').getBoundingClientRect(), s = $('stage').getBoundingClientRect(), vo = $('vo'); vo.style.left = (a.left - s.left) + 'px'; vo.style.top = (a.top - s.top) + 'px'; vo.style.width = a.width + 'px'; vo.style.height = a.height + 'px'; }
+  function vids(i) {
+    const vo = $('vo'); vo.querySelectorAll('video').forEach(v => { v.pause(); v.removeAttribute('src'); v.load(); }); vo.innerHTML = '';
+    const L = VIDS[i]; if (!L) return; placeVo();
+    L.forEach(v => {
+      const el = document.createElement('video'); el.muted = true; el.loop = true; el.playsInline = true; el.setAttribute('playsinline', ''); if (v.c) el.controls = true;
+      el.style.left = v.x * 100 + '%'; el.style.top = v.y * 100 + '%'; el.style.width = v.w * 100 + '%'; el.style.height = v.h * 100 + '%';
+      el.addEventListener('playing', () => { el.style.opacity = 1; });
+      vo.appendChild(el);
+      vsrc(v.k).then(u => { if (cur !== i) return; el.src = u; el.play().catch(() => {}); }).catch(() => {});
+    });
+  }
   async function go(i) {
     cur = Math.max(0, Math.min(M.n - 1, i)); $('cnt').textContent = (cur + 1) + ' / ' + M.n;
     $('img').src = await src(cur); $('img').alt = 'Slide ' + (cur + 1);
+    vids(cur);
     $('nt').textContent = M.notes[cur] || 'No notes for this slide.';
     history.replaceState(null, '', '#' + (cur + 1));
     [cur + 1, cur + 2, cur - 1].forEach(j => { if (j >= 0 && j < M.n) src(j); });
@@ -99,6 +117,7 @@ body.locked{overflow:hidden}
     $('viewer').hidden = false;
     const g = $('grid');
     for (let i = 0; i < M.n; i++) { const b = document.createElement('button'); b.innerHTML = '<span>' + (i + 1) + '</span><img alt="">'; b.addEventListener('click', () => { g.classList.remove('open'); go(i); }); g.appendChild(b); }
+    $('img').addEventListener('load', placeVo); addEventListener('resize', placeVo); document.addEventListener('fullscreenchange', () => setTimeout(placeVo, 120));
     const h = parseInt(location.hash.slice(1)); go(isNaN(h) ? 0 : h - 1);
   }
   document.addEventListener('keydown', e => { if (!M) return; if (['ArrowRight', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); go(cur + 1); } if (['ArrowLeft', 'PageUp'].includes(e.key)) { e.preventDefault(); go(cur - 1); } if (e.key === 'n') toggleNotes(); if (e.key === 'g') openGrid(); if (e.key === 'f') fs(); if (e.key === 'Escape') $('grid').classList.remove('open'); });
