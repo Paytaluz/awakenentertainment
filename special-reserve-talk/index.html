@@ -512,7 +512,7 @@ h4{margin:0 0 8px;font-family:var(--serif);font-weight:700;font-size:23px;line-h
 .pstats{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:26px}
 .pstats div{display:flex;align-items:center;gap:14px}.pstats b i{font-family:var(--sans,inherit);font-style:normal;font-size:28px;font-weight:400}.pstats b{font-family:var(--serif);font-size:38px;color:var(--gold);white-space:nowrap}.pstats span{color:#D9CDBB;font-size:15px}
 .p2v{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:26px}
-.p2v figure{margin:0}.p2v img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;border-radius:14px;box-shadow:0 24px 50px rgba(0,0,0,.45);border:1px solid rgba(201,161,74,.25);background:#140306}
+.p2v figure{margin:0}.p2v img,.p2v video{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;border-radius:14px;box-shadow:0 24px 50px rgba(0,0,0,.45);border:1px solid rgba(201,161,74,.25);background:#140306}
 .p2v figcaption{margin-top:12px;font-size:14px;line-height:1.5;color:#D9CDBB}
 .p2v figcaption b{display:block;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
 @media (max-width:860px){.p2v{grid-template-columns:1fr 1fr;gap:14px}.p2v figcaption{font-size:13px}}
@@ -672,7 +672,7 @@ h4{margin:0 0 8px;font-family:var(--serif);font-weight:700;font-size:23px;line-h
 <script>
 (() => {
   'use strict';
-  const SALT = 'q7htuhi53K7v3qBozRy4dA==', ITER = 210000, VER = '2611171940', SK = 'srt_pass';
+  const SALT = 'BVEe00bAxMEP+TEPd7VZOw==', ITER = 210000, VER = '2611171948', SK = 'srt_pass';
   const $ = id => document.getElementById(id);
   const b64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
