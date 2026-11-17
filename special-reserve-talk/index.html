@@ -48,6 +48,7 @@ body.locked{overflow:hidden}
 
 a{color:inherit}
 img{max-width:100%;display:block}
+img[hidden]{display:none!important}
 img[data-enc]{opacity:0;transition:opacity .8s ease}
 img[data-enc].ok{opacity:1}
 .wrap{width:min(1180px,calc(100% - 48px));margin:0 auto}
@@ -452,6 +453,17 @@ h4{margin:0 0 8px;font-family:var(--serif);font-weight:700;font-size:23px;line-h
 .srcs dd{font-size:15px;color:#4A4038}
 @media (max-width:1000px){.wf{grid-template-columns:1fr}.wf-num{flex-direction:row}}
 @media (max-width:760px){.lane{grid-template-columns:1fr}.srcs{grid-template-columns:1fr}.srcs dt{border-bottom:0;padding-bottom:0}.wf-num{flex-direction:column}}
+
+.try{display:grid;grid-template-columns:1fr 380px;gap:34px;align-items:center;margin-top:40px;padding:30px;border-radius:22px;background:linear-gradient(160deg,#2c2016,#17110c);border:1px solid rgba(201,161,74,.4)}
+.try h3{font-family:var(--serif);font-size:clamp(28px,3vw,40px);line-height:1.1;color:var(--gold2);margin:4px 0 12px}
+.try p{color:#D9CDBB;margin:0 0 18px;max-width:520px}
+.try .lbl{display:block;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.try input{width:100%;max-width:420px;font:inherit;font-size:20px;color:var(--champ);background:#0f0b08;border:1px solid #5a4630;border-radius:12px;padding:12px 14px;outline:none}
+.try input:focus{border-color:var(--gold)}
+.try-b{display:flex;align-items:center;gap:14px;margin-top:16px;flex-wrap:wrap}
+.try .hint{font-size:13px;color:#BFB2A0;font-style:italic}
+.try canvas{width:100%;height:auto;border-radius:14px;box-shadow:0 24px 50px rgba(0,0,0,.5);display:block}
+@media (max-width:860px){.try{grid-template-columns:1fr;padding:22px}.try-r{max-width:360px}}
 /* reveal */
 .js .rv{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s ease}
 .js .rv.in{opacity:1;transform:none}
@@ -526,7 +538,7 @@ h4{margin:0 0 8px;font-family:var(--serif);font-weight:700;font-size:23px;line-h
 <script>
 (() => {
   'use strict';
-  const SALT = 'JvQBMLdErEsq5nTlil5iBA==', ITER = 210000, VER = '2611171141', SK = 'srt_pass';
+  const SALT = 'VmDKV6QnvgQZYMUEyIwwbA==', ITER = 210000, VER = '2611171151', SK = 'srt_pass';
   const $ = id => document.getElementById(id);
   const b64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -605,7 +617,38 @@ h4{margin:0 0 8px;font-family:var(--serif);font-weight:700;font-size:23px;line-h
     const rb = $('revealBtn'), back = $('revealBack'), idea = $('idea');
     if (rb) rb.addEventListener('click', () => { idea.classList.add('revealed'); idea.querySelectorAll('.bi-reveal img').forEach(loadImg); });
     if (back) back.addEventListener('click', () => idea.classList.remove('revealed'));
+    seatCard();
     if (location.hash) { const t = document.querySelector(location.hash); if (t) setTimeout(() => t.scrollIntoView(), 60); }
+  }
+
+  // ------- reserved seat card maker -------
+  function seatCard() {
+    const cv = document.getElementById('seatCard'); if (!cv) return;
+    const inp = document.getElementById('seatName'), bg = document.getElementById('seatBg'), cr = document.getElementById('seatCrown');
+    [bg, cr].forEach(loadImg);
+    const ctx = cv.getContext('2d'), W = cv.width, H = cv.height;
+    const spaced = (txt, x, y, sp) => { let w = 0; for (const ch of txt) w += ctx.measureText(ch).width + sp; w -= sp; let cx = x - w / 2; for (const ch of txt) { ctx.fillText(ch, cx, y); cx += ctx.measureText(ch).width + sp; } };
+    function fit(txt, max, start) { let s = start; do { ctx.font = '700 ' + s + 'px "Reserve Serif", Georgia, serif'; if (ctx.measureText(txt).width <= max) break; s -= 4; } while (s > 40); return s; }
+    function draw() {
+      ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+      ctx.fillStyle = '#16110D'; ctx.fillRect(0, 0, W, H);
+      if (bg.complete && bg.naturalWidth) { const r = Math.max(W / bg.naturalWidth, H / bg.naturalHeight), w = bg.naturalWidth * r, h = bg.naturalHeight * r; ctx.drawImage(bg, (W - w) / 2, (H - h) / 2 - 10, w, h); }
+      let g = ctx.createLinearGradient(0, 0, 0, H); g.addColorStop(0, 'rgba(12,9,6,.95)'); g.addColorStop(.42, 'rgba(12,9,6,.55)'); g.addColorStop(.62, 'rgba(12,9,6,0)'); g.addColorStop(.86, 'rgba(12,9,6,.55)'); g.addColorStop(1, 'rgba(12,9,6,.92)');
+      ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+      ctx.fillStyle = '#C9A14A'; ctx.font = '700 30px "Reserve Sans", Arial, sans-serif'; spaced('SPECIAL RESERVE TALK  ·  SEASON 2', W / 2, 120, 7);
+      ctx.textAlign = 'center'; ctx.fillStyle = '#E2C27A'; ctx.font = '700 104px "Reserve Serif", Georgia, serif'; ctx.fillText('Reserved for', W / 2, 270);
+      const name = (inp.value || '').trim() || 'someone special';
+      ctx.fillStyle = '#EFE6D6'; const fs = fit(name, W - 160, 128); ctx.font = '700 ' + fs + 'px "Reserve Serif", Georgia, serif'; ctx.fillText(name, W / 2, 270 + fs + 20);
+      ctx.fillStyle = '#D9CDBB'; ctx.font = 'italic 400 40px "Reserve Sans", Arial, sans-serif'; ctx.fillText('the one who believed in me first', W / 2, 270 + fs + 92);
+      if (cr.complete && cr.naturalWidth) { const ch = 84, cw = cr.naturalWidth * ch / cr.naturalHeight; ctx.drawImage(cr, W / 2 - cw / 2, H - 232, cw, ch); }
+      ctx.fillStyle = '#C9A14A'; ctx.font = '700 26px "Reserve Sans", Arial, sans-serif'; spaced('WHO WOULD SIT IN YOURS?  #THERESERVEDSEAT', W / 2, H - 100, 4);
+      ctx.fillStyle = '#8A7F72'; ctx.font = '400 22px "Reserve Sans", Arial, sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Concept by Awaken · for adults 18+', W / 2, H - 52);
+    }
+    const redraw = () => requestAnimationFrame(draw);
+    inp.addEventListener('input', redraw); bg.addEventListener('load', redraw); cr.addEventListener('load', redraw);
+    if (document.fonts && document.fonts.load) Promise.all([document.fonts.load('700 100px "Reserve Serif"'), document.fonts.load('700 30px "Reserve Sans"'), document.fonts.load('italic 400 40px "Reserve Sans"')]).then(redraw).catch(redraw);
+    draw(); setTimeout(redraw, 1500);
+    document.getElementById('seatSave').addEventListener('click', () => { draw(); cv.toBlob(b => { const a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = 'my-reserved-seat.png'; document.body.appendChild(a); a.click(); a.remove(); }, 'image/png'); });
   }
   function countUp(el) {
     if (el.dataset.counted) return; el.dataset.counted = 1;
