@@ -510,7 +510,7 @@ h4{margin:0 0 8px;font-family:var(--serif);font-weight:700;font-size:23px;line-h
 .phase em{display:block;color:var(--gold);margin-bottom:12px}
 .phase ul{margin:0;padding:0;list-style:none}.phase li{position:relative;padding-left:20px;margin:0 0 9px;color:#D9CDBB}.phase li::before{content:"–";position:absolute;left:0;color:var(--gold)}
 .pstats{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:26px}
-.pstats div{display:flex;align-items:center;gap:14px}.pstats b{font-family:var(--serif);font-size:38px;color:var(--gold);white-space:nowrap}.pstats span{color:#D9CDBB;font-size:15px}
+.pstats div{display:flex;align-items:center;gap:14px}.pstats b i{font-family:var(--sans,inherit);font-style:normal;font-size:28px;font-weight:400}.pstats b{font-family:var(--serif);font-size:38px;color:var(--gold);white-space:nowrap}.pstats span{color:#D9CDBB;font-size:15px}
 .formats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:26px}
 .fmt{background:rgba(255,255,255,.04);border:1px solid rgba(201,161,74,.25);border-radius:18px;padding:22px;display:flex;flex-direction:column}
 .fmt.hi{background:#3A2C1C;border-color:var(--gold)}
@@ -531,6 +531,13 @@ h4{margin:0 0 8px;font-family:var(--serif);font-weight:700;font-size:23px;line-h
 .kvs figure{margin:0}.kvs figcaption{margin-top:12px;color:#D9CDBB}.kvs figcaption b{color:var(--gold)}
 .setd{display:grid;grid-template-columns:1.6fr 1fr;gap:28px;align-items:center;margin-top:24px}
 .setd.b{grid-template-columns:1.25fr 1fr;margin-top:34px}
+.fmts{display:grid;grid-template-columns:.62fr .9fr 1.5fr;gap:20px;align-items:start;margin-top:26px}
+.fmts figure{margin:0}.fmts img{width:100%;display:block;border-radius:12px;box-shadow:0 24px 50px rgba(0,0,0,.45)}
+.fmts figcaption{margin-top:10px;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+.fm-r{display:grid;gap:18px}
+.phband{display:grid;grid-template-columns:1fr 1fr;margin:18px 0 -6px;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;text-align:center}
+.phband span{padding:8px;background:rgba(201,161,74,.12);border:1px solid rgba(201,161,74,.6);color:var(--gold2);border-radius:8px 0 0 8px}.phband span.p2{background:var(--gold);color:var(--ink);border-radius:0 8px 8px 0}
+@media (max-width:860px){.fmts{grid-template-columns:1fr 1fr}.fm-r{grid-column:1/-1}.phband{font-size:9px;letter-spacing:.1em}}
 .setrender{margin:24px 0 0}.setrender img{width:100%;display:block;border-radius:16px;box-shadow:0 30px 60px rgba(22,17,13,.3)}.setrender figcaption,.stack figcaption{margin-top:10px;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--goldDk)}
 .stack{display:grid;gap:18px}.stack figure{margin:0}
 .setd figure{margin:0}.setd img{width:100%;display:block;border-radius:14px;box-shadow:0 24px 50px rgba(22,17,13,.25)}
@@ -660,7 +667,7 @@ h4{margin:0 0 8px;font-family:var(--serif);font-weight:700;font-size:23px;line-h
 <script>
 (() => {
   'use strict';
-  const SALT = 'C5UP60iUoFDC1LCt4Sw3FQ==', ITER = 210000, VER = '2611171729', SK = 'srt_pass';
+  const SALT = '9aD4Dicbt+K0+YspJEuQuA==', ITER = 210000, VER = '2611171916', SK = 'srt_pass';
   const $ = id => document.getElementById(id);
   const b64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
