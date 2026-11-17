@@ -495,6 +495,7 @@ h4{margin:0 0 8px;font-family:var(--serif);font-weight:700;font-size:23px;line-h
  .steps{grid-template-columns:1fr 1fr}
  .ep1-tl li{grid-template-columns:1fr;gap:2px}
  .gh,.gr{grid-template-columns:1fr;gap:6px}.gh span:first-child{display:none}
+ .plan{grid-template-columns:1fr}.zoneA{border-right:0;border-bottom:2px dashed #8A7F72}.zoneB{min-height:360px}
  .mtable{grid-template-columns:1fr}.mtable dt{border-bottom:0}
  .year .months{display:none}.year .line{display:none}
  .eps{height:auto;display:grid;gap:12px}.ep,.ep.low,.ep:first-child,.ep:last-child{position:static;transform:none;width:auto;padding-top:0}.ep::before,.ep::after{display:none}
@@ -538,7 +539,7 @@ h4{margin:0 0 8px;font-family:var(--serif);font-weight:700;font-size:23px;line-h
 <script>
 (() => {
   'use strict';
-  const SALT = 'm9EfMsFPvZuwszRI/qcGPg==', ITER = 210000, VER = '2611171153', SK = 'srt_pass';
+  const SALT = 'gHBpcNiK0MmfoE4ITiLP6Q==', ITER = 210000, VER = '2611171154', SK = 'srt_pass';
   const $ = id => document.getElementById(id);
   const b64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -583,7 +584,7 @@ h4{margin:0 0 8px;font-family:var(--serif);font-weight:700;font-size:23px;line-h
   window.__srtLoadImg = loadImg;
   async function loadVid(v) {
     const k = v.dataset.encv; if (!k || v.dataset.done) return; v.dataset.done = 1;
-    try { const r = await fetch('i/' + k + '.vbin?v=' + VER); const d = await decBuf(await r.arrayBuffer()); v.src = URL.createObjectURL(new Blob([d], { type: 'video/mp4' })); v.muted = true; v.play().catch(() => {}); } catch (e) { v.dataset.done = ''; }
+    try { if (v.dataset.poster && imgCache[v.dataset.poster]) v.poster = await imgCache[v.dataset.poster]; const r = await fetch('i/' + k + '.vbin?v=' + VER); const d = await decBuf(await r.arrayBuffer()); v.src = URL.createObjectURL(new Blob([d], { type: 'video/mp4' })); v.muted = true; v.play().catch(() => {}); } catch (e) { v.dataset.done = ''; }
   }
   // ------- app -------
   function start(html) {
