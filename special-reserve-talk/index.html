@@ -531,6 +531,8 @@ h4{margin:0 0 8px;font-family:var(--serif);font-weight:700;font-size:23px;line-h
 .kvs figure{margin:0}.kvs figcaption{margin-top:12px;color:#D9CDBB}.kvs figcaption b{color:var(--gold)}
 .setd{display:grid;grid-template-columns:1.6fr 1fr;gap:28px;align-items:center;margin-top:24px}
 .setd.b{grid-template-columns:1.25fr 1fr;margin-top:34px}
+.setrender{margin:24px 0 0}.setrender img{width:100%;display:block;border-radius:16px;box-shadow:0 30px 60px rgba(22,17,13,.3)}.setrender figcaption,.stack figcaption{margin-top:10px;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--goldDk)}
+.stack{display:grid;gap:18px}.stack figure{margin:0}
 .setd figure{margin:0}.setd img{width:100%;display:block;border-radius:14px;box-shadow:0 24px 50px rgba(22,17,13,.25)}
 .legend{margin:0;padding:0;list-style:none;counter-reset:lg}
 .legend li{counter-increment:lg;position:relative;padding:0 0 14px 44px;font-size:15px;color:#4A4038}
@@ -658,7 +660,7 @@ h4{margin:0 0 8px;font-family:var(--serif);font-weight:700;font-size:23px;line-h
 <script>
 (() => {
   'use strict';
-  const SALT = 'dJkv3VLd9FwMVbSH9tnEfw==', ITER = 210000, VER = '2611171706', SK = 'srt_pass';
+  const SALT = 'C5UP60iUoFDC1LCt4Sw3FQ==', ITER = 210000, VER = '2611171729', SK = 'srt_pass';
   const $ = id => document.getElementById(id);
   const b64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
