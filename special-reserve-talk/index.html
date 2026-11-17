@@ -474,6 +474,14 @@ h4{margin:0 0 8px;font-family:var(--serif);font-weight:700;font-size:23px;line-h
 .hold b{display:block;font-family:var(--serif);font-size:19px;color:var(--champ);margin-top:12px}
 .hold p{margin:4px 0 0;color:#D9CDBB;font-size:15px}
 @media (max-width:860px){.qwrap{grid-template-columns:1fr}.qs li{grid-template-columns:1fr;gap:4px}}
+
+.routes .col{position:relative}
+.routes .rl{display:inline-flex;width:40px;height:40px;border-radius:50%;align-items:center;justify-content:center;background:var(--ink);color:var(--gold);font-family:var(--serif);font-weight:700;font-size:19px;margin:0 10px 12px 0}
+.routes .col.dk .rl{background:var(--gold);color:var(--ink)}
+.routes .col p{margin:0 0 14px;font-size:16px}
+.routes .col em{display:block;font-size:15px;color:var(--goldDk);border-top:1px solid var(--line);padding-top:12px}
+.routes .col.dk em{color:var(--gold);border-color:rgba(201,161,74,.3)}
+.close .cta button.btn{font:inherit;font-weight:700;font-size:16px}
 /* reveal */
 .js .rv{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s ease}
 .js .rv.in{opacity:1;transform:none}
@@ -542,14 +550,14 @@ h4{margin:0 0 8px;font-family:var(--serif);font-weight:700;font-size:23px;line-h
 <div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Chapters">
   <div class="scrim" data-close></div>
   <div class="panel"><button class="x" data-close aria-label="Close">×</button><h3>Chapters</h3><div id="mlist"></div>
-    <div class="mfoot"><a class="btn gold" href="slides/">Present as slides</a><button class="btn ghost" id="lockBtn">Lock the proposal on this device</button></div></div>
+    <div class="mfoot"><a class="btn gold" href="slides/">Present as slides</a><button class="btn ghost" type="button" data-dl="deck" data-name="Special_Reserve_Talk_S2_The_Reserved_Seat_Awaken.pdf">Download the deck (PDF)</button><button class="btn ghost" type="button" data-dl="onepager" data-name="Reserved_Seat_one_pager.pdf">Download the one-pager (PDF)</button><button class="btn ghost" id="lockBtn">Lock the proposal on this device</button></div></div>
 </div>
 <main id="content"></main>
 <noscript><p style="color:#fff;padding:40px">This proposal needs JavaScript to open.</p></noscript>
 <script>
 (() => {
   'use strict';
-  const SALT = 'CujU3EkbbSgwVjVTNnXSlQ==', ITER = 210000, VER = '2611171156', SK = 'srt_pass';
+  const SALT = '5R5pj6iMOloxkfQ3eRgmEg==', ITER = 210000, VER = '2611171159', SK = 'srt_pass';
   const $ = id => document.getElementById(id);
   const b64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -675,6 +683,8 @@ h4{margin:0 0 8px;font-family:var(--serif);font-weight:700;font-size:23px;line-h
     if (e.target.closest('#menuBtn')) menu(true);
     if (e.target.closest('[data-close]')) menu(false);
     if (e.target.closest('#lockBtn')) { try { sessionStorage.removeItem(SK); } catch (er) {} location.reload(); }
+    const dl = e.target.closest('[data-dl]');
+    if (dl && key) { const lbl = dl.textContent; dl.textContent = 'Preparing…'; fetch('i/' + dl.dataset.dl + '.pbin?v=' + VER).then(r => r.arrayBuffer()).then(decBuf).then(d => { const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([d], { type: 'application/pdf' })); a.download = dl.dataset.name; document.body.appendChild(a); a.click(); a.remove(); dl.textContent = lbl; }).catch(() => { dl.textContent = lbl; }); }
   });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') menu(false); });
 })();
