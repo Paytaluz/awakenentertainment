@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
 <meta name="color-scheme" content="light">
+<meta name="theme-color" content="#ffffff">
 <title>Awaken Digital — A proposal for your brand</title>
 <meta name="description" content="Video-first marketing, production, design, PR and talent under one roof in Yangon since 2016. A proposal for brands from Awaken Digital.">
 <meta property="og:type" content="website">
@@ -15,686 +16,230 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" href="img/awaken-digital.png">
 <link rel="preload" href="fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
-<style>
-@font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:swap;src:url(fonts/inter.woff2) format('woff2')}
-@font-face{font-family:'Playfair Display';font-style:italic;font-weight:700;font-display:swap;src:url(fonts/playfair-italic.woff2) format('woff2')}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--f:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;--s:'Playfair Display',Georgia,'Times New Roman',serif;--w:1240px;--pad:clamp(20px,4.2vw,60px);--r:20px;
---tb-bg:rgba(255,255,255,.84);--tb-ink:#0c0c0c;--tb-acc:#3f6212;--tb-solid:#fff;--tb-line:rgba(12,12,12,.1)}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:60px}
-body{font-family:var(--f);font-size:16px;line-height:1.55;color:#0c0c0c;background:#fff;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-body.lock{overflow:hidden}
-[hidden]{display:none !important}
-img{display:block;max-width:100%;height:auto}
-a{color:inherit;text-decoration:none}
-button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
-input,select,textarea{font:inherit;color:inherit}
-:focus-visible{outline:2px solid currentColor;outline-offset:3px;border-radius:6px}
-.s{font-family:var(--s);font-style:italic;font-weight:700;letter-spacing:-.01em}
-.wrap{max-width:var(--w);margin:0 auto;padding:0 var(--pad)}
-.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-.eyebrow{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--acc,#3f6212)}
-.lead{font-size:clamp(18px,1.7vw,22px);line-height:1.5;max-width:780px}
-.muted{color:var(--muted)}
-.small{font-size:13px;line-height:1.55}
-.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 24px;border-radius:999px;font-weight:700;font-size:14px;letter-spacing:.01em;transition:transform .2s,background .2s,color .2s,box-shadow .2s;white-space:nowrap}
-.btn:hover{transform:translateY(-2px)}
-.btn-dark{background:#0c0c0c;color:#fff}
-.btn-line{box-shadow:inset 0 0 0 1.5px currentColor}
-.btn-lime{background:#c8ff00;color:#0c0c0c}
-.btn-white{background:#fff;color:#0c0c0c}
-.btn-acc{background:var(--acc);color:var(--bg)}
-.tag{display:inline-block;padding:4px 10px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:var(--line);color:var(--ink)}
-.chips{display:flex;flex-wrap:wrap;gap:8px}
-.chips span{display:inline-flex;padding:8px 14px;border-radius:999px;border:1px solid var(--line);font-size:14px;font-weight:600;background:var(--card)}
-.list{list-style:none;display:grid;gap:9px}
-.list li{position:relative;padding-left:22px;font-size:15px;line-height:1.45}
-.list li::before{content:'';position:absolute;left:0;top:.66em;width:11px;height:2px;background:var(--acc)}
-
-/* reveal */
-.js .rv{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
-.js .rv.in{opacity:1;transform:none}
-.js .rv.d1{transition-delay:.08s}.js .rv.d2{transition-delay:.16s}.js .rv.d3{transition-delay:.24s}
-
-/* top bar */
-.tb{position:fixed;inset:0 0 auto 0;z-index:50;height:60px;display:flex;align-items:center;gap:12px;padding:0 var(--pad);background:var(--tb-bg);color:var(--tb-ink);-webkit-backdrop-filter:saturate(1.5) blur(14px);backdrop-filter:saturate(1.5) blur(14px);border-bottom:1px solid var(--tb-line);transition:background .45s,color .45s,border-color .45s}
-.tb .logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.18em;font-size:12px;white-space:nowrap}
-.tb .logo img{height:26px;width:auto;transition:filter .45s}
-.tb .logo em{font-style:normal;font-weight:600;opacity:.55;letter-spacing:.12em}
-.tb .cur{flex:1;text-align:center;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;opacity:.7;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.tb .act{display:flex;align-items:center;gap:8px;margin-left:auto}
-.tb .pill{display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 15px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--tb-line);font-size:13px;font-weight:600;white-space:nowrap;transition:background .3s,color .3s}
-.tb .pill:hover{background:var(--tb-line)}
-.tb .pill.solid{background:var(--tb-ink);color:var(--tb-solid);box-shadow:none}
-.tb .pill svg{width:15px;height:15px;flex:none}
-.tb .prog{position:absolute;left:0;bottom:-1px;height:2px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:var(--tb-acc)}
-body.dk .tb .logo img{filter:invert(1)}
-body[data-t=hero]{--tb-bg:rgba(255,255,255,.82);--tb-ink:#0c0c0c;--tb-acc:#3f6212;--tb-solid:#fff;--tb-line:rgba(12,12,12,.1)}
-body[data-t=red]{--tb-bg:rgba(214,12,11,.92);--tb-ink:#fff;--tb-acc:#fff;--tb-solid:#d60c0b;--tb-line:rgba(255,255,255,.28)}
-body[data-t=sand]{--tb-bg:rgba(242,234,219,.9);--tb-ink:#1d1912;--tb-acc:#a0560f;--tb-solid:#f2eadb;--tb-line:rgba(29,25,18,.13)}
-body[data-t=ink]{--tb-bg:rgba(17,17,17,.88);--tb-ink:#f4f4f0;--tb-acc:#c8ff00;--tb-solid:#111;--tb-line:rgba(255,255,255,.14)}
-body[data-t=peach]{--tb-bg:rgba(255,225,207,.9);--tb-ink:#2a160b;--tb-acc:#c2410c;--tb-solid:#ffe1cf;--tb-line:rgba(42,22,11,.13)}
-body[data-t=white]{--tb-bg:rgba(255,255,255,.88);--tb-ink:#0c0c0c;--tb-acc:#ff5a3c;--tb-solid:#fff;--tb-line:rgba(12,12,12,.1)}
-body[data-t=studio]{--tb-bg:rgba(33,23,15,.9);--tb-ink:#f7efe6;--tb-acc:#f5b041;--tb-solid:#21170f;--tb-line:rgba(255,255,255,.13)}
-body[data-t=green]{--tb-bg:rgba(15,58,44,.9);--tb-ink:#ecf7f1;--tb-acc:#7ee2b8;--tb-solid:#0f3a2c;--tb-line:rgba(255,255,255,.15)}
-body[data-t=lilac]{--tb-bg:rgba(236,227,251,.9);--tb-ink:#1e1530;--tb-acc:#6d28d9;--tb-solid:#ece3fb;--tb-line:rgba(30,21,48,.13)}
-body[data-t=ice]{--tb-bg:rgba(226,242,251,.9);--tb-ink:#0b2230;--tb-acc:#0369a1;--tb-solid:#e2f2fb;--tb-line:rgba(11,34,48,.13)}
-body[data-t=teal]{--tb-bg:rgba(11,58,63,.9);--tb-ink:#e8f7f6;--tb-acc:#5eead4;--tb-solid:#0b3a3f;--tb-line:rgba(255,255,255,.15)}
-body[data-t=gold]{--tb-bg:rgba(244,234,213,.92);--tb-ink:#2a1f0e;--tb-acc:#ad7a2a;--tb-solid:#f4ead5;--tb-line:rgba(42,31,14,.13)}
-
-/* dot rail */
-.rail{position:fixed;right:16px;top:50%;transform:translateY(-50%);z-index:40;display:flex;flex-direction:column;gap:11px}
-.rail a{display:block;width:9px;height:9px;border-radius:50%;background:var(--tb-ink);opacity:.22;position:relative;transition:opacity .3s,transform .3s,background .3s}
-.rail a.on{opacity:1;transform:scale(1.35);background:var(--tb-acc);box-shadow:0 0 0 2px var(--tb-solid)}
-.rail a span{position:absolute;right:20px;top:50%;transform:translateY(-50%) translateX(6px);white-space:nowrap;font-size:12px;font-weight:600;padding:5px 11px;border-radius:999px;background:var(--tb-ink);color:var(--tb-solid);opacity:0;pointer-events:none;transition:.2s}
-.rail a:hover{opacity:.9}
-.rail a:hover span,.rail a:focus-visible span{opacity:1;transform:translateY(-50%)}
-
-/* phone chapter button */
-.pbtn{position:fixed;left:50%;bottom:calc(12px + env(safe-area-inset-bottom));transform:translateX(-50%);z-index:45;display:none;align-items:center;gap:10px;padding:6px 18px 6px 6px;border-radius:999px;background:var(--tb-ink);color:var(--tb-solid);box-shadow:0 12px 32px rgba(0,0,0,.28);max-width:calc(100% - 32px);transition:background .45s,color .45s}
-.pbtn .rg{position:relative;width:38px;height:38px;flex:none}
-.pbtn svg{position:absolute;inset:0;width:38px;height:38px;transform:rotate(-90deg)}
-.pbtn .rg b{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800}
-.pbtn .nm{font-size:13px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-body[data-t=hero] .pbtn{opacity:0;pointer-events:none;transform:translate(-50%,24px)}
-.pbtn{transition:background .45s,color .45s,opacity .35s,transform .35s}
-.pbtn .nm small{display:block;font-size:10px;font-weight:600;opacity:.6;letter-spacing:.1em;text-transform:uppercase}
-
-/* overlays */
-.ov{position:fixed;inset:0;z-index:70;background:rgba(8,8,8,.55);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
-.ov.open{opacity:1;visibility:visible}
-.ov .panel{position:absolute;top:0;right:0;bottom:0;width:min(580px,100%);background:#fff;color:#0c0c0c;overflow:auto;padding:24px clamp(18px,3vw,34px) 40px;transform:translateX(30px);transition:transform .35s cubic-bezier(.2,.7,.2,1)}
-.ov.open .panel{transform:none}
-.ov .ph{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
-.ov .ph b{font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
-.ov .x{width:40px;height:40px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(12,12,12,.15);font-size:20px;line-height:1}
-.mlist{list-style:none}
-.mlist a{display:grid;grid-template-columns:46px 1fr auto;align-items:center;gap:2px 12px;padding:12px 12px;border-radius:14px;transition:background .2s}
-.mlist a:hover,.mlist a.on{background:#f2f2ef}
-.mlist .mn{grid-row:span 2;font-weight:900;font-size:22px;letter-spacing:-.04em;color:var(--mc,#0c0c0c)}
-.mlist .mt{font-weight:800;font-size:16px;letter-spacing:-.01em}
-.mlist .ms{font-size:13px;color:rgba(12,12,12,.58)}
-.mlist .dot{grid-row:span 2;width:12px;height:12px;border-radius:50%;background:var(--mc)}
-@media(max-width:560px){.mlist a{grid-template-columns:40px 1fr}.mlist .ms{grid-column:2}}
-.mk{margin-top:22px;padding:18px;border-radius:16px;background:#f5f5f2}
-.mk h5{font-size:14px;font-weight:800;margin-bottom:4px}
-.mk p{font-size:13px;color:rgba(12,12,12,.6);margin-bottom:12px}
-.mk .row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
-.mk input,.mk select{width:100%;height:42px;border-radius:10px;border:1px solid rgba(12,12,12,.15);padding:0 12px;background:#fff;font-size:14px}
-.mk .out{display:flex;gap:8px}
-.mk .out input{flex:1;font-size:12px;color:#333}
-.mk .out button,.mk .out a{height:42px;padding:0 14px;border-radius:10px;background:#0c0c0c;color:#fff;font-size:13px;font-weight:700;display:inline-flex;align-items:center}
-.mk .out a{background:#fff;color:#0c0c0c;box-shadow:inset 0 0 0 1px rgba(12,12,12,.15)}
-.ipick{display:grid;gap:8px}
-.ipick button{display:flex;align-items:center;justify-content:space-between;gap:10px;text-align:left;padding:16px 18px;border-radius:14px;box-shadow:inset 0 0 0 1px rgba(12,12,12,.12);font-weight:700;font-size:16px;transition:background .2s}
-.ipick button span{font-weight:500;font-size:13px;color:rgba(12,12,12,.55)}
-.ipick button:hover{background:#f4f4f1}
-.ipick button[aria-pressed=true]{background:#0c0c0c;color:#fff}
-.ipick button[aria-pressed=true] span{color:rgba(255,255,255,.65)}
-.toast{position:fixed;left:50%;bottom:84px;transform:translate(-50%,20px);z-index:90;background:#0c0c0c;color:#fff;padding:12px 18px;border-radius:12px;font-size:14px;font-weight:600;opacity:0;pointer-events:none;transition:.3s;max-width:calc(100% - 32px);text-align:center}
-.toast.on{opacity:1;transform:translate(-50%,0)}
-
-/* hero */
-.hero{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;background:#fff;padding-top:90px}
-.mosaic{position:absolute;top:-10%;right:-18%;width:70%;height:122%;display:flex;flex-direction:column;justify-content:center;gap:14px;transform:rotate(-7deg);pointer-events:none}
-.mrow{display:flex;gap:14px;width:max-content;animation:mq 90s linear infinite;will-change:transform}
-.mrow:nth-child(2){animation-direction:reverse;animation-duration:105s}
-.mrow:nth-child(3){animation-duration:120s}
-.mrow img{width:clamp(128px,12.5vw,200px);height:auto;aspect-ratio:5/6;object-fit:cover;border-radius:14px;box-shadow:0 12px 28px rgba(0,0,0,.12);background:#eee}
-@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.hero::before{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,#fff 0%,#fff 40%,rgba(255,255,255,.93) 52%,rgba(255,255,255,.35) 68%,rgba(255,255,255,0) 82%),linear-gradient(0deg,#fff 0%,#fff 12%,rgba(255,255,255,0) 34%)}
-.hero .wrap{position:relative;z-index:2;width:100%}
-.hchips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
-.hchip{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;box-shadow:inset 0 0 0 1px rgba(12,12,12,.14);background:rgba(255,255,255,.8)}
-.hchip.for{background:#c8ff00;box-shadow:none;color:#0c0c0c;text-transform:none;letter-spacing:.01em;font-size:13px}
-.hchip i{width:8px;height:8px;border-radius:50%;background:#e50d0c;display:inline-block}
-.hero h1{font-size:clamp(46px,7.4vw,112px);line-height:.92;letter-spacing:-.055em;font-weight:800}
-.hero h1 .s{letter-spacing:-.02em;font-weight:700;line-height:.72}
-.hero .sub{margin-top:24px;font-size:clamp(17px,1.6vw,21px);max-width:560px;color:rgba(12,12,12,.72)}
-.hero .sub b{color:#0c0c0c}
-.hero .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
-.hstats{margin-top:clamp(30px,4vw,52px);display:grid;grid-template-columns:repeat(6,minmax(0,1fr));border-top:1px solid rgba(12,12,12,.12)}
-.hstats div{padding:16px 10px 26px 0}
-.hstats b{display:block;font-size:clamp(22px,2.3vw,34px);font-weight:800;letter-spacing:-.035em;line-height:1.1}
-.hstats span{display:block;margin-top:4px;font-size:12px;color:rgba(12,12,12,.6);font-weight:600}
-
-/* chapters */
-.chap{position:relative;background:var(--bg);color:var(--ink);padding-bottom:clamp(72px,9vw,132px)}
-[data-theme=red]{--bg:#e50d0c;--ink:#fff;--muted:rgba(255,255,255,.82);--line:rgba(255,255,255,.28);--acc:#fff;--card:rgba(255,255,255,.1)}
-[data-theme=sand]{--bg:#f2eadb;--ink:#1d1912;--muted:rgba(29,25,18,.66);--line:rgba(29,25,18,.14);--acc:#a0560f;--card:#fbf7ef}
-[data-theme=ink]{--bg:#111;--ink:#f4f4f0;--muted:rgba(244,244,240,.68);--line:rgba(255,255,255,.14);--acc:#c8ff00;--card:#1a1a1a}
-[data-theme=peach]{--bg:#ffe1cf;--ink:#2a160b;--muted:rgba(42,22,11,.68);--line:rgba(42,22,11,.14);--acc:#c2410c;--card:#fff4ec}
-[data-theme=white]{--bg:#fff;--ink:#0c0c0c;--muted:rgba(12,12,12,.62);--line:rgba(12,12,12,.11);--acc:#ff5a3c;--card:#f6f5f3}
-[data-theme=studio]{--bg:#21170f;--ink:#f7efe6;--muted:rgba(247,239,230,.68);--line:rgba(255,255,255,.13);--acc:#f5b041;--acc2:#7cc0ff;--card:#2c2118}
-[data-theme=green]{--bg:#0f3a2c;--ink:#ecf7f1;--muted:rgba(236,247,241,.7);--line:rgba(255,255,255,.15);--acc:#7ee2b8;--card:#15493a}
-[data-theme=lilac]{--bg:#ece3fb;--ink:#1e1530;--muted:rgba(30,21,48,.66);--line:rgba(30,21,48,.13);--acc:#6d28d9;--card:#f8f4fe}
-[data-theme=ice]{--bg:#e2f2fb;--ink:#0b2230;--muted:rgba(11,34,48,.66);--line:rgba(11,34,48,.13);--acc:#0369a1;--card:#f5fbff}
-[data-theme=teal]{--bg:#0b3a3f;--ink:#e8f7f6;--muted:rgba(232,247,246,.7);--line:rgba(255,255,255,.15);--acc:#5eead4;--card:#104a50}
-[data-theme=gold]{--bg:#f4ead5;--ink:#2a1f0e;--muted:rgba(42,31,14,.66);--line:rgba(42,31,14,.14);--acc:#ad7a2a;--card:#fcf7ec}
-.op{padding:clamp(92px,10vw,148px) 0 clamp(30px,4vw,54px)}
-.op .wrap{display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(18px,4vw,64px);align-items:end}
-.op .n{font-weight:900;font-size:clamp(84px,14vw,210px);line-height:.78;letter-spacing:-.075em;color:var(--acc)}
-.op .eyebrow{margin-bottom:14px}
-.op h2{font-size:clamp(38px,5.8vw,86px);line-height:.95;letter-spacing:-.045em;font-weight:800}
-.op p{margin-top:16px;color:var(--muted);font-size:clamp(16px,1.5vw,20px);max-width:640px}
-[data-theme=white] .op .n{background:linear-gradient(100deg,#ff3d8b 0%,#ff7a2f 52%,#ffd23f 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
-.blk{margin-top:clamp(40px,5vw,72px)}
-.bh{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:12px 24px;margin-bottom:22px}
-.h3{font-size:clamp(24px,2.6vw,36px);line-height:1.08;letter-spacing:-.03em;font-weight:800}
-.h3+p{margin-top:8px;color:var(--muted);max-width:640px}
-.grid{display:grid;gap:clamp(12px,1.5vw,20px)}
-.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
-.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
-.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
-.g5{grid-template-columns:repeat(5,minmax(0,1fr))}
-.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:clamp(20px,2vw,28px)}
-.card h4{font-size:19px;line-height:1.2;letter-spacing:-.015em;font-weight:800;margin-bottom:8px}
-.card p{color:var(--muted);font-size:15px;line-height:1.5}
-.card .k{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin-bottom:14px;display:block}
-.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
-.stats>div{background:var(--bg);padding:clamp(18px,2.2vw,30px)}
-.stats .n{font-size:clamp(36px,4.6vw,64px);font-weight:800;letter-spacing:-.05em;line-height:1;font-variant-numeric:tabular-nums}
-.stats .l{margin-top:10px;font-size:14px;color:var(--muted);line-height:1.4}
-.stats .l b{color:var(--ink);font-weight:700}
-.src{margin-top:18px;font-size:12.5px;color:var(--muted);line-height:1.5}
-.src a{text-decoration:underline;text-underline-offset:2px}
-
-/* at a glance */
-.glance .top{padding:clamp(80px,9vw,128px) 0 30px;display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:20px}
-.glance h2{font-size:clamp(40px,6vw,90px);line-height:.92;letter-spacing:-.05em;font-weight:800}
-.glance .card{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.22)}
-.glance .card h4{font-size:22px}
-.glance .card p{color:rgba(255,255,255,.88);font-size:16px}
-.glance .card .k{color:#fff;opacity:.75}
-
-/* why */
-.bars{display:grid;gap:14px}
-.bars .row{display:grid;grid-template-columns:110px minmax(0,1fr) 74px;align-items:center;gap:14px}
-.bars .nm{font-weight:700;font-size:15px}
-.bars .tr{height:16px;border-radius:999px;background:var(--line);overflow:hidden}
-.bars .fl{height:100%;width:0;border-radius:999px;background:var(--acc);transition:width 1.5s cubic-bezier(.2,.7,.2,1)}
-.bars .row:first-child .fl{background:linear-gradient(90deg,#25f4ee,#fe2c55)}
-.in .bars .fl,.bars.in .fl{width:var(--w)}
-.bars .v{font-weight:800;font-size:15px;text-align:right;font-variant-numeric:tabular-nums}
-
-/* who */
-.badge-first{display:inline-flex;align-items:center;gap:10px;padding:10px 16px;border-radius:999px;background:#c8ff00;color:#0c0c0c;font-weight:800;font-size:14px}
-.reasons{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1px;background:var(--line);border-radius:var(--r);overflow:hidden;border:1px solid var(--line)}
-.reasons>div{background:var(--bg);padding:24px 20px}
-.reasons b{display:block;font-size:13px;color:var(--acc);font-weight:900;letter-spacing:.06em;margin-bottom:22px}
-.reasons h4{font-size:18px;line-height:1.2;font-weight:800;margin-bottom:8px;letter-spacing:-.01em}
-.reasons p{font-size:14px;color:var(--muted)}
-.roof{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;position:relative}
-.roof>div{border:1px solid var(--line);border-radius:16px;padding:16px;background:var(--card);position:relative}
-.roof>div b{display:block;font-size:15px;font-weight:800;margin-bottom:4px}
-.roof>div span{font-size:12.5px;color:var(--muted);display:block;line-height:1.4}
-.roof>div i{font-style:normal;display:inline-block;margin-top:10px;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--acc)}
-.roofbar{margin-top:10px;border-radius:14px;padding:12px 16px;background:var(--acc);color:#111;font-weight:800;font-size:14px;text-align:center;letter-spacing:.02em}
-.quote{font-family:var(--s);font-style:italic;font-weight:700;font-size:clamp(30px,3.6vw,52px);line-height:1.05;letter-spacing:-.02em}
-
-/* grow */
-.stages{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;counter-reset:st}
-.stages>div{position:relative;padding:22px 20px 22px;border-radius:var(--r);background:var(--card);border:1px solid var(--line)}
-.stages>div::after{content:'→';position:absolute;right:-12px;top:50%;transform:translateY(-50%);width:24px;height:24px;border-radius:50%;background:var(--acc);color:#fff;font-size:13px;display:flex;align-items:center;justify-content:center;z-index:2}
-.stages>div:last-child::after{display:none}
-.stages b{font-size:12px;font-weight:900;color:var(--acc);letter-spacing:.08em}
-.stages h4{font-size:22px;font-weight:800;margin:10px 0 6px;letter-spacing:-.02em}
-.stages p{font-size:14px;color:var(--muted)}
-.disc .card{display:flex;flex-direction:column;gap:6px}
-.disc .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:14px}
-.curve{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:28px;align-items:center}
-.curve svg{width:100%;height:auto;display:block}
-.curve .ax{display:flex;justify-content:space-between;font-size:12px;font-weight:700;color:var(--muted);margin-top:8px}
-.curve .bn{font-size:clamp(46px,5vw,76px);font-weight:800;letter-spacing:-.05em;line-height:1}
-.cpath{stroke-dasharray:640;stroke-dashoffset:640;transition:stroke-dashoffset 2s cubic-bezier(.2,.7,.2,1)}
-.in .cpath{stroke-dashoffset:0}
-.carea{opacity:0;transition:opacity 1.2s .8s}
-.in .carea{opacity:1}
-
-/* proof */
-.indnote{display:flex;flex-wrap:wrap;align-items:center;gap:10px;font-size:14px;font-weight:600}
-.indnote b{font-weight:800}
-.indnote button{padding:8px 14px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--line);font-size:13px;font-weight:700}
-.cases{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-.case{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:22px;overflow:hidden;transition:transform .35s,box-shadow .35s}
-.case:hover{transform:translateY(-4px);box-shadow:0 22px 40px rgba(0,0,0,.08)}
-.case .ph{position:relative;aspect-ratio:4/3;overflow:hidden;background:#e9e7e3}
-.case .ph img{width:100%;height:100%;object-fit:cover}
-.case .lg{position:absolute;left:14px;bottom:14px;background:#fff;border-radius:12px;padding:8px 12px;box-shadow:0 8px 20px rgba(0,0,0,.16);display:flex;align-items:center}
-.case .lg img{height:28px;width:auto}
-.case .bd{padding:20px 22px 22px;display:flex;flex-direction:column;gap:6px;flex:1}
-.case .tg{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:6px}
-.case .m{font-size:clamp(40px,3.8vw,56px);font-weight:800;letter-spacing:-.05em;line-height:1}
-.case .ml{font-size:14px;font-weight:700;margin-bottom:6px}
-.case h4{font-size:15px;font-weight:800;letter-spacing:.01em;text-transform:uppercase;color:var(--muted)}
-.case p{font-size:14.5px;color:var(--muted)}
-.case .ft{margin-top:auto;padding-top:14px;font-size:13px;font-weight:700}
-.case .ft a{text-decoration:underline;text-underline-offset:3px}
-.case.match{box-shadow:0 0 0 2px var(--acc),0 24px 44px rgba(255,90,60,.14)}
-.case .mt{display:none;position:absolute;top:14px;right:14px;background:var(--acc);color:#fff;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:6px 10px;border-radius:999px}
-.case.match .mt{display:block}
-.case.kol{grid-column:1/-1;background:#111;color:#fff;border-color:#111;display:grid;grid-template-columns:1fr;position:relative}
-.case.kol .bd{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:8px 32px;align-items:end}
-.case.kol .bd .tg{grid-column:1/-1}
-.case.kol .bd{padding:28px}
-.case.kol p,.case.kol h4{color:rgba(255,255,255,.7)}
-.case.kol .tag{background:rgba(255,255,255,.14);color:#fff}
-.kn{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:rgba(255,255,255,.12)}
-.kn div{background:#111;padding:26px 28px;display:flex;flex-direction:column;justify-content:flex-end;min-width:0}
-.kn b{white-space:nowrap;font-size:clamp(34px,4.2vw,64px);font-weight:800;letter-spacing:-.05em;line-height:1;background:linear-gradient(100deg,#ff3d8b,#ff7a2f 55%,#ffd23f);-webkit-background-clip:text;background-clip:text;color:transparent}
-.kn span{margin-top:8px;font-size:13px;color:rgba(255,255,255,.7);font-weight:600}
-.logos{list-style:none;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
-.logos li{background:#fff;border:1px solid rgba(12,12,12,.08);border-radius:16px;aspect-ratio:3/2;display:flex;align-items:center;justify-content:center;padding:16px;transition:opacity .35s,transform .35s,box-shadow .35s}
-.logos li img{max-height:100%;max-width:100%;width:auto;height:auto;object-fit:contain;border-radius:6px}
-.logos li.dim{opacity:.22}
-.logos li.hit{box-shadow:0 0 0 2px var(--acc)}
-
-/* talent */
-.mcdb{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:0;border-radius:24px;overflow:hidden;border:1px solid var(--line)}
-.mcdb .l{padding:clamp(24px,3vw,40px);background:linear-gradient(160deg,#3a2614,#21170f)}
-.mcdb .l .big{font-size:clamp(56px,7vw,104px);font-weight:900;letter-spacing:-.06em;line-height:.85;color:var(--acc)}
-.mcdb .l h4{font-size:20px;font-weight:800;margin:14px 0 8px}
-.mcdb .l p{color:var(--muted);font-size:15px}
-.mcdb .l .btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
-.mcdb .r{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line)}
-.mcdb .r div{background:var(--card);padding:clamp(20px,2.4vw,32px);display:flex;flex-direction:column;justify-content:flex-end}
-.mcdb .r b{font-size:clamp(40px,4.6vw,66px);font-weight:800;letter-spacing:-.05em;line-height:1;color:var(--ink)}
-.mcdb .r span{margin-top:8px;font-size:14px;color:var(--muted)}
-.tiers{border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
-.tiers .tr{display:grid;grid-template-columns:1.1fr 1.6fr 2fr 1fr;gap:16px;padding:16px 22px;border-top:1px solid var(--line);align-items:center}
-.tiers .tr:first-child{border-top:0;background:rgba(255,255,255,.04);font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-.tiers .tr b{font-weight:800;font-size:16px}
-.tiers .tr .role{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:14px}
-.tiers .tr .role i{width:10px;height:10px;border-radius:50%;background:var(--acc)}
-.tiers .tr .ds{font-size:14px;color:var(--muted)}
-.tiers .tr .er{font-weight:800;font-size:16px;text-align:right;font-variant-numeric:tabular-nums}
-.steps5{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
-.steps5>div{padding:20px;border-radius:18px;background:var(--card);border:1px solid var(--line)}
-.steps5 b{display:inline-flex;width:30px;height:30px;border-radius:50%;background:var(--acc);color:#21170f;align-items:center;justify-content:center;font-size:13px;font-weight:900;margin-bottom:14px}
-.steps5 h4{font-size:16px;font-weight:800;margin-bottom:6px}
-.steps5 p{font-size:13.5px;color:var(--muted)}
-
-/* production */
-.strip-wrap{position:relative}
-.strip{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px var(--pad) 14px;margin:0 calc(var(--pad)*-1);scrollbar-width:thin;scrollbar-color:var(--line) transparent}
-.strip figure{flex:0 0 clamp(250px,25vw,330px);scroll-snap-align:start}
-.strip img{width:100%;aspect-ratio:2/1;object-fit:cover;border-radius:14px;background:#0b2a20}
-.strip figcaption{margin-top:10px;font-size:13.5px;color:var(--muted);line-height:1.4}
-.strip figcaption b{display:block;color:var(--ink);font-size:15px;font-weight:800}
-.snav{display:flex;gap:8px}
-.snav button{width:44px;height:44px;border-radius:50%;box-shadow:inset 0 0 0 1px var(--line);font-size:18px;transition:background .2s}
-.snav button:hover{background:var(--line)}
-.slate{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(20px,3vw,40px);align-items:center}
-.slate img{border-radius:20px;width:100%;box-shadow:0 30px 60px rgba(0,0,0,.35)}
-.slate .facts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 0}
-.slate .facts div{border:1px solid var(--line);border-radius:14px;padding:12px 14px}
-.slate .facts small{display:block;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--acc)}
-.slate .facts span{font-size:14px;font-weight:600}
-.kit{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
-.kit h4{font-size:13px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--acc);margin-bottom:12px}
-.flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
-.flow>div{padding:20px;border-radius:18px;border:1px solid var(--line);background:var(--card)}
-.flow b{font-size:12px;font-weight:900;color:var(--acc);letter-spacing:.08em}
-.flow h4{font-size:18px;font-weight:800;margin:8px 0 6px}
-.flow p{font-size:14px;color:var(--muted)}
-.wide-img{border-radius:22px;overflow:hidden;position:relative}
-.wide-img img{width:100%;aspect-ratio:21/9;object-fit:cover}
-.wide-img figcaption{position:absolute;left:18px;bottom:16px;background:rgba(0,0,0,.55);color:#fff;font-size:12.5px;font-weight:600;padding:7px 12px;border-radius:999px;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
-
-/* design */
-.dcases{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-.dcase .imgs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px}
-.dcase .imgs img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:14px;background:#ddd}
-.dcase h4{font-size:22px;font-weight:800;letter-spacing:-.02em}
-.dcase .meta{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--acc);margin:4px 0 8px}
-.dcase p{font-size:14.5px;color:var(--muted)}
-
-/* category */
-.itabs{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;scrollbar-width:none;margin-bottom:22px}
-.itabs::-webkit-scrollbar{display:none}
-.itab{flex:none;padding:11px 18px;border-radius:999px;box-shadow:inset 0 0 0 1.5px var(--line);font-weight:700;font-size:14px;white-space:nowrap;transition:background .2s,color .2s}
-.itab:hover{background:rgba(3,105,161,.08)}
-.itab[aria-selected=true]{background:var(--ink);color:var(--bg);box-shadow:none}
-.pgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
-.pcard{text-align:left;display:flex;flex-direction:column;gap:10px;padding:22px;border-radius:18px;background:var(--card);border:1px solid var(--line);transition:transform .25s,box-shadow .25s;min-height:180px}
-.pcard:hover{transform:translateY(-3px);box-shadow:0 16px 30px rgba(3,105,161,.12)}
-.pcard b{font-size:20px;line-height:1.15;font-weight:800;letter-spacing:-.02em}
-.pcard .go{margin-top:auto;font-size:13px;font-weight:800;color:var(--acc)}
-.play{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:clamp(18px,3vw,40px)}
-.play .hk{font-size:clamp(32px,4vw,56px);line-height:1;letter-spacing:-.04em;font-weight:800}
-.play .ch{margin-top:16px;color:var(--muted);font-size:17px}
-.play .pr{margin-top:22px;padding:18px 20px;border-radius:16px;background:var(--ink);color:var(--bg)}
-.play .pr small{display:block;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;opacity:.7;margin-bottom:6px}
-.play .pr p{font-size:15px;line-height:1.5}
-.plays{display:grid;gap:12px}
-.plays .card{display:grid;grid-template-columns:44px 1fr;gap:4px 14px;align-items:start}
-.plays .card b{grid-row:span 2;width:44px;height:44px;border-radius:12px;background:var(--acc);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px}
-.plays .card h4{margin:0}
-.ms{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
-.ms span{padding:7px 12px;border-radius:999px;background:var(--card);border:1px solid var(--line);font-size:13px;font-weight:600}
-.pkhint{margin-top:16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;font-size:14px;font-weight:600}
-.pkhint a{font-weight:800;text-decoration:underline;text-underline-offset:3px}
-
-/* process */
-.proc{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
-.proc .card{padding:0;overflow:hidden;display:flex;flex-direction:column}
-.proc img{width:100%;aspect-ratio:3/2;object-fit:cover}
-.proc .tx{padding:20px 20px 22px}
-.proc .tx b{font-size:12px;font-weight:900;letter-spacing:.1em;color:var(--acc)}
-.proc .tx h4{font-size:21px;margin:6px 0 12px}
-.proc .list li{font-size:14px}
-.gantt{display:grid;grid-template-columns:minmax(180px,1.4fr) repeat(12,minmax(0,1fr));gap:8px 4px;align-items:center}
-.gantt .wk{font-size:11px;font-weight:800;color:var(--muted);text-align:center;letter-spacing:.04em}
-.gantt .lb{grid-column:1;font-size:14.5px;font-weight:700;line-height:1.3}
-.gantt .lb small{display:block;font-weight:500;font-size:12.5px;color:var(--muted)}
-.gantt .br{height:30px;border-radius:9px;background:var(--acc);transform-origin:0 50%;transform:scaleX(0);transition:transform 1s cubic-bezier(.2,.7,.2,1)}
-.gantt .br.alt{background:rgba(94,234,212,.45)}
-.in .gantt .br,.gantt.in .br{transform:scaleX(1)}
-.gantt .gl{grid-column:2/-1;height:1px;background:var(--line)}
-
-/* packages */
-.pks{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:stretch}
-.pk{position:relative;display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:24px;padding:clamp(22px,2.4vw,32px);transition:box-shadow .35s,transform .35s}
-.pk.lead{background:#2a1f0e;color:#f8f1e2;border-color:#2a1f0e;--muted:rgba(248,241,226,.7);--line:rgba(255,255,255,.15)}
-.pk .tier{font-size:12px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:var(--acc)}
-.pk h3{font-size:clamp(34px,3.4vw,48px);line-height:1;letter-spacing:-.045em;font-weight:800;margin:10px 0 6px}
-.pk .tl{font-family:var(--s);font-style:italic;font-weight:700;font-size:20px;margin-bottom:14px}
-.pk .meta{display:grid;gap:10px;padding:14px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:16px}
-.pk .meta small{display:block;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-.pk .meta span{font-size:14.5px;font-weight:600}
-.pk .list{margin-bottom:20px}
-.pk .list li{font-size:14.5px}
-.pk .btn{margin-top:auto;justify-content:center}
-.pk .sg{position:absolute;top:-13px;left:24px;background:var(--acc);color:#fff;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:6px 12px;border-radius:999px;display:none}
-.pk.sug{box-shadow:0 0 0 3px var(--acc),0 30px 60px rgba(173,122,42,.22);transform:translateY(-6px)}
-.pk.sug .sg{display:block}
-.addons{display:flex;flex-wrap:wrap;gap:8px}
-.addons span{padding:10px 16px;border-radius:999px;background:var(--card);border:1px solid var(--line);font-size:14px;font-weight:600}
-
-/* start */
-.brief{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(18px,3vw,36px);align-items:start}
-.bform{display:grid;gap:22px}
-.bform fieldset{border:0;display:grid;gap:10px}
-.bform legend{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px;opacity:.9}
-.bform .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.bform label.f{display:grid;gap:6px;font-size:13px;font-weight:700}
-.bform input[type=text],.bform input[type=tel],.bform select,.bform textarea{width:100%;height:48px;border-radius:12px;border:0;background:#fff;color:#111;padding:0 14px;font-size:15px}
-.bform textarea{height:96px;padding:12px 14px;resize:vertical}
-.opts{display:flex;flex-wrap:wrap;gap:8px}
-.opts label{position:relative}
-.opts input{position:absolute;opacity:0;width:1px;height:1px}
-.opts span{display:inline-flex;align-items:center;padding:9px 14px;border-radius:999px;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.55);font-size:14px;font-weight:600;cursor:pointer;transition:background .2s,color .2s;user-select:none}
-.opts span:hover{background:rgba(255,255,255,.12)}
-.opts input:checked+span{background:#fff;color:#c50b0a;box-shadow:none}
-.opts input:focus-visible+span{outline:2px solid #fff;outline-offset:2px}
-.bprev{position:sticky;top:84px;background:#fff;color:#111;border-radius:22px;padding:22px;box-shadow:0 30px 60px rgba(0,0,0,.2)}
-.bprev .hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
-.bprev .hd b{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#e50d0c}
-.bprev pre{white-space:pre-wrap;font-family:var(--f);font-size:14px;line-height:1.55;background:#f6f5f3;border-radius:14px;padding:16px;max-height:360px;overflow:auto;color:#222}
-.sends{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
-.sends a,.sends button{display:flex;align-items:center;justify-content:center;gap:8px;height:48px;border-radius:12px;font-weight:800;font-size:14px;transition:transform .2s}
-.sends a:hover,.sends button:hover{transform:translateY(-2px)}
-.s-wa{background:#25d366;color:#04361b}
-.s-vb{background:#7360f2;color:#fff}
-.s-ml{background:#111;color:#fff}
-.s-cp{background:#fff;color:#111;box-shadow:inset 0 0 0 1.5px #ddd}
-.bprev .nt{margin-top:12px;font-size:12.5px;color:#666}
-.contact{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
-.contact .card{background:rgba(255,255,255,.1)}
-.contact .card p,.contact .card a{color:#fff;font-size:15px;line-height:1.5}
-.contact .card a{text-decoration:underline;text-underline-offset:3px}
-.faq{display:grid;gap:10px}
-.faq details{border-radius:16px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2)}
-.faq summary{list-style:none;cursor:pointer;padding:18px 54px 18px 20px;font-weight:800;font-size:16px;position:relative}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:'+';position:absolute;right:20px;top:50%;transform:translateY(-50%);font-size:22px;font-weight:500;transition:transform .25s}
-.faq details[open] summary::after{transform:translateY(-50%) rotate(45deg)}
-.faq details p{padding:0 20px 18px;color:rgba(255,255,255,.88);font-size:15px}
-footer.ft{background:#0c0c0c;color:#fff;padding:36px 0 calc(90px + env(safe-area-inset-bottom))}
-footer.ft .wrap{display:flex;flex-wrap:wrap;gap:16px 30px;align-items:center;justify-content:space-between;font-size:13px}
-footer.ft img{height:28px;width:auto;filter:invert(1)}
-footer.ft nav{display:flex;flex-wrap:wrap;gap:8px 18px}
-footer.ft nav a{opacity:.75}
-footer.ft nav a:hover{opacity:1}
-
-/* responsive */
-@media(max-width:1100px){
-  .reasons{grid-template-columns:repeat(3,minmax(0,1fr))}
-  .roof{grid-template-columns:repeat(3,minmax(0,1fr))}
-  .steps5{grid-template-columns:repeat(3,minmax(0,1fr))}
-  .pgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .kit{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .contact{grid-template-columns:repeat(2,minmax(0,1fr))}
-}
-@media(max-width:1000px){
-  .g4,.g5{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .g3,.cases,.dcases{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .proc,.flow{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .stages{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .stages>div:nth-child(2)::after{display:none}
-  .logos{grid-template-columns:repeat(4,minmax(0,1fr))}
-  .pks{grid-template-columns:1fr;max-width:620px}
-  .curve,.play,.slate,.mcdb,.brief{grid-template-columns:1fr}
-  .bprev{position:relative;top:0}
-  .case.kol .bd{grid-template-columns:1fr}
-  .hstats{grid-template-columns:repeat(3,minmax(0,1fr))}
-  .tb .cur{display:none}
-  .rail{display:none}
-}
-@media(max-width:900px){
-  .pbtn{display:flex}
-  .tb .hide-m{display:none}
-}
-@media(max-width:820px){
-  .hero{padding-top:45svh;align-items:flex-end}
-  .mosaic{top:-3%;right:-45%;left:-45%;width:auto;height:56%;gap:10px;transform:rotate(-6deg)}
-  .mrow{gap:10px}
-  .mrow img{width:118px;border-radius:12px}
-  .hero::before{background:linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.15) 26%,rgba(255,255,255,.92) 44%,#fff 52%)}
-  .hero h1 br.d{display:none}
-  .op .wrap{grid-template-columns:1fr;gap:6px}
-  .op .n{font-size:clamp(72px,24vw,120px)}
-  .gantt{grid-template-columns:1fr}
-  .gantt .wk,.gantt .gl,.gantt .sp{display:none}
-  .gantt .br{grid-column:1 !important;height:8px;margin-bottom:14px}
-  .tiers .tr{grid-template-columns:1fr 1fr;gap:6px 14px}
-  .tiers .tr:first-child{display:none}
-  .tiers .tr .ds{grid-column:1/-1}
-  .tiers .tr .er{text-align:left}
-}
-@media(max-width:640px){
-  body{font-size:15.5px}
-  .reasons{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;background:none;border:0;border-radius:0;margin:0 calc(var(--pad)*-1);padding:2px var(--pad) 12px;scrollbar-width:none}
-  .reasons::-webkit-scrollbar{display:none}
-  .reasons>div{flex:0 0 78%;scroll-snap-align:start;border:1px solid var(--line);border-radius:18px}
-  .roof{grid-template-columns:1fr 1fr !important}
-  .kit{grid-template-columns:1fr 1fr !important}
-  .kit .card{padding:16px}
-  .kit .list li{font-size:13.5px}
-  .flow{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;margin:0 calc(var(--pad)*-1);padding:2px var(--pad) 12px;scrollbar-width:none}
-  .flow::-webkit-scrollbar{display:none}
-  .flow>div{flex:0 0 74%;scroll-snap-align:start}
-  .pcard{min-height:0;padding:18px}
-  .steps5{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;margin:0 calc(var(--pad)*-1);padding:2px var(--pad) 12px;scrollbar-width:none}
-  .steps5::-webkit-scrollbar{display:none}
-  .steps5>div{flex:0 0 74%;scroll-snap-align:start}
-  .g2,.g3,.g4,.g5,.reasons,.roof,.steps5,.proc,.flow,.stages,.kit,.contact,.pgrid{grid-template-columns:1fr}
-  .stages>div::after{display:none}
-  .stats{grid-template-columns:1fr 1fr}
-  .stats>div{padding:16px}
-  .swipe,.cases,.dcases{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin:0 calc(var(--pad)*-1);padding:2px var(--pad) 12px;scrollbar-width:none}
-  .swipe::-webkit-scrollbar,.cases::-webkit-scrollbar,.dcases::-webkit-scrollbar{display:none}
-  .swipe>*,.cases>*,.dcases>*{flex:0 0 86%;scroll-snap-align:start}
-  .case.kol{flex-basis:92%}
-  .kn{grid-template-columns:1fr 1fr}
-  .logos{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
-  .logos li{padding:10px;border-radius:12px}
-  .mcdb .r{grid-template-columns:1fr 1fr}
-  .bform .two,.sends,.mk .row{grid-template-columns:1fr}
-  .slate .facts{grid-template-columns:1fr 1fr}
-  .tb .logo em{display:none}
-  .tb .pill{padding:0 12px}
-  .hstats{grid-template-columns:repeat(3,minmax(0,1fr))}
-  .hstats div{padding:12px 6px 18px 0}
-  .hstats span{font-size:11px}
-  .bars .row{grid-template-columns:84px minmax(0,1fr) 58px;gap:10px}
-  .swipe-hint{display:block}
-}
-.swipe-hint{display:none;font-size:12px;font-weight:700;color:var(--muted);margin-top:4px}
-@media(prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  .mrow{animation:none}
-  .js .rv{opacity:1;transform:none;transition:none}
-  .bars .fl,.gantt .br,.cpath,.carea{transition:none}
-}
-</style>
+<link rel="stylesheet" href="app.css?v=2.0">
 </head>
 <body data-t="hero">
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true"><symbol id="i-clap" viewBox="0 0 24 24"><path d="m12.296 3.464 3.02 3.956" /> <path d="M20.2 6 3 11l-.9-2.4c-.3-1.1.3-2.2 1.3-2.5l13.5-4c1.1-.3 2.2.3 2.5 1.3z" /> <path d="M3 11h18v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /> <path d="m6.18 5.276 3.1 3.899" /></symbol><symbol id="i-mega" viewBox="0 0 24 24"><path d="M11 6a13 13 0 0 0 8.4-2.8A1 1 0 0 1 21 4v12a1 1 0 0 1-1.6.8A13 13 0 0 0 11 14H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z" /> <path d="M6 14a12 12 0 0 0 2.4 7.2 2 2 0 0 0 3.2-2.4A8 8 0 0 1 10 14" /> <path d="M8 6v8" /></symbol><symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v16a2 2 0 0 0 2 2h16" /> <path d="M18 17V9" /> <path d="M13 17V5" /> <path d="M8 17v-3" /></symbol><symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /> <path d="M16 3.128a4 4 0 0 1 0 7.744" /> <path d="M22 21v-2a4 4 0 0 0-3-3.87" /> <circle cx="9" cy="7" r="4" /></symbol><symbol id="i-spark" viewBox="0 0 24 24"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z" /> <path d="M20 2v4" /> <path d="M22 4h-4" /> <circle cx="4" cy="20" r="2" /></symbol><symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /> <circle cx="12" cy="12" r="6" /> <circle cx="12" cy="12" r="2" /></symbol><symbol id="i-cal" viewBox="0 0 24 24"><path d="M8 2v3" /> <path d="M16 2v3" /> <rect x="3" y="3" width="18" height="18" rx="2" /> <path d="M3 9h18" /> <path d="M8 13h.01" /> <path d="M12 13h.01" /> <path d="M16 13h.01" /> <path d="M8 17h.01" /> <path d="M12 17h.01" /> <path d="M16 17h.01" /></symbol><symbol id="i-chat" viewBox="0 0 24 24"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719" /></symbol><symbol id="i-cam" viewBox="0 0 24 24"><path d="M13.997 4a2 2 0 0 1 1.76 1.05l.486.9A2 2 0 0 0 18.003 7H20a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h1.997a2 2 0 0 0 1.759-1.048l.489-.904A2 2 0 0 1 10.004 4z" /> <circle cx="12" cy="13" r="3" /></symbol><symbol id="i-film" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2" /> <path d="M7 3v18" /> <path d="M3 7.5h4" /> <path d="M3 12h18" /> <path d="M3 16.5h4" /> <path d="M17 3v18" /> <path d="M17 7.5h4" /> <path d="M17 16.5h4" /></symbol><symbol id="i-music" viewBox="0 0 24 24"><path d="M21 16V3a1 1 0 0 0-1.28-.96l-10 2.917a1 1 0 0 0-.72.96V19" /> <circle cx="18" cy="16" r="3" /> <circle cx="6" cy="19" r="3" /></symbol><symbol id="i-mic" viewBox="0 0 24 24"><path d="M12 19v3" /> <path d="M19 10v2a7 7 0 0 1-14 0v-2" /> <rect x="9" y="2" width="6" height="13" rx="3" /></symbol><symbol id="i-bulb" viewBox="0 0 24 24"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" /> <path d="M9 18h6" /> <path d="M10 22h4" /></symbol><symbol id="i-palette" viewBox="0 0 24 24"><path d="M12 22a1 1 0 0 1 0-20 10 9 0 0 1 10 9 5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0-1.4 2.8l.3.4a1.75 1.75 0 0 1-1.4 2.8z" /> <circle cx="13.5" cy="6.5" r=".5" fill="currentColor" /> <circle cx="17.5" cy="10.5" r=".5" fill="currentColor" /> <circle cx="6.5" cy="12.5" r=".5" fill="currentColor" /> <circle cx="8.5" cy="7.5" r=".5" fill="currentColor" /></symbol><symbol id="i-pen" viewBox="0 0 24 24"><path d="m18 13-.654-4.736a4 4 0 00-2.756-3.266l-9.163-2.9a2 2 0 00-2.017.493l-.82.819a2 2 0 00-.492 2.017l2.9 9.163a4 4 0 003.266 2.756L13 18" /> <path d="M18.648 12.352a1.205 1.205 0 011.704 0l1.296 1.296a1.205 1.205 0 010 1.704l-6.296 6.296a1.205 1.205 0 01-1.704 0l-1.296-1.296a1.205 1.205 0 010-1.704z" /> <path d="m3 3 6.586 6.586" /> <circle cx="11" cy="11" r="2" /></symbol><symbol id="i-layers" viewBox="0 0 24 24"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z" /> <path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12" /> <path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17" /></symbol><symbol id="i-rocket" viewBox="0 0 24 24"><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" /> <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09" /> <path d="M9 12a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.4 22.4 0 0 1-4 2z" /> <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 .05 5 .05" /></symbol><symbol id="i-trend" viewBox="0 0 24 24"><path d="M16 7h6v6" /> <path d="m22 7-8.5 8.5-5-5L2 17" /></symbol><symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5" /></symbol><symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18" /> <path d="m6 6 12 12" /></symbol><symbol id="i-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34" /> <circle cx="11" cy="11" r="8" /></symbol><symbol id="i-cmd" viewBox="0 0 24 24"><path d="M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3" /></symbol><symbol id="i-print" viewBox="0 0 24 24"><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" /> <path d="M6 9V3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6" /> <rect x="6" y="14" width="12" height="8" rx="1" /></symbol><symbol id="i-share" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3" /> <circle cx="6" cy="12" r="3" /> <circle cx="18" cy="19" r="3" /> <line x1="8.59" x2="15.42" y1="13.51" y2="17.49" /> <line x1="15.41" x2="8.59" y1="6.51" y2="10.49" /></symbol><symbol id="i-plus" viewBox="0 0 24 24"><path d="M5 12h14" /> <path d="M12 5v14" /></symbol><symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /></symbol><symbol id="i-arrowur" viewBox="0 0 24 24"><path d="M7 7h10v10" /> <path d="M7 17 17 7" /></symbol><symbol id="i-play" viewBox="0 0 24 24"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z" /></symbol><symbol id="i-star" viewBox="0 0 24 24"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" /></symbol><symbol id="i-phone" viewBox="0 0 24 24"><rect width="14" height="20" x="5" y="2" rx="2" ry="2" /> <path d="M12 18h.01" /></symbol><symbol id="i-bank" viewBox="0 0 24 24"><path d="M10 18v-7" /> <path d="M11.119 2.205a2 2 0 0 1 1.762 0l7.84 3.846A.5.5 0 0 1 20.5 7h-17a.5.5 0 0 1-.22-.949z" /> <path d="M14 18v-7" /> <path d="M18 18v-7" /> <path d="M3 22h18" /> <path d="M6 18v-7" /></symbol><symbol id="i-pill" viewBox="0 0 24 24"><path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z" /> <path d="m8.5 8.5 7 7" /></symbol><symbol id="i-soda" viewBox="0 0 24 24"><path d="m6 8 1.75 12.28a2 2 0 0 0 2 1.72h4.54a2 2 0 0 0 2-1.72L18 8" /> <path d="M5 8h14" /> <path d="M7 15a6.47 6.47 0 0 1 5 0 6.47 6.47 0 0 0 5 0" /> <path d="m12 8 1-6h2" /></symbol><symbol id="i-cookie" viewBox="0 0 24 24"><path d="M11 17h.01" /> <path d="M11.496 2c.324-.016.558.292.529.615a4 4 0 004.235 4.368.713.713 0 01.758.757 4 4 0 004.366 4.237c.323-.03.63.204.614.527a10 10 0 01-2.915 6.566A1 1 0 114.93 4.918 10 10 0 0111.496 2" /> <path d="M12 12h.01" /> <path d="M16 16h.01" /> <path d="M16 3h.01" /> <path d="M21 4h.01" /> <path d="M21 8h.01" /> <path d="M7 14h.01" /> <path d="M9 8h.01" /></symbol><symbol id="i-food" viewBox="0 0 24 24"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2" /> <path d="M7 2v20" /> <path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7" /></symbol><symbol id="i-gem" viewBox="0 0 24 24"><path d="M10.5 3 8 9l4 13 4-13-2.5-6" /> <path d="M17 3a2 2 0 0 1 1.6.8l3 4a2 2 0 0 1 .013 2.382l-7.99 10.986a2 2 0 0 1-3.247 0l-7.99-10.986A2 2 0 0 1 2.4 7.8l2.998-3.997A2 2 0 0 1 7 3z" /> <path d="M2 9h20" /></symbol><symbol id="i-cpu" viewBox="0 0 24 24"><path d="M12 20v2" /> <path d="M12 2v2" /> <path d="M17 20v2" /> <path d="M17 2v2" /> <path d="M2 12h2" /> <path d="M2 17h2" /> <path d="M2 7h2" /> <path d="M20 12h2" /> <path d="M20 17h2" /> <path d="M20 7h2" /> <path d="M7 20v2" /> <path d="M7 2v2" /> <rect x="4" y="4" width="16" height="16" rx="2" /> <rect x="8" y="8" width="8" height="8" rx="1" /></symbol><symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /> <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" /> <path d="M2 12h20" /></symbol><symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" /> <circle cx="12" cy="10" r="3" /></symbol><symbol id="i-call" viewBox="0 0 24 24"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384" /></symbol><symbol id="i-mail" viewBox="0 0 24 24"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" /> <rect x="2" y="4" width="20" height="16" rx="2" /></symbol><symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /> <path d="M12 6v6l4 2" /></symbol><symbol id="i-kbd" viewBox="0 0 24 24"><path d="M10 8h.01" /> <path d="M12 12h.01" /> <path d="M14 8h.01" /> <path d="M16 12h.01" /> <path d="M18 8h.01" /> <path d="M6 8h.01" /> <path d="M7 16h10" /> <path d="M8 12h.01" /> <rect width="20" height="16" x="2" y="4" rx="2" /></symbol><symbol id="i-link" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" /> <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" /></symbol><symbol id="i-filter" viewBox="0 0 24 24"><path d="M2 5h20" /> <path d="M6 12h12" /> <path d="M9 19h6" /></symbol><symbol id="i-grid" viewBox="0 0 24 24"><rect width="7" height="7" x="3" y="3" rx="1" /> <rect width="7" height="7" x="14" y="3" rx="1" /> <rect width="7" height="7" x="14" y="14" rx="1" /> <rect width="7" height="7" x="3" y="14" rx="1" /></symbol><symbol id="i-list" viewBox="0 0 24 24"><path d="M3 5h.01" /> <path d="M3 12h.01" /> <path d="M3 19h.01" /> <path d="M8 5h13" /> <path d="M8 12h13" /> <path d="M8 19h13" /></symbol><symbol id="i-wand" viewBox="0 0 24 24"><path d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72" /> <path d="m14 7 3 3" /> <path d="M5 6v4" /> <path d="M19 14v4" /> <path d="M10 2v2" /> <path d="M7 8H3" /> <path d="M21 16h-4" /> <path d="M11 3H9" /></symbol><symbol id="i-dice" viewBox="0 0 24 24"><rect width="12" height="12" x="2" y="10" rx="2" ry="2" /> <path d="m17.92 14 3.5-3.5a2.24 2.24 0 0 0 0-3l-5-4.92a2.24 2.24 0 0 0-3 0L10 6" /> <path d="M6 18h.01" /> <path d="M10 14h.01" /> <path d="M15 6h.01" /> <path d="M18 9h.01" /></symbol><symbol id="i-eye" viewBox="0 0 24 24"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" /> <circle cx="12" cy="12" r="3" /></symbol><symbol id="i-zap" viewBox="0 0 24 24"><path d="M15.914 4a1.5 1.5 0 00-2.474-1.561l-9 9A1.5 1.5 0 005.5 14h4.002a.5.5 0 01.471.666L8.086 20a1.5 1.5 0 002.475 1.56l9-9A1.5 1.5 0 0018.5 10h-3.997a.5.5 0 01-.472-.667z" /></symbol><symbol id="i-heart" viewBox="0 0 24 24"><path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5" /></symbol><symbol id="i-store" viewBox="0 0 24 24"><path d="M15 21v-5a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v5" /> <path d="M17.774 10.31a1.12 1.12 0 0 0-1.549 0 2.5 2.5 0 0 1-3.451 0 1.12 1.12 0 0 0-1.548 0 2.5 2.5 0 0 1-3.452 0 1.12 1.12 0 0 0-1.549 0 2.5 2.5 0 0 1-3.77-3.248l2.889-4.184A2 2 0 0 1 7 2h10a2 2 0 0 1 1.653.873l2.895 4.192a2.5 2.5 0 0 1-3.774 3.244" /> <path d="M4 10.95V19a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8.05" /></symbol><symbol id="i-tv" viewBox="0 0 24 24"><path d="m17 2-5 5-5-5" /> <rect width="20" height="15" x="2" y="7" rx="2" /></symbol><symbol id="i-video" viewBox="0 0 24 24"><path d="m16 13 5.223 3.482a.5.5 0 0 0 .777-.416V7.87a.5.5 0 0 0-.752-.432L16 10.5" /> <rect x="2" y="6" width="14" height="12" rx="2" /></symbol><symbol id="i-badge" viewBox="0 0 24 24"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z" /> <path d="m16 9-5.5 5.5L8 12" /></symbol><symbol id="i-shuffle" viewBox="0 0 24 24"><path d="m18 14 4 4-4 4" /> <path d="m18 2 4 4-4 4" /> <path d="M2 18h1.973a4 4 0 0 0 3.3-1.7l5.454-8.6a4 4 0 0 1 3.3-1.7H22" /> <path d="M2 6h1.972a4 4 0 0 1 3.6 2.2" /> <path d="M22 18h-6.041a4 4 0 0 1-3.3-1.8l-.359-.45" /></symbol><symbol id="i-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6" /></symbol><symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 5h16" /> <path d="M4 12h16" /> <path d="M4 19h16" /></symbol><symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" /> <path d="M12 2v2" /> <path d="M12 20v2" /> <path d="m4.93 4.93 1.41 1.41" /> <path d="m17.66 17.66 1.41 1.41" /> <path d="M2 12h2" /> <path d="M20 12h2" /> <path d="m6.34 17.66-1.41 1.41" /> <path d="m19.07 4.93-1.41 1.41" /></symbol><symbol id="i-rain" viewBox="0 0 24 24"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242" /> <path d="M16 14v6" /> <path d="M8 14v6" /> <path d="M12 16v6" /></symbol><symbol id="i-trophy" viewBox="0 0 24 24"><path d="M10 14.66V17a1 1 0 0 1-1 1 2 2 0 0 0-2 2v2" /> <path d="M14 14.66V17a1 1 0 0 0 1 1 2 2 0 0 1 2 2v2" /> <path d="M17.916 10H19.5A2.5 2.5 0 0 0 22 7.5V5a1 1 0 0 0-1-1h-3" /> <path d="M4 22h16" /> <path d="M6 9a6 6 0 0 0 12 0V3a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1z" /> <path d="M6.084 10H4.5A2.5 2.5 0 0 1 2 7.5V5a1 1 0 0 1 1-1h3" /></symbol><symbol id="i-gift" viewBox="0 0 24 24"><path d="M12 7v14" /> <path d="M20 11v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8" /> <path d="M7.5 7a1 1 0 0 1 0-5A4.8 8 0 0 1 12 7a4.8 8 0 0 1 4.5-5 1 1 0 0 1 0 5" /> <rect x="3" y="7" width="18" height="4" rx="1" /></symbol><symbol id="i-grad" viewBox="0 0 24 24"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z" /> <path d="M22 10v6" /> <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5" /></symbol><symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401" /></symbol><symbol id="i-flower" viewBox="0 0 24 24"><path d="M12 5a3 3 0 1 1 3 3m-3-3a3 3 0 1 0-3 3m3-3v1M9 8a3 3 0 1 0 3 3M9 8h1m5 0a3 3 0 1 1-3 3m3-3h-1m-2 3v-1" /> <circle cx="12" cy="8" r="2" /> <path d="M12 10v12" /> <path d="M12 22c4.2 0 7-1.667 7-5-4.2 0-7 1.667-7 5Z" /> <path d="M12 22c-4.2 0-7-1.667-7-5 4.2 0 7 1.667 7 5Z" /></symbol><symbol id="i-party" viewBox="0 0 24 24"><path d="M5.8 11.3 2 22l10.7-3.79" /> <path d="M4 3h.01" /> <path d="M22 8h.01" /> <path d="M15 2h.01" /> <path d="M22 20h.01" /> <path d="m22 2-2.24.75a2.9 2.9 0 0 0-1.96 3.12c.1.86-.57 1.63-1.45 1.63h-.38c-.86 0-1.6.6-1.76 1.44L14 10" /> <path d="m22 13-.82-.33c-.86-.34-1.82.2-1.98 1.11c-.11.7-.72 1.22-1.43 1.22H17" /> <path d="m11 2 .33.82c.34.86-.2 1.82-1.11 1.98C9.52 4.9 9 5.52 9 6.23V7" /> <path d="M11 13c1.93 1.93 2.83 4.17 2 5-.83.83-3.07-.07-5-2-1.93-1.93-2.83-4.17-2-5 .83-.83 3.07.07 5 2Z" /></symbol><symbol id="i-bag" viewBox="0 0 24 24"><path d="M16 10a4 4 0 0 1-8 0" /> <path d="M3.103 6.034h17.794" /> <path d="M3.4 5.467a2 2 0 0 0-.4 1.2V20a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6.667a2 2 0 0 0-.4-1.2l-2-2.667A2 2 0 0 0 17 2H7a2 2 0 0 0-1.6.8z" /></symbol><symbol id="i-brief" viewBox="0 0 24 24"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" /> <rect width="20" height="14" x="2" y="6" rx="2" /></symbol><symbol id="i-handheart" viewBox="0 0 24 24"><path d="M11 14h2a2 2 0 0 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 16" /> <path d="m14.45 13.39 5.05-4.694C20.196 8 21 6.85 21 5.75a2.75 2.75 0 0 0-4.797-1.837.276.276 0 0 1-.406 0A2.75 2.75 0 0 0 11 5.75c0 1.2.802 2.248 1.5 2.946L16 11.95" /> <path d="m2 15 6 6" /> <path d="m7 20 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a1 1 0 0 0-2.75-2.91" /></symbol><symbol id="i-building" viewBox="0 0 24 24"><path d="M10 12h4" /> <path d="M10 8h4" /> <path d="M14 21v-3a2 2 0 0 0-4 0v3" /> <path d="M6 10H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-2" /> <path d="M6 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16" /></symbol><symbol id="i-send" viewBox="0 0 24 24"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z" /> <path d="m21.854 2.147-10.94 10.939" /></symbol><symbol id="i-table" viewBox="0 0 24 24"><path d="M3 9h18" /> <path d="M9 3v18" /> <rect x="3" y="3" width="18" height="18" rx="2" /></symbol><symbol id="i-copy" viewBox="0 0 24 24"><rect width="14" height="14" x="8" y="8" rx="2" ry="2" /> <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" /></symbol><symbol id="i-refresh" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8" /> <path d="M21 3v5h-5" /> <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16" /> <path d="M8 16H3v5" /></symbol><symbol id="i-sliders" viewBox="0 0 24 24"><path d="M10 5H3" /> <path d="M12 19H3" /> <path d="M14 3v4" /> <path d="M16 17v4" /> <path d="M21 12h-9" /> <path d="M21 19h-5" /> <path d="M21 5h-7" /> <path d="M8 10v4" /> <path d="M8 12H3" /></symbol><symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z" /></symbol><symbol id="i-flame" viewBox="0 0 24 24"><path d="M12 3q1 4 4 6.5t3 5.5a1 1 0 0 1-14 0 5 5 0 0 1 1-3 1 1 0 0 0 5 0c0-2-1.5-3-1.5-5q0-2 2.5-4" /></symbol><symbol id="i-waves" viewBox="0 0 24 24"><path d="M2 12q2.5 2 5 0t5 0 5 0 5 0" /> <path d="M2 19q2.5 2 5 0t5 0 5 0 5 0" /> <path d="M2 5q2.5 2 5 0t5 0 5 0 5 0" /></symbol><symbol id="i-drop" viewBox="0 0 24 24"><path d="M7 16.3c2.2 0 4-1.83 4-4.05 0-1.16-.57-2.26-1.71-3.19S7.29 6.75 7 5.3c-.29 1.45-1.14 2.84-2.29 3.76S3 11.1 3 12.25c0 2.22 1.8 4.05 4 4.05z" /> <path d="M12.56 6.6A10.97 10.97 0 0 0 14 3.02c.5 2.5 2 4.9 4 6.5s3 3.5 3 5.5a6.98 6.98 0 0 1-11.91 4.97" /></symbol><symbol id="i-football" viewBox="0 0 24 24"><path d="M10 14.66V17a1 1 0 0 1-1 1 2 2 0 0 0-2 2v2" /> <path d="M14 14.66V17a1 1 0 0 0 1 1 2 2 0 0 1 2 2v2" /> <path d="M17.916 10H19.5A2.5 2.5 0 0 0 22 7.5V5a1 1 0 0 0-1-1h-3" /> <path d="M4 22h16" /> <path d="M6 9a6 6 0 0 0 12 0V3a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1z" /> <path d="M6.084 10H4.5A2.5 2.5 0 0 1 2 7.5V5a1 1 0 0 1 1-1h3" /></symbol><symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /> <path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z" /></symbol><symbol id="i-door" viewBox="0 0 24 24"><path d="M10 21H2" /> <path d="M10 3H7a2 2 0 00-2 2v16" /> <path d="M14 12h.01" /> <path d="M19 21V5a2 2 0 00-1.675-1.974l-6.163-1.013A1 1 0 0010 3v18a1 1 0 001.124.992z" /> <path d="M22 21h-3" /></symbol><symbol id="i-heartpulse" viewBox="0 0 24 24"><path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5" /> <path d="M3.22 13H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27" /></symbol><symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /> <path d="m9 12 2 2 4-4" /></symbol><symbol id="i-scissors" viewBox="0 0 24 24"><circle cx="6" cy="6" r="3" /> <path d="M8.12 8.12 12 12" /> <path d="M20 4 8.12 15.88" /> <circle cx="6" cy="18" r="3" /> <path d="M14.8 14.8 20 20" /></symbol><symbol id="i-aperture" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /> <path d="m14.31 8 5.74 9.94" /> <path d="M9.69 8h11.48" /> <path d="m7.38 12 5.74-9.94" /> <path d="M9.69 16 3.95 6.06" /> <path d="M14.31 16H2.83" /> <path d="m16.62 12-5.74 9.94" /></symbol><symbol id="i-lightning" viewBox="0 0 24 24"><path d="M15.914 4a1.5 1.5 0 00-2.474-1.561l-9 9A1.5 1.5 0 005.5 14h4.002a.5.5 0 01.471.666L8.086 20a1.5 1.5 0 002.475 1.56l9-9A1.5 1.5 0 0018.5 10h-3.997a.5.5 0 01-.472-.667z" /></symbol></svg>
+<a class="skip" href="#glance">Skip to the proposal</a>
+<div class="grain" aria-hidden="true"></div>
+<div class="cursor" id="cursor" aria-hidden="true"><span class="cur-ring"><em id="curTip"></em></span><span class="cur-dot"></span></div>
 
-<a class="sr" href="#glance">Skip to the proposal</a>
-
-<!-- TOP BAR -->
+<!-- ============ TOP BAR ============ -->
 <header class="tb" id="tb">
   <a class="logo" href="#top" aria-label="Awaken Digital proposal, back to top"><img src="img/awaken-digital.png" alt="" width="240" height="203"><span>AWAKEN <em>DIGITAL · PROPOSAL</em></span></a>
-  <div class="cur" id="curLabel" aria-live="polite"></div>
-  <div class="act">
-    <button class="pill" data-open="#ipick" aria-haspopup="dialog" title="Choose your industry"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M6 12h12M10 18h4"/></svg><span data-indlabel>All brands</span></button>
-    <button class="pill hide-m" data-open="#menu" aria-haspopup="dialog">Chapters</button>
-    <a class="pill solid hide-m" href="#start">Build your brief</a>
+  <div class="tb-mid" aria-live="polite"><span class="tb-act" id="actLabel"></span><span class="tb-cur" id="curLabel"></span></div>
+  <div class="tb-act-btns">
+    <button class="pill" type="button" data-open="#ipick" aria-haspopup="dialog" title="Choose your industry (I)"><span class="ind-dot"></span><span data-indlabel>All brands</span></button>
+    <button class="pill sq" type="button" data-palette aria-label="Search the proposal" title="Search (Ctrl K)"><svg class="ic"><use href="#i-search"/></svg><kbd class="hide-m">⌘K</kbd></button>
+    <button class="pill hide-m" type="button" data-open="#menu" aria-haspopup="dialog">Chapters</button>
+    <a class="pill solid hide-s" href="#start" id="briefPill">Your brief<b class="count" id="briefCount" hidden>0</b></a>
   </div>
-  <div class="prog" id="prog"></div>
+  <div class="tb-prog" id="tbProg" aria-hidden="true"></div>
 </header>
 
-<!-- DOT RAIL -->
 <nav class="rail" id="rail" aria-label="Chapters"></nav>
 
-<!-- PHONE CHAPTER BUTTON -->
-<button class="pbtn" id="pbtn" data-open="#menu" aria-label="Open chapters menu">
-  <span class="rg"><svg viewBox="0 0 38 38" aria-hidden="true"><circle cx="19" cy="19" r="16" fill="none" stroke="currentColor" stroke-opacity=".25" stroke-width="3"/><circle id="ring" cx="19" cy="19" r="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-dasharray="100.53" stroke-dashoffset="100.53"/></svg><b id="pbNum">·</b></span>
-  <span class="nm"><small>Chapter</small><span id="pbName">Start</span></span>
+<button class="pbtn" id="pbtn" type="button" data-open="#menu" aria-label="Open chapters menu">
+  <span class="rg"><svg viewBox="0 0 38 38" aria-hidden="true"><circle cx="19" cy="19" r="16" fill="none" stroke="currentColor" stroke-opacity=".22" stroke-width="3"/><circle id="ring" cx="19" cy="19" r="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-dasharray="100.53" stroke-dashoffset="100.53"/></svg><b id="pbNum">·</b></span>
+  <span class="nm"><small id="pbAct">Chapter</small><span id="pbName">Start</span></span>
+  <span class="pb-brief" id="pbBrief" hidden>0</span>
 </button>
 
-<main>
+<main id="main">
 
-<!-- HERO -->
-<section class="hero" id="top" data-chap data-theme="hero" data-label="Awaken Digital · Proposal" data-n="·" data-short="Cover">
-  <div class="mosaic" aria-hidden="true" id="mosaic"></div>
-  <div class="wrap">
+<!-- ============ HERO ============ -->
+<section class="hero" id="top" data-chap data-theme="hero" data-label="Cover" data-n="·" data-short="Cover" data-act="0">
+  <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="mosaic-wrap" id="mosaicWrap" aria-hidden="true"><div class="mosaic" id="mosaic"></div></div>
+  <div class="wrap hero-in">
     <div class="hchips">
       <span class="hchip"><i></i>Proposal · Awaken Digital</span>
       <span class="hchip for" id="forChip" hidden>Prepared for <b data-brand></b></span>
     </div>
-    <h1>You say <span class="s">brand.</span><br>We tell the<br class="d"> <span class="s">story.</span></h1>
+    <h1 class="kin" aria-label="You say brand. We tell the story.">
+      <span class="ln" aria-hidden="true"><span>You say <em class="s">brand.</em></span></span>
+      <span class="ln" aria-hidden="true"><span>We tell the</span></span>
+      <span class="ln" aria-hidden="true"><span><em class="s">story.</em></span></span>
+    </h1>
     <p class="sub">Video-first marketing, production, design, PR and talent — <b>under one roof in Yangon since 2016.</b> <span id="indLine"></span></p>
+    <p class="ticker" aria-label="What we make">We make <span class="tk" aria-hidden="true"><span>TikTok series</span><span>brand films</span><span>creator programmes</span><span>key visuals</span><span>launch campaigns</span><span>talk shows</span><span>TikTok series</span></span></p>
     <div class="cta">
-      <a class="btn btn-dark" href="#glance">See the proposal ↓</a>
-      <button class="btn btn-line" data-open="#ipick">Pick your industry</button>
+      <a class="btn btn-dark mag" href="#glance">See the proposal <svg class="ic"><use href="#i-down"/></svg></a>
+      <button class="btn btn-line mag" type="button" data-open="#ipick">Pick your industry</button>
     </div>
     <div class="hstats">
       <div><b>2016</b><span>Founded in Yangon</span></div>
-      <div><b>30+</b><span>People, one team</span></div>
-      <div><b>50+</b><span>Campaigns launched</span></div>
-      <div><b>15+</b><span>Industries served</span></div>
-      <div><b>98%</b><span>Client retention</span></div>
-      <div><b>5.0 ★</b><span>Google rating</span></div>
+      <div><b data-count="30" data-suf="+">30+</b><span>People, one team</span></div>
+      <div><b data-count="50" data-suf="+">50+</b><span>Campaigns launched</span></div>
+      <div><b data-count="15" data-suf="+">15+</b><span>Industries served</span></div>
+      <div><b data-count="98" data-suf="%">98%</b><span>Client retention</span></div>
+      <div><b data-count="5.0" data-dec="1" data-suf=" ★">5.0 ★</b><span>Google rating</span></div>
     </div>
   </div>
+  <a class="scrollcue" href="#glance" aria-label="Scroll to the proposal"><span></span></a>
 </section>
 
-<!-- AT A GLANCE -->
-<section class="chap glance" id="glance" data-chap data-theme="red" data-label="At a glance" data-n="00" data-short="At a glance">
+<!-- ============ AT A GLANCE (bento) ============ -->
+<section class="chap glance" id="glance" data-chap data-theme="red" data-label="At a glance" data-n="★" data-short="At a glance" data-act="0">
   <div class="wrap">
-    <div class="top">
-      <div><span class="eyebrow" style="color:#fff;opacity:.8">At a glance</span><h2 class="rv">Awaken in <span class="s">60 seconds.</span></h2></div>
-      <p class="lead rv d1" style="max-width:460px;color:rgba(255,255,255,.88)"><span class="if-brand" hidden>Prepared for <b data-brand></b>. </span>Everything below in four lines — then the detail, chapter by chapter.</p>
+    <div class="g-head">
+      <div><span class="eyebrow">At a glance</span><h2 class="rv">Awaken in <em class="s">60 seconds.</em></h2></div>
+      <p class="rv d1"><span class="if-brand" hidden>Prepared for <b data-brand></b>. </span>The whole proposal in seven tiles — tap any tile to jump to the detail.</p>
     </div>
-    <div class="grid g4 swipe">
-      <div class="card rv"><span class="k">What we do</span><h4>Grow brands with video.</h4><p>Strategy, content, production, creators, paid media and design from one team — nothing lost between agencies.</p></div>
-      <div class="card rv d1"><span class="k">What it has done</span><h4>A million, organically.</h4><p>Tone Tone Noodle, Kido Candies and WonderXland each reached around a million organic views and engagements in three months. One creator programme drew 29.2M views.</p></div>
-      <div class="card rv d2"><span class="k">Who does it</span><h4>30+ people in Yangon.</h4><p>Strategists, creators, designers and producers working side by side in our Mayangone studio since 2016.</p></div>
-      <div class="card rv d3"><span class="k">How to start</span><h4>One-minute brief.</h4><p>Pick your industry, see the ideas for your category, then send us a brief. We reply within two business days.</p></div>
-    </div>
-    <p class="swipe-hint">Swipe for more →</p>
-    <div class="cta rv" style="display:flex;flex-wrap:wrap;gap:10px;margin-top:26px">
-      <button class="btn btn-white" data-open="#ipick">Pick your industry</button>
-      <a class="btn btn-line" href="#start">Build your brief</a>
+    <div class="bento">
+      <a class="b b-what rv" href="#grow" data-tip="Open">
+        <span class="k">What we do</span>
+        <h3>Grow brands with <em class="s">video.</em></h3>
+        <p>Strategy, content, production, creators, paid media and design from one team — nothing lost between agencies.</p>
+        <ul class="b-icons">
+          <li><svg class="ic"><use href="#i-clap"/></svg>Video</li>
+          <li><svg class="ic"><use href="#i-users"/></svg>Creators</li>
+          <li><svg class="ic"><use href="#i-chart"/></svg>Media</li>
+          <li><svg class="ic"><use href="#i-palette"/></svg>Design</li>
+          <li><svg class="ic"><use href="#i-mega"/></svg>PR</li>
+        </ul>
+      </a>
+      <a class="b b-proof rv d1" href="#proof" data-tip="Proof">
+        <span class="k">Organic proof</span>
+        <b class="big">≈1M</b>
+        <p>views &amp; engagements in three months — Tone Tone Noodle, Kido Candies and WonderXland, no paid promotion.</p>
+        <svg class="spark" viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0,56 C40,55 66,52 90,46 C120,38 140,24 160,14 C175,8 188,5 200,4" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+      </a>
+      <a class="b b-kol rv d2" href="#talent" data-tip="Creators">
+        <span class="k">Creators</span>
+        <b class="big">29.2M</b>
+        <p>views from one 12-month creator programme — 51 posts, 6.8% engagement.</p>
+      </a>
+      <a class="b b-prod rv d1" href="#production" data-tip="Series">
+        <span class="k">Production</span>
+        <b class="big">12<small>/</small>67</b>
+        <p>original series and episodes, aired on Channel K and Fortune TV.</p>
+      </a>
+      <a class="b b-mcdb rv d2" href="#talent" data-tip="MCDB">
+        <span class="k">Talent database</span>
+        <b class="big">695</b>
+        <p>celebrities and creators in MCDB, 96 of them S-tier.</p>
+      </a>
+      <div class="b b-team rv">
+        <span class="k">Who</span>
+        <b class="big">30+</b>
+        <p>strategists, creators, designers and producers in Mayangone, Yangon — since 2016.</p>
+      </div>
+      <div class="b b-start rv d1">
+        <span class="k">How to start</span>
+        <h3>One-minute brief.</h3>
+        <p>Pick your industry, see the ideas for your category, then send a brief. We reply within two business days.</p>
+        <div class="btns"><button class="btn btn-white mag" type="button" data-open="#ipick">Pick your industry</button><a class="btn btn-line mag" href="#start">Build your brief</a></div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- 01 WHY NOW -->
-<section class="chap" id="why" data-chap data-theme="sand" data-label="01 · Why now" data-n="01" data-short="Why now">
+<!-- ============ ACT I ============ -->
+<div class="actband" data-actband="1" aria-hidden="true"><div class="ab-track"><span>Act I</span><b>The shift</b><span>Act I</span><b>The shift</b><span>Act I</span><b>The shift</b><span>Act I</span><b>The shift</b></div></div>
+
+<!-- ============ 01 WHY NOW ============ -->
+<section class="chap" id="why" data-chap data-theme="sand" data-label="01 · Why now" data-n="01" data-short="Why now" data-act="1">
   <div class="op"><div class="wrap">
-    <div class="n rv">01</div>
-    <div><span class="eyebrow">Why now</span><h2 class="rv">Myanmar moved to <span class="s">short video.</span></h2><p class="rv d1">Your next customer is scrolling. Here is where attention sits at the end of 2026 — and what it means for your brand.</p></div>
+    <div class="n">01</div>
+    <div><span class="eyebrow">Why now</span><h2 class="rv">Myanmar moved to <em class="s">short video.</em></h2><p class="rv d1">Scroll through four numbers that explain where attention sits at the end of 2026 — and what it means for your brand.</p></div>
   </div></div>
   <div class="wrap">
-    <div class="stats rv">
-      <div><div class="n" data-count="40.0" data-dec="1" data-suf="M">40.0M</div><div class="l"><b>Internet users</b> — 72.4% of the population</div></div>
-      <div><div class="n" data-count="32.2" data-dec="1" data-suf="M">32.2M</div><div class="l"><b>Adults reachable on TikTok</b> — 81.5% of adults, up 53% in a year</div></div>
-      <div><div class="n" data-count="11.1" data-dec="1" data-suf="M">11.1M</div><div class="l"><b>Facebook ad reach</b> — 28.1% of adults, down 19% in a year</div></div>
-      <div><div class="n" data-count="30.4" data-dec="1">30.4</div><div class="l"><b>Median age</b> — young and mobile-first, with 62.5M mobile connections</div></div>
-    </div>
-    <div class="blk grid g2" style="align-items:start">
-      <div class="card rv">
-        <span class="k">Ad reach by platform · end of 2026</span>
-        <div class="bars">
-          <div class="row"><span class="nm">TikTok</span><div class="tr"><div class="fl" style="--w:100%"></div></div><span class="v">32.2M</span></div>
-          <div class="row"><span class="nm">Facebook</span><div class="tr"><div class="fl" style="--w:34.5%"></div></div><span class="v">11.1M</span></div>
-          <div class="row"><span class="nm">LinkedIn</span><div class="tr"><div class="fl" style="--w:4.3%"></div></div><span class="v">1.40M</span></div>
-          <div class="row"><span class="nm">Instagram</span><div class="tr"><div class="fl" style="--w:1.9%"></div></div><span class="v">0.62M</span></div>
+    <div class="story" id="story">
+      <div class="story-chart" id="storyChart" data-step="1">
+        <div class="sc-top"><span class="k" id="scKicker">Internet users · end of 2026</span><span class="sc-dots" aria-hidden="true"><i></i><i></i><i></i><i></i></span></div>
+        <div class="sc-layer" data-l="1">
+          <div class="waffle" id="waffle" role="img" aria-label="72 of 100 squares filled: 72.4 percent of people in Myanmar are online"></div>
+          <div class="sc-num"><b>40.0M</b><span>people online — <strong>72.4%</strong> of the population</span></div>
         </div>
-        <p class="src">TikTok is adults 18+; LinkedIn counts registered members. Platform figures can count the same person more than once.</p>
+        <div class="sc-layer" data-l="2">
+          <div class="pbars" role="img" aria-label="Ad reach end of 2026: TikTok 32.2 million adults, Facebook 11.1 million, LinkedIn 1.4 million members, Instagram 0.62 million">
+            <div class="pb"><span class="pn"><svg class="ic"><use href="#i-play"/></svg>TikTok</span><div class="pt"><i style="--w:100%"></i></div><b>32.2M</b></div>
+            <div class="pb"><span class="pn"><svg class="ic"><use href="#i-users"/></svg>Facebook</span><div class="pt"><i style="--w:34.5%"></i></div><b>11.1M</b></div>
+            <div class="pb"><span class="pn"><svg class="ic"><use href="#i-brief"/></svg>LinkedIn</span><div class="pt"><i style="--w:4.3%"></i></div><b>1.40M</b></div>
+            <div class="pb"><span class="pn"><svg class="ic"><use href="#i-cam"/></svg>Instagram</span><div class="pt"><i style="--w:1.9%"></i></div><b>0.62M</b></div>
+          </div>
+          <p class="sc-note">TikTok: adults 18+. LinkedIn: registered members.</p>
+        </div>
+        <div class="sc-layer" data-l="3">
+          <svg class="slope" id="slope" viewBox="0 0 520 330" role="img" aria-label="Late 2025 to late 2026: TikTok 21.0 to 32.2 million, Facebook 13.7 to 11.1 million, LinkedIn 1.10 to 1.40 million, Instagram 0.93 to 0.62 million"></svg>
+        </div>
+        <div class="sc-layer" data-l="4">
+          <div class="who-grid">
+            <div class="ages" id="ages" role="img" aria-label="Population by age band, share of total population"></div>
+            <div class="donut-wrap">
+              <svg class="donut" viewBox="0 0 120 120" role="img" aria-label="TikTok adult ad audience late 2026: 54.5 percent female, 45.5 percent male">
+                <circle cx="60" cy="60" r="46" fill="none" stroke="currentColor" stroke-opacity=".14" stroke-width="16"/>
+                <circle class="dn" cx="60" cy="60" r="46" fill="none" stroke-width="16" stroke-linecap="butt" pathLength="100" style="--v:54.5"/>
+              </svg>
+              <div class="dn-c"><b>54.5%</b><span>female</span></div>
+              <p class="dn-l">TikTok adult ad audience, late 2026<br><span>38.8% female a year earlier</span></p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="grid" style="gap:12px">
-        <div class="card rv d1"><h4>Video is the new shelf.</h4><p>Most adults can now be reached on TikTok. Short, native stories decide which brands people remember when they buy.</p></div>
-        <div class="card rv d2"><h4>Earn it, then buy it.</h4><p>Content people choose to watch grows reach at low cost. Paid media then scales what already works — not the other way round.</p></div>
-        <div class="card rv d3"><h4>Loyalty lives in chats.</h4><p>Facebook Groups, Viber and Telegram are where customers ask, share and buy. We plan them in from day one.</p></div>
+      <div class="story-steps">
+        <article class="step" data-step="1"><span class="sn">1 / 4</span><h3>40.0 million people are online.</h3><p>That is 72.4% of Myanmar. The median age is 30.4 and there are 62.5M mobile connections — a young, mobile-first market.</p></article>
+        <article class="step" data-step="2"><span class="sn">2 / 4</span><h3>TikTok reaches four in five adults.</h3><p>32.2M adults can be reached on TikTok, against 11.1M on Facebook. Instagram and LinkedIn are niche.</p></article>
+        <article class="step" data-step="3"><span class="sn">3 / 4</span><h3>And the gap is widening fast.</h3><p>In one year TikTok’s adult reach rose from 21.0M to 32.2M (+53%), while Facebook’s fell from 13.7M to 11.1M (−19%).</p></article>
+        <article class="step" data-step="4"><span class="sn">4 / 4</span><h3>Who is watching.</h3><p>25–34 is the largest adult age band, at 15.8% of people. TikTok’s adult ad audience is now 54.5% female — up from 38.8% a year earlier.</p></article>
       </div>
     </div>
-    <p class="src">Source: DataReportal, <a href="https://datareportal.com/reports/digital-2027-myanmar" target="_blank" rel="noopener">Digital 2027: Myanmar</a> (published 5 Nov 2026; figures to October 2026).</p>
+    <div class="blk grid g3">
+      <div class="card rv"><span class="ico"><svg class="ic"><use href="#i-store"/></svg></span><h4>Video is the new shelf.</h4><p>Most adults can now be reached on TikTok. Short, native stories decide which brands people remember when they buy.</p></div>
+      <div class="card rv d1"><span class="ico"><svg class="ic"><use href="#i-trend"/></svg></span><h4>Earn it, then buy it.</h4><p>Content people choose to watch grows reach at low cost. Paid media then scales what already works — not the other way round.</p></div>
+      <div class="card rv d2"><span class="ico"><svg class="ic"><use href="#i-chat"/></svg></span><h4>Loyalty lives in chats.</h4><p>Facebook Groups, Viber and Telegram are where customers ask, share and buy. We plan them in from day one.</p></div>
+    </div>
+    <p class="src">Sources: DataReportal, <a href="https://datareportal.com/reports/digital-2027-myanmar" target="_blank" rel="noopener">Digital 2027: Myanmar</a> (published 5 Nov 2026, figures to late 2026) and <a href="https://datareportal.com/reports/digital-2026-myanmar" target="_blank" rel="noopener">Digital 2026: Myanmar</a> (figures to late 2025). Platform figures are ad-reach estimates and can count the same person more than once.</p>
   </div>
 </section>
 
-<!-- 02 WHO WE ARE -->
-<section class="chap" id="who" data-chap data-theme="ink" data-label="02 · Who we are" data-n="02" data-short="Who we are">
+<!-- ============ ACT II ============ -->
+<div class="actband" data-actband="2" aria-hidden="true"><div class="ab-track"><span>Act II</span><b>Who we are</b><span>Act II</span><b>Who we are</b><span>Act II</span><b>Who we are</b><span>Act II</span><b>Who we are</b></div></div>
+
+<!-- ============ 02 WHO WE ARE ============ -->
+<section class="chap" id="who" data-chap data-theme="ink" data-label="02 · Who we are" data-n="02" data-short="Who we are" data-act="2">
   <div class="op"><div class="wrap">
-    <div class="n rv">02</div>
-    <div><span class="eyebrow">Who we are</span><h2 class="rv">Video-first. <span class="s">One roof.</span> Since 2016.</h2><p class="rv d1">A new-generation digital and production agency — as strong in ideas as in execution.</p></div>
+    <div class="n">02</div>
+    <div><span class="eyebrow">Who we are</span><h2 class="rv">Video-first. <em class="s">One roof.</em> Since 2016.</h2><p class="rv d1">A new-generation digital and production agency — as strong in ideas as in execution.</p></div>
   </div></div>
   <div class="wrap">
-    <div class="grid g2" style="align-items:center">
-      <div class="rv"><span class="badge-first">★ Myanmar’s first video-marketing agency</span></div>
+    <div class="grid g2 who-lead">
+      <div class="rv"><span class="badge-first"><svg class="ic"><use href="#i-star"/></svg>Myanmar’s first video-marketing agency</span></div>
       <p class="lead rv d1">Since 2016 we have helped brands stand out, scale up and stay relevant by pairing strategy with production quality. Every campaign starts with a story on video — then we make sure the right people see it.</p>
     </div>
     <div class="blk">
-      <div class="bh"><div><h3 class="h3 rv">Why brands choose us</h3></div></div>
-      <div class="reasons rv">
-        <div><b>01</b><h4>Video-first expertise</h4><p>Our craft starts with video made to stop the scroll and move people to act.</p></div>
-        <div><b>02</b><h4>Story + content</h4><p>Brand messages turned into stories people relate to, remember and share.</p></div>
-        <div><b>03</b><h4>Digital + production in one team</h4><p>Strategy and production under one roof: consistent, fast, no hand-offs.</p></div>
-        <div><b>04</b><h4>Above-market quality</h4><p>Global-standard creative and execution, made for Myanmar audiences.</p></div>
-        <div><b>05</b><h4>Real value</h4><p>Our efficiency means top-tier work at prices that are hard to match.</p></div>
+      <div class="bh"><h3 class="h3 rv">Why brands choose us</h3><p class="rv d1 bh-note hide-s">Hover a reason to open it.</p></div>
+      <div class="reasons rv" id="reasons">
+        <button class="rs on" type="button"><b>01</b><svg class="ic"><use href="#i-clap"/></svg><h4>Video-first expertise</h4><p>Our craft starts with video made to stop the scroll and move people to act.</p></button>
+        <button class="rs" type="button"><b>02</b><svg class="ic"><use href="#i-pen"/></svg><h4>Story + content</h4><p>Brand messages turned into stories people relate to, remember and share.</p></button>
+        <button class="rs" type="button"><b>03</b><svg class="ic"><use href="#i-layers"/></svg><h4>Digital + production in one team</h4><p>Strategy and production under one roof: consistent, fast, no hand-offs.</p></button>
+        <button class="rs" type="button"><b>04</b><svg class="ic"><use href="#i-badge"/></svg><h4>Above-market quality</h4><p>Global-standard creative and execution, made for Myanmar audiences.</p></button>
+        <button class="rs" type="button"><b>05</b><svg class="ic"><use href="#i-gem"/></svg><h4>Real value</h4><p>Our efficiency means top-tier work at prices that are hard to match.</p></button>
       </div>
     </div>
     <div class="blk">
       <div class="bh"><div><h3 class="h3 rv">Everything under one roof</h3><p class="rv d1">One brief, one team, one report — across the whole Awaken family.</p></div></div>
-      <div class="roof rv">
-        <div><b>Strategy</b><span>Research, audience, KPIs, channel plan</span><i>Awaken Digital</i></div>
-        <div><b>Content &amp; video</b><span>Short-form, series, social calendars</span><i>Awaken Digital</i></div>
-        <div><b>Production</b><span>Films, commercials, photography</span><i>Awaken Production</i></div>
-        <div><b>Design</b><span>Identity, key visuals, social design</span><i>Awaken Design</i></div>
-        <div><b>KOL &amp; PR</b><span>Talent, creators, launches, press</span><i>Awaken PR · MCDB</i></div>
-        <div><b>Media &amp; reporting</b><span>Meta, TikTok, Google; weekly reports</span><i>Awaken Digital</i></div>
+      <div class="orbit rv" id="orbit">
+        <svg class="orbit-svg" viewBox="0 0 600 600" aria-hidden="true">
+          <circle cx="300" cy="300" r="250" class="ring r1"/>
+          <circle cx="300" cy="300" r="170" class="ring r2"/>
+          <g class="spokes"></g>
+        </svg>
+        <div class="orbit-c"><img src="img/awaken-digital.png" alt="" width="240" height="203"><b>One team</b><span>one plan · one report</span></div>
+        <div class="onode" style="--i:0"><svg class="ic"><use href="#i-target"/></svg><b>Strategy</b><span>Research, audience, KPIs, channel plan</span><i>Awaken Digital</i></div>
+        <div class="onode" style="--i:1"><svg class="ic"><use href="#i-video"/></svg><b>Content &amp; video</b><span>Short-form, series, social calendars</span><i>Awaken Digital</i></div>
+        <div class="onode" style="--i:2"><svg class="ic"><use href="#i-film"/></svg><b>Production</b><span>Films, commercials, photography</span><i>Awaken Production</i></div>
+        <div class="onode" style="--i:3"><svg class="ic"><use href="#i-palette"/></svg><b>Design</b><span>Identity, key visuals, social design</span><i>Awaken Design</i></div>
+        <div class="onode" style="--i:4"><svg class="ic"><use href="#i-mega"/></svg><b>KOL &amp; PR</b><span>Talent, creators, launches, press</span><i>Awaken PR · MCDB</i></div>
+        <div class="onode" style="--i:5"><svg class="ic"><use href="#i-chart"/></svg><b>Media &amp; reporting</b><span>Meta, TikTok, Google; weekly reports</span><i>Awaken Digital</i></div>
       </div>
-      <div class="roofbar rv d1">One account team · one plan · one monthly report</div>
     </div>
     <div class="blk grid g2" style="align-items:center">
       <div class="rv"><p class="quote">“Be above the ordinary.”</p><p class="muted" style="margin-top:12px">Our core value.</p></div>
       <div class="grid g2 rv d1">
-        <div class="card"><h4>Teams by client group</h4><p>A flat structure: the people on your account work together every day, not through layers.</p></div>
-        <div class="card"><h4>Under 8% staff turnover</h4><p>The people who learn your brand stay on your brand.</p></div>
+        <div class="card"><span class="ico"><svg class="ic"><use href="#i-users"/></svg></span><h4>Teams by client group</h4><p>A flat structure: the people on your account work together every day, not through layers.</p></div>
+        <div class="card"><span class="ico"><svg class="ic"><use href="#i-handheart"/></svg></span><h4>Under 8% staff turnover</h4><p>The people who learn your brand stay on your brand.</p></div>
       </div>
     </div>
     <div class="blk stats rv">
@@ -706,93 +251,114 @@ footer.ft nav a:hover{opacity:1}
   </div>
 </section>
 
-<!-- 03 HOW WE GROW -->
-<section class="chap" id="grow" data-chap data-theme="peach" data-label="03 · How we grow brands" data-n="03" data-short="How we grow">
+<!-- ============ 03 HOW WE GROW ============ -->
+<section class="chap" id="grow" data-chap data-theme="peach" data-label="03 · How we grow brands" data-n="03" data-short="How we grow" data-act="2">
   <div class="op"><div class="wrap">
-    <div class="n rv">03</div>
-    <div><span class="eyebrow">How we grow brands</span><h2 class="rv">Story first. <span class="s">Organic</span> before paid.</h2><p class="rv d1">Four disciplines, one plan: content people choose to watch, then media that multiplies it.</p></div>
+    <div class="n">03</div>
+    <div><span class="eyebrow">How we grow brands</span><h2 class="rv">Story first. <em class="s">Organic</em> before paid.</h2><p class="rv d1">Four disciplines, one plan: content people choose to watch, then media that multiplies it.</p></div>
   </div></div>
   <div class="wrap">
-    <div class="stages rv">
-      <div><b>01</b><h4>Awareness</h4><p>Platform-native video and creators put you on the feed.</p></div>
-      <div><b>02</b><h4>Engagement</h4><p>Series, challenges and replies that get people talking.</p></div>
-      <div><b>03</b><h4>Community</h4><p>Groups, Viber and Telegram channels where fans gather.</p></div>
-      <div><b>04</b><h4>Loyalty</h4><p>Offers, events and content that keep them coming back.</p></div>
+    <div class="path rv" id="growPath">
+      <svg class="path-svg" viewBox="0 0 1000 220" preserveAspectRatio="none" aria-hidden="true">
+        <path class="path-bg" d="M20,170 C140,170 160,60 280,60 S440,170 520,150 S700,40 780,50 S920,120 980,40"/>
+        <path class="path-fg" id="pathFg" pathLength="1000" d="M20,170 C140,170 160,60 280,60 S440,170 520,150 S700,40 780,50 S920,120 980,40"/>
+      </svg>
+      <div class="stages">
+        <div class="stg"><b>01</b><h4>Awareness</h4><p>Platform-native video and creators put you on the feed.</p></div>
+        <div class="stg"><b>02</b><h4>Engagement</h4><p>Series, challenges and replies that get people talking.</p></div>
+        <div class="stg"><b>03</b><h4>Community</h4><p>Groups, Viber and Telegram channels where fans gather.</p></div>
+        <div class="stg"><b>04</b><h4>Loyalty</h4><p>Offers, events and content that keep them coming back.</p></div>
+      </div>
     </div>
     <div class="blk">
       <div class="bh"><h3 class="h3 rv">Four disciplines. One team.</h3></div>
       <div class="grid g4 disc swipe">
-        <div class="card rv"><span class="k">01</span><h4>Digital marketing</h4><p>We build and grow your online presence, mixing creativity with data.</p><div class="tags"><span class="tag">Social</span><span class="tag">Paid ads</span><span class="tag">Content</span><span class="tag">Analytics</span></div></div>
-        <div class="card rv d1"><span class="k">02</span><h4>Video marketing</h4><p>Short, platform-native stories made to stop the scroll and earn shares before a single ad is bought.</p><div class="tags"><span class="tag">TikTok</span><span class="tag">Reels</span><span class="tag">Short-form</span><span class="tag">Creators</span></div></div>
-        <div class="card rv d2"><span class="k">03</span><h4>Social media strategy</h4><p>Content calendars, daily community management and paid social that turn followers into customers.</p><div class="tags"><span class="tag">Calendars</span><span class="tag">Community</span><span class="tag">Paid social</span></div></div>
-        <div class="card rv d3"><span class="k">04</span><h4>Media buying</h4><p>Every kyat placed for reach, engagement and conversion — then reported back to you.</p><div class="tags"><span class="tag">Meta</span><span class="tag">TikTok Ads</span><span class="tag">Google</span></div></div>
+        <div class="card tilt rv"><span class="ico"><svg class="ic"><use href="#i-trend"/></svg></span><h4>Digital marketing</h4><p>We build and grow your online presence, mixing creativity with data.</p><div class="tags"><span class="tag">Social</span><span class="tag">Paid ads</span><span class="tag">Content</span><span class="tag">Analytics</span></div></div>
+        <div class="card tilt rv d1"><span class="ico"><svg class="ic"><use href="#i-clap"/></svg></span><h4>Video marketing</h4><p>Short, platform-native stories made to stop the scroll and earn shares before a single ad is bought.</p><div class="tags"><span class="tag">TikTok</span><span class="tag">Reels</span><span class="tag">Short-form</span><span class="tag">Creators</span></div></div>
+        <div class="card tilt rv d2"><span class="ico"><svg class="ic"><use href="#i-cal"/></svg></span><h4>Social media strategy</h4><p>Content calendars, daily community management and paid social that turn followers into customers.</p><div class="tags"><span class="tag">Calendars</span><span class="tag">Community</span><span class="tag">Paid social</span></div></div>
+        <div class="card tilt rv d3"><span class="ico"><svg class="ic"><use href="#i-target"/></svg></span><h4>Media buying</h4><p>Every kyat placed for reach, engagement and conversion — then reported back to you.</p><div class="tags"><span class="tag">Meta</span><span class="tag">TikTok Ads</span><span class="tag">Google</span></div></div>
       </div>
     </div>
     <div class="blk card curve rv">
       <div>
         <span class="k">Our benchmark</span>
-        <div class="bn">1M+ <span style="font-size:.42em;letter-spacing:-.02em">people</span></div>
-        <p style="margin-top:12px;font-size:17px;color:var(--ink)">A typical brand we run reaches its first million people within <b>3–6 months.</b></p>
+        <div class="bn">1M+ <span>people</span></div>
+        <p class="bn-l">A typical brand we run reaches its first million people within <b>3–6 months.</b></p>
         <p class="src">A benchmark across our campaigns, not a guarantee. Category, content and budget all play a part.</p>
       </div>
-      <div>
-        <svg viewBox="0 0 400 120" preserveAspectRatio="none" aria-label="Reach curve from launch to one million people by month six">
-          <defs><linearGradient id="cg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#c2410c" stop-opacity=".25"/><stop offset="100%" stop-color="#c2410c" stop-opacity="0"/></linearGradient></defs>
-          <line x1="0" y1="10" x2="400" y2="10" stroke="#c2410c" stroke-opacity=".4" stroke-dasharray="4 5"/>
-          <text x="6" y="24" font-size="11" font-weight="700" fill="#c2410c" font-family="Inter,sans-serif">1M reach</text>
-          <path class="carea" d="M0,114 C80,112 130,106 180,94 C240,78 280,50 320,30 C350,18 375,12 400,10 L400,120 L0,120Z" fill="url(#cg)"/>
-          <path class="cpath" d="M0,114 C80,112 130,106 180,94 C240,78 280,50 320,30 C350,18 375,12 400,10" fill="none" stroke="#c2410c" stroke-width="3" stroke-linecap="round"/>
+      <div class="curve-plot">
+        <svg viewBox="0 0 400 130" preserveAspectRatio="none" aria-label="Reach curve from launch to one million people by month six">
+          <defs><linearGradient id="cg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#c2410c" stop-opacity=".28"/><stop offset="100%" stop-color="#c2410c" stop-opacity="0"/></linearGradient></defs>
+          <line x1="0" y1="12" x2="400" y2="12" stroke="#c2410c" stroke-opacity=".45" stroke-dasharray="4 5"/>
+          <text x="6" y="27" font-size="11" font-weight="700" fill="#c2410c" font-family="Inter,sans-serif">1M reach</text>
+          <path class="carea" d="M0,124 C80,122 130,116 180,104 C240,88 280,58 320,36 C350,22 375,15 400,12 L400,130 L0,130Z" fill="url(#cg)"/>
+          <path class="cpath" id="cpath" d="M0,124 C80,122 130,116 180,104 C240,88 280,58 320,36 C350,22 375,15 400,12" fill="none" stroke="#c2410c" stroke-width="3" stroke-linecap="round"/>
         </svg>
+        <span class="cdot" id="cdot"></span>
         <div class="ax"><span>Launch</span><span>Month 3</span><span>Month 6</span></div>
       </div>
     </div>
-    <div class="blk grid g2">
-      <div class="rv"><h3 class="h3">Formats that work in Myanmar now</h3><p class="muted" style="margin:8px 0 16px">Made in Burmese, for the feed, by people who know it.</p>
-        <div class="chips"><span>Raw, unfiltered UGC</span><span>Challenges</span><span>How-to</span><span>Mini-series &amp; skits</span><span>Creator collabs</span><span>Live</span><span>Behind the scenes</span><span>Festival moments</span></div>
+    <div class="blk">
+      <div class="bh"><div><h3 class="h3 rv">Formats that work in Myanmar now</h3><p class="rv d1">Made in Burmese, for the feed, by people who know it.</p></div></div>
+      <div class="fmarq rv" aria-label="Formats: raw unfiltered UGC, challenges, how-to, mini-series and skits, creator collabs, live, behind the scenes, festival moments">
+        <div class="fm-row"><div class="fm-track"><span>Raw, unfiltered UGC</span><span>Challenges</span><span>How-to</span><span>Mini-series &amp; skits</span><span>Creator collabs</span><span>Live</span><span>Behind the scenes</span><span>Festival moments</span><span>Raw, unfiltered UGC</span><span>Challenges</span><span>How-to</span><span>Mini-series &amp; skits</span><span>Creator collabs</span><span>Live</span><span>Behind the scenes</span><span>Festival moments</span></div></div>
+        <div class="fm-row rev"><div class="fm-track"><span>Street interviews</span><span>Unboxings</span><span>Day-in-the-life</span><span>Reaction videos</span><span>Duets &amp; stitches</span><span>Product demos</span><span>Talk shows</span><span>Music &amp; dance</span><span>Street interviews</span><span>Unboxings</span><span>Day-in-the-life</span><span>Reaction videos</span><span>Duets &amp; stitches</span><span>Product demos</span><span>Talk shows</span><span>Music &amp; dance</span></div></div>
       </div>
-      <div class="card rv d1"><span class="k">Always-on rhythm</span>
-        <ul class="list"><li>Daily community management and replies</li><li>Weekly content drops on a shared calendar</li><li>Weekly performance report</li><li>Monthly strategy review — what to keep, cut and scale</li></ul>
+    </div>
+    <div class="blk rhythm rv">
+      <span class="k">Always-on rhythm</span>
+      <div class="rh">
+        <div><b>Daily</b><span>Community management and replies</span></div>
+        <div><b>Weekly</b><span>Content drops on a shared calendar</span></div>
+        <div><b>Weekly</b><span>Performance report</span></div>
+        <div><b>Monthly</b><span>Strategy review — what to keep, cut and scale</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 04 PROOF -->
-<section class="chap" id="proof" data-chap data-theme="white" data-label="04 · Proof" data-n="04" data-short="Proof">
+<!-- ============ 04 PROOF ============ -->
+<section class="chap" id="proof" data-chap data-theme="white" data-label="04 · Proof" data-n="04" data-short="Proof" data-act="2">
   <div class="op"><div class="wrap">
-    <div class="n rv">04</div>
-    <div><span class="eyebrow">Proof</span><h2 class="rv">Real brands. <span class="s">Real numbers.</span></h2><p class="rv d1">Results as reported by the platforms. Pick your industry and the closest cases move to the front.</p></div>
+    <div class="n">04</div>
+    <div><span class="eyebrow">Proof</span><h2 class="rv">Real brands. <em class="s">Real numbers.</em></h2><p class="rv d1">Results as reported by the platforms. Filter by category, or switch to the ledger to compare every number side by side.</p></div>
   </div></div>
   <div class="wrap">
-    <div class="bh"><div class="indnote rv">Showing cases for: <b data-indlabel>All brands</b> <button data-open="#ipick">Change industry</button></div></div>
+    <div class="ctrls rv">
+      <div class="seg" role="tablist" aria-label="Filter cases" id="caseFilter"></div>
+      <div class="seg view" role="tablist" aria-label="View" id="caseView">
+        <button type="button" role="tab" aria-selected="true" data-v="cards"><svg class="ic"><use href="#i-grid"/></svg>Cards</button>
+        <button type="button" role="tab" aria-selected="false" data-v="ledger"><svg class="ic"><use href="#i-table"/></svg>Ledger</button>
+      </div>
+    </div>
     <div class="cases" id="cases">
-      <article class="case rv" data-ind="fmcg">
+      <article class="case tilt" data-cat="fmcg" data-ind="fmcg" data-tip="TikTok">
         <div class="ph"><img src="img/case-tonetone.webp" alt="Tone Tone Noodle Myanmar social video" width="693" height="538" loading="lazy" decoding="async"><span class="lg"><img src="img/logo/tone-tone.webp" alt="Tone Tone Noodle" width="272" height="200" loading="lazy"></span><span class="mt">Your category</span></div>
         <div class="bd"><div class="tg"><span class="tag">FMCG</span><span class="tag">TikTok</span></div><h4>Tone Tone Noodle Myanmar</h4><div class="m">≈1M</div><div class="ml">views &amp; engagements in 3 months</div><p>Built from zero. Organic growth tripled — with no paid promotion.</p><div class="ft"><a href="https://www.tiktok.com/@tonetonenoodlemm" target="_blank" rel="noopener">@tonetonenoodlemm ↗</a></div></div>
       </article>
-      <article class="case rv d1" data-ind="fmcg">
+      <article class="case tilt" data-cat="fmcg" data-ind="fmcg" data-tip="TikTok">
         <div class="ph"><img src="img/case-kido.webp" alt="Kido Candies TikTok grid" width="900" height="775" loading="lazy" decoding="async"><span class="lg"><img src="img/logo/kido.webp" alt="Kido Candies" width="360" height="174" loading="lazy"></span><span class="mt">Your category</span></div>
         <div class="bd"><div class="tg"><span class="tag">FMCG</span><span class="tag">TikTok</span></div><h4>Kido Candies</h4><div class="m">1M+</div><div class="ml">organic views &amp; engagements in 3 months</div><p>A growth-first content plan from scratch that outperformed similar campaigns.</p><div class="ft"><a href="https://www.tiktok.com/@kidocandiesmm" target="_blank" rel="noopener">@kidocandiesmm ↗</a></div></div>
       </article>
-      <article class="case rv d2" data-ind="fmcg">
+      <article class="case tilt" data-cat="fmcg" data-ind="fmcg" data-tip="TikTok">
         <div class="ph"><img src="img/case-ximi.webp" alt="Ximi Jelly Myanmar TikTok grid" width="1000" height="784" loading="lazy" decoding="async"><span class="lg"><img src="img/logo/ximi.webp" alt="Ximi Jelly" width="313" height="177" loading="lazy"></span><span class="mt">Your category</span></div>
         <div class="bd"><div class="tg"><span class="tag">FMCG</span><span class="tag">TikTok</span></div><h4>Ximi Jelly Myanmar</h4><div class="m">1M+</div><div class="ml">organic views before any paid promotion</div><p>Platform-native storytelling gave a brand-new account a launch well above typical benchmarks.</p><div class="ft"><a href="https://www.tiktok.com/@ximijelly" target="_blank" rel="noopener">@ximijelly ↗</a></div></div>
       </article>
-      <article class="case rv" data-ind="tech">
+      <article class="case tilt" data-cat="tech" data-ind="tech" data-tip="Launch">
         <div class="ph"><img src="img/case-honor.webp" alt="HONOR X6c launch key visual" width="900" height="900" loading="lazy" decoding="async"><span class="lg"><img src="img/logo/honor.webp" alt="HONOR" width="360" height="70" loading="lazy" style="height:18px"></span><span class="mt">Your category</span></div>
         <div class="bd"><div class="tg"><span class="tag">Tech</span><span class="tag">TikTok + Facebook</span></div><h4>HONOR Myanmar</h4><div class="m">874.8K</div><div class="ml">views on a single X6c launch video</div><p>The X9c and X6c launches told through durability in real life — drops, water, all-day battery. Another X6c video passed 405.8K.</p><div class="ft"><a href="https://www.tiktok.com/@honormyanmar" target="_blank" rel="noopener">@honormyanmar ↗</a></div></div>
       </article>
-      <article class="case rv d1" data-ind="life">
+      <article class="case tilt" data-cat="life" data-ind="life" data-tip="TikTok">
         <div class="ph"><img src="img/case-wonderxland.webp" alt="WonderXland TikTok grid" width="1100" height="630" loading="lazy" decoding="async"><span class="lg"><img src="img/logo/wonderxland.webp" alt="WonderXland" width="200" height="200" loading="lazy"></span><span class="mt">Your category</span></div>
         <div class="bd"><div class="tg"><span class="tag">Lifestyle · Gaming</span><span class="tag">TikTok</span></div><h4>WonderXland</h4><div class="m">≈1M</div><div class="ml">views &amp; interactions in 3 months</div><p>Gaming-focused content and storytelling turned a brand-new account into a busy channel — without paid ads.</p><div class="ft"><a href="https://www.tiktok.com/@wonderxlandygn" target="_blank" rel="noopener">@wonderxlandygn ↗</a></div></div>
       </article>
-      <article class="case rv d2" data-ind="lux">
+      <article class="case tilt" data-cat="lux" data-ind="lux" data-tip="TikTok">
         <div class="ph"><img src="img/case-ayemyathu.webp" alt="Aye Mya Thu Luxury Jewelry TikTok grid" width="1100" height="616" loading="lazy" decoding="async"><span class="lg"><img src="img/logo/aye-mya-thu.webp" alt="Aye Mya Thu Luxury Jewelry" width="360" height="167" loading="lazy"></span><span class="mt">Your category</span></div>
         <div class="bd"><div class="tg"><span class="tag">Luxury</span><span class="tag">TikTok + Facebook</span></div><h4>Aye Mya Thu Luxury Jewelry</h4><div class="m">Top debut</div><div class="ml">ahead of most new entrants in luxury accessories</div><p>An elegant, platform-native launch that took off before any paid promotion.</p><div class="ft"><a href="https://www.tiktok.com/@aye.mya.thu.jewel" target="_blank" rel="noopener">@aye.mya.thu.jewel ↗</a></div></div>
       </article>
-      <article class="case kol rv" data-ind="bev">
+      <article class="case kol" data-cat="bev" data-ind="bev">
         <span class="mt">Your category</span>
-        <div class="bd"><div class="tg"><span class="tag">Drinks</span><span class="tag">KOL programme</span></div><h4 style="color:#fff;font-size:22px;text-transform:none;letter-spacing:-.01em">12 months of creators for a drinks brand</h4><p>An always-on line-up with clear roles — anchors for reach, community creators for engagement — tracked post by post. Brand kept confidential.</p></div>
+        <div class="bd"><div class="tg"><span class="tag">Drinks</span><span class="tag">Creator programme</span></div><h4>12 months of creators for a drinks brand</h4><p>An always-on line-up with clear roles — anchors for reach, community creators for engagement — tracked post by post. Brand kept confidential.</p></div>
         <div class="kn">
           <div><b data-count="51">51</b><span>creator posts</span></div>
           <div><b data-count="29.2" data-dec="1" data-suf="M">29.2M</b><span>views</span></div>
@@ -801,21 +367,43 @@ footer.ft nav a:hover{opacity:1}
         </div>
       </article>
     </div>
-    <p class="swipe-hint">Swipe through the cases →</p>
-    <p class="src">Views and engagement are platform counts at the time of reporting. Organic results vary with category, content and budget.</p>
+    <div class="ledger" id="ledger" hidden>
+      <div class="lg-scroll">
+        <table>
+          <thead><tr><th>Brand</th><th>Category</th><th>Platform</th><th class="r">Result</th><th>What was counted</th><th>Window</th><th>Paid promotion</th></tr></thead>
+          <tbody>
+            <tr data-cat="fmcg"><td><b>Tone Tone Noodle Myanmar</b></td><td>FMCG</td><td>TikTok</td><td class="r num">≈1M</td><td>Views &amp; engagements</td><td>First 3 months</td><td><span class="pill-no">None</span></td></tr>
+            <tr data-cat="fmcg"><td><b>Kido Candies</b></td><td>FMCG</td><td>TikTok</td><td class="r num">1M+</td><td>Organic views &amp; engagements</td><td>First 3 months</td><td><span class="pill-no">None</span></td></tr>
+            <tr data-cat="fmcg"><td><b>Ximi Jelly Myanmar</b></td><td>FMCG</td><td>TikTok</td><td class="r num">1M+</td><td>Organic views</td><td>Launch, before paid</td><td><span class="pill-no">None yet</span></td></tr>
+            <tr data-cat="tech"><td><b>HONOR Myanmar</b></td><td>Tech</td><td>TikTok + Facebook</td><td class="r num">874.8K</td><td>Views, single X6c video</td><td>X6c launch</td><td><span class="pill-na">Not stated</span></td></tr>
+            <tr data-cat="tech"><td><b>HONOR Myanmar</b></td><td>Tech</td><td>TikTok + Facebook</td><td class="r num">405.8K</td><td>Views, second X6c video</td><td>X6c launch</td><td><span class="pill-na">Not stated</span></td></tr>
+            <tr data-cat="life"><td><b>WonderXland</b></td><td>Lifestyle · Gaming</td><td>TikTok</td><td class="r num">≈1M</td><td>Views &amp; interactions</td><td>First 3 months</td><td><span class="pill-no">None</span></td></tr>
+            <tr data-cat="lux"><td><b>Aye Mya Thu Luxury Jewelry</b></td><td>Luxury</td><td>TikTok + Facebook</td><td class="r num">Top debut</td><td>Against new entrants in luxury accessories</td><td>Launch, before paid</td><td><span class="pill-no">None yet</span></td></tr>
+            <tr data-cat="bev"><td><b>Drinks brand (confidential)</b></td><td>Drinks</td><td>Creator programme</td><td class="r num">29.2M</td><td>Views from 51 posts · 6.8% engagement</td><td>12 months</td><td><span class="pill-na">Not stated</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="src">Every row comes from Awaken’s own case reports and platform counts at the time of reporting. Different rows count different things, so compare within a column, not across it.</p>
+    </div>
+    <p class="src cases-note">Views and engagement are platform counts at the time of reporting. Organic results vary with category, content and budget.</p>
 
     <div class="blk">
-      <div class="bh"><div><h3 class="h3 rv">Brands that have trusted Awaken</h3><p class="rv d1">Telecom, fintech, FMCG, beverages, healthcare, lifestyle, NGOs and more.</p></div></div>
-      <ul class="logos rv" id="logos"></ul>
+      <div class="bh"><div><h3 class="h3 rv">Brands that have trusted Awaken</h3><p class="rv d1">29 brands across seven sectors. Pick a sector to sort the wall.</p></div></div>
+      <div class="lmarq rv" aria-hidden="true"><div class="lm-track" id="lmTrack"></div></div>
+      <div class="seg sectors rv" role="tablist" aria-label="Filter brands by sector" id="sectorTabs"></div>
+      <ul class="logos" id="logos"></ul>
     </div>
   </div>
 </section>
 
-<!-- 05 TALENT -->
-<section class="chap" id="talent" data-chap data-theme="studio" data-label="05 · KOL, talent &amp; PR" data-n="05" data-short="KOL &amp; talent">
+<!-- ============ ACT III ============ -->
+<div class="actband" data-actband="3" aria-hidden="true"><div class="ab-track"><span>Act III</span><b>What we make</b><span>Act III</span><b>What we make</b><span>Act III</span><b>What we make</b><span>Act III</span><b>What we make</b></div></div>
+
+<!-- ============ 05 TALENT ============ -->
+<section class="chap" id="talent" data-chap data-theme="studio" data-label="05 · KOL, talent &amp; PR" data-n="05" data-short="KOL &amp; talent" data-act="3">
   <div class="op"><div class="wrap">
-    <div class="n rv">05</div>
-    <div><span class="eyebrow">KOL, talent &amp; PR</span><h2 class="rv">The right faces, <span class="s">measured.</span></h2><p class="rv d1">Celebrities and creators chosen with data — and managed by people who produce for a living.</p></div>
+    <div class="n">05</div>
+    <div><span class="eyebrow">KOL, talent &amp; PR</span><h2 class="rv">The right faces, <em class="s">measured.</em></h2><p class="rv d1">Celebrities and creators chosen with data — and managed by people who produce for a living.</p></div>
   </div></div>
   <div class="wrap">
     <div class="mcdb rv">
@@ -823,82 +411,118 @@ footer.ft nav a:hover{opacity:1}
         <div class="big">MCDB</div>
         <h4>Myanmar Celebrity Database</h4>
         <p>Our own talent database. Brands get a viewer login to browse talent, reach and categories with us — and shortlist together.</p>
-        <div class="btns"><a class="btn btn-acc" href="/mcdb/" target="_blank" rel="noopener">Open MCDB ↗</a><button class="btn btn-line" data-goal="MCDB viewer login">Request a viewer login</button></div>
+        <div class="btns"><a class="btn btn-acc mag" href="/mcdb/" target="_blank" rel="noopener">Open MCDB ↗</a><button class="btn btn-line mag" type="button" data-add-goal="MCDB viewer login">Request a viewer login</button></div>
       </div>
       <div class="r">
-        <div><b data-count="695">695</b><span>celebrities and creators</span></div>
-        <div><b data-count="96">96</b><span>S-tier names</span></div>
-        <div><b data-count="944.5" data-dec="1" data-suf="M">944.5M</b><span>combined follower reach*</span></div>
-        <div><b data-count="15">15</b><span>talent categories</span></div>
+        <div class="dots-wrap">
+          <svg class="dotmx" id="dotmx" role="img" aria-label="695 dots, 96 highlighted: 96 of 695 names in MCDB are S-tier"></svg>
+          <div class="dm-leg"><span><i class="s"></i>96 S-tier</span><span><i></i>599 other tiers</span></div>
+        </div>
+        <div class="mc-stats">
+          <div><b data-count="695">695</b><span>celebrities and creators</span></div>
+          <div><b data-count="96">96</b><span>S-tier names — 13.8% of the base</span></div>
+          <div><b data-count="944.5" data-dec="1" data-suf="M">944.5M</b><span>combined follower reach*</span></div>
+          <div><b data-count="15">15</b><span>talent categories</span></div>
+        </div>
       </div>
     </div>
     <p class="src">Figures as of 13 Nov 2026. *Sum of followers across talents and platforms — audiences overlap.</p>
 
     <div class="blk">
-      <div class="bh"><div><h3 class="h3 rv">Every creator has a job</h3><p class="rv d1">We build line-ups by role, not by follower count alone.</p></div></div>
-      <div class="tiers rv">
-        <div class="tr"><span>Tier</span><span>Role in the plan</span><span>What they do for you</span><span style="text-align:right">TikTok engagement*</span></div>
-        <div class="tr"><b>Mega &amp; celebrity</b><span class="role"><i></i>Anchor</span><span class="ds">Fame and instant reach for launches and big moments</span><span class="er">1.5–2.5%</span></div>
-        <div class="tr"><b>Macro</b><span class="role"><i></i>Anchor</span><span class="ds">Credibility at scale in a clear niche</span><span class="er">1.5–2.5%</span></div>
-        <div class="tr"><b>Mid-tier</b><span class="role"><i style="background:#7cc0ff"></i>Core</span><span class="ds">Steady, trusted voices that post often</span><span class="er">2–3.5%</span></div>
-        <div class="tr"><b>Micro &amp; nano</b><span class="role"><i style="background:#7ee2b8"></i>Community</span><span class="ds">Real conversations, reviews and word of mouth</span><span class="er">3–5%</span></div>
+      <div class="bh"><div><h3 class="h3 rv">Every creator has a job</h3><p class="rv d1">We build line-ups by role, not by follower count alone. Benchmark engagement ranges on TikTok:</p></div></div>
+      <div class="ranges rv" id="ranges">
+        <div class="rg-axis"><span>0%</span><span>1%</span><span>2%</span><span>3%</span><span>4%</span><span>5%</span><span>6%</span></div>
+        <div class="rg-row"><div class="rg-l"><b>Mega &amp; celebrity</b><span>Anchor — fame and instant reach for launches and big moments</span></div><div class="rg-t"><i style="--a:1.5;--b:2.5" data-v="1.5–2.5%"></i></div></div>
+        <div class="rg-row"><div class="rg-l"><b>Macro</b><span>Anchor — credibility at scale in a clear niche</span></div><div class="rg-t"><i style="--a:1.5;--b:2.5" data-v="1.5–2.5%"></i></div></div>
+        <div class="rg-row core"><div class="rg-l"><b>Mid-tier</b><span>Core — steady, trusted voices that post often</span></div><div class="rg-t"><i style="--a:2;--b:3.5" data-v="2–3.5%"></i></div></div>
+        <div class="rg-row comm"><div class="rg-l"><b>Micro &amp; nano</b><span>Community — real conversations, reviews and word of mouth</span></div><div class="rg-t"><i style="--a:3;--b:5" data-v="3–5%"></i></div></div>
       </div>
-      <p class="src">*Benchmark-informed ranges for TikTok in 2026 — targets we plan against, not guarantees.</p>
+      <p class="src">Benchmark-informed ranges for TikTok in 2026 — targets we plan against, not guarantees.</p>
     </div>
 
     <div class="blk">
       <div class="bh"><h3 class="h3 rv">How we run a creator programme</h3></div>
-      <div class="steps5 rv">
-        <div><b>1</b><h4>Brief &amp; audience</h4><p>Who you need to reach and what they should feel, think and do.</p></div>
-        <div><b>2</b><h4>Shortlist from MCDB</h4><p>Talent matched on audience, reach and category — reviewed with you.</p></div>
-        <div><b>3</b><h4>Casting scorecard</h4><p>Fit, engagement quality, brand safety, content craft and cost.</p></div>
-        <div><b>4</b><h4>Made to our standard</h4><p>Scripts, shoots and edits by our production team, not left to chance.</p></div>
-        <div><b>5</b><h4>Tracked post by post</h4><p>Views, engagement, sentiment and cost per view in a monthly report.</p></div>
-      </div>
+      <ol class="stepper rv">
+        <li><b>1</b><h4>Brief &amp; audience</h4><p>Who you need to reach and what they should feel, think and do.</p></li>
+        <li><b>2</b><h4>Shortlist from MCDB</h4><p>Talent matched on audience, reach and category — reviewed with you.</p></li>
+        <li><b>3</b><h4>Casting scorecard</h4><p>Fit, engagement quality, brand safety, content craft and cost.</p></li>
+        <li><b>4</b><h4>Made to our standard</h4><p>Scripts, shoots and edits by our production team, not left to chance.</p></li>
+        <li><b>5</b><h4>Tracked post by post</h4><p>Views, engagement, sentiment and cost per view in a monthly report.</p></li>
+      </ol>
     </div>
 
     <div class="blk grid g2">
-      <div class="card rv"><span class="k">Proof</span><h4>51 posts. 29.2M views. 6.8% engagement.</h4><p>One 12-month creator programme for a drinks brand, run end to end by Awaken.</p></div>
-      <div class="card rv d1"><span class="k">PR &amp; launches</span><h4>Put the story in front of people who matter.</h4><p>Press releases and media relations, launch events, in-store activations and partnerships — planned with the content, not after it.</p></div>
+      <div class="card rv"><span class="ico"><svg class="ic"><use href="#i-trophy"/></svg></span><span class="k">Proof</span><h4>51 posts. 29.2M views. 6.8% engagement.</h4><p>One 12-month creator programme for a drinks brand, run end to end by Awaken.</p></div>
+      <div class="card rv d1"><span class="ico"><svg class="ic"><use href="#i-mega"/></svg></span><span class="k">PR &amp; launches</span><h4>Put the story in front of people who matter.</h4><p>Press releases and media relations, launch events, in-store activations and partnerships — planned with the content, not after it.</p></div>
     </div>
   </div>
 </section>
 
-<!-- 06 PRODUCTION -->
-<section class="chap" id="production" data-chap data-theme="green" data-label="06 · Production" data-n="06" data-short="Production">
+<!-- ============ 06 PRODUCTION ============ -->
+<section class="chap" id="production" data-chap data-theme="green" data-label="06 · Production" data-n="06" data-short="Production" data-act="3">
   <div class="op"><div class="wrap">
-    <div class="n rv">06</div>
-    <div><span class="eyebrow">Production</span><h2 class="rv">Yangon’s <span class="s">production</span> house.</h2><p class="rv d1">Brand films, commercials, social content and original series — made by the crew behind 12 original series.</p></div>
+    <div class="n">06</div>
+    <div><span class="eyebrow">Production</span><h2 class="rv">Yangon’s <em class="s">production</em> house.</h2><p class="rv d1">Brand films, commercials, social content and original series — made by the crew behind 12 original series.</p></div>
   </div></div>
   <div class="wrap">
     <div class="stats rv">
       <div><div class="n" data-count="12">12</div><div class="l"><b>Original series</b> in our 2025 slate</div></div>
       <div><div class="n" data-count="67">67</div><div class="l"><b>Episodes</b> produced and ready to air</div></div>
-      <div><div class="n" style="font-size:clamp(26px,2.6vw,38px);letter-spacing:-.03em;line-height:1.1">Channel K<br>Fortune TV</div><div class="l"><b>On air</b> — plus TikTok and social</div></div>
+      <div><div class="n tv">Channel K<br>Fortune TV</div><div class="l"><b>On air</b> — plus TikTok and social</div></div>
       <div><div class="n" data-count="25" data-suf="M+">25M+</div><div class="l"><b>Combined followers</b> across our casts</div></div>
     </div>
-    <div class="blk">
-      <div class="bh"><div><h3 class="h3 rv">The 2025 slate</h3><p class="rv d1">Drama, romance, horror and comedy — written, cast, shot and finished in-house.</p></div><div class="snav rv"><button data-scroll="-1" aria-label="Scroll series left">←</button><button data-scroll="1" aria-label="Scroll series right">→</button></div></div>
-      <div class="strip" id="strip"></div>
+  </div>
+  <div class="hgal" id="hgal">
+    <div class="hgal-sticky">
+      <div class="wrap hgal-head"><div><span class="eyebrow">The 2025 slate</span><h3 class="h3">Twelve originals, <em class="s">scroll through.</em></h3></div><div class="hgal-prog"><span id="hgalCount">01</span> / 12<i><b id="hgalBar"></b></i></div></div>
+      <div class="hgal-track" id="hgalTrack" data-tip="Scroll"></div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="blk grid g2 prod-data">
+      <div class="card rv">
+        <span class="k">Episodes per series</span>
+        <div class="epbars" id="epbars" role="img" aria-label="Episodes per series in the 2025 slate"></div>
+      </div>
+      <div class="card rv d1">
+        <span class="k">Genre mix · 23 genre tags across 12 series</span>
+        <div class="genre">
+          <svg class="gdonut" id="gdonut" viewBox="0 0 160 160" role="img" aria-label="Genre tags: Drama 9, Romance 4, Horror 4, Comedy 4, Thriller 1, Mystery 1"></svg>
+          <ul class="gleg" id="gleg"></ul>
+        </div>
+      </div>
     </div>
     <div class="blk slate">
       <img class="rv" src="img/yangon-thar.webp" alt="Yangon Thar series poster" width="720" height="915" loading="lazy" decoding="async">
       <div class="rv d1">
         <span class="eyebrow">Coming 2026</span>
-        <h3 class="h3" style="font-size:clamp(34px,4vw,56px);margin-top:10px">Yangon Thar</h3>
-        <p class="lead" style="margin-top:12px;color:var(--muted)">A comedy-drama about a patient Yangon grocer who quietly helps everyone — misjudged, then fallen for, by four very different women — while the heartbreak he has hidden for ten years waits to surface.</p>
+        <h3 class="h3 big">Yangon Thar</h3>
+        <p class="lead muted">A comedy-drama about a patient Yangon grocer who quietly helps everyone — misjudged, then fallen for, by four very different women — while the heartbreak he has hidden for ten years waits to surface.</p>
         <div class="facts">
           <div><small>Episodes</small><span>10 × ~33 min</span></div>
           <div><small>Language</small><span>Burmese, English subtitles</span></div>
           <div><small>Music</small><span>4–5 original music videos</span></div>
           <div><small>Windows</small><span>Free-to-air · OTT · Social</span></div>
         </div>
-        <p class="small muted">Also finished for 2026: <b style="color:var(--ink)">If Facebook Was a Guy</b> (comedy mini-series), <b style="color:var(--ink)">Lie Detector 3000</b> (office comedy short) and <b style="color:var(--ink)">Amay’s Stall</b> (5 × 90-second TikTok comedy).</p>
+        <ul class="also">
+          <li><b>If Facebook Was a Guy</b><span>Comedy mini-series · ~15 min</span></li>
+          <li><b>Lie Detector 3000</b><span>Office comedy short</span></li>
+          <li><b>Amay’s Stall</b><span>Comedy · 5 × 90 sec · TikTok</span></li>
+        </ul>
+        <p class="small muted">Finished and waiting for release in 2026.</p>
       </div>
     </div>
     <div class="blk">
       <div class="bh"><div><h3 class="h3 rv">What we make for brands</h3><p class="rv d1">From a 15-second reel to a full branded series or talk show.</p></div></div>
-      <div class="chips rv" style="margin-bottom:24px"><span>Brand films</span><span>TV commercials</span><span>Social content</span><span>Product &amp; lifestyle photography</span><span>Casting</span><span>Original soundtracks</span><span>Branded series &amp; talk shows</span></div>
+      <div class="makes rv">
+        <div><svg class="ic"><use href="#i-film"/></svg><b>Brand films</b></div>
+        <div><svg class="ic"><use href="#i-tv"/></svg><b>TV commercials</b></div>
+        <div><svg class="ic"><use href="#i-phone"/></svg><b>Social content</b></div>
+        <div><svg class="ic"><use href="#i-cam"/></svg><b>Photography</b></div>
+        <div><svg class="ic"><use href="#i-users"/></svg><b>Casting</b></div>
+        <div><svg class="ic"><use href="#i-music"/></svg><b>Original soundtracks</b></div>
+        <div><svg class="ic"><use href="#i-mic"/></svg><b>Branded series &amp; talk shows</b></div>
+      </div>
       <div class="flow rv">
         <div><b>01</b><h4>Pre-production</h4><p>Concept, script, storyboard, casting and locations.</p></div>
         <div><b>02</b><h4>Production</h4><p>Full crew and gear, in our studio or on location.</p></div>
@@ -909,29 +533,42 @@ footer.ft nav a:hover{opacity:1}
     <div class="blk">
       <div class="bh"><div><h3 class="h3 rv">Our own kit and studio</h3><p class="rv d1">We own the gear we shoot with — and our Mayangone studio is open for bookings, Mon–Sat.</p></div></div>
       <div class="kit rv">
-        <div class="card"><h4>Camera</h4><ul class="list"><li>Sony FX3 cinema camera</li><li>24–70mm G Master lens</li><li>Wireless 4K monitoring</li><li>Director monitor</li></ul></div>
-        <div class="card"><h4>Lighting</h4><ul class="list"><li>Nanlite 720W</li><li>Amaran 360C</li><li>300W LEDs and RGB light</li><li>Softboxes</li></ul></div>
-        <div class="card"><h4>Sound</h4><ul class="list"><li>DJI Mic Pro wireless</li><li>Rode mic set</li><li>Zoom H6 recorder</li><li>Two field recorders</li></ul></div>
-        <div class="card"><h4>Grip &amp; space</h4><ul class="list"><li>C-stands and light stands</li><li>Studio in Mayangone</li><li>Kit with crew, or studio hire</li><li>Open 9 AM – 6 PM</li></ul></div>
+        <div class="card"><h4><svg class="ic"><use href="#i-aperture"/></svg>Camera</h4><ul class="list"><li>Sony FX3 cinema camera</li><li>24–70mm G Master lens</li><li>Wireless 4K monitoring</li><li>Director monitor</li></ul></div>
+        <div class="card"><h4><svg class="ic"><use href="#i-bulb"/></svg>Lighting</h4><ul class="list"><li>Nanlite 720W</li><li>Amaran 360C</li><li>300W LEDs and RGB light</li><li>Softboxes</li></ul></div>
+        <div class="card"><h4><svg class="ic"><use href="#i-mic"/></svg>Sound</h4><ul class="list"><li>DJI Mic Pro wireless</li><li>Rode mic set</li><li>Zoom H6 recorder</li><li>Two field recorders</li></ul></div>
+        <div class="card"><h4><svg class="ic"><use href="#i-building"/></svg>Grip &amp; space</h4><ul class="list"><li>C-stands and light stands</li><li>Studio in Mayangone</li><li>Kit with crew, or studio hire</li><li>Open 9 AM – 6 PM</li></ul></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 07 DESIGN -->
-<section class="chap" id="design" data-chap data-theme="lilac" data-label="07 · Design studio" data-n="07" data-short="Design">
+<!-- ============ 07 DESIGN ============ -->
+<section class="chap" id="design" data-chap data-theme="lilac" data-label="07 · Design studio" data-n="07" data-short="Design" data-act="3">
   <div class="op"><div class="wrap">
-    <div class="n rv">07</div>
-    <div><span class="eyebrow">Design studio</span><h2 class="rv">Brands people <span class="s">stop</span> for.</h2><p class="rv d1">Identity, key visuals and social design for 13 brands across telecom, fintech, FMCG, beverages, healthcare, agriculture and NGOs.</p></div>
+    <div class="n">07</div>
+    <div><span class="eyebrow">Design studio</span><h2 class="rv">Brands people <em class="s">stop</em> for.</h2><p class="rv d1">Identity, key visuals and social design for 13 brands across telecom, fintech, FMCG, beverages, healthcare, agriculture and NGOs.</p></div>
   </div></div>
   <div class="wrap">
-    <div class="chips rv" style="margin-bottom:30px"><span>Brand identity</span><span>Key visuals</span><span>Social media design</span><span>Campaign design</span><span>Packaging</span><span>UI / UX</span><span>Art direction</span><span>Photography</span></div>
-    <div class="dcases">
-      <article class="dcase rv"><div class="imgs"><img src="img/design-mpt-1.webp" alt="MPT social key visual" width="760" height="760" loading="lazy" decoding="async"><img src="img/design-mpt-3.webp" alt="MPT offer social post" width="760" height="760" loading="lazy" decoding="async"></div><h4>MPT</h4><div class="meta">Telecom · Ongoing</div><p>Monthly content calendars, digital campaigns, daily social creative and videography for Myanmar’s national telecom brand.</p></article>
-      <article class="dcase rv d1"><div class="imgs"><img src="img/design-gery-2.webp" alt="Gery Crunch Roll key visual" width="753" height="901" loading="lazy" decoding="async"><img src="img/design-gery-1.webp" alt="Gery chocolate key visual" width="675" height="901" loading="lazy" decoding="async"></div><h4>Gery</h4><div class="meta">FMCG · Since its Myanmar launch</div><p>With Garudafood’s Gery from the day it arrived in Myanmar — Crunch Roll and Cheese Cracker key visuals that keep a young brand fresh.</p></article>
-      <article class="dcase rv d2"><div class="imgs"><img src="img/design-beco-2.webp" alt="Becozinc locally shot key visual" width="760" height="760" loading="lazy" decoding="async"><img src="img/design-beco-3.webp" alt="Becozinc lifestyle visual" width="760" height="757" loading="lazy" decoding="async"></div><h4>Becozinc</h4><div class="meta">Healthcare · Since 2017</div><p>Website, Facebook, Instagram and locally shot photography for Dr. Reddy’s zinc &amp; B-complex launch — rare for a big brand in Myanmar at the time.</p></article>
+    <div class="chips rv"><span>Brand identity</span><span>Key visuals</span><span>Social media design</span><span>Campaign design</span><span>Packaging</span><span>UI / UX</span><span>Art direction</span><span>Photography</span></div>
+    <div class="seg dtabs rv" role="tablist" aria-label="Filter design work" id="dtabs">
+      <button type="button" role="tab" aria-selected="true" data-d="all">All work</button>
+      <button type="button" role="tab" aria-selected="false" data-d="mpt">MPT</button>
+      <button type="button" role="tab" aria-selected="false" data-d="gery">Gery</button>
+      <button type="button" role="tab" aria-selected="false" data-d="beco">Becozinc</button>
     </div>
-    <p class="swipe-hint">Swipe for more →</p>
+    <div class="dgal" id="dgal">
+      <figure class="dg tall" data-d="gery" data-tip="View"><img src="img/design-gery-2.webp" alt="Gery Crunch Roll key visual" width="753" height="901" loading="lazy" decoding="async"><figcaption><b>Gery</b> Crunch Roll key visual</figcaption></figure>
+      <figure class="dg" data-d="mpt" data-tip="View"><img src="img/design-mpt-1.webp" alt="MPT social key visual" width="760" height="760" loading="lazy" decoding="async"><figcaption><b>MPT</b> Social key visual</figcaption></figure>
+      <figure class="dg" data-d="beco" data-tip="View"><img src="img/design-beco-2.webp" alt="Becozinc locally shot key visual" width="760" height="760" loading="lazy" decoding="async"><figcaption><b>Becozinc</b> Locally shot key visual</figcaption></figure>
+      <figure class="dg tall" data-d="gery" data-tip="View"><img src="img/design-gery-1.webp" alt="Gery chocolate key visual" width="675" height="901" loading="lazy" decoding="async"><figcaption><b>Gery</b> Chocolate key visual</figcaption></figure>
+      <figure class="dg" data-d="mpt" data-tip="View"><img src="img/design-mpt-3.webp" alt="MPT offer social post" width="760" height="760" loading="lazy" decoding="async"><figcaption><b>MPT</b> Offer social post</figcaption></figure>
+      <figure class="dg" data-d="beco" data-tip="View"><img src="img/design-beco-3.webp" alt="Becozinc lifestyle visual" width="760" height="757" loading="lazy" decoding="async"><figcaption><b>Becozinc</b> Lifestyle visual</figcaption></figure>
+    </div>
+    <div class="blk grid g3 dnotes">
+      <article class="rv" data-d="mpt"><h4>MPT</h4><div class="meta">Telecom · Ongoing</div><p>Monthly content calendars, digital campaigns, daily social creative and videography for Myanmar’s national telecom brand.</p></article>
+      <article class="rv d1" data-d="gery"><h4>Gery</h4><div class="meta">FMCG · Since its Myanmar launch</div><p>With Garudafood’s Gery from the day it arrived in Myanmar — Crunch Roll and Cheese Cracker key visuals that keep a young brand fresh.</p></article>
+      <article class="rv d2" data-d="beco"><h4>Becozinc</h4><div class="meta">Healthcare · Since 2017</div><p>Website, Facebook, Instagram and locally shot photography for Dr. Reddy’s zinc &amp; B-complex launch — rare for a big brand in Myanmar at the time.</p></article>
+    </div>
     <div class="blk">
       <div class="bh"><h3 class="h3 rv">How we design</h3></div>
       <div class="flow rv">
@@ -944,32 +581,65 @@ footer.ft nav a:hover{opacity:1}
   </div>
 </section>
 
-<!-- 08 CATEGORY -->
-<section class="chap" id="category" data-chap data-theme="ice" data-label="08 · Your category" data-n="08" data-short="Your category">
+<!-- ============ ACT IV ============ -->
+<div class="actband" data-actband="4" aria-hidden="true"><div class="ab-track"><span>Act IV</span><b>Your plan</b><span>Act IV</span><b>Your plan</b><span>Act IV</span><b>Your plan</b><span>Act IV</span><b>Your plan</b></div></div>
+
+<!-- ============ 08 CATEGORY ============ -->
+<section class="chap" id="category" data-chap data-theme="ice" data-label="08 · Your category" data-n="08" data-short="Your category" data-act="4">
   <div class="op"><div class="wrap">
-    <div class="n rv">08</div>
-    <div><span class="eyebrow">Your category</span><h2 class="rv">Ideas for <span class="s">your</span> industry.</h2><p class="rv d1">Pick your industry. These are starting ideas — the real plan comes after your brief and an audit of your channels.</p></div>
+    <div class="n">08</div>
+    <div><span class="eyebrow">Your category</span><h2 class="rv">Ideas for <em class="s">your</em> industry.</h2><p class="rv d1">Pick your industry. These are starting ideas — the real plan comes after your brief and an audit of your channels.</p></div>
   </div></div>
   <div class="wrap">
     <div class="itabs rv" role="tablist" aria-label="Industries" id="itabs"></div>
-    <div id="play" class="rv" aria-live="polite"></div>
+    <div id="play" class="play-box rv" aria-live="polite"></div>
+
+    <div class="blk">
+      <div class="bh"><div><h3 class="h3 rv">The Myanmar year, <em class="s">by moment.</em></h3><p class="rv d1">Twelve months of moments brands build around. Months that matter most for your industry glow. Tap a month.</p></div></div>
+      <div class="year rv" id="year">
+        <div class="wheel-wrap">
+          <svg class="wheel" id="wheel" viewBox="0 0 440 440" role="img" aria-label="Year wheel of Myanmar campaign moments"></svg>
+          <ul class="wleg" aria-label="Wheel key">
+            <li><i style="background:#f59e0b"></i>Hot season</li>
+            <li><i style="background:#0ea5e9"></i>Rainy season</li>
+            <li><i style="background:#a78bfa"></i>Cool season</li>
+            <li class="br" aria-hidden="true"></li>
+            <li><i class="k-hot"></i>Peak month for your industry</li>
+            <li><i class="k-dot"></i>Big moment</li>
+          </ul>
+        </div>
+        <div class="month-card" id="monthCard" aria-live="polite"></div>
+      </div>
+    </div>
+
+    <div class="blk">
+      <div class="bh"><div><h3 class="h3 rv">Idea machine</h3><p class="rv d1">Spin three reels for a starting concept. Keep the one you like — it goes straight into your brief.</p></div></div>
+      <div class="idea rv" id="idea">
+        <div class="reels">
+          <div class="reel"><small>Format</small><div class="rw"><div class="rs-in" id="reel0"></div></div></div>
+          <div class="reel"><small>Moment</small><div class="rw"><div class="rs-in" id="reel1"></div></div></div>
+          <div class="reel"><small>Channel</small><div class="rw"><div class="rs-in" id="reel2"></div></div></div>
+        </div>
+        <p class="idea-out" id="ideaOut">Press spin for a concept.</p>
+        <div class="idea-btns"><button class="btn btn-dark mag" type="button" id="spin"><svg class="ic"><use href="#i-dice"/></svg>Spin</button><button class="btn btn-line mag" type="button" id="keepIdea" disabled><svg class="ic"><use href="#i-plus"/></svg>Add to my brief</button></div>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- 09 PROCESS -->
-<section class="chap" id="process" data-chap data-theme="teal" data-label="09 · How we work" data-n="09" data-short="How we work">
+<!-- ============ 09 PROCESS ============ -->
+<section class="chap" id="process" data-chap data-theme="teal" data-label="09 · How we work" data-n="09" data-short="How we work" data-act="4">
   <div class="op"><div class="wrap">
-    <div class="n rv">09</div>
-    <div><span class="eyebrow">How we work</span><h2 class="rv">From idea to <span class="s">impact.</span></h2><p class="rv d1">A clear path from kick-off to results, with reports you can act on.</p></div>
+    <div class="n">09</div>
+    <div><span class="eyebrow">How we work</span><h2 class="rv">From idea to <em class="s">impact.</em></h2><p class="rv d1">A clear path from kick-off to results, with reports you can act on.</p></div>
   </div></div>
   <div class="wrap">
-    <div class="proc swipe">
-      <div class="card rv"><img src="img/proc-strategy.webp" alt="Strategy session in a Yangon studio" width="1000" height="666" loading="lazy" decoding="async"><div class="tx"><b>STEP 01</b><h4>Strategy</h4><ul class="list"><li>Market research &amp; audience mapping</li><li>Competitor analysis</li><li>KPIs &amp; campaign plan</li><li>Channel mix &amp; budget split</li></ul></div></div>
-      <div class="card rv d1"><img src="img/proc-create.webp" alt="Content shoot in a Yangon studio" width="1000" height="666" loading="lazy" decoding="async"><div class="tx"><b>STEP 02</b><h4>Create</h4><ul class="list"><li>Ad creative &amp; copywriting</li><li>Content calendar</li><li>Brand-aligned video &amp; visuals</li><li>Landing pages where needed</li></ul></div></div>
-      <div class="card rv d2"><img src="img/proc-launch.webp" alt="Team launching a campaign at dusk in Yangon" width="1000" height="666" loading="lazy" decoding="async"><div class="tx"><b>STEP 03</b><h4>Launch</h4><ul class="list"><li>Multi-channel go-live</li><li>Audience targeting &amp; segments</li><li>A/B testing from day one</li><li>Real-time monitoring</li></ul></div></div>
-      <div class="card rv d3"><img src="img/proc-grow.webp" alt="Morning performance review over tea in Yangon" width="1000" height="666" loading="lazy" decoding="async"><div class="tx"><b>STEP 04</b><h4>Grow &amp; optimise</h4><ul class="list"><li>Weekly performance reports</li><li>Budget moved to what works</li><li>Creative refresh cycles</li><li>Monthly strategy reviews</li></ul></div></div>
+    <div class="stack" id="stack">
+      <div class="scard" style="--k:0"><div class="sc-img"><img src="img/proc-strategy.webp" alt="Strategy session in a Yangon studio" width="1000" height="666" loading="lazy" decoding="async"></div><div class="sc-tx"><b>STEP 01 / 04</b><h4>Strategy</h4><p>We start by understanding your business: goals, audience and the competition.</p><ul class="list"><li>Market research &amp; audience mapping</li><li>Competitor analysis</li><li>KPIs &amp; campaign plan</li><li>Channel mix &amp; budget split</li></ul></div></div>
+      <div class="scard" style="--k:1"><div class="sc-img"><img src="img/proc-create.webp" alt="Content shoot in a Yangon studio" width="1000" height="666" loading="lazy" decoding="async"></div><div class="sc-tx"><b>STEP 02 / 04</b><h4>Create</h4><p>Content that stops the scroll — every asset made with a purpose.</p><ul class="list"><li>Ad creative &amp; copywriting</li><li>Content calendar</li><li>Brand-aligned video &amp; visuals</li><li>Landing pages where needed</li></ul></div></div>
+      <div class="scard" style="--k:2"><div class="sc-img"><img src="img/proc-launch.webp" alt="Team launching a campaign at dusk in Yangon" width="1000" height="666" loading="lazy" decoding="async"></div><div class="sc-tx"><b>STEP 03 / 04</b><h4>Launch</h4><p>Strategy locked, assets ready — we go live with testing built in.</p><ul class="list"><li>Multi-channel go-live</li><li>Audience targeting &amp; segments</li><li>A/B testing from day one</li><li>Real-time monitoring</li></ul></div></div>
+      <div class="scard" style="--k:3"><div class="sc-img"><img src="img/proc-grow.webp" alt="Morning performance review over tea in Yangon" width="1000" height="666" loading="lazy" decoding="async"></div><div class="sc-tx"><b>STEP 04 / 04</b><h4>Grow &amp; optimise</h4><p>We don’t set and forget: every month gets better than the last.</p><ul class="list"><li>Weekly performance reports</li><li>Budget moved to what works</li><li>Creative refresh cycles</li><li>Monthly strategy reviews</li></ul></div></div>
     </div>
-    <p class="swipe-hint">Swipe through the steps →</p>
     <div class="blk card rv">
       <span class="k">Your first 90 days</span>
       <div class="gantt" id="gantt">
@@ -983,51 +653,83 @@ footer.ft nav a:hover{opacity:1}
       </div>
     </div>
     <div class="blk grid g3">
-      <div class="card rv"><h4>KPIs agreed up front</h4><p>Reach, engagement, leads, conversions or ROAS — chosen with you before anything goes live.</p></div>
-      <div class="card rv d1"><h4>Reports you can act on</h4><p>Weekly performance numbers and a monthly review of what to keep, cut and scale. No vanity metrics.</p></div>
-      <div class="card rv d2"><h4>One team, start to finish</h4><p>The people who plan your campaign are the people who make and run it.</p></div>
+      <div class="card rv"><span class="ico"><svg class="ic"><use href="#i-target"/></svg></span><h4>KPIs agreed up front</h4><p>Reach, engagement, leads, conversions or ROAS — chosen with you before anything goes live.</p></div>
+      <div class="card rv d1"><span class="ico"><svg class="ic"><use href="#i-chart"/></svg></span><h4>Reports you can act on</h4><p>Weekly performance numbers and a monthly review of what to keep, cut and scale. No vanity metrics.</p></div>
+      <div class="card rv d2"><span class="ico"><svg class="ic"><use href="#i-users"/></svg></span><h4>One team, start to finish</h4><p>The people who plan your campaign are the people who make and run it.</p></div>
     </div>
   </div>
 </section>
 
-<!-- 10 PACKAGES -->
-<section class="chap" id="packages" data-chap data-theme="gold" data-label="10 · Ways to work together" data-n="10" data-short="Packages">
+<!-- ============ 10 PACKAGES ============ -->
+<section class="chap" id="packages" data-chap data-theme="gold" data-label="10 · Ways to work together" data-n="10" data-short="Packages" data-act="4">
   <div class="op"><div class="wrap">
-    <div class="n rv">10</div>
-    <div><span class="eyebrow">Ways to work together</span><h2 class="rv">Launch. Grow. <span class="s">Lead.</span></h2><p class="rv d1">Three ways to start. Every quote is built from your brief — we reply within two business days.</p></div>
+    <div class="n">10</div>
+    <div><span class="eyebrow">Ways to work together</span><h2 class="rv">Launch. Grow. <em class="s">Lead.</em></h2><p class="rv d1">Three ways to start. Every quote is built from your brief — we reply within two business days.</p></div>
   </div></div>
   <div class="wrap">
-    <div class="pks">
-      <article class="pk rv" data-pk="Launch"><span class="sg" data-sugfor></span><span class="tier">Launch</span><h3>Get found.</h3><p class="tl">For new brands and fresh starts</p>
+    <div class="ctrls rv"><div class="seg view" role="tablist" aria-label="Package view" id="pkView">
+      <button type="button" role="tab" aria-selected="true" data-v="cards"><svg class="ic"><use href="#i-grid"/></svg>Packages</button>
+      <button type="button" role="tab" aria-selected="false" data-v="compare"><svg class="ic"><use href="#i-table"/></svg>Compare</button>
+    </div></div>
+    <div class="pks" id="pks">
+      <article class="pk tilt rv" data-pk="Launch"><span class="sg" data-sugfor></span><span class="tier"><svg class="ic"><use href="#i-rocket"/></svg>Launch</span><h3>Get found.</h3><p class="tl">For new brands and fresh starts</p>
         <div class="meta"><div><small>Best for</small><span>New brands, new products, or pages that need a restart</span></div><div><small>Typical length</small><span>3-month sprint</span></div></div>
         <ul class="list"><li>Channel audit &amp; set-up</li><li>Positioning &amp; content strategy</li><li>Platform-native video content</li><li>Community management</li><li>Launch boost with paid media (optional)</li><li>Monthly report</li></ul>
-        <button class="btn btn-dark" data-pack="Launch">Get a Launch quote →</button></article>
-      <article class="pk rv d1" data-pk="Grow"><span class="sg" data-sugfor></span><span class="tier">Grow</span><h3>Stay top of feed.</h3><p class="tl">For brands ready to be always on</p>
+        <button class="btn btn-dark mag" type="button" data-pack="Launch">Get a Launch quote →</button></article>
+      <article class="pk tilt rv d1" data-pk="Grow"><span class="sg" data-sugfor></span><span class="tier"><svg class="ic"><use href="#i-trend"/></svg>Grow</span><h3>Stay top of feed.</h3><p class="tl">For brands ready to be always on</p>
         <div class="meta"><div><small>Best for</small><span>Brands that want steady growth, month after month</span></div><div><small>Typical length</small><span>6 months, always-on</span></div></div>
         <ul class="list"><li>Everything in Launch</li><li>Monthly content calendar</li><li>Creator programme from MCDB</li><li>Paid media management</li><li>Seasonal campaigns — Thingyan, Thadingyut</li><li>Bi-weekly optimisation</li></ul>
-        <button class="btn btn-dark" data-pack="Grow">Get a Grow quote →</button></article>
-      <article class="pk lead rv d2" data-pk="Lead"><span class="sg" data-sugfor></span><span class="tier">Lead</span><h3>Own the category.</h3><p class="tl">One partner for brand, content and media</p>
+        <button class="btn btn-dark mag" type="button" data-pack="Grow">Get a Grow quote →</button></article>
+      <article class="pk lead tilt rv d2" data-pk="Lead"><span class="sg" data-sugfor></span><span class="tier"><svg class="ic"><use href="#i-trophy"/></svg>Lead</span><h3>Own the category.</h3><p class="tl">One partner for brand, content and media</p>
         <div class="meta"><div><small>Best for</small><span>Category leaders and brands with big launches ahead</span></div><div><small>Typical length</small><span>12-month partnership</span></div></div>
         <ul class="list"><li>Everything in Grow</li><li>Brand platform &amp; big campaign idea</li><li>Hero film, TVC or branded series</li><li>Key visuals &amp; design system</li><li>PR, launches &amp; events</li><li>MCDB viewer access</li><li>Quarterly business review</li></ul>
-        <button class="btn btn-lime" data-pack="Lead">Get a Lead quote →</button></article>
+        <button class="btn btn-lime mag" type="button" data-pack="Lead">Get a Lead quote →</button></article>
+    </div>
+    <div class="compare" id="compare" hidden>
+      <div class="lg-scroll"><table>
+        <thead><tr><th></th><th data-pk="Launch">Launch<small>3-month sprint</small></th><th data-pk="Grow">Grow<small>6 months, always-on</small></th><th data-pk="Lead">Lead<small>12-month partnership</small></th></tr></thead>
+        <tbody>
+          <tr class="grp"><td colspan="4">Set-up &amp; strategy</td></tr>
+          <tr><td>Channel audit &amp; set-up</td><td>✓</td><td>✓</td><td>✓</td></tr>
+          <tr><td>Positioning &amp; content strategy</td><td>✓</td><td>✓</td><td>✓</td></tr>
+          <tr><td>Brand platform &amp; big campaign idea</td><td>—</td><td>—</td><td>✓</td></tr>
+          <tr class="grp"><td colspan="4">Content &amp; production</td></tr>
+          <tr><td>Platform-native video content</td><td>✓</td><td>✓</td><td>✓</td></tr>
+          <tr><td>Monthly content calendar</td><td>—</td><td>✓</td><td>✓</td></tr>
+          <tr><td>Seasonal campaigns (Thingyan, Thadingyut)</td><td>—</td><td>✓</td><td>✓</td></tr>
+          <tr><td>Hero film, TVC or branded series</td><td>—</td><td>—</td><td>✓</td></tr>
+          <tr><td>Key visuals &amp; design system</td><td>—</td><td>—</td><td>✓</td></tr>
+          <tr class="grp"><td colspan="4">Creators, media &amp; PR</td></tr>
+          <tr><td>Community management</td><td>✓</td><td>✓</td><td>✓</td></tr>
+          <tr><td>Paid media</td><td>Launch boost (optional)</td><td>Managed</td><td>Managed</td></tr>
+          <tr><td>Creator programme from MCDB</td><td>—</td><td>✓</td><td>✓</td></tr>
+          <tr><td>MCDB viewer access</td><td>—</td><td>—</td><td>✓</td></tr>
+          <tr><td>PR, launches &amp; events</td><td>—</td><td>—</td><td>✓</td></tr>
+          <tr class="grp"><td colspan="4">Reporting</td></tr>
+          <tr><td>Optimisation</td><td>Monthly</td><td>Bi-weekly</td><td>Bi-weekly</td></tr>
+          <tr><td>Reports &amp; reviews</td><td>Monthly report</td><td>Monthly report</td><td>Monthly report + quarterly business review</td></tr>
+          <tr class="cta-row"><td></td><td><button class="btn btn-dark" type="button" data-pack="Launch">Launch quote</button></td><td><button class="btn btn-dark" type="button" data-pack="Grow">Grow quote</button></td><td><button class="btn btn-lime" type="button" data-pack="Lead">Lead quote</button></td></tr>
+        </tbody>
+      </table></div>
     </div>
     <div class="blk">
-      <div class="bh"><div><h3 class="h3 rv">Add on anytime</h3><p class="rv d1">Single projects, with or without a package.</p></div></div>
-      <div class="addons rv"><span>Brand film or TVC</span><span>Branded series or talk show</span><span>Celebrity &amp; creator bundle</span><span>Key visuals &amp; packaging</span><span>Photography</span><span>PR launch &amp; events</span><span>Paid media management</span><span>Studio &amp; kit hire</span></div>
+      <div class="bh"><div><h3 class="h3 rv">Add on anytime</h3><p class="rv d1">Single projects, with or without a package. Tap to add them to your brief.</p></div></div>
+      <div class="addons rv" id="addons"></div>
       <p class="src">Prices are quoted on request, from your brief.</p>
     </div>
   </div>
 </section>
 
-<!-- 11 START -->
-<section class="chap" id="start" data-chap data-theme="red" data-label="11 · Start" data-n="11" data-short="Start">
+<!-- ============ 11 START ============ -->
+<section class="chap" id="start" data-chap data-theme="red" data-label="11 · Start" data-n="11" data-short="Start" data-act="4">
   <div class="op"><div class="wrap">
-    <div class="n rv">11</div>
-    <div><span class="eyebrow" style="color:#fff;opacity:.85">Start</span><h2 class="rv">Build your brief <span class="s">in a minute.</span></h2><p class="rv d1">Tick what you need. We turn it into a ready-to-send message for WhatsApp, Viber or email.</p></div>
+    <div class="n">11</div>
+    <div><span class="eyebrow">Start</span><h2 class="rv">Build your brief <em class="s">in a minute.</em></h2><p class="rv d1">Tick what you need — anything you added while browsing is already here. We turn it into a ready-to-send message for WhatsApp, Viber or email.</p></div>
   </div></div>
   <div class="wrap">
     <div class="brief">
-      <form class="bform rv" id="bform" onsubmit="return false" novalidate>
+      <form class="bform rv" id="bform" novalidate>
+        <div class="bprog"><span>Brief</span><div class="bp-track"><i id="bpFill"></i></div><b id="bpPct">0%</b></div>
         <div class="two">
           <label class="f">Brand<input type="text" id="bBrand" maxlength="60" placeholder="Your brand" autocomplete="organization"></label>
           <label class="f">Industry<select id="bInd"></select></label>
@@ -1037,6 +739,8 @@ footer.ft nav a:hover{opacity:1}
         <fieldset><legend>Timing</legend><div class="opts" id="oTime"></div></fieldset>
         <fieldset><legend>Rough budget for the first phase</legend><div class="opts" id="oBud"></div></fieldset>
         <fieldset><legend>Package</legend><div class="opts" id="oPack"></div></fieldset>
+        <fieldset><legend>Add-ons</legend><div class="opts" id="oAdd"></div></fieldset>
+        <fieldset id="ideaSet" hidden><legend>Ideas you kept</legend><div class="opts" id="oIdea"></div></fieldset>
         <div class="two">
           <label class="f">Your name &amp; role<input type="text" id="bName" maxlength="80" placeholder="Name, role" autocomplete="name"></label>
           <label class="f">Phone or email<input type="text" id="bCon" maxlength="80" placeholder="+95 9… or name@brand.com" autocomplete="tel"></label>
@@ -1044,13 +748,13 @@ footer.ft nav a:hover{opacity:1}
         <label class="f">Anything else?<textarea id="bNote" maxlength="600" placeholder="Launch date, product, competitors, what worked before…"></textarea></label>
       </form>
       <aside class="bprev rv d1" aria-label="Your brief">
-        <div class="hd"><b>Your brief</b><span class="small" style="color:#888">Updates as you type</span></div>
+        <div class="hd"><b>Your brief</b><span class="small">Updates as you type</span></div>
         <pre id="bOut"></pre>
         <div class="sends">
-          <a class="s-wa" id="sWA" href="#" target="_blank" rel="noopener">WhatsApp</a>
-          <button class="s-vb" id="sVB" type="button">Viber</button>
-          <a class="s-ml" id="sML" href="#">Email</a>
-          <button class="s-cp" id="sCP" type="button">Copy brief</button>
+          <a class="s-wa" id="sWA" href="#" target="_blank" rel="noopener"><svg class="ic"><use href="#i-chat"/></svg>WhatsApp</a>
+          <button class="s-vb" id="sVB" type="button"><svg class="ic"><use href="#i-send"/></svg>Viber</button>
+          <a class="s-ml" id="sML" href="#"><svg class="ic"><use href="#i-mail"/></svg>Email</a>
+          <button class="s-cp" id="sCP" type="button"><svg class="ic"><use href="#i-copy"/></svg>Copy brief</button>
         </div>
         <p class="nt">Goes to +95 9255762417 and nyinyisoewin@awakenentertainment.org. Viber: we copy the brief, then open the chat — just paste.</p>
       </aside>
@@ -1059,10 +763,10 @@ footer.ft nav a:hover{opacity:1}
     <div class="blk">
       <div class="bh"><h3 class="h3 rv">Talk to us</h3></div>
       <div class="contact rv">
-        <div class="card"><span class="k">Call or WhatsApp</span><p><a href="tel:+959255762417">+95 9255762417</a><br><a href="tel:+959799489370">+95 9799489370</a></p></div>
-        <div class="card"><span class="k">Email</span><p><a href="mailto:nyinyisoewin@awakenentertainment.org">nyinyisoewin@<wbr>awakenentertainment.org</a><br>Nyi Nyi Soe Win, Founder &amp; CEO</p></div>
-        <div class="card"><span class="k">Studio</span><p>No. 57, YaeKuYwarMa Street, Ward 9, Mayangone, Yangon<br><a href="https://maps.app.goo.gl/HuiVWz5wNQ3381Vv5" target="_blank" rel="noopener">Get directions ↗</a></p></div>
-        <div class="card"><span class="k">Hours</span><p>Mon – Sat<br>9:00 AM – 6:00 PM (UTC+6:30)</p></div>
+        <div class="card"><span class="ico"><svg class="ic"><use href="#i-call"/></svg></span><span class="k">Call or WhatsApp</span><p><a href="tel:+959255762417">+95 9255762417</a><br><a href="tel:+959799489370">+95 9799489370</a></p></div>
+        <div class="card"><span class="ico"><svg class="ic"><use href="#i-mail"/></svg></span><span class="k">Email</span><p><a href="mailto:nyinyisoewin@awakenentertainment.org">nyinyisoewin@<wbr>awakenentertainment.org</a><br>Nyi Nyi Soe Win, Founder &amp; CEO</p></div>
+        <div class="card"><span class="ico"><svg class="ic"><use href="#i-pin"/></svg></span><span class="k">Studio</span><p>No. 57, YaeKuYwarMa Street, Ward 9, Mayangone, Yangon<br><a href="https://maps.app.goo.gl/HuiVWz5wNQ3381Vv5" target="_blank" rel="noopener">Get directions ↗</a></p></div>
+        <div class="card"><span class="ico"><svg class="ic"><use href="#i-clock"/></svg></span><span class="k">Hours</span><p>Mon – Sat<br>9:00 AM – 6:00 PM (UTC+6:30)</p></div>
       </div>
     </div>
 
@@ -1077,244 +781,70 @@ footer.ft nav a:hover{opacity:1}
         <details><summary>Do you work with brands outside Myanmar?</summary><p>Yes. Our roots are in Myanmar, and we also work with regional and international brands that want to reach Myanmar audiences.</p></details>
       </div>
     </div>
-    <p class="src" style="margin-top:36px">Sources: market figures from DataReportal, Digital 2027: Myanmar (5 Nov 2026). Case results are platform counts at the time of reporting. MCDB figures as of 13 Nov 2026.</p>
+    <p class="src" style="margin-top:36px">Sources: market figures from DataReportal, Digital 2027: Myanmar (5 Nov 2026) and Digital 2026: Myanmar. Case results are platform counts at the time of reporting. MCDB figures as of 13 Nov 2026. Production figures from the Awaken 2025 slate.</p>
   </div>
 </section>
 </main>
 
 <footer class="ft">
   <div class="wrap">
-    <div style="display:flex;align-items:center;gap:12px"><img src="img/awaken-digital.png" alt="Awaken Digital" width="240" height="203"><span>© 2026 Awaken Entertainment Co., Ltd. · Yangon, Myanmar</span></div>
-    <nav aria-label="Awaken"><a href="/digital/">Awaken Digital</a><a href="/production/">Production</a><a href="/design/">Design</a><a href="/mcdb/">MCDB</a><a href="#top">Back to top ↑</a></nav>
+    <div class="ft-l"><img src="img/awaken-digital.png" alt="Awaken Digital" width="240" height="203"><span>© 2026 Awaken Entertainment Co., Ltd. · Yangon, Myanmar</span></div>
+    <nav aria-label="Awaken"><a href="/digital/">Awaken Digital</a><a href="/production/">Production</a><a href="/design/">Design</a><a href="/mcdb/">MCDB</a><button type="button" data-print><svg class="ic"><use href="#i-print"/></svg>Save as PDF</button><button type="button" data-open="#help"><svg class="ic"><use href="#i-kbd"/></svg>Shortcuts</button><a href="#top">Back to top ↑</a></nav>
   </div>
 </footer>
 
-<!-- CHAPTERS MENU -->
+<!-- ============ OVERLAYS ============ -->
 <div class="ov" id="menu" aria-hidden="true" role="dialog" aria-label="Chapters">
   <div class="panel">
-    <div class="ph"><b>Chapters</b><button class="x" data-close aria-label="Close">×</button></div>
-    <ul class="mlist" id="mlist"></ul>
+    <div class="ph"><b>Chapters</b><button class="x" type="button" data-close aria-label="Close">×</button></div>
+    <div id="mlist"></div>
     <div class="mk">
       <h5>Make a link for a brand</h5>
       <p>Puts the brand’s name on the cover and opens their industry first.</p>
       <div class="row"><input type="text" id="mkBrand" maxlength="60" placeholder="Brand name"><select id="mkInd"></select></div>
       <div class="out"><input type="text" id="mkOut" readonly aria-label="Tailored link"><button type="button" id="mkCopy">Copy</button><a id="mkOpen" href="#" target="_blank" rel="noopener">Open</a></div>
     </div>
+    <div class="m-tools"><button type="button" data-palette><svg class="ic"><use href="#i-search"/></svg>Search</button><button type="button" data-print><svg class="ic"><use href="#i-print"/></svg>Save as PDF</button><button type="button" data-open="#help"><svg class="ic"><use href="#i-kbd"/></svg>Shortcuts</button></div>
   </div>
 </div>
 
-<!-- INDUSTRY PICKER -->
 <div class="ov" id="ipick" aria-hidden="true" role="dialog" aria-label="Choose your industry">
   <div class="panel">
-    <div class="ph"><b>Your industry</b><button class="x" data-close aria-label="Close">×</button></div>
-    <p class="small" style="color:#666;margin:-6px 0 16px">Cases, ideas and the suggested package change to match.</p>
+    <div class="ph"><b>Your industry</b><button class="x" type="button" data-close aria-label="Close">×</button></div>
+    <p class="small muted-d">Cases, ideas, moments and the suggested package change to match.</p>
     <div class="ipick" id="ipickList"></div>
   </div>
 </div>
 
+<div class="ov center" id="palette" aria-hidden="true" role="dialog" aria-label="Search the proposal">
+  <div class="panel pal">
+    <div class="pal-in"><svg class="ic"><use href="#i-search"/></svg><input type="text" id="palQ" placeholder="Search chapters, cases, industries, actions…" autocomplete="off" aria-label="Search"><kbd>Esc</kbd></div>
+    <ul class="pal-list" id="palList" role="listbox"></ul>
+    <div class="pal-ft"><span><kbd>↑</kbd><kbd>↓</kbd> move</span><span><kbd>Enter</kbd> open</span><span><kbd>Esc</kbd> close</span></div>
+  </div>
+</div>
+
+<div class="ov center" id="help" aria-hidden="true" role="dialog" aria-label="Keyboard shortcuts">
+  <div class="panel hlp">
+    <div class="ph"><b>Shortcuts</b><button class="x" type="button" data-close aria-label="Close">×</button></div>
+    <ul class="keys">
+      <li><span><kbd>Ctrl</kbd><kbd>K</kbd> or <kbd>/</kbd></span>Search everything</li>
+      <li><span><kbd>J</kbd> / <kbd>K</kbd></span>Next / previous chapter</li>
+      <li><span><kbd>I</kbd></span>Choose your industry</li>
+      <li><span><kbd>B</kbd></span>Go to your brief</li>
+      <li><span><kbd>M</kbd></span>Chapters menu</li>
+      <li><span><kbd>P</kbd></span>Save as PDF</li>
+      <li><span><kbd>?</kbd></span>This list</li>
+    </ul>
+    <div class="cnote"><b>Colour notes</b><p>Each industry gets its own hue. The seven hues sit about 51° apart on the OKLCH colour wheel, at the same lightness and chroma, so no category looks louder than another. Chapters alternate warm and cool grounds to pace the read; one complementary accent per chapter carries the numbers.</p><div class="swatches" id="swatches"></div></div>
+  </div>
+</div>
+
+<div class="ov center lb" id="lightbox" aria-hidden="true" role="dialog" aria-label="Design work">
+  <div class="panel lbx"><button class="x" type="button" data-close aria-label="Close">×</button><img id="lbImg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt=""><p id="lbCap"></p><div class="lb-nav"><button type="button" id="lbPrev" aria-label="Previous">←</button><button type="button" id="lbNext" aria-label="Next">→</button></div></div>
+</div>
+
 <div class="toast" id="toast" role="status"></div>
-
-<script>
-(function(){
-'use strict';
-var D=document, root=D.documentElement;
-root.className+=' js';
-var RM=!!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches);
-function $(s,c){return (c||D).querySelector(s)}
-function $$(s,c){return Array.prototype.slice.call((c||D).querySelectorAll(s))}
-function store(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){return null}}
-var WA='959255762417', MAIL='nyinyisoewin@awakenentertainment.org', LIVE='https://awakenentertainment.org/digital/proposal/';
-
-/* ---------- industries ---------- */
-var IND={
- all:{label:'All brands',short:'All brands'},
- fmcg:{label:'FMCG & snacks',short:'FMCG & snacks',pack:'Grow',
-  hook:'Win the feed before the shelf.',
-  ch:'Choices at the shop take seconds, so familiarity has to be built on the phone first. The snack people saw this week is the one their hand reaches for.',
-  plays:[['Snack-size series','A recurring short-form series with characters people follow — from the team behind 12 original series.'],['Challenge + creator wave','A simple challenge seeded with micro and nano creators from MCDB, then scaled with paid boosts on what works.'],['Season peaks','Thingyan and Thadingyut content, packs and sampling built around the moments the whole country is online.']],
-  proof:'Tone Tone Noodle and Kido Candies each reached around a million organic views and engagements in three months; Ximi Jelly passed 1M before paid promotion. Design partner to Gery since its Myanmar launch.',
-  kpi:['Views & engagement rate','Follower growth','Share of voice vs category','Creator & UGC volume','Distributor & shop feedback']},
- bev:{label:'Beverages',short:'Beverages',pack:'Grow',
-  hook:'Show up in the moment.',
-  ch:'Drinks are bought on impulse and on occasion — heat, festivals, football nights, long shifts. The brand that is there in the moment gets picked.',
-  plays:[['Moment calendar','Content planned a quarter ahead around Thingyan, football, exams and the hot season.'],['Always-on creator roster','A year-round line-up with clear roles: anchors for reach, community creators for engagement.'],['Shop-front stories','Cooler-door, outlet and street-stall content that links the feed to the point of sale.']],
-  proof:'A 12-month creator programme for a drinks brand: 51 posts, 29.2M views, 6.8% engagement. For regulated categories, we plan within the advertising rules in force.',
-  kpi:['Reach in season','Engagement per post','Cost per view','Outlet & promotion uptake','Sentiment']},
- tech:{label:'Telecom & tech',short:'Telecom & tech',pack:'Lead',
-  hook:'Make the spec sheet feel real.',
-  ch:'Specs and offers all sound alike. People believe what they see tested in real life, by people like them.',
-  plays:[['Proof-in-life launch','Drops, rain, long days and real users — each feature shown in the moment it matters, cut for TikTok and Facebook.'],['Daily social engine','Monthly calendars and daily creative for offers, packs and service updates.'],['Creator unboxing wave','Reviews and unboxings from tech and lifestyle creators, timed to launch week.']],
-  proof:'HONOR X9c and X6c launches — single videos reached 874.8K and 405.8K views. MPT: monthly calendars, digital campaigns, daily social creative and videography.',
-  kpi:['Launch-week reach','Video completion rate','Store & online enquiries','Offer uptake','Comment sentiment']},
- fin:{label:'Banking, fintech & insurance',short:'Finance',pack:'Grow',
-  hook:'Turn trust into taps.',
-  ch:'Money products need trust and a clear “how”. People sign up when they understand it — and see people like them using it safely.',
-  plays:[['How-to series','Short explainers for each feature — sign up, top up, transfer, claim — in plain Burmese.'],['Real-user stories','Shop owners, farmers and families: why they use it, filmed where they live and work.'],['Community help desk','Viber and Telegram channels plus Facebook Groups for questions, tips and offers, run daily.']],
-  proof:'Design work for Wave Money, Micromoney and MPT Pay. FVS Corporate Insurance is also on our client wall.',
-  kpi:['Sign-ups & installs','Cost per sign-up','How-to completion','Questions answered & response time','Sentiment']},
- health:{label:'Health & pharma',short:'Health & pharma',pack:'Grow',
-  hook:'Explain it simply. Say it safely.',
-  ch:'Health brands must educate without over-claiming. Families listen to experts — and to people they trust.',
-  plays:[['Expert + creator pairs','A doctor or pharmacist explains; a creator shows daily life. Every claim checked against your approved list.'],['Locally shot visuals','Real Myanmar faces and settings instead of imported stock — as we did for Becozinc.'],['Seasonal care moments','Rainy season, exams and Thingyan heat: timely tips that keep the brand useful.']],
-  proof:'Becozinc (Dr. Reddy’s): website, social media and locally shot photography for the zinc & B-complex launch.',
-  kpi:['Reach in target groups','Saves & shares on education posts','Pharmacy enquiries','Questions & sentiment']},
- life:{label:'F&B, retail & lifestyle',short:'F&B & lifestyle',pack:'Launch',
-  hook:'Get them through the door.',
-  ch:'Venues and shops live on visits. People go where their feed shows them something worth the trip this week.',
-  plays:[['Come-visit content','Venue tours, creator visits, menu drops and behind-the-counter moments, posted weekly.'],['Event & offer drops','Launch nights, weekend offers and festival specials pushed through TikTok, Facebook and chat groups.'],['Local creator circle','Food, gaming and lifestyle creators near you, briefed every month.']],
-  proof:'WonderXland reached nearly a million views and interactions in three months without paid ads.',
-  kpi:['Visits & bookings','Offer code use','Follower growth','Check-ins & UGC']},
- lux:{label:'Beauty, fashion & luxury',short:'Beauty & luxury',pack:'Launch',
-  hook:'Make them want it first.',
-  ch:'Premium buyers judge a brand by how it looks and who wears it. One careless post can cheapen it.',
-  plays:[['Films & macro photography','Craft-level visuals of product, texture and detail, shot by our production team.'],['Stylist & creator circle','A small, carefully cast group of creators who fit the brand.'],['Occasion moments','Weddings, Thadingyut gifting and birthdays — content built around reasons to buy.']],
-  proof:'Aye Mya Thu Luxury Jewelry: a debut ahead of most new entrants in luxury accessories, before any paid promotion.',
-  kpi:['Saves & shares','DMs & enquiries','Store visits','Engagement quality']}
-};
-var ORDER=['fmcg','bev','tech','fin','health','life','lux'];
-
-/* ---------- client logos ---------- */
-var LOGOS=[['mpt','MPT','tech fin',117,200],['honor','HONOR','tech',360,70],['wave-money','Wave Money','fin',200,200],['gery','Gery','fmcg',200,200],['kido','Kido Candies','fmcg',360,174],['ximi','Ximi Jelly','fmcg',313,177],['tone-tone','Tone Tone Noodle','fmcg',272,200],['becozinc','Becozinc','health',360,124],['mpt-pay','MPT Pay','fin tech',200,200],['micromoney','Micromoney','fin',222,200],['tiger','Tiger','bev',180,200],['awba','awba','',360,168],['handicap-intl','Handicap International','health',153,200],['aye-mya-thu','Aye Mya Thu Luxury Jewelry','lux',360,167],['wonderxland','WonderXland','life',200,200],['abc','ABC','bev',200,200],['fvs','FVS Corporate Insurance','fin',360,151],['kirin','Kirin Ichiban','bev',200,200],['umg','UMG','',164,200],['inca-king','Inca King Health & Beauty','lux health',300,171],['macarthurs','MacArthur’s','bev',200,200],['wtm','Women Transforming Myanmar','',360,111],['rakhinelink','RakhineLink','tech',360,129],['grand-royal','Grand Royal','bev',200,200],['amby','Amby London','lux',200,200],['eastern-palace','Eastern Palace','life',219,200],['sjoliv','SJÖLIV','',360,73],['sky-bow','Sky Bow','',267,100],['cele-panda','Cele Panda','life',162,200]];
-var lw=$('#logos');
-LOGOS.forEach(function(l){var li=D.createElement('li');li.dataset.ind=l[2];var im=D.createElement('img');im.src='img/logo/'+l[0]+'.webp';im.alt=l[1];im.title=l[1];im.width=l[3];im.height=l[4];im.loading='lazy';im.decoding='async';li.appendChild(im);lw.appendChild(li)});
-
-/* ---------- hero mosaic ---------- */
-var mz=$('#mosaic'), rows=[[0,1,2,3,4,5,6],[7,8,9,10,11,12,13],[14,15,16,17,18,19,20]];
-rows.forEach(function(r,ri){var row=D.createElement('div');row.className='mrow';var html='';for(var k=0;k<2;k++){r.forEach(function(i){var n=(i<10?'0':'')+i;html+='<img src="img/m'+n+'.webp" alt="" width="300" height="360" decoding="async"'+(ri>0||k>0?' loading="lazy"':'')+'>'})}row.innerHTML=html;mz.appendChild(row)});
-
-/* ---------- series strip ---------- */
-var SERIES=[['wingeta','WinGeTa','Drama · Mystery','10 eps · Channel K'],['chit-thaw-atar','Chit Thaw Atar','Drama · Romance','13 eps · Fortune TV'],['soul-of-love','Soul of Love','Drama · Horror','2 eps · TikTok'],['exit','EXIT','Horror','5 eps · 15–20 min'],['maung-kyauk-khae','Maung Kyauk Khae','Horror · Comedy','5 eps · 30 min'],['lu-pyo-gyi','Lu Pyo Gyi Kone Sone Sai','Comedy · Drama','5 eps · original OST'],['nauk-sone-su-taung','Nauk Sone Su Taung','Drama · Comedy','5 eps · 30 min'],['a-chit-sone-yan-phet','A Chit Sone Yan Phet','Drama · Romance','5 eps · 20 min'],['apai-khan-myitta','Apai Khan Myitta','Thriller · Drama','5 eps · 30 min'],['a-chit-sate','A Chit Sate','Drama · Romance','5 eps · 30 min'],['taw-thar','Taw Thar · The Hick','Comedy · Horror','4 eps · 30 min'],['lay-htae-ka-pone-pyin','Lay Htae Ka Pone Pyin','Drama · Romance','3 eps · 30–35 min']];
-var st=$('#strip');
-st.innerHTML=SERIES.map(function(s){return '<figure><img src="img/series-'+s[0]+'.webp" alt="'+s[1]+' series banner" width="640" height="320" loading="lazy" decoding="async"><figcaption><b>'+s[1]+'</b>'+s[2]+' · '+s[3]+'</figcaption></figure>'}).join('');
-$$('[data-scroll]').forEach(function(b){b.addEventListener('click',function(){st.scrollBy({left:(+b.dataset.scroll)*st.clientWidth*.8,behavior:RM?'auto':'smooth'})})});
-
-/* ---------- chapters: rail + menu ---------- */
-var chaps=$$('[data-chap]');
-var MCOL={hero:'#3f6212',red:'#e50d0c',sand:'#a0560f',ink:'#111',peach:'#c2410c',white:'#ff5a3c',studio:'#d4891c',green:'#0f3a2c',lilac:'#6d28d9',ice:'#0369a1',teal:'#0b3a3f',gold:'#ad7a2a'};
-var SUM={glance:'Awaken in 60 seconds',why:'Myanmar moved to short video',who:'Video-first, one roof, since 2016',grow:'Story first, organic before paid',proof:'Real brands, real numbers',talent:'MCDB: 695 names, 944.5M reach',production:'12 original series, 67 episodes',design:'Identity, key visuals, social design',category:'Ideas for your industry',process:'Strategy, create, launch, grow',packages:'Launch, Grow, Lead',start:'Build your brief in a minute'};
-var rail=$('#rail'), ml=$('#mlist');
-chaps.forEach(function(c){if(c.id==='top')return;var lab=c.dataset.label;var a=D.createElement('a');a.href='#'+c.id;a.setAttribute('aria-label',lab);a.innerHTML='<span>'+lab+'</span>';rail.appendChild(a);
- var li=D.createElement('li');var t=lab.replace(/^\d+ · /,'');li.innerHTML='<a href="#'+c.id+'" style="--mc:'+MCOL[c.dataset.theme]+'"><span class="mn">'+(c.dataset.n==='00'?'★':c.dataset.n)+'</span><span class="mt">'+t+'</span><span class="ms">'+(SUM[c.id]||'')+'</span></a>';ml.appendChild(li)});
-var DARK=['red','ink','studio','green','teal'];
-var curEl=$('#curLabel'), pbNum=$('#pbNum'), pbName=$('#pbName');
-function setCur(c){var t=c.dataset.theme||'hero';D.body.setAttribute('data-t',t);D.body.classList.toggle('dk',DARK.indexOf(t)>-1);
- curEl.textContent=c.id==='top'?'':c.dataset.label;pbNum.textContent=c.dataset.n==='00'?'★':c.dataset.n;pbName.textContent=c.dataset.short||'';
- $$('a',rail).forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+c.id)});
- $$('a',ml).forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+c.id)})}
-if('IntersectionObserver' in window){
- var cio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)setCur(e.target)})},{rootMargin:'-46% 0px -52% 0px'});
- chaps.forEach(function(c){cio.observe(c)});
-}
-/* progress */
-var prog=$('#prog'), ring=$('#ring'), CIRC=100.53, ticking=false;
-function onScroll(){ticking=false;var h=root.scrollHeight-innerHeight;var p=h>0?Math.min(1,Math.max(0,scrollY/h)):0;prog.style.transform='scaleX('+p+')';ring.style.strokeDashoffset=(CIRC*(1-p)).toFixed(2)}
-addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(onScroll)}},{passive:true});onScroll();
-
-/* ---------- reveal + counters ---------- */
-function count(el){if(el.dataset.done)return;el.dataset.done='1';var to=parseFloat(el.dataset.count),dec=+(el.dataset.dec||0),pre=el.dataset.pre||'',suf=el.dataset.suf||'';
- function fmt(v){return pre+v.toFixed(dec)+suf}
- if(RM){el.textContent=fmt(to);return}var t0=null,dur=1500;
- function step(ts){if(!t0)t0=ts;var k=Math.min(1,(ts-t0)/dur),e=1-Math.pow(1-k,3);el.textContent=fmt(to*e);if(k<1)requestAnimationFrame(step);else el.textContent=fmt(to)}
- requestAnimationFrame(step)}
-if('IntersectionObserver' in window&&!RM){
- var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var t=e.target;t.classList.add('in');rio.unobserve(t);if(t.dataset.count)count(t);$$('[data-count]',t).forEach(count)}})},{rootMargin:'0px 0px -8% 0px',threshold:.01});
- $$('.rv').forEach(function(el){rio.observe(el)});
- $$('[data-count]').forEach(function(el){if(!el.closest('.rv'))rio.observe(el)});
-}else{$$('.rv').forEach(function(el){el.classList.add('in')})}
-
-/* ---------- overlays ---------- */
-var lastFocus=null;
-function openOv(sel){var m=$(sel);if(!m)return;lastFocus=D.activeElement;m.classList.add('open');m.setAttribute('aria-hidden','false');D.body.classList.add('lock');setTimeout(function(){var f=$('.x',m);f&&f.focus()},60)}
-function closeOv(m){m.classList.remove('open');m.setAttribute('aria-hidden','true');if(!$('.ov.open'))D.body.classList.remove('lock');if(lastFocus&&lastFocus.focus)lastFocus.focus()}
-D.addEventListener('click',function(e){var o=e.target.closest('[data-open]');if(o){e.preventDefault();openOv(o.getAttribute('data-open'));return}
- var x=e.target.closest('[data-close]');if(x){closeOv(x.closest('.ov'));return}
- if(e.target.classList&&e.target.classList.contains('ov'))closeOv(e.target)});
-D.addEventListener('keydown',function(e){if(e.key==='Escape')$$('.ov.open').forEach(closeOv)});
-ml.addEventListener('click',function(e){if(e.target.closest('a'))closeOv($('#menu'))});
-
-/* ---------- toast + copy ---------- */
-var toastEl=$('#toast'),tt;
-function toast(msg){toastEl.textContent=msg;toastEl.classList.add('on');clearTimeout(tt);tt=setTimeout(function(){toastEl.classList.remove('on')},2600)}
-function copyText(t,ok){function fb(){var ta=D.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='fixed';ta.style.opacity='0';D.body.appendChild(ta);ta.select();var r=false;try{r=D.execCommand('copy')}catch(e){}D.body.removeChild(ta);r?ok():toast('Select the text and copy it manually')}
- if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(t).then(ok,fb)}else fb()}
-
-/* ---------- personalisation ---------- */
-var qs;try{qs=new URLSearchParams(location.search)}catch(e){qs={get:function(){return null}}}
-var brand=(qs.get('for')||qs.get('brand')||'').replace(/[\u0000-\u001f<>]/g,'').replace(/\s+/g,' ').trim().slice(0,60);
-var ind=qs.get('ind');if(!IND[ind]){ind=store('aw_ind');if(!IND[ind])ind='all'}
-if(brand){$$('[data-brand]').forEach(function(el){el.textContent=brand});$('#forChip').hidden=false;$$('.if-brand').forEach(function(el){el.hidden=false});D.title='Awaken × '+brand+' — Proposal';$('#bBrand').value=brand}
-
-/* ---------- industry picker, tabs, playbook ---------- */
-var ip=$('#ipickList'), tabs=$('#itabs');
-ip.innerHTML=['all'].concat(ORDER).map(function(k){var I=IND[k];return '<button type="button" data-k="'+k+'">'+I.label+(k==='all'?'<span>Show everything</span>':'<span>'+I.hook+'</span>')+'</button>'}).join('');
-tabs.innerHTML=['all'].concat(ORDER).map(function(k){return '<button type="button" class="itab" role="tab" data-k="'+k+'">'+(k==='all'?'All industries':IND[k].short)+'</button>'}).join('');
-ip.addEventListener('click',function(e){var b=e.target.closest('[data-k]');if(!b)return;setInd(b.dataset.k);closeOv($('#ipick'));if(b.dataset.k!=='all')toast('Tailored for '+IND[b.dataset.k].label)});
-tabs.addEventListener('click',function(e){var b=e.target.closest('[data-k]');if(b)setInd(b.dataset.k)});
-function renderPlay(k){var box=$('#play');
- if(k==='all'){box.innerHTML='<div class="pgrid">'+ORDER.map(function(x){var I=IND[x];return '<button type="button" class="pcard" data-k="'+x+'"><span class="eyebrow">'+I.label+'</span><b>'+I.hook+'</b><span class="go">See ideas →</span></button>'}).join('')+'</div>';return}
- var I=IND[k];
- box.innerHTML='<div class="play"><div><span class="eyebrow">'+I.label+'</span><div class="hk" style="margin-top:12px">'+I.hook+'</div><p class="ch">'+I.ch+'</p><div class="pr"><small>Proof from the category</small><p>'+I.proof+'</p></div></div>'+
- '<div><div class="plays">'+I.plays.map(function(p,i){return '<div class="card"><b>'+(i+1)+'</b><h4>'+p[0]+'</h4><p>'+p[1]+'</p></div>'}).join('')+'</div>'+
- '<div style="margin-top:20px"><span class="eyebrow">What we would measure</span><div class="ms">'+I.kpi.map(function(m){return '<span>'+m+'</span>'}).join('')+'</div></div>'+
- '<div class="pkhint">Suggested start: <b>'+I.pack+'</b> <a href="#packages">See packages →</a></div></div></div>'}
-$('#play').addEventListener('click',function(e){var b=e.target.closest('.pcard');if(b)setInd(b.dataset.k)});
-
-/* brief builder options */
-var GOALS=['Launch a new product','Grow on TikTok','Fix or relaunch our pages','Creator / celebrity campaign','Seasonal campaign (Thingyan, Thadingyut)','Brand film or TV commercial','Branded series or talk show','Key visuals & design','PR & launch event','MCDB viewer login'];
-var CHS=['TikTok','Facebook','YouTube','Instagram','Viber / Telegram','TV'];
-var TIMES=['As soon as possible','In 1–3 months','For Thingyan 2027','Later'];
-var BUDS=['Under 50 Lakh','50–200 Lakh','200–500 Lakh','500 Lakh+','Not sure yet'];
-var PACKS=['Not sure','Launch','Grow','Lead'];
-function opts(el,name,arr,type){var id=0;el.innerHTML=arr.map(function(v){id++;return '<label><input type="'+type+'" name="'+name+'" value="'+v.replace(/"/g,'&quot;')+'"><span>'+v.replace(/&/g,'&amp;')+'</span></label>'}).join('')}
-opts($('#oGoal'),'goal',GOALS,'checkbox');opts($('#oCh'),'ch',CHS,'checkbox');opts($('#oTime'),'time',TIMES,'radio');opts($('#oBud'),'bud',BUDS,'radio');opts($('#oPack'),'pack',PACKS,'radio');
-var bInd=$('#bInd'), mkInd=$('#mkInd');
-var indOpts=['all'].concat(ORDER).map(function(k){return '<option value="'+k+'">'+(k==='all'?'Choose industry':IND[k].label)+'</option>'}).join('');
-bInd.innerHTML=indOpts.replace('Choose industry','Other / not listed');mkInd.innerHTML=indOpts.replace('Choose industry','Any industry');
-function val(n){var el=$('input[name="'+n+'"]:checked');return el?el.value:''}
-function vals(n){return $$('input[name="'+n+'"]:checked').map(function(x){return x.value})}
-function briefText(){var b=$('#bBrand').value.trim(),k=bInd.value,L=[];
- L.push('Hi Awaken, here is our brief.');L.push('');
- L.push('Brand: '+(b||'—'));L.push('Industry: '+(k&&k!=='all'?IND[k].label:'Other / not listed'));
- var g=vals('goal');if(g.length)L.push('We need: '+g.join(', '));
- var c=vals('ch');if(c.length)L.push('Channels: '+c.join(', '));
- if(val('time'))L.push('Timing: '+val('time'));
- if(val('bud'))L.push('Budget (first phase): '+val('bud'));
- if(val('pack')&&val('pack')!=='Not sure')L.push('Package: '+val('pack'));
- var n=$('#bName').value.trim(),cn=$('#bCon').value.trim(),nt=$('#bNote').value.trim();
- if(n)L.push('From: '+n);if(cn)L.push('Contact: '+cn);if(nt){L.push('');L.push('Notes: '+nt)}
- L.push('');L.push('(Sent from the Awaken Digital proposal page)');return L.join('\n')}
-function updateBrief(){var t=briefText(),b=$('#bBrand').value.trim();$('#bOut').textContent=t;
- $('#sWA').href='https://wa.me/'+WA+'?text='+encodeURIComponent(t);
- $('#sML').href='mailto:'+MAIL+'?subject='+encodeURIComponent('Brief'+(b?' from '+b:'')+' — Awaken Digital')+'&body='+encodeURIComponent(t)}
-$('#bform').addEventListener('input',updateBrief);$('#bform').addEventListener('change',updateBrief);
-bInd.addEventListener('change',function(){bInd.dataset.touched='1'});
-$('#sCP').addEventListener('click',function(){copyText(briefText(),function(){toast('Brief copied')})});
-$('#sVB').addEventListener('click',function(){copyText(briefText(),function(){toast('Brief copied — paste it into Viber');setTimeout(function(){location.href='viber://chat?number=%2B959255762417'},500)})});
-function goStart(){var s=$('#start');s.scrollIntoView({behavior:RM?'auto':'smooth'})}
-D.addEventListener('click',function(e){var g=e.target.closest('[data-goal]');if(g){var i=$('input[name="goal"][value="'+g.dataset.goal+'"]');if(i)i.checked=true;updateBrief();goStart();toast('Added to your brief')}
- var p=e.target.closest('[data-pack]');if(p){var r=$('input[name="pack"][value="'+p.dataset.pack+'"]');if(r)r.checked=true;updateBrief();goStart();toast(p.dataset.pack+' added to your brief')}});
-
-/* link maker */
-function mk(){var b=$('#mkBrand').value.replace(/\s+/g,' ').trim(),k=mkInd.value,p=[];if(b)p.push('for='+encodeURIComponent(b));if(k&&k!=='all')p.push('ind='+k);var s=p.length?'?'+p.join('&'):'';
- var base=/awakenentertainment\.org$/.test(location.hostname)?location.origin+location.pathname:LIVE;$('#mkOut').value=base+s;$('#mkOpen').href=location.pathname+s}
-$('#mkBrand').addEventListener('input',mk);mkInd.addEventListener('change',mk);
-$('#mkCopy').addEventListener('click',function(){copyText($('#mkOut').value,function(){toast('Link copied')})});
-
-/* set industry */
-function setInd(k,silent){if(!IND[k])k='all';ind=k;store('aw_ind',k);var I=IND[k];
- $$('[data-indlabel]').forEach(function(el){el.textContent=k==='all'?'All brands':I.short});
- $('#indLine').textContent=k==='all'?'':'Ideas for '+I.label+' inside.';
- $$('.case').forEach(function(c){var m=k!=='all'&&(' '+c.dataset.ind+' ').indexOf(' '+k+' ')>-1;c.classList.toggle('match',m);c.style.order=m?'-1':''});
- $$('#logos li').forEach(function(li){var m=k==='all'||(' '+li.dataset.ind+' ').indexOf(' '+k+' ')>-1;li.classList.toggle('dim',!m);li.classList.toggle('hit',k!=='all'&&m)});
- $$('.itab').forEach(function(b){b.setAttribute('aria-selected',b.dataset.k===k?'true':'false')});
- $$('#ipickList [data-k]').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.k===k?'true':'false')});
- renderPlay(k);
- $$('.pk').forEach(function(p){var s=k!=='all'&&p.dataset.pk===I.pack;p.classList.toggle('sug',s);$('.sg',p).textContent=s?'Suggested for '+I.short:''});
- if(!bInd.dataset.touched)bInd.value=k;mkInd.value=k;mk();updateBrief();
- if(!silent){try{var u=new URL(location.href);if(k==='all')u.searchParams.delete('ind');else u.searchParams.set('ind',k);history.replaceState(null,'',u.pathname+u.search+u.hash)}catch(e){}}}
-setInd(ind,true);
-$('#mkBrand').value=brand;mk();
-})();
-</script>
+<script src="app.js?v=2.0"></script>
 </body>
 </html>
