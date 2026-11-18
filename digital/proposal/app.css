@@ -1136,3 +1136,27 @@ footer.ft nav a:hover,footer.ft nav button:hover{opacity:1}
   footer.ft *{color:#111 !important}
   footer.ft img{filter:none !important}
 }
+
+/* ============ QR + PRESENT MODE ============ */
+.mk .out .qrb{display:inline-flex;align-items:center;gap:6px;height:42px;padding:0 12px;border-radius:10px;background:#fff;color:#0c0c0c;box-shadow:inset 0 0 0 1px rgba(12,12,12,.15);font-size:13px;font-weight:700}
+.ov.center .qrp{width:min(440px,calc(100% - 28px));text-align:center}
+.qr-box{width:min(300px,70vw);margin:4px auto 0;padding:10px;border-radius:18px;background:#fff;box-shadow:0 0 0 1px rgba(12,12,12,.08),0 18px 40px rgba(12,12,12,.12)}
+.qr-box svg{display:block;width:100%;height:auto}
+.qr-for{margin-top:18px;font-size:18px;font-weight:800;letter-spacing:-.01em}
+.qr-url{margin-top:4px;font-size:12.5px;color:#666;word-break:break-all}
+.qr-act{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-top:18px}
+.qr-act .btn{padding:11px 16px;font-size:13px}
+.pm-hud{position:fixed;left:16px;bottom:16px;z-index:65;display:flex;align-items:center;gap:12px;max-width:calc(100% - 32px);padding:7px 7px 7px 14px;border-radius:999px;background:rgba(12,12,12,.84);color:#fff;font-size:12.5px;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:0 10px 30px rgba(0,0,0,.3);opacity:.45;transition:opacity .3s}
+.pm-hud:hover,.pm-hud:focus-within{opacity:1}
+.pm-hud[hidden]{display:none !important}
+.pm-dot{width:8px;height:8px;border-radius:50%;background:#ff453a;box-shadow:0 0 0 4px rgba(255,69,58,.25);animation:pmPulse 1.6s ease-in-out infinite;flex:none}
+@keyframes pmPulse{50%{box-shadow:0 0 0 7px rgba(255,69,58,0)}}
+.pm-hud b{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pm-keys{opacity:.75;white-space:nowrap}
+.pm-keys kbd{display:inline-block;min-width:18px;padding:1px 5px;border-radius:5px;background:rgba(255,255,255,.14);font:700 11px var(--f);text-align:center}
+.pm-hud button{height:30px;padding:0 13px;border-radius:999px;background:#fff;color:#0c0c0c;font-size:12px;font-weight:800;flex:none}
+body.present .tb{transform:translateY(-110%);transition:transform .35s var(--ease)}
+body.present .rail,body.present .pbtn,body.present .cursor,body.present .scrollcue{display:none !important}
+@media(max-width:640px){.pm-keys{display:none}}
+@media print{.pm-hud,.qrp{display:none !important}}
+@media(max-width:640px){[data-present]{display:none !important}.mk .out{flex-wrap:wrap}.mk .out input{flex:1 1 100%}}

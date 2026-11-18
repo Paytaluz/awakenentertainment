@@ -150,7 +150,7 @@ var actOf=function(c){return +(c.dataset.act||0)};
  mlist.innerHTML=html;
 })();
 var curEl=$('#curLabel'),actEl=$('#actLabel'),pbNum=$('#pbNum'),pbName=$('#pbName'),pbAct=$('#pbAct'),curChap=chaps[0];
-function setCur(c){curChap=c;var t=c.dataset.theme||'hero';D.body.setAttribute('data-t',t);D.body.classList.toggle('dk',DARK.indexOf(t)>-1);
+function setCur(c){curChap=c;if(typeof pmHud==='function')pmHud();var t=c.dataset.theme||'hero';D.body.setAttribute('data-t',t);D.body.classList.toggle('dk',DARK.indexOf(t)>-1);
  curEl.textContent=c.id==='top'?'':c.dataset.label;actEl.textContent=c.id==='top'?'':ACTS[actOf(c)];
  pbNum.textContent=c.dataset.n;pbName.textContent=c.dataset.short||'';pbAct.textContent=ACTS[actOf(c)].replace(/ ·.*/,'')||'Chapter';
  $$('a',rail).forEach(function(a){var on=a.getAttribute('href')==='#'+c.id;a.classList.toggle('on',on);if(on)a.classList.add('seen')});
@@ -470,6 +470,8 @@ var PAL_ITEMS=[];
   ['Copy link to this proposal','share url',function(){copyText(location.href.split('#')[0],function(){toast('Link copied')})}],
   ['Save as PDF','print download',function(){doPrint()}],
   ['Choose your industry','tailor',function(){openOv('#ipick')}],
+  ['Present mode','present full screen pitch meeting slideshow',function(){pmEnter()}],
+  ['QR code for this proposal','qr share phone scan',function(){qrHere()}],
   ['Keyboard shortcuts','help keys',function(){openOv('#help')}]].forEach(function(a){PAL_ITEMS.push({t:'Action',l:a[0],s:'',k:a[1],run:a[2]})});
 })();
 var palSel=0,palRes=[];
@@ -484,10 +486,48 @@ function scrollSel(){var on=$('#palList li.on');on&&on.scrollIntoView({block:'ne
 $('#palList').addEventListener('click',function(e){var li=e.target.closest('[data-i]');if(li)runPal(+li.dataset.i)});
 $('#palList').addEventListener('mousemove',function(e){var li=e.target.closest('[data-i]');if(li&&+li.dataset.i!==palSel){palSel=+li.dataset.i;paintPal()}});
 
+/* ================= QR SHARE ================= */
+var qrQ=null,qrCur={u:'',l:''};
+function loadQR(cb){if(W.qrcode)return cb();if(qrQ){qrQ.push(cb);return}qrQ=[cb];var s=D.createElement('script');s.src='qr.js?v=1';s.async=true;
+ s.onload=function(){var q=qrQ;qrQ=null;q.forEach(function(f){f()})};s.onerror=function(){qrQ=null;toast('Could not load the QR code — check your connection')};D.head.appendChild(s)}
+function shareURL(){var base=/awakenentertainment\.org$/.test(location.hostname)?location.origin+location.pathname:LIVE,p=[];if(brand)p.push('for='+encodeURIComponent(brand));if(ind&&ind!=='all')p.push('ind='+ind);return base+(p.length?'?'+p.join('&'):'')}
+function prettyURL(u){var s=u.replace(/^https?:\/\//,'');try{s=decodeURIComponent(s)}catch(e){}return s}
+function qrMatrix(t){var q=qrcode(0,'M');q.addData(t);q.make();return q}
+function openQR(u,label){loadQR(function(){var q=qrMatrix(u),n=q.getModuleCount(),N=n+8,d='';for(var r=0;r<n;r++)for(var c=0;c<n;c++)if(q.isDark(r,c))d+='M'+(c+4)+' '+(r+4)+'h1v1h-1z';
+ qrCur={u:u,l:label||''};$('#qrBox').innerHTML='<svg viewBox="0 0 '+N+' '+N+'" shape-rendering="crispEdges" role="img" aria-label="QR code linking to '+esc(u)+'"><rect width="'+N+'" height="'+N+'" fill="#fff"/><path d="'+d+'" fill="#0c0c0c"/></svg>';
+ $('#qrFor').textContent=label||'Awaken Digital — proposal';$('#qrUrl').textContent=prettyURL(u);openOv('#qrov')})}
+$('#qrCopy').addEventListener('click',function(){copyText(qrCur.u,function(){toast('Link copied')})});
+$('#qrDl').addEventListener('click',function(){if(!W.qrcode||!qrCur.u)return;var q=qrMatrix(qrCur.u),n=q.getModuleCount(),cv=D.createElement('canvas'),W0=1080,H0=1320,cell=Math.floor(880/(n+8)),sz=cell*(n+8),ox=Math.round((W0-sz)/2),oy=90,x=cv.getContext('2d');
+ cv.width=W0;cv.height=H0;x.fillStyle='#fff';x.fillRect(0,0,W0,H0);x.fillStyle='#0c0c0c';for(var r=0;r<n;r++)for(var c=0;c<n;c++)if(q.isDark(r,c))x.fillRect(ox+(c+4)*cell,oy+(r+4)*cell,cell,cell);
+ x.textAlign='center';x.fillStyle='#0c0c0c';x.font='800 46px Inter, Arial, sans-serif';x.fillText(qrCur.l||'Awaken Digital — proposal',W0/2,oy+sz+80);
+ x.fillStyle='#666';x.font='600 24px Inter, Arial, sans-serif';x.fillText(prettyURL(qrCur.u).slice(0,80),W0/2,oy+sz+128);
+ x.fillStyle='#d20c0b';x.fillRect(W0/2-40,oy+sz+170,80,6);
+ try{var a=D.createElement('a');a.href=cv.toDataURL('image/png');a.download='awaken-proposal-qr'+(brand?'-'+brand.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,''):'')+'.png';D.body.appendChild(a);a.click();a.remove();toast('QR code saved')}catch(e){toast('Could not save the image')}});
+function qrHere(){openQR(shareURL(),brand?'Prepared for '+brand:(ind&&ind!=='all'?'Awaken Digital — ideas for '+IND[ind].label:'Awaken Digital — proposal'))}
+$('#mkQR').addEventListener('click',function(){var b=$('#mkBrand').value.replace(/\s+/g,' ').trim();openQR($('#mkOut').value,b?'Prepared for '+b:'Awaken Digital — proposal')});
+
+/* ================= PRESENT MODE ================= */
+var PM=false,pmHudEl=$('#pmHud');
+function pmStops(){var y=W.scrollY,out=[];$$('section[data-chap],.op,.blk,.story-steps .step,.g-head,.bento,.mcdb').forEach(function(el){if(el.offsetParent===null&&el.tagName!=='SECTION')return;out.push(Math.round(el.getBoundingClientRect().top+y))});
+ out.sort(function(a,b){return a-b});return out.filter(function(v,i){return i===0||v-out[i-1]>60})}
+function pmGo(dir){var y=W.scrollY,vh=W.innerHeight,st=pmStops(),off=18,t,i;
+ if(dir>0){t=null;for(i=0;i<st.length;i++)if(st[i]-off>y+10){t=st[i]-off;break}if(t===null||t-y>vh*1.1)t=y+vh*.86}
+ else{t=null;for(i=st.length-1;i>=0;i--)if(st[i]-off<y-10){t=st[i]-off;break}if(t===null)t=0;if(y-t>vh*1.1)t=y-vh*.86}
+ W.scrollTo({top:Math.max(0,t),behavior:RM?'auto':'smooth'})}
+function pmHud(){if(!PM)return;$('#pmChap').textContent=curChap&&curChap.id!=='top'?curChap.dataset.label:'Cover'}
+function pmEnter(){if(PM)return;PM=true;$$('.ov.open').forEach(function(o){closeOv(o,true)});D.body.classList.add('present');pmHudEl.hidden=false;pmHud();
+ var r=D.documentElement;try{var p=r.requestFullscreen?r.requestFullscreen():(r.webkitRequestFullscreen&&r.webkitRequestFullscreen());if(p&&p.catch)p.catch(function(){})}catch(e){}
+ toast('Present mode: ← → to move · Q for a QR code · Esc to exit')}
+function pmExit(){if(!PM)return;PM=false;D.body.classList.remove('present');pmHudEl.hidden=true;try{if(D.fullscreenElement&&D.exitFullscreen)D.exitFullscreen();else if(D.webkitFullscreenElement&&D.webkitExitFullscreen)D.webkitExitFullscreen()}catch(e){}}
+['fullscreenchange','webkitfullscreenchange'].forEach(function(ev){D.addEventListener(ev,function(){if(PM&&!(D.fullscreenElement||D.webkitFullscreenElement))pmExit()})});
+$('#pmExit').addEventListener('click',pmExit);
+D.addEventListener('click',function(e){if(e.target.closest('[data-present]')){e.preventDefault();pmEnter()}else if(e.target.closest('[data-qr]')){e.preventDefault();qrHere()}});
+
 /* ================= KEYBOARD ================= */
 D.addEventListener('keydown',function(e){
  if((e.metaKey||e.ctrlKey)&&(e.key==='k'||e.key==='K')){e.preventDefault();$('#palette').classList.contains('open')?closeOv($('#palette')):openOv('#palette');return}
- if(e.key==='Escape'){$$('.ov.open').forEach(function(o){closeOv(o)});return}
+ if(e.key==='Escape'){if($('.ov.open')){$$('.ov.open').forEach(function(o){closeOv(o)});return}if(PM){pmExit();return}return}
+ if(PM&&!$('.ov.open')&&!e.metaKey&&!e.ctrlKey&&!e.altKey){var pk=e.key;if(pk==='ArrowRight'||pk==='ArrowDown'||pk==='PageDown'||pk===' '){e.preventDefault();pmGo(1);return}if(pk==='ArrowLeft'||pk==='ArrowUp'||pk==='PageUp'){e.preventDefault();pmGo(-1);return}}
  var tg=e.target,typing=tg&&(/INPUT|TEXTAREA|SELECT/.test(tg.tagName)||tg.isContentEditable);
  if(typing||e.metaKey||e.ctrlKey||e.altKey||$('.ov.open'))return;
  var key=e.key;
@@ -497,6 +537,8 @@ D.addEventListener('keydown',function(e){
  else if(key==='b'){goTo('#start')}
  else if(key==='m'){openOv('#menu')}
  else if(key==='p'){doPrint()}
+ else if(key==='f'){PM?pmExit():pmEnter()}
+ else if(key==='q'){qrHere()}
  else if(key==='?'){openOv('#help')}
 });
 
