@@ -486,6 +486,16 @@ function scrollSel(){var on=$('#palList li.on');on&&on.scrollIntoView({block:'ne
 $('#palList').addEventListener('click',function(e){var li=e.target.closest('[data-i]');if(li)runPal(+li.dataset.i)});
 $('#palList').addEventListener('mousemove',function(e){var li=e.target.closest('[data-i]');if(li&&+li.dataset.i!==palSel){palSel=+li.dataset.i;paintPal()}});
 
+/* ================= YANGON OFFICE HOURS (live) ================= */
+(function(){var els=$$('[data-ystat]');if(!els.length)return;var DN=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+ function fmt(H,M){return ((H+11)%12+1)+':'+(M<10?'0':'')+M+' '+(H<12?'AM':'PM')}
+ function tick(){var y=new Date(Date.now()+390*60000),d=y.getUTCDay(),H=y.getUTCHours(),M=y.getUTCMinutes(),m=H*60+M,open=d>=1&&d<=6&&m>=540&&m<1080,nx;
+  if(!open){if(d>=1&&d<=6&&m<540)nx='opens today 9:00 AM';else if(d>=1&&d<=5)nx='opens tomorrow 9:00 AM';else nx='opens Monday 9:00 AM'}
+  var h='<i class="'+(open?'on':'')+'"></i>'+(open?'Open now':'Closed now')+' · '+fmt(H,M)+' in Yangon'+(open?'':' · '+nx);
+  var sh='<i class="'+(open?'on':'')+'"></i>'+(open?'Open now':'Closed · '+nx);
+  els.forEach(function(el){el.innerHTML=el.dataset.ystat==='short'?sh:h})}
+ tick();setInterval(tick,60000)})();
+
 /* ================= QR SHARE ================= */
 var qrQ=null,qrCur={u:'',l:''};
 function loadQR(cb){if(W.qrcode)return cb();if(qrQ){qrQ.push(cb);return}qrQ=[cb];var s=D.createElement('script');s.src='qr.js?v=1';s.async=true;

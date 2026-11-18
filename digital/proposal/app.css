@@ -1160,3 +1160,11 @@ body.present .rail,body.present .pbtn,body.present .cursor,body.present .scrollc
 @media(max-width:640px){.pm-keys{display:none}}
 @media print{.pm-hud,.qrp{display:none !important}}
 @media(max-width:640px){[data-present]{display:none !important}.mk .out{flex-wrap:wrap}.mk .out input{flex:1 1 100%}}
+.ystat{display:flex;align-items:center;gap:8px;margin-top:10px;font-size:12.5px;font-weight:700;line-height:1.35}
+.ystat:empty{display:none}
+.ystat i{flex:none;width:8px;height:8px;border-radius:50%;background:#a3a3a3;box-shadow:0 0 0 4px rgba(163,163,163,.22)}
+.ystat i.on{background:#22c55e;box-shadow:0 0 0 4px rgba(34,197,94,.25)}
+.contact .ystat{color:#fff}
+.contact .ystat i.on{background:#c8ff00;box-shadow:0 0 0 4px rgba(200,255,0,.25)}
+.bprev .ystat{color:#333}
+@media print{.ystat{display:none !important}}
