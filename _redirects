@@ -1,1 +1,6 @@
+/mcdb/assets/* /mcdb/assets/:splat 200
+/mcdb/apple-touch-icon.png /mcdb/apple-touch-icon.png 200
+/mcdb/awaken-pr-logo.png /mcdb/awaken-pr-logo.png 200
+/mcdb/favicon-32.png /mcdb/favicon-32.png 200
+/mcdb/favicon.svg /mcdb/favicon.svg 200
 /mcdb/* /mcdb/ 200
