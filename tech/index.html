@@ -294,12 +294,23 @@ html:not(.js) .hero-c .ln>span{transform:none}
 .track{position:relative;margin-top:60px}
 .t-slots{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
 .t-slots i{height:76px;border:1.5px dashed #d9d4c9;border-radius:16px}
-.runner{position:absolute;left:0;top:12px;width:52px;height:52px;border-radius:13px;background:var(--yellow);box-shadow:0 14px 28px rgba(40,35,20,.14);transition:background-color .45s}
+/* the runner changes shape at every step: 01 square · 02 circle · 03 parallelogram · 04 triangle */
+.runner{position:absolute;left:0;top:12px;width:52px;height:52px;filter:drop-shadow(0 12px 14px rgba(40,35,20,.16))}
+.runner i{display:block;width:100%;height:100%;background:var(--yellow);border-radius:13px;clip-path:polygon(0% 0%,100% 0%,100% 100%,0% 100%);transition:background-color .45s,border-radius .55s var(--ease),clip-path .55s var(--ease)}
+.runner[data-s="1"] i{border-radius:50%}
+.runner[data-s="2"] i{border-radius:6px;clip-path:polygon(24% 0%,100% 0%,76% 100%,0% 100%)}
+.runner[data-s="3"] i{border-radius:4px;clip-path:polygon(50% 0%,50% 0%,100% 92%,0% 92%)}
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:18px}
 .step{position:relative;border-radius:20px;padding:26px;background:var(--bg);border:1px solid transparent;transition:background .45s,border-color .45s,transform .6s var(--ease),box-shadow .6s}
 .step.on{background:#fff;border-color:var(--line);transform:translateY(-6px);box-shadow:0 22px 46px rgba(40,35,20,.08)}
 .s-num{display:inline-grid;place-items:center;font-family:'Inter Tight';font-weight:700;font-size:13px;width:34px;height:34px;border-radius:10px;background:#fff;color:var(--muted);transition:background .45s,color .45s}
 .step.on .s-num{background:var(--c);color:var(--ink)}
+/* each step's number badge wears the same shape the moving block takes there */
+.step:nth-child(2) .s-num{border-radius:50%}
+.step:nth-child(2).on .s-num{color:#fff}
+.step:nth-child(3) .s-num{width:44px;border-radius:4px;clip-path:polygon(22% 0,100% 0,78% 100%,0 100%)}
+.step:nth-child(3).on .s-num{color:#fff}
+.step:nth-child(4) .s-num{width:44px;height:40px;padding-top:13px;font-size:12px;border-radius:0;clip-path:polygon(50% 0,100% 100%,0 100%)}
 .step h3{font-size:23px;font-weight:600;letter-spacing:-.02em;margin-top:1rem}
 .step p{color:var(--ink2);font-size:14.5px;margin-top:.5rem}
 
@@ -651,7 +662,7 @@ footer{border-top:1px solid var(--line);padding:64px 0 32px}
       <h2 class="h2">From idea to launch.</h2>
       <p class="lead">Your digital success path — the same four steps on every project, with full traceability back to your requirements.</p>
     </div>
-    <div class="track" id="track" aria-hidden="true"><div class="t-slots"><i></i><i></i><i></i><i></i></div><span class="runner" id="runner"></span></div>
+    <div class="track" id="track" aria-hidden="true"><div class="t-slots"><i></i><i></i><i></i><i></i></div><span class="runner" id="runner" data-s="0"><i></i></span></div>
     <div class="steps" id="steps">
       <div class="step" style="--c:var(--yellow)"><span class="s-num">01</span><h3>Define</h3><p>We standardize product requirements and track changes — clearly defining features, tech specifics and priorities before a single line of code is written.</p></div>
       <div class="step" style="--c:var(--blue)"><span class="s-num">02</span><h3>Plan</h3><p>We turn requirements into Stories and a Product Backlog, then run Sprint Planning — keeping full traceability back to your requirements.</p></div>
@@ -1058,7 +1069,8 @@ footer{border-top:1px solid var(--line);padding:64px 0 32px}
       idx = Math.min(3, Math.round(p));
       const cells = $$('.t-slots i', track);
       const cw = cells[0].offsetWidth, gap = cells[1].offsetLeft - cells[0].offsetLeft, rs = runner.offsetWidth;
-      runner.style.transform = `translate(${((cw - rs) / 2 + p * gap).toFixed(1)}px,0) rotate(${(p * 90).toFixed(1)}deg)`;
+      // one full turn between slots, so every shape lands upright
+      runner.style.transform = `translate(${((cw - rs) / 2 + p * gap).toFixed(1)}px,0) rotate(${(p * 360).toFixed(1)}deg)`;
     } else {
       idx = -1;
       steps.forEach((s, i) => { if (s.getBoundingClientRect().top < vh * .62) idx = i; });
@@ -1067,7 +1079,8 @@ footer{border-top:1px solid var(--line);padding:64px 0 32px}
     if (idx !== lastIdx) {
       lastIdx = idx;
       steps.forEach((s, i) => s.classList.toggle('on', i === idx));
-      runner.style.background = RC[idx];
+      runner.dataset.s = idx;
+      runner.firstElementChild.style.background = RC[idx];
     }
   }
 
