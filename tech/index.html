@@ -316,12 +316,22 @@ html:not(.js) .hero-c .ln>span{transform:none}
 
 /* ── TEAM ── */
 .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:52px}
-.tcard{background:#fff;border-radius:20px;padding:30px;border:1px solid rgba(19,19,22,.04);transition:transform .5s var(--ease),box-shadow .5s}
+.tcard{display:flex;flex-direction:column;background:#fff;border-radius:22px;padding:12px;border:1px solid rgba(19,19,22,.04);transition:transform .5s var(--ease),box-shadow .5s}
 .tcard:hover{transform:translateY(-4px);box-shadow:0 24px 50px rgba(40,35,20,.08)}
-.t-av{width:66px;height:66px;border-radius:19px;background:var(--c);display:grid;place-items:center;font-family:'Inter Tight';font-weight:700;font-size:22px;color:var(--ink);transition:border-radius .6s var(--ease),transform .6s var(--ease)}
-.tcard:hover .t-av{border-radius:50%;transform:rotate(-6deg)}
-.t-av .ic{font-size:28px;color:#fff}
-.tcard h3{font-size:21px;font-weight:600;letter-spacing:-.02em;margin-top:1.3rem}
+.t-photo{position:relative;aspect-ratio:5/6;border-radius:16px;background:var(--c);overflow:hidden}
+.t-photo img{position:absolute;left:0;right:0;bottom:0;width:100%;height:auto;z-index:1;transform-origin:50% 100%;transition:transform .8s var(--ease)}
+.tcard:hover .t-photo img{transform:scale(1.04)}
+.t-blk{position:absolute;background:rgba(255,255,255,.28);transition:transform 1s var(--ease)}
+.t-blk.b1{left:14px;top:16px;width:46px;height:46px;border-radius:12px;transform:rotate(-10deg)}
+.t-blk.b2{right:18px;top:34%;width:30px;height:30px;border-radius:50%}
+.tcard:hover .t-blk.b1{transform:translate(10px,8px) rotate(14deg)}
+.tcard:hover .t-blk.b2{transform:translate(-8px,-14px)}
+.t-body{display:flex;flex-direction:column;flex:1;padding:16px 14px 12px}
+.t-in{align-self:flex-start;display:inline-flex;align-items:center;gap:.45rem;margin-top:auto;padding:.5rem .9rem;border-radius:999px;background:var(--bg);font-size:13.5px;font-weight:600;transition:background .3s,color .3s}
+.t-in .ic{font-size:15px;fill:currentColor;stroke:none}
+.t-in:hover{background:#0a66c2;color:#fff}
+.t-skills{margin-bottom:1.2rem}
+.tcard h3{font-size:21px;font-weight:600;letter-spacing:-.02em}
 .t-role{display:block;font-size:13px;font-weight:600;color:var(--muted);margin-top:.15rem}
 .tcard p{color:var(--ink2);font-size:14.5px;margin-top:.9rem}
 .t-skills{display:flex;flex-wrap:wrap;gap:6px;margin-top:1.1rem}
@@ -418,7 +428,7 @@ footer{border-top:1px solid var(--line);padding:64px 0 32px}
   .w-top{height:180px}
   .steps{grid-template-columns:1fr}
   .stats{grid-template-columns:1fr}
-  .tcard{padding:24px}
+  .tcard{padding:10px}
   .cta{padding:60px 0 84px}
   .cta-panel{padding:48px 24px;border-radius:26px}
   .cta-art{height:210px}
@@ -455,6 +465,7 @@ footer{border-top:1px solid var(--line);padding:64px 0 32px}
   <symbol id="i-box" viewBox="0 0 24 24"><path d="M3 7.5 12 3l9 4.5v9L12 21l-9-4.5z"/><path d="m3 7.5 9 4.5 9-4.5M12 12v9"/></symbol>
   <symbol id="i-dash" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2.5"/><path d="m7 15 3-3 3 2 4-5"/></symbol>
   <symbol id="i-code" viewBox="0 0 24 24"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M13.5 5l-3 14"/></symbol>
+  <symbol id="i-in" viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></symbol>
   <symbol id="i-pen" viewBox="0 0 24 24"><path d="M4 20l4-1L19 8l-3-3L5 16z"/><path d="m14 7 3 3"/></symbol>
 </svg>
 
@@ -686,12 +697,36 @@ footer{border-top:1px solid var(--line);padding:64px 0 32px}
     <div class="rv">
       <span class="eb"><b><i></i><i></i><i></i></b>Our team</span>
       <h2 class="h2">You talk directly to the<br>people who build it.</h2>
-      <p class="lead">Nyi Nyi Soe Win is your point of contact from the first meeting to the final handover — working with our engineering and design teams.</p>
+      <p class="lead">Meet the people behind Awaken Tech — strategy, engineering, automation and design, all in one small team.</p>
     </div>
     <div class="team-grid">
-      <article class="tcard rv"><div class="t-av" style="--c:var(--yellow)">NS</div><h3>Nyi Nyi Soe Win</h3><span class="t-role">Founder &amp; CEO</span><p>Founded Awaken in 2013 and has led every project since — from client strategy and scoping to launch. Nyi Nyi is your point of contact from the first meeting to the final handover.</p><div class="t-skills"><span>Strategy</span><span>Product</span><span>Business Dev</span><span>Leadership</span></div></article>
-      <article class="tcard rv" style="--i:1"><div class="t-av" style="--c:var(--blue)"><svg class="ic"><use href="#i-code"/></svg></div><h3>Engineering Team</h3><span class="t-role">Web, App, AI &amp; Cloud</span><p>Our developers work in sprints with version control, code review and bug tracking on every project — building websites, apps, AI features and commercial systems, then keeping them running on AWS.</p><div class="t-skills"><span>WordPress</span><span>Mobile</span><span>AI APIs</span><span>AWS / Docker</span></div></article>
-      <article class="tcard rv" style="--i:2"><div class="t-av" style="--c:var(--orange)"><svg class="ic"><use href="#i-pen"/></svg></div><h3>Design &amp; UX Team</h3><span class="t-role">Wireframes, UI &amp; Characters</span><p>Information architecture, wireframes, UI design and illustrated characters — working hand in hand with <a href="/design/" style="text-decoration:underline;text-decoration-color:var(--yellow);text-decoration-thickness:2px;text-underline-offset:3px">Awaken Design</a> so every product looks as good as it works.</p><div class="t-skills"><span>UX Research</span><span>Wireframes</span><span>UI Design</span><span>Adobe XD</span></div></article>
+      <article class="tcard rv">
+        <div class="t-photo" style="--c:var(--yellow)"><i class="t-blk b1"></i><i class="t-blk b2"></i><img src="/tech/team/nyi-nyi-soe-win.webp" alt="Nyi Nyi Soe Win" width="600" height="720" loading="lazy"></div>
+        <div class="t-body">
+          <h3>Nyi Nyi Soe Win</h3><span class="t-role">Founder &amp; CEO</span>
+          <p>Founded Awaken in 2013 and has led every project since — from client strategy and scoping to launch. Nyi Nyi is your point of contact from the first meeting to the final handover.</p>
+          <div class="t-skills"><span>Strategy</span><span>Product</span><span>Business Dev</span><span>Leadership</span></div>
+          <a class="t-in" href="https://www.linkedin.com/in/nyi-nyi-soe-win-23602976/" target="_blank" rel="noopener" aria-label="Nyi Nyi Soe Win on LinkedIn"><svg class="ic"><use href="#i-in"/></svg>LinkedIn</a>
+        </div>
+      </article>
+      <article class="tcard rv" style="--i:1">
+        <div class="t-photo" style="--c:var(--blue)"><i class="t-blk b1"></i><i class="t-blk b2"></i><img src="/tech/team/aung-myo-tun.webp" alt="Aung Myo Tun" width="600" height="720" loading="lazy"></div>
+        <div class="t-body">
+          <h3>Aung Myo Tun</h3><span class="t-role">Network &amp; AI Automation</span>
+          <p>ISP sales, operations and network consultant, and an AI automation professional — covering the connectivity, infrastructure and automated workflows behind our projects.</p>
+          <div class="t-skills"><span>Networking</span><span>ISP Operations</span><span>AI Automation</span></div>
+          <a class="t-in" href="https://www.linkedin.com/in/aung-myo-tun-1061aa140/" target="_blank" rel="noopener" aria-label="Aung Myo Tun on LinkedIn"><svg class="ic"><use href="#i-in"/></svg>LinkedIn</a>
+        </div>
+      </article>
+      <article class="tcard rv" style="--i:2">
+        <div class="t-photo" style="--c:var(--orange)"><i class="t-blk b1"></i><i class="t-blk b2"></i><img src="/tech/team/yan-naing-bo.webp" alt="Yan Naing Bo" width="600" height="720" loading="lazy"></div>
+        <div class="t-body">
+          <h3>Yan Naing Bo</h3><span class="t-role">Senior UI/UX Designer</span>
+          <p>Senior UI/UX designer with a background in full-stack development and graphic design — so the interfaces we design are ones our developers can build.</p>
+          <div class="t-skills"><span>UI/UX Design</span><span>Full-Stack</span><span>Graphic Design</span></div>
+          <a class="t-in" href="https://www.linkedin.com/in/yan-naing-bo/" target="_blank" rel="noopener" aria-label="Yan Naing Bo on LinkedIn"><svg class="ic"><use href="#i-in"/></svg>LinkedIn</a>
+        </div>
+      </article>
     </div>
     <p class="careers rv">Want to build with us? <a href="mailto:nyinyisoewin@awakenentertainment.org?subject=Careers">Email us about careers</a></p>
   </div>
@@ -835,13 +870,30 @@ footer{border-top:1px solid var(--line);padding:64px 0 32px}
     const A = mob ? A_M : A_D, p = A[alt ? (i + 3) % 7 : i];
     return Object.assign(base(i), { x: p[0] * W, y: p[1] * H, rot: alt ? -p[2] * 1.4 : p[2] });
   }
-  function slotGeo() {
-    const n = 7, S = mob ? Math.min(42, (W - 60) / 9) : Math.round(80 * k);
-    return { n, S, y: H * (mob ? .6 : .69), left: W / 2 - n * S / 2 };
+  function slotGeo(loop) {
+    const n = 7, S = mob ? Math.min(40, (W - 60) / 9) : Math.round(80 * k);
+    let y = H * (mob ? .6 : .69);
+    if (loop) {
+      // once the headline is showing, the row sits in the free band between the buttons and the client strip
+      const top = hero.getBoundingClientRect().top;
+      y = ($('.hero-btns').getBoundingClientRect().bottom - top + clientsEl.getBoundingClientRect().top - top) / 2;
+    }
+    return { n, S, y, left: W / 2 - n * S / 2 };
   }
   const SLOT = { 1: 1, 0: 2, 2: 3, 4: 4, 5: 5 };
-  function slotted(i) {
-    const g = slotGeo(), b = base(i);
+  // 8 spots around the headline, clockwise from left-bottom — the blocks travel round them
+  const RING = [[.13, .62], [.14, .24], [.36, .15], [.66, .15], [.86, .22], [.87, .6], [.64, .78], [.36, .78]];
+  // each block's starting spot is the one nearest its stack, so leaving / returning never crosses the text
+  const HOME = [5, 0, 7, 1, 4, 3, 6];
+  function around(i, off) {
+    const b = base(i), j = (HOME[i] + off) % 8, tilt = (off + i) % 2 ? 8 : -8;
+    if (!mob) { const p = RING[j]; return Object.assign(b, { x: p[0] * W, y: p[1] * H, rot: tilt }); }
+    // phones: the headline fills the screen, so the blocks orbit an ellipse in the band under the buttons
+    const g = slotGeo(true), a = Math.PI + j * Math.PI / 4;
+    return Object.assign(b, { w: b.w * .7, h: b.h * .7, x: W / 2 + W * .36 * Math.cos(a), y: g.y + 42 * Math.sin(a), rot: tilt });
+  }
+  function slotted(i, g) {
+    g = g || slotGeo(); const b = base(i);
     if (i === 3) return Object.assign(b, { w: g.S * .95, h: g.S * .85, x: g.left - g.S * .72, y: g.y, rot: 90 });
     if (i === 6) return Object.assign(b, { w: g.S * .66, h: g.S * .84, x: g.left + g.n * g.S + g.S * .62, y: g.y, rot: 8 });
     return Object.assign(b, { w: g.S * .74, h: g.S * .74, r: rad('9px'), clip: CLIP.R, grey: 1, x: g.left + g.S * (SLOT[i] + .5), y: g.y, rot: 0 });
@@ -876,8 +928,8 @@ footer{border-top:1px solid var(--line);padding:64px 0 32px}
     o.bd.classList.toggle('grey', !!st.grey);
     o.cur = st;
   }
-  function placeSlots() {
-    const g = slotGeo();
+  function placeSlots(g) {
+    g = g || slotGeo();
     slotsEl.style.setProperty('--s', g.S + 'px');
     slotsEl.style.left = g.left + 'px';
     slotsEl.style.top = (g.y - g.S / 2) + 'px';
@@ -913,7 +965,7 @@ footer{border-top:1px solid var(--line);padding:64px 0 32px}
     // 4 — stack up beside the real headline
     at(5500, () => { showSay(-1); measure(); shapes.forEach((o, i) => put(o, pile(i), 1050, i * 60)); });
     at(5800, () => hero.classList.add('done'));
-    at(7000, () => { hero.classList.add('idle'); state = 'done'; });
+    at(7000, () => { hero.classList.add('idle'); state = 'done'; loop(); });
   }
   function finish(instant) {
     if (state !== 'intro') return;
@@ -923,40 +975,50 @@ footer{border-top:1px solid var(--line);padding:64px 0 32px}
     const d = instant ? 0 : 700;
     shapes.forEach((o, i) => put(o, pile(i), d, 0));
     hero.classList.add('done');
-    at(d + 60, () => { hero.classList.add('idle'); state = 'done'; });
+    at(d + 60, () => { hero.classList.add('idle'); state = 'done'; loop(); });
   }
-  $('#skip').addEventListener('click', () => finish(false));
-  $('#replay').addEventListener('click', () => { if (state === 'done') play(); });
-  ['wheel', 'touchmove', 'keydown'].forEach(t => addEventListener(t, () => { if (state === 'intro') finish(false); }, { passive: true }));
 
-  // gentle parallax once the stacks are built (mouse only)
-  let mx = 0, my = 0, praf = 0;
-  hero.addEventListener('pointermove', e => {
-    if (state !== 'done' || mob || reduce || e.pointerType !== 'mouse') return;
-    const r = hero.getBoundingClientRect();
-    mx = (e.clientX - r.left) / r.width - .5; my = (e.clientY - r.top) / r.height - .5;
-    if (praf) return;
-    praf = requestAnimationFrame(() => {
-      praf = 0;
-      shapes.forEach(o => {
-        const st = o.cur, d = o.s.depth;
-        o.el.style.setProperty('--d', '1100ms'); o.el.style.setProperty('--w8', '0ms'); o.el.style.setProperty('--ez', 'cubic-bezier(.2,.8,.2,1)');
-        o.el.style.transform = `translate(${(st.x - st.w / 2 - mx * 30 * d).toFixed(1)}px,${(st.y - st.h / 2 - my * 22 * d).toFixed(1)}px) rotate(${(st.rot - mx * 8 * d).toFixed(2)}deg) scale(1)`;
-      });
-    });
-  });
-  hero.addEventListener('pointerleave', () => { if (state === 'done') shapes.forEach(o => put(o, o.cur, 1100, 0, 'cubic-bezier(.2,.8,.2,1)')); });
+  /* after the intro the blocks never stop: they leave the stacks, travel one full
+     circle round the headline, stack up again — and repeat */
+  let heroSeen = true;
+  function loop() {
+    if (state !== 'done' || reduce) return;
+    if (!heroSeen || document.hidden) { state = 'paused'; return; }
+    timers.forEach(clearTimeout); timers = [];
+    const T0 = 2400, STEP = 1400;
+    at(T0, () => { measure(); shapes.forEach((o, i) => put(o, around(i, 0), 1100, i * 60, POP)); });
+    for (let s = 1; s <= 8; s++) at(T0 + 1200 + (s - 1) * STEP, () => shapes.forEach((o, i) => put(o, around(i, s), 1150, i * 40)));
+    const back = T0 + 1200 + 8 * STEP;
+    at(back, () => { measure(); shapes.forEach((o, i) => put(o, pile(i), 1100, i * 60)); });
+    at(back + 1300, loop);
+  }
+  function resume() { if (state === 'paused' && heroSeen && !document.hidden) { state = 'done'; loop(); } }
+  new IntersectionObserver(es => { heroSeen = es[0].isIntersecting; resume(); }).observe(hero);
+  document.addEventListener('visibilitychange', resume);
+  // put everything back on the stacks and start the loop again (after resizes / late font loads)
+  function restack() {
+    if (state === 'intro') return;
+    timers.forEach(clearTimeout); timers = [];
+    slotsEl.classList.remove('on');
+    measure(); shapes.forEach((o, i) => put(o, pile(i), 0, 0));
+    if (state !== 'paused') { state = 'done'; loop(); }
+  }
+
+  $('#skip').addEventListener('click', () => finish(false));
+  $('#replay').addEventListener('click', () => { if (state === 'done' || state === 'paused') play(); });
+  ['wheel', 'touchmove', 'keydown'].forEach(t => addEventListener(t, () => { if (state === 'intro') finish(false); }, { passive: true }));
 
   let rz;
   addEventListener('resize', () => {
     clearTimeout(rz);
     rz = setTimeout(() => {
-      const w = hero.clientWidth;
+      const w = hero.clientWidth, h = hero.clientHeight;
+      if (w === W && h === H) return;               // phone URL-bar show/hide: nothing to redo
       if (state === 'intro') { if (w !== W) finish(true); return; }
-      measure(); shapes.forEach((o, i) => put(o, pile(i), 0, 0));
-    }, 120);
+      restack();
+    }, 150);
   });
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { if (state === 'done') { measure(); shapes.forEach((o, i) => put(o, pile(i), 400, 0)); } });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { if (state === 'done') restack(); });
 
   measure();
   if (reduce || scrollY > innerHeight * .5) { state = 'intro'; finish(true); } else play();
