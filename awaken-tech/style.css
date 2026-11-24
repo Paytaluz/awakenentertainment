@@ -1221,4 +1221,5 @@ input, textarea, select { font-family: inherit; }
 }
 @media (max-width: 480px) {
   .footer-links { grid-template-columns: 1fr; }
+  .hero-headline { font-size: clamp(30px, 9vw, 112px); }
 }
