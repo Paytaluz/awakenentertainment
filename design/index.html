@@ -461,9 +461,13 @@
       .svc-side,.proc-side{position:static}
       .scard{position:relative;top:auto;transform:none;filter:none}
       .hub-svg{display:none}
-      .hub-row,.hub-row.mid{flex-direction:column;align-items:center;gap:18px;margin:18px 0}
-      .hub-row.mid .hub-core{order:-1;margin-bottom:6px}
+      /* phones/tablets: centre tile on top, cards in one column, a red spine between them */
+      .hub{display:flex;flex-direction:column;align-items:center;gap:18px;margin-top:52px}
+      .hub-row,.hub-row.mid{display:contents}
+      .hub-core{order:-1;margin-bottom:14px}
+      .hub::before{content:'';position:absolute;left:50%;top:46px;bottom:24px;width:2px;margin-left:-1px;background:linear-gradient(rgba(var(--red-rgb),.55),rgba(var(--red-rgb),.12))}
       .hcard{width:100%;max-width:520px}
+      .nav.open{background:rgba(14,14,16,.98);box-shadow:0 18px 40px rgba(0,0,0,.35)}
       .plans{grid-template-columns:1fr}
       .plan-wide{grid-template-columns:1fr}
       .pillars{grid-template-columns:1fr 1fr}
@@ -501,10 +505,19 @@
       .slides{grid-auto-columns:calc(92% - 9px)}
       .cstat b{font-size:36px;min-width:104px}
       .faq{padding-bottom:84px}
+      .plan{padding:24px 22px}
+      .fact{padding:.85rem .75rem}
+      .fact b{font-size:16px}
+      .fact span{font-size:13px;display:block;margin-top:2px}
+      .cl b{font-size:15px}
       .ft-grid{grid-template-columns:1fr}
+      footer{padding-bottom:124px}
       .btn{height:50px}
       .fab{right:12px;bottom:12px}
       .fab .ph,.fab .em{display:none}
+    }
+    @media (max-width:360px){
+      .facts{grid-template-columns:1fr}
     }
     @media (prefers-reduced-motion:reduce){
       *,*::before,*::after{animation:none!important;transition:none!important}
@@ -1101,7 +1114,7 @@
       <div class="contact-list rv d2">
         <a class="cl" href="tel:+959255762417"><i><svg class="ic"><use href="#i-phone"/></svg></i><span><small>Call us</small><b>+95 9255762417</b></span></a>
         <a class="cl" href="tel:+959799489370"><i><svg class="ic"><use href="#i-phone"/></svg></i><span><small>Or</small><b>+95 9799489370</b></span></a>
-        <a class="cl" href="mailto:nyinyisoewin@awakenentertainment.org"><i><svg class="ic"><use href="#i-mail"/></svg></i><span><small>Email us</small><b>nyinyisoewin@awakenentertainment.org</b></span></a>
+        <a class="cl" href="mailto:nyinyisoewin@awakenentertainment.org"><i><svg class="ic"><use href="#i-mail"/></svg></i><span><small>Email us</small><b>nyinyisoewin@<wbr>awakenentertainment.org</b></span></a>
         <a class="cl" href="https://maps.app.goo.gl/HuiVWz5wNQ3381Vv5" target="_blank" rel="noopener"><i><svg class="ic"><use href="#i-pin"/></svg></i><span><small>Studio</small><b>No.57, YaeKuYwarMa St, Mayangone</b></span></a>
       </div>
     </div>
@@ -1149,12 +1162,14 @@
 
   // mobile menu
   const nav = $('#nav'), tog = $('#navToggle');
-  tog.addEventListener('click', () => {
-    const open = nav.classList.toggle('open');
+  const setMenu = open => {
+    nav.classList.toggle('open', open);
     tog.setAttribute('aria-expanded', open);
     tog.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-  });
-  $$('.mnav a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+    $('use', tog).setAttribute('href', open ? '#i-x' : '#i-menu');
+  };
+  tog.addEventListener('click', () => setMenu(!nav.classList.contains('open')));
+  $$('.mnav a').forEach(a => a.addEventListener('click', () => setMenu(false)));
 
   // count-up numbers
   function countUp(el) {
