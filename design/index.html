@@ -4,1164 +4,1317 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Awaken Design — We design brands that make people stop &amp; feel.</title>
+  <meta name="description" content="Awaken Design is a branding and advertising studio in Yangon — identity, campaign key visuals and social content for MPT, Gery, MacArthur’s and more.">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;0,14..32,900;1,14..32,700;1,14..32,900&family=Playfair+Display:ital,wght@1,700;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet">
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     :root{
-      --bg:#ffffff;
-      --dark:#0a0a0a;
-      --dark2:#111111;
-      --dark3:#1a1a1a;
-      --border-light:rgba(0,0,0,.1);
-      --border-dark:rgba(255,255,255,.08);
-      --text:#0c0c0c;
-      --text-inv:#f0f0f0;
-      --muted:rgba(12,12,12,.5);
-      --muted-inv:rgba(240,240,240,.5);
-      --accent:#ff3333;
-      --accent-rgb:255,51,51;
+      --bg:#f6f7f9;
+      --card:#ffffff;
+      --ink:#0f0f12;
+      --ink2:#4a4a52;
+      --muted:#80808a;
+      --line:#e6e7ec;
+      --dark:#0e0e10;
+      --dark2:#17171a;
+      --dark3:#222226;
+      --red:#ff3333;
+      --red-d:#e62525;
+      --red-rgb:255,51,51;
+      --wrap:1180px;
+      --ease:cubic-bezier(.16,1,.3,1);
+      --head:112px;
     }
-    html{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);scroll-behavior:smooth}
-    body{overflow-x:hidden;cursor:none}
-    a{text-decoration:none;color:inherit}
+    html{font-family:'Urbanist',system-ui,sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;scroll-padding-top:var(--head)}
+    body{overflow-x:hidden;font-size:16px;line-height:1.6}
+    a{color:inherit;text-decoration:none}
     img{display:block;max-width:100%}
-    em{font-style:italic;font-family:'Playfair Display',serif}
+    ul{list-style:none}
+    button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+    .wrap{width:min(var(--wrap),100% - 40px);margin-inline:auto}
+    .ic{width:1em;height:1em;flex-shrink:0;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+    /* grid columns may shrink below their content (slider, long email) instead of widening the page */
+    .hero-grid>*,.who-grid>*,.svc-grid>*,.proc-grid>*,.cases-grid>*,.faq-grid>*,.cta-grid>*,.cmp>*,.ft-grid>*{min-width:0}
+    .mark{display:block;background:currentColor;-webkit-mask:url(/logo-design.png) center/contain no-repeat;mask:url(/logo-design.png) center/contain no-repeat}
 
-    /* CURSOR */
-    #cur{position:fixed;z-index:9999;pointer-events:none;top:0;left:0;mix-blend-mode:difference}
-    .cur-d{position:absolute;width:10px;height:10px;background:#fff;border-radius:50%;transform:translate(-50%,-50%);transition:width .2s,height .2s}
-    .cur-r{position:absolute;width:36px;height:36px;border:1px solid rgba(255,255,255,.4);border-radius:50%;transform:translate(-50%,-50%);transition:width .3s,height .3s,border-color .3s}
-    body.hov .cur-d{width:14px;height:14px}
-    body.hov .cur-r{width:52px;height:52px;border-color:rgba(var(--accent-rgb),.6)}
+    /* type */
+    .label{display:inline-flex;align-items:center;gap:.55rem;font-size:15px;font-weight:600;color:var(--ink2)}
+    .label::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--red)}
+    .on-dark .label,.label.inv{color:rgba(255,255,255,.7)}
+    .h2{font-size:clamp(2rem,3.7vw,3.25rem);font-weight:600;line-height:1.08;letter-spacing:-.025em;margin-top:.9rem}
+    .lead{font-size:17px;color:var(--ink2);max-width:520px;margin-top:1.1rem}
+    .on-dark .lead{color:rgba(255,255,255,.62)}
+    .center{text-align:center}
+    .center .lead{margin-inline:auto}
 
-    /* LOADER */
-    #ld{position:fixed;inset:0;z-index:8000;background:#0a0a0a;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;transition:opacity .7s ease,visibility .7s}
-    #ld.out{opacity:0;visibility:hidden}
-    .ld-num{font-size:clamp(5rem,15vw,12rem);font-weight:900;letter-spacing:-0.05em;line-height:1;color:#fff;font-variant-numeric:tabular-nums}
-    .ld-bar{width:200px;height:1px;background:rgba(255,255,255,.15);overflow:hidden}
-    .ld-fill{height:100%;background:var(--accent);width:0}
+    /* buttons */
+    .btns{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:2rem}
+    .btn{display:inline-flex;align-items:center;gap:.6rem;height:52px;padding:0 1.5rem;border-radius:999px;font-weight:600;font-size:15.5px;transition:transform .3s var(--ease),background .3s,box-shadow .3s,color .3s;white-space:nowrap}
+    .btn .ic{font-size:17px;transition:transform .3s var(--ease)}
+    .btn:hover .ic{transform:translate(2px,-2px)}
+    .btn:active{transform:scale(.97)}
+    .btn-red{background:var(--red);color:#fff;box-shadow:0 10px 30px rgba(var(--red-rgb),.35)}
+    .btn-red:hover{background:var(--red-d)}
+    .btn-white{background:#fff;color:var(--ink);box-shadow:0 1px 0 rgba(0,0,0,.04)}
+    .btn-white:hover{background:#f0f0f2}
+    .btn-dark{background:var(--ink);color:#fff}
+    .btn-dark:hover{background:#2a2a30}
+    .btn-line{border:1px solid var(--line);background:#fff}
 
-    /* SCROLL PROGRESS */
-    #scroll-prog{position:fixed;top:0;left:0;z-index:9000;height:2px;background:var(--accent);width:0%;transition:width .1s linear;box-shadow:0 0 8px rgba(var(--accent-rgb),.5)}
+    /* reveal */
+    .rv{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+    .rv.in{opacity:1;transform:none}
+    .rv.d1{transition-delay:.08s}.rv.d2{transition-delay:.16s}.rv.d3{transition-delay:.24s}.rv.d4{transition-delay:.32s}
 
-    /* NAV */
-    nav{position:fixed;top:0;left:0;right:0;z-index:600;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:68px;background:transparent;transition:background .4s,border-color .4s,backdrop-filter .4s;border-bottom:1px solid transparent}
-    nav.scrolled{background:rgba(255,255,255,.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom-color:rgba(0,0,0,.08)}
-    .nav-logo{font-size:12px;font-weight:800;letter-spacing:.22em;display:flex;align-items:center;gap:.6rem;color:#fff;transition:color .4s}
-    nav.scrolled .nav-logo{color:var(--text)}
-    .nav-logo-sq{width:24px;height:24px;border:1.5px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;color:var(--accent);flex-shrink:0}
-    .nav-links{display:flex;gap:2.5rem}
-    .nav-links a{font-size:11px;font-weight:500;letter-spacing:.06em;color:rgba(255,255,255,.7);transition:color .3s;position:relative}
-    .nav-links a::after{content:'';position:absolute;left:0;bottom:-3px;width:0;height:1px;background:var(--accent);transition:width .3s}
-    .nav-links a:hover,.nav-links a.active{color:#fff}
-    .nav-links a:hover::after,.nav-links a.active::after{width:100%}
-    nav.scrolled .nav-links a{color:var(--muted)}
-    nav.scrolled .nav-links a:hover,nav.scrolled .nav-links a.active{color:var(--text)}
-    .nav-cta{padding:9px 22px;border-radius:100px;background:var(--accent);color:#fff;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;transition:box-shadow .3s}
-    .nav-cta:hover{box-shadow:0 0 20px rgba(var(--accent-rgb),.4)}
+    /* ── HEADER ── */
+    .site-head{position:fixed;inset:0 0 auto;z-index:100}
+    .topbar{background:var(--red);color:#fff;font-size:13.5px;font-weight:500;text-align:center;padding:7px 16px;display:flex;justify-content:center;align-items:center;gap:.5rem;flex-wrap:wrap}
+    .topbar .dot{width:6px;height:6px;border-radius:50%;background:#fff;animation:blink 1.6s infinite}
+    .topbar a{font-weight:700;text-decoration:underline;text-underline-offset:3px}
+    .tb-short{display:none}
+    @keyframes blink{50%{opacity:.25}}
+    .nav{background:rgba(14,14,16,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav-in{display:flex;align-items:center;justify-content:space-between;height:74px;gap:1rem}
+    .logo{display:flex;align-items:center;gap:.7rem;color:#fff;font-weight:700;font-size:17px;letter-spacing:-.01em}
+    .logo-tile{width:38px;height:38px;border-radius:11px;background:linear-gradient(145deg,#ff5a5a,var(--red) 55%,#d91f1f);display:grid;place-items:center;box-shadow:0 6px 18px rgba(var(--red-rgb),.4)}
+    .logo-tile .mark{width:22px;height:19px;color:#fff}
+    .logo b{color:var(--red);font-weight:700}
+    .nav-links{display:flex;gap:.25rem}
+    .nav-links a{color:rgba(255,255,255,.72);font-size:15px;font-weight:500;padding:.5rem .85rem;border-radius:999px;transition:color .25s,background .25s}
+    .nav-links a:hover{color:#fff;background:rgba(255,255,255,.07)}
+    .nav-links a.on{color:#fff;background:rgba(255,255,255,.1)}
+    .nav .btn{height:44px;padding:0 1.25rem;font-size:15px}
+    .nav-toggle{display:none;width:44px;height:44px;border-radius:12px;background:rgba(255,255,255,.08);color:#fff;place-items:center}
+    .nav-toggle .ic{font-size:22px}
+    .mnav{display:none}
 
-    /* FLOATING CONTACT */
-    .float-menu{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:500;display:flex;flex-direction:column;gap:3px}
-    .float-btn{width:56px;height:56px;background:rgba(10,10,10,.9);background-image:radial-gradient(rgba(255,255,255,.04) 1px,transparent 1px);background-size:5px 5px;border:1px solid rgba(255,255,255,.1);border-right:none;display:flex;align-items:center;justify-content:center;cursor:pointer;position:relative;transition:border-color .25s,background-color .25s;text-decoration:none;color:#fff;backdrop-filter:blur(8px)}
-    .float-btn .fb-corner{position:absolute;top:0;right:0;width:7px;height:7px;border-top:1px solid var(--accent);border-right:1px solid var(--accent);transition:width .3s,height .3s}
-    .float-btn:hover{border-color:rgba(var(--accent-rgb),.3);background-color:rgba(var(--accent-rgb),.06)}
-    .float-btn:hover .fb-corner{width:100%;height:100%}
-    .float-btn svg{width:20px;height:20px;stroke:rgba(255,255,255,.5);stroke-width:1.5;fill:none;transition:stroke .25s}
-    .float-btn:hover svg{stroke:var(--accent)}
+    /* ── HERO ── */
+    .hero{background:var(--dark);color:#fff;padding:calc(var(--head) + 72px) 0 56px;position:relative;overflow:hidden}
+    .hero::before{content:'';position:absolute;inset:auto -10% -40% 30%;height:80%;background:radial-gradient(closest-side,rgba(var(--red-rgb),.22),transparent);pointer-events:none}
+    .hero::after{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse at 70% 40%,#000 10%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse at 70% 40%,#000 10%,transparent 70%);pointer-events:none}
+    .hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:3rem;align-items:center;position:relative;z-index:1}
+    .eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-size:14px;font-weight:600;color:rgba(255,255,255,.75);border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:.4rem .9rem .4rem .7rem;background:rgba(255,255,255,.04)}
+    .pulse{width:8px;height:8px;border-radius:50%;background:var(--red);box-shadow:0 0 0 0 rgba(var(--red-rgb),.6);animation:pulse 2s infinite}
+    @keyframes pulse{70%{box-shadow:0 0 0 9px rgba(var(--red-rgb),0)}100%{box-shadow:0 0 0 0 rgba(var(--red-rgb),0)}}
+    .hero-h{font-size:clamp(2.6rem,5.4vw,4.75rem);font-weight:600;line-height:1.02;letter-spacing:-.035em;margin-top:1.5rem}
+    .grad{background:linear-gradient(100deg,#ff6b5a,var(--red) 45%,#ff8a6b);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .hero-p{font-size:18px;color:rgba(255,255,255,.62);max-width:520px;margin-top:1.4rem}
+    .hero-art{position:relative;height:540px}
+    .hc{position:absolute;border-radius:20px;overflow:hidden;background:#1b1b1f;border:1px solid rgba(255,255,255,.1);box-shadow:0 40px 90px rgba(0,0,0,.55);transform:rotate(var(--r,0deg));animation:bob var(--t,7s) ease-in-out var(--dl,0s) infinite}
+    .hc img{width:100%;height:100%;object-fit:cover}
+    .hc1{--r:-7deg;--t:7s;width:44%;aspect-ratio:3/4;left:0;top:14%}
+    .hc2{--r:2deg;--t:6.2s;--dl:-2s;width:50%;aspect-ratio:1;left:25%;top:2%;z-index:2}
+    .hc3{--r:7deg;--t:8s;--dl:-4s;width:42%;aspect-ratio:3/4;right:0;top:26%;z-index:1}
+    @keyframes bob{0%,100%{transform:rotate(var(--r,0deg)) translateY(0)}50%{transform:rotate(var(--r,0deg)) translateY(-14px)}}
+    .hchip{position:absolute;z-index:3;display:flex;align-items:center;gap:.7rem;background:rgba(22,22,26,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:.65rem .95rem;font-size:13.5px;line-height:1.3;color:#fff;box-shadow:0 18px 40px rgba(0,0,0,.4);animation:bob 6s ease-in-out infinite}
+    .hchip small{display:block;color:rgba(255,255,255,.55);font-size:12px}
+    .hchip i{width:30px;height:30px;border-radius:9px;background:rgba(var(--red-rgb),.16);color:var(--red);display:grid;place-items:center;font-style:normal;font-size:15px}
+    .hchip.a{left:-2%;bottom:6%;--dl:-1s}
+    .hchip.b{right:2%;top:0;animation-delay:-3s}
+    .hero-foot{display:flex;justify-content:space-between;align-items:center;gap:1.5rem;flex-wrap:wrap;margin-top:56px;position:relative;z-index:1}
+    .stat-chips{display:flex;gap:.6rem;flex-wrap:wrap}
+    .schip{display:flex;align-items:center;gap:.55rem;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);border-radius:14px;padding:.6rem .95rem;font-size:14px;color:rgba(255,255,255,.62)}
+    .schip b{color:#fff;font-weight:700}
+    .tools{display:flex;align-items:center;gap:.9rem}
+    .tool-row{display:flex;gap:.35rem}
+    .tool{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;font-size:12.5px;font-weight:800;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);color:rgba(255,255,255,.85)}
+    .tools p{font-size:13.5px;color:rgba(255,255,255,.55);max-width:260px;line-height:1.45}
 
-    /* ===== HERO ===== */
-    .hero{height:100svh;position:relative;overflow:hidden;background:var(--dark);display:flex;flex-direction:column;justify-content:flex-end;padding:0 2.5rem 4.5rem}
-    .hero-visual{position:absolute;right:0;top:0;bottom:0;width:55%;overflow:hidden}
-    .hv-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:60px 60px}
-    .hv-rect{position:absolute;border:1px solid rgba(var(--accent-rgb),.15)}
-    .hv-rect1{top:15%;left:10%;width:260px;height:340px;transform:rotate(-4deg);border-color:rgba(var(--accent-rgb),.12)}
-    .hv-rect2{top:25%;left:35%;width:200px;height:260px;transform:rotate(3deg);background:rgba(var(--accent-rgb),.04)}
-    .hv-rect3{top:40%;left:20%;width:160px;height:160px;border-color:rgba(var(--accent-rgb),.25);background:rgba(var(--accent-rgb),.03)}
-    .hv-dot{position:absolute;border-radius:50%;background:var(--accent)}
-    .hv-dot1{width:8px;height:8px;top:30%;left:55%;box-shadow:0 0 20px rgba(var(--accent-rgb),.8);animation:hdot 3s ease-in-out infinite}
-    .hv-dot2{width:4px;height:4px;top:55%;left:25%;opacity:.6;animation:hdot 3s ease-in-out infinite .8s}
-    .hv-dot3{width:6px;height:6px;top:20%;left:70%;opacity:.4;animation:hdot 3s ease-in-out infinite 1.6s}
-    @keyframes hdot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
-    .hv-line{position:absolute;background:rgba(var(--accent-rgb),.2)}
-    .hv-line1{top:18%;left:0;right:0;height:1px;transform:rotate(-8deg)}
-    .hv-line2{top:0;bottom:0;left:50%;width:1px;transform:rotate(4deg);opacity:.4}
-    .hv-label{position:absolute;top:1.5rem;right:1.5rem;font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);border:1px solid rgba(var(--accent-rgb),.2);padding:5px 12px;background:rgba(var(--accent-rgb),.04)}
-    .hv-type{position:absolute;bottom:4rem;left:2rem;font-size:clamp(5rem,12vw,11rem);font-weight:900;letter-spacing:-0.06em;line-height:.85;color:rgba(255,255,255,.03);user-select:none;pointer-events:none}
-    .hero::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,var(--dark) 35%,rgba(10,10,10,.3) 70%,transparent);pointer-events:none}
-    .hero-content{position:relative;z-index:2;max-width:720px}
-    .hero-kicker{font-size:10px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:.75rem;margin-bottom:2rem;opacity:0}
-    .hero-kicker::before{content:'';width:24px;height:1px;background:var(--accent)}
-    .hero-h{font-size:clamp(3rem,7vw,7.5rem);font-weight:900;line-height:.92;letter-spacing:-0.04em;color:#fff}
-    .hero-h em{color:var(--accent)}
-    .hero-h .hw{display:inline-block;transform:translateY(110%);overflow:visible}
-    .hero-h-line{overflow:hidden;display:block}
-    .hero-sub{font-size:15px;color:rgba(255,255,255,.5);line-height:1.8;max-width:420px;margin-top:2rem;opacity:0}
-    .hero-actions{display:flex;align-items:center;gap:1.5rem;margin-top:2.5rem;opacity:0}
-    .btn-primary{padding:14px 32px;border-radius:100px;background:var(--accent);color:#fff;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;transition:all .3s;display:inline-flex;align-items:center;gap:.5rem;position:relative;overflow:hidden}
-    .btn-primary::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.15) 1px,transparent 1px);background-size:6px 6px}
-    .btn-primary:hover{box-shadow:0 8px 28px rgba(var(--accent-rgb),.4);transform:translateY(-2px)}
-    .btn-ghost{padding:14px 32px;border-radius:100px;border:1px solid rgba(255,255,255,.2);color:#fff;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;transition:all .3s;display:inline-flex;align-items:center;gap:.5rem}
-    .btn-ghost:hover{border-color:rgba(var(--accent-rgb),.5);color:var(--accent)}
-    .hero-scroll-cta{position:absolute;bottom:4.5rem;right:2.5rem;z-index:2;display:flex;align-items:center;gap:1rem;opacity:0}
-    .hero-scroll-circle{width:52px;height:52px;border-radius:50%;border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;transition:border-color .3s,background .3s;animation:scrollbob 2.5s ease-in-out infinite}
-    .hero-scroll-circle svg{width:18px;height:18px;stroke:#fff;stroke-width:1.5;fill:none;transition:stroke .3s}
-    .hero-scroll-circle:hover{border-color:var(--accent);background:rgba(var(--accent-rgb),.08)}
-    .hero-scroll-circle:hover svg{stroke:var(--accent)}
-    @keyframes scrollbob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+    /* ── TRUSTED ── */
+    .trusted{padding:56px 0 24px;overflow:hidden}
+    .trusted p{text-align:center;font-size:15px;font-weight:600;color:var(--muted)}
+    .marquee{position:relative;margin-top:1.75rem;mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+    .mq-track{display:flex;width:max-content;animation:mq 38s linear infinite}
+    .marquee:hover .mq-track{animation-play-state:paused}
+    .mq-track span{padding:0 2.4rem;font-size:24px;font-weight:800;letter-spacing:-.02em;color:#b6b7bf;white-space:nowrap;transition:color .3s}
+    .mq-track span:nth-child(3n+2){font-weight:600;font-style:italic}
+    .mq-track span:nth-child(4n+3){letter-spacing:.12em;font-size:19px}
+    .mq-track span:hover{color:var(--ink)}
+    @keyframes mq{to{transform:translateX(-50%)}}
 
-    /* ===== STATEMENT (WHITE) ===== */
-    .stmt{background:var(--bg);padding:8rem 2.5rem;text-align:center;border-bottom:1px solid var(--border-light)}
-    .stmt-inner{max-width:780px;margin:0 auto}
-    .stmt-tag{font-size:10px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--accent);margin-bottom:2.5rem;opacity:0;transform:translateY(20px);transition:opacity .7s,transform .7s}
-    .stmt-tag.vis{opacity:1;transform:none}
-    .stmt-p{font-size:clamp(1.25rem,2.5vw,2rem);color:rgba(12,12,12,.75);line-height:1.7;font-weight:400;opacity:0;transform:translateY(20px);transition:opacity .9s .15s,transform .9s .15s}
-    .stmt-p.vis{opacity:1;transform:none}
-    .stmt-p em{color:var(--text);font-style:italic;font-family:'Playfair Display',serif}
-    .stmt-p strong{color:var(--accent);font-style:normal;font-family:inherit}
+    /* ── WHO ── */
+    .who{padding:110px 0 120px}
+    .who-grid{display:grid;grid-template-columns:200px 1fr;gap:2rem;align-items:start}
+    .who-grid>.label{margin-top:.7rem}
+    .who-text{font-size:clamp(1.65rem,3.2vw,2.75rem);font-weight:500;line-height:1.25;letter-spacing:-.02em;text-indent:12%}
+    .who-text .w{color:#c9cad1;transition:color .35s}
+    .who-text .w.on{color:var(--ink)}
 
-    /* ===== HOW WE DO IT — SCROLL-DRIVEN STICKY CARDS ===== */
-    .how-wrap{position:relative;background:var(--bg)}
-    .how-sticky{
-      position:sticky;top:0;height:100vh;overflow:hidden;
-      display:grid;grid-template-columns:1fr 1fr;
-      background:var(--bg);
+    /* ── NUMBERS (dark panel) ── */
+    .nums{padding:0 16px}
+    .panel{background:var(--dark);color:#fff;border-radius:36px;padding:110px 0}
+    .bento{display:grid;grid-template-columns:1fr 1.08fr 1fr;grid-template-rows:auto auto;gap:18px;margin-top:64px}
+    .bc{position:relative;overflow:hidden;border-radius:24px;background:var(--dark2);border:1px solid rgba(255,255,255,.07);padding:26px;display:flex;flex-direction:column;justify-content:flex-end;min-height:330px}
+    .bc::before{content:'';position:absolute;inset:0;background:radial-gradient(120% 70% at 50% -10%,rgba(var(--red-rgb),.42),rgba(var(--red-rgb),.08) 45%,transparent 70%);pointer-events:none}
+    .bc::after{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:32px 32px;mask-image:linear-gradient(#000,transparent 70%);-webkit-mask-image:linear-gradient(#000,transparent 70%);pointer-events:none}
+    .bc>*{position:relative;z-index:1}
+    .bc.tall{grid-row:span 2}
+    .bc h3{font-size:30px;font-weight:600;letter-spacing:-.02em;line-height:1.1;margin-top:auto}
+    .bc p{font-size:15px;color:rgba(255,255,255,.58);margin-top:.5rem;max-width:330px}
+    .bviz{flex:1;display:grid;place-items:center;min-height:170px;margin-bottom:1.25rem}
+    .dial{width:100%;max-width:300px}
+    .dial line{stroke:rgba(255,255,255,.18);stroke-width:2;stroke-linecap:round;transition:stroke .3s}
+    .dial line.on{stroke:var(--red)}
+    .dial text{fill:#fff;font-family:'Urbanist',sans-serif;font-weight:700;font-size:44px;text-anchor:middle}
+    .flow{display:flex;flex-direction:column;align-items:center;gap:0;width:100%}
+    .fcard{display:flex;align-items:center;gap:.8rem;width:min(100%,280px);background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:.85rem 1rem;backdrop-filter:blur(6px)}
+    .fcard small{display:block;font-size:12px;color:rgba(255,255,255,.5)}
+    .fcard b{font-size:15.5px;font-weight:600}
+    .fic{width:36px;height:36px;border-radius:10px;background:rgba(var(--red-rgb),.15);color:var(--red);display:grid;place-items:center;flex-shrink:0}
+    .fline{width:2px;height:46px;background:linear-gradient(var(--red),rgba(var(--red-rgb),.15));position:relative;overflow:hidden}
+    .fline::after{content:'';position:absolute;left:0;width:2px;height:14px;background:#fff;animation:drip 2.2s linear infinite}
+    @keyframes drip{from{top:-14px}to{top:46px}}
+    .ftile{width:64px;height:64px;border-radius:18px;background:linear-gradient(145deg,#ff5a5a,var(--red) 55%,#d91f1f);display:grid;place-items:center;box-shadow:0 0 0 10px rgba(var(--red-rgb),.08),0 16px 40px rgba(var(--red-rgb),.45);animation:glow 3s ease-in-out infinite}
+    .ftile .mark{width:34px;height:30px;color:#fff}
+    @keyframes glow{50%{box-shadow:0 0 0 18px rgba(var(--red-rgb),.04),0 16px 40px rgba(var(--red-rgb),.55)}}
+    .radar{position:relative;width:190px;height:190px;border-radius:50%}
+    .radar span{position:absolute;inset:0;border-radius:50%;border:1px solid rgba(255,255,255,.12)}
+    .radar span:nth-child(2){inset:30px}.radar span:nth-child(3){inset:62px}
+    .radar .sweep{position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 0deg,rgba(var(--red-rgb),.45),transparent 28%);animation:spin 4s linear infinite}
+    .radar .pin{position:absolute;left:58%;top:38%;width:12px;height:12px;border-radius:50%;background:var(--red);box-shadow:0 0 0 0 rgba(var(--red-rgb),.7);animation:pulse 1.8s infinite}
+    .radar .tag{position:absolute;left:62%;top:22%;font-size:12px;font-weight:600;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:.2rem .5rem;white-space:nowrap}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .tree{display:flex;flex-direction:column;align-items:center;width:100%}
+    .tree .ftile{width:48px;height:48px;border-radius:14px}
+    .tree .ftile .mark{width:26px;height:22px}
+    .tree-bus{width:72%;height:22px;border:2px solid rgba(var(--red-rgb),.55);border-bottom:0;border-radius:14px 14px 0 0;margin-top:16px;position:relative}
+    .tree-bus::before{content:'';position:absolute;left:50%;top:-18px;width:2px;height:16px;background:rgba(var(--red-rgb),.55)}
+    .ind{display:flex;flex-wrap:wrap;justify-content:center;gap:.4rem;margin-top:.35rem}
+    .ind span{font-size:12.5px;font-weight:600;padding:.3rem .65rem;border-radius:999px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.8)}
+    .gauge{width:100%;max-width:260px}
+    .gauge path{fill:none;stroke-width:18;stroke-linecap:round}
+    .gauge .g-bg{stroke:rgba(255,255,255,.1)}
+    .gauge .g-fg{stroke:url(#gg);stroke-dasharray:314;stroke-dashoffset:314;transition:stroke-dashoffset 2s var(--ease)}
+    .bc.in .gauge .g-fg{stroke-dashoffset:0}
+    .gauge text{fill:#fff;font-family:'Urbanist',sans-serif;font-weight:700;font-size:34px;text-anchor:middle}
+
+    /* ── WORK ── */
+    .work{padding:130px 0 120px}
+    .sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap}
+    .work-count{display:flex;align-items:center;gap:1.25rem}
+    .work-count .big{font-size:clamp(3rem,6vw,5rem);font-weight:700;letter-spacing:-.04em;line-height:1;color:var(--ink)}
+    .work-grid{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem 2.5rem;margin-top:64px}
+    .wcard:nth-child(even){margin-top:140px}
+    .wimg{border-radius:24px;overflow:hidden;aspect-ratio:1/.9;background:#e9eaee}
+    .wimg img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s var(--ease)}
+    .wcard:hover .wimg img{transform:scale(1.05)}
+    .tags{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:1.25rem}
+    .tags span{font-size:13.5px;font-weight:600;padding:.4rem .85rem;border-radius:999px;background:#eceef2;color:var(--ink2)}
+    .wcard h3{font-size:30px;font-weight:600;letter-spacing:-.02em;margin-top:1rem}
+    .wcard p{color:var(--ink2);margin-top:.45rem;max-width:480px}
+
+    /* ── SERVICES (dark, stacking cards) ── */
+    .svc{background:var(--dark);color:#fff;padding:130px 0}
+    .svc-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:4rem;align-items:start}
+    .svc-side{position:sticky;top:calc(var(--head) + 48px)}
+    .svc-stack{display:flex;flex-direction:column;gap:56px;padding-bottom:40px}
+    .scard{position:sticky;top:calc(var(--head) + 36px + var(--i) * 14px);background:var(--dark2);border:1px solid rgba(255,255,255,.08);border-radius:26px;padding:14px;box-shadow:0 30px 70px rgba(0,0,0,.45);transform:scale(var(--s,1)) rotate(var(--rot,0deg));transform-origin:50% 0;filter:brightness(var(--b,1));will-change:transform}
+    .scard:nth-child(odd){--rot:-1.6deg}
+    .scard:nth-child(even){--rot:1.4deg}
+    .simg{border-radius:18px;overflow:hidden;aspect-ratio:16/9;background:#222}
+    .simg img{width:100%;height:100%;object-fit:cover}
+    .sbody{padding:1.4rem 1rem .9rem}
+    .sbody h3{font-size:26px;font-weight:600;letter-spacing:-.015em}
+    .sbody h3 span{color:var(--red)}
+    .sbody ul{margin-top:.9rem;display:grid;grid-template-columns:1fr 1fr;gap:.45rem 1.25rem}
+    .sbody li{font-size:15px;color:rgba(255,255,255,.66);display:flex;gap:.55rem;align-items:baseline}
+    .sbody li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--red);flex-shrink:0;transform:translateY(-2px)}
+
+    /* ── WHAT WE DO (hub) ── */
+    .what{padding:130px 0 120px}
+    .hub{position:relative;margin:72px auto 0;max-width:1060px}
+    .hub-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+    .hub-svg path{fill:none;stroke:rgba(var(--red-rgb),.55);stroke-width:1.6}
+    .hub-svg circle{fill:var(--red)}
+    .hub-row{display:flex;justify-content:center;gap:130px;position:relative}
+    .hub-row.mid{justify-content:space-between;align-items:center;margin:96px 0}
+    .hcard{width:330px;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:22px 22px 0;box-shadow:0 1px 2px rgba(16,16,20,.04);overflow:hidden;position:relative;z-index:1;transition:transform .4s var(--ease),box-shadow .4s}
+    .hcard:hover{transform:translateY(-4px);box-shadow:0 22px 50px rgba(16,16,20,.08)}
+    .hcard h3{font-size:19px;font-weight:700;letter-spacing:-.01em}
+    .hcard p{font-size:14.5px;color:var(--ink2);margin-top:.45rem;line-height:1.55}
+    .hviz{height:162px;position:relative;margin-top:.75rem}
+    .hub-core{width:92px;height:92px;border-radius:24px;background:linear-gradient(145deg,#ff5a5a,var(--red) 55%,#d91f1f);display:grid;place-items:center;flex-shrink:0;position:relative;z-index:2;box-shadow:0 0 0 14px rgba(var(--red-rgb),.07),0 0 0 30px rgba(var(--red-rgb),.04),0 22px 50px rgba(var(--red-rgb),.45);animation:glow 3s ease-in-out infinite}
+    .hub-core .mark{width:50px;height:44px;color:#fff}
+    /* hub visuals */
+    .orb{position:absolute;left:50%;top:58%;width:170px;height:170px;transform:translate(-50%,-50%)}
+    .orb .ring{position:absolute;inset:0;border-radius:50%;border:1px solid #ececf0}
+    .orb .ring:nth-child(2){inset:30px}
+    .orb .core{position:absolute;left:50%;top:50%;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;background:linear-gradient(145deg,#ff7a6b,var(--red));color:#fff;display:grid;place-items:center;font-size:20px;box-shadow:0 10px 24px rgba(var(--red-rgb),.35)}
+    .orb .arm{position:absolute;inset:0;animation:spin 14s linear infinite}
+    .orb .sat{position:absolute;width:30px;height:30px;border-radius:50%;background:#fff;border:1px solid #ececf0;box-shadow:0 6px 14px rgba(0,0,0,.06);display:grid;place-items:center;font-size:12px;font-weight:800;animation:spin 14s linear infinite reverse}
+    .orb .sat:nth-child(1){left:50%;top:-15px;margin-left:-15px;color:#7c5cff}
+    .orb .sat:nth-child(2){right:-2px;top:58%;color:#16a34a}
+    .orb .sat:nth-child(3){left:-2px;top:58%;color:#0ea5e9}
+    .chart{position:absolute;inset:auto -22px 0 -22px;height:130px}
+    .chart .area{fill:url(#cg)}
+    .chart .ln{fill:none;stroke:var(--red);stroke-width:2.5;stroke-dasharray:420;stroke-dashoffset:420;animation:draw 4s var(--ease) infinite}
+    @keyframes draw{0%{stroke-dashoffset:420}55%,85%{stroke-dashoffset:0}100%{stroke-dashoffset:0;opacity:0}}
+    .bubble{position:absolute;font-size:12px;font-weight:700;background:#fff;border:1px solid var(--line);border-radius:999px;padding:.25rem .65rem;box-shadow:0 8px 20px rgba(0,0,0,.06);animation:bob 5s ease-in-out infinite}
+    .cal{position:absolute;left:0;right:0;top:12px;display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+    .cal div{border:1px solid var(--line);border-radius:10px;padding:.35rem 0;text-align:center;font-size:11px;font-weight:700;color:var(--ink2);background:#fafafb;animation:day 6s infinite;animation-delay:calc(var(--d, 0) * 1s)}
+    .cal div b{display:block;font-size:15px;color:inherit}
+    .cal div.off{opacity:.45;animation:none}
+    @keyframes day{0%,14%{background:var(--red);color:#fff;border-color:var(--red)}17%,100%{background:#fafafb}}
+    .hours{position:absolute;left:0;bottom:22px;display:flex;align-items:center;gap:.65rem;font-size:13px;font-weight:600;color:var(--ink2)}
+    .hours i{width:34px;height:34px;border-radius:50%;background:rgba(var(--red-rgb),.1);color:var(--red);display:grid;place-items:center;font-style:normal;animation:ring 2.4s infinite}
+    @keyframes ring{0%,40%,100%{transform:rotate(0)}5%,15%,25%{transform:rotate(-14deg)}10%,20%,30%{transform:rotate(14deg)}}
+    .prog{position:absolute;inset:8px 0 0;display:flex;flex-direction:column;gap:8px}
+    .pbox{background:#fff;border:1px solid var(--line);border-radius:12px;padding:.6rem .75rem;box-shadow:0 6px 16px rgba(0,0,0,.04)}
+    .pbox .row{display:flex;justify-content:space-between;font-size:12px;font-weight:700}
+    .bar{height:6px;border-radius:9px;background:#f1f1f4;margin-top:.45rem;overflow:hidden}
+    .bar i{display:block;height:100%;border-radius:9px;background:linear-gradient(90deg,#ff7a6b,var(--red));animation:fill 4.5s var(--ease) infinite}
+    @keyframes fill{0%{width:12%}60%,100%{width:78%}}
+    .pitem{display:flex;align-items:center;gap:.55rem;font-size:12.5px;font-weight:600;color:var(--ink2);opacity:0;animation:pop 4.5s infinite;animation-delay:calc(var(--d) * .7s)}
+    .pitem i{width:18px;height:18px;border-radius:50%;background:#e9f9ef;color:#16a34a;display:grid;place-items:center;font-style:normal;font-size:11px}
+    @keyframes pop{0%,10%{opacity:0;transform:translateY(6px)}20%,85%{opacity:1;transform:none}100%{opacity:0}}
+    .tl-mini{position:absolute;inset:14px 0 0;display:flex;flex-direction:column;gap:9px}
+    .tl-mini .lr{height:22px;border-radius:7px;background:#f3f3f6;position:relative;overflow:hidden}
+    .tl-mini .lr i{position:absolute;top:3px;bottom:3px;border-radius:5px;animation:slide 5s ease-in-out infinite alternate}
+    .tl-mini .lr:nth-child(1) i{left:6%;width:46%;background:#ffd0d0}
+    .tl-mini .lr:nth-child(2) i{left:28%;width:52%;background:#ffb2b2;animation-delay:-1.5s}
+    .tl-mini .lr:nth-child(3) i{left:14%;width:38%;background:var(--red);opacity:.85;animation-delay:-3s}
+    .tl-mini .lr:nth-child(4) i{left:40%;width:44%;background:#ffe4dd;animation-delay:-2s}
+    @keyframes slide{to{transform:translateX(22%)}}
+    .tl-mini .head{position:absolute;top:-6px;bottom:-4px;width:2px;background:var(--ink);left:0;animation:play 5s linear infinite}
+    .tl-mini .head::before{content:'';position:absolute;top:-4px;left:-4px;width:10px;height:10px;border-radius:3px;background:var(--ink)}
+    @keyframes play{to{left:100%}}
+    .dots-bg{position:absolute;inset:0;background-image:radial-gradient(#e2e3e8 1.2px,transparent 1.3px);background-size:16px 16px;mask-image:radial-gradient(circle at 50% 55%,#000 30%,transparent 72%);-webkit-mask-image:radial-gradient(circle at 50% 55%,#000 30%,transparent 72%)}
+    .alive{position:absolute;left:50%;top:56%;transform:translate(-50%,-50%);width:200px;height:130px}
+    .alive .ftile{position:absolute;left:50%;top:50%;width:58px;height:58px;margin:-29px 0 0 -29px;border-radius:16px}
+    .alive .ftile .mark{width:30px;height:26px}
+    .app{position:absolute;width:36px;height:36px;border-radius:10px;display:grid;place-items:center;font-size:13px;font-weight:800;box-shadow:0 8px 18px rgba(0,0,0,.12);animation:appPop 4s var(--ease) infinite;animation-delay:calc(var(--d) * .5s)}
+    @keyframes appPop{0%{transform:scale(0)}12%,80%{transform:scale(1)}92%,100%{transform:scale(0)}}
+
+    /* ── PROCESS ── */
+    .proc{padding:130px 0 120px;background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .proc-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:3rem;align-items:start}
+    .proc-side{position:sticky;top:calc(var(--head) + 56px)}
+    .tl{position:relative;display:flex;flex-direction:column;gap:56px;padding-left:92px}
+    .tl-line{position:absolute;left:31px;top:32px;bottom:32px;width:3px;border-radius:3px;background:#e3e4e9}
+    .tl-fill{position:absolute;left:0;top:0;width:100%;height:0;border-radius:3px;background:linear-gradient(var(--red),#ff6b5a)}
+    .step{position:relative}
+    .step-num{position:absolute;left:-92px;top:0;width:64px;height:64px;border-radius:50%;display:grid;place-items:center;font-size:22px;font-weight:700;background:#fff;color:#a2a3ad;border:2px solid #e3e4e9;transition:background .5s,color .5s,border-color .5s,box-shadow .5s;z-index:1}
+    .step.on .step-num{background:linear-gradient(145deg,#ff6b5a,var(--red));color:#fff;border-color:transparent;box-shadow:0 10px 26px rgba(var(--red-rgb),.4)}
+    .step-card{position:relative;overflow:hidden;background:#fff;border:1px solid var(--line);border-radius:24px;padding:32px 34px;box-shadow:0 2px 6px rgba(16,16,20,.03)}
+    .step-card::before{content:'';position:absolute;right:-12%;top:-30%;width:62%;height:120%;background:radial-gradient(closest-side,rgba(255,110,80,.42),rgba(var(--red-rgb),.12) 55%,transparent);filter:blur(18px);pointer-events:none}
+    .step-card>*{position:relative}
+    .step-ic{width:64px;height:64px;border-radius:50%;background:linear-gradient(145deg,#ff6b5a,var(--red));color:#fff;display:grid;place-items:center;font-size:28px;box-shadow:0 12px 26px rgba(var(--red-rgb),.35)}
+    .step-card h3{font-size:28px;font-weight:600;letter-spacing:-.02em;margin-top:1.2rem}
+    .step-card p{color:var(--ink2);margin-top:.6rem;max-width:520px}
+    .step-card ul{margin-top:1.1rem;display:flex;flex-direction:column;gap:.35rem}
+    .step-card li{font-size:15px;color:var(--ink2);display:flex;gap:.6rem;align-items:baseline}
+    .step-card li::before{content:'·';color:var(--red);font-weight:800}
+
+    /* ── STUDIO (dark) ── */
+    .studio{padding:0 16px;margin-top:120px}
+    .studio .panel{padding:110px 0 100px}
+    .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:64px}
+    .plan{background:var(--dark2);border:1px solid rgba(255,255,255,.08);border-radius:24px;padding:30px;display:flex;flex-direction:column;position:relative;overflow:hidden;transition:border-color .3s,transform .4s var(--ease)}
+    .plan:hover{border-color:rgba(var(--red-rgb),.4);transform:translateY(-4px)}
+    .plan.hot::before{content:'';position:absolute;inset:-40% -20% auto;height:70%;background:radial-gradient(closest-side,rgba(var(--red-rgb),.35),transparent);pointer-events:none}
+    .plan>*{position:relative}
+    .plan-ic{width:52px;height:52px;border-radius:15px;background:rgba(var(--red-rgb),.14);color:var(--red);display:grid;place-items:center;font-size:24px}
+    .plan h3{font-size:26px;font-weight:600;margin-top:1.4rem;letter-spacing:-.015em}
+    .plan .sub{color:rgba(255,255,255,.55);font-size:15px;margin-top:.35rem}
+    .plan ul{margin:1.5rem 0 2rem;display:flex;flex-direction:column;gap:.65rem;border-top:1px solid rgba(255,255,255,.08);padding-top:1.4rem}
+    .plan li{display:flex;gap:.65rem;align-items:center;font-size:15px;color:rgba(255,255,255,.78)}
+    .plan li .ic{color:var(--red);font-size:17px}
+    .plan .btn{margin-top:auto;justify-content:center}
+    .plan-wide{grid-column:1/-1;display:grid;grid-template-columns:1.1fr 1fr;gap:2rem;align-items:center}
+    .facts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .fact{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:1rem 1.1rem}
+    .fact b{display:block;font-size:20px;font-weight:700}
+    .fact span{font-size:14px;color:rgba(255,255,255,.55)}
+
+    /* ── WHY ── */
+    .why{padding:130px 0 60px}
+    .cmp{display:grid;grid-template-columns:.85fr 1.15fr;gap:18px;margin-top:64px}
+    .cmp-col{border-radius:26px;padding:30px;border:1px solid var(--line);background:#fff}
+    .cmp-col h3{font-size:22px;font-weight:700;display:flex;align-items:center;gap:.7rem}
+    .cmp-col.them h3{color:var(--muted)}
+    .them ul{margin-top:1.4rem;display:flex;flex-direction:column;gap:.6rem}
+    .them li{display:flex;align-items:center;gap:.7rem;padding:.75rem 1rem;border-radius:14px;background:#f5f5f7;color:var(--muted);font-weight:600;font-size:15px}
+    .them li .ic{color:#c2c3ca}
+    .cmp-col.us{background:var(--dark);border-color:var(--dark);color:#fff;position:relative;overflow:hidden}
+    .cmp-col.us::before{content:'';position:absolute;right:-20%;top:-30%;width:70%;height:90%;background:radial-gradient(closest-side,rgba(var(--red-rgb),.35),transparent);pointer-events:none}
+    .us h3 .logo-tile{width:34px;height:34px;border-radius:10px}
+    .us h3 .logo-tile .mark{width:19px;height:16px}
+    .vmq{display:grid;grid-template-columns:1fr 1fr;gap:12px;height:380px;margin-top:1.4rem;overflow:hidden;mask-image:linear-gradient(transparent,#000 14%,#000 86%,transparent);-webkit-mask-image:linear-gradient(transparent,#000 14%,#000 86%,transparent);position:relative}
+    .vcol{display:flex;flex-direction:column;gap:10px;animation:vup 26s linear infinite}
+    .vcol.rev{animation-direction:reverse}
+    .vcol span{display:flex;align-items:center;gap:.6rem;padding:.8rem 1rem;border-radius:14px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.09);font-weight:600;font-size:15px}
+    .vcol span i{color:var(--red);font-style:normal}
+    @keyframes vup{to{transform:translateY(-50%)}}
+    .pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:18px}
+    .pill{background:#fff;border:1px solid var(--line);border-radius:22px;padding:26px;transition:transform .4s var(--ease),box-shadow .4s}
+    .pill:hover{transform:translateY(-4px);box-shadow:0 20px 44px rgba(16,16,20,.07)}
+    .pill-ic{width:46px;height:46px;border-radius:13px;background:rgba(var(--red-rgb),.1);color:var(--red);display:grid;place-items:center;font-size:20px}
+    .pill h4{font-size:19px;font-weight:700;margin-top:1.1rem}
+    .pill p{font-size:14.5px;color:var(--ink2);margin-top:.45rem;line-height:1.55}
+
+    /* ── CASES ── */
+    .cases{padding:120px 0}
+    .cases-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:3rem;align-items:start}
+    .cstats{display:flex;flex-direction:column;gap:1rem;margin-top:2.2rem}
+    .cstat{display:flex;align-items:baseline;gap:1rem;padding-bottom:1rem;border-bottom:1px solid var(--line)}
+    .cstat b{font-size:44px;font-weight:700;letter-spacing:-.03em;min-width:130px;line-height:1}
+    .cstat>span{color:var(--ink2);font-size:15px}
+    .slider{position:relative}
+    .slides{display:grid;grid-auto-flow:column;grid-auto-columns:calc(50% - 9px);gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:4px}
+    .slides::-webkit-scrollbar{display:none}
+    .case{scroll-snap-align:start;background:#fff;border:1px solid var(--line);border-radius:24px;padding:28px;display:flex;flex-direction:column;min-height:360px}
+    .case .ctag{display:flex;justify-content:space-between;font-size:13px;font-weight:700;letter-spacing:.06em;color:var(--red)}
+    .case .ctag span:last-child{color:var(--muted);letter-spacing:0}
+    .case h3{font-size:23px;font-weight:700;letter-spacing:-.015em;margin-top:1.1rem;line-height:1.2}
+    .case p{color:var(--ink2);margin-top:.7rem;font-size:15.5px}
+    .case .who-row{display:flex;align-items:center;gap:.8rem;margin-top:auto;padding-top:1.4rem;border-top:1px solid var(--line)}
+    .case .av{width:46px;height:46px;border-radius:50%;overflow:hidden;flex-shrink:0;background:#eee}
+    .case .av img{width:100%;height:100%;object-fit:cover}
+    .case .who-row b{display:block;font-size:15px}
+    .case .who-row small{color:var(--muted);font-size:13.5px}
+    .slide-nav{display:flex;gap:.6rem;margin-top:1.5rem}
+    .slide-nav button{width:50px;height:50px;border-radius:50%;border:1px solid var(--line);background:#fff;display:grid;place-items:center;transition:background .3s,color .3s,border-color .3s}
+    .slide-nav button:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+    .slide-nav .ic{font-size:20px}
+
+    /* ── FAQ ── */
+    .faq{padding:40px 0 130px}
+    .faq-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:3rem;align-items:start}
+    .ask{margin-top:2rem;background:#fff;border:1px solid var(--line);border-radius:22px;padding:24px}
+    .ask-top{display:flex;align-items:center;gap:.9rem}
+    .ask-top .logo-tile{width:48px;height:48px;border-radius:14px}
+    .ask-top .logo-tile .mark{width:26px;height:22px}
+    .ask-top b{display:block;font-size:17px}
+    .ask-top small{color:var(--muted)}
+    .ask p{color:var(--ink2);margin-top:1rem;font-size:15px}
+    .ask .btn{margin-top:1.2rem;height:48px}
+    .qa{display:flex;flex-direction:column;gap:12px}
+    .qa details{background:#fff;border:1px solid var(--line);border-radius:18px;padding:0 24px;transition:border-color .3s,box-shadow .3s}
+    .qa details[open]{border-color:rgba(var(--red-rgb),.35);box-shadow:0 16px 40px rgba(16,16,20,.06)}
+    .qa summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:20px 0;font-size:17.5px;font-weight:600}
+    .qa summary::-webkit-details-marker{display:none}
+    .qa summary i{width:32px;height:32px;border-radius:50%;background:#f2f2f5;display:grid;place-items:center;flex-shrink:0;transition:transform .35s var(--ease),background .3s,color .3s;font-style:normal;font-size:18px}
+    .qa details[open] summary i{transform:rotate(45deg);background:var(--red);color:#fff}
+    .qa details p{color:var(--ink2);padding:0 0 22px;max-width:620px}
+
+    /* ── CTA + FOOTER ── */
+    .cta{padding:0 16px}
+    .cta .panel{padding:96px 0;position:relative;overflow:hidden}
+    .cta .panel::before{content:'';position:absolute;left:50%;bottom:-60%;width:90%;height:100%;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(var(--red-rgb),.35),transparent);pointer-events:none}
+    .cta-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:3rem;align-items:center;position:relative}
+    .cta-h{font-size:clamp(2.4rem,5vw,4.25rem);font-weight:600;line-height:1.02;letter-spacing:-.035em}
+    .contact-list{display:flex;flex-direction:column;gap:12px}
+    .cl{display:flex;align-items:center;gap:1rem;padding:1rem 1.15rem;border-radius:18px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);transition:background .3s,border-color .3s}
+    a.cl:hover{background:rgba(var(--red-rgb),.1);border-color:rgba(var(--red-rgb),.35)}
+    .cl i{width:42px;height:42px;border-radius:12px;background:rgba(var(--red-rgb),.15);color:var(--red);display:grid;place-items:center;flex-shrink:0;font-style:normal}
+    .cl i .ic{font-size:19px}
+    .cl small{display:block;color:rgba(255,255,255,.5);font-size:13px}
+    .cl b{font-weight:600;font-size:16px;overflow-wrap:anywhere}
+    footer{background:var(--bg);padding:80px 0 36px}
+    .ft-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:2.5rem}
+    .ft-grid .logo{color:var(--ink)}
+    .ft-about{color:var(--ink2);margin-top:1.1rem;max-width:300px;font-size:15px}
+    .ft-grid h4{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem}
+    .ft-grid li{margin-bottom:.55rem}
+    .ft-grid li a,.ft-grid address{color:var(--ink2);font-style:normal;font-size:15px;transition:color .25s}
+    .ft-grid li a:hover{color:var(--red)}
+    .ft-bottom{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-top:56px;padding-top:24px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+
+    /* floating contact */
+    .fab{position:fixed;right:18px;bottom:18px;z-index:90;display:flex;flex-direction:column;gap:8px}
+    .fab a,.fab button{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;color:#fff;box-shadow:0 10px 24px rgba(0,0,0,.18);transition:transform .3s var(--ease)}
+    .fab a:hover,.fab button:hover{transform:translateY(-3px)}
+    .fab .ic{font-size:20px}
+    .fab .wa{background:#25d366}
+    .fab .ph{background:#2563eb}
+    .fab .em{background:#7c5cff}
+    .fab .up{background:var(--red);opacity:0;pointer-events:none;transition:opacity .3s,transform .3s var(--ease)}
+    .fab .up.show{opacity:1;pointer-events:auto}
+
+    /* ── RESPONSIVE ── */
+    @media (max-width:1080px){
+      .hub-row{gap:60px}
+      .hcard{width:300px}
     }
-    /* left panel */
-    .how-left{
-      display:flex;flex-direction:column;justify-content:center;
-      padding:5rem 4rem 5rem 2.5rem;
-      border-right:1px solid var(--border-light);
-      position:relative;
+    @media (max-width:960px){
+      :root{--head:104px}
+      .nav-links,.nav .btn{display:none}
+      .nav-toggle{display:grid}
+      .mnav{display:block;max-height:0;overflow:hidden;transition:max-height .45s var(--ease)}
+      .nav.open .mnav{max-height:420px}
+      .mnav a{display:block;color:rgba(255,255,255,.8);font-size:17px;font-weight:600;padding:.85rem 20px;border-top:1px solid rgba(255,255,255,.06)}
+      .mnav a.on{color:var(--red)}
+      .hero-grid{grid-template-columns:1fr}
+      .hero-art{height:420px;max-width:560px;width:100%;margin:0 auto}
+      .who-grid{grid-template-columns:1fr;gap:1rem}
+      .who-text{text-indent:0}
+      .bento{grid-template-columns:1fr 1fr}
+      .bc.tall{grid-row:auto;grid-column:1/-1}
+      .work-grid{grid-template-columns:1fr;gap:3rem}
+      .wcard:nth-child(even){margin-top:0}
+      .svc-grid,.proc-grid,.cases-grid,.faq-grid,.cta-grid,.cmp{grid-template-columns:1fr}
+      .svc-side,.proc-side{position:static}
+      .scard{position:relative;top:auto;transform:none;filter:none}
+      .hub-svg{display:none}
+      .hub-row,.hub-row.mid{flex-direction:column;align-items:center;gap:18px;margin:18px 0}
+      .hub-row.mid .hub-core{order:-1;margin-bottom:6px}
+      .hcard{width:100%;max-width:520px}
+      .plans{grid-template-columns:1fr}
+      .plan-wide{grid-template-columns:1fr}
+      .pillars{grid-template-columns:1fr 1fr}
+      .ft-grid{grid-template-columns:1fr 1fr}
+      .slides{grid-auto-columns:calc(85% - 9px)}
     }
-    .how-step-label{
-      font-size:10px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;
-      color:var(--accent);margin-bottom:1.5rem;display:flex;align-items:center;gap:.75rem;
+    @media (max-width:600px){
+      body{font-size:15.5px}
+      :root{--head:108px}
+      .topbar{font-size:12.5px;flex-wrap:nowrap;white-space:nowrap}
+      .tb-full{display:none}
+      .tb-short{display:inline}
+      .hero{padding-top:calc(var(--head) + 44px)}
+      .hero-art{height:330px}
+      .hchip.b{display:none}
+      .hero-foot{margin-top:36px}
+      .tools p{display:none}
+      .who{padding:80px 0}
+      .panel{border-radius:26px;padding:80px 0}
+      .bento{grid-template-columns:1fr}
+      .bc{min-height:0}
+      .work,.svc,.what,.proc,.why,.cases{padding:84px 0}
+      .studio{margin-top:84px}
+      .sbody ul{grid-template-columns:1fr}
+      .tl{padding-left:62px;gap:36px}
+      .tl-line{left:21px}
+      .step-num{left:-62px;width:44px;height:44px;font-size:16px}
+      .step-card{padding:24px 22px}
+      .step-ic{width:52px;height:52px;font-size:23px}
+      .step-card h3{font-size:23px}
+      .cmp-col{padding:22px}
+      .vmq{height:300px;grid-template-columns:1fr}
+      .vcol.rev{display:none}
+      .pillars{grid-template-columns:1fr}
+      .slides{grid-auto-columns:calc(92% - 9px)}
+      .cstat b{font-size:36px;min-width:104px}
+      .faq{padding-bottom:84px}
+      .ft-grid{grid-template-columns:1fr}
+      .btn{height:50px}
+      .fab{right:12px;bottom:12px}
+      .fab .ph,.fab .em{display:none}
     }
-    .how-step-label::before{content:'';width:20px;height:1px;background:var(--accent)}
-    .how-big-num{
-      font-size:clamp(6rem,14vw,12rem);font-weight:900;letter-spacing:-0.06em;line-height:.85;
-      color:rgba(12,12,12,.06);position:absolute;right:3rem;top:50%;transform:translateY(-50%);
-      user-select:none;pointer-events:none;transition:none;
+    @media (prefers-reduced-motion:reduce){
+      *,*::before,*::after{animation:none!important;transition:none!important}
+      .rv{opacity:1;transform:none}
+      .who-text .w{color:var(--ink)}
     }
-    .how-step-title{
-      font-size:clamp(2rem,4vw,3.5rem);font-weight:900;letter-spacing:-0.03em;line-height:1.05;
-      margin-bottom:1.5rem;transition:opacity .5s,transform .5s;
-    }
-    .how-step-title em{color:var(--accent)}
-    .how-step-text{font-size:15px;color:var(--muted);line-height:1.9;max-width:400px;transition:opacity .5s .05s,transform .5s .05s}
-    /* progress dots */
-    .how-progress{
-      position:absolute;bottom:3.5rem;left:2.5rem;
-      display:flex;gap:.6rem;align-items:center;
-    }
-    .how-prog-dot{
-      width:6px;height:6px;border-radius:50%;background:rgba(12,12,12,.15);
-      transition:background .3s,transform .3s;
-    }
-    .how-prog-dot.on{background:var(--accent);transform:scale(1.4)}
-    /* right panel — card stack */
-    .how-right{
-      position:relative;display:flex;align-items:center;justify-content:center;
-      padding:3rem;overflow:hidden;
-    }
-    .how-float-card{
-      position:absolute;
-      width:380px;max-width:calc(100% - 4rem);
-      background:var(--dark2);border-radius:20px;
-      border:1px solid rgba(255,255,255,.07);
-      padding:2.5rem;
-      box-shadow:0 32px 80px rgba(0,0,0,.35),0 0 0 1px rgba(255,255,255,.04);
-      will-change:transform,opacity;
-      /* initial: below the viewport */
-      transform:translateY(120px) rotate(4deg);
-      opacity:0;
-      pointer-events:none;
-      transition:none; /* JS drives this with requestAnimationFrame */
-    }
-    .how-float-card.settling{
-      transition:transform .85s cubic-bezier(.16,1,.3,1),opacity .6s ease,box-shadow .5s;
-    }
-    .how-float-card.active{transform:translateY(0) rotate(0deg);opacity:1;pointer-events:auto;box-shadow:0 48px 100px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.06)}
-    .how-float-card.stacked-1{transform:translateY(-18px) scale(.96) rotate(-1deg);opacity:.7;z-index:0}
-    .how-float-card.stacked-2{transform:translateY(-32px) scale(.92) rotate(1deg);opacity:.4;z-index:-1}
-    .how-float-card.stacked-3{transform:translateY(-44px) scale(.88) rotate(-1.5deg);opacity:.2;z-index:-2}
-    .how-float-card.gone{transform:translateY(-80px) scale(.85);opacity:0}
-    /* card internals */
-    .hfc-num{font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem;display:flex;align-items:center;gap:.6rem}
-    .hfc-num::before{content:'';width:14px;height:1px;background:var(--accent)}
-    .hfc-icon{
-      width:52px;height:52px;border:1px solid rgba(var(--accent-rgb),.25);border-radius:12px;
-      display:flex;align-items:center;justify-content:center;font-size:22px;
-      margin-bottom:2rem;background:rgba(var(--accent-rgb),.05);
-    }
-    .hfc-title{font-size:1.35rem;font-weight:800;color:#fff;line-height:1.2;margin-bottom:.85rem}
-    .hfc-title em{color:var(--accent)}
-    .hfc-text{font-size:13px;color:rgba(255,255,255,.45);line-height:1.9}
-    .hfc-tag{
-      display:inline-flex;align-items:center;gap:.5rem;margin-top:2rem;
-      font-size:9px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;
-      color:rgba(255,255,255,.25);border-top:1px solid rgba(255,255,255,.06);
-      padding-top:1.25rem;width:100%;
-    }
-    .hfc-tag-dot{width:5px;height:5px;border-radius:50%;background:var(--accent)}
-    /* scroll spacer — JS reads this height */
-    .how-spacer{height:400vh}
-    /* mobile fallback */
-    @media(max-width:900px){
-      .how-sticky{grid-template-columns:1fr;height:auto;position:relative;padding:5rem 2.5rem}
-      .how-right{display:none}
-      .how-float-card{position:relative;width:100%;transform:none;opacity:1;margin-bottom:1.5rem;pointer-events:auto}
-      .how-spacer{display:none}
-      .how-big-num{display:none}
-    }
-
-    /* ===== WORK ===== */
-    .work{background:var(--bg);padding:0 2.5rem 6rem}
-    .work-inner{max-width:1300px;margin:0 auto}
-    .work-hdr{display:flex;align-items:baseline;justify-content:space-between;padding:5rem 0 3.5rem;border-bottom:1px solid var(--border-light)}
-    .work-title{font-size:clamp(3rem,7vw,6rem);font-weight:900;letter-spacing:-0.04em}
-    .work-title em{color:var(--accent)}
-    .work-see-all{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:10px 22px;border:1px solid var(--border-light);border-radius:100px;color:var(--muted);transition:all .3s}
-    .work-see-all:hover{border-color:var(--text);color:var(--text)}
-    .work-cards{display:flex;flex-direction:column;gap:2px;margin-top:2px}
-    .work-card{position:relative;overflow:hidden;height:500px;display:flex;flex-direction:column;justify-content:flex-end;cursor:pointer;background:#111;opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
-    .work-card.vis{opacity:1;transform:none}
-    .work-card-bg{position:absolute;inset:0;transition:transform .8s cubic-bezier(.16,1,.3,1);background-size:cover;background-position:center}
-    .work-card:hover .work-card-bg{transform:scale(1.04)}
-    .work-card-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.75) 0%,rgba(0,0,0,.1) 50%,transparent);transition:opacity .4s}
-    .work-card:hover .work-card-ov{opacity:.85}
-    .work-card-info{position:relative;z-index:2;padding:2.5rem;display:flex;align-items:flex-end;justify-content:space-between}
-    .work-card-meta{display:flex;align-items:center;gap:.75rem;margin-bottom:.6rem}
-    .work-card-cat{font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);background:rgba(var(--accent-rgb),.1);border:1px solid rgba(var(--accent-rgb),.2);padding:4px 10px}
-    .work-card-name{font-size:clamp(1.5rem,3vw,2.5rem);font-weight:900;color:#fff;letter-spacing:-0.02em;line-height:1.1}
-    .work-card-action{display:flex;align-items:center;gap:.6rem;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6);transition:color .3s;flex-shrink:0}
-    .work-card:hover .work-card-action{color:var(--accent)}
-    .work-card-action svg{width:16px;height:16px;stroke:currentColor;stroke-width:1.5;fill:none;transition:transform .3s}
-    .work-card:hover .work-card-action svg{transform:translate(2px,-2px)}
-
-    /* ===== TOOLS / CERTIFIED (WHITE) ===== */
-    .tools{background:var(--bg);padding:7rem 2.5rem;text-align:center;border-top:1px solid var(--border-light)}
-    .tools-inner{max-width:900px;margin:0 auto}
-    .tools-h{font-size:clamp(2rem,4vw,3.5rem);font-weight:900;letter-spacing:-0.03em;color:var(--text);margin-bottom:.6rem}
-    .tools-h em{color:var(--accent)}
-    .tools-sub{font-size:14px;color:var(--muted);line-height:1.8;max-width:520px;margin:.75rem auto 4rem}
-    .tools-grid{display:flex;align-items:center;justify-content:center;gap:1.25rem;flex-wrap:wrap}
-    .tool-chip{width:72px;height:72px;background:var(--bg);border:1px solid var(--border-light);border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.3rem;font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);transition:opacity .6s,transform .6s,border-color .3s,color .3s;cursor:default;opacity:0;transform:translateY(16px)}
-    .tool-chip.vis{opacity:1;transform:none}
-    .tool-chip:hover{border-color:var(--accent);color:var(--accent);background:rgba(var(--accent-rgb),.04)}
-    .tool-chip-icon{font-size:20px;line-height:1}
-
-    /* ===== MARQUEE ===== */
-    .mq-strip{overflow:hidden;background:var(--accent);padding:1rem 0}
-    .mq-track{display:flex;white-space:nowrap;animation:mq 22s linear infinite;will-change:transform}
-    .mq-strip:hover .mq-track{animation-play-state:paused}
-    .mq-item{display:inline-flex;align-items:center;gap:1.5rem;font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#fff;padding:0 1.5rem;flex-shrink:0}
-    .mq-dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.4)}
-    @keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-
-    /* ===== STATS (WHITE) ===== */
-    .stats-sec{background:var(--bg);padding:8rem 2.5rem;border-top:1px solid var(--border-light)}
-    .stats-inner{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
-    .stats-tag{font-size:10px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--accent);margin-bottom:2.5rem;display:flex;align-items:center;gap:.75rem}
-    .stats-tag::before{content:'';width:20px;height:1px;background:var(--accent)}
-    .stat-row{padding:2rem 0;border-bottom:1px solid var(--border-light)}
-    .stat-row:first-of-type{border-top:1px solid var(--border-light)}
-    .stat-row-inner{display:flex;align-items:baseline;gap:1.25rem}
-    .stat-num{font-size:clamp(3rem,6vw,5.5rem);font-weight:900;letter-spacing:-0.04em;color:var(--accent);line-height:1}
-    .stat-label{font-size:14px;color:var(--muted);line-height:1.6;max-width:260px}
-    .stat-label strong{display:block;color:var(--text);font-size:1rem;font-weight:700;margin-bottom:.25rem}
-    .stats-right{position:relative}
-    .stats-visual{aspect-ratio:1;max-width:480px;margin:0 auto;background:#f9f9f9;border:1px solid var(--border-light);border-radius:24px;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center}
-    .sv-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(0,0,0,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.04) 1px,transparent 1px);background-size:40px 40px}
-    .sv-center{position:relative;z-index:2;text-align:center}
-    .sv-ring{width:180px;height:180px;border-radius:50%;border:1px solid rgba(var(--accent-rgb),.3);display:flex;align-items:center;justify-content:center;position:relative;margin:0 auto;animation:svring 6s linear infinite}
-    @keyframes svring{to{transform:rotate(360deg)}}
-    .sv-ring::before{content:'';position:absolute;inset:-20px;border-radius:50%;border:1px solid rgba(var(--accent-rgb),.1);animation:svring 10s linear infinite reverse}
-    .sv-ring-dot{position:absolute;width:10px;height:10px;border-radius:50%;background:var(--accent);top:-5px;left:50%;transform:translateX(-50%);box-shadow:0 0 16px rgba(var(--accent-rgb),.6)}
-    .sv-core{width:80px;height:80px;border-radius:50%;background:rgba(var(--accent-rgb),.08);border:1px solid rgba(var(--accent-rgb),.3);display:flex;align-items:center;justify-content:center;font-size:24px}
-    .sv-bars{display:flex;gap:6px;margin-top:2rem;justify-content:center}
-    .sv-bar{width:6px;border-radius:3px;background:var(--accent);opacity:.6;animation:svbar 1.6s ease-in-out infinite}
-    .sv-bar:nth-child(1){height:32px;animation-delay:0s}
-    .sv-bar:nth-child(2){height:48px;animation-delay:.15s}
-    .sv-bar:nth-child(3){height:24px;animation-delay:.3s}
-    .sv-bar:nth-child(4){height:40px;animation-delay:.45s}
-    .sv-bar:nth-child(5){height:32px;animation-delay:.6s}
-    @keyframes svbar{0%,100%{opacity:.3;transform:scaleY(.6)}50%{opacity:.8;transform:scaleY(1)}}
-    .sv-tags{position:absolute;display:flex;flex-direction:column;gap:.5rem}
-    .sv-tags.top-left{top:1.5rem;left:1.5rem}
-    .sv-tags.bottom-right{bottom:1.5rem;right:1.5rem;text-align:right}
-    .sv-tag{font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);background:rgba(var(--accent-rgb),.07);border:1px solid rgba(var(--accent-rgb),.15);padding:4px 8px;display:inline-block}
-
-    /* ===== DESIGN PILLARS (DARK) ===== */
-    .pillars{background:var(--dark);padding:8rem 2.5rem;border-top:1px solid rgba(255,255,255,.05)}
-    .pillars-inner{max-width:1300px;margin:0 auto}
-    .pillars-hdr{text-align:center;margin-bottom:4rem}
-    .pillars-tag{font-size:10px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--accent);margin-bottom:.75rem}
-    .pillars-h{font-size:clamp(2.5rem,5vw,4rem);font-weight:900;letter-spacing:-0.03em;color:#fff}
-    .pillars-h em{color:var(--accent)}
-    .pillars-row{display:flex;gap:1.5px;height:380px}
-    .pcard{flex:1;background:var(--dark2);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:2.5rem;position:relative;overflow:hidden;cursor:pointer;transition:flex .5s cubic-bezier(.16,1,.3,1),border-color .3s;display:flex;flex-direction:column;justify-content:flex-end}
-    .pcard.active,.pcard:hover{flex:2.8;border-color:rgba(var(--accent-rgb),.2)}
-    .pcard::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.16,1,.3,1)}
-    .pcard.active::before,.pcard:hover::before{transform:scaleX(1)}
-    .pcard-icon{width:40px;height:40px;border:1px solid rgba(var(--accent-rgb),.2);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;margin-bottom:auto;transition:border-color .3s,background .3s}
-    .pcard.active .pcard-icon,.pcard:hover .pcard-icon{border-color:var(--accent);background:rgba(var(--accent-rgb),.08)}
-    .pcard-num{font-size:9px;font-weight:700;letter-spacing:.2em;color:var(--accent);margin-bottom:.75rem}
-    .pcard-title{font-size:1.05rem;font-weight:800;color:#fff;line-height:1.2;margin-bottom:.5rem}
-    .pcard-desc{font-size:12.5px;color:rgba(255,255,255,.4);line-height:1.8;max-height:0;overflow:hidden;opacity:0;transition:max-height .5s cubic-bezier(.16,1,.3,1),opacity .4s .1s}
-    .pcard.active .pcard-desc,.pcard:hover .pcard-desc{max-height:200px;opacity:1}
-    .pcard-bg-num{position:absolute;bottom:-1.5rem;right:1rem;font-size:8rem;font-weight:900;color:rgba(255,255,255,.025);letter-spacing:-0.05em;user-select:none}
-
-    /* ===== FROM YANGON TO THE WORLD (DARK) ===== */
-    .world-sec{background:var(--dark);padding:8rem 2.5rem;border-top:1px solid rgba(255,255,255,.05);overflow:hidden}
-    .world-inner{max-width:1300px;margin:0 auto}
-    .world-top{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;margin-bottom:5rem}
-    .world-left .world-tag{font-size:10px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem}
-    .world-h{font-size:clamp(2.5rem,5vw,4.5rem);font-weight:900;letter-spacing:-0.04em;line-height:1.02;color:#fff}
-    .world-h em{color:var(--accent)}
-    .world-desc{font-size:15px;color:rgba(255,255,255,.45);line-height:1.9;margin-top:1.5rem;max-width:420px}
-    .world-cities{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:2.5rem}
-    .world-city{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:6px 14px;border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.45);border-radius:100px;transition:all .3s}
-    .world-city:hover{border-color:var(--accent);color:var(--accent)}
-    /* MAP VISUAL */
-    .world-map{position:relative;height:340px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:20px;overflow:hidden}
-    .map-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:30px 30px}
-    /* continent blobs */
-    .map-blob{position:absolute;border-radius:50%;opacity:.12;background:rgba(255,255,255,1)}
-    .mb-asia{width:320px;height:200px;top:20%;left:55%;border-radius:40%}
-    .mb-europe{width:120px;height:100px;top:10%;left:38%;border-radius:50%}
-    .mb-africa{width:120px;height:180px;top:30%;left:38%;border-radius:40%}
-    .mb-americas{width:160px;height:260px;top:10%;left:8%;border-radius:40%}
-    .mb-oceania{width:100px;height:80px;top:55%;left:72%;border-radius:50%}
-    /* location pins */
-    .map-pin{position:absolute;display:flex;flex-direction:column;align-items:center;cursor:default}
-    .map-pin-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px rgba(var(--accent-rgb),.7);position:relative}
-    .map-pin-dot::before{content:'';position:absolute;inset:-4px;border-radius:50%;border:1px solid rgba(var(--accent-rgb),.4);animation:pinpulse 2s ease-in-out infinite}
-    .map-pin-label{font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:4px;white-space:nowrap;background:rgba(10,10,10,.8);padding:2px 6px;border-radius:4px}
-    @keyframes pinpulse{0%,100%{transform:scale(1);opacity:.6}50%{transform:scale(1.8);opacity:0}}
-    /* SVG lines between Yangon pin and others */
-    .map-lines{position:absolute;inset:0;pointer-events:none}
-    /* home pin (Yangon) is bigger / red */
-    .map-pin.home .map-pin-dot{width:12px;height:12px;background:var(--accent);box-shadow:0 0 20px rgba(var(--accent-rgb),.9)}
-    .map-pin.home .map-pin-dot::before{inset:-6px;border-color:rgba(var(--accent-rgb),.5)}
-    /* stats row below map */
-    .world-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:1px;background:rgba(255,255,255,.06)}
-    .ws-item{background:var(--dark);padding:2rem;text-align:center}
-    .ws-num{font-size:2.2rem;font-weight:900;color:var(--accent);letter-spacing:-0.03em}
-    .ws-label{font-size:11px;color:rgba(255,255,255,.35);margin-top:.35rem;letter-spacing:.04em}
-
-    /* ===== BLOG (WHITE) ===== */
-    .blog{background:var(--bg);padding:8rem 2.5rem;border-top:1px solid var(--border-light)}
-    .blog-inner{max-width:1300px;margin:0 auto}
-    .blog-hdr{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:4rem}
-    .blog-title-wrap{}
-    .blog-sup{font-size:10px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--accent);margin-bottom:.75rem}
-    .blog-title{font-size:clamp(2.5rem,5vw,4.5rem);font-weight:900;letter-spacing:-0.04em}
-    .blog-title em{color:var(--accent)}
-    .blog-see-all{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:10px 22px;border:1px solid var(--border-light);border-radius:100px;color:var(--muted);transition:all .3s;align-self:flex-end}
-    .blog-see-all:hover{border-color:var(--text);color:var(--text)}
-    .blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-    .blog-card{position:relative;border:1px solid var(--border-light);border-radius:16px;overflow:hidden;cursor:pointer;transition:border-color .3s,transform .4s cubic-bezier(.16,1,.3,1);opacity:0;transform:translateY(28px)}
-    .blog-card.vis{opacity:1;transform:none}
-    .blog-card:hover{border-color:var(--accent);transform:translateY(-4px)}
-    .blog-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.16,1,.3,1)}
-    .blog-card:hover::before{transform:scaleX(1)}
-    .blog-card-img{height:200px;background:#f0f0f0;overflow:hidden;position:relative}
-    .blog-card-img-inner{position:absolute;inset:0;transition:transform .8s cubic-bezier(.16,1,.3,1)}
-    .blog-card:hover .blog-card-img-inner{transform:scale(1.06)}
-    .bci-1{background:linear-gradient(135deg,#1a0808 0%,#3d1010 50%,#7b2020 100%)}
-    .bci-2{background:linear-gradient(135deg,#080a1a 0%,#10163d 50%,#202070 100%)}
-    .bci-3{background:linear-gradient(135deg,#0a0a0a 0%,#222 50%,#333 100%)}
-    .blog-card-body{padding:1.75rem}
-    .blog-card-meta{display:flex;align-items:center;gap:.75rem;margin-bottom:1rem}
-    .blog-card-cat{font-size:8px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);background:rgba(var(--accent-rgb),.08);border:1px solid rgba(var(--accent-rgb),.18);padding:3px 9px}
-    .blog-card-date{font-size:10px;color:var(--muted)}
-    .blog-card-title{font-size:1.05rem;font-weight:800;color:var(--text);line-height:1.3;margin-bottom:.75rem}
-    .blog-card-excerpt{font-size:13px;color:var(--muted);line-height:1.75}
-    .blog-card-link{display:inline-flex;align-items:center;gap:.4rem;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-top:1.25rem;transition:gap .2s}
-    .blog-card:hover .blog-card-link{gap:.7rem}
-    .blog-card-link svg{width:14px;height:14px;stroke:currentColor;stroke-width:1.5;fill:none}
-
-    /* ===== CTA (DARK) ===== */
-    .cta{background:var(--dark);padding:0 2.5rem}
-    .cta-inner{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;min-height:60vh;align-items:center;border-left:1px solid rgba(255,255,255,.06);border-right:1px solid rgba(255,255,255,.06)}
-    .cta-left{padding:6rem 4rem 6rem 0;border-right:1px solid rgba(255,255,255,.06)}
-    .cta-tag{font-size:10px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--accent);margin-bottom:2rem;display:flex;align-items:center;gap:.75rem}
-    .cta-tag::before{content:'';width:20px;height:1px;background:var(--accent)}
-    .cta-h{font-size:clamp(2.5rem,5vw,4.5rem);font-weight:900;letter-spacing:-0.04em;color:#fff;line-height:1}
-    .cta-h em{color:var(--accent)}
-    .cta-actions{display:flex;align-items:center;gap:1.5rem;margin-top:3rem;flex-wrap:wrap}
-    .cta-arrow{width:56px;height:56px;border-radius:50%;border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;transition:all .3s;cursor:pointer}
-    .cta-arrow:hover{border-color:var(--accent);background:rgba(var(--accent-rgb),.1)}
-    .cta-arrow svg{width:20px;height:20px;stroke:#fff;stroke-width:1.5;fill:none;transition:stroke .3s}
-    .cta-arrow:hover svg{stroke:var(--accent)}
-    .cta-right{padding:6rem 0 6rem 4rem;display:flex;align-items:center;justify-content:center}
-    .cta-visual{width:280px;height:280px;position:relative;border-radius:50%;background:conic-gradient(from 180deg,var(--accent) 0deg,rgba(var(--accent-rgb),.3) 90deg,transparent 180deg,rgba(var(--accent-rgb),.1) 270deg,var(--accent) 360deg);animation:ctaspin 12s linear infinite}
-    .cta-visual::before{content:'';position:absolute;inset:20px;border-radius:50%;background:var(--dark);animation:ctaspin 12s linear infinite reverse}
-    .cta-visual::after{content:'';position:absolute;inset:40px;border-radius:50%;border:1px solid rgba(var(--accent-rgb),.2)}
-    .cta-visual-core{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:2;font-size:1.2rem;font-weight:900;color:var(--accent);letter-spacing:.1em}
-    @keyframes ctaspin{to{transform:rotate(360deg)}}
-
-    /* ===== FOOTER ===== */
-    footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.07);padding:4rem 2.5rem 2rem}
-    .ft-inner{max-width:1300px;margin:0 auto}
-    .ft-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,.07)}
-    .ft-logo{display:flex;align-items:center;gap:.75rem;margin-bottom:1.25rem}
-    .ft-logo-sq{width:28px;height:28px;border:1.5px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;color:var(--accent)}
-    .ft-logo-t{font-size:11px;font-weight:800;letter-spacing:.22em;color:#fff}
-    .ft-desc{font-size:13px;color:rgba(255,255,255,.35);line-height:1.9;max-width:240px}
-    .ft-col-h{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:1.25rem}
-    .ft-col-links{display:flex;flex-direction:column;gap:.7rem}
-    .ft-col-links a,.ft-col-links span{font-size:13px;color:rgba(255,255,255,.45);transition:color .2s;line-height:1.7}
-    .ft-col-links a:hover{color:var(--accent)}
-    .ft-bot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;padding-top:2rem;font-size:12px;color:rgba(255,255,255,.25)}
-    .ft-acc{color:var(--accent)}
-
-    /* REVEAL */
-    .rv{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
-    .rv.vis{opacity:1;transform:none}
-    .rv1{transition-delay:.1s}
-    .rv2{transition-delay:.2s}
-    .rv3{transition-delay:.3s}
-
-    /* MOBILE */
-    @media(max-width:900px){
-      body{cursor:auto}
-      #cur{display:none}
-      nav .nav-links{display:none}
-      .hero-visual{display:none}
-      .hero::after{background:linear-gradient(180deg,transparent,rgba(10,10,10,.85))}
-      .how-row{grid-template-columns:1fr}
-      .how-row:nth-child(odd) .how-card:first-child,.how-row:nth-child(even) .how-card:last-child{margin-top:0}
-      .stats-inner{grid-template-columns:1fr}
-      .stats-right{display:none}
-      .world-top{grid-template-columns:1fr}
-      .world-stats{grid-template-columns:1fr 1fr}
-      .blog-grid{grid-template-columns:1fr}
-      .pillars-row{flex-direction:column;height:auto;gap:1rem}
-      .pcard{flex:none !important}
-      .pcard-desc{max-height:200px !important;opacity:1 !important}
-      .cta-inner{grid-template-columns:1fr}
-      .cta-right{display:none}
-      .cta-left{border-right:none;padding:4rem 0}
-      .ft-top{grid-template-columns:1fr 1fr}
-      .float-menu{display:none}
-      .blog-hdr{flex-direction:column;gap:1.5rem}
-    }
-
-    /* ─── AWAKEN DESIGN ADDITIONS ─── */
-    .brand-mark{width:26px;height:23px;flex-shrink:0;background:currentColor;-webkit-mask:url(/logo-design.png) center/contain no-repeat;mask:url(/logo-design.png) center/contain no-repeat}
-    .nav-logo em{font-style:normal;color:var(--accent)}
-    .hv-mark{position:absolute;right:12%;top:50%;width:min(30vw,420px);aspect-ratio:1206/1050;transform:translateY(-50%);background:var(--accent);opacity:.12;-webkit-mask:url(/logo-design.png) center/contain no-repeat;mask:url(/logo-design.png) center/contain no-repeat;pointer-events:none}
-    .ft-logo .brand-mark{width:30px;height:26px;color:var(--accent)}
-    .work-card-desc{font-size:13px;color:rgba(255,255,255,.65);line-height:1.7;max-width:520px;margin-top:.6rem}
-    .client-chip{width:auto;height:auto;padding:14px 22px;border-radius:100px;font-size:11px;letter-spacing:.08em;flex-direction:row;gap:.55rem;color:var(--text)}
-    .client-chip small{font-size:8px;letter-spacing:.14em;color:var(--accent);font-weight:800}
-    .tools-note{font-size:12px;color:var(--muted);margin-top:3rem;letter-spacing:.02em}
-    .studio-map{position:relative;height:380px;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,.08);background:#111}
-    .studio-map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(1) invert(.92) contrast(.9)}
-    .studio-map-tag{position:absolute;left:1rem;bottom:1rem;z-index:2;background:rgba(10,10,10,.85);border:1px solid rgba(var(--accent-rgb),.35);color:#fff;font-size:11px;font-weight:600;padding:8px 14px;border-radius:100px;backdrop-filter:blur(6px)}
-    .studio-map-tag b{color:var(--accent)}
-    .studio-actions{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:2.25rem}
-    .studio-btn{display:inline-flex;align-items:center;gap:.5rem;padding:13px 26px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;transition:all .3s}
-    .studio-btn.primary{background:var(--accent);color:#fff}
-    .studio-btn.primary:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(var(--accent-rgb),.35)}
-    .studio-btn.ghost{border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.75)}
-    .studio-btn.ghost:hover{border-color:#fff;color:#fff}
-    .ws-num.sm{font-size:1.5rem;line-height:1.5}
-    .blog-grid.four{grid-template-columns:repeat(4,1fr)}
-    .blog-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.16,1,.3,1)}
-    .blog-card:hover .blog-card-img img{transform:scale(1.05)}
-    @media(max-width:1100px){.blog-grid.four{grid-template-columns:repeat(2,1fr)}}
-    @media(max-width:900px){.hv-mark{display:none}.studio-map{height:300px}.blog-grid.four{grid-template-columns:1fr}.ws-num.sm{font-size:1.05rem}.ws-item{padding:1.25rem .75rem}}
   </style>
 </head>
 <body>
 
-<div id="scroll-prog"></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-arr" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+  <symbol id="i-left" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></symbol>
+  <symbol id="i-right" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 9 9 0 0 1-3.9-.9L3 21l1.9-5.1A8.4 8.4 0 1 1 21 11.5z"/></symbol>
+  <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></symbol>
+  <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16.2 7.8-2.1 6.3-6.3 2.1 2.1-6.3z"/></symbol>
+  <symbol id="i-pen" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></symbol>
+  <symbol id="i-loop" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></symbol>
+  <symbol id="i-camera" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></symbol>
+  <symbol id="i-screen" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></symbol>
+  <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3l2.3 6.7L21 12l-6.7 2.3L12 21l-2.3-6.7L3 12l6.7-2.3z"/></symbol>
+</svg>
 
-<!-- FLOATING CONTACT -->
-<div class="float-menu">
-  <a href="https://wa.me/959255762417" target="_blank" class="float-btn" title="WhatsApp">
-    <div class="fb-corner"></div>
-    <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-  </a>
-  <a href="tel:+959255762417" class="float-btn" title="Call">
-    <div class="fb-corner"></div>
-    <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.57 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.48 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.09 6.09l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-  </a>
-  <a href="mailto:nyinyisoewin@awakenentertainment.org" class="float-btn" title="Email">
-    <div class="fb-corner"></div>
-    <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-  </a>
-</div>
-
-<!-- CURSOR -->
-<div id="cur"><div class="cur-r" id="cr"></div><div class="cur-d" id="cd"></div></div>
-
-<!-- LOADER -->
-<div id="ld">
-  <div class="ld-num" id="ldNum">0</div>
-  <div class="ld-bar"><div class="ld-fill" id="ldFill"></div></div>
-</div>
-
-<!-- NAV -->
-<nav id="nav" class="on-dark">
-  <a href="/" class="nav-logo">
-    <span class="brand-mark" aria-hidden="true"></span>AWAKEN <em>DESIGN</em>
-  </a>
-  <div class="nav-links">
-    <a href="/digital/">Digital</a>
-    <a href="/design/" class="active">Design</a>
-    <a href="/tech/">Tech</a>
-    <a href="/production/">Production</a>
-    <a href="/pr/">PR</a>
+<!-- HEADER -->
+<header class="site-head">
+  <div class="topbar">
+    <span class="dot"></span>
+    <span class="tb-full">Studio open for bookings — Mon–Sat, 9 AM–6 PM in Mayangone.</span><span class="tb-short">Studio open Mon–Sat, 9 AM–6 PM.</span>
+    <a href="https://wa.me/959255762417?text=Hi%20Awaken%2C%20I%27d%20like%20to%20book%20the%20studio." target="_blank" rel="noopener">Book the studio →</a>
   </div>
-  <a href="https://www.awakenentertainment.org/contact" target="_blank" class="nav-cta">Contact Us</a>
-</nav>
+  <nav class="nav" id="nav" aria-label="Main">
+    <div class="wrap nav-in">
+      <a href="/" class="logo" aria-label="Awaken Design home"><span class="logo-tile"><span class="mark"></span></span><span>Awaken <b>Design</b></span></a>
+      <div class="nav-links">
+        <a href="/digital/">Digital</a>
+        <a href="/design/" class="on" aria-current="page">Design</a>
+        <a href="/tech/">Tech</a>
+        <a href="/production/">Production</a>
+        <a href="/pr/">PR</a>
+      </div>
+      <a href="/contact/" class="btn btn-white">Start a Project <svg class="ic"><use href="#i-arr"/></svg></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false"><svg class="ic"><use href="#i-menu"/></svg></button>
+    </div>
+    <div class="mnav">
+      <a href="/digital/">Digital</a>
+      <a href="/design/" class="on">Design</a>
+      <a href="/tech/">Tech</a>
+      <a href="/production/">Production</a>
+      <a href="/pr/">PR</a>
+      <a href="/contact/">Start a Project →</a>
+    </div>
+  </nav>
+</header>
 
+<main>
 <!-- HERO -->
-<section class="hero" id="top">
-  <div class="hero-visual">
-    <div class="hv-grid"></div>
-    <div class="hv-rect hv-rect1"></div>
-    <div class="hv-rect hv-rect2"></div>
-    <div class="hv-rect hv-rect3"></div>
-    <div class="hv-dot hv-dot1"></div>
-    <div class="hv-dot hv-dot2"></div>
-    <div class="hv-dot hv-dot3"></div>
-    <div class="hv-line hv-line1"></div>
-    <div class="hv-line hv-line2"></div>
-    <div class="hv-label">Awaken Design Studio</div>
-    <div class="hv-mark" aria-hidden="true"></div>
-  </div>
-  <div class="hero-content">
-    <div class="hero-kicker" id="hKicker">Design Studio &middot; Yangon</div>
-    <h1 class="hero-h" id="hTitle">
-      <span class="hero-h-line"><span class="hw">We design</span> <span class="hw"><em>brands</em></span></span>
-      <span class="hero-h-line"><span class="hw">that</span> <span class="hw">make</span> <span class="hw">people</span></span>
-      <span class="hero-h-line"><span class="hw">stop</span> <span class="hw">&amp;</span> <span class="hw"><em>feel.</em></span></span>
-    </h1>
-    <p class="hero-sub" id="hSub">Branding &amp; advertising studio in Yangon &mdash; identity, campaign key visuals and social content for brands like MPT, Gery and MacArthur&rsquo;s.</p>
-    <div class="hero-actions" id="hActions">
-      <a href="https://www.awakenentertainment.org/contact" target="_blank" class="btn-primary">Start a Project &rarr;</a>
-      <a href="#work" class="btn-ghost">See Our Work</a>
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow rv"><span class="pulse"></span>Design studio · Yangon</span>
+      <h1 class="hero-h rv d1">We design brands that make people <span class="grad">stop &amp; feel.</span></h1>
+      <p class="hero-p rv d2">Branding &amp; advertising studio in Yangon — identity, campaign key visuals and social content for brands like MPT, Gery and MacArthur’s.</p>
+      <div class="btns rv d3">
+        <a href="/contact/" class="btn btn-red">Start a Project <svg class="ic"><use href="#i-arr"/></svg></a>
+        <a href="#work" class="btn btn-white">See Our Work <svg class="ic"><use href="#i-arr"/></svg></a>
+      </div>
+    </div>
+    <div class="hero-art rv d2" aria-hidden="true">
+      <div class="hc hc1"><img src="img/gery-2.jpg" alt=""></div>
+      <div class="hc hc2"><img src="img/mpt-1.jpg" alt=""></div>
+      <div class="hc hc3"><img src="img/mac-1.jpg" alt=""></div>
+      <div class="hchip a"><i>✦</i><span>Key visuals<small>Gery Crunch Roll</small></span></div>
+      <div class="hchip b"><i>◎</i><span>Social &amp; campaigns<small>MPT, ongoing</small></span></div>
     </div>
   </div>
-  <a href="#statement" class="hero-scroll-cta" id="hScroll">
-    <div class="hero-scroll-circle">
-      <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+  <div class="wrap hero-foot rv d3">
+    <div class="stat-chips">
+      <div class="schip"><b>13+</b> client brands</div>
+      <div class="schip"><b>Since 2016</b> in Yangon</div>
+      <div class="schip"><b>7</b> industries</div>
     </div>
-  </a>
-</section>
-
-<!-- STATEMENT (WHITE) -->
-<section class="stmt" id="statement">
-  <div class="stmt-inner">
-    <div class="stmt-tag rv">Design Studio &middot; Yangon</div>
-    <p class="stmt-p rv rv1">We are <em>Awaken Design</em> &mdash; a studio that partners with ambitious brands to create <strong>visual identities</strong> that command attention, communicate purpose, and <em>endure.</em></p>
+    <div class="tools">
+      <div class="tool-row"><span class="tool">Fi</span><span class="tool">Ai</span><span class="tool">Ps</span><span class="tool">Id</span><span class="tool">Ae</span></div>
+      <p>Crafted in Figma, Illustrator, Photoshop, InDesign &amp; After Effects.</p>
+    </div>
   </div>
 </section>
 
-<!-- HOW WE DO IT — SCROLL-DRIVEN STICKY CARDS -->
-<div class="how-wrap" id="process">
-  <!-- sticky viewport -->
-  <div class="how-sticky" id="howSticky">
-    <!-- LEFT: text that updates per step -->
-    <div class="how-left">
-      <div class="how-step-label" id="howLabel">Our Process</div>
-      <h2 class="how-step-title" id="howTitle">How we <em>do</em> it.</h2>
-      <p class="how-step-text" id="howText">Four disciplines. One studio. Zero handoffs.</p>
-      <div class="how-big-num" id="howBigNum">01</div>
-      <div class="how-progress">
-        <div class="how-prog-dot on" data-pi="0"></div>
-        <div class="how-prog-dot" data-pi="1"></div>
-        <div class="how-prog-dot" data-pi="2"></div>
-        <div class="how-prog-dot" data-pi="3"></div>
-      </div>
+<!-- TRUSTED -->
+<section class="trusted" aria-label="Client brands">
+  <p class="rv">Trusted by 13 brands across Myanmar</p>
+  <div class="marquee">
+    <div class="mq-track">
+      <span>MPT</span><span>Gery</span><span>MacArthur’s</span><span>Becozinc</span><span>Wave Money</span><span>Kirin Ichiban</span><span>Grand Royal</span><span>AWBA</span><span>MicroMoney</span><span>Handicap International</span><span>Myanmar Link</span><span>UMG</span><span>Ananda</span>
+      <span aria-hidden="true">MPT</span><span aria-hidden="true">Gery</span><span aria-hidden="true">MacArthur’s</span><span aria-hidden="true">Becozinc</span><span aria-hidden="true">Wave Money</span><span aria-hidden="true">Kirin Ichiban</span><span aria-hidden="true">Grand Royal</span><span aria-hidden="true">AWBA</span><span aria-hidden="true">MicroMoney</span><span aria-hidden="true">Handicap International</span><span aria-hidden="true">Myanmar Link</span><span aria-hidden="true">UMG</span><span aria-hidden="true">Ananda</span>
     </div>
-    <!-- RIGHT: floating card stack -->
-    <div class="how-right">
-      <div class="how-float-card settling active" id="hCard0">
-        <div class="hfc-num">01 &mdash; Discover</div>
-        <div class="hfc-icon">&#10022;</div>
-        <div class="hfc-title">We <em>know</em> our clients.</div>
-        <div class="hfc-text">Before a single pixel, we immerse ourselves in your brand story, audience, and competitive landscape. Every creative decision starts with deep understanding.</div>
-        <div class="hfc-tag"><span class="hfc-tag-dot"></span>Research &amp; Strategy</div>
-      </div>
-      <div class="how-float-card" id="hCard1">
-        <div class="hfc-num">02 &mdash; Concept</div>
-        <div class="hfc-icon">&#9672;</div>
-        <div class="hfc-title">We set clear <em>direction.</em></div>
-        <div class="hfc-text">We present multiple visual directions &mdash; mood boards, type pairings, colour stories &mdash; then refine the one that resonates. Nothing moves to production without alignment.</div>
-        <div class="hfc-tag"><span class="hfc-tag-dot"></span>Visual Direction</div>
-      </div>
-      <div class="how-float-card" id="hCard2">
-        <div class="hfc-num">03 &mdash; Design</div>
-        <div class="hfc-icon">&#9650;</div>
-        <div class="hfc-title">We <em>QA</em> everything.</div>
-        <div class="hfc-text">Every asset, every format, every screen size. Our design system approach means nothing ships until it passes our internal review &mdash; pixel-perfect and production-ready.</div>
-        <div class="hfc-tag"><span class="hfc-tag-dot"></span>Craft &amp; Precision</div>
-      </div>
-      <div class="how-float-card" id="hCard3">
-        <div class="hfc-num">04 &mdash; Deliver</div>
-        <div class="hfc-icon">&#11041;</div>
-        <div class="hfc-title">We&rsquo;re never <em>done.</em></div>
-        <div class="hfc-text">Our team stays available after delivery &mdash; fast turnaround on revisions, brand guidance, and asset extensions so your identity grows as your business does.</div>
-        <div class="hfc-tag"><span class="hfc-tag-dot"></span>Ongoing Support</div>
+  </div>
+</section>
+
+<!-- WHO -->
+<section class="who" id="statement">
+  <div class="wrap who-grid">
+    <span class="label rv">Who are we?</span>
+    <div>
+      <p class="who-text" id="whoText">We are Awaken Design — a Yangon studio that partners with ambitious brands to create visual identities that command attention, communicate purpose, and endure.</p>
+      <div class="btns rv">
+        <a href="/" class="btn btn-red">About Awaken <svg class="ic"><use href="#i-arr"/></svg></a>
+        <a href="/contact/" class="btn btn-white btn-line">Contact Us <svg class="ic"><use href="#i-arr"/></svg></a>
       </div>
     </div>
   </div>
-  <!-- scroll spacer — creates scroll distance for the sticky to play through -->
-  <div class="how-spacer"></div>
-</div>
+</section>
+
+<!-- NUMBERS -->
+<section class="nums on-dark">
+  <div class="panel">
+    <div class="wrap">
+      <div class="center">
+        <span class="label inv rv">By the numbers</span>
+        <h2 class="h2 rv d1">Ten years of brands<br>Myanmar remembers.</h2>
+        <p class="lead rv d2">The numbers behind the studio — the brands, the industries and the years we’ve spent shaping how they look.</p>
+      </div>
+      <div class="bento">
+        <div class="bc rv" id="yearsCard">
+          <div class="bviz">
+            <svg class="dial" id="dial" viewBox="0 0 300 170" aria-hidden="true"><text x="150" y="150" id="dialNum">0</text></svg>
+          </div>
+          <h3>10+ years</h3>
+          <p>Designing for Myanmar’s leading brands and international partners since 2016.</p>
+        </div>
+        <div class="bc tall rv d1">
+          <div class="bviz">
+            <div class="flow">
+              <div class="fcard"><span class="fic"><svg class="ic"><use href="#i-clock"/></svg></span><div><small>Where it started</small><b>2016 · Gery’s Myanmar launch</b></div></div>
+              <span class="fline"></span>
+              <span class="ftile"><span class="mark"></span></span>
+              <span class="fline"></span>
+              <div class="fcard"><span class="fic"><svg class="ic"><use href="#i-spark"/></svg></span><div><small>Where we are</small><b>13+ brands, MPT ongoing</b></div></div>
+            </div>
+          </div>
+          <h3><span data-count="13">0</span>+ client brands</h3>
+          <p>Including MPT, Gery, MacArthur’s, Becozinc and Wave Money — many of them with us for years.</p>
+        </div>
+        <div class="bc rv d2">
+          <div class="bviz"><div class="radar" aria-hidden="true"><span></span><span></span><span></span><div class="sweep"></div><div class="pin"></div><div class="tag">Mayangone</div></div></div>
+          <h3>Made in Yangon</h3>
+          <p>One studio in Mayangone, working with local brands and international partners.</p>
+        </div>
+        <div class="bc rv">
+          <div class="bviz">
+            <div class="tree">
+              <span class="ftile"><span class="mark"></span></span>
+              <span class="tree-bus"></span>
+              <div class="ind"><span>Telecom</span><span>Fintech</span><span>FMCG</span><span>Beverage</span><span>Healthcare</span><span>Agriculture</span><span>NGO</span></div>
+            </div>
+          </div>
+          <h3><span data-count="7">0</span> industries</h3>
+          <p>From telecom and fintech to FMCG, beverage, healthcare, agriculture and NGOs.</p>
+        </div>
+        <div class="bc rv d2">
+          <div class="bviz">
+            <svg class="gauge" viewBox="0 0 240 140" aria-hidden="true">
+              <defs><linearGradient id="gg" x1="0" x2="1"><stop offset="0" stop-color="#ff8a6b"/><stop offset="1" stop-color="#ff3333"/></linearGradient></defs>
+              <path class="g-bg" d="M20 120a100 100 0 0 1 200 0"/>
+              <path class="g-fg" d="M20 120a100 100 0 0 1 200 0"/>
+              <text x="120" y="118">100%</text>
+            </svg>
+          </div>
+          <h3>Every asset reviewed</h3>
+          <p>Every format and screen size passes our internal review before anything ships.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- WORK -->
 <section class="work" id="work">
-  <div class="work-inner">
-    <div class="work-hdr">
-      <h2 class="work-title rv">Work.<em>.</em></h2>
-      <a href="https://www.awakenentertainment.org/contact" target="_blank" class="work-see-all rv rv1">See All</a>
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="label rv">Selected work</span>
+        <h2 class="h2 rv d1">Work that makes<br>people stop.</h2>
+      </div>
+      <div class="work-count rv d2">
+        <span class="big">13+</span>
+        <a href="#cases" class="btn btn-dark">Case Stories <svg class="ic"><use href="#i-arr"/></svg></a>
+      </div>
     </div>
-    <div class="work-cards">
-      <div class="work-card" data-wd="0">
-        <div class="work-card-bg" style="background-image:url('/design/img/mpt-2.jpg');background-position:center"></div>
-        <div class="work-card-ov"></div>
-        <div class="work-card-info">
+    <div class="work-grid">
+      <article class="wcard rv">
+        <div class="wimg"><img src="img/mpt-1.jpg" alt="MPT social campaign design" loading="lazy"></div>
+        <div class="tags"><span>Telecom</span><span>Social Design</span><span>Videography</span></div>
+        <h3>MPT</h3>
+        <p>Monthly content calendars, digital campaigns, daily social creative and videography for Myanmar’s national telecom brand.</p>
+      </article>
+      <article class="wcard rv d1">
+        <div class="wimg"><img src="img/gery-3.jpg" alt="Gery Cheese Cracker key visual" loading="lazy"></div>
+        <div class="tags"><span>FMCG</span><span>Key Visuals</span><span>Campaigns</span></div>
+        <h3>Gery</h3>
+        <p>With Garudafood’s Gery from its Myanmar launch — Crunch Roll and Cheese Cracker key visuals.</p>
+      </article>
+      <article class="wcard rv">
+        <div class="wimg"><img src="img/mac-2.jpg" alt="MacArthur’s whisky campaign visual" loading="lazy"></div>
+        <div class="tags"><span>Scotch Whisky</span><span>Campaigns</span><span>Online &amp; Offline</span></div>
+        <h3>MacArthur’s Whisky</h3>
+        <p>Awareness campaigns online and offline since the brand arrived in Myanmar in 2019.</p>
+      </article>
+      <article class="wcard rv d1">
+        <div class="wimg"><img src="img/beco-2.jpg" alt="Becozinc launch campaign photography" loading="lazy"></div>
+        <div class="tags"><span>Healthcare</span><span>Brand Launch</span><span>Photography</span></div>
+        <h3>Becozinc</h3>
+        <p>Website, social media and locally shot photography for the Dr. Reddy’s zinc &amp; B-complex launch.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="svc on-dark" id="services">
+  <div class="wrap svc-grid">
+    <div class="svc-side">
+      <span class="label inv rv">Services we provide</span>
+      <h2 class="h2 rv d1">Brand, campaign &amp; social design — one team.</h2>
+      <p class="lead rv d2">Identity, advertising, social, UI and photography under one roof, so every touchpoint looks like the same brand.</p>
+      <div class="btns rv d3"><a href="/contact/" class="btn btn-red">Start a Project <svg class="ic"><use href="#i-arr"/></svg></a></div>
+    </div>
+    <div class="svc-stack" id="svcStack">
+      <article class="scard" style="--i:0">
+        <div class="simg"><img src="img/mac-3.jpg" alt="" loading="lazy"></div>
+        <div class="sbody"><h3><span>01.</span> Brand Identity</h3>
+          <ul><li>Logo &amp; visual identity</li><li>Brand guidelines</li><li>Colour &amp; type systems</li><li>Brand refresh &amp; extensions</li></ul></div>
+      </article>
+      <article class="scard" style="--i:1">
+        <div class="simg"><img src="img/gery-1.jpg" alt="" loading="lazy"></div>
+        <div class="sbody"><h3><span>02.</span> Advertising &amp; Key Visuals</h3>
+          <ul><li>Campaign key visuals</li><li>Print &amp; outdoor</li><li>Product launch visuals</li><li>Billboard to favicon</li></ul></div>
+      </article>
+      <article class="scard" style="--i:2">
+        <div class="simg"><img src="img/mpt-3.jpg" alt="" loading="lazy"></div>
+        <div class="sbody"><h3><span>03.</span> Social Media Design</h3>
+          <ul><li>Monthly content calendars</li><li>Daily social creative</li><li>Facebook &amp; Instagram campaigns</li><li>Videography</li></ul></div>
+      </article>
+      <article class="scard" style="--i:3">
+        <div class="simg"><img src="img/mpt-2.jpg" alt="" loading="lazy"></div>
+        <div class="sbody"><h3><span>04.</span> UI / UX &amp; Motion</h3>
+          <ul><li>Website design</li><li>UI in Figma &amp; Adobe XD</li><li>Motion in After Effects</li><li>Digital campaign assets</li></ul></div>
+      </article>
+      <article class="scard" style="--i:4">
+        <div class="simg"><img src="img/beco-3.jpg" alt="" loading="lazy"></div>
+        <div class="sbody"><h3><span>05.</span> Art Direction &amp; Photography</h3>
+          <ul><li>Art direction for shoots</li><li>Locally shot photography</li><li>Product photography</li><li>Studio in Mayangone</li></ul></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE DO -->
+<section class="what" id="what">
+  <div class="wrap">
+    <div class="center">
+      <span class="label rv">What we do</span>
+      <h2 class="h2 rv d1">Design that earns<br>a second look.</h2>
+      <p class="lead rv d2">Strategy, craft and a studio of our own — the six things behind every brand we shape.</p>
+    </div>
+    <div class="hub" id="hub">
+      <svg class="hub-svg" id="hubSvg" aria-hidden="true"></svg>
+      <div class="hub-row">
+        <div class="hcard rv" data-pos="tl">
+          <h3>Purpose before pixels</h3>
+          <p>Every visual decision has a reason. Form always serves the message.</p>
+          <div class="hviz"><div class="orb" aria-hidden="true"><span class="ring"></span><span class="ring"></span><div class="arm"><span class="sat">Aa</span><span class="sat">◐</span><span class="sat">✦</span></div><span class="core"><svg class="ic"><use href="#i-bulb"/></svg></span></div></div>
+        </div>
+        <div class="hcard rv d1" data-pos="tr">
+          <h3>We know our clients</h3>
+          <p>Before a single pixel, we immerse ourselves in your story, audience and landscape.</p>
+          <div class="hviz" aria-hidden="true">
+            <svg class="chart" viewBox="0 0 360 130" preserveAspectRatio="none">
+              <defs><linearGradient id="cg" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#ff3333" stop-opacity=".22"/><stop offset="1" stop-color="#ff3333" stop-opacity="0"/></linearGradient></defs>
+              <path class="area" d="M0 110 C60 104 90 96 130 86 S200 50 240 58 S300 24 360 14 V130 H0Z"/>
+              <path class="ln" d="M0 110 C60 104 90 96 130 86 S200 50 240 58 S300 24 360 14"/>
+            </svg>
+            <span class="bubble" style="left:8%;top:10%">Brand story</span>
+            <span class="bubble" style="right:6%;top:42%;animation-delay:-2s">Audience</span>
+          </div>
+        </div>
+      </div>
+      <div class="hub-row mid">
+        <div class="hcard rv" data-pos="ml">
+          <h3>Studio open Mon–Sat</h3>
+          <p>Book our Mayangone space for shoots, workshops and creative sessions.</p>
+          <div class="hviz" aria-hidden="true">
+            <div class="cal"><div style="--d:0">MON<b>1</b></div><div style="--d:1">TUE<b>2</b></div><div style="--d:2">WED<b>3</b></div><div style="--d:3">THU<b>4</b></div><div style="--d:4">FRI<b>5</b></div><div style="--d:5">SAT<b>6</b></div><div class="off">SUN<b>7</b></div></div>
+            <div class="hours"><i><svg class="ic"><use href="#i-phone"/></svg></i>9 AM – 6 PM · +95 9255762417</div>
+          </div>
+        </div>
+        <div class="hub-core" id="hubCore"><span class="mark"></span></div>
+        <div class="hcard rv d1" data-pos="mr">
+          <h3>Clear direction, fast</h3>
+          <p>Mood boards, type pairings and colour stories — agreed before production starts.</p>
+          <div class="hviz" aria-hidden="true">
+            <div class="prog">
+              <div class="pbox"><div class="row"><span>Visual direction</span><span>78%</span></div><div class="bar"><i></i></div></div>
+              <div class="pitem" style="--d:0"><i>✓</i>Mood board approved</div>
+              <div class="pitem" style="--d:1"><i>✓</i>Type pairing chosen</div>
+              <div class="pitem" style="--d:2"><i>✓</i>Colour story signed off</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hub-row">
+        <div class="hcard rv" data-pos="bl">
+          <h3>Motion &amp; UI in-house</h3>
+          <p>From Figma screens to After Effects motion, assets ready for every channel.</p>
+          <div class="hviz" aria-hidden="true"><div class="tl-mini"><div class="lr"><i></i></div><div class="lr"><i></i></div><div class="lr"><i></i></div><div class="lr"><i></i></div><span class="head"></span></div></div>
+        </div>
+        <div class="hcard rv d1" data-pos="br">
+          <h3>Brands that hold together</h3>
+          <p>Systems that work everywhere — from a 3 mm favicon to a 30-metre billboard.</p>
+          <div class="hviz" aria-hidden="true">
+            <div class="dots-bg"></div>
+            <div class="alive">
+              <span class="ftile"><span class="mark"></span></span>
+              <span class="app" style="--d:0;left:8px;top:6px;background:#1e1e1e;color:#fff">Fi</span>
+              <span class="app" style="--d:1;right:10px;top:0;background:#330000;color:#ff9a00">Ai</span>
+              <span class="app" style="--d:2;left:0;bottom:6px;background:#001e36;color:#31a8ff">Ps</span>
+              <span class="app" style="--d:3;right:4px;bottom:2px;background:#00005b;color:#9999ff">Ae</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="proc" id="process">
+  <div class="wrap proc-grid">
+    <div class="proc-side">
+      <span class="label rv">Our process</span>
+      <h2 class="h2 rv d1">Four steps from<br>brief to brand.</h2>
+      <p class="lead rv d2">Every Awaken Design project follows the same path, so you always know what happens next — and nothing ships until it’s right.</p>
+    </div>
+    <div class="tl" id="timeline">
+      <div class="tl-line"><div class="tl-fill" id="tlFill"></div></div>
+      <div class="step">
+        <span class="step-num">01</span>
+        <div class="step-card rv">
+          <span class="step-ic"><svg class="ic"><use href="#i-search"/></svg></span>
+          <h3>Discover &amp; Research</h3>
+          <p>Before a single pixel, we immerse ourselves in your brand story, audience and competitive landscape. Every creative decision starts with deep understanding.</p>
+          <ul><li>Brand story &amp; audience research</li><li>Competitive landscape review</li><li>A clear creative brief</li></ul>
+        </div>
+      </div>
+      <div class="step">
+        <span class="step-num">02</span>
+        <div class="step-card rv">
+          <span class="step-ic"><svg class="ic"><use href="#i-compass"/></svg></span>
+          <h3>Concept &amp; Direction</h3>
+          <p>We present multiple visual directions — mood boards, type pairings, colour stories — then refine the one that resonates. Nothing moves to production without alignment.</p>
+          <ul><li>Mood boards &amp; type pairings</li><li>Colour stories &amp; visual directions</li><li>Sign-off before production</li></ul>
+        </div>
+      </div>
+      <div class="step">
+        <span class="step-num">03</span>
+        <div class="step-card rv">
+          <span class="step-ic"><svg class="ic"><use href="#i-pen"/></svg></span>
+          <h3>Design &amp; QA</h3>
+          <p>Every asset, every format, every screen size. Our design-system approach means nothing ships until it passes internal review — pixel-perfect and production-ready.</p>
+          <ul><li>Every asset, format and size</li><li>Design-system approach</li><li>Internal review before anything ships</li></ul>
+        </div>
+      </div>
+      <div class="step">
+        <span class="step-num">04</span>
+        <div class="step-card rv">
+          <span class="step-ic"><svg class="ic"><use href="#i-loop"/></svg></span>
+          <h3>Deliver &amp; Support</h3>
+          <p>Our team stays available after delivery, so your identity grows as your business does.</p>
+          <ul><li>Fast turnaround on revisions</li><li>Ongoing brand guidance</li><li>Asset extensions as you grow</li></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STUDIO -->
+<section class="studio on-dark" id="studio">
+  <div class="panel">
+    <div class="wrap">
+      <div class="center">
+        <span class="label inv rv">Studio space</span>
+        <h2 class="h2 rv d1">Our studio,<br>your space.</h2>
+        <p class="lead rv d2">The Awaken Design studio in Mayangone is where our team designs every day — and it’s open for booking, with lighting and camera kit from Awaken Production on request.</p>
+      </div>
+      <div class="plans">
+        <div class="plan rv">
+          <span class="plan-ic"><svg class="ic"><use href="#i-camera"/></svg></span>
+          <h3>Shoots</h3>
+          <p class="sub">Photo, video and product photography.</p>
+          <ul><li><svg class="ic"><use href="#i-check"/></svg>Photo &amp; video shoots</li><li><svg class="ic"><use href="#i-check"/></svg>Product photography</li><li><svg class="ic"><use href="#i-check"/></svg>Lighting &amp; camera on request</li></ul>
+          <a href="https://wa.me/959255762417?text=Hi%20Awaken%2C%20I%27d%20like%20to%20book%20the%20studio%20for%20a%20shoot." target="_blank" rel="noopener" class="btn btn-white">Book a Shoot <svg class="ic"><use href="#i-arr"/></svg></a>
+        </div>
+        <div class="plan hot rv d1">
+          <span class="plan-ic"><svg class="ic"><use href="#i-users"/></svg></span>
+          <h3>Workshops</h3>
+          <p class="sub">Brand workshops and creative sessions.</p>
+          <ul><li><svg class="ic"><use href="#i-check"/></svg>Brand workshops</li><li><svg class="ic"><use href="#i-check"/></svg>Creative sessions</li><li><svg class="ic"><use href="#i-check"/></svg>Our design team on hand</li></ul>
+          <a href="https://wa.me/959255762417?text=Hi%20Awaken%2C%20I%27d%20like%20to%20book%20the%20studio%20for%20a%20workshop." target="_blank" rel="noopener" class="btn btn-red">Book a Workshop <svg class="ic"><use href="#i-arr"/></svg></a>
+        </div>
+        <div class="plan rv d2">
+          <span class="plan-ic"><svg class="ic"><use href="#i-screen"/></svg></span>
+          <h3>Presentations</h3>
+          <p class="sub">Client presentations and reviews.</p>
+          <ul><li><svg class="ic"><use href="#i-check"/></svg>Client presentations</li><li><svg class="ic"><use href="#i-check"/></svg>Campaign reviews</li><li><svg class="ic"><use href="#i-check"/></svg>Mon–Sat, 9 AM – 6 PM</li></ul>
+          <a href="https://wa.me/959255762417?text=Hi%20Awaken%2C%20I%27d%20like%20to%20book%20the%20studio%20for%20a%20presentation." target="_blank" rel="noopener" class="btn btn-white">Book a Session <svg class="ic"><use href="#i-arr"/></svg></a>
+        </div>
+        <div class="plan plan-wide rv">
           <div>
-            <div class="work-card-meta"><span class="work-card-cat">Telecom &middot; Social Design</span></div>
-            <div class="work-card-name">MPT</div>
-            <p class="work-card-desc">Monthly content calendars, digital campaigns, daily social creative and videography for Myanmar&rsquo;s national telecom brand.</p>
+            <span class="plan-ic"><svg class="ic"><use href="#i-pin"/></svg></span>
+            <h3>No.57, YaeKuYwarMa St, Mayangone</h3>
+            <p class="sub">Ward 9, Mayangone, Yangon. Message us on WhatsApp to check a date.</p>
+            <div class="btns">
+              <a href="https://wa.me/959255762417?text=Hi%20Awaken%2C%20I%27d%20like%20to%20book%20the%20studio." target="_blank" rel="noopener" class="btn btn-red">Book the Studio <svg class="ic"><use href="#i-arr"/></svg></a>
+              <a href="https://maps.app.goo.gl/HuiVWz5wNQ3381Vv5" target="_blank" rel="noopener" class="btn btn-white">Get Directions <svg class="ic"><use href="#i-arr"/></svg></a>
+            </div>
           </div>
-          <a href="#cases" class="work-card-action">Case Story <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
-        </div>
-      </div>
-      <div class="work-card" data-wd="60">
-        <div class="work-card-bg" style="background-image:url('/design/img/gery-1.jpg');background-position:center 20%"></div>
-        <div class="work-card-ov"></div>
-        <div class="work-card-info">
-          <div>
-            <div class="work-card-meta"><span class="work-card-cat">FMCG &middot; Campaigns</span></div>
-            <div class="work-card-name">Gery</div>
-            <p class="work-card-desc">With Garudafood&rsquo;s Gery from its Myanmar launch &mdash; Crunch Roll and Cheese Cracker key visuals.</p>
+          <div class="facts">
+            <div class="fact"><b>Mon–Sat</b><span>Open for bookings</span></div>
+            <div class="fact"><b>9 AM – 6 PM</b><span>Studio hours</span></div>
+            <div class="fact"><b>Lighting kit</b><span>Camera &amp; lights on request</span></div>
+            <div class="fact"><b>WhatsApp</b><span>+95 9255762417 to book</span></div>
           </div>
-          <a href="#cases" class="work-card-action">Case Story <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
-        </div>
-      </div>
-      <div class="work-card" data-wd="120">
-        <div class="work-card-bg" style="background-image:url('/design/img/mac-1.jpg');background-position:center 35%"></div>
-        <div class="work-card-ov"></div>
-        <div class="work-card-info">
-          <div>
-            <div class="work-card-meta"><span class="work-card-cat">Scotch Whisky &middot; Campaigns</span></div>
-            <div class="work-card-name">MacArthur&rsquo;s Whisky</div>
-            <p class="work-card-desc">Awareness campaigns online and offline since the brand arrived in Myanmar in 2019.</p>
-          </div>
-          <a href="#cases" class="work-card-action">Case Story <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
-        </div>
-      </div>
-      <div class="work-card" data-wd="180">
-        <div class="work-card-bg" style="background-image:url('/design/img/beco-1.jpg');background-position:center"></div>
-        <div class="work-card-ov"></div>
-        <div class="work-card-info">
-          <div>
-            <div class="work-card-meta"><span class="work-card-cat">Healthcare &middot; Brand Launch</span></div>
-            <div class="work-card-name">Becozinc</div>
-            <p class="work-card-desc">Website, social media and locally shot photography for the Dr. Reddy&rsquo;s zinc &amp; B-complex launch.</p>
-          </div>
-          <a href="#cases" class="work-card-action">Case Story <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CLIENTS (WHITE) -->
-<section class="tools" id="tools">
-  <div class="tools-inner">
-    <h2 class="tools-h rv">Brands we&rsquo;ve <em>shaped.</em></h2>
-    <p class="tools-sub rv rv1">Thirteen brands across telecom, fintech, FMCG, beverage, healthcare, agriculture and NGOs trust Awaken Design with how they look.</p>
-    <div class="tools-grid">
-      <div class="tool-chip client-chip" data-td="0"><small>Telecom</small>MPT</div>
-      <div class="tool-chip client-chip" data-td="50"><small>FMCG</small>Gery</div>
-      <div class="tool-chip client-chip" data-td="100"><small>Whisky</small>MacArthur&rsquo;s</div>
-      <div class="tool-chip client-chip" data-td="150"><small>Healthcare</small>Becozinc</div>
-      <div class="tool-chip client-chip" data-td="200"><small>Fintech</small>Wave Money</div>
-      <div class="tool-chip client-chip" data-td="250"><small>Beverage</small>Kirin Ichiban</div>
-      <div class="tool-chip client-chip" data-td="300"><small>Whisky</small>Grand Royal</div>
-      <div class="tool-chip client-chip" data-td="350"><small>Agriculture</small>awba</div>
-      <div class="tool-chip client-chip" data-td="400"><small>Fintech</small>Micromoney</div>
-      <div class="tool-chip client-chip" data-td="450"><small>NGO</small>Handicap International</div>
-      <div class="tool-chip client-chip" data-td="500"><small>Internet</small>Myanmar Link</div>
-      <div class="tool-chip client-chip" data-td="550"><small>Business</small>UMG</div>
-      <div class="tool-chip client-chip" data-td="600"><small>Brand</small>ananda</div>
+<!-- WHY -->
+<section class="why" id="why">
+  <div class="wrap">
+    <div class="center">
+      <span class="label rv">Why Awaken Design</span>
+      <h2 class="h2 rv d1">Why brands stay<br>with us for years.</h2>
+      <p class="lead rv d2">Gery since 2016, Becozinc since 2017, MacArthur’s since 2019. Here’s what keeps them here.</p>
     </div>
-    <p class="tools-note rv">Crafted in Figma, Illustrator, Photoshop, InDesign, After Effects &amp; Adobe XD.</p>
+    <div class="cmp">
+      <div class="cmp-col them rv">
+        <h3><svg class="ic"><use href="#i-x"/></svg>The usual way</h3>
+        <ul>
+          <li><svg class="ic"><use href="#i-x"/></svg>Templates over thinking</li>
+          <li><svg class="ic"><use href="#i-x"/></svg>One direction, take it or leave it</li>
+          <li><svg class="ic"><use href="#i-x"/></svg>Files that break at new sizes</li>
+          <li><svg class="ic"><use href="#i-x"/></svg>No review before launch</li>
+          <li><svg class="ic"><use href="#i-x"/></svg>Stock photos that don’t look local</li>
+          <li><svg class="ic"><use href="#i-x"/></svg>Gone after delivery</li>
+        </ul>
+      </div>
+      <div class="cmp-col us rv d1">
+        <h3><span class="logo-tile"><span class="mark"></span></span>Awaken Design</h3>
+        <div class="vmq">
+          <div class="vcol">
+            <span><i>✦</i>Brand immersion first</span><span><i>✦</i>Multiple visual directions</span><span><i>✦</i>Design systems that scale</span><span><i>✦</i>Internal QA on every asset</span><span><i>✦</i>Locally shot photography</span><span><i>✦</i>Fast revisions</span>
+            <span aria-hidden="true"><i>✦</i>Brand immersion first</span><span aria-hidden="true"><i>✦</i>Multiple visual directions</span><span aria-hidden="true"><i>✦</i>Design systems that scale</span><span aria-hidden="true"><i>✦</i>Internal QA on every asset</span><span aria-hidden="true"><i>✦</i>Locally shot photography</span><span aria-hidden="true"><i>✦</i>Fast revisions</span>
+          </div>
+          <div class="vcol rev">
+            <span><i>✦</i>Our own studio &amp; kit</span><span><i>✦</i>Ongoing brand guidance</span><span><i>✦</i>Print, outdoor &amp; social</span><span><i>✦</i>Since 2016 in Yangon</span><span><i>✦</i>Asset extensions</span><span><i>✦</i>One team, every channel</span>
+            <span aria-hidden="true"><i>✦</i>Our own studio &amp; kit</span><span aria-hidden="true"><i>✦</i>Ongoing brand guidance</span><span aria-hidden="true"><i>✦</i>Print, outdoor &amp; social</span><span aria-hidden="true"><i>✦</i>Since 2016 in Yangon</span><span aria-hidden="true"><i>✦</i>Asset extensions</span><span aria-hidden="true"><i>✦</i>One team, every channel</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pillars">
+      <div class="pill rv"><span class="pill-ic"><svg class="ic"><use href="#i-bulb"/></svg></span><h4>Clarity &amp; Purpose</h4><p>We design systems where beauty and function are inseparable — the form always serves the message.</p></div>
+      <div class="pill rv d1"><span class="pill-ic"><svg class="ic"><use href="#i-screen"/></svg></span><h4>Consistency &amp; Scale</h4><p>A great brand works everywhere. Our systems hold their integrity at every size and medium.</p></div>
+      <div class="pill rv d2"><span class="pill-ic"><svg class="ic"><use href="#i-pen"/></svg></span><h4>Craft &amp; Precision</h4><p>Kerning, spacing, corner radii, colour accuracy across print and screen. Craft is not optional.</p></div>
+      <div class="pill rv d3"><span class="pill-ic"><svg class="ic"><use href="#i-spark"/></svg></span><h4>Future-Oriented Vision</h4><p>We design for where your brand is going — adaptable to new markets, products and platforms.</p></div>
+    </div>
   </div>
 </section>
 
-<!-- MARQUEE -->
-<div class="mq-strip">
-  <div class="mq-track">
-    <span class="mq-item">Brand Identity<span class="mq-dot"></span></span>
-    <span class="mq-item">Advertising<span class="mq-dot"></span></span>
-    <span class="mq-item">Key Visuals<span class="mq-dot"></span></span>
-    <span class="mq-item">Social Media Design<span class="mq-dot"></span></span>
-    <span class="mq-item">Campaign Design<span class="mq-dot"></span></span>
-    <span class="mq-item">UI / UX<span class="mq-dot"></span></span>
-    <span class="mq-item">Art Direction<span class="mq-dot"></span></span>
-    <span class="mq-item">Photography<span class="mq-dot"></span></span>
-    <span class="mq-item">Brand Identity<span class="mq-dot"></span></span>
-    <span class="mq-item">Advertising<span class="mq-dot"></span></span>
-    <span class="mq-item">Key Visuals<span class="mq-dot"></span></span>
-    <span class="mq-item">Social Media Design<span class="mq-dot"></span></span>
-    <span class="mq-item">Campaign Design<span class="mq-dot"></span></span>
-    <span class="mq-item">UI / UX<span class="mq-dot"></span></span>
-    <span class="mq-item">Art Direction<span class="mq-dot"></span></span>
-    <span class="mq-item">Photography<span class="mq-dot"></span></span>
-  </div>
-</div>
-
-<!-- STATS (WHITE) -->
-<section class="stats-sec" id="results">
-  <div class="stats-inner">
-    <div class="stats-left">
-      <div class="stats-tag rv">By the numbers</div>
-      <div class="stat-row rv rv1">
-        <div class="stat-row-inner">
-          <div class="stat-num" data-to="13" data-from="0" data-sfx="+">0+</div>
-          <div class="stat-label"><strong>Client brands</strong>including MPT, Gery, MacArthur&rsquo;s, Becozinc and Wave Money.</div>
-        </div>
-      </div>
-      <div class="stat-row rv rv2">
-        <div class="stat-row-inner">
-          <div class="stat-num" data-to="7" data-from="0" data-sfx="+">0+</div>
-          <div class="stat-label"><strong>Industries served</strong>telecom, fintech, FMCG, beverage, healthcare, agriculture and NGOs.</div>
-        </div>
-      </div>
-      <div class="stat-row rv rv3">
-        <div class="stat-row-inner">
-          <div class="stat-num" data-to="10" data-from="0" data-sfx="+">0+</div>
-          <div class="stat-label"><strong>Years in Yangon</strong>designing for Myanmar&rsquo;s leading brands and international partners since 2016.</div>
-        </div>
+<!-- CASES -->
+<section class="cases" id="cases">
+  <div class="wrap cases-grid">
+    <div>
+      <span class="label rv">Case stories</span>
+      <h2 class="h2 rv d1">Long partnerships, real launches.</h2>
+      <div class="cstats">
+        <div class="cstat rv"><b>2016</b><span>With Gery from its Myanmar launch</span></div>
+        <div class="cstat rv d1"><b><span data-count="13">0</span>+</b><span>Brands designed for</span></div>
+        <div class="cstat rv d2"><b><span data-count="7">0</span></b><span>Industries, telecom to NGOs</span></div>
       </div>
     </div>
-    <div class="stats-right rv">
-      <div class="stats-visual">
-        <div class="sv-grid"></div>
-        <div class="sv-tags top-left">
-          <span class="sv-tag">Brand Identity</span>
-          <span class="sv-tag">Visual Systems</span>
-        </div>
-        <div class="sv-center">
-          <div class="sv-ring">
-            <div class="sv-ring-dot"></div>
-            <div class="sv-core">&#10022;</div>
-          </div>
-          <div class="sv-bars">
-            <div class="sv-bar"></div>
-            <div class="sv-bar"></div>
-            <div class="sv-bar"></div>
-            <div class="sv-bar"></div>
-            <div class="sv-bar"></div>
-          </div>
-        </div>
-        <div class="sv-tags bottom-right">
-          <span class="sv-tag">Motion &amp; UI</span>
-          <span class="sv-tag">Social Design</span>
-        </div>
+    <div class="slider rv d1">
+      <div class="slides" id="slides">
+        <article class="case">
+          <div class="ctag"><span>TELECOM</span><span>Ongoing</span></div>
+          <h3>MPT — Moving Myanmar Forward</h3>
+          <p>Awaken manages MPT’s digital social platforms: monthly content calendars, digital campaigns, daily social media tasks and videography.</p>
+          <div class="who-row"><span class="av"><img src="img/mpt-3.jpg" alt="" loading="lazy"></span><div><b>MPT</b><small>Myanmar’s national telecom</small></div></div>
+        </article>
+        <article class="case">
+          <div class="ctag"><span>FMCG</span><span>Since 2016</span></div>
+          <h3>Gery — a new brand, kept relevant</h3>
+          <p>Garudafood’s coated-biscuit brand arrived in Myanmar around 2016. We worked with Gery from the start, helping it shape-shift and stay fresh.</p>
+          <div class="who-row"><span class="av"><img src="img/gery-1.jpg" alt="" loading="lazy"></span><div><b>Gery</b><small>Garudafood</small></div></div>
+        </article>
+        <article class="case">
+          <div class="ctag"><span>BEVERAGE</span><span>Since 2019</span></div>
+          <h3>MacArthur’s — the mark of fine taste</h3>
+          <p>Brand-awareness campaigns online and offline for the Scotch whisky’s Myanmar arrival, optimised on KPIs and real-time evaluation.</p>
+          <div class="who-row"><span class="av"><img src="img/mac-1.jpg" alt="" loading="lazy"></span><div><b>MacArthur’s</b><small>Blended Scotch whisky</small></div></div>
+        </article>
+        <article class="case">
+          <div class="ctag"><span>HEALTHCARE</span><span>Since 2017</span></div>
+          <h3>Becozinc — a first for Myanmar</h3>
+          <p>Website, Facebook, Instagram and locally shot stock photography — rare for big brands in Myanmar at the time.</p>
+          <div class="who-row"><span class="av"><img src="img/beco-1.jpg" alt="" loading="lazy"></span><div><b>Becozinc</b><small>Dr. Reddy’s</small></div></div>
+        </article>
+      </div>
+      <div class="slide-nav">
+        <button type="button" id="prevCase" aria-label="Previous case story"><svg class="ic"><use href="#i-left"/></svg></button>
+        <button type="button" id="nextCase" aria-label="Next case story"><svg class="ic"><use href="#i-right"/></svg></button>
       </div>
     </div>
   </div>
 </section>
 
-<!-- DESIGN PILLARS (DARK) -->
-<section class="pillars" id="pillars">
-  <div class="pillars-inner">
-    <div class="pillars-hdr">
-      <div class="pillars-tag rv">Our design mark</div>
-      <h2 class="pillars-h rv rv1">Our <em>design</em> pillars.</h2>
-    </div>
-    <div class="pillars-row">
-      <div class="pcard active">
-        <div class="pcard-icon">&#10022;</div>
-        <div class="pcard-num">01</div>
-        <div class="pcard-title">Clarity &amp; Purpose</div>
-        <div class="pcard-desc">Every visual decision has a reason. We design systems where beauty and function are inseparable &mdash; where the form always serves the message.</div>
-        <div class="pcard-bg-num">01</div>
-      </div>
-      <div class="pcard">
-        <div class="pcard-icon">&#9672;</div>
-        <div class="pcard-num">02</div>
-        <div class="pcard-title">Consistency &amp; Scale</div>
-        <div class="pcard-desc">A great brand works everywhere &mdash; from a 3&times;3mm favicon to a 30-metre billboard. We build design systems that hold their integrity at every size and medium.</div>
-        <div class="pcard-bg-num">02</div>
-      </div>
-      <div class="pcard">
-        <div class="pcard-icon">&#9650;</div>
-        <div class="pcard-num">03</div>
-        <div class="pcard-title">Craft &amp; Precision</div>
-        <div class="pcard-desc">We are obsessive about the details others skip &mdash; kerning, spacing, corner radii, colour accuracy across print and screen. Craft is not optional.</div>
-        <div class="pcard-bg-num">03</div>
-      </div>
-      <div class="pcard">
-        <div class="pcard-icon">&#11041;</div>
-        <div class="pcard-num">04</div>
-        <div class="pcard-title">Future-Oriented Vision</div>
-        <div class="pcard-desc">We design for where your brand is going, not where it&rsquo;s been. Every project is built to evolve &mdash; adaptable to new markets, products, and platforms without losing identity.</div>
-        <div class="pcard-bg-num">04</div>
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="wrap faq-grid">
+    <div>
+      <span class="label rv">FAQ’s</span>
+      <h2 class="h2 rv d1">Questions,<br>answered.</h2>
+      <p class="lead rv d2">The things brands usually ask before we start. Anything else, just message us.</p>
+      <div class="ask rv d3">
+        <div class="ask-top"><span class="logo-tile"><span class="mark"></span></span><div><b>Awaken Design team</b><small>Mayangone, Yangon</small></div></div>
+        <p>Still not sure? Message us on WhatsApp or call — we reply during studio hours, Mon–Sat.</p>
+        <a href="https://wa.me/959255762417" target="_blank" rel="noopener" class="btn btn-dark">Message on WhatsApp <svg class="ic"><use href="#i-arr"/></svg></a>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- STUDIO SPACE (DARK) -->
-<section class="world-sec" id="studio">
-  <div class="world-inner">
-    <div class="world-top">
-      <div class="world-left rv">
-        <div class="world-tag">Studio Space</div>
-        <h2 class="world-h">Our studio,<br><em>your space.</em></h2>
-        <p class="world-desc">The Awaken Design studio in Mayangone is where our team designs every day &mdash; and it&rsquo;s open for booking. Bring your shoot, workshop or creative session and use the space, with lighting and camera kit from Awaken Production on request.</p>
-        <div class="world-cities">
-          <span class="world-city">Photo &amp; video shoots</span>
-          <span class="world-city">Product photography</span>
-          <span class="world-city">Brand workshops</span>
-          <span class="world-city">Client presentations</span>
-          <span class="world-city">Creative sessions</span>
-        </div>
-        <div class="studio-actions">
-          <a href="https://wa.me/959255762417?text=Hi%20Awaken%2C%20I%27d%20like%20to%20book%20the%20studio." target="_blank" rel="noopener" class="studio-btn primary">Book the Studio &rarr;</a>
-          <a href="https://maps.app.goo.gl/HuiVWz5wNQ3381Vv5" target="_blank" rel="noopener" class="studio-btn ghost">Get Directions &#8599;</a>
-        </div>
-      </div>
-      <div class="world-right rv rv1">
-        <div class="studio-map">
-          <iframe title="Awaken Design studio on Google Maps" src="https://www.google.com/maps/embed?origin=mfe&amp;pb=!1m3!2m1!1s16.854952,96.1600278!6i16" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-          <div class="studio-map-tag"><b>&#9679;</b> No.57, YaeKuYwarMa St &middot; Mayangone, Yangon</div>
-        </div>
-      </div>
-    </div>
-    <div class="world-stats rv">
-      <div class="ws-item"><div class="ws-num sm">Mon&ndash;Sat</div><div class="ws-label">Open for bookings</div></div>
-      <div class="ws-item"><div class="ws-num sm">9 AM &ndash; 6 PM</div><div class="ws-label">Studio hours</div></div>
-      <div class="ws-item"><div class="ws-num sm">Lighting kit</div><div class="ws-label">Camera &amp; lights on request</div></div>
-      <div class="ws-item"><div class="ws-num sm">WhatsApp</div><div class="ws-label">+95 9255762417 to book</div></div>
+    <div class="qa rv d1">
+      <details open>
+        <summary>What does Awaken Design do?<i>+</i></summary>
+        <p>Brand identity, advertising and campaign key visuals, social media and campaign design, UI/UX, art direction and photography — for brands in Myanmar and international partners.</p>
+      </details>
+      <details>
+        <summary>Which brands have you worked with?<i>+</i></summary>
+        <p>MPT, Gery, MacArthur’s, Becozinc, Wave Money, Kirin Ichiban, Grand Royal, AWBA, MicroMoney, Handicap International, Myanmar Link, UMG and Ananda.</p>
+      </details>
+      <details>
+        <summary>How does a project start?<i>+</i></summary>
+        <p>With a conversation. We learn your brand story, audience and landscape first, then present visual directions for you to choose from. Call, WhatsApp or email us to set it up.</p>
+      </details>
+      <details>
+        <summary>Can we book your studio?<i>+</i></summary>
+        <p>Yes. The Mayangone studio is open for bookings Mon–Sat, 9 AM – 6 PM, for shoots, workshops and presentations. Lighting and camera kit from Awaken Production is available on request. Book on WhatsApp at +95 9255762417.</p>
+      </details>
+      <details>
+        <summary>Which tools do you design in?<i>+</i></summary>
+        <p>Figma, Illustrator, Photoshop, InDesign, After Effects and Adobe XD.</p>
+      </details>
+      <details>
+        <summary>Do you support us after delivery?<i>+</i></summary>
+        <p>Yes. We stay available for fast revisions, brand guidance and new assets as your brand grows.</p>
+      </details>
     </div>
   </div>
 </section>
 
-<!-- CASE STORIES (WHITE) -->
-<section class="blog" id="cases">
-  <div class="blog-inner">
-    <div class="blog-hdr">
-      <div class="blog-title-wrap">
-        <div class="blog-sup rv">Selected Work</div>
-        <h2 class="blog-title rv rv1">Case <em>stories.</em></h2>
-      </div>
-      <a href="https://www.awakenentertainment.org/contact" target="_blank" class="blog-see-all rv rv2">Start Yours</a>
-    </div>
-    <div class="blog-grid four">
-      <div class="blog-card" data-bd="0">
-        <div class="blog-card-img"><img src="/design/img/mpt-1.jpg" alt="MPT &mdash; Moving Myanmar Forward artwork by Awaken Design" loading="lazy"></div>
-        <div class="blog-card-body">
-          <div class="blog-card-meta">
-            <span class="blog-card-cat">Telecom</span>
-            <span class="blog-card-date">Ongoing</span>
-          </div>
-          <div class="blog-card-title">MPT &mdash; Moving Myanmar Forward</div>
-          <div class="blog-card-excerpt">Awaken manages MPT&rsquo;s digital social platforms: monthly content calendars, digital campaigns, daily social media tasks and videography.</div>
+<!-- CTA -->
+<section class="cta on-dark" id="contact">
+  <div class="panel">
+    <div class="wrap cta-grid">
+      <div>
+        <span class="label inv rv">Let’s create together</span>
+        <h2 class="cta-h rv d1">Have a brand to build? <span class="grad">Let’s design it.</span></h2>
+        <div class="btns rv d2">
+          <a href="/contact/" class="btn btn-red">Start a Project <svg class="ic"><use href="#i-arr"/></svg></a>
+          <a href="https://wa.me/959255762417" target="_blank" rel="noopener" class="btn btn-white">WhatsApp Us <svg class="ic"><use href="#i-arr"/></svg></a>
         </div>
       </div>
-      <div class="blog-card" data-bd="100">
-        <div class="blog-card-img"><img src="/design/img/gery-2.jpg" alt="Gery &mdash; a new brand, kept relevant artwork by Awaken Design" loading="lazy"></div>
-        <div class="blog-card-body">
-          <div class="blog-card-meta">
-            <span class="blog-card-cat">FMCG</span>
-            <span class="blog-card-date">Since 2016</span>
-          </div>
-          <div class="blog-card-title">Gery &mdash; a new brand, kept relevant</div>
-          <div class="blog-card-excerpt">Garudafood&rsquo;s coated-biscuit brand arrived in Myanmar around 2016. We worked with Gery from the start, helping it shape-shift and stay fresh.</div>
-        </div>
-      </div>
-      <div class="blog-card" data-bd="200">
-        <div class="blog-card-img"><img src="/design/img/mac-3.jpg" alt="MacArthur&rsquo;s &mdash; the mark of fine taste artwork by Awaken Design" loading="lazy"></div>
-        <div class="blog-card-body">
-          <div class="blog-card-meta">
-            <span class="blog-card-cat">Beverage</span>
-            <span class="blog-card-date">Since 2019</span>
-          </div>
-          <div class="blog-card-title">MacArthur&rsquo;s &mdash; the mark of fine taste</div>
-          <div class="blog-card-excerpt">Brand-awareness campaigns online and offline for the Scotch whisky&rsquo;s Myanmar arrival, optimised on KPIs and real-time evaluation.</div>
-        </div>
-      </div>
-      <div class="blog-card" data-bd="300">
-        <div class="blog-card-img"><img src="/design/img/beco-2.jpg" alt="Becozinc &mdash; a first for Myanmar artwork by Awaken Design" loading="lazy"></div>
-        <div class="blog-card-body">
-          <div class="blog-card-meta">
-            <span class="blog-card-cat">Healthcare</span>
-            <span class="blog-card-date">Since 2017</span>
-          </div>
-          <div class="blog-card-title">Becozinc &mdash; a first for Myanmar</div>
-          <div class="blog-card-excerpt">Website, Facebook, Instagram and locally shot stock photography &mdash; rare for big brands in Myanmar at the time.</div>
-        </div>
+      <div class="contact-list rv d2">
+        <a class="cl" href="tel:+959255762417"><i><svg class="ic"><use href="#i-phone"/></svg></i><span><small>Call us</small><b>+95 9255762417</b></span></a>
+        <a class="cl" href="tel:+959799489370"><i><svg class="ic"><use href="#i-phone"/></svg></i><span><small>Or</small><b>+95 9799489370</b></span></a>
+        <a class="cl" href="mailto:nyinyisoewin@awakenentertainment.org"><i><svg class="ic"><use href="#i-mail"/></svg></i><span><small>Email us</small><b>nyinyisoewin@awakenentertainment.org</b></span></a>
+        <a class="cl" href="https://maps.app.goo.gl/HuiVWz5wNQ3381Vv5" target="_blank" rel="noopener"><i><svg class="ic"><use href="#i-pin"/></svg></i><span><small>Studio</small><b>No.57, YaeKuYwarMa St, Mayangone</b></span></a>
       </div>
     </div>
   </div>
 </section>
+</main>
 
-<!-- CTA (DARK) -->
-<section class="cta" id="contact">
-  <div class="cta-inner">
-    <div class="cta-left">
-      <div class="cta-tag rv">Let&rsquo;s create together</div>
-      <h2 class="cta-h rv rv1">Let&rsquo;s<br><em>design</em><br>together.</h2>
-      <div class="cta-actions rv rv2">
-        <a href="https://www.awakenentertainment.org/contact" target="_blank" class="btn-primary">Start a Project &rarr;</a>
-        <a href="tel:+959255762417" class="cta-arrow">
-          <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-        </a>
-      </div>
-    </div>
-    <div class="cta-right">
-      <div class="cta-visual">
-        <div class="cta-visual-core">DESIGN</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
 <footer>
-  <div class="ft-inner">
-    <div class="ft-top">
+  <div class="wrap">
+    <div class="ft-grid">
       <div>
-        <div class="ft-logo"><span class="brand-mark" aria-hidden="true"></span><span class="ft-logo-t">AWAKEN DESIGN</span></div>
-        <p class="ft-desc">Branding &amp; advertising studio in Yangon. We design brands that make people stop, feel, and remember.</p>
+        <a href="/" class="logo"><span class="logo-tile"><span class="mark"></span></span><span>Awaken <b>Design</b></span></a>
+        <p class="ft-about">Branding &amp; advertising studio in Yangon. We design brands that make people stop, feel, and remember.</p>
       </div>
       <div>
-        <div class="ft-col-h">Divisions</div>
-        <div class="ft-col-links">
-          <a href="/digital/">Awaken Digital</a>
-          <a href="/design/">Awaken Design</a>
-          <a href="/tech/">Awaken Tech</a>
-          <a href="/production/">Awaken Production</a>
-          <a href="/pr/">Awaken PR</a>
-        </div>
+        <h4>Divisions</h4>
+        <ul><li><a href="/digital/">Awaken Digital</a></li><li><a href="/design/">Awaken Design</a></li><li><a href="/tech/">Awaken Tech</a></li><li><a href="/production/">Awaken Production</a></li><li><a href="/pr/">Awaken PR</a></li></ul>
       </div>
       <div>
-        <div class="ft-col-h">Contact</div>
-        <div class="ft-col-links">
-          <a href="tel:+959255762417">+95 9255762417</a>
-          <a href="tel:+959799489370">+95 9799489370</a>
-          <a href="mailto:nyinyisoewin@awakenentertainment.org">Email Us</a>
-          <a href="https://www.awakenentertainment.org" target="_blank">Website</a>
-        </div>
+        <h4>Contact</h4>
+        <ul><li><a href="tel:+959255762417">+95 9255762417</a></li><li><a href="tel:+959799489370">+95 9799489370</a></li><li><a href="mailto:nyinyisoewin@awakenentertainment.org">Email us</a></li><li><a href="/">awakenentertainment.org</a></li></ul>
       </div>
       <div>
-        <div class="ft-col-h">Location</div>
-        <div class="ft-col-links">
-          <span>No.57, YaeKuYwarMa Street,<br>Ward 9, Mayangone,<br>Yangon, Myanmar</span>
-        </div>
+        <h4>Location</h4>
+        <address>No.57, YaeKuYwarMa Street,<br>Ward 9, Mayangone,<br>Yangon, Myanmar</address>
       </div>
     </div>
-    <div class="ft-bot">
-      <span>&copy; 2026 <span class="ft-acc">Awaken Entertainment</span>. All rights reserved.</span>
-      <span>Designed with purpose in Yangon.</span>
-    </div>
+    <div class="ft-bottom"><span>© 2026 Awaken Entertainment. All rights reserved.</span><span>Designed with purpose in Yangon.</span></div>
   </div>
 </footer>
 
+<div class="fab">
+  <a class="wa" href="https://wa.me/959255762417" target="_blank" rel="noopener" aria-label="WhatsApp"><svg class="ic"><use href="#i-chat"/></svg></a>
+  <a class="ph" href="tel:+959255762417" aria-label="Call"><svg class="ic"><use href="#i-phone"/></svg></a>
+  <a class="em" href="mailto:nyinyisoewin@awakenentertainment.org" aria-label="Email"><svg class="ic"><use href="#i-mail"/></svg></a>
+  <button class="up" id="toTop" type="button" aria-label="Back to top"><svg class="ic"><use href="#i-up"/></svg></button>
+</div>
+
 <script>
-/* LOADER */
-const ld=document.getElementById('ld'),ldNum=document.getElementById('ldNum'),ldFill=document.getElementById('ldFill');
-let pct=0;
-const ldInt=setInterval(()=>{
-  pct=Math.min(pct+Math.random()*18+4,100);
-  ldNum.textContent=Math.floor(pct);
-  ldFill.style.width=pct+'%';
-  if(pct>=100){clearInterval(ldInt);setTimeout(()=>{ld.classList.add('out');revealHero()},250)}
-},80);
+(function () {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 
-/* HERO REVEAL */
-function revealHero(){
-  const words=document.querySelectorAll('.hw');
-  const ease='cubic-bezier(0.16,1,0.3,1)';
-  const set=(el,d,p)=>setTimeout(()=>Object.assign(el.style,p),d);
-  set(document.getElementById('hKicker'),300,{opacity:'1',transform:'none',transition:`opacity .7s ${ease},transform .7s ${ease}`});
-  words.forEach((w,i)=>setTimeout(()=>{w.style.transform='translateY(0)';w.style.transition=`transform 1s ${ease}`},420+i*60));
-  set(document.getElementById('hSub'),900,{opacity:'1',transition:'opacity .8s ease'});
-  set(document.getElementById('hActions'),1100,{opacity:'1',transition:'opacity .8s ease'});
-  set(document.getElementById('hScroll'),1300,{opacity:'1',transition:'opacity .8s ease'});
-}
+  // mobile menu
+  const nav = $('#nav'), tog = $('#navToggle');
+  tog.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    tog.setAttribute('aria-expanded', open);
+    tog.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  });
+  $$('.mnav a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
 
-/* CURSOR */
-const cd=document.getElementById('cd'),cr=document.getElementById('cr');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cd.style.left=mx+'px';cd.style.top=my+'px'});
-(function ac(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;cr.style.left=rx+'px';cr.style.top=ry+'px';requestAnimationFrame(ac)})();
-document.querySelectorAll('a,button,.work-card,.pcard,.how-card,.blog-card').forEach(el=>{
-  el.addEventListener('mouseenter',()=>document.body.classList.add('hov'));
-  el.addEventListener('mouseleave',()=>document.body.classList.remove('hov'));
-});
-
-/* SCROLL PROGRESS + NAV */
-const sp=document.getElementById('scroll-prog');
-window.addEventListener('scroll',()=>{
-  const dh=document.documentElement.scrollHeight-window.innerHeight;
-  if(dh>0)sp.style.width=(window.scrollY/dh*100).toFixed(1)+'%';
-  const nav=document.getElementById('nav');
-  if(window.scrollY>60){nav.classList.add('scrolled');nav.classList.remove('on-dark')}
-  else{nav.classList.remove('scrolled');nav.classList.add('on-dark')}
-},{passive:true});
-
-/* GENERIC REVEAL */
-const rvObs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');rvObs.unobserve(e.target)}});
-},{threshold:0.1});
-document.querySelectorAll('.rv').forEach(el=>rvObs.observe(el));
-
-/* HOW WE DO IT — SCROLL DRIVEN STICKY */
-(function(){
-  const wrap = document.getElementById('process');
-  if(!wrap) return;
-  const STEPS = 4;
-  const steps = [
-    { label:'Our Process', title:'How we <em>do</em> it.', text:'Four disciplines. One studio. Zero handoffs.', big:'01' },
-    { label:'01 — Discover', title:'We <em>know</em> our clients.', text:'Before a single pixel, we immerse in your brand story, audience, and landscape. Every creative decision starts with deep understanding.', big:'01' },
-    { label:'02 — Concept', title:'We set clear <em>direction.</em>', text:'Multiple visual directions — mood boards, type pairings, colour stories — refined to the one that resonates.', big:'02' },
-    { label:'03 — Design', title:'We <em>QA</em> everything.', text:'Every asset, every format, every screen size. Nothing ships until it passes our internal review — pixel-perfect and production-ready.', big:'03' },
-    { label:'04 — Deliver', title:'We\'re never <em>done.</em>', text:'Our team stays available after delivery — fast revisions, brand guidance, and asset extensions so your identity grows with your business.', big:'04' },
-  ];
-  const cards = [0,1,2,3].map(i=>document.getElementById('hCard'+i));
-  const titleEl = document.getElementById('howTitle');
-  const textEl = document.getElementById('howText');
-  const labelEl = document.getElementById('howLabel');
-  const bigEl = document.getElementById('howBigNum');
-  const dots = document.querySelectorAll('.how-prog-dot');
-  const STACK_CLASSES = ['active','stacked-1','stacked-2','stacked-3'];
-
-  let lastIdx = -1;
-
-  function setStep(idx) {
-    if(idx === lastIdx) return;
-    lastIdx = idx;
-
-    /* update left panel with fade */
-    const s = steps[Math.min(idx+1, steps.length-1)];
-    titleEl.style.opacity='0'; titleEl.style.transform='translateY(14px)';
-    textEl.style.opacity='0';  textEl.style.transform='translateY(10px)';
-    labelEl.style.opacity='0';
-    requestAnimationFrame(()=>{
-      titleEl.innerHTML = s.title;
-      textEl.textContent = s.text;
-      labelEl.textContent = s.label;
-      bigEl.textContent = s.big;
-      titleEl.style.transition='opacity .45s,transform .45s cubic-bezier(.16,1,.3,1)';
-      textEl.style.transition='opacity .45s .06s,transform .45s .06s cubic-bezier(.16,1,.3,1)';
-      labelEl.style.transition='opacity .4s';
-      requestAnimationFrame(()=>{
-        titleEl.style.opacity='1'; titleEl.style.transform='none';
-        textEl.style.opacity='1';  textEl.style.transform='none';
-        labelEl.style.opacity='1';
-      });
-    });
-
-    /* dots */
-    dots.forEach((d,i)=>d.classList.toggle('on', i===idx));
-
-    /* card classes: active idx floats in, previous stack behind, future stay hidden */
-    cards.forEach((c,i)=>{
-      c.classList.remove('active','stacked-1','stacked-2','stacked-3','gone','settling');
-      const diff = idx - i;
-      if(diff === 0) { c.classList.add('settling','active'); }
-      else if(diff === 1) c.classList.add('stacked-1');
-      else if(diff === 2) c.classList.add('stacked-2');
-      else if(diff >= 3) c.classList.add('stacked-3');
-      /* future cards: diff < 0, no class = hidden below */
-    });
+  // count-up numbers
+  function countUp(el) {
+    const to = +el.dataset.count, t0 = performance.now(), dur = 1400;
+    const step = now => {
+      const p = clamp((now - t0) / dur, 0, 1);
+      el.textContent = Math.round(to * (1 - Math.pow(1 - p, 3)));
+      if (p < 1) requestAnimationFrame(step);
+    };
+    reduce ? (el.textContent = to) : requestAnimationFrame(step);
   }
+
+  // dial: ticks light up as the year count climbs to 10
+  const dial = $('#dial'), dialNum = $('#dialNum'), TICKS = 31;
+  const ticks = [];
+  for (let i = 0; i < TICKS; i++) {
+    const a = Math.PI + (Math.PI * i) / (TICKS - 1);
+    const long = i % 5 === 0, r1 = long ? 104 : 112, r2 = 128;
+    const l = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    l.setAttribute('x1', 150 + r1 * Math.cos(a)); l.setAttribute('y1', 150 + r1 * Math.sin(a));
+    l.setAttribute('x2', 150 + r2 * Math.cos(a)); l.setAttribute('y2', 150 + r2 * Math.sin(a));
+    dial.insertBefore(l, dialNum); ticks.push(l);
+  }
+  function runDial() {
+    const t0 = performance.now(), dur = 1800;
+    const step = now => {
+      const p = reduce ? 1 : clamp((now - t0) / dur, 0, 1), e = 1 - Math.pow(1 - p, 3);
+      dialNum.textContent = Math.round(10 * e) + (p === 1 ? '+' : '');
+      const lit = Math.round(TICKS * e);
+      ticks.forEach((t, i) => t.classList.toggle('on', i < lit));
+      if (p < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
+
+  // reveal on scroll
+  const io = new IntersectionObserver(entries => entries.forEach(en => {
+    if (!en.isIntersecting) return;
+    const el = en.target;
+    el.classList.add('in');
+    $$('[data-count]', el).forEach(countUp);
+    if (el.id === 'yearsCard') runDial();
+    io.unobserve(el);
+  }), { threshold: .15, rootMargin: '0px 0px -40px 0px' });
+  $$('.rv, .bc').forEach(el => io.observe(el));
+
+  // "Who are we" words light up with scroll
+  const who = $('#whoText');
+  const words = who.textContent.trim().split(/\s+/);
+  who.textContent = '';
+  words.forEach((w, i) => {
+    const s = document.createElement('span'); s.className = 'w'; s.textContent = w;
+    who.append(s, i < words.length - 1 ? ' ' : '');
+  });
+  const wordEls = $$('.w', who);
+
+  // services: earlier cards shrink and dim as the next one slides over
+  const scards = $$('.scard');
+  // process timeline
+  const tl = $('#timeline'), tlFill = $('#tlFill'), steps = $$('.step', tl);
+  const toTop = $('#toTop');
 
   function onScroll() {
-    const rect = wrap.getBoundingClientRect();
-    const totalScroll = wrap.offsetHeight - window.innerHeight;
-    if(totalScroll <= 0) return;
-    const scrolled = -rect.top;
-    const progress = Math.max(0, Math.min(1, scrolled / totalScroll));
-    /* 4 cards over the full scroll range; first card shows immediately */
-    const idx = Math.min(STEPS-1, Math.floor(progress * STEPS));
-    setStep(idx);
+    const vh = innerHeight;
+    // words
+    if (reduce) wordEls.forEach(w => w.classList.add('on'));
+    else {
+      const r = who.getBoundingClientRect();
+      const p = clamp((vh * .82 - r.top) / (r.height + vh * .32), 0, 1);
+      const n = Math.round(p * wordEls.length);
+      wordEls.forEach((w, i) => w.classList.toggle('on', i < n));
+    }
+    // services stack (desktop only)
+    if (innerWidth > 960) {
+      scards.forEach((c, i) => {
+        const next = scards[i + 1];
+        if (!next) return;
+        const cr = c.getBoundingClientRect(), nr = next.getBoundingClientRect();
+        const p = clamp(1 - (nr.top - cr.top) / cr.height, 0, 1);
+        c.style.setProperty('--s', (1 - p * .07).toFixed(3));
+        c.style.setProperty('--b', (1 - p * .45).toFixed(3));
+      });
+    }
+    // timeline fill + active steps
+    const tr = tl.getBoundingClientRect(), mark = vh * .55;
+    const line = tl.querySelector('.tl-line'), lr = line.getBoundingClientRect();
+    tlFill.style.height = clamp((mark - lr.top) / lr.height, 0, 1) * 100 + '%';
+    steps.forEach(s => s.classList.toggle('on', s.getBoundingClientRect().top < mark));
+    toTop.classList.toggle('show', scrollY > vh);
   }
+  let ticking = false;
+  addEventListener('scroll', () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => { onScroll(); ticking = false; });
+  }, { passive: true });
 
-  window.addEventListener('scroll', onScroll, {passive:true});
-  onScroll(); /* init */
+  // "What we do" hub: draw connector lines from the centre tile to each card
+  const hub = $('#hub'), svg = $('#hubSvg'), core = $('#hubCore');
+  const NS = 'http://www.w3.org/2000/svg';
+  function rounded(pts, r) {
+    let d = `M${pts[0][0]} ${pts[0][1]}`;
+    for (let i = 1; i < pts.length - 1; i++) {
+      const [x0, y0] = pts[i - 1], [x1, y1] = pts[i], [x2, y2] = pts[i + 1];
+      const d1 = Math.hypot(x1 - x0, y1 - y0), d2 = Math.hypot(x2 - x1, y2 - y1);
+      const rr = Math.min(r, d1 / 2, d2 / 2);
+      const ax = x1 - (x1 - x0) / d1 * rr, ay = y1 - (y1 - y0) / d1 * rr;
+      const bx = x1 + (x2 - x1) / d2 * rr, by = y1 + (y2 - y1) / d2 * rr;
+      d += ` L${ax} ${ay} Q${x1} ${y1} ${bx} ${by}`;
+    }
+    const last = pts[pts.length - 1];
+    return d + ` L${last[0]} ${last[1]}`;
+  }
+  function drawHub() {
+    svg.innerHTML = '';
+    if (innerWidth <= 960) return;
+    const h = hub.getBoundingClientRect();
+    const box = el => { const r = el.getBoundingClientRect(); return { l: r.left - h.left, r: r.right - h.left, t: r.top - h.top, b: r.bottom - h.top, cx: (r.left + r.right) / 2 - h.left, cy: (r.top + r.bottom) / 2 - h.top }; };
+    const c = box(core), card = p => box($(`[data-pos="${p}"]`, hub));
+    const tl_ = card('tl'), tr_ = card('tr'), ml = card('ml'), mr = card('mr'), bl = card('bl'), br = card('br');
+    const busTop = (Math.max(tl_.b, tr_.b) + ml.t) / 2;
+    const busBot = (Math.min(bl.t, br.t) + ml.b) / 2;
+    const paths = [
+      [[c.cx, c.t], [c.cx, busTop], [tl_.cx, busTop], [tl_.cx, tl_.b]],
+      [[c.cx, c.t], [c.cx, busTop], [tr_.cx, busTop], [tr_.cx, tr_.b]],
+      [[c.l, c.cy], [ml.r, c.cy]],
+      [[c.r, c.cy], [mr.l, c.cy]],
+      [[c.cx, c.b], [c.cx, busBot], [bl.cx, busBot], [bl.cx, bl.t]],
+      [[c.cx, c.b], [c.cx, busBot], [br.cx, busBot], [br.cx, br.t]],
+    ];
+    paths.forEach((pts, i) => {
+      const d = rounded(pts, 22);
+      const p = document.createElementNS(NS, 'path'); p.setAttribute('d', d); svg.appendChild(p);
+      const end = pts[pts.length - 1];
+      const cap = document.createElementNS(NS, 'circle'); cap.setAttribute('cx', end[0]); cap.setAttribute('cy', end[1]); cap.setAttribute('r', 3.5); svg.appendChild(cap);
+      if (reduce) return;
+      const dot = document.createElementNS(NS, 'circle'); dot.setAttribute('r', 4);
+      const m = document.createElementNS(NS, 'animateMotion');
+      m.setAttribute('dur', '3.6s'); m.setAttribute('repeatCount', 'indefinite'); m.setAttribute('begin', `-${(i * .6).toFixed(1)}s`); m.setAttribute('path', d);
+      dot.appendChild(m); svg.appendChild(dot);
+    });
+  }
+  let rz;
+  addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(() => { drawHub(); onScroll(); }, 120); });
+  addEventListener('load', drawHub);
+  if (document.fonts) document.fonts.ready.then(drawHub);
+  // cards slide up as they reveal, so redraw once they have settled
+  new IntersectionObserver((en, o) => { if (en[0].isIntersecting) { setTimeout(drawHub, 1000); o.disconnect(); } }).observe(hub);
+
+  // case stories slider
+  const slides = $('#slides');
+  const by = dir => slides.scrollBy({ left: dir * (slides.querySelector('.case').offsetWidth + 18), behavior: 'smooth' });
+  $('#prevCase').addEventListener('click', () => by(-1));
+  $('#nextCase').addEventListener('click', () => by(1));
+
+  toTop.addEventListener('click', () => scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }));
+
+  drawHub();
+  onScroll();
 })();
-
-/* WORK CARDS */
-const wdObs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(!e.isIntersecting)return;
-    setTimeout(()=>e.target.classList.add('vis'),parseInt(e.target.dataset.wd)||0);
-    wdObs.unobserve(e.target);
-  });
-},{threshold:0.05});
-document.querySelectorAll('.work-card').forEach(el=>wdObs.observe(el));
-
-/* TOOL CHIPS */
-const tdObs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(!e.isIntersecting)return;
-    setTimeout(()=>e.target.classList.add('vis'),parseInt(e.target.dataset.td)||0);
-    tdObs.unobserve(e.target);
-  });
-},{threshold:0.1});
-document.querySelectorAll('.tool-chip').forEach(el=>tdObs.observe(el));
-
-/* BLOG CARDS */
-const bdObs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(!e.isIntersecting)return;
-    setTimeout(()=>e.target.classList.add('vis'),parseInt(e.target.dataset.bd)||0);
-    bdObs.unobserve(e.target);
-  });
-},{threshold:0.1});
-document.querySelectorAll('.blog-card').forEach(el=>bdObs.observe(el));
-
-/* STATS COUNT-UP */
-let statsDone=false;
-const statsEl=document.querySelector('.stats-sec');
-new IntersectionObserver(([e])=>{
-  if(!e.isIntersecting||statsDone)return;
-  statsDone=true;
-  document.querySelectorAll('.stat-num[data-to]').forEach(el=>{
-    const to=+el.dataset.to,from=+el.dataset.from,sfx=el.dataset.sfx||'';
-    const dur=1600,t0=performance.now();
-    const tick=now=>{
-      const p=Math.min((now-t0)/dur,1);
-      const ease=1-Math.pow(1-p,3);
-      el.textContent=Math.round(from+(to-from)*ease)+sfx;
-      if(p<1)requestAnimationFrame(tick);
-    };
-    requestAnimationFrame(tick);
-  });
-},{threshold:0.3}).observe(statsEl);
-
-/* PILLARS */
-document.querySelectorAll('.pcard').forEach(card=>{
-  card.addEventListener('click',()=>{
-    document.querySelectorAll('.pcard').forEach(c=>c.classList.remove('active'));
-    card.classList.add('active');
-  });
-  card.addEventListener('mouseenter',()=>{
-    document.querySelectorAll('.pcard').forEach(c=>c.classList.remove('active'));
-    card.classList.add('active');
-  });
-});
 </script>
 <script src="/assets/smooth.js?v=2"></script>
 </body>
