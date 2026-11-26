@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow"><meta name="theme-color" content="#0b0806">
+<title>Second presentation · The Reserved Seat · Special Reserve Talk Season 2</title><link rel="icon" href="../aw.png">
+<style>
+@font-face{font-family:"Reserve Serif";font-weight:400;font-display:swap;src:url(../fonts/caladea-400.woff2) format("woff2")}
+@font-face{font-family:"Reserve Serif";font-weight:700;font-display:swap;src:url(../fonts/caladea-700.woff2) format("woff2")}
+@font-face{font-family:"Reserve Serif";font-weight:700;font-style:italic;font-display:swap;src:url(../fonts/caladea-700i.woff2) format("woff2")}
+@font-face{font-family:"Reserve Sans";font-weight:400;font-display:swap;src:url(../fonts/carlito-400.woff2) format("woff2")}
+@font-face{font-family:"Reserve Sans";font-weight:400;font-style:italic;font-display:swap;src:url(../fonts/carlito-400i.woff2) format("woff2")}
+@font-face{font-family:"Reserve Sans";font-weight:700;font-display:swap;src:url(../fonts/carlito-700.woff2) format("woff2")}
+
+:root{--ink:#16110D;--ink2:#211913;--ink3:#2C221A;--gold:#C9A14A;--gold2:#E2C27A;--goldDk:#8C6A2B;--champ:#EFE6D6;--stone:#F4F0EA;--paper:#FBF8F3;--muted:#8A7F72;--line:#E2DBD0;
+ --serif:"Reserve Serif",Cambria,Georgia,serif;--sans:"Reserve Sans",Calibri,"Helvetica Neue",Arial,sans-serif}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--ink);color:var(--champ);font-family:var(--sans);font-size:18px;line-height:1.5}
+body.locked{overflow:hidden}
+.gate{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:24px;background:#0f0b08 url(../gate.webp) center/cover no-repeat;transition:opacity .7s ease,visibility .7s}
+.gate::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 60%,rgba(22,17,13,.35),rgba(10,7,5,.92))}
+.gate.out{opacity:0;visibility:hidden}
+.gc{position:relative;width:min(440px,100%);background:rgba(22,17,13,.82);border:1px solid rgba(201,161,74,.45);border-radius:20px;padding:34px 30px 26px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:0 30px 80px rgba(0,0,0,.55)}
+.gc .gbrand{display:flex;align-items:center;gap:10px;color:#BFB2A0;font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+.gc .gbrand img{width:30px;height:auto}
+.gc h1{font-family:var(--serif);font-weight:700;color:var(--gold);font-size:38px;line-height:1.05;margin:22px 0 6px}
+.gc p.s{margin:0 0 22px;color:#D9CDBB;font-size:16px}
+.gc label{display:block;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin:0 0 8px;font-weight:700}
+.gc input[type=password]{width:100%;font:inherit;font-size:18px;color:var(--champ);background:#0f0b08;border:1px solid #4a3c2c;border-radius:12px;padding:13px 14px;outline:none}
+.gc input[type=password]:focus{border-color:var(--gold)}
+.gc label.age{display:flex;gap:10px;align-items:flex-start;margin:16px 0 18px;font-size:14px;line-height:1.4;color:#D9CDBB;text-transform:none;letter-spacing:0;font-weight:400}
+.age input{width:18px;height:18px;accent-color:var(--gold);margin-top:2px;flex:none}
+.gc button{width:100%;font:inherit;font-weight:700;font-size:17px;color:#1a120a;background:var(--gold);border:0;border-radius:12px;padding:13px;cursor:pointer}
+.gc button:hover{background:var(--gold2)}
+.err{min-height:22px;margin:12px 0 0;font-size:14px;color:#E8B48A}
+.gc .fine{margin:14px 0 0;font-size:12px;color:#8A7F72}
+.shake{animation:sh .4s}@keyframes sh{20%,60%{transform:translateX(-8px)}40%,80%{transform:translateX(8px)}}
+
+.viewer{position:fixed;inset:0;display:flex;flex-direction:column;background:#0b0806}
+.vbar{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid rgba(201,161,74,.18);color:#D9CDBB;font-size:14px}
+.vbar a,.vbar button{display:inline-flex;align-items:center;gap:6px;font:inherit;font-weight:700;color:var(--champ);background:rgba(255,255,255,.06);border:1px solid rgba(201,161,74,.3);border-radius:999px;padding:7px 13px;cursor:pointer;text-decoration:none}
+.vbar a:hover,.vbar button:hover{border-color:var(--gold);color:var(--gold2)}
+.vbar .cnt{margin-left:auto;font-variant-numeric:tabular-nums;color:var(--gold);font-weight:700}
+.stage{flex:1;position:relative;display:flex;align-items:center;justify-content:center;min-height:0;padding:14px}
+.stage img{max-width:100%;max-height:100%;box-shadow:0 20px 60px rgba(0,0,0,.6);border-radius:6px;background:#16110D}
+.vo{position:absolute;pointer-events:none}.vo video{position:absolute;object-fit:cover;pointer-events:auto;background:transparent;opacity:0;transition:opacity .4s}
+.navb{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;border:1px solid rgba(201,161,74,.4);background:rgba(15,11,8,.6);color:var(--champ);font-size:22px;cursor:pointer}
+.navb:hover{border-color:var(--gold);color:var(--gold2)}
+.prev{left:14px}.next{right:14px}
+.notes{max-height:28vh;overflow:auto;padding:12px 18px 16px;border-top:1px solid rgba(201,161,74,.18);color:#E6DBC8;font-size:17px;line-height:1.5;display:none}
+.viewer.shownotes .notes{display:block}
+.notes b{color:var(--gold);font-size:12px;letter-spacing:.16em;text-transform:uppercase;display:block;margin-bottom:4px}
+.grid{position:fixed;inset:0;z-index:20;background:rgba(11,8,6,.97);overflow:auto;padding:70px 20px 30px;display:none}
+.grid.open{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;align-content:start}
+.grid button{position:relative;padding:0;border:2px solid transparent;border-radius:8px;overflow:hidden;cursor:pointer;background:#16110D;aspect-ratio:16/9}
+.grid button.cur{border-color:var(--gold)}
+.grid button img{width:100%;height:100%;object-fit:cover}
+.grid button span{position:absolute;left:6px;top:6px;background:rgba(0,0,0,.7);color:var(--gold);font-weight:700;font-size:12px;padding:2px 7px;border-radius:6px}
+.grid .gx{position:fixed;top:14px;right:18px;font-size:30px;color:var(--champ);background:none;border:0;cursor:pointer}
+@media (max-width:700px){.vbar .lbl{display:none}.navb{width:40px;height:40px}.prev{left:6px}.next{right:6px}}
+</style></head>
+<body class="locked">
+<div class="gate" id="gate"><form class="gc" id="gf" autocomplete="off"><div class="gbrand"><img src="../aw.png" alt="">Awaken Entertainment</div><h1>The Reserved Seat</h1><p class="s">Second presentation · revisions and draft CE.</p>
+<label for="pw">Passcode</label><input id="pw" type="password" autocapitalize="off" spellcheck="false" placeholder="Enter passcode" required>
+<label class="age"><input type="checkbox" id="age"> I confirm I am 18 or older. This proposal contains alcohol brand content.</label>
+<button type="submit">Open the slides</button><p class="err" id="err" role="alert"></p></form></div>
+<div class="viewer" id="viewer" hidden>
+  <div class="vbar"><a href="../">← <span class="lbl">Proposal</span></a><button id="gridBtn">▦ <span class="lbl">All slides</span></button><button id="notesBtn">✎ <span class="lbl">Presenter notes</span></button><button id="fsBtn">⤢ <span class="lbl">Full screen</span></button><span class="cnt" id="cnt"></span></div>
+  <div class="stage" id="stage"><button class="navb prev" id="prev" aria-label="Previous">‹</button><img id="img" alt=""><div class="vo" id="vo"></div><button class="navb next" id="next" aria-label="Next">›</button></div>
+  <div class="notes"><b>Presenter notes</b><span id="nt"></span></div>
+</div>
+<div class="grid" id="grid"><button class="gx" id="gx" aria-label="Close">×</button></div>
+<script>
+(() => {
+  const SALT = 'ItEy782Ajf43bI7dDkEodw==', ITER = 210000, VER = '2611260344', SK = 'srt_pass';
+  const $ = id => document.getElementById(id);
+  const b64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
+  let key = null, M = null, cur = 0; const cache = {};
+  async function derive(p) { const base = await crypto.subtle.importKey('raw', new TextEncoder().encode(p), 'PBKDF2', false, ['deriveKey']); return crypto.subtle.deriveKey({ name: 'PBKDF2', salt: b64(SALT), iterations: ITER, hash: 'SHA-256' }, base, { name: 'AES-GCM', length: 256 }, false, ['decrypt']); }
+  const decBuf = ab => { const u = new Uint8Array(ab); return crypto.subtle.decrypt({ name: 'AES-GCM', iv: u.slice(0, 12) }, key, u.slice(12)); };
+  async function unlock(pass) {
+    const p = pass.trim().toLowerCase(); key = await derive(p);
+    const r = await fetch('m.bin?v=' + VER); if (!r.ok) throw new Error('The slides could not be loaded.');
+    try { M = JSON.parse(new TextDecoder().decode(await decBuf(await r.arrayBuffer()))); } catch (e) { key = null; throw new Error('That passcode is not right. Please check and try again.'); }
+    try { sessionStorage.setItem(SK, p); } catch (e) {}
+    start();
+  }
+  $('gf').addEventListener('submit', async e => { e.preventDefault(); if (!$('age').checked) { $('err').textContent = 'Please confirm you are 18 or older.'; return; } $('err').textContent = 'Opening…'; try { await unlock($('pw').value); } catch (er) { $('err').textContent = er.message; } });
+  let auto = null; try { auto = sessionStorage.getItem(SK); } catch (e) {}
+  if (auto) unlock(auto).catch(() => { $('err').textContent = ''; });
+  function src(i) { const f = M.files[i]; if (!cache[f]) cache[f] = fetch('s/' + f + '.bin?v=' + VER).then(r => r.arrayBuffer()).then(decBuf).then(d => URL.createObjectURL(new Blob([d], { type: 'image/webp' }))); return cache[f]; }
+  // live video on slides that carry one (positions in slide fractions, from build.js)
+  const VIDS = {};
+  const vcache = {};
+  function vsrc(k) { if (!vcache[k]) vcache[k] = fetch('../i/' + k + '.vbin?v=' + VER).then(r => r.arrayBuffer()).then(decBuf).then(d => URL.createObjectURL(new Blob([d], { type: 'video/mp4' }))); return vcache[k]; }
+  function placeVo() { const a = $('img').getBoundingClientRect(), s = $('stage').getBoundingClientRect(), vo = $('vo'); vo.style.left = (a.left - s.left) + 'px'; vo.style.top = (a.top - s.top) + 'px'; vo.style.width = a.width + 'px'; vo.style.height = a.height + 'px'; }
+  function vids(i) {
+    const vo = $('vo'); vo.querySelectorAll('video').forEach(v => { v.pause(); v.removeAttribute('src'); v.load(); }); vo.innerHTML = '';
+    const L = VIDS[i]; if (!L) return; placeVo();
+    L.forEach(v => {
+      const el = document.createElement('video'); el.muted = true; el.loop = true; el.playsInline = true; el.setAttribute('playsinline', ''); if (v.c) el.controls = true;
+      el.style.left = v.x * 100 + '%'; el.style.top = v.y * 100 + '%'; el.style.width = v.w * 100 + '%'; el.style.height = v.h * 100 + '%';
+      el.addEventListener('playing', () => { el.style.opacity = 1; });
+      vo.appendChild(el);
+      vsrc(v.k).then(u => { if (cur !== i) return; el.src = u; el.play().catch(() => {}); }).catch(() => {});
+    });
+  }
+  async function go(i) {
+    cur = Math.max(0, Math.min(M.n - 1, i)); $('cnt').textContent = (cur + 1) + ' / ' + M.n;
+    $('img').src = await src(cur); $('img').alt = 'Slide ' + (cur + 1);
+    vids(cur);
+    $('nt').textContent = M.notes[cur] || 'No notes for this slide.';
+    history.replaceState(null, '', '#' + (cur + 1));
+    [cur + 1, cur + 2, cur - 1].forEach(j => { if (j >= 0 && j < M.n) src(j); });
+    document.querySelectorAll('.grid button').forEach((b, j) => b.classList.toggle('cur', j === cur));
+  }
+  function start() {
+    document.body.classList.remove('locked'); $('gate').classList.add('out'); setTimeout(() => $('gate').remove(), 700);
+    $('viewer').hidden = false;
+    const g = $('grid');
+    for (let i = 0; i < M.n; i++) { const b = document.createElement('button'); b.innerHTML = '<span>' + (i + 1) + '</span><img alt="">'; b.addEventListener('click', () => { g.classList.remove('open'); go(i); }); g.appendChild(b); }
+    $('img').addEventListener('load', placeVo); addEventListener('resize', placeVo); document.addEventListener('fullscreenchange', () => setTimeout(placeVo, 120));
+    const h = parseInt(location.hash.slice(1)); go(isNaN(h) ? 0 : h - 1);
+  }
+  document.addEventListener('keydown', e => { if (!M) return; if (['ArrowRight', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); go(cur + 1); } if (['ArrowLeft', 'PageUp'].includes(e.key)) { e.preventDefault(); go(cur - 1); } if (e.key === 'n') toggleNotes(); if (e.key === 'g') openGrid(); if (e.key === 'f') fs(); if (e.key === 'Escape') $('grid').classList.remove('open'); });
+  function toggleNotes() { $('viewer').classList.toggle('shownotes'); }
+  async function openGrid() { const g = $('grid'); g.classList.add('open'); const bs = g.querySelectorAll('button img'); for (let i = 0; i < bs.length; i++) { if (!bs[i].src) src(i).then(u => bs[i].src = u); } }
+  function fs() { if (!document.fullscreenElement) document.documentElement.requestFullscreen && document.documentElement.requestFullscreen(); else document.exitFullscreen(); }
+  $('prev').onclick = () => go(cur - 1); $('next').onclick = () => go(cur + 1);
+  $('notesBtn').onclick = toggleNotes; $('gridBtn').onclick = openGrid; $('fsBtn').onclick = fs; $('gx').onclick = () => $('grid').classList.remove('open');
+  let sx = null; $('stage').addEventListener('touchstart', e => sx = e.touches[0].clientX, { passive: true }); $('stage').addEventListener('touchend', e => { if (sx === null) return; const dx = e.changedTouches[0].clientX - sx; if (Math.abs(dx) > 40) go(cur + (dx < 0 ? 1 : -1)); sx = null; });
+})();
+</script></body></html>
