@@ -672,7 +672,7 @@ h4{margin:0 0 8px;font-family:var(--serif);font-weight:700;font-size:23px;line-h
 <script>
 (() => {
   'use strict';
-  const SALT = 'ZZIdTeAKKuXSATf0BauQwg==', ITER = 210000, VER = '2611260408', SK = 'srt_pass';
+  const SALT = '33FU45c4KC+C4ePegNIBJg==', ITER = 210000, VER = '2611260729', SK = 'srt_pass';
   const $ = id => document.getElementById(id);
   const b64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -735,6 +735,28 @@ h4{margin:0 0 8px;font-family:var(--serif);font-weight:700;font-size:23px;line-h
     document.querySelectorAll('video[data-encv]').forEach(v => vio.observe(v));
     const rv = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); rv.unobserve(e.target); if (e.target.querySelectorAll) e.target.querySelectorAll('[data-count]').forEach(countUp); if (e.target.dataset.count) countUp(e.target); } }), { threshold: .14, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.rv,.arc,.pmap,.gantt,[data-count]').forEach(el => rv.observe(el));
+    const fpic = document.querySelector('.r-sticky .pic');
+    if (fpic) {
+      const layers = [...document.querySelectorAll('.r-layer[data-fx]')];
+      const setF = (el) => {
+        layers.forEach(l => l.classList.toggle('on', l === el));
+        if (!el) { fpic.style.setProperty('--z', 1); fpic.style.setProperty('--tx', '0px'); fpic.style.setProperty('--ty', '0px'); fpic.classList.remove('focus'); return; }
+        const win = fpic.querySelector('.fwin'), W = win.clientWidth, H = win.clientHeight, z = +(el.dataset.z || 1.9);
+        const px = el.dataset.fx / 100 * W, py = el.dataset.fy / 100 * H;
+        const tx = Math.min(0, Math.max(W - W * z, W / 2 - px * z)), ty = Math.min(0, Math.max(H - H * z, H / 2 - py * z));
+        fpic.style.setProperty('--tx', tx + 'px'); fpic.style.setProperty('--ty', ty + 'px'); fpic.style.setProperty('--z', z);
+        fpic.style.setProperty('--rx', (px * z + tx) + 'px'); fpic.style.setProperty('--ry', (py * z + ty) + 'px'); fpic.classList.add('focus');
+        fpic.querySelectorAll('.fpin').forEach(p => p.classList.toggle('on', p.dataset.n === el.dataset.n));
+      };
+      const fo = () => {
+        const mid = innerHeight * 0.5; let best = null, bd = 1e9;
+        layers.forEach(l => { const r = l.getBoundingClientRect(); const c = (r.top + r.bottom) / 2; const d = Math.abs(c - mid); if (r.bottom > 0 && r.top < innerHeight && d < bd) { bd = d; best = l; } });
+        const sec = document.querySelector('.r-sticky').getBoundingClientRect();
+        if (sec.top > innerHeight * 0.65 || sec.bottom < innerHeight * 0.35) best = null;
+        if (best !== fpic._cur) { fpic._cur = best; setF(best); }
+      };
+      addEventListener('scroll', fo, { passive: true }); addEventListener('resize', () => { fpic._cur = undefined; fo(); }); fo();
+    }
     // chapters + progress
     const chaps = [...document.querySelectorAll('section[data-title]')];
     const ml = $('mlist'); let n = 0;
